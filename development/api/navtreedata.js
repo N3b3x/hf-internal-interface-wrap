@@ -44,7 +44,7 @@ var NAVTREE =
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", "functions_vars" ],
-        [ "Typedefs", "functions_type.html", null ]
+        [ "Enumerations", "functions_enum.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -67,21 +67,22 @@ var NAVTREEINDEX =
 "AdcComprehensiveTest_8cpp.html",
 "EspWifi_8cpp.html#ab8f831b960ae2fd5dcb77cb871abdb79",
 "PwmComprehensiveTest_8cpp.html#a53bd3b7c698049eee1ab5ec7bb6f6dff",
-"StmTypes_8h.html#af8e3d687e7b582925b62029f026625f9",
-"classBaseCan.html#a3c372c570cb93abf33e2de4f05970d36",
-"classBasePio.html#abb16fcb7c34065f552eefebd0eb7d99a",
-"classEspBluetooth.html#a9cd95cb129e38d8f5fa2fe5cbef8f4c2",
-"classEspI2cDevice.html#a7f50af31fcd62980b9f9dfa8b71074b6",
-"classEspPwm.html#af03e7350d2c885bbca5358ee3a183d10",
-"classEspWifi.html#a7e332cf059c274f217c66637c7670e80",
-"classStmSpiDevice.html#aac96933b7c2db6fa0e675ee472e91ec5",
-"group__gpio.html#ga825412a54660defc9ecbf8ad1ea1cf7b",
-"namespacehf_1_1stm32.html#aae908749bc986cae79f7b0240fa24fceae0aa021e21dddbd6d8cecec71e9cf564",
-"structesp__temp__config__t.html#a532b01f4a182e30097a84fd14ceac05c",
-"structhf__esp__can__config__t.html#aed2cc188cee17a17b3d1d0b1957d8629",
-"structhf__nvs__statistics__t.html#ad7c4c3871f7ab0af300f50fe84f2fb22",
-"structhf__stm32__adc__config__t.html#a4a0ab19bfa783ca349951fca944d85eb",
-"structhf__wifi__station__config__t.html#a0937e6645ec03df2c5ce62672e20971e"
+"StmTypes_8h.html#a61d8ada18ba35572dbf8fedc4d96501f",
+"WifiComprehensiveTest_8cpp.html#a647c761ce290d76365072d1c066418ec",
+"classBaseLogger.html#a5c4e83d89a9039e336dfb9f13d2be9a5",
+"classBaseUart.html#a9c42866eb7d966a138755e5b71c725cf",
+"classEspGpio.html#a9661ef14697ca21f3a580add2f3a4623",
+"classEspPio.html#adcdcad3a021a42f84cc978c5ac8b81aa",
+"classEspUart.html#a41b46b421647bc6181d207651590375f",
+"classStmCan.html#a65c6cd41415b35e10cdd85b78bfc66ec",
+"classStmSpiDevice.html#afd55e6d85cfe8e0020665c7039576ebe",
+"group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a9a4a8f71381ef88584170af7dcb47fc5",
+"namespaceanonymous__namespace_02StmGpio_8cpp_03.html#ae3a109a152e624d7e22bcb82e9ae8aa4",
+"structEspWifiAdvancedConfig.html#a4f35fe9c5dac670ef6056a9bbf8719f5",
+"structhf__adc__diagnostics__t.html#ad7d7323e43846d6d36770bdf9d186a9e",
+"structhf__gpio__statistics__t.html#af73fc56601cf47079be5eae7a1d64cbd",
+"structhf__pio__statistics__t.html#a2a8556e0cd4b70e878543514cab10479",
+"structhf__stm32__uart__config__t.html#a6e42429ce78a0126bfdf90dccb872c7a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -99,13 +99,14 @@ $(function(){initNavTree('StmPeriodicTimer_8h.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 Periodic Timer stub — placeholder for hardware timer integration.  
+<p>STM32 Periodic Timer — wraps TIM_HandleTypeDef for periodic callbacks.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="BasePeriodicTimer_8h_source.html">BasePeriodicTimer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="StmTypes_8h_source.html">StmTypes.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for StmPeriodicTimer.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="StmPeriodicTimer_8h__incl.svg" width="371" height="298"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="StmPeriodicTimer_8h__incl.svg" width="484" height="298"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -118,12 +119,17 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStmPeriodicTimer.html">StmPeriodicTimer</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 Periodic Timer — stub implementation.  <a href="classStmPeriodicTimer.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 Periodic Timer implementation.  <a href="classStmPeriodicTimer.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structStmPeriodicTimer_1_1DispatchEntry.html">StmPeriodicTimer::DispatchEntry</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 Periodic Timer stub — placeholder for hardware timer integration. </p>
-<p>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </p>
+<div class="textblock"><p>STM32 Periodic Timer — wraps TIM_HandleTypeDef for periodic callbacks. </p>
+<p>Users configure a hardware timer in STM32CubeMX, then pass the resulting TIM_HandleTypeDef* to this wrapper. The wrapper manages start/stop/period adjustment and dispatches the update interrupt callback to the registered function.</p>
+<dl class="section author"><dt>Author</dt><dd>HardFOC </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC — Licensed under GPL v3.0 or later. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

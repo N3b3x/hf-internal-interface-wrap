@@ -48,7 +48,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classStmTemperature.html" target="_top" xlink:title="STM32 Temperature sensor — stub implementation.">
+<g id="a_Node000003"><a xlink:href="classStmTemperature.html" target="_top" xlink:title="STM32 Temperature sensor implementation.">
 <polygon fill="white" stroke="#666666" points="252,-23 134,-23 134,0 252,0 252,-23"/>
 <text text-anchor="middle" x="193" y="-7.8" font-family="Arial" font-size="14.00">StmTemperature</text>
 </a>

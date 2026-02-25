@@ -1,5 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classBaseUart.html" title="Abstract base class for UART driver implementations." alt="" coords="5,5,103,36"/>
-<area shape="rect" id="Node000001" href="$classEspUart.html" title="ESP32 UART implementation class." alt="" coords="151,5,237,36"/>
-<area shape="poly" id="edge19_Node000000_Node000001" title=" " alt="" coords="116,18,151,18,151,23,116,23"/>
+<area shape="rect" id="Node000000" href="$classBaseNvs.html" title="Abstract base class for non&#45;volatile storage operations." alt="" coords="5,33,100,64"/>
+<area shape="rect" id="Node000001" href="$classEspNvs.html" title="Production&#45;ready MCU&#45;integrated non&#45;volatile storage implementation." alt="" coords="149,5,233,36"/>
+<area shape="poly" id="edge10_Node000000_Node000001" title=" " alt="" coords="113,34,148,26,150,32,114,39"/>
+<area shape="rect" id="Node000002" href="$classStmNvs.html" title="STM32 NVS — flash&#45;backed key&#45;value store with wear leveling." alt="" coords="148,60,235,91"/>
+<area shape="poly" id="edge11_Node000000_Node000002" title=" " alt="" coords="114,58,148,64,147,70,113,63"/>
 </map>

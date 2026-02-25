@@ -1,0 +1,710 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classStmCan" kind="class" language="C++" prot="public">
+    <compoundname>StmCan</compoundname>
+    <basecompoundref refid="classBaseCan" prot="public" virt="non-virtual">BaseCan</basecompoundref>
+    <includes refid="StmCan_8h" local="no">StmCan.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classStmCan_1a89524753a579380e3daaebe8a183e69a" prot="private" static="no" mutable="no">
+        <type><ref refid="StmCan_8h_1ac5c3cfdfa012fd57fb28fa9cb4d7c2a7" kindref="member">StmCanVariant</ref></type>
+        <definition>StmCanVariant StmCan::variant_</definition>
+        <argsstring></argsstring>
+        <name>variant_</name>
+        <qualifiedname>StmCan::variant_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="89" column="19" bodyfile="inc/mcu/stm32/StmCan.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmCan_1ad6af4f132f45d20b32fed168c7085dd0" prot="private" static="no" mutable="no">
+        <type>union <ref refid="classStmCan" kindref="compound">StmCan</ref></type>
+        <definition>union StmCan StmCan</definition>
+        <argsstring></argsstring>
+        <name></name>
+        <qualifiedname>StmCan</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="93" column="5"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmCan_1aa27ddab5ef524fefbcc7b767c731fc9e" prot="private" static="no" mutable="no">
+        <type><ref refid="BaseCan_8h_1a3581a1b02d6350ac14ca81b7c60cdc6f" kindref="member">hf_can_receive_callback_t</ref></type>
+        <definition>hf_can_receive_callback_t StmCan::rx_callback_</definition>
+        <argsstring></argsstring>
+        <name>rx_callback_</name>
+        <qualifiedname>StmCan::rx_callback_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="94" column="31" bodyfile="inc/mcu/stm32/StmCan.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classStmCan_1a59d9dc49c657ebb99f4e76eb4cd072f3" prot="public" static="no" mutable="no">
+        <type>CAN_HandleTypeDef *</type>
+        <definition>CAN_HandleTypeDef* StmCan::hcan_</definition>
+        <argsstring></argsstring>
+        <name>hcan_</name>
+        <qualifiedname>StmCan::hcan_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="91" column="29" bodyfile="inc/mcu/stm32/StmCan.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmCan_1a65c6cd41415b35e10cdd85b78bfc66ec" prot="public" static="no" mutable="no">
+        <type>FDCAN_HandleTypeDef *</type>
+        <definition>FDCAN_HandleTypeDef* StmCan::hfdcan_</definition>
+        <argsstring></argsstring>
+        <name>hfdcan_</name>
+        <qualifiedname>StmCan::hfdcan_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="92" column="29" bodyfile="inc/mcu/stm32/StmCan.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classStmCan_1affa71a3bc73953543145b74ed31e7e2d" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmCan::StmCan</definition>
+        <argsstring>(CAN_HandleTypeDef *hcan) noexcept</argsstring>
+        <name>StmCan</name>
+        <qualifiedname>StmCan::StmCan</qualifiedname>
+        <param>
+          <type>CAN_HandleTypeDef *</type>
+          <declname>hcan</declname>
+        </param>
+        <briefdescription>
+<para>Construct for bxCAN. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="47" column="14" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="133" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1a762d67c0c7ed8c58df3ca979d9fbaf4e" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmCan::StmCan</definition>
+        <argsstring>(FDCAN_HandleTypeDef *hfdcan) noexcept</argsstring>
+        <name>StmCan</name>
+        <qualifiedname>StmCan::StmCan</qualifiedname>
+        <param>
+          <type>FDCAN_HandleTypeDef *</type>
+          <declname>hfdcan</declname>
+        </param>
+        <briefdescription>
+<para>Construct for FDCAN. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="52" column="14" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="141" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1ad0787d139e1057b64763a26d4f9930fd" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmCan::StmCan</definition>
+        <argsstring>(const hf_stm32_can_config_t &amp;config) noexcept</argsstring>
+        <name>StmCan</name>
+        <qualifiedname>StmCan::StmCan</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__stm32__can__config__t" kindref="compound">hf_stm32_can_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Construct from config struct. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="57" column="14" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="149" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1a96ad9e536bfe30d8e01ee9cb2e227445" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmCan::~StmCan</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>~StmCan</name>
+        <qualifiedname>StmCan::~StmCan</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="59" column="5" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="161" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1a8eec0b0c2374a8ae97080feacd6bf5d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>StmCan::StmCan</definition>
+        <argsstring>(const StmCan &amp;)=delete</argsstring>
+        <name>StmCan</name>
+        <qualifiedname>StmCan::StmCan</qualifiedname>
+        <param>
+          <type>const <ref refid="classStmCan" kindref="compound">StmCan</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="61" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1aff9ec39eeb6d8d73f38caf0c4b5594f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classStmCan" kindref="compound">StmCan</ref> &amp;</type>
+        <definition>StmCan &amp; StmCan::operator=</definition>
+        <argsstring>(const StmCan &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>StmCan::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classStmCan" kindref="compound">StmCan</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="62" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1a0f32dce0a06d9118f6d5fa10879d9148" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t StmCan::Initialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>StmCan::Initialize</qualifiedname>
+        <reimplements refid="classBaseCan_1a7a32156d471b1d44b1cff68cd3024bb2">Initialize</reimplements>
+        <briefdescription>
+<para>Initialize the CAN controller (must be implemented by derived classes). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="65" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="169" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1a1fe2f60deb481fd28b6bc43e8d96e5ac" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t StmCan::Deinitialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>StmCan::Deinitialize</qualifiedname>
+        <reimplements refid="classBaseCan_1a9d207d69485c479ab68c5396ce3d814c">Deinitialize</reimplements>
+        <briefdescription>
+<para>Deinitialize the CAN controller (must be implemented by derived classes). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="66" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="187" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1a6df12c3fb34bb69834d1b90cf44f2007" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t StmCan::SendMessage</definition>
+        <argsstring>(const hf_can_message_t &amp;message, hf_u32_t timeout_ms=1000) noexcept override</argsstring>
+        <name>SendMessage</name>
+        <qualifiedname>StmCan::SendMessage</qualifiedname>
+        <reimplements refid="classBaseCan_1ac3ec4c6e8a5d45cbcbb4266d58f0faf8">SendMessage</reimplements>
+        <param>
+          <type>const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>1000</defval>
+        </param>
+        <briefdescription>
+<para>Send a CAN message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>CAN message to send </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = non-blocking) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="67" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="204" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1ae37b5e26c266f43ca1c4cdf297263bde" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t StmCan::ReceiveMessage</definition>
+        <argsstring>(hf_can_message_t &amp;message, hf_u32_t timeout_ms=0) noexcept override</argsstring>
+        <name>ReceiveMessage</name>
+        <qualifiedname>StmCan::ReceiveMessage</qualifiedname>
+        <reimplements refid="classBaseCan_1a300b5b097246fd7b9575050eb7eb239c">ReceiveMessage</reimplements>
+        <param>
+          <type><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Receive a CAN message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store received message </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = non-blocking) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="69" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="215" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1a8da6e2844530c162698ac763878943b4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t StmCan::SetReceiveCallback</definition>
+        <argsstring>(hf_can_receive_callback_t callback) noexcept override</argsstring>
+        <name>SetReceiveCallback</name>
+        <qualifiedname>StmCan::SetReceiveCallback</qualifiedname>
+        <reimplements refid="classBaseCan_1a9cef56fa208f09304bbd7129914a51a8">SetReceiveCallback</reimplements>
+        <param>
+          <type><ref refid="BaseCan_8h_1a3581a1b02d6350ac14ca81b7c60cdc6f" kindref="member">hf_can_receive_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+<para>Set callback for received messages. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback function to handle received messages </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="71" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="351" bodyend="354"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1add5ea4ac43276a1e45311eeafa565258" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t StmCan::SetAcceptanceFilter</definition>
+        <argsstring>(hf_u32_t id, hf_u32_t mask, bool extended=false) noexcept override</argsstring>
+        <name>SetAcceptanceFilter</name>
+        <qualifiedname>StmCan::SetAcceptanceFilter</qualifiedname>
+        <reimplements refid="classBaseCan_1addc8594d5ac480f4aa2ac03b6f08d06c">SetAcceptanceFilter</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>mask</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>extended</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Set acceptance filter for incoming messages. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>CAN ID to accept </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Acceptance mask (0 = don&apos;t care bits) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>extended</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true for extended frames, false for standard </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="72" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="356" bodyend="397"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1a7edb045a9c9ae440dbd42367a4b992c9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t StmCan::GetStatus</definition>
+        <argsstring>(hf_can_status_t &amp;status) noexcept override</argsstring>
+        <name>GetStatus</name>
+        <qualifiedname>StmCan::GetStatus</qualifiedname>
+        <reimplements refid="classBaseCan_1ac39ec574726318ccb010c87bcea0ed0d">GetStatus</reimplements>
+        <param>
+          <type><ref refid="structhf__can__status__t" kindref="compound">hf_can_status_t</ref> &amp;</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+<para>Get current CAN bus status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store status information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="74" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="399" bodyend="415"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1a6f503620d924a2090cd818475c1006a8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t StmCan::Reset</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Reset</name>
+        <qualifiedname>StmCan::Reset</qualifiedname>
+        <reimplements refid="classBaseCan_1ab51e96a8d84616a1f2fdabd8452c0665">Reset</reimplements>
+        <briefdescription>
+<para>Reset the CAN controller. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="75" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="417" bodyend="422"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1a6c7d84e038dd0aa4bea3db1dc601c60e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool StmCan::SupportsCanFD</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>SupportsCanFD</name>
+        <qualifiedname>StmCan::SupportsCanFD</qualifiedname>
+        <reimplements refid="classBaseCan_1a5af808724133b48742ebdcd448e93515">SupportsCanFD</reimplements>
+        <briefdescription>
+<para>Check if CAN-FD is supported by this controller. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if CAN-FD is supported, false otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Default implementation returns false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="78" column="10" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="424" bodyend="426"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1abd9cf3a9bcc4a72d0011928d82ad39de" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="StmCan_8h_1ac5c3cfdfa012fd57fb28fa9cb4d7c2a7" kindref="member">StmCanVariant</ref></type>
+        <definition>StmCanVariant StmCan::GetVariant</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetVariant</name>
+        <qualifiedname>StmCan::GetVariant</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="81" column="19" bodyfile="inc/mcu/stm32/StmCan.h" bodystart="81" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1a458aa6531d8b418f05c8e49b83fd229e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void StmCan::NotifyRxFromIsr</definition>
+        <argsstring>(const hf_can_message_t &amp;msg) noexcept</argsstring>
+        <name>NotifyRxFromIsr</name>
+        <qualifiedname>StmCan::NotifyRxFromIsr</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+<para>ISR helper — call from HAL CAN/FDCAN RX callback. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="86" column="10" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="428" bodyend="433"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classStmCan_1a302a71793014211b86b914acbd20f647" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t StmCan::SendBxCan</definition>
+        <argsstring>(const hf_can_message_t &amp;msg, hf_u32_t timeout_ms) noexcept</argsstring>
+        <name>SendBxCan</name>
+        <qualifiedname>StmCan::SendBxCan</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="96" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="228" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1ad03871a10e8ca3cc28d9d65645a1c888" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t StmCan::ReceiveBxCan</definition>
+        <argsstring>(hf_can_message_t &amp;msg, hf_u32_t timeout_ms) noexcept</argsstring>
+        <name>ReceiveBxCan</name>
+        <qualifiedname>StmCan::ReceiveBxCan</qualifiedname>
+        <param>
+          <type><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="97" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="255" bodyend="283"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1a36ff228e37fae748b5d3774eace802db" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t StmCan::SendFdCan</definition>
+        <argsstring>(const hf_can_message_t &amp;msg, hf_u32_t timeout_ms) noexcept</argsstring>
+        <name>SendFdCan</name>
+        <qualifiedname>StmCan::SendFdCan</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="98" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="287" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmCan_1aaa89cb1b8836328e3d513b4d7f10240f" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t StmCan::ReceiveFdCan</definition>
+        <argsstring>(hf_can_message_t &amp;msg, hf_u32_t timeout_ms) noexcept</argsstring>
+        <name>ReceiveFdCan</name>
+        <qualifiedname>StmCan::ReceiveFdCan</qualifiedname>
+        <param>
+          <type><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmCan.h" line="99" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="313" bodyend="345"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>STM32 CAN implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Design:<itemizedlist>
+<listitem><para>Supports both bxCAN and FDCAN via a variant tag + union of handles.</para>
+</listitem><listitem><para>SendMessage/ReceiveMessage use blocking HAL calls.</para>
+</listitem><listitem><para>Acceptance filter wraps HAL filter configuration.</para>
+</listitem><listitem><para>Receive callback stored for ISR forwarding. </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BaseCan</label>
+        <link refid="classBaseCan"/>
+      </node>
+      <node id="1">
+        <label>StmCan</label>
+        <link refid="classStmCan"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BaseCan</label>
+        <link refid="classBaseCan"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>StmCan</label>
+        <link refid="classStmCan"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>rx_callback_</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>hf_can_diagnostics_t</label>
+        <link refid="structhf__can__diagnostics__t"/>
+      </node>
+      <node id="5">
+        <label>hf_can_message_t</label>
+        <link refid="structhf__can__message__t"/>
+      </node>
+      <node id="3">
+        <label>hf_can_statistics_t</label>
+        <link refid="structhf__can__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/stm32/StmCan.h" line="41" column="1" bodyfile="inc/mcu/stm32/StmCan.h" bodystart="41" bodyend="100"/>
+    <listofallmembers>
+      <member refid="classBaseCan_1ad55a7de8ac46821ff5584b73de4c6a5d" prot="public" virt="non-virtual"><scope>StmCan</scope><name>BaseCan</name></member>
+      <member refid="classBaseCan_1a530bc9bf147c4e0df1fa0ee38bb22e39" prot="public" virt="non-virtual"><scope>StmCan</scope><name>BaseCan</name></member>
+      <member refid="classBaseCan_1a138f75fbc7c937fa12c50fc4466c3407" prot="protected" virt="non-virtual"><scope>StmCan</scope><name>BaseCan</name></member>
+      <member refid="classBaseCan_1a523000694cee960aa8eee19bbd74c408" prot="public" virt="virtual"><scope>StmCan</scope><name>ClearAcceptanceFilter</name></member>
+      <member refid="classBaseCan_1a372729e0eeb758ba624aecfd07ef918c" prot="public" virt="virtual"><scope>StmCan</scope><name>ClearReceiveCallback</name></member>
+      <member refid="classBaseCan_1a67d60cd1fe9783de6f335948af385158" prot="public" virt="virtual"><scope>StmCan</scope><name>ConfigureCanFDTiming</name></member>
+      <member refid="classStmCan_1a1fe2f60deb481fd28b6bc43e8d96e5ac" prot="public" virt="virtual"><scope>StmCan</scope><name>Deinitialize</name></member>
+      <member refid="classBaseCan_1a6de6c09dd8b68a3d07ab804967e34782" prot="protected" virt="non-virtual"><scope>StmCan</scope><name>diagnostics_</name></member>
+      <member refid="classBaseCan_1a03daa6284ad75c2bbd335077141ea9d7" prot="public" virt="non-virtual"><scope>StmCan</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBaseCan_1a3c372c570cb93abf33e2de4f05970d36" prot="public" virt="non-virtual"><scope>StmCan</scope><name>EnsureInitialized</name></member>
+      <member refid="classBaseCan_1a0c05b53922dafb9c544f1e1fa6977397" prot="public" virt="virtual"><scope>StmCan</scope><name>GetDiagnostics</name></member>
+      <member refid="classBaseCan_1a938484f6f54bef73a04b5698214df442" prot="public" virt="virtual"><scope>StmCan</scope><name>GetStatistics</name></member>
+      <member refid="classStmCan_1a7edb045a9c9ae440dbd42367a4b992c9" prot="public" virt="virtual"><scope>StmCan</scope><name>GetStatus</name></member>
+      <member refid="classStmCan_1abd9cf3a9bcc4a72d0011928d82ad39de" prot="public" virt="non-virtual"><scope>StmCan</scope><name>GetVariant</name></member>
+      <member refid="classStmCan_1a59d9dc49c657ebb99f4e76eb4cd072f3" prot="public" virt="non-virtual"><scope>StmCan</scope><name>hcan_</name></member>
+      <member refid="classStmCan_1a65c6cd41415b35e10cdd85b78bfc66ec" prot="public" virt="non-virtual"><scope>StmCan</scope><name>hfdcan_</name></member>
+      <member refid="classStmCan_1a0f32dce0a06d9118f6d5fa10879d9148" prot="public" virt="virtual"><scope>StmCan</scope><name>Initialize</name></member>
+      <member refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" prot="protected" virt="non-virtual"><scope>StmCan</scope><name>initialized_</name></member>
+      <member refid="classBaseCan_1a1c8f9099b9cd860c3e8196768f51651b" prot="public" virt="non-virtual"><scope>StmCan</scope><name>IsInitialized</name></member>
+      <member refid="classStmCan_1a458aa6531d8b418f05c8e49b83fd229e" prot="public" virt="non-virtual"><scope>StmCan</scope><name>NotifyRxFromIsr</name></member>
+      <member refid="classStmCan_1aff9ec39eeb6d8d73f38caf0c4b5594f5" prot="public" virt="non-virtual"><scope>StmCan</scope><name>operator=</name></member>
+      <member refid="classBaseCan_1ad9dc7b9f27d9909273f077baaf00df33" prot="public" virt="non-virtual" ambiguityscope="BaseCan::"><scope>StmCan</scope><name>operator=</name></member>
+      <member refid="classBaseCan_1a01c7dbf06a7c24a0608ab1998d91827c" prot="public" virt="non-virtual" ambiguityscope="BaseCan::"><scope>StmCan</scope><name>operator=</name></member>
+      <member refid="classStmCan_1ad03871a10e8ca3cc28d9d65645a1c888" prot="private" virt="non-virtual"><scope>StmCan</scope><name>ReceiveBxCan</name></member>
+      <member refid="classStmCan_1aaa89cb1b8836328e3d513b4d7f10240f" prot="private" virt="non-virtual"><scope>StmCan</scope><name>ReceiveFdCan</name></member>
+      <member refid="classStmCan_1ae37b5e26c266f43ca1c4cdf297263bde" prot="public" virt="virtual"><scope>StmCan</scope><name>ReceiveMessage</name></member>
+      <member refid="classBaseCan_1a06981fc040b040418551f79eafea295d" prot="public" virt="virtual"><scope>StmCan</scope><name>ReceiveMessageBatch</name></member>
+      <member refid="classStmCan_1a6f503620d924a2090cd818475c1006a8" prot="public" virt="virtual"><scope>StmCan</scope><name>Reset</name></member>
+      <member refid="classBaseCan_1a6e26f72d55472f7dd825063abaa87ebc" prot="public" virt="virtual"><scope>StmCan</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBaseCan_1ac6924ccef37360dd48ed18f128c8a17e" prot="public" virt="virtual"><scope>StmCan</scope><name>ResetStatistics</name></member>
+      <member refid="classStmCan_1aa27ddab5ef524fefbcc7b767c731fc9e" prot="private" virt="non-virtual"><scope>StmCan</scope><name>rx_callback_</name></member>
+      <member refid="classStmCan_1a302a71793014211b86b914acbd20f647" prot="private" virt="non-virtual"><scope>StmCan</scope><name>SendBxCan</name></member>
+      <member refid="classStmCan_1a36ff228e37fae748b5d3774eace802db" prot="private" virt="non-virtual"><scope>StmCan</scope><name>SendFdCan</name></member>
+      <member refid="classStmCan_1a6df12c3fb34bb69834d1b90cf44f2007" prot="public" virt="virtual"><scope>StmCan</scope><name>SendMessage</name></member>
+      <member refid="classBaseCan_1a6aa06ee8540daad6ffef529802cb2334" prot="public" virt="virtual"><scope>StmCan</scope><name>SendMessageBatch</name></member>
+      <member refid="classStmCan_1add5ea4ac43276a1e45311eeafa565258" prot="public" virt="virtual"><scope>StmCan</scope><name>SetAcceptanceFilter</name></member>
+      <member refid="classBaseCan_1a2148e9e19a394699809d6e4592df5b5c" prot="public" virt="virtual"><scope>StmCan</scope><name>SetCanFDMode</name></member>
+      <member refid="classStmCan_1a8da6e2844530c162698ac763878943b4" prot="public" virt="virtual"><scope>StmCan</scope><name>SetReceiveCallback</name></member>
+      <member refid="classBaseCan_1a44753662096232f45e49ad752e8f68e4" prot="public" virt="virtual"><scope>StmCan</scope><name>SetReceiveCallbackFD</name></member>
+      <member refid="classBaseCan_1acdab43f967e641b0566a7f851ea37114" prot="public" virt="virtual"><scope>StmCan</scope><name>SetTransmitterDelayCompensation</name></member>
+      <member refid="classBaseCan_1a20b7f5289833676f369d33616fd2b05b" prot="protected" virt="non-virtual"><scope>StmCan</scope><name>statistics_</name></member>
+      <member refid="classStmCan_1affa71a3bc73953543145b74ed31e7e2d" prot="public" virt="non-virtual"><scope>StmCan</scope><name>StmCan</name></member>
+      <member refid="classStmCan_1a762d67c0c7ed8c58df3ca979d9fbaf4e" prot="public" virt="non-virtual"><scope>StmCan</scope><name>StmCan</name></member>
+      <member refid="classStmCan_1ad0787d139e1057b64763a26d4f9930fd" prot="public" virt="non-virtual"><scope>StmCan</scope><name>StmCan</name></member>
+      <member refid="classStmCan_1a8eec0b0c2374a8ae97080feacd6bf5d0" prot="public" virt="non-virtual"><scope>StmCan</scope><name>StmCan</name></member>
+      <member refid="classStmCan_1a6c7d84e038dd0aa4bea3db1dc601c60e" prot="public" virt="virtual"><scope>StmCan</scope><name>SupportsCanFD</name></member>
+      <member refid="classStmCan_1a89524753a579380e3daaebe8a183e69a" prot="private" virt="non-virtual"><scope>StmCan</scope><name>variant_</name></member>
+      <member refid="classBaseCan_1a95fbffe100ce79e6551fbfd113e9a874" prot="public" virt="virtual"><scope>StmCan</scope><name>~BaseCan</name></member>
+      <member refid="classStmCan_1a96ad9e536bfe30d8e01ee9cb2e227445" prot="public" virt="non-virtual"><scope>StmCan</scope><name>~StmCan</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

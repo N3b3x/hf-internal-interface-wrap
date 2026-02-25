@@ -16,8 +16,6 @@
     <includedby refid="EspTemperature_8h" local="yes">inc/mcu/esp32/EspTemperature.h</includedby>
     <includedby refid="EspUart_8h" local="yes">inc/mcu/esp32/EspUart.h</includedby>
     <includedby refid="EspWifi_8h" local="yes">inc/mcu/esp32/EspWifi.h</includedby>
-    <includedby refid="StmI2c_8h" local="yes">inc/mcu/stm32/StmI2c.h</includedby>
-    <includedby refid="StmSpi_8h" local="yes">inc/mcu/stm32/StmSpi.h</includedby>
     <incdepgraph>
       <node id="2">
         <label>McuSelect.h</label>
@@ -173,18 +171,6 @@
         <childnode refid="34" relation="include">
         </childnode>
       </node>
-      <node id="35">
-        <label>inc/mcu/stm32/StmI2c.h</label>
-        <link refid="StmI2c_8h"/>
-        <childnode refid="36" relation="include">
-        </childnode>
-      </node>
-      <node id="37">
-        <label>inc/mcu/stm32/StmSpi.h</label>
-        <link refid="StmSpi_8h"/>
-        <childnode refid="38" relation="include">
-        </childnode>
-      </node>
       <node id="1">
         <label>inc/utils/PlatformMutex.h</label>
         <link refid="PlatformMutex_8h"/>
@@ -209,10 +195,6 @@
         <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -258,14 +240,6 @@
       <node id="34">
         <label>src/mcu/esp32/EspWifi.cpp</label>
         <link refid="EspWifi_8cpp"/>
-      </node>
-      <node id="36">
-        <label>src/mcu/stm32/StmI2c.cpp</label>
-        <link refid="StmI2c_8cpp"/>
-      </node>
-      <node id="38">
-        <label>src/mcu/stm32/StmSpi.cpp</label>
-        <link refid="StmSpi_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classPlatformTime" prot="public">PlatformTime</innerclass>

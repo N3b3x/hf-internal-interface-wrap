@@ -94,15 +94,18 @@ $(function(){initNavTree('classStmPeriodicTimer.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="classStmPeriodicTimer-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">StmPeriodicTimer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 Periodic Timer — stub implementation.  
+<p>STM32 Periodic Timer implementation.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="StmPeriodicTimer_8h_source.html">StmPeriodicTimer.h</a>&gt;</code></p>
@@ -114,20 +117,28 @@ Inheritance diagram for StmPeriodicTimer:</div>
 <div class="dynheader">
 Collaboration diagram for StmPeriodicTimer:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classStmPeriodicTimer__coll__graph.svg" width="422" height="220"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStmPeriodicTimer__coll__graph.svg" width="472" height="358"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:a72ddca80fa426d7f4e2f5e94756b1056" id="r_a72ddca80fa426d7f4e2f5e94756b1056"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72ddca80fa426d7f4e2f5e94756b1056">CallbackFunc</a> = void(*)(void* user_data)</td></tr>
-<tr class="separator:a72ddca80fa426d7f4e2f5e94756b1056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structStmPeriodicTimer_1_1DispatchEntry.html">DispatchEntry</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a39f9012601da28f919f61dc0a8025e62" id="r_a39f9012601da28f919f61dc0a8025e62"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39f9012601da28f919f61dc0a8025e62">StmPeriodicTimer</a> (<a class="el" href="#a72ddca80fa426d7f4e2f5e94756b1056">CallbackFunc</a> callback=nullptr, void *user_data=nullptr) noexcept</td></tr>
-<tr class="separator:a39f9012601da28f919f61dc0a8025e62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ed2ec11ae49a3a1648e7d0da91d4444" id="r_a1ed2ec11ae49a3a1648e7d0da91d4444"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ed2ec11ae49a3a1648e7d0da91d4444">StmPeriodicTimer</a> (TIM_HandleTypeDef *htim, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timer_clock_hz, <a class="el" href="BasePeriodicTimer_8h.html#a40c3b2f30d4492b879e2939cd3ac713d">hf_timer_callback_t</a> callback=nullptr, void *user_data=nullptr) noexcept</td></tr>
+<tr class="memdesc:a1ed2ec11ae49a3a1648e7d0da91d4444"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from CubeMX timer handle.  <br /></td></tr>
+<tr class="separator:a1ed2ec11ae49a3a1648e7d0da91d4444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a909b5dc147e42ebbf6b1caa5c23f360e" id="r_a909b5dc147e42ebbf6b1caa5c23f360e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a909b5dc147e42ebbf6b1caa5c23f360e">StmPeriodicTimer</a> (const <a class="el" href="structhf__stm32__timer__config__t.html">hf_stm32_timer_config_t</a> &amp;config, <a class="el" href="BasePeriodicTimer_8h.html#a40c3b2f30d4492b879e2939cd3ac713d">hf_timer_callback_t</a> callback=nullptr, void *user_data=nullptr) noexcept</td></tr>
+<tr class="memdesc:a909b5dc147e42ebbf6b1caa5c23f360e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from config struct.  <br /></td></tr>
+<tr class="separator:a909b5dc147e42ebbf6b1caa5c23f360e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c594ee1baa058201855b84c8e87042d" id="r_a9c594ee1baa058201855b84c8e87042d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c594ee1baa058201855b84c8e87042d">~StmPeriodicTimer</a> () noexcept override</td></tr>
 <tr class="separator:a9c594ee1baa058201855b84c8e87042d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa889406caf893eff7e4fe8289bc5817" id="r_afa889406caf893eff7e4fe8289bc5817"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa889406caf893eff7e4fe8289bc5817">StmPeriodicTimer</a> (const <a class="el" href="classStmPeriodicTimer.html">StmPeriodicTimer</a> &amp;)=delete</td></tr>
+<tr class="separator:afa889406caf893eff7e4fe8289bc5817"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5177531a8bc00966e0d8515b9b3c6a5" id="r_ac5177531a8bc00966e0d8515b9b3c6a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classStmPeriodicTimer.html">StmPeriodicTimer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5177531a8bc00966e0d8515b9b3c6a5">operator=</a> (const <a class="el" href="classStmPeriodicTimer.html">StmPeriodicTimer</a> &amp;)=delete</td></tr>
+<tr class="separator:ac5177531a8bc00966e0d8515b9b3c6a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af61c71d5df2847f8cc432161144cc6b1" id="r_af61c71d5df2847f8cc432161144cc6b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BasePeriodicTimer_8h.html#a1c0d6f452734f65b6537650f26f5e59a">hf_timer_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af61c71d5df2847f8cc432161144cc6b1">Initialize</a> () noexcept override</td></tr>
 <tr class="memdesc:af61c71d5df2847f8cc432161144cc6b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the timer hardware/resources.  <br /></td></tr>
 <tr class="separator:af61c71d5df2847f8cc432161144cc6b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,6 +175,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6f435522d93af55a09dd660e414db695" id="r_a6f435522d93af55a09dd660e414db695"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#ac4515282abcfccf45fc8855452098d0b">hf_u64_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f435522d93af55a09dd660e414db695">GetResolution</a> () const noexcept override</td></tr>
 <tr class="memdesc:a6f435522d93af55a09dd660e414db695"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get timer resolution.  <br /></td></tr>
 <tr class="separator:a6f435522d93af55a09dd660e414db695"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5166c40150f48125d88b5d1e1f8eb560" id="r_a5166c40150f48125d88b5d1e1f8eb560"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BasePeriodicTimer_8h.html#a1c0d6f452734f65b6537650f26f5e59a">hf_timer_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5166c40150f48125d88b5d1e1f8eb560">GetStatistics</a> (<a class="el" href="structhf__timer__statistics__t.html">hf_timer_statistics_t</a> &amp;statistics) const noexcept override</td></tr>
+<tr class="memdesc:a5166c40150f48125d88b5d1e1f8eb560"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get timer operation statistics.  <br /></td></tr>
+<tr class="separator:a5166c40150f48125d88b5d1e1f8eb560"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8677962f1093250861c2be382ec6b01a" id="r_a8677962f1093250861c2be382ec6b01a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BasePeriodicTimer_8h.html#a1c0d6f452734f65b6537650f26f5e59a">hf_timer_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8677962f1093250861c2be382ec6b01a">GetDiagnostics</a> (<a class="el" href="structhf__timer__diagnostics__t.html">hf_timer_diagnostics_t</a> &amp;diagnostics) const noexcept override</td></tr>
+<tr class="memdesc:a8677962f1093250861c2be382ec6b01a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get timer diagnostic information.  <br /></td></tr>
+<tr class="separator:a8677962f1093250861c2be382ec6b01a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classBasePeriodicTimer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classBasePeriodicTimer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classBasePeriodicTimer.html">BasePeriodicTimer</a></td></tr>
 <tr class="memitem:abee693abb22864122f36aff2f8d1c6ee inherit pub_methods_classBasePeriodicTimer" id="r_abee693abb22864122f36aff2f8d1c6ee"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBasePeriodicTimer.html#abee693abb22864122f36aff2f8d1c6ee">~BasePeriodicTimer</a> () noexcept=default</td></tr>
 <tr class="memdesc:abee693abb22864122f36aff2f8d1c6ee inherit pub_methods_classBasePeriodicTimer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor to ensure proper cleanup.  <br /></td></tr>
@@ -190,19 +207,46 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa284ad4ee8f3bde5d0e71ce1b0004d02 inherit pub_methods_classBasePeriodicTimer" id="r_aa284ad4ee8f3bde5d0e71ce1b0004d02"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BasePeriodicTimer_8h.html#a1c0d6f452734f65b6537650f26f5e59a">hf_timer_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBasePeriodicTimer.html#aa284ad4ee8f3bde5d0e71ce1b0004d02">ResetDiagnostics</a> () noexcept</td></tr>
 <tr class="memdesc:aa284ad4ee8f3bde5d0e71ce1b0004d02 inherit pub_methods_classBasePeriodicTimer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset timer diagnostic information.  <br /></td></tr>
 <tr class="separator:aa284ad4ee8f3bde5d0e71ce1b0004d02 inherit pub_methods_classBasePeriodicTimer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04e87d17d4909a0bae0547bd9d2ca3f9 inherit pub_methods_classBasePeriodicTimer" id="r_a04e87d17d4909a0bae0547bd9d2ca3f9"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BasePeriodicTimer_8h.html#a1c0d6f452734f65b6537650f26f5e59a">hf_timer_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBasePeriodicTimer.html#a04e87d17d4909a0bae0547bd9d2ca3f9">GetStatistics</a> (<a class="el" href="structhf__timer__statistics__t.html">hf_timer_statistics_t</a> &amp;statistics) const noexcept</td></tr>
-<tr class="memdesc:a04e87d17d4909a0bae0547bd9d2ca3f9 inherit pub_methods_classBasePeriodicTimer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get timer operation statistics.  <br /></td></tr>
-<tr class="separator:a04e87d17d4909a0bae0547bd9d2ca3f9 inherit pub_methods_classBasePeriodicTimer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47bb724f0a6d31877aeca1c5afb053c7 inherit pub_methods_classBasePeriodicTimer" id="r_a47bb724f0a6d31877aeca1c5afb053c7"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BasePeriodicTimer_8h.html#a1c0d6f452734f65b6537650f26f5e59a">hf_timer_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBasePeriodicTimer.html#a47bb724f0a6d31877aeca1c5afb053c7">GetDiagnostics</a> (<a class="el" href="structhf__timer__diagnostics__t.html">hf_timer_diagnostics_t</a> &amp;diagnostics) const noexcept</td></tr>
-<tr class="memdesc:a47bb724f0a6d31877aeca1c5afb053c7 inherit pub_methods_classBasePeriodicTimer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get timer diagnostic information.  <br /></td></tr>
-<tr class="separator:a47bb724f0a6d31877aeca1c5afb053c7 inherit pub_methods_classBasePeriodicTimer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:aac7479d2dc33992ad8241eb9b0807cf2" id="r_aac7479d2dc33992ad8241eb9b0807cf2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac7479d2dc33992ad8241eb9b0807cf2">IsrDispatch</a> (TIM_HandleTypeDef *htim) noexcept</td></tr>
+<tr class="memdesc:aac7479d2dc33992ad8241eb9b0807cf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call from HAL_TIM_PeriodElapsedCallback to dispatch to instances.  <br /></td></tr>
+<tr class="separator:aac7479d2dc33992ad8241eb9b0807cf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a2b9d1f53338cf3ef0c8f1ff96e4fb63c" id="r_a2b9d1f53338cf3ef0c8f1ff96e4fb63c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b9d1f53338cf3ef0c8f1ff96e4fb63c">ApplyPeriod</a> (<a class="el" href="HardwareTypes_8h.html#ac4515282abcfccf45fc8855452098d0b">hf_u64_t</a> period_us) noexcept</td></tr>
+<tr class="memdesc:a2b9d1f53338cf3ef0c8f1ff96e4fb63c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recalculate and apply PSC+ARR for the requested period.  <br /></td></tr>
+<tr class="separator:a2b9d1f53338cf3ef0c8f1ff96e4fb63c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4b5624471c51cbd425c12af8aaec2a9" id="r_aa4b5624471c51cbd425c12af8aaec2a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4b5624471c51cbd425c12af8aaec2a9">RegisterDispatch</a> () noexcept</td></tr>
+<tr class="separator:aa4b5624471c51cbd425c12af8aaec2a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a719c4bddaa4c4b71077652d9c08473f9" id="r_a719c4bddaa4c4b71077652d9c08473f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a719c4bddaa4c4b71077652d9c08473f9">UnregisterDispatch</a> () noexcept</td></tr>
+<tr class="separator:a719c4bddaa4c4b71077652d9c08473f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a546f3acd34871fee8f3dd0c0c3a7f0ba" id="r_a546f3acd34871fee8f3dd0c0c3a7f0ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a72ddca80fa426d7f4e2f5e94756b1056">CallbackFunc</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a546f3acd34871fee8f3dd0c0c3a7f0ba">callback_</a></td></tr>
-<tr class="separator:a546f3acd34871fee8f3dd0c0c3a7f0ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a626b64b9e1f58e552386c5769c10b819" id="r_a626b64b9e1f58e552386c5769c10b819"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a626b64b9e1f58e552386c5769c10b819">user_data_</a></td></tr>
-<tr class="separator:a626b64b9e1f58e552386c5769c10b819"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85098575d3142eb754cc9e9c423afd02" id="r_a85098575d3142eb754cc9e9c423afd02"><td class="memItemLeft" align="right" valign="top">TIM_HandleTypeDef *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85098575d3142eb754cc9e9c423afd02">htim_</a></td></tr>
+<tr class="memdesc:a85098575d3142eb754cc9e9c423afd02"><td class="mdescLeft">&#160;</td><td class="mdescRight">HAL timer handle.  <br /></td></tr>
+<tr class="separator:a85098575d3142eb754cc9e9c423afd02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2ac2c04e292f87e354611e8b1bd5b5a" id="r_ac2ac2c04e292f87e354611e8b1bd5b5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2ac2c04e292f87e354611e8b1bd5b5a">timer_clock_hz_</a></td></tr>
+<tr class="memdesc:ac2ac2c04e292f87e354611e8b1bd5b5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input clock to the timer.  <br /></td></tr>
+<tr class="separator:ac2ac2c04e292f87e354611e8b1bd5b5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11b3b4a113bdacd28220e3df7ab4c545" id="r_a11b3b4a113bdacd28220e3df7ab4c545"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#ac4515282abcfccf45fc8855452098d0b">hf_u64_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11b3b4a113bdacd28220e3df7ab4c545">period_us_</a></td></tr>
+<tr class="memdesc:a11b3b4a113bdacd28220e3df7ab4c545"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current period in µs.  <br /></td></tr>
+<tr class="separator:a11b3b4a113bdacd28220e3df7ab4c545"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1af0d975e8575ab981cb3920a31c1b4d" id="r_a1af0d975e8575ab981cb3920a31c1b4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhf__timer__stats__t.html">hf_timer_stats_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1af0d975e8575ab981cb3920a31c1b4d">stats_</a></td></tr>
+<tr class="memdesc:a1af0d975e8575ab981cb3920a31c1b4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal stats.  <br /></td></tr>
+<tr class="separator:a1af0d975e8575ab981cb3920a31c1b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:aff911eeb8b0fa667025cbcf1fd725feb" id="r_aff911eeb8b0fa667025cbcf1fd725feb"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff911eeb8b0fa667025cbcf1fd725feb">kMaxTimerInstances</a> = 8</td></tr>
+<tr class="separator:aff911eeb8b0fa667025cbcf1fd725feb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7245352f00a028fbf5ab7b20ddc8d149" id="r_a7245352f00a028fbf5ab7b20ddc8d149"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structStmPeriodicTimer_1_1DispatchEntry.html">DispatchEntry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7245352f00a028fbf5ab7b20ddc8d149">s_dispatch_</a> [<a class="el" href="#aff911eeb8b0fa667025cbcf1fd725feb">kMaxTimerInstances</a>] {}</td></tr>
+<tr class="separator:a7245352f00a028fbf5ab7b20ddc8d149"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2611715f13c7814ccee47ce450cd51e" id="r_ab2611715f13c7814ccee47ce450cd51e"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2611715f13c7814ccee47ce450cd51e">s_dispatch_count_</a> = 0</td></tr>
+<tr class="separator:ab2611715f13c7814ccee47ce450cd51e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -243,25 +287,16 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a3ea254861b3ac5c2dd807a7751d78c5c inherit pro_attribs_classBasePeriodicTimer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 Periodic Timer — stub implementation. </p>
-</div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a72ddca80fa426d7f4e2f5e94756b1056" name="a72ddca80fa426d7f4e2f5e94756b1056"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72ddca80fa426d7f4e2f5e94756b1056">&#9670;&#160;</a></span>CallbackFunc</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="#a72ddca80fa426d7f4e2f5e94756b1056">StmPeriodicTimer::CallbackFunc</a> = void(*)(void* user_data)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a39f9012601da28f919f61dc0a8025e62" name="a39f9012601da28f919f61dc0a8025e62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39f9012601da28f919f61dc0a8025e62">&#9670;&#160;</a></span>StmPeriodicTimer()</h2>
+<div class="textblock"><p>STM32 Periodic Timer implementation. </p>
+<p>Design:</p><ul>
+<li>Accepts a TIM_HandleTypeDef* already initialised by CubeMX.</li>
+<li>Uses HAL_TIM_Base_Start_IT / Stop_IT.</li>
+<li>Provides a static dispatch table so the HAL_TIM_PeriodElapsedCallback (extern "C") can route to the correct C++ instance.</li>
+<li>Period changes recalculate ARR+PSC from the timer's input clock. </li>
+</ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a1ed2ec11ae49a3a1648e7d0da91d4444" name="a1ed2ec11ae49a3a1648e7d0da91d4444"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ed2ec11ae49a3a1648e7d0da91d4444">&#9670;&#160;</a></span>StmPeriodicTimer() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -272,7 +307,17 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">StmPeriodicTimer::StmPeriodicTimer </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="#a72ddca80fa426d7f4e2f5e94756b1056">CallbackFunc</a></td>          <td class="paramname"><span class="paramname"><em>callback</em><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>, </span></td>
+          <td class="paramtype">TIM_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>htim</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a></td>          <td class="paramname"><span class="paramname"><em>timer_clock_hz</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="BasePeriodicTimer_8h.html#a40c3b2f30d4492b879e2939cd3ac713d">hf_timer_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -286,6 +331,53 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Construct from CubeMX timer handle. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">htim</td><td>Pointer to HAL timer handle (CubeMX‑initialised). </td></tr>
+    <tr><td class="paramname">timer_clock_hz</td><td>APB timer clock feeding this TIM (e.g. 84 MHz). </td></tr>
+    <tr><td class="paramname">callback</td><td>User callback (may also be set later via SetCallback). </td></tr>
+    <tr><td class="paramname">user_data</td><td>Opaque pointer forwarded to callback. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a909b5dc147e42ebbf6b1caa5c23f360e" name="a909b5dc147e42ebbf6b1caa5c23f360e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a909b5dc147e42ebbf6b1caa5c23f360e">&#9670;&#160;</a></span>StmPeriodicTimer() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">StmPeriodicTimer::StmPeriodicTimer </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structhf__stm32__timer__config__t.html">hf_stm32_timer_config_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="BasePeriodicTimer_8h.html#a40c3b2f30d4492b879e2939cd3ac713d">hf_timer_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>user_data</em><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct from config struct. </p>
 
 </div>
 </div>
@@ -307,7 +399,32 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afa889406caf893eff7e4fe8289bc5817" name="afa889406caf893eff7e4fe8289bc5817"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa889406caf893eff7e4fe8289bc5817">&#9670;&#160;</a></span>StmPeriodicTimer() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">StmPeriodicTimer::StmPeriodicTimer </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classStmPeriodicTimer.html">StmPeriodicTimer</a> &amp;</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -315,6 +432,33 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2b9d1f53338cf3ef0c8f1ff96e4fb63c" name="a2b9d1f53338cf3ef0c8f1ff96e4fb63c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b9d1f53338cf3ef0c8f1ff96e4fb63c">&#9670;&#160;</a></span>ApplyPeriod()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StmPeriodicTimer::ApplyPeriod </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#ac4515282abcfccf45fc8855452098d0b">hf_u64_t</a></td>          <td class="paramname"><span class="paramname"><em>period_us</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Recalculate and apply PSC+ARR for the requested period. </p>
+
+</div>
+</div>
 <a id="a94d84c46b0fd48fd7ca73b683b178d25" name="a94d84c46b0fd48fd7ca73b683b178d25"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a94d84c46b0fd48fd7ca73b683b178d25">&#9670;&#160;</a></span>Deinitialize()</h2>
 
@@ -372,6 +516,42 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Description string </dd></dl>
 
 <p>Implements <a class="el" href="classBasePeriodicTimer.html#ae9bdfcba0669d72ec6e8ebac8bcf7042">BasePeriodicTimer</a>.</p>
+
+</div>
+</div>
+<a id="a8677962f1093250861c2be382ec6b01a" name="a8677962f1093250861c2be382ec6b01a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8677962f1093250861c2be382ec6b01a">&#9670;&#160;</a></span>GetDiagnostics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="BasePeriodicTimer_8h.html#a1c0d6f452734f65b6537650f26f5e59a">hf_timer_err_t</a> StmPeriodicTimer::GetDiagnostics </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhf__timer__diagnostics__t.html">hf_timer_diagnostics_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>diagnostics</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get timer diagnostic information. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">diagnostics</td><td>Reference to store diagnostics data </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="BasePeriodicTimer_8h.html#a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5">hf_timer_err_t::TIMER_SUCCESS</a> if successful, TIMER_ERR_NOT_SUPPORTED if not implemented </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classBasePeriodicTimer.html#a47bb724f0a6d31877aeca1c5afb053c7">BasePeriodicTimer</a>.</p>
 
 </div>
 </div>
@@ -501,6 +681,42 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a5166c40150f48125d88b5d1e1f8eb560" name="a5166c40150f48125d88b5d1e1f8eb560"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5166c40150f48125d88b5d1e1f8eb560">&#9670;&#160;</a></span>GetStatistics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="BasePeriodicTimer_8h.html#a1c0d6f452734f65b6537650f26f5e59a">hf_timer_err_t</a> StmPeriodicTimer::GetStatistics </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhf__timer__statistics__t.html">hf_timer_statistics_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>statistics</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get timer operation statistics. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">statistics</td><td>Reference to store statistics data </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="BasePeriodicTimer_8h.html#a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5">hf_timer_err_t::TIMER_SUCCESS</a> if successful, TIMER_ERR_NOT_SUPPORTED if not implemented </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classBasePeriodicTimer.html#a04e87d17d4909a0bae0547bd9d2ca3f9">BasePeriodicTimer</a>.</p>
+
+</div>
+</div>
 <a id="a3531ed08a8ae620f210228e04fbebc81" name="a3531ed08a8ae620f210228e04fbebc81"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3531ed08a8ae620f210228e04fbebc81">&#9670;&#160;</a></span>GetStats()</h2>
 
@@ -575,6 +791,87 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BasePeriodicTimer_8h.html#a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5">hf_timer_err_t::TIMER_SUCCESS</a> if successful, error code otherwise </dd></dl>
 
 <p>Implements <a class="el" href="classBasePeriodicTimer.html#ab5e9c79c29dd4b5b0c581b3124c09907">BasePeriodicTimer</a>.</p>
+
+</div>
+</div>
+<a id="aac7479d2dc33992ad8241eb9b0807cf2" name="aac7479d2dc33992ad8241eb9b0807cf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac7479d2dc33992ad8241eb9b0807cf2">&#9670;&#160;</a></span>IsrDispatch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StmPeriodicTimer::IsrDispatch </td>
+          <td>(</td>
+          <td class="paramtype">TIM_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>htim</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Call from HAL_TIM_PeriodElapsedCallback to dispatch to instances. </p>
+<p>Usage in user code: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span> HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim) {</div>
+<div class="line">    <a class="code hl_function" href="#aac7479d2dc33992ad8241eb9b0807cf2">StmPeriodicTimer::IsrDispatch</a>(htim);</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassStmPeriodicTimer_html_aac7479d2dc33992ad8241eb9b0807cf2"><div class="ttname"><a href="#aac7479d2dc33992ad8241eb9b0807cf2">StmPeriodicTimer::IsrDispatch</a></div><div class="ttdeci">static void IsrDispatch(TIM_HandleTypeDef *htim) noexcept</div><div class="ttdoc">Call from HAL_TIM_PeriodElapsedCallback to dispatch to instances.</div><div class="ttdef"><b>Definition</b> StmPeriodicTimer.cpp:282</div></div>
+</div><!-- fragment --> 
+</div>
+</div>
+<a id="ac5177531a8bc00966e0d8515b9b3c6a5" name="ac5177531a8bc00966e0d8515b9b3c6a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5177531a8bc00966e0d8515b9b3c6a5">&#9670;&#160;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classStmPeriodicTimer.html">StmPeriodicTimer</a> &amp; StmPeriodicTimer::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classStmPeriodicTimer.html">StmPeriodicTimer</a> &amp;</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa4b5624471c51cbd425c12af8aaec2a9" name="aa4b5624471c51cbd425c12af8aaec2a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4b5624471c51cbd425c12af8aaec2a9">&#9670;&#160;</a></span>RegisterDispatch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StmPeriodicTimer::RegisterDispatch </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -710,9 +1007,34 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a719c4bddaa4c4b71077652d9c08473f9" name="a719c4bddaa4c4b71077652d9c08473f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a719c4bddaa4c4b71077652d9c08473f9">&#9670;&#160;</a></span>UnregisterDispatch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StmPeriodicTimer::UnregisterDispatch </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a546f3acd34871fee8f3dd0c0c3a7f0ba" name="a546f3acd34871fee8f3dd0c0c3a7f0ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a546f3acd34871fee8f3dd0c0c3a7f0ba">&#9670;&#160;</a></span>callback_</h2>
+<a id="a85098575d3142eb754cc9e9c423afd02" name="a85098575d3142eb754cc9e9c423afd02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85098575d3142eb754cc9e9c423afd02">&#9670;&#160;</a></span>htim_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -721,7 +1043,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#a72ddca80fa426d7f4e2f5e94756b1056">CallbackFunc</a> StmPeriodicTimer::callback_</td>
+          <td class="memname">TIM_HandleTypeDef* StmPeriodicTimer::htim_</td>
         </tr>
       </table>
   </td>
@@ -731,10 +1053,12 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>HAL timer handle. </p>
+
 </div>
 </div>
-<a id="a626b64b9e1f58e552386c5769c10b819" name="a626b64b9e1f58e552386c5769c10b819"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a626b64b9e1f58e552386c5769c10b819">&#9670;&#160;</a></span>user_data_</h2>
+<a id="aff911eeb8b0fa667025cbcf1fd725feb" name="aff911eeb8b0fa667025cbcf1fd725feb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff911eeb8b0fa667025cbcf1fd725feb">&#9670;&#160;</a></span>kMaxTimerInstances</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -743,7 +1067,29 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void* StmPeriodicTimer::user_data_</td>
+          <td class="memname">constexpr int StmPeriodicTimer::kMaxTimerInstances = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a11b3b4a113bdacd28220e3df7ab4c545" name="a11b3b4a113bdacd28220e3df7ab4c545"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11b3b4a113bdacd28220e3df7ab4c545">&#9670;&#160;</a></span>period_us_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="HardwareTypes_8h.html#ac4515282abcfccf45fc8855452098d0b">hf_u64_t</a> StmPeriodicTimer::period_us_</td>
         </tr>
       </table>
   </td>
@@ -752,6 +1098,100 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Current period in µs. </p>
+
+</div>
+</div>
+<a id="a7245352f00a028fbf5ab7b20ddc8d149" name="a7245352f00a028fbf5ab7b20ddc8d149"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7245352f00a028fbf5ab7b20ddc8d149">&#9670;&#160;</a></span>s_dispatch_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structStmPeriodicTimer_1_1DispatchEntry.html">StmPeriodicTimer::DispatchEntry</a> StmPeriodicTimer::s_dispatch_ {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab2611715f13c7814ccee47ce450cd51e" name="ab2611715f13c7814ccee47ce450cd51e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2611715f13c7814ccee47ce450cd51e">&#9670;&#160;</a></span>s_dispatch_count_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int StmPeriodicTimer::s_dispatch_count_ = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1af0d975e8575ab981cb3920a31c1b4d" name="a1af0d975e8575ab981cb3920a31c1b4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1af0d975e8575ab981cb3920a31c1b4d">&#9670;&#160;</a></span>stats_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structhf__timer__stats__t.html">hf_timer_stats_t</a> StmPeriodicTimer::stats_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Internal stats. </p>
+
+</div>
+</div>
+<a id="ac2ac2c04e292f87e354611e8b1bd5b5a" name="ac2ac2c04e292f87e354611e8b1bd5b5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2ac2c04e292f87e354611e8b1bd5b5a">&#9670;&#160;</a></span>timer_clock_hz_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> StmPeriodicTimer::timer_clock_hz_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Input clock to the timer. </p>
 
 </div>
 </div>

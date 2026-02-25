@@ -1,0 +1,24 @@
+<map id="src/mcu/stm32/StmPwm.cpp" name="src/mcu/stm32/StmPwm.cpp">
+<area shape="rect" id="Node000001" title="STM32 PWM implementation — TIM OC with frequency/duty/deadtime control." alt="" coords="151,5,406,36"/>
+<area shape="rect" id="Node000002" href="$StmPwm_8h.html" title="STM32 PWM wrapper — wraps TIM_HandleTypeDef for BasePwm interface." alt="" coords="164,84,275,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="270,38,241,75,237,71,265,35"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="300,84,374,115"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="292,35,320,71,316,75,287,38"/>
+<area shape="rect" id="Node000003" href="$BasePwm_8h.html" title="Abstract base class for PWM implementations in the HardFOC system." alt="" coords="90,163,208,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="208,117,174,154,170,151,205,113"/>
+<area shape="rect" id="Node000008" href="$StmTypes_8h.html" title="STM32 platform&#45;specific type definitions for hardware abstraction." alt="" coords="242,163,360,193"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="237,113,278,151,274,155,233,117"/>
+<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="161,241,324,272"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="168,192,216,230,213,235,165,196"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="252,320,326,351"/>
+<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="96,196,58,210,26,227,15,237,9,248,9,258,15,270,38,293,61,307,85,313,110,314,168,312,201,313,238,317,238,323,201,318,168,317,110,320,84,318,59,311,35,297,11,274,4,260,4,246,11,234,23,223,56,205,94,191"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="25,241,137,272"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="138,195,105,233,101,229,134,192"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="254,271,276,307,271,310,249,274"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="164,320,228,351"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="236,274,214,310,209,307,231,271"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="292,195,264,232,260,229,288,192"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="315,192,335,228,341,250,338,273,328,293,315,311,311,308,324,291,333,271,335,251,330,230,311,195"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="398,241,478,272"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="328,191,402,232,399,237,326,196"/>
+</map>

@@ -1,11 +1,13 @@
 var searchData=
 [
-  ['make_5funique_5farray_5fnothrow_0',['make_unique_array_nothrow',['../namespacehf_1_1utils.html#af69771ffbe64d79f38a652012d5d7a93',1,'hf::utils']]],
-  ['make_5funique_5fnothrow_1',['make_unique_nothrow',['../namespacehf_1_1utils.html#a8cc6a65bb150aad69866ad9c665487b9',1,'hf::utils']]],
-  ['mapinterrupttrigger_2',['MapInterruptTrigger',['../classEspGpio.html#a452475ffffe087b209f7613ca4ae9b35',1,'EspGpio']]],
-  ['markasdeinitialized_3',['MarkAsDeinitialized',['../classEspI2cDevice.html#a073b10cf1253684d9c0d54bc5063aec7',1,'EspI2cDevice::MarkAsDeinitialized()'],['../classEspSpiDevice.html#a511a9f42ccbfb10d07f839ae907cac3c',1,'EspSpiDevice::MarkAsDeinitialized()']]],
-  ['monitor_5fcallback_4',['monitor_callback',['../AdcComprehensiveTest_8cpp.html#af27f6afa257763e81799a31cee1a993f',1,'AdcComprehensiveTest.cpp']]],
-  ['monitoring_5fcallback_5',['monitoring_callback',['../TemperatureComprehensiveTest_8cpp.html#a64981704d5cf479bfdc3cf0d30503f76',1,'TemperatureComprehensiveTest.cpp']]],
-  ['monitoringtimercallback_6',['MonitoringTimerCallback',['../classEspTemperature.html#abe6ae1ced0d8c565b722b416cb64e9ae',1,'EspTemperature']]],
-  ['mstoticks_7',['MsToTicks',['../classPlatformTime.html#a14b850d58c7deb0bb81c72f06490a4c4',1,'PlatformTime']]]
+  ['ledcfadeendcallback_0',['LedcFadeEndCallback',['../classEspPwm.html#aa2f60f5e67b3db043af66624f022e7b2',1,'EspPwm']]],
+  ['leveltoprefix_1',['LevelToPrefix',['../namespaceanonymous__namespace_02StmLogger_8cpp_03.html#a7851fb0201253a204b1fc6c2da664dd6',1,'anonymous_namespace{StmLogger.cpp}']]],
+  ['leveltostate_2',['LevelToState',['../classBaseGpio.html#aeaf2282b59e4b9d06c5af433eab74953',1,'BaseGpio']]],
+  ['loadfromflash_3',['LoadFromFlash',['../classStmNvs.html#ae6c999eca920d0590c0d544a923823d0',1,'StmNvs']]],
+  ['lock_4',['lock',['../classPlatformMutex.html#a6a23b8dae26a7515f7bbff026cffec7c',1,'PlatformMutex::lock()'],['../classPlatformSharedMutex.html#add5e4f313bd9e1a5543222dadeadd079',1,'PlatformSharedMutex::lock()']]],
+  ['lock_5fshared_5',['lock_shared',['../classPlatformMutex.html#a88fc7442ce670d760b8782659319c03d',1,'PlatformMutex::lock_shared()'],['../classPlatformSharedMutex.html#ae2e5f9e2684fd9a9e3a581222cffdc12',1,'PlatformSharedMutex::lock_shared()']]],
+  ['log_6',['Log',['../classBaseLogger.html#ad0549df66e58b6726f8dee0792f73a45',1,'BaseLogger::Log()'],['../classStmLogger.html#aae2ab97cb870518bd85bf98c0e5bf4de',1,'StmLogger::Log()']]],
+  ['log_5fperformance_5fmetrics_7',['log_performance_metrics',['../LoggerComprehensiveTest_8cpp.html#aef32605ad54de408fe5fe3422ddf33d3',1,'LoggerComprehensiveTest.cpp']]],
+  ['logv_8',['LogV',['../classBaseLogger.html#a9e7c920256b418cf70d092ec5ad606cf',1,'BaseLogger::LogV()'],['../classStmLogger.html#a82f8b9ab036f242be008db739996db1d',1,'StmLogger::LogV()']]],
+  ['logwithlocation_9',['LogWithLocation',['../classBaseLogger.html#a4c22f92b913379d3407426d7e4ce19dc',1,'BaseLogger::LogWithLocation()'],['../classStmLogger.html#a291097b7c1fd5e638c9cd7d5e038a0c5',1,'StmLogger::LogWithLocation()']]]
 ];

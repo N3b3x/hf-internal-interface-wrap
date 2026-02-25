@@ -4,61 +4,133 @@
     <compoundname>StmPeriodicTimer</compoundname>
     <basecompoundref refid="classBasePeriodicTimer" prot="public" virt="non-virtual">BasePeriodicTimer</basecompoundref>
     <includes refid="StmPeriodicTimer_8h" local="no">StmPeriodicTimer.h</includes>
-    <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="classStmPeriodicTimer_1a72ddca80fa426d7f4e2f5e94756b1056" prot="public" static="no">
-        <type>void(*)(void *user_data)</type>
-        <definition>using StmPeriodicTimer::CallbackFunc =  void(*)(void* user_data)</definition>
+    <innerclass refid="structStmPeriodicTimer_1_1DispatchEntry" prot="private">StmPeriodicTimer::DispatchEntry</innerclass>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classStmPeriodicTimer_1a85098575d3142eb754cc9e9c423afd02" prot="private" static="no" mutable="no">
+        <type>TIM_HandleTypeDef *</type>
+        <definition>TIM_HandleTypeDef* StmPeriodicTimer::htim_</definition>
         <argsstring></argsstring>
-        <name>CallbackFunc</name>
-        <qualifiedname>StmPeriodicTimer::CallbackFunc</qualifiedname>
+        <name>htim_</name>
+        <qualifiedname>StmPeriodicTimer::htim_</qualifiedname>
         <briefdescription>
+<para>HAL timer handle. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="17" column="5" bodyfile="inc/mcu/stm32/StmPeriodicTimer.h" bodystart="17" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="94" column="23" bodyfile="inc/mcu/stm32/StmPeriodicTimer.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmPeriodicTimer_1ac2ac2c04e292f87e354611e8b1bd5b5a" prot="private" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t StmPeriodicTimer::timer_clock_hz_</definition>
+        <argsstring></argsstring>
+        <name>timer_clock_hz_</name>
+        <qualifiedname>StmPeriodicTimer::timer_clock_hz_</qualifiedname>
+        <briefdescription>
+<para>Input clock to the timer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="95" column="24" bodyfile="inc/mcu/stm32/StmPeriodicTimer.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmPeriodicTimer_1a11b3b4a113bdacd28220e3df7ab4c545" prot="private" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t StmPeriodicTimer::period_us_</definition>
+        <argsstring></argsstring>
+        <name>period_us_</name>
+        <qualifiedname>StmPeriodicTimer::period_us_</qualifiedname>
+        <briefdescription>
+<para>Current period in µs. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="96" column="24" bodyfile="inc/mcu/stm32/StmPeriodicTimer.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmPeriodicTimer_1a1af0d975e8575ab981cb3920a31c1b4d" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__timer__stats__t" kindref="compound">hf_timer_stats_t</ref></type>
+        <definition>hf_timer_stats_t StmPeriodicTimer::stats_</definition>
+        <argsstring></argsstring>
+        <name>stats_</name>
+        <qualifiedname>StmPeriodicTimer::stats_</qualifiedname>
+        <briefdescription>
+<para>Internal stats. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="97" column="24" bodyfile="inc/mcu/stm32/StmPeriodicTimer.h" bodystart="97" bodyend="-1"/>
       </memberdef>
     </sectiondef>
-    <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classStmPeriodicTimer_1a546f3acd34871fee8f3dd0c0c3a7f0ba" prot="private" static="no" mutable="no">
-        <type><ref refid="classStmPeriodicTimer_1a72ddca80fa426d7f4e2f5e94756b1056" kindref="member">CallbackFunc</ref></type>
-        <definition>CallbackFunc StmPeriodicTimer::callback_</definition>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classStmPeriodicTimer_1aff911eeb8b0fa667025cbcf1fd725feb" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int StmPeriodicTimer::kMaxTimerInstances</definition>
         <argsstring></argsstring>
-        <name>callback_</name>
-        <qualifiedname>StmPeriodicTimer::callback_</qualifiedname>
+        <name>kMaxTimerInstances</name>
+        <qualifiedname>StmPeriodicTimer::kMaxTimerInstances</qualifiedname>
+        <initializer>= 8</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="37" column="18" bodyfile="inc/mcu/stm32/StmPeriodicTimer.h" bodystart="37" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="103" column="26" bodyfile="inc/mcu/stm32/StmPeriodicTimer.h" bodystart="103" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classStmPeriodicTimer_1a626b64b9e1f58e552386c5769c10b819" prot="private" static="no" mutable="no">
-        <type>void *</type>
-        <definition>void* StmPeriodicTimer::user_data_</definition>
-        <argsstring></argsstring>
-        <name>user_data_</name>
-        <qualifiedname>StmPeriodicTimer::user_data_</qualifiedname>
+      <memberdef kind="variable" id="classStmPeriodicTimer_1a7245352f00a028fbf5ab7b20ddc8d149" prot="private" static="yes" mutable="no">
+        <type><ref refid="structStmPeriodicTimer_1_1DispatchEntry" kindref="compound">DispatchEntry</ref></type>
+        <definition>StmPeriodicTimer::DispatchEntry StmPeriodicTimer::s_dispatch_</definition>
+        <argsstring>[kMaxTimerInstances]</argsstring>
+        <name>s_dispatch_</name>
+        <qualifiedname>StmPeriodicTimer::s_dispatch_</qualifiedname>
+        <initializer>{}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="38" column="10" bodyfile="inc/mcu/stm32/StmPeriodicTimer.h" bodystart="38" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="108" column="26" bodyfile="inc/mcu/stm32/StmPeriodicTimer.h" bodystart="39" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmPeriodicTimer_1ab2611715f13c7814ccee47ce450cd51e" prot="private" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int StmPeriodicTimer::s_dispatch_count_</definition>
+        <argsstring></argsstring>
+        <name>s_dispatch_count_</name>
+        <qualifiedname>StmPeriodicTimer::s_dispatch_count_</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="109" column="26" bodyfile="inc/mcu/stm32/StmPeriodicTimer.h" bodystart="109" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classStmPeriodicTimer_1a39f9012601da28f919f61dc0a8025e62" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classStmPeriodicTimer_1a1ed2ec11ae49a3a1648e7d0da91d4444" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
         <definition>StmPeriodicTimer::StmPeriodicTimer</definition>
-        <argsstring>(CallbackFunc callback=nullptr, void *user_data=nullptr) noexcept</argsstring>
+        <argsstring>(TIM_HandleTypeDef *htim, hf_u32_t timer_clock_hz, hf_timer_callback_t callback=nullptr, void *user_data=nullptr) noexcept</argsstring>
         <name>StmPeriodicTimer</name>
         <qualifiedname>StmPeriodicTimer::StmPeriodicTimer</qualifiedname>
         <param>
-          <type><ref refid="classStmPeriodicTimer_1a72ddca80fa426d7f4e2f5e94756b1056" kindref="member">CallbackFunc</ref></type>
+          <type>TIM_HandleTypeDef *</type>
+          <declname>htim</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timer_clock_hz</declname>
+        </param>
+        <param>
+          <type><ref refid="BasePeriodicTimer_8h_1a40c3b2f30d4492b879e2939cd3ac713d" kindref="member">hf_timer_callback_t</ref></type>
           <declname>callback</declname>
           <defval>nullptr</defval>
         </param>
@@ -68,12 +140,76 @@
           <defval>nullptr</defval>
         </param>
         <briefdescription>
+<para>Construct from CubeMX timer handle. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>htim</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to HAL timer handle (CubeMX‑initialised). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timer_clock_hz</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>APB timer clock feeding this TIM (e.g. 84 MHz). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User callback (may also be set later via SetCallback). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Opaque pointer forwarded to callback. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="42" column="14" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="46" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPeriodicTimer_1a909b5dc147e42ebbf6b1caa5c23f360e" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmPeriodicTimer::StmPeriodicTimer</definition>
+        <argsstring>(const hf_stm32_timer_config_t &amp;config, hf_timer_callback_t callback=nullptr, void *user_data=nullptr) noexcept</argsstring>
+        <name>StmPeriodicTimer</name>
+        <qualifiedname>StmPeriodicTimer::StmPeriodicTimer</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__stm32__timer__config__t" kindref="compound">hf_stm32_timer_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type><ref refid="BasePeriodicTimer_8h_1a40c3b2f30d4492b879e2939cd3ac713d" kindref="member">hf_timer_callback_t</ref></type>
+          <declname>callback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Construct from config struct. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="19" column="14" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="12" bodyend="13"/>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="50" column="14" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="58" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classStmPeriodicTimer_1a9c594ee1baa058201855b84c8e87042d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -87,7 +223,41 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="20" column="5"/>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="54" column="5" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="69" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPeriodicTimer_1afa889406caf893eff7e4fe8289bc5817" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>StmPeriodicTimer::StmPeriodicTimer</definition>
+        <argsstring>(const StmPeriodicTimer &amp;)=delete</argsstring>
+        <name>StmPeriodicTimer</name>
+        <qualifiedname>StmPeriodicTimer::StmPeriodicTimer</qualifiedname>
+        <param>
+          <type>const <ref refid="classStmPeriodicTimer" kindref="compound">StmPeriodicTimer</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="57" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPeriodicTimer_1ac5177531a8bc00966e0d8515b9b3c6a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classStmPeriodicTimer" kindref="compound">StmPeriodicTimer</ref> &amp;</type>
+        <definition>StmPeriodicTimer &amp; StmPeriodicTimer::operator=</definition>
+        <argsstring>(const StmPeriodicTimer &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>StmPeriodicTimer::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classStmPeriodicTimer" kindref="compound">StmPeriodicTimer</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="58" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classStmPeriodicTimer_1af61c71d5df2847f8cc432161144cc6b1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -106,7 +276,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="22" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="17" bodyend="17"/>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="61" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="77" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classStmPeriodicTimer_1a94d84c46b0fd48fd7ca73b683b178d25" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -125,7 +295,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="23" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="18" bodyend="18"/>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="62" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="88" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="classStmPeriodicTimer_1ada919f62b8ad097323e4a43e4ae5a0cf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -157,7 +327,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="24" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="19" bodyend="19"/>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="63" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="101" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="classStmPeriodicTimer_1afd2adf7d275eb82d67bca9b7829a17e6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -176,7 +346,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="25" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="20" bodyend="20"/>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="64" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="125" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="classStmPeriodicTimer_1aed5d65ee70d33c9945653dd1fa1f53ac" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -208,7 +378,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="26" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="21" bodyend="21"/>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="65" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="141" bodyend="162"/>
       </memberdef>
       <memberdef kind="function" id="classStmPeriodicTimer_1a4a38141e12acac87b1b9ae756d67dd52" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -240,7 +410,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="27" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="23" bodyend="26"/>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="66" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="164" bodyend="168"/>
       </memberdef>
       <memberdef kind="function" id="classStmPeriodicTimer_1a3531ed08a8ae620f210228e04fbebc81" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -296,7 +466,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="28" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="28" bodyend="34"/>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="67" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="174" bodyend="182"/>
       </memberdef>
       <memberdef kind="function" id="classStmPeriodicTimer_1a96567e24e967297babb9c717bdd05f32" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -315,7 +485,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="30" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="36" bodyend="36"/>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="70" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="184" bodyend="188"/>
       </memberdef>
       <memberdef kind="function" id="classStmPeriodicTimer_1a1a880f8c3c0489b16879200dedc9a0be" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>const char *</type>
@@ -334,7 +504,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="31" column="16" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="37" bodyend="37"/>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="71" column="16" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="208" bodyend="210"/>
       </memberdef>
       <memberdef kind="function" id="classStmPeriodicTimer_1a951d0175f287a9c13ba7ae690d80af99" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -353,7 +523,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="32" column="14" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="38" bodyend="38"/>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="72" column="14" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="212" bodyend="217"/>
       </memberdef>
       <memberdef kind="function" id="classStmPeriodicTimer_1af90c80952828bcc070075d08fcbd512a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -372,7 +542,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="33" column="14" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="39" bodyend="39"/>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="73" column="14" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="219" bodyend="223"/>
       </memberdef>
       <memberdef kind="function" id="classStmPeriodicTimer_1a6f435522d93af55a09dd660e414db695" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -391,13 +561,158 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="34" column="14" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="40" bodyend="40"/>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="74" column="14" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="225" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPeriodicTimer_1a5166c40150f48125d88b5d1e1f8eb560" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>hf_timer_err_t StmPeriodicTimer::GetStatistics</definition>
+        <argsstring>(hf_timer_statistics_t &amp;statistics) const noexcept override</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>StmPeriodicTimer::GetStatistics</qualifiedname>
+        <reimplements refid="classBasePeriodicTimer_1a04e87d17d4909a0bae0547bd9d2ca3f9">GetStatistics</reimplements>
+        <param>
+          <type><ref refid="structhf__timer__statistics__t" kindref="compound">hf_timer_statistics_t</ref> &amp;</type>
+          <declname>statistics</declname>
+        </param>
+        <briefdescription>
+<para>Get timer operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>statistics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store statistics data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref> if successful, TIMER_ERR_NOT_SUPPORTED if not implemented </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="77" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="190" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPeriodicTimer_1a8677962f1093250861c2be382ec6b01a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>hf_timer_err_t StmPeriodicTimer::GetDiagnostics</definition>
+        <argsstring>(hf_timer_diagnostics_t &amp;diagnostics) const noexcept override</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>StmPeriodicTimer::GetDiagnostics</qualifiedname>
+        <reimplements refid="classBasePeriodicTimer_1a47bb724f0a6d31877aeca1c5afb053c7">GetDiagnostics</reimplements>
+        <param>
+          <type><ref refid="structhf__timer__diagnostics__t" kindref="compound">hf_timer_diagnostics_t</ref> &amp;</type>
+          <declname>diagnostics</declname>
+        </param>
+        <briefdescription>
+<para>Get timer diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>diagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store diagnostics data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref> if successful, TIMER_ERR_NOT_SUPPORTED if not implemented </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="78" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="195" bodyend="202"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classStmPeriodicTimer_1aac7479d2dc33992ad8241eb9b0807cf2" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void StmPeriodicTimer::IsrDispatch</definition>
+        <argsstring>(TIM_HandleTypeDef *htim) noexcept</argsstring>
+        <name>IsrDispatch</name>
+        <qualifiedname>StmPeriodicTimer::IsrDispatch</qualifiedname>
+        <param>
+          <type>TIM_HandleTypeDef *</type>
+          <declname>htim</declname>
+        </param>
+        <briefdescription>
+<para>Call from HAL_TIM_PeriodElapsedCallback to dispatch to instances. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Usage in user code: <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*<sp/>htim)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmPeriodicTimer_1aac7479d2dc33992ad8241eb9b0807cf2" kindref="member">StmPeriodicTimer::IsrDispatch</ref>(htim);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="91" column="17" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="282" bodyend="292"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classStmPeriodicTimer_1a2b9d1f53338cf3ef0c8f1ff96e4fb63c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool StmPeriodicTimer::ApplyPeriod</definition>
+        <argsstring>(hf_u64_t period_us) noexcept</argsstring>
+        <name>ApplyPeriod</name>
+        <qualifiedname>StmPeriodicTimer::ApplyPeriod</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+          <declname>period_us</declname>
+        </param>
+        <briefdescription>
+<para>Recalculate and apply PSC+ARR for the requested period. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="100" column="10" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="236" bodyend="276"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPeriodicTimer_1aa4b5624471c51cbd425c12af8aaec2a9" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void StmPeriodicTimer::RegisterDispatch</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>RegisterDispatch</name>
+        <qualifiedname>StmPeriodicTimer::RegisterDispatch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="111" column="10" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="294" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPeriodicTimer_1a719c4bddaa4c4b71077652d9c08473f9" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void StmPeriodicTimer::UnregisterDispatch</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>UnregisterDispatch</name>
+        <qualifiedname>StmPeriodicTimer::UnregisterDispatch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="112" column="10" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="301" bodyend="312"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>STM32 Periodic Timer — stub implementation. </para>
+<para>STM32 Periodic Timer implementation. </para>
     </briefdescription>
     <detaileddescription>
+<para>Design:<itemizedlist>
+<listitem><para>Accepts a TIM_HandleTypeDef* already initialised by CubeMX.</para>
+</listitem><listitem><para>Uses HAL_TIM_Base_Start_IT / Stop_IT.</para>
+</listitem><listitem><para>Provides a static dispatch table so the HAL_TIM_PeriodElapsedCallback (extern &quot;C&quot;) can route to the correct C++ instance.</para>
+</listitem><listitem><para>Period changes recalculate ARR+PSC from the timer&apos;s input clock. </para>
+</listitem></itemizedlist>
+</para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2">
@@ -427,6 +742,19 @@
         <link refid="classStmPeriodicTimer"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>stats_</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>s_dispatch_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>StmPeriodicTimer::DispatchEntry</label>
+        <link refid="structStmPeriodicTimer_1_1DispatchEntry"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>instance</edgelabel>
+        </childnode>
       </node>
       <node id="4">
         <label>hf_timer_diagnostics_t</label>
@@ -436,44 +764,61 @@
         <label>hf_timer_statistics_t</label>
         <link refid="structhf__timer__statistics__t"/>
       </node>
+      <node id="5">
+        <label>hf_timer_stats_t</label>
+        <link refid="structhf__timer__stats__t"/>
+      </node>
     </collaborationgraph>
-    <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="15" column="1" bodyfile="inc/mcu/stm32/StmPeriodicTimer.h" bodystart="15" bodyend="39"/>
+    <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="32" column="1" bodyfile="inc/mcu/stm32/StmPeriodicTimer.h" bodystart="32" bodyend="113"/>
     <listofallmembers>
+      <member refid="classStmPeriodicTimer_1a2b9d1f53338cf3ef0c8f1ff96e4fb63c" prot="private" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>ApplyPeriod</name></member>
       <member refid="classBasePeriodicTimer_1abe11f2c94d12cf1d658104f1280aa486" prot="public" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>BasePeriodicTimer</name></member>
       <member refid="classBasePeriodicTimer_1a251ae7cf73c7718069a2f1f9abb64311" prot="protected" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>BasePeriodicTimer</name></member>
-      <member refid="classStmPeriodicTimer_1a546f3acd34871fee8f3dd0c0c3a7f0ba" prot="private" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>callback_</name></member>
-      <member refid="classStmPeriodicTimer_1a72ddca80fa426d7f4e2f5e94756b1056" prot="public" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>CallbackFunc</name></member>
+      <member refid="classBasePeriodicTimer_1ac3b02fcdf99bedb247463ed7120d29a2" prot="protected" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>callback_</name></member>
       <member refid="classStmPeriodicTimer_1a94d84c46b0fd48fd7ca73b683b178d25" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>Deinitialize</name></member>
       <member refid="classBasePeriodicTimer_1a3ea254861b3ac5c2dd807a7751d78c5c" prot="protected" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>diagnostics_</name></member>
       <member refid="classBasePeriodicTimer_1aae4a0926e98fdb58b4930ff91c479a2b" prot="protected" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>ExecuteCallback</name></member>
       <member refid="classStmPeriodicTimer_1a1a880f8c3c0489b16879200dedc9a0be" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>GetDescription</name></member>
-      <member refid="classBasePeriodicTimer_1a47bb724f0a6d31877aeca1c5afb053c7" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>GetDiagnostics</name></member>
+      <member refid="classStmPeriodicTimer_1a8677962f1093250861c2be382ec6b01a" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>GetDiagnostics</name></member>
       <member refid="classStmPeriodicTimer_1a951d0175f287a9c13ba7ae690d80af99" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>GetMaxPeriod</name></member>
       <member refid="classStmPeriodicTimer_1af90c80952828bcc070075d08fcbd512a" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>GetMinPeriod</name></member>
       <member refid="classStmPeriodicTimer_1a4a38141e12acac87b1b9ae756d67dd52" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>GetPeriod</name></member>
       <member refid="classStmPeriodicTimer_1a6f435522d93af55a09dd660e414db695" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>GetResolution</name></member>
-      <member refid="classBasePeriodicTimer_1a04e87d17d4909a0bae0547bd9d2ca3f9" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>GetStatistics</name></member>
+      <member refid="classStmPeriodicTimer_1a5166c40150f48125d88b5d1e1f8eb560" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>GetStatistics</name></member>
       <member refid="classStmPeriodicTimer_1a3531ed08a8ae620f210228e04fbebc81" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>GetStats</name></member>
       <member refid="classBasePeriodicTimer_1a9490ab374ff3044157d97ecb1ae40760" prot="public" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>GetUserData</name></member>
       <member refid="classBasePeriodicTimer_1af116318ea0e9856c64ba1bdc0df8ae12" prot="protected" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>HasValidCallback</name></member>
+      <member refid="classStmPeriodicTimer_1a85098575d3142eb754cc9e9c423afd02" prot="private" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>htim_</name></member>
       <member refid="classStmPeriodicTimer_1af61c71d5df2847f8cc432161144cc6b1" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>Initialize</name></member>
       <member refid="classBasePeriodicTimer_1a4931919b4fc300c566777f0ad98ab908" prot="protected" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>initialized_</name></member>
       <member refid="classBasePeriodicTimer_1a7e4b0f10c13abc297b73ba2436d26318" prot="public" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>IsInitialized</name></member>
+      <member refid="classStmPeriodicTimer_1aac7479d2dc33992ad8241eb9b0807cf2" prot="public" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>IsrDispatch</name></member>
       <member refid="classBasePeriodicTimer_1a4f4d9e85eb508bf12dc0dbd2cbc14d68" prot="public" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>IsRunning</name></member>
-      <member refid="classBasePeriodicTimer_1a31392093e5d8a40c22f8b6a7b2507c4c" prot="public" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>operator=</name></member>
+      <member refid="classStmPeriodicTimer_1aff911eeb8b0fa667025cbcf1fd725feb" prot="private" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>kMaxTimerInstances</name></member>
+      <member refid="classStmPeriodicTimer_1ac5177531a8bc00966e0d8515b9b3c6a5" prot="public" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>operator=</name></member>
+      <member refid="classBasePeriodicTimer_1a31392093e5d8a40c22f8b6a7b2507c4c" prot="public" virt="non-virtual" ambiguityscope="BasePeriodicTimer::"><scope>StmPeriodicTimer</scope><name>operator=</name></member>
+      <member refid="classStmPeriodicTimer_1a11b3b4a113bdacd28220e3df7ab4c545" prot="private" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>period_us_</name></member>
+      <member refid="classStmPeriodicTimer_1aa4b5624471c51cbd425c12af8aaec2a9" prot="private" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>RegisterDispatch</name></member>
       <member refid="classBasePeriodicTimer_1aa284ad4ee8f3bde5d0e71ce1b0004d02" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>ResetDiagnostics</name></member>
       <member refid="classBasePeriodicTimer_1acc1e7406989db6b2728038a465967162" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>ResetStatistics</name></member>
       <member refid="classStmPeriodicTimer_1a96567e24e967297babb9c717bdd05f32" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>ResetStats</name></member>
       <member refid="classBasePeriodicTimer_1a92fb79b47b18c0511d19823d1ae5e1cb" prot="protected" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>running_</name></member>
+      <member refid="classStmPeriodicTimer_1a7245352f00a028fbf5ab7b20ddc8d149" prot="private" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>s_dispatch_</name></member>
+      <member refid="classStmPeriodicTimer_1ab2611715f13c7814ccee47ce450cd51e" prot="private" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>s_dispatch_count_</name></member>
       <member refid="classBasePeriodicTimer_1a08f803dc4610824e48525474e163ec3a" prot="public" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>SetCallback</name></member>
       <member refid="classBasePeriodicTimer_1a5611256d7efd4c86a25f94dd0d46f251" prot="protected" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>SetInitialized</name></member>
       <member refid="classStmPeriodicTimer_1aed5d65ee70d33c9945653dd1fa1f53ac" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>SetPeriod</name></member>
       <member refid="classBasePeriodicTimer_1a3dc1ee8a18e2904083e743530734e16b" prot="protected" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>SetRunning</name></member>
       <member refid="classStmPeriodicTimer_1ada919f62b8ad097323e4a43e4ae5a0cf" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>Start</name></member>
       <member refid="classBasePeriodicTimer_1a8d311b0b20ea0785d63ad24a074180ae" prot="protected" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>statistics_</name></member>
-      <member refid="classStmPeriodicTimer_1a39f9012601da28f919f61dc0a8025e62" prot="public" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>StmPeriodicTimer</name></member>
+      <member refid="classStmPeriodicTimer_1a1af0d975e8575ab981cb3920a31c1b4d" prot="private" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>stats_</name></member>
+      <member refid="classStmPeriodicTimer_1a1ed2ec11ae49a3a1648e7d0da91d4444" prot="public" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>StmPeriodicTimer</name></member>
+      <member refid="classStmPeriodicTimer_1a909b5dc147e42ebbf6b1caa5c23f360e" prot="public" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>StmPeriodicTimer</name></member>
+      <member refid="classStmPeriodicTimer_1afa889406caf893eff7e4fe8289bc5817" prot="public" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>StmPeriodicTimer</name></member>
       <member refid="classStmPeriodicTimer_1afd2adf7d275eb82d67bca9b7829a17e6" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>Stop</name></member>
-      <member refid="classStmPeriodicTimer_1a626b64b9e1f58e552386c5769c10b819" prot="private" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>user_data_</name></member>
+      <member refid="classStmPeriodicTimer_1ac2ac2c04e292f87e354611e8b1bd5b5a" prot="private" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>timer_clock_hz_</name></member>
+      <member refid="classStmPeriodicTimer_1a719c4bddaa4c4b71077652d9c08473f9" prot="private" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>UnregisterDispatch</name></member>
+      <member refid="classBasePeriodicTimer_1aee2e35d2b7143181770d86f72fa631f2" prot="protected" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>user_data_</name></member>
       <member refid="classBasePeriodicTimer_1abee693abb22864122f36aff2f8d1c6ee" prot="public" virt="virtual"><scope>StmPeriodicTimer</scope><name>~BasePeriodicTimer</name></member>
       <member refid="classStmPeriodicTimer_1a9c594ee1baa058201855b84c8e87042d" prot="public" virt="non-virtual"><scope>StmPeriodicTimer</scope><name>~StmPeriodicTimer</name></member>
     </listofallmembers>

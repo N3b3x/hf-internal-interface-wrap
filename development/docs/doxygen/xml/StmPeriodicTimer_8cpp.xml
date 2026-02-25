@@ -3,6 +3,7 @@
   <compounddef id="StmPeriodicTimer_8cpp" kind="file" language="C++">
     <compoundname>StmPeriodicTimer.cpp</compoundname>
     <includes refid="StmPeriodicTimer_8h" local="yes">StmPeriodicTimer.h</includes>
+    <includes local="no">cstring</includes>
     <incdepgraph>
       <node id="3">
         <label>BasePeriodicTimer.h</label>
@@ -27,15 +28,35 @@
         <link refid="StmPeriodicTimer_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>StmTypes.h</label>
+        <link refid="StmTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>src/mcu/stm32/StmPeriodicTimer.cpp</label>
         <link refid="StmPeriodicTimer_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>cstddef</label>
       </node>
       <node id="5">
         <label>cstdint</label>
+      </node>
+      <node id="10">
+        <label>cstring</label>
       </node>
       <node id="6">
         <label>limits</label>
@@ -44,63 +65,376 @@
         <label>string_view</label>
       </node>
     </incdepgraph>
-    <sectiondef kind="var">
-      <memberdef kind="variable" id="StmPeriodicTimer_8cpp_1a0f42db9e07b169a44131a6ed38921dea" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr auto</type>
-        <definition>constexpr auto kNotSupported</definition>
-        <argsstring></argsstring>
-        <name>kNotSupported</name>
-        <initializer>= <ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa4176a993094d0e534b9ee9f590acb9fb" kindref="member">hf_timer_err_t::TIMER_ERR_UNSUPPORTED_OPERATION</ref></initializer>
+    <innernamespace refid="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03">anonymous_namespace{StmPeriodicTimer.cpp}</innernamespace>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="StmPeriodicTimer_8cpp_1af0f1dc4bc546e616dc198083ef8758df" prot="public" static="no" extern="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t HAL_TIM_Base_Start_IT</definition>
+        <argsstring>(TIM_HandleTypeDef *htim)</argsstring>
+        <name>HAL_TIM_Base_Start_IT</name>
+        <param>
+          <type>TIM_HandleTypeDef *</type>
+          <declname>htim</declname>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmPeriodicTimer.cpp" line="10" column="23" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="10" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmPeriodicTimer.cpp" line="18" column="17" declfile="src/mcu/stm32/StmPeriodicTimer.cpp" declline="18" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="StmPeriodicTimer_8cpp_1a3b2045c8f1f3793c17a07bf886fb41fc" prot="public" static="no" extern="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t HAL_TIM_Base_Stop_IT</definition>
+        <argsstring>(TIM_HandleTypeDef *htim)</argsstring>
+        <name>HAL_TIM_Base_Stop_IT</name>
+        <param>
+          <type>TIM_HandleTypeDef *</type>
+          <declname>htim</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmPeriodicTimer.cpp" line="19" column="17" declfile="src/mcu/stm32/StmPeriodicTimer.cpp" declline="19" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="StmPeriodicTimer_8cpp_1af2c4f03d53e997a54e1fd5e80daa55c4" prot="public" static="no" extern="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t HAL_GetTick</definition>
+        <argsstring>(void)</argsstring>
+        <name>HAL_GetTick</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmPeriodicTimer.cpp" line="20" column="17" declfile="src/mcu/stm32/StmPeriodicTimer.cpp" declline="20" declcolumn="17"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>STM32 Periodic Timer stub implementation. </para>
+<para>STM32 Periodic Timer implementation — HAL TIM base with ISR dispatch. </para>
     </briefdescription>
     <detaileddescription>
-<para>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </para>
+<para><simplesect kind="author"><para>HardFOC </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC — Licensed under GPL v3.0 or later. </para>
+</simplesect>
+</para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="StmPeriodicTimer_8h" kindref="compound">StmPeriodicTimer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="StmPeriodicTimer_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref><sp/>=<sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa4176a993094d0e534b9ee9f590acb9fb" kindref="member">hf_timer_err_t::TIMER_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"><ref refid="classStmPeriodicTimer_1a39f9012601da28f919f61dc0a8025e62" kindref="member">StmPeriodicTimer::StmPeriodicTimer</ref>(CallbackFunc<sp/>callback,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/>noexcept</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>callback_(callback),<sp/>user_data_(user_data)<sp/>{}</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"><ref refid="classStmPeriodicTimer_1a9c594ee1baa058201855b84c8e87042d" kindref="member">StmPeriodicTimer::~StmPeriodicTimer</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="StmPeriodicTimer_8h" kindref="compound">StmPeriodicTimer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>STM32<sp/>HAL<sp/>FORWARD<sp/>DECLARATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer" kindref="compound">StmPeriodicTimer</ref>::Initialize()<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1a94d84c46b0fd48fd7ca73b683b178d25" kindref="member">StmPeriodicTimer::Deinitialize</ref>()<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1ada919f62b8ad097323e4a43e4ae5a0cf" kindref="member">StmPeriodicTimer::Start</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmPeriodicTimer_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1afd2adf7d275eb82d67bca9b7829a17e6" kindref="member">StmPeriodicTimer::Stop</ref>()<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1aed5d65ee70d33c9945653dd1fa1f53ac" kindref="member">StmPeriodicTimer::SetPeriod</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmPeriodicTimer_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="StmPeriodicTimer_8cpp_1af0f1dc4bc546e616dc198083ef8758df" kindref="member">HAL_TIM_Base_Start_IT</ref>(TIM_HandleTypeDef*<sp/>htim);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="StmPeriodicTimer_8cpp_1a3b2045c8f1f3793c17a07bf886fb41fc" kindref="member">HAL_TIM_Base_Stop_IT</ref>(TIM_HandleTypeDef*<sp/>htim);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="StmPeriodicTimer_8cpp_1af2c4f03d53e997a54e1fd5e80daa55c4" kindref="member">HAL_GetTick</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1a4a38141e12acac87b1b9ae756d67dd52" kindref="member">StmPeriodicTimer::GetPeriod</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>&amp;<sp/>period_us)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>period_us<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmPeriodicTimer_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;</highlight></codeline>
-<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1a3531ed08a8ae620f210228e04fbebc81" kindref="member">StmPeriodicTimer::GetStats</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>&amp;<sp/>callback_count,<sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>&amp;<sp/>missed_callbacks,</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref>&amp;<sp/>last_error)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>callback_count<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>missed_callbacks<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>last_error<sp/>=<sp/><ref refid="StmPeriodicTimer_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmPeriodicTimer_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;</highlight></codeline>
-<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1a96567e24e967297babb9c717bdd05f32" kindref="member">StmPeriodicTimer::ResetStats</ref>()<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classStmPeriodicTimer_1a1a880f8c3c0489b16879200dedc9a0be" kindref="member">StmPeriodicTimer::GetDescription</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;STM32<sp/>Periodic<sp/>Timer<sp/>(stub)&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="classStmPeriodicTimer_1a951d0175f287a9c13ba7ae690d80af99" kindref="member">StmPeriodicTimer::GetMaxPeriod</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/>}</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="classStmPeriodicTimer_1af90c80952828bcc070075d08fcbd512a" kindref="member">StmPeriodicTimer::GetMinPeriod</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/>}</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="classStmPeriodicTimer_1a6f435522d93af55a09dd660e414db695" kindref="member">StmPeriodicTimer::GetResolution</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/>}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TIM<sp/>register<sp/>offsets<sp/>—<sp/>used<sp/>for<sp/>direct<sp/>ARR/PSC<sp/>manipulation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>These<sp/>are<sp/>standard<sp/>across<sp/>all<sp/>STM32<sp/>families.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Register<sp/>offsets<sp/>from<sp/>TIM_TypeDef<sp/>base<sp/>(Instance<sp/>pointer)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>CR1=0x00,<sp/>CR2=0x04,<sp/>SMCR=0x08,<sp/>DIER=0x0C,<sp/>SR=0x10,<sp/>EGR=0x14</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PSC<sp/>offset<sp/>=<sp/>0x28,<sp/>ARR<sp/>offset<sp/>=<sp/>0x2C</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03_1addee097d86298b115ec84fdf83c00338" kindref="member">kTimPscOffset</ref><sp/>=<sp/>0x28;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03_1a97674b78566017e519544281700aa2cb" kindref="member">kTimArrOffset</ref><sp/>=<sp/>0x2C;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03_1a6ac00d3cae493e39fd6eda8ca5452c13" kindref="member">kTimEgrOffset</ref><sp/>=<sp/>0x14;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03_1ad51b447f667e659d0b329fd865ec8e89" kindref="member">kTimEgrUgBit</ref><sp/><sp/>=<sp/>0x01;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>STATIC<sp/>DATA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><ref refid="structStmPeriodicTimer_1_1DispatchEntry" kindref="compound">StmPeriodicTimer::DispatchEntry</ref><sp/><ref refid="classStmPeriodicTimer_1a7245352f00a028fbf5ab7b20ddc8d149" kindref="member">StmPeriodicTimer::s_dispatch_</ref>[kMaxTimerInstances]{};</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStmPeriodicTimer_1ab2611715f13c7814ccee47ce450cd51e" kindref="member">StmPeriodicTimer::s_dispatch_count_</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CONSTRUCTORS<sp/>/<sp/>DESTRUCTOR</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><ref refid="classStmPeriodicTimer_1a1ed2ec11ae49a3a1648e7d0da91d4444" kindref="member">StmPeriodicTimer::StmPeriodicTimer</ref>(TIM_HandleTypeDef*<sp/>htim,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timer_clock_hz,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a40c3b2f30d4492b879e2939cd3ac713d" kindref="member">hf_timer_callback_t</ref><sp/>callback,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/>noexcept</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref>(callback,<sp/>user_data)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>htim_(htim)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>timer_clock_hz_(timer_clock_hz)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>period_us_(0)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>stats_{}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><ref refid="classStmPeriodicTimer_1a1ed2ec11ae49a3a1648e7d0da91d4444" kindref="member">StmPeriodicTimer::StmPeriodicTimer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__stm32__timer__config__t" kindref="compound">hf_stm32_timer_config_t</ref>&amp;<sp/>config,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a40c3b2f30d4492b879e2939cd3ac713d" kindref="member">hf_timer_callback_t</ref><sp/>callback,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/>noexcept</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref>(callback,<sp/>user_data)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>htim_(config.htim)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>timer_clock_hz_(config.timer_clock_hz)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>period_us_(0)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>stats_{}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><ref refid="classStmPeriodicTimer_1a9c594ee1baa058201855b84c8e87042d" kindref="member">StmPeriodicTimer::~StmPeriodicTimer</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBasePeriodicTimer_1a4931919b4fc300c566777f0ad98ab908" kindref="member">initialized_</ref>)<sp/><ref refid="classStmPeriodicTimer_1a94d84c46b0fd48fd7ca73b683b178d25" kindref="member">Deinitialize</ref>();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>INITIALIZATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1af61c71d5df2847f8cc432161144cc6b1" kindref="member">StmPeriodicTimer::Initialize</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBasePeriodicTimer_1a4931919b4fc300c566777f0ad98ab908" kindref="member">initialized_</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa26f148c2a8a3cb4f3418d43e991150b5" kindref="member">hf_timer_err_t::TIMER_ERR_ALREADY_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classStmPeriodicTimer_1a85098575d3142eb754cc9e9c423afd02" kindref="member">htim_</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa80a5887ffc963e2c85de9bb213dd4b97" kindref="member">hf_timer_err_t::TIMER_ERR_INVALID_PARAMETER</ref>;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classStmPeriodicTimer_1ac2ac2c04e292f87e354611e8b1bd5b5a" kindref="member">timer_clock_hz_</ref><sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa80a5887ffc963e2c85de9bb213dd4b97" kindref="member">hf_timer_err_t::TIMER_ERR_INVALID_PARAMETER</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmPeriodicTimer_1a1af0d975e8575ab981cb3920a31c1b4d" kindref="member">stats_</ref><sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmPeriodicTimer_1aa4b5624471c51cbd425c12af8aaec2a9" kindref="member">RegisterDispatch</ref>();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasePeriodicTimer_1a5611256d7efd4c86a25f94dd0d46f251" kindref="member">SetInitialized</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1a94d84c46b0fd48fd7ca73b683b178d25" kindref="member">StmPeriodicTimer::Deinitialize</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBasePeriodicTimer_1a4931919b4fc300c566777f0ad98ab908" kindref="member">initialized_</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBasePeriodicTimer_1a92fb79b47b18c0511d19823d1ae5e1cb" kindref="member">running_</ref>)<sp/><ref refid="classStmPeriodicTimer_1afd2adf7d275eb82d67bca9b7829a17e6" kindref="member">Stop</ref>();</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmPeriodicTimer_1a719c4bddaa4c4b71077652d9c08473f9" kindref="member">UnregisterDispatch</ref>();</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasePeriodicTimer_1a5611256d7efd4c86a25f94dd0d46f251" kindref="member">SetInitialized</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment">//<sp/>START<sp/>/<sp/>STOP<sp/>/<sp/>PERIOD</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1ada919f62b8ad097323e4a43e4ae5a0cf" kindref="member">StmPeriodicTimer::Start</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>period_us)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aacdb61d4fcc5069bb647d93f47f5c5ab9" kindref="member">hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(running_)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa7b454e9201fcc08b660b78060d55f569" kindref="member">hf_timer_err_t::TIMER_ERR_ALREADY_RUNNING</ref>;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!HasValidCallback())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aad39d8e77293f6acdadb1e240a35195a3" kindref="member">hf_timer_err_t::TIMER_ERR_NULL_POINTER</ref>;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(period_us<sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa53cdab9639a77f9d9efc9f0b426e5394" kindref="member">hf_timer_err_t::TIMER_ERR_INVALID_PERIOD</ref>;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!ApplyPeriod(period_us))<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa53cdab9639a77f9d9efc9f0b426e5394" kindref="member">hf_timer_err_t::TIMER_ERR_INVALID_PERIOD</ref>;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>status<sp/>=<sp/><ref refid="StmPeriodicTimer_8cpp_1af0f1dc4bc546e616dc198083ef8758df" kindref="member">HAL_TIM_Base_Start_IT</ref>(htim_);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="namespacehf_1_1stm32_1a61d8ada18ba35572dbf8fedc4d96501f" kindref="member">hf::stm32::IsHalOk</ref>(status))<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stats_.last_error<sp/>=<sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa210eea569375da979c8918063d0220ce" kindref="member">hf_timer_err_t::TIMER_ERR_HARDWARE_FAULT</ref>;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa210eea569375da979c8918063d0220ce" kindref="member">hf_timer_err_t::TIMER_ERR_HARDWARE_FAULT</ref>;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>period_us_<sp/>=<sp/>period_us;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>SetRunning(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>stats_.start_count++;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>stats_.last_start_us<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="StmPeriodicTimer_8cpp_1af2c4f03d53e997a54e1fd5e80daa55c4" kindref="member">HAL_GetTick</ref>())<sp/>*<sp/>1000ULL;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>statistics_.totalStarts++;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1afd2adf7d275eb82d67bca9b7829a17e6" kindref="member">StmPeriodicTimer::Stop</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBasePeriodicTimer_1a4931919b4fc300c566777f0ad98ab908" kindref="member">initialized_</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aacdb61d4fcc5069bb647d93f47f5c5ab9" kindref="member">hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBasePeriodicTimer_1a92fb79b47b18c0511d19823d1ae5e1cb" kindref="member">running_</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa8dc602c72b8c537031429abcd168f19d" kindref="member">hf_timer_err_t::TIMER_ERR_NOT_RUNNING</ref>;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>status<sp/>=<sp/><ref refid="StmPeriodicTimer_8cpp_1a3b2045c8f1f3793c17a07bf886fb41fc" kindref="member">HAL_TIM_Base_Stop_IT</ref>(<ref refid="classStmPeriodicTimer_1a85098575d3142eb754cc9e9c423afd02" kindref="member">htim_</ref>);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="namespacehf_1_1stm32_1a61d8ada18ba35572dbf8fedc4d96501f" kindref="member">hf::stm32::IsHalOk</ref>(status))<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStmPeriodicTimer_1a1af0d975e8575ab981cb3920a31c1b4d" kindref="member">stats_</ref>.<ref refid="structhf__timer__stats__t_1a4b2fe9fa66b6b3741e624d522a617fee" kindref="member">last_error</ref><sp/>=<sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa210eea569375da979c8918063d0220ce" kindref="member">hf_timer_err_t::TIMER_ERR_HARDWARE_FAULT</ref>;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa210eea569375da979c8918063d0220ce" kindref="member">hf_timer_err_t::TIMER_ERR_HARDWARE_FAULT</ref>;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasePeriodicTimer_1a3dc1ee8a18e2904083e743530734e16b" kindref="member">SetRunning</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmPeriodicTimer_1a1af0d975e8575ab981cb3920a31c1b4d" kindref="member">stats_</ref>.<ref refid="structhf__timer__stats__t_1aca0212566a23961dfcc8699937286bd4" kindref="member">stop_count</ref>++;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasePeriodicTimer_1a8d311b0b20ea0785d63ad24a074180ae" kindref="member">statistics_</ref>.<ref refid="structhf__timer__statistics__t_1af6c9326acdf1f7ea6244b51a5f19e462" kindref="member">totalStops</ref>++;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1aed5d65ee70d33c9945653dd1fa1f53ac" kindref="member">StmPeriodicTimer::SetPeriod</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>period_us)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aacdb61d4fcc5069bb647d93f47f5c5ab9" kindref="member">hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(period_us<sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa53cdab9639a77f9d9efc9f0b426e5394" kindref="member">hf_timer_err_t::TIMER_ERR_INVALID_PERIOD</ref>;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>was_running<sp/>=<sp/>running_;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(was_running)<sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="StmPeriodicTimer_8cpp_1a3b2045c8f1f3793c17a07bf886fb41fc" kindref="member">HAL_TIM_Base_Stop_IT</ref>(htim_);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!ApplyPeriod(period_us))<sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(was_running)<sp/><ref refid="StmPeriodicTimer_8cpp_1af0f1dc4bc546e616dc198083ef8758df" kindref="member">HAL_TIM_Base_Start_IT</ref>(htim_);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa53cdab9639a77f9d9efc9f0b426e5394" kindref="member">hf_timer_err_t::TIMER_ERR_INVALID_PERIOD</ref>;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>period_us_<sp/>=<sp/>period_us;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(was_running)<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="StmPeriodicTimer_8cpp_1af0f1dc4bc546e616dc198083ef8758df" kindref="member">HAL_TIM_Base_Start_IT</ref>(htim_);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1a4a38141e12acac87b1b9ae756d67dd52" kindref="member">StmPeriodicTimer::GetPeriod</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>&amp;<sp/>period_us)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aacdb61d4fcc5069bb647d93f47f5c5ab9" kindref="member">hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>period_us<sp/>=<sp/>period_us_;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="comment">//<sp/>STATISTICS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1a3531ed08a8ae620f210228e04fbebc81" kindref="member">StmPeriodicTimer::GetStats</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>&amp;<sp/>callback_count,</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>&amp;<sp/>missed_callbacks,</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref>&amp;<sp/>last_error)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aacdb61d4fcc5069bb647d93f47f5c5ab9" kindref="member">hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>callback_count<sp/>=<sp/>stats_.callback_count;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>missed_callbacks<sp/>=<sp/>stats_.missed_callbacks;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>last_error<sp/>=<sp/>stats_.last_error;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1a96567e24e967297babb9c717bdd05f32" kindref="member">StmPeriodicTimer::ResetStats</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBasePeriodicTimer_1a4931919b4fc300c566777f0ad98ab908" kindref="member">initialized_</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aacdb61d4fcc5069bb647d93f47f5c5ab9" kindref="member">hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmPeriodicTimer_1a1af0d975e8575ab981cb3920a31c1b4d" kindref="member">stats_</ref><sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1a5166c40150f48125d88b5d1e1f8eb560" kindref="member">StmPeriodicTimer::GetStatistics</ref>(<ref refid="structhf__timer__statistics__t" kindref="compound">hf_timer_statistics_t</ref>&amp;<sp/>statistics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>statistics<sp/>=<sp/>statistics_;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1a8677962f1093250861c2be382ec6b01a" kindref="member">StmPeriodicTimer::GetDiagnostics</ref>(<ref refid="structhf__timer__diagnostics__t" kindref="compound">hf_timer_diagnostics_t</ref>&amp;<sp/>diagnostics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>diagnostics<sp/>=<sp/>diagnostics_;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>diagnostics.timerInitialized<sp/>=<sp/>initialized_;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>diagnostics.timerRunning<sp/>=<sp/>running_;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>diagnostics.currentPeriodUs<sp/>=<sp/>period_us_;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>diagnostics.timerResolutionUs<sp/>=<sp/>GetResolution();</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DESCRIPTION<sp/>&amp;<sp/>CAPABILITY<sp/>QUERIES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classStmPeriodicTimer_1a1a880f8c3c0489b16879200dedc9a0be" kindref="member">StmPeriodicTimer::GetDescription</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;STM32<sp/>HAL<sp/>Periodic<sp/>Timer&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="classStmPeriodicTimer_1a951d0175f287a9c13ba7ae690d80af99" kindref="member">StmPeriodicTimer::GetMaxPeriod</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>With<sp/>16-bit<sp/>timer,<sp/>max<sp/>ARR=65535,<sp/>max<sp/>PSC=65535:</highlight></codeline>
+<codeline lineno="214"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>period_max<sp/>=<sp/>(65536<sp/>*<sp/>65536)<sp/>/<sp/>timer_clock_hz<sp/><sp/>(in<sp/>µs).<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classStmPeriodicTimer_1ac2ac2c04e292f87e354611e8b1bd5b5a" kindref="member">timer_clock_hz_</ref><sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(65536ULL<sp/>*<sp/>65536ULL<sp/>*<sp/>1000000ULL)<sp/>/<sp/><ref refid="classStmPeriodicTimer_1ac2ac2c04e292f87e354611e8b1bd5b5a" kindref="member">timer_clock_hz_</ref>;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="classStmPeriodicTimer_1af90c80952828bcc070075d08fcbd512a" kindref="member">StmPeriodicTimer::GetMinPeriod</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>PSC=0,<sp/>ARR=1<sp/>→<sp/>period<sp/>=<sp/>2<sp/>/<sp/>timer_clock_hz<sp/><sp/>(in<sp/>µs).<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classStmPeriodicTimer_1ac2ac2c04e292f87e354611e8b1bd5b5a" kindref="member">timer_clock_hz_</ref><sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(2ULL<sp/>*<sp/>1000000ULL)<sp/>/<sp/><ref refid="classStmPeriodicTimer_1ac2ac2c04e292f87e354611e8b1bd5b5a" kindref="member">timer_clock_hz_</ref>;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="classStmPeriodicTimer_1a6f435522d93af55a09dd660e414db695" kindref="member">StmPeriodicTimer::GetResolution</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Best<sp/>case:<sp/>PSC=0<sp/>→<sp/>resolution<sp/>=<sp/>1/timer_clock_hz<sp/>in<sp/>µs.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classStmPeriodicTimer_1ac2ac2c04e292f87e354611e8b1bd5b5a" kindref="member">timer_clock_hz_</ref><sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>res<sp/>=<sp/>1000000ULL<sp/>/<sp/><ref refid="classStmPeriodicTimer_1ac2ac2c04e292f87e354611e8b1bd5b5a" kindref="member">timer_clock_hz_</ref>;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(res<sp/>&gt;<sp/>0)<sp/>?<sp/>res<sp/>:<sp/>1;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PRIVATE:<sp/>APPLY<sp/>PERIOD</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmPeriodicTimer_1a2b9d1f53338cf3ef0c8f1ff96e4fb63c" kindref="member">StmPeriodicTimer::ApplyPeriod</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>period_us)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(period_us<sp/>==<sp/>0<sp/>||<sp/>timer_clock_hz_<sp/>==<sp/>0<sp/>||<sp/>!htim_)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="240"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>We<sp/>need:<sp/>(PSC<sp/>+<sp/>1)<sp/>*<sp/>(ARR<sp/>+<sp/>1)<sp/>=<sp/>timer_clock_hz<sp/>*<sp/>period_us<sp/>/<sp/>1_000_000</highlight></codeline>
+<codeline lineno="241"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Strategy:<sp/>pick<sp/>smallest<sp/>PSC<sp/>that<sp/>keeps<sp/>ARR<sp/>≤<sp/>65535.</highlight></codeline>
+<codeline lineno="242"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>total_ticks<sp/>=<sp/>(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint64_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(timer_clock_hz_)<sp/>*<sp/>period_us)<sp/>/<sp/>1000000ULL;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(total_ticks<sp/>==<sp/>0)<sp/>total_ticks<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>psc<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>arr<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(total_ticks<sp/>&lt;=<sp/>65536ULL)<sp/>{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>psc<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arr<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint32_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(total_ticks<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Find<sp/>smallest<sp/>prescaler</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>psc<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint32_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">((total_ticks<sp/>-<sp/>1)<sp/>/<sp/>65536ULL);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(psc<sp/>&gt;<sp/>65535)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Period<sp/>too<sp/>long</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arr<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint32_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(total_ticks<sp/>/<sp/>(psc<sp/>+<sp/>1))<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(arr<sp/>&gt;<sp/>65535)<sp/>{</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>psc++;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arr<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint32_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(total_ticks<sp/>/<sp/>(psc<sp/>+<sp/>1))<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(arr<sp/>&gt;<sp/>65535<sp/>||<sp/>psc<sp/>&gt;<sp/>65535)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Write<sp/>directly<sp/>to<sp/>Instance<sp/>registers<sp/>via<sp/>HAL<sp/>handle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>htim_-&gt;Instance<sp/>is<sp/>a<sp/>TIM_TypeDef*<sp/>—<sp/>offsets<sp/>are<sp/>standard</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint32_t*<sp/>base<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">volatile<sp/></highlight><highlight class="normal">uint32_t*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">uint32_t**</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(htim_)<sp/><sp/></highlight><highlight class="comment">//<sp/>Instance<sp/>is<sp/>the<sp/>first<sp/>member</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/>base[<ref refid="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03_1addee097d86298b115ec84fdf83c00338" kindref="member">kTimPscOffset</ref><sp/>/<sp/>4]<sp/>=<sp/>psc;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/>base[<ref refid="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03_1a97674b78566017e519544281700aa2cb" kindref="member">kTimArrOffset</ref><sp/>/<sp/>4]<sp/>=<sp/>arr;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Generate<sp/>update<sp/>event<sp/>to<sp/>latch<sp/>new<sp/>PSC/ARR<sp/>immediately</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/>base[<ref refid="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03_1a6ac00d3cae493e39fd6eda8ca5452c13" kindref="member">kTimEgrOffset</ref><sp/>/<sp/>4]<sp/>=<sp/><ref refid="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03_1ad51b447f667e659d0b329fd865ec8e89" kindref="member">kTimEgrUgBit</ref>;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight><highlight class="comment">//<sp/>STATIC<sp/>ISR<sp/>DISPATCH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStmPeriodicTimer_1aac7479d2dc33992ad8241eb9b0807cf2" kindref="member">StmPeriodicTimer::IsrDispatch</ref>(TIM_HandleTypeDef*<sp/>htim)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>s_dispatch_count_;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s_dispatch_[i].htim<sp/>==<sp/>htim<sp/>&amp;&amp;<sp/>s_dispatch_[i].instance)<sp/>{</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">*<sp/>self<sp/>=<sp/>s_dispatch_[i].instance;</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self-&gt;stats_.callback_count++;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self-&gt;statistics_.callbackExecutions++;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self-&gt;ExecuteCallback();</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="292"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStmPeriodicTimer_1aa4b5624471c51cbd425c12af8aaec2a9" kindref="member">StmPeriodicTimer::RegisterDispatch</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classStmPeriodicTimer_1ab2611715f13c7814ccee47ce450cd51e" kindref="member">s_dispatch_count_</ref><sp/>&gt;=<sp/><ref refid="classStmPeriodicTimer_1aff911eeb8b0fa667025cbcf1fd725feb" kindref="member">kMaxTimerInstances</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmPeriodicTimer_1a7245352f00a028fbf5ab7b20ddc8d149" kindref="member">s_dispatch_</ref>[<ref refid="classStmPeriodicTimer_1ab2611715f13c7814ccee47ce450cd51e" kindref="member">s_dispatch_count_</ref>].<ref refid="structStmPeriodicTimer_1_1DispatchEntry_1ab95a7578987409752bfd1d3ce218c669" kindref="member">htim</ref><sp/>=<sp/><ref refid="classStmPeriodicTimer_1a85098575d3142eb754cc9e9c423afd02" kindref="member">htim_</ref>;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmPeriodicTimer_1a7245352f00a028fbf5ab7b20ddc8d149" kindref="member">s_dispatch_</ref>[<ref refid="classStmPeriodicTimer_1ab2611715f13c7814ccee47ce450cd51e" kindref="member">s_dispatch_count_</ref>].<ref refid="structStmPeriodicTimer_1_1DispatchEntry_1a810983123ccca1ea2de34d3df1dd92ff" kindref="member">instance</ref><sp/>=<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmPeriodicTimer_1ab2611715f13c7814ccee47ce450cd51e" kindref="member">s_dispatch_count_</ref>++;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStmPeriodicTimer_1a719c4bddaa4c4b71077652d9c08473f9" kindref="member">StmPeriodicTimer::UnregisterDispatch</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="classStmPeriodicTimer_1ab2611715f13c7814ccee47ce450cd51e" kindref="member">s_dispatch_count_</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classStmPeriodicTimer_1a7245352f00a028fbf5ab7b20ddc8d149" kindref="member">s_dispatch_</ref>[i].instance<sp/>==<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Shift<sp/>remaining<sp/>entries</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>i;<sp/>j<sp/>&lt;<sp/><ref refid="classStmPeriodicTimer_1ab2611715f13c7814ccee47ce450cd51e" kindref="member">s_dispatch_count_</ref><sp/>-<sp/>1;<sp/>++j)<sp/>{</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStmPeriodicTimer_1a7245352f00a028fbf5ab7b20ddc8d149" kindref="member">s_dispatch_</ref>[j]<sp/>=<sp/><ref refid="classStmPeriodicTimer_1a7245352f00a028fbf5ab7b20ddc8d149" kindref="member">s_dispatch_</ref>[j<sp/>+<sp/>1];</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStmPeriodicTimer_1ab2611715f13c7814ccee47ce450cd51e" kindref="member">s_dispatch_count_</ref>--;</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="312"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="src/mcu/stm32/StmPeriodicTimer.cpp"/>
   </compounddef>

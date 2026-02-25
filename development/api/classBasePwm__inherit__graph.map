@@ -1,5 +1,7 @@
 <map id="BasePwm" name="BasePwm">
-<area shape="rect" id="Node000001" title="Abstract base class for PWM implementations." alt="" coords="5,5,109,36"/>
-<area shape="rect" id="Node000002" href="$classEspPwm.html" title="ESP32 PWM implementation using LEDC peripheral with comprehensive ESP32 variant support." alt="" coords="10,84,105,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,50,60,84,55,84,55,50"/>
+<area shape="rect" id="Node000001" title="Abstract base class for PWM implementations." alt="" coords="61,5,165,36"/>
+<area shape="rect" id="Node000002" href="$classEspPwm.html" title="ESP32 PWM implementation using LEDC peripheral with comprehensive ESP32 variant support." alt="" coords="5,84,100,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,48,66,85,62,82,91,45"/>
+<area shape="rect" id="Node000003" href="$classStmPwm.html" title="STM32 PWM implementation." alt="" coords="125,84,221,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="134,45,164,82,159,85,130,48"/>
 </map>

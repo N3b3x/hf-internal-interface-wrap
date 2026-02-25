@@ -1,0 +1,874 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classStmPwm" kind="class" language="C++" prot="public">
+    <compoundname>StmPwm</compoundname>
+    <basecompoundref refid="classBasePwm" prot="public" virt="non-virtual">BasePwm</basecompoundref>
+    <includes refid="StmPwm_8h" local="no">StmPwm.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classStmPwm_1afd4b32467181d8775da3406f5e15d7af" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t StmPwm::kMaxChannels</definition>
+        <argsstring></argsstring>
+        <name>kMaxChannels</name>
+        <qualifiedname>StmPwm::kMaxChannels</qualifiedname>
+        <initializer>= 4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="85" column="30" bodyfile="inc/mcu/stm32/StmPwm.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classStmPwm_1afc2206a7a40642308b6b6828ccc4633d" prot="private" static="no" mutable="no">
+        <type>TIM_HandleTypeDef *</type>
+        <definition>TIM_HandleTypeDef* StmPwm::htim_</definition>
+        <argsstring></argsstring>
+        <name>htim_</name>
+        <qualifiedname>StmPwm::htim_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="88" column="23" bodyfile="inc/mcu/stm32/StmPwm.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmPwm_1a3274aba44eed3130ffe85a6afc80b311" prot="private" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t StmPwm::timer_clock_hz_</definition>
+        <argsstring></argsstring>
+        <name>timer_clock_hz_</name>
+        <qualifiedname>StmPwm::timer_clock_hz_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="89" column="24" bodyfile="inc/mcu/stm32/StmPwm.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmPwm_1ad7bfc76e37cca9dabdac5aeba9cd1f62" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool StmPwm::channel_enabled_[kMaxChannels]</definition>
+        <argsstring>[kMaxChannels]</argsstring>
+        <name>channel_enabled_</name>
+        <qualifiedname>StmPwm::channel_enabled_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="90" column="24" bodyfile="inc/mcu/stm32/StmPwm.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmPwm_1a15a6e06ba60d8c8fcce50fa78e3d51c5" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float StmPwm::duty_[kMaxChannels]</definition>
+        <argsstring>[kMaxChannels]</argsstring>
+        <name>duty_</name>
+        <qualifiedname>StmPwm::duty_</qualifiedname>
+        <briefdescription>
+<para>Cached duty 0.0–1.0. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="91" column="24" bodyfile="inc/mcu/stm32/StmPwm.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmPwm_1a06395143214fb47de189dc1005192318" prot="private" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref></type>
+        <definition>hf_frequency_hz_t StmPwm::frequency_hz_</definition>
+        <argsstring></argsstring>
+        <name>frequency_hz_</name>
+        <qualifiedname>StmPwm::frequency_hz_</qualifiedname>
+        <briefdescription>
+<para>Current frequency (shared) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="92" column="24" bodyfile="inc/mcu/stm32/StmPwm.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classStmPwm_1a826dd0be1ba064c3275670bbcff6c40e" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmPwm::StmPwm</definition>
+        <argsstring>(TIM_HandleTypeDef *htim, hf_u32_t timer_clock_hz) noexcept</argsstring>
+        <name>StmPwm</name>
+        <qualifiedname>StmPwm::StmPwm</qualifiedname>
+        <param>
+          <type>TIM_HandleTypeDef *</type>
+          <declname>htim</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timer_clock_hz</declname>
+        </param>
+        <briefdescription>
+<para>Construct from HAL timer handle. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>htim</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>CubeMX timer handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timer_clock_hz</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>APB timer input clock (e.g. 84 MHz). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="40" column="14" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="44" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1a32023e31610579b1de488f85169ed83d" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmPwm::StmPwm</definition>
+        <argsstring>(const hf_stm32_pwm_config_t &amp;config) noexcept</argsstring>
+        <name>StmPwm</name>
+        <qualifiedname>StmPwm::StmPwm</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__stm32__pwm__config__t" kindref="compound">hf_stm32_pwm_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Construct from config struct. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="46" column="14" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="54" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1aebf451d7ea538f8ae7781ad2b2176eee" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmPwm::~StmPwm</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>~StmPwm</name>
+        <qualifiedname>StmPwm::~StmPwm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="48" column="5" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="64" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1a63479bfa70129bc6baedf7831c67518c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>StmPwm::StmPwm</definition>
+        <argsstring>(const StmPwm &amp;)=delete</argsstring>
+        <name>StmPwm</name>
+        <qualifiedname>StmPwm::StmPwm</qualifiedname>
+        <param>
+          <type>const <ref refid="classStmPwm" kindref="compound">StmPwm</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="50" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1aa1a0ce6a38384c1f9b96e75296f1064d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classStmPwm" kindref="compound">StmPwm</ref> &amp;</type>
+        <definition>StmPwm &amp; StmPwm::operator=</definition>
+        <argsstring>(const StmPwm &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>StmPwm::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classStmPwm" kindref="compound">StmPwm</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="51" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1a269e1545813e6519a75956a2981e8325" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>hf_pwm_err_t StmPwm::Initialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>StmPwm::Initialize</qualifiedname>
+        <reimplements refid="classBasePwm_1a4dba77ec0b1d096f85af2288f121f7f7">Initialize</reimplements>
+        <briefdescription>
+<para>Initialize the PWM system. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="56" column="18" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="72" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1a0c8868d1b3c749646274682350b78675" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>hf_pwm_err_t StmPwm::Deinitialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>StmPwm::Deinitialize</qualifiedname>
+        <reimplements refid="classBasePwm_1a7d3dbe67ab0c23c738e2507f915137fb">Deinitialize</reimplements>
+        <briefdescription>
+<para>Deinitialize the PWM system. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="57" column="18" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="87" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1a91107816ec9fe8f31aa1c0570be97bfa" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>hf_pwm_err_t StmPwm::EnableChannel</definition>
+        <argsstring>(hf_channel_id_t channel_id) noexcept override</argsstring>
+        <name>EnableChannel</name>
+        <qualifiedname>StmPwm::EnableChannel</qualifiedname>
+        <reimplements refid="classBasePwm_1af1c19d6ae43e3711a2a16dc39d8dbfa6">EnableChannel</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Enable a PWM channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel to enable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="60" column="18" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="98" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1a2891a6812ae9d9867f9f624e7e6a3e90" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>hf_pwm_err_t StmPwm::DisableChannel</definition>
+        <argsstring>(hf_channel_id_t channel_id) noexcept override</argsstring>
+        <name>DisableChannel</name>
+        <qualifiedname>StmPwm::DisableChannel</qualifiedname>
+        <reimplements refid="classBasePwm_1a88b6b8a4d9ea7c9172846aa4e9cc572d">DisableChannel</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Disable a PWM channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel to disable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="61" column="18" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="111" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1a169948bffba231f28cfb8e2a21e47d9d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool StmPwm::IsChannelEnabled</definition>
+        <argsstring>(hf_channel_id_t channel_id) const noexcept override</argsstring>
+        <name>IsChannelEnabled</name>
+        <qualifiedname>StmPwm::IsChannelEnabled</qualifiedname>
+        <reimplements refid="classBasePwm_1af2f490b963644ca04d4750b7d947b543">IsChannelEnabled</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Check if a channel is enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if enabled, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="62" column="10" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="124" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1a74511e0bf0a9768ab57a0375d687e6ac" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>hf_pwm_err_t StmPwm::SetDutyCycle</definition>
+        <argsstring>(hf_channel_id_t channel_id, float duty_cycle) noexcept override</argsstring>
+        <name>SetDutyCycle</name>
+        <qualifiedname>StmPwm::SetDutyCycle</qualifiedname>
+        <reimplements refid="classBasePwm_1a4883325ace0e9fd9d096fc87a24317c3">SetDutyCycle</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>duty_cycle</declname>
+        </param>
+        <briefdescription>
+<para>Set duty cycle for a channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>duty_cycle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Duty cycle (0.0 - 1.0) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="65" column="18" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="132" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1ac65700326e03a2ee18ce2df6d8fa5697" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>hf_pwm_err_t StmPwm::SetDutyCycleRaw</definition>
+        <argsstring>(hf_channel_id_t channel_id, hf_u32_t raw_value) noexcept override</argsstring>
+        <name>SetDutyCycleRaw</name>
+        <qualifiedname>StmPwm::SetDutyCycleRaw</qualifiedname>
+        <reimplements refid="classBasePwm_1aa9f97e6e7c9af42aae99b8aeae5e7c67">SetDutyCycleRaw</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>raw_value</declname>
+        </param>
+        <briefdescription>
+<para>Set raw duty value for a channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>raw_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw duty register value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="66" column="18" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="152" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1aac3185d5b8f42ab6c1ef3409df8c3365" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>hf_pwm_err_t StmPwm::SetFrequency</definition>
+        <argsstring>(hf_channel_id_t channel_id, hf_frequency_hz_t frequency_hz) noexcept override</argsstring>
+        <name>SetFrequency</name>
+        <qualifiedname>StmPwm::SetFrequency</qualifiedname>
+        <reimplements refid="classBasePwm_1ad192230babf2e4dc7a37477b4a0153b8">SetFrequency</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref></type>
+          <declname>frequency_hz</declname>
+        </param>
+        <briefdescription>
+<para>Set frequency for a channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>frequency_hz</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Frequency in Hz </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="67" column="18" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="168" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1acfcd13854f8131d08b2531e54e358e1b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>hf_pwm_err_t StmPwm::SetPhaseShift</definition>
+        <argsstring>(hf_channel_id_t channel_id, float phase_shift_degrees) noexcept override</argsstring>
+        <name>SetPhaseShift</name>
+        <qualifiedname>StmPwm::SetPhaseShift</qualifiedname>
+        <reimplements refid="classBasePwm_1ad2d69c4057b84358f120f1c27fb3e2c1">SetPhaseShift</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>phase_shift_degrees</declname>
+        </param>
+        <briefdescription>
+<para>Set phase shift for a channel (if supported) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>phase_shift_degrees</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Phase shift in degrees (0-360) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="68" column="18" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="183" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1a2a31bf7fe022850cbed5111052860ade" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>hf_pwm_err_t StmPwm::StartAll</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>StartAll</name>
+        <qualifiedname>StmPwm::StartAll</qualifiedname>
+        <reimplements refid="classBasePwm_1a02e791636c4d544d702b06014695ed31">StartAll</reimplements>
+        <briefdescription>
+<para>Start all enabled channels simultaneously. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="71" column="18" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="195" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1a9470315dbe5b4eb9f8cf9127f9d738e8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>hf_pwm_err_t StmPwm::StopAll</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>StopAll</name>
+        <qualifiedname>StmPwm::StopAll</qualifiedname>
+        <reimplements refid="classBasePwm_1a0dc5b8704b7f3107745224441d7b3a5b">StopAll</reimplements>
+        <briefdescription>
+<para>Stop all channels. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="72" column="18" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="203" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1a99e0b7151be12ebcb541611ab0983a74" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>hf_pwm_err_t StmPwm::UpdateAll</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>UpdateAll</name>
+        <qualifiedname>StmPwm::UpdateAll</qualifiedname>
+        <reimplements refid="classBasePwm_1a9cb4de783416fab169872c9250d30089">UpdateAll</reimplements>
+        <briefdescription>
+<para>Update all channel outputs simultaneously (for synchronized updates) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="73" column="18" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="211" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1af35aaae19259f5a3d4ffcbbda992673e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>hf_pwm_err_t StmPwm::SetComplementaryOutput</definition>
+        <argsstring>(hf_channel_id_t primary_channel, hf_channel_id_t complementary_channel, hf_u32_t deadtime_ns) noexcept override</argsstring>
+        <name>SetComplementaryOutput</name>
+        <qualifiedname>StmPwm::SetComplementaryOutput</qualifiedname>
+        <reimplements refid="classBasePwm_1a4b7f8834e3f06fbf5995b3bfd3e7aa71">SetComplementaryOutput</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>primary_channel</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>complementary_channel</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>deadtime_ns</declname>
+        </param>
+        <briefdescription>
+<para>Set complementary output configuration (for motor control) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>primary_channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Primary channel </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>complementary_channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Complementary channel </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>deadtime_ns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Deadtime in nanoseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="74" column="18" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="220" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1af0f3f38f53d25e5707f2e7fac065b585" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>float</type>
+        <definition>float StmPwm::GetDutyCycle</definition>
+        <argsstring>(hf_channel_id_t channel_id) const noexcept override</argsstring>
+        <name>GetDutyCycle</name>
+        <qualifiedname>StmPwm::GetDutyCycle</qualifiedname>
+        <reimplements refid="classBasePwm_1a7d04dac1cdbfc50884b24b912a52b877">GetDutyCycle</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Get current duty cycle for a channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Current duty cycle (0.0 - 1.0), or -1.0 on error </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="79" column="11" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="257" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1a2421266985d533853c9894912e09a79f" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref></type>
+        <definition>hf_frequency_hz_t StmPwm::GetFrequency</definition>
+        <argsstring>(hf_channel_id_t channel_id) const noexcept override</argsstring>
+        <name>GetFrequency</name>
+        <qualifiedname>StmPwm::GetFrequency</qualifiedname>
+        <reimplements refid="classBasePwm_1a9be813122b797d0a45c3248f0c203063">GetFrequency</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Get current frequency for a channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Current frequency in Hz, or 0 on error </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="80" column="23" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="261" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1afafe3ab43b9e3ae2226a1712c40d4456" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>TIM_HandleTypeDef *</type>
+        <definition>TIM_HandleTypeDef * StmPwm::GetHalHandle</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetHalHandle</name>
+        <qualifiedname>StmPwm::GetHalHandle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="83" column="23" bodyfile="inc/mcu/stm32/StmPwm.h" bodystart="83" bodyend="83"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classStmPwm_1a997f31c05794dcc46492b9e315ca28d1" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t StmPwm::ChannelToHal</definition>
+        <argsstring>(hf_channel_id_t ch) noexcept</argsstring>
+        <name>ChannelToHal</name>
+        <qualifiedname>StmPwm::ChannelToHal</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>ch</declname>
+        </param>
+        <briefdescription>
+<para>Get HAL channel constant from 0-based index. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="95" column="21" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="270" bodyend="278"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classStmPwm_1a38f6aaf9c3dd7535b530199f3249fb26" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool StmPwm::ApplyFrequency</definition>
+        <argsstring>(hf_frequency_hz_t freq_hz) noexcept</argsstring>
+        <name>ApplyFrequency</name>
+        <qualifiedname>StmPwm::ApplyFrequency</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref></type>
+          <declname>freq_hz</declname>
+        </param>
+        <briefdescription>
+<para>Apply freq by recalculating PSC + ARR. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="98" column="10" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="280" bodyend="312"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmPwm_1ae865b0c672222b2537a5dc2a2d27938d" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void StmPwm::ReapplyDuties</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ReapplyDuties</name>
+        <qualifiedname>StmPwm::ReapplyDuties</qualifiedname>
+        <briefdescription>
+<para>Reapply all cached duty cycles after ARR change. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPwm.h" line="101" column="10" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="314" bodyend="320"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>STM32 PWM implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Design:<itemizedlist>
+<listitem><para>One <ref refid="classStmPwm" kindref="compound">StmPwm</ref> per TIM_HandleTypeDef (one hardware timer).</para>
+</listitem><listitem><para>Channels 0–3 map to TIM_CHANNEL_1..TIM_CHANNEL_4.</para>
+</listitem><listitem><para>Duty cycle sets the CCR register relative to ARR.</para>
+</listitem><listitem><para>Frequency changes recalculate ARR+PSC (affects all channels on the timer).</para>
+</listitem><listitem><para>Complementary / dead-time support via TIM1/TIM8 BDTR register. </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BasePwm</label>
+        <link refid="classBasePwm"/>
+      </node>
+      <node id="1">
+        <label>StmPwm</label>
+        <link refid="classStmPwm"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BasePwm</label>
+        <link refid="classBasePwm"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>StmPwm</label>
+        <link refid="classStmPwm"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>hf_pwm_diagnostics_t</label>
+        <link refid="structhf__pwm__diagnostics__t"/>
+      </node>
+      <node id="3">
+        <label>hf_pwm_statistics_t</label>
+        <link refid="structhf__pwm__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/stm32/StmPwm.h" line="32" column="1" bodyfile="inc/mcu/stm32/StmPwm.h" bodystart="32" bodyend="102"/>
+    <listofallmembers>
+      <member refid="classStmPwm_1a38f6aaf9c3dd7535b530199f3249fb26" prot="private" virt="non-virtual"><scope>StmPwm</scope><name>ApplyFrequency</name></member>
+      <member refid="classBasePwm_1acd8c699abcc77062da2e26319dafcb0b" prot="protected" virt="non-virtual"><scope>StmPwm</scope><name>BasePwm</name></member>
+      <member refid="classBasePwm_1aaf342e2451aa841522e07bc84c86a0a7" prot="protected" virt="non-virtual"><scope>StmPwm</scope><name>BasePwm</name></member>
+      <member refid="classBasePwm_1a98809c8d18cca38549c10e1a8616021c" prot="protected" virt="non-virtual"><scope>StmPwm</scope><name>BasePwm</name></member>
+      <member refid="classBasePwm_1a1cbbc012f5c178e574e2fbb3bee3baf3" prot="public" virt="non-virtual"><scope>StmPwm</scope><name>CalculateFrequencyAccuracy</name></member>
+      <member refid="classStmPwm_1ad7bfc76e37cca9dabdac5aeba9cd1f62" prot="private" virt="non-virtual"><scope>StmPwm</scope><name>channel_enabled_</name></member>
+      <member refid="classStmPwm_1a997f31c05794dcc46492b9e315ca28d1" prot="private" virt="non-virtual"><scope>StmPwm</scope><name>ChannelToHal</name></member>
+      <member refid="classBasePwm_1a675192d0ee597e7603a8d6831a3c227c" prot="public" virt="non-virtual"><scope>StmPwm</scope><name>ClampDutyCycle</name></member>
+      <member refid="classStmPwm_1a0c8868d1b3c749646274682350b78675" prot="public" virt="virtual"><scope>StmPwm</scope><name>Deinitialize</name></member>
+      <member refid="classBasePwm_1a0deb2d047f9df776ac3b6f0f246fc3ca" prot="protected" virt="non-virtual"><scope>StmPwm</scope><name>diagnostics_</name></member>
+      <member refid="classStmPwm_1a2891a6812ae9d9867f9f624e7e6a3e90" prot="public" virt="virtual"><scope>StmPwm</scope><name>DisableChannel</name></member>
+      <member refid="classStmPwm_1a15a6e06ba60d8c8fcce50fa78e3d51c5" prot="private" virt="non-virtual"><scope>StmPwm</scope><name>duty_</name></member>
+      <member refid="classBasePwm_1a4cba17ff79ce18faaf8b402d2b212060" prot="public" virt="non-virtual"><scope>StmPwm</scope><name>DutyCycleToRaw</name></member>
+      <member refid="classStmPwm_1a91107816ec9fe8f31aa1c0570be97bfa" prot="public" virt="virtual"><scope>StmPwm</scope><name>EnableChannel</name></member>
+      <member refid="classBasePwm_1a8d407e46dff5f6c1f9ae2b7d68ea674c" prot="public" virt="non-virtual"><scope>StmPwm</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBasePwm_1aa084e73274f2f1d1d67cff793eda1956" prot="public" virt="non-virtual"><scope>StmPwm</scope><name>EnsureInitialized</name></member>
+      <member refid="classStmPwm_1a06395143214fb47de189dc1005192318" prot="private" virt="non-virtual"><scope>StmPwm</scope><name>frequency_hz_</name></member>
+      <member refid="classBasePwm_1a752841609c8cd458ee658579dd7f60c6" prot="public" virt="virtual"><scope>StmPwm</scope><name>GetDiagnostics</name></member>
+      <member refid="classStmPwm_1af0f3f38f53d25e5707f2e7fac065b585" prot="public" virt="virtual"><scope>StmPwm</scope><name>GetDutyCycle</name></member>
+      <member refid="classStmPwm_1a2421266985d533853c9894912e09a79f" prot="public" virt="virtual"><scope>StmPwm</scope><name>GetFrequency</name></member>
+      <member refid="classStmPwm_1afafe3ab43b9e3ae2226a1712c40d4456" prot="public" virt="non-virtual"><scope>StmPwm</scope><name>GetHalHandle</name></member>
+      <member refid="classBasePwm_1a7802bfabb7ac9430764bce70cbf03758" prot="public" virt="virtual"><scope>StmPwm</scope><name>GetStatistics</name></member>
+      <member refid="classStmPwm_1afc2206a7a40642308b6b6828ccc4633d" prot="private" virt="non-virtual"><scope>StmPwm</scope><name>htim_</name></member>
+      <member refid="classStmPwm_1a269e1545813e6519a75956a2981e8325" prot="public" virt="virtual"><scope>StmPwm</scope><name>Initialize</name></member>
+      <member refid="classBasePwm_1a6506053d333fbed35bfea3ee3bd74693" prot="protected" virt="non-virtual"><scope>StmPwm</scope><name>initialized_</name></member>
+      <member refid="classStmPwm_1a169948bffba231f28cfb8e2a21e47d9d" prot="public" virt="virtual"><scope>StmPwm</scope><name>IsChannelEnabled</name></member>
+      <member refid="classBasePwm_1ab75191deb5eec96c9d1f99c7c981467d" prot="public" virt="non-virtual"><scope>StmPwm</scope><name>IsInitialized</name></member>
+      <member refid="classBasePwm_1a352f6ddcf05ff0e0ed5c606098b24987" prot="public" virt="non-virtual"><scope>StmPwm</scope><name>IsValidDutyCycle</name></member>
+      <member refid="classBasePwm_1afab866dbce084437c35b3189f4e2952e" prot="public" virt="non-virtual"><scope>StmPwm</scope><name>IsValidFrequency</name></member>
+      <member refid="classBasePwm_1a4aae2c9b79963e8648c9cf9e6e22bc11" prot="public" virt="non-virtual"><scope>StmPwm</scope><name>IsValidRawDuty</name></member>
+      <member refid="classStmPwm_1afd4b32467181d8775da3406f5e15d7af" prot="public" virt="non-virtual"><scope>StmPwm</scope><name>kMaxChannels</name></member>
+      <member refid="classStmPwm_1aa1a0ce6a38384c1f9b96e75296f1064d" prot="public" virt="non-virtual"><scope>StmPwm</scope><name>operator=</name></member>
+      <member refid="classBasePwm_1afa73dc6b8bc3028f3848e0f470dec48d" prot="protected" virt="non-virtual" ambiguityscope="BasePwm::"><scope>StmPwm</scope><name>operator=</name></member>
+      <member refid="classBasePwm_1a61a64fe3584550862c40531d576211b3" prot="protected" virt="non-virtual" ambiguityscope="BasePwm::"><scope>StmPwm</scope><name>operator=</name></member>
+      <member refid="classBasePwm_1a4a6d82b9da888f91bd66e91b24121add" prot="public" virt="non-virtual"><scope>StmPwm</scope><name>RawToDutyCycle</name></member>
+      <member refid="classStmPwm_1ae865b0c672222b2537a5dc2a2d27938d" prot="private" virt="non-virtual"><scope>StmPwm</scope><name>ReapplyDuties</name></member>
+      <member refid="classBasePwm_1abef55c8bbd0a0fe57f2b21f286fc91dd" prot="public" virt="virtual"><scope>StmPwm</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBasePwm_1afb7176a7fbb46fa45a5a2521060ef9c7" prot="public" virt="virtual"><scope>StmPwm</scope><name>ResetStatistics</name></member>
+      <member refid="classStmPwm_1af35aaae19259f5a3d4ffcbbda992673e" prot="public" virt="virtual"><scope>StmPwm</scope><name>SetComplementaryOutput</name></member>
+      <member refid="classStmPwm_1a74511e0bf0a9768ab57a0375d687e6ac" prot="public" virt="virtual"><scope>StmPwm</scope><name>SetDutyCycle</name></member>
+      <member refid="classStmPwm_1ac65700326e03a2ee18ce2df6d8fa5697" prot="public" virt="virtual"><scope>StmPwm</scope><name>SetDutyCycleRaw</name></member>
+      <member refid="classStmPwm_1aac3185d5b8f42ab6c1ef3409df8c3365" prot="public" virt="virtual"><scope>StmPwm</scope><name>SetFrequency</name></member>
+      <member refid="classStmPwm_1acfcd13854f8131d08b2531e54e358e1b" prot="public" virt="virtual"><scope>StmPwm</scope><name>SetPhaseShift</name></member>
+      <member refid="classStmPwm_1a2a31bf7fe022850cbed5111052860ade" prot="public" virt="virtual"><scope>StmPwm</scope><name>StartAll</name></member>
+      <member refid="classBasePwm_1ae8107794611a82a5cceedbaaa2b61c78" prot="protected" virt="non-virtual"><scope>StmPwm</scope><name>statistics_</name></member>
+      <member refid="classStmPwm_1a826dd0be1ba064c3275670bbcff6c40e" prot="public" virt="non-virtual"><scope>StmPwm</scope><name>StmPwm</name></member>
+      <member refid="classStmPwm_1a32023e31610579b1de488f85169ed83d" prot="public" virt="non-virtual"><scope>StmPwm</scope><name>StmPwm</name></member>
+      <member refid="classStmPwm_1a63479bfa70129bc6baedf7831c67518c" prot="public" virt="non-virtual"><scope>StmPwm</scope><name>StmPwm</name></member>
+      <member refid="classStmPwm_1a9470315dbe5b4eb9f8cf9127f9d738e8" prot="public" virt="virtual"><scope>StmPwm</scope><name>StopAll</name></member>
+      <member refid="classStmPwm_1a3274aba44eed3130ffe85a6afc80b311" prot="private" virt="non-virtual"><scope>StmPwm</scope><name>timer_clock_hz_</name></member>
+      <member refid="classStmPwm_1a99e0b7151be12ebcb541611ab0983a74" prot="public" virt="virtual"><scope>StmPwm</scope><name>UpdateAll</name></member>
+      <member refid="classBasePwm_1a7481b15d121d631a59d1605780085d0e" prot="public" virt="virtual"><scope>StmPwm</scope><name>~BasePwm</name></member>
+      <member refid="classStmPwm_1aebf451d7ea538f8ae7781ad2b2176eee" prot="public" virt="non-virtual"><scope>StmPwm</scope><name>~StmPwm</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

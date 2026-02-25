@@ -2,6 +2,6 @@
 <area shape="rect" id="Node000001" title="Abstract base class for non&#45;volatile storage operations." alt="" coords="55,5,149,36"/>
 <area shape="rect" id="Node000002" href="$classEspNvs.html" title="Production&#45;ready MCU&#45;integrated non&#45;volatile storage implementation." alt="" coords="5,84,89,115"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,49,60,85,55,82,82,46"/>
-<area shape="rect" id="Node000003" href="$classStmNvs.html" title="STM32 NVS — stub implementation." alt="" coords="113,84,200,115"/>
+<area shape="rect" id="Node000003" href="$classStmNvs.html" title="STM32 NVS — flash&#45;backed key&#45;value store with wear leveling." alt="" coords="113,84,200,115"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="122,46,149,82,144,85,118,49"/>
 </map>

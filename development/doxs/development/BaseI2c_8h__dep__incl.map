@@ -6,7 +6,7 @@
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="2390,43,2354,60,2325,86,2309,111,2298,138,2287,197,2287,251,2290,291,2285,291,2281,251,2282,196,2293,137,2305,108,2321,82,2352,56,2388,38"/>
 <area shape="rect" id="Node000005" href="$EspTypes__I2C_8h.html" title="ESP32 I2C type definitions for hardware abstraction." alt="" coords="2335,84,2511,135"/>
 <area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="2470,49,2443,85,2439,82,2465,46"/>
-<area shape="rect" id="Node000019" href="$StmI2c_8h.html" title="STM32 I2C stub implementation — placeholder for future STM32 HAL integration." alt="" coords="2592,94,2809,125"/>
+<area shape="rect" id="Node000019" href="$StmI2c_8h.html" title="STM32 I2C Bus+Device wrapper — wraps STM32 HAL I2C via CubeMX handle." alt="" coords="2592,94,2809,125"/>
 <area shape="poly" id="edge21_Node000001_Node000019" title=" " alt="" coords="2535,39,2667,92,2665,96,2533,44"/>
 <area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="2342,324,2487,377,2485,382,2340,329"/>
 <area shape="rect" id="Node000004" href="$EspI2c_8cpp.html" title="Implementation of ESP32&#45;integrated I2C controller with proper bus&#45;device architecture." alt="" coords="2170,390,2405,421"/>
@@ -39,6 +39,6 @@
 <area shape="poly" id="edge19_Node000016_Node000017" title=" " alt="" coords="934,336,934,380,929,380,929,336"/>
 <area shape="rect" id="Node000018" href="$EspUart_8cpp.html" title="Implementation of ESP32 UART controller for the HardFOC system." alt="" coords="536,390,780,421"/>
 <area shape="poly" id="edge20_Node000016_Node000018" title=" " alt="" coords="879,329,699,392,697,387,877,324"/>
-<area shape="rect" id="Node000020" href="$StmI2c_8cpp.html" title="STM32 I2C stub implementation." alt="" coords="2586,193,2823,223"/>
+<area shape="rect" id="Node000020" href="$StmI2c_8cpp.html" title="STM32 I2C wrapper implementation — full STM32 HAL integration." alt="" coords="2586,193,2823,223"/>
 <area shape="poly" id="edge22_Node000019_Node000020" title=" " alt="" coords="2704,138,2707,192,2701,193,2699,138"/>
 </map>

@@ -96,12 +96,14 @@ $(function(){initNavTree('classStmTemperature.html',''); initResizable(); });
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classStmTemperature-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">StmTemperature Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 Temperature sensor — stub implementation.  
+<p>STM32 Temperature sensor implementation.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="StmTemperature_8h_source.html">StmTemperature.h</a>&gt;</code></p>
@@ -113,13 +115,17 @@ Inheritance diagram for StmTemperature:</div>
 <div class="dynheader">
 Collaboration diagram for StmTemperature:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classStmTemperature__coll__graph.svg" width="176" height="120"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStmTemperature__coll__graph.svg" width="414" height="160"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af087266daab79e72cb84e9e13bd1a24a" id="r_af087266daab79e72cb84e9e13bd1a24a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af087266daab79e72cb84e9e13bd1a24a">StmTemperature</a> () noexcept</td></tr>
-<tr class="separator:af087266daab79e72cb84e9e13bd1a24a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2461c1a385e2832b121f947c3dbb4875" id="r_a2461c1a385e2832b121f947c3dbb4875"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2461c1a385e2832b121f947c3dbb4875">StmTemperature</a> (const <a class="el" href="structhf__stm32__temp__sensor__config__t.html">hf_stm32_temp_sensor_config_t</a> &amp;config) noexcept</td></tr>
+<tr class="memdesc:a2461c1a385e2832b121f947c3dbb4875"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from config.  <br /></td></tr>
+<tr class="separator:a2461c1a385e2832b121f947c3dbb4875"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12adcb8014a458d3cce1a8db820eccfc" id="r_a12adcb8014a458d3cce1a8db820eccfc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12adcb8014a458d3cce1a8db820eccfc">StmTemperature</a> (ADC_HandleTypeDef *hadc=nullptr, <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> resolution_bits=12, float vref_mv=3300.0f) noexcept</td></tr>
+<tr class="memdesc:a12adcb8014a458d3cce1a8db820eccfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct with ADC handle + basics (uses internal sensor defaults).  <br /></td></tr>
+<tr class="separator:a12adcb8014a458d3cce1a8db820eccfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f5ed0c8568d7c5cd199851ba7da359b" id="r_a8f5ed0c8568d7c5cd199851ba7da359b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f5ed0c8568d7c5cd199851ba7da359b">~StmTemperature</a> () noexcept override</td></tr>
 <tr class="separator:a8f5ed0c8568d7c5cd199851ba7da359b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d6f95d8acc8e7ebf80314022f6f2eac" id="r_a6d6f95d8acc8e7ebf80314022f6f2eac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d6f95d8acc8e7ebf80314022f6f2eac">GetSensorInfo</a> (<a class="el" href="structhf__temp__sensor__info__t.html">hf_temp_sensor_info_t</a> *info) const noexcept override</td></tr>
@@ -128,6 +134,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a00eac441e907fd899ac7df305bd1ead6" id="r_a00eac441e907fd899ac7df305bd1ead6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00eac441e907fd899ac7df305bd1ead6">GetCapabilities</a> () const noexcept override</td></tr>
 <tr class="memdesc:a00eac441e907fd899ac7df305bd1ead6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get sensor capabilities.  <br /></td></tr>
 <tr class="separator:a00eac441e907fd899ac7df305bd1ead6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a608596a4778ff7dbcc6b29099d525afb" id="r_a608596a4778ff7dbcc6b29099d525afb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a608596a4778ff7dbcc6b29099d525afb">SetRange</a> (float min_celsius, float max_celsius) noexcept override</td></tr>
+<tr class="memdesc:a608596a4778ff7dbcc6b29099d525afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set temperature measurement range (advanced feature)  <br /></td></tr>
+<tr class="separator:a608596a4778ff7dbcc6b29099d525afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42c8899bcbec1bd9ef5d6273db3f6842" id="r_a42c8899bcbec1bd9ef5d6273db3f6842"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42c8899bcbec1bd9ef5d6273db3f6842">GetRange</a> (float *min_celsius, float *max_celsius) const noexcept override</td></tr>
+<tr class="memdesc:a42c8899bcbec1bd9ef5d6273db3f6842"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get temperature measurement range (advanced feature)  <br /></td></tr>
+<tr class="separator:a42c8899bcbec1bd9ef5d6273db3f6842"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fd741be7e01983487293cd79ea6694c" id="r_a2fd741be7e01983487293cd79ea6694c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2fd741be7e01983487293cd79ea6694c">SetCalibrationOffset</a> (float offset_celsius) noexcept override</td></tr>
+<tr class="memdesc:a2fd741be7e01983487293cd79ea6694c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set calibration offset (advanced feature)  <br /></td></tr>
+<tr class="separator:a2fd741be7e01983487293cd79ea6694c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6ea97a7123fac478b300b7a6e6c76d1" id="r_af6ea97a7123fac478b300b7a6e6c76d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6ea97a7123fac478b300b7a6e6c76d1">GetCalibrationOffset</a> (float *offset_celsius) const noexcept override</td></tr>
+<tr class="memdesc:af6ea97a7123fac478b300b7a6e6c76d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get calibration offset (advanced feature)  <br /></td></tr>
+<tr class="separator:af6ea97a7123fac478b300b7a6e6c76d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classBaseTemperature"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classBaseTemperature')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classBaseTemperature.html">BaseTemperature</a></td></tr>
 <tr class="memitem:a115e5a44b15a1f507cb7c9163d262a5a inherit pub_methods_classBaseTemperature" id="r_a115e5a44b15a1f507cb7c9163d262a5a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseTemperature.html#a115e5a44b15a1f507cb7c9163d262a5a">BaseTemperature</a> (const <a class="el" href="classBaseTemperature.html">BaseTemperature</a> &amp;)=delete</td></tr>
 <tr class="memdesc:a115e5a44b15a1f507cb7c9163d262a5a inherit pub_methods_classBaseTemperature"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor is deleted to avoid copying instances.  <br /></td></tr>
@@ -168,12 +186,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad97ed939d85e2686653d76967c53f790 inherit pub_methods_classBaseTemperature" id="r_ad97ed939d85e2686653d76967c53f790"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseTemperature.html#ad97ed939d85e2686653d76967c53f790">HasCapability</a> (<a class="el" href="BaseTemperature_8h.html#a5bfe096967aceddcf8232f8c4458b2cb">hf_temp_capabilities_t</a> capability) const noexcept</td></tr>
 <tr class="memdesc:ad97ed939d85e2686653d76967c53f790 inherit pub_methods_classBaseTemperature"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a specific capability is supported.  <br /></td></tr>
 <tr class="separator:ad97ed939d85e2686653d76967c53f790 inherit pub_methods_classBaseTemperature"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1bfe9f1a1069222166008b4dafe5a282 inherit pub_methods_classBaseTemperature" id="r_a1bfe9f1a1069222166008b4dafe5a282"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseTemperature.html#a1bfe9f1a1069222166008b4dafe5a282">SetRange</a> (float min_celsius, float max_celsius) noexcept</td></tr>
-<tr class="memdesc:a1bfe9f1a1069222166008b4dafe5a282 inherit pub_methods_classBaseTemperature"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set temperature measurement range (advanced feature)  <br /></td></tr>
-<tr class="separator:a1bfe9f1a1069222166008b4dafe5a282 inherit pub_methods_classBaseTemperature"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21d2b3e6c1855f666d5dc2856e9f8cea inherit pub_methods_classBaseTemperature" id="r_a21d2b3e6c1855f666d5dc2856e9f8cea"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseTemperature.html#a21d2b3e6c1855f666d5dc2856e9f8cea">GetRange</a> (float *min_celsius, float *max_celsius) const noexcept</td></tr>
-<tr class="memdesc:a21d2b3e6c1855f666d5dc2856e9f8cea inherit pub_methods_classBaseTemperature"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get temperature measurement range (advanced feature)  <br /></td></tr>
-<tr class="separator:a21d2b3e6c1855f666d5dc2856e9f8cea inherit pub_methods_classBaseTemperature"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93d2d276ad511dfa7c405a88c6ea0e01 inherit pub_methods_classBaseTemperature" id="r_a93d2d276ad511dfa7c405a88c6ea0e01"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseTemperature.html#a93d2d276ad511dfa7c405a88c6ea0e01">SetResolution</a> (float resolution_celsius) noexcept</td></tr>
 <tr class="memdesc:a93d2d276ad511dfa7c405a88c6ea0e01 inherit pub_methods_classBaseTemperature"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set measurement resolution (advanced feature)  <br /></td></tr>
 <tr class="separator:a93d2d276ad511dfa7c405a88c6ea0e01 inherit pub_methods_classBaseTemperature"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,12 +216,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4d84a21b7f330d3bc80accbd9f26b1c7 inherit pub_methods_classBaseTemperature" id="r_a4d84a21b7f330d3bc80accbd9f26b1c7"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseTemperature.html#a4d84a21b7f330d3bc80accbd9f26b1c7">Calibrate</a> (float reference_temperature_celsius) noexcept</td></tr>
 <tr class="memdesc:a4d84a21b7f330d3bc80accbd9f26b1c7 inherit pub_methods_classBaseTemperature"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform sensor calibration (advanced feature)  <br /></td></tr>
 <tr class="separator:a4d84a21b7f330d3bc80accbd9f26b1c7 inherit pub_methods_classBaseTemperature"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97cd78cf3f336211747e15a1c25d61ee inherit pub_methods_classBaseTemperature" id="r_a97cd78cf3f336211747e15a1c25d61ee"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseTemperature.html#a97cd78cf3f336211747e15a1c25d61ee">SetCalibrationOffset</a> (float offset_celsius) noexcept</td></tr>
-<tr class="memdesc:a97cd78cf3f336211747e15a1c25d61ee inherit pub_methods_classBaseTemperature"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set calibration offset (advanced feature)  <br /></td></tr>
-<tr class="separator:a97cd78cf3f336211747e15a1c25d61ee inherit pub_methods_classBaseTemperature"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55f58d0cccee590dd10e55c2668e7f0b inherit pub_methods_classBaseTemperature" id="r_a55f58d0cccee590dd10e55c2668e7f0b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseTemperature.html#a55f58d0cccee590dd10e55c2668e7f0b">GetCalibrationOffset</a> (float *offset_celsius) const noexcept</td></tr>
-<tr class="memdesc:a55f58d0cccee590dd10e55c2668e7f0b inherit pub_methods_classBaseTemperature"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get calibration offset (advanced feature)  <br /></td></tr>
-<tr class="separator:a55f58d0cccee590dd10e55c2668e7f0b inherit pub_methods_classBaseTemperature"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2be35c2e9f2cd233d77353591bfc3f53 inherit pub_methods_classBaseTemperature" id="r_a2be35c2e9f2cd233d77353591bfc3f53"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseTemperature.html#a2be35c2e9f2cd233d77353591bfc3f53">ResetCalibration</a> () noexcept</td></tr>
 <tr class="memdesc:a2be35c2e9f2cd233d77353591bfc3f53 inherit pub_methods_classBaseTemperature"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset calibration to default (advanced feature)  <br /></td></tr>
 <tr class="separator:a2be35c2e9f2cd233d77353591bfc3f53 inherit pub_methods_classBaseTemperature"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -260,6 +266,20 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:ae37d98256e55529d9d78622db0c34019 inherit pro_methods_classBaseTemperature"><td class="mdescLeft">&#160;</td><td class="mdescRight">Protected helper to validate basic operation preconditions.  <br /></td></tr>
 <tr class="separator:ae37d98256e55529d9d78622db0c34019 inherit pro_methods_classBaseTemperature"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:ab1c67e3bbe93cc7834df421a75547c0e" id="r_ab1c67e3bbe93cc7834df421a75547c0e"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1c67e3bbe93cc7834df421a75547c0e">DefaultInternalConvert</a> (<a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> raw, <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> resolution_bits)</td></tr>
+<tr class="memdesc:ab1c67e3bbe93cc7834df421a75547c0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default internal-sensor conversion (generic RM formula).  <br /></td></tr>
+<tr class="separator:ab1c67e3bbe93cc7834df421a75547c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:af833b26ce90ace49f0378788e914f780" id="r_af833b26ce90ace49f0378788e914f780"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhf__stm32__temp__sensor__config__t.html">hf_stm32_temp_sensor_config_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af833b26ce90ace49f0378788e914f780">config_</a></td></tr>
+<tr class="separator:af833b26ce90ace49f0378788e914f780"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d89f1c6728aad5a458c13599254a4bc" id="r_a4d89f1c6728aad5a458c13599254a4bc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d89f1c6728aad5a458c13599254a4bc">calibration_offset_</a></td></tr>
+<tr class="memdesc:a4d89f1c6728aad5a458c13599254a4bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">User calibration offset (°C)  <br /></td></tr>
+<tr class="separator:a4d89f1c6728aad5a458c13599254a4bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_classBaseTemperature"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classBaseTemperature')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classBaseTemperature.html">BaseTemperature</a></td></tr>
@@ -271,10 +291,14 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a65964a104b3cb9b9c737819810f0a20b inherit pro_attribs_classBaseTemperature"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 Temperature sensor — stub implementation. </p>
+<div class="textblock"><p>STM32 Temperature sensor implementation. </p>
+<p>Two modes of operation:</p><ol type="1">
+<li><b>Internal sensor</b> — reads the on-chip temperature channel. The default conversion function uses the generic RM formula; users can override with family-specific calibration constants for better accuracy.</li>
+<li><b>External sensor</b> — any NTC / PTC / thermocouple connected to an ADC channel. The user provides a <code>convert_fn</code> that maps raw counts → °C. </li>
+</ol>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="af087266daab79e72cb84e9e13bd1a24a" name="af087266daab79e72cb84e9e13bd1a24a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af087266daab79e72cb84e9e13bd1a24a">&#9670;&#160;</a></span>StmTemperature()</h2>
+<a id="a2461c1a385e2832b121f947c3dbb4875" name="a2461c1a385e2832b121f947c3dbb4875"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2461c1a385e2832b121f947c3dbb4875">&#9670;&#160;</a></span>StmTemperature() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -285,16 +309,54 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">StmTemperature::StmTemperature </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structhf__stm32__temp__sensor__config__t.html">hf_stm32_temp_sensor_config_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Construct from config. </p>
+
+</div>
+</div>
+<a id="a12adcb8014a458d3cce1a8db820eccfc" name="a12adcb8014a458d3cce1a8db820eccfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12adcb8014a458d3cce1a8db820eccfc">&#9670;&#160;</a></span>StmTemperature() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">StmTemperature::StmTemperature </td>
+          <td>(</td>
+          <td class="paramtype">ADC_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>hadc</em><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>          <td class="paramname"><span class="paramname"><em>resolution_bits</em><span class="paramdefsep"> = </span><span class="paramdefval">12</span>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>vref_mv</em><span class="paramdefsep"> = </span><span class="paramdefval">3300.0f</span></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct with ADC handle + basics (uses internal sensor defaults). </p>
 
 </div>
 </div>
@@ -316,7 +378,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -324,6 +386,37 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab1c67e3bbe93cc7834df421a75547c0e" name="ab1c67e3bbe93cc7834df421a75547c0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1c67e3bbe93cc7834df421a75547c0e">&#9670;&#160;</a></span>DefaultInternalConvert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float StmTemperature::DefaultInternalConvert </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a></td>          <td class="paramname"><span class="paramname"><em>raw</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>          <td class="paramname"><span class="paramname"><em>resolution_bits</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default internal-sensor conversion (generic RM formula). </p>
+
+</div>
+</div>
 <a id="abac4e09afd8ae32e0f2f9196643e47b1" name="abac4e09afd8ae32e0f2f9196643e47b1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abac4e09afd8ae32e0f2f9196643e47b1">&#9670;&#160;</a></span>Deinitialize()</h2>
 
@@ -354,6 +447,42 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="af6ea97a7123fac478b300b7a6e6c76d1" name="af6ea97a7123fac478b300b7a6e6c76d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6ea97a7123fac478b300b7a6e6c76d1">&#9670;&#160;</a></span>GetCalibrationOffset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a> StmTemperature::GetCalibrationOffset </td>
+          <td>(</td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>offset_celsius</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get calibration offset (advanced feature) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">offset_celsius</td><td>Pointer to store calibration offset </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Error code (TEMP_SUCCESS on success, TEMP_ERR_UNSUPPORTED_OPERATION if not supported) </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classBaseTemperature.html#a55f58d0cccee590dd10e55c2668e7f0b">BaseTemperature</a>.</p>
+
+</div>
+</div>
 <a id="a00eac441e907fd899ac7df305bd1ead6" name="a00eac441e907fd899ac7df305bd1ead6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a00eac441e907fd899ac7df305bd1ead6">&#9670;&#160;</a></span>GetCapabilities()</h2>
 
@@ -381,6 +510,47 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Capabilities flags (hf_temp_capabilities_t) </dd></dl>
 
 <p>Implements <a class="el" href="classBaseTemperature.html#a765c86c7680b43f7d075b9f392188611">BaseTemperature</a>.</p>
+
+</div>
+</div>
+<a id="a42c8899bcbec1bd9ef5d6273db3f6842" name="a42c8899bcbec1bd9ef5d6273db3f6842"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42c8899bcbec1bd9ef5d6273db3f6842">&#9670;&#160;</a></span>GetRange()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a> StmTemperature::GetRange </td>
+          <td>(</td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>min_celsius</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>max_celsius</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get temperature measurement range (advanced feature) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">min_celsius</td><td>Pointer to store minimum temperature </td></tr>
+    <tr><td class="paramname">max_celsius</td><td>Pointer to store maximum temperature </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Error code (TEMP_SUCCESS on success, TEMP_ERR_UNSUPPORTED_OPERATION if not supported) </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classBaseTemperature.html#a21d2b3e6c1855f666d5dc2856e9f8cea">BaseTemperature</a>.</p>
 
 </div>
 </div>
@@ -483,6 +653,130 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Error code (TEMP_SUCCESS on success) </dd></dl>
 
 <p>Implements <a class="el" href="classBaseTemperature.html#af171259d6aa00825f0b8743d2331850e">BaseTemperature</a>.</p>
+
+</div>
+</div>
+<a id="a2fd741be7e01983487293cd79ea6694c" name="a2fd741be7e01983487293cd79ea6694c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fd741be7e01983487293cd79ea6694c">&#9670;&#160;</a></span>SetCalibrationOffset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a> StmTemperature::SetCalibrationOffset </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>offset_celsius</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set calibration offset (advanced feature) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">offset_celsius</td><td>Calibration offset in Celsius </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Error code (TEMP_SUCCESS on success, TEMP_ERR_UNSUPPORTED_OPERATION if not supported) </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classBaseTemperature.html#a97cd78cf3f336211747e15a1c25d61ee">BaseTemperature</a>.</p>
+
+</div>
+</div>
+<a id="a608596a4778ff7dbcc6b29099d525afb" name="a608596a4778ff7dbcc6b29099d525afb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a608596a4778ff7dbcc6b29099d525afb">&#9670;&#160;</a></span>SetRange()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a> StmTemperature::SetRange </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>min_celsius</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>max_celsius</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set temperature measurement range (advanced feature) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">min_celsius</td><td>Minimum temperature in Celsius </td></tr>
+    <tr><td class="paramname">max_celsius</td><td>Maximum temperature in Celsius </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Error code (TEMP_SUCCESS on success, TEMP_ERR_UNSUPPORTED_OPERATION if not supported) </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classBaseTemperature.html#a1bfe9f1a1069222166008b4dafe5a282">BaseTemperature</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a4d89f1c6728aad5a458c13599254a4bc" name="a4d89f1c6728aad5a458c13599254a4bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d89f1c6728aad5a458c13599254a4bc">&#9670;&#160;</a></span>calibration_offset_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float StmTemperature::calibration_offset_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>User calibration offset (°C) </p>
+
+</div>
+</div>
+<a id="af833b26ce90ace49f0378788e914f780" name="af833b26ce90ace49f0378788e914f780"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af833b26ce90ace49f0378788e914f780">&#9670;&#160;</a></span>config_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structhf__stm32__temp__sensor__config__t.html">hf_stm32_temp_sensor_config_t</a> StmTemperature::config_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

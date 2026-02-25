@@ -38,7 +38,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classStmGpio.html" target="_top" xlink:title="STM32 GPIO — stub implementation.">
+<g id="a_Node000003"><a xlink:href="classStmGpio.html" target="_top" xlink:title="STM32 GPIO implementation with full HAL integration.">
 <polygon fill="white" stroke="#666666" points="158,-23 87,-23 87,0 158,0 158,-23"/>
 <text text-anchor="middle" x="122.5" y="-7.8" font-family="Arial" font-size="14.00">StmGpio</text>
 </a>

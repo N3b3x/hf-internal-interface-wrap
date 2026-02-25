@@ -48,7 +48,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classStmI2cDevice.html" target="_top" xlink:title="STM32 I2C device — stub implementation.">
+<g id="a_Node000003"><a xlink:href="classStmI2cDevice.html" target="_top" xlink:title="STM32 I2C device — inherits BaseI2c, delegates I/O to parent bus HAL handle.">
 <polygon fill="white" stroke="#666666" points="218,-23 117,-23 117,0 218,0 218,-23"/>
 <text text-anchor="middle" x="167.5" y="-7.8" font-family="Arial" font-size="14.00">StmI2cDevice</text>
 </a>

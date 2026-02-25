@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader" kind="struct" language="C++" prot="public">
+    <compoundname>anonymous_namespace{StmCan.cpp}::BxCanRxHeader</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a6c0eb104ab6fa161db608c242559aede" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanRxHeader::StdId</definition>
+        <argsstring></argsstring>
+        <name>StdId</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanRxHeader::StdId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="71" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a7fd86751986a05df29586efb8d79df15" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanRxHeader::ExtId</definition>
+        <argsstring></argsstring>
+        <name>ExtId</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanRxHeader::ExtId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="72" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a2ff3fffe32dffca437d43c05d94cd67c" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanRxHeader::IDE</definition>
+        <argsstring></argsstring>
+        <name>IDE</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanRxHeader::IDE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="73" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a762a02c31d08072b81aa41b47cf2116a" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanRxHeader::RTR</definition>
+        <argsstring></argsstring>
+        <name>RTR</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanRxHeader::RTR</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="74" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a32ffe1690e3cc5456bc40771bcbb9814" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanRxHeader::DLC</definition>
+        <argsstring></argsstring>
+        <name>DLC</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanRxHeader::DLC</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="75" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a5c02447d6b879b2f524ef231b8f9aa2d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanRxHeader::FilterMatchIndex</definition>
+        <argsstring></argsstring>
+        <name>FilterMatchIndex</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanRxHeader::FilterMatchIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="76" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a828966768683497b10c573def6b49c0a" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanRxHeader::Timestamp</definition>
+        <argsstring></argsstring>
+        <name>Timestamp</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanRxHeader::Timestamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="77" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/stm32/StmCan.cpp" line="70" column="5" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="70" bodyend="78"/>
+    <listofallmembers>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a32ffe1690e3cc5456bc40771bcbb9814" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanRxHeader</scope><name>DLC</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a7fd86751986a05df29586efb8d79df15" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanRxHeader</scope><name>ExtId</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a5c02447d6b879b2f524ef231b8f9aa2d" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanRxHeader</scope><name>FilterMatchIndex</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a2ff3fffe32dffca437d43c05d94cd67c" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanRxHeader</scope><name>IDE</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a762a02c31d08072b81aa41b47cf2116a" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanRxHeader</scope><name>RTR</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a6c0eb104ab6fa161db608c242559aede" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanRxHeader</scope><name>StdId</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a828966768683497b10c573def6b49c0a" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanRxHeader</scope><name>Timestamp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

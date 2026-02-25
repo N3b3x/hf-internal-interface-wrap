@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespaceanonymous__namespace_02StmCan_8cpp_03" kind="namespace" language="C++">
+    <compoundname>anonymous_namespace{StmCan.cpp}</compoundname>
+    <innerclass refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig" prot="public">anonymous_namespace{StmCan.cpp}::BxCanFilterConfig</innerclass>
+    <innerclass refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader" prot="public">anonymous_namespace{StmCan.cpp}::BxCanRxHeader</innerclass>
+    <innerclass refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader" prot="public">anonymous_namespace{StmCan.cpp}::BxCanTxHeader</innerclass>
+    <innerclass refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanFilterConfig" prot="public">anonymous_namespace{StmCan.cpp}::FdCanFilterConfig</innerclass>
+    <innerclass refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader" prot="public">anonymous_namespace{StmCan.cpp}::FdCanRxHeader</innerclass>
+    <innerclass refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader" prot="public">anonymous_namespace{StmCan.cpp}::FdCanTxHeader</innerclass>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmCan_8cpp_03_1aba2c1ce526196a638d1a1dce049425d4" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t anonymous_namespace{StmCan.cpp}::kCanRxFifo0</definition>
+        <argsstring></argsstring>
+        <name>kCanRxFifo0</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::kCanRxFifo0</qualifiedname>
+        <initializer>= 0x00000000U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="53" column="24" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/stm32/StmCan.cpp" line="52" column="1"/>
+  </compounddef>
+</doxygen>

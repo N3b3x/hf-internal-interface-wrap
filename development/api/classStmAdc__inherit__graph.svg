@@ -21,7 +21,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="STM32 ADC — stub implementation.">
+<g id="a_Node000001"><a xlink:title="STM32 ADC wrapper — wraps STM32 HAL ADC with full channel management.">
 <polygon fill="#999999" stroke="#666666" points="68,-23 3,-23 3,0 68,0 68,-23"/>
 <text text-anchor="middle" x="35.5" y="-7.8" font-family="Arial" font-size="14.00">StmAdc</text>
 </a>

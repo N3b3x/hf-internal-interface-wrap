@@ -1,12 +1,18 @@
 var classStmLogger =
 [
-    [ "StmLogger", "classStmLogger.html#ab80d5c81f30a88b8e51aa5791eee041f", null ],
+    [ "Backend", "classStmLogger.html#a61646c2f7c850f826a73d37065982705", [
+      [ "UART_HAL", "classStmLogger.html#a61646c2f7c850f826a73d37065982705a2155abd1f12c94db11b3193b912bdddb", null ],
+      [ "SWO_ITM", "classStmLogger.html#a61646c2f7c850f826a73d37065982705ae2c9ebf15d5093c70d71af68714890cb", null ],
+      [ "PRINTF", "classStmLogger.html#a61646c2f7c850f826a73d37065982705a8467aa6a022f2a15244e4db04f419b00", null ]
+    ] ],
+    [ "StmLogger", "classStmLogger.html#a1410859d8afce01c97f8ce70c20866ec", null ],
     [ "~StmLogger", "classStmLogger.html#ad785842bb793da3d60a5489899742002", null ],
     [ "Debug", "classStmLogger.html#a66a47cf67fc5cf81813657d86b40436b", null ],
     [ "Deinitialize", "classStmLogger.html#ab810f2599398f77b28f55c6c84e3fcbe", null ],
     [ "EnsureInitialized", "classStmLogger.html#a015a61a54d5f3e93af13ad2630b505ed", null ],
     [ "Error", "classStmLogger.html#a0175d15ffd5f584219e245ada94523e4", null ],
     [ "Flush", "classStmLogger.html#a023f685044c18bf63081ec48a46dfdfe", null ],
+    [ "FormatAndOutput", "classStmLogger.html#a6f50475b905482fe6b74c83605baff18", null ],
     [ "GetDiagnostics", "classStmLogger.html#a1b90770ff5573663d9a73419236c2a9c", null ],
     [ "GetLastError", "classStmLogger.html#a05c26cee0e96ea6eeda411dd5decd4dc", null ],
     [ "GetLastErrorMessage", "classStmLogger.html#abc19945e773ba5ff8c8b492e5f1d7d12", null ],
@@ -20,6 +26,7 @@ var classStmLogger =
     [ "Log", "classStmLogger.html#aae2ab97cb870518bd85bf98c0e5bf4de", null ],
     [ "LogV", "classStmLogger.html#a82f8b9ab036f242be008db739996db1d", null ],
     [ "LogWithLocation", "classStmLogger.html#a291097b7c1fd5e638c9cd7d5e038a0c5", null ],
+    [ "OutputString", "classStmLogger.html#aad07a8fb34502403b23fd347390a1c08", null ],
     [ "PrintDiagnostics", "classStmLogger.html#acc6e0d3f238a00e169f591787f8bf435", null ],
     [ "PrintStatistics", "classStmLogger.html#ac902564ee04c8e554825184b84a996a9", null ],
     [ "PrintStatus", "classStmLogger.html#af1a868f33898057f7ee700e8fba9bed2", null ],
@@ -27,5 +34,13 @@ var classStmLogger =
     [ "ResetStatistics", "classStmLogger.html#ac41e6fc6c54eb644f690619362f855e3", null ],
     [ "SetLogLevel", "classStmLogger.html#ae2602c3ebe878697f3b6b32b12ac1cf2", null ],
     [ "Verbose", "classStmLogger.html#a84d53e2a0f13748eba3e7835b58ce7f4", null ],
-    [ "Warn", "classStmLogger.html#a335f9c0b5f3b6e5b334eac182fef091f", null ]
+    [ "Warn", "classStmLogger.html#a335f9c0b5f3b6e5b334eac182fef091f", null ],
+    [ "backend_", "classStmLogger.html#a13f778052d724f7ce83dade842d94002", null ],
+    [ "diagnostics_", "classStmLogger.html#a3f2a1bd766541bcaade40e485d95c30b", null ],
+    [ "format_buffer_", "classStmLogger.html#a9385bc2edaebaddaf84544ae3b401ace", null ],
+    [ "global_level_", "classStmLogger.html#a9746b9a039d212053454ecd23b6e3cee", null ],
+    [ "initialized_", "classStmLogger.html#ad636d2f9d50ecc3a69791f70406bf3a2", null ],
+    [ "last_error_", "classStmLogger.html#ab2e828b85fc6aee9fd5f9cafc69f20c9", null ],
+    [ "statistics_", "classStmLogger.html#a9c4e3bddb5d4b2d0e36180cbcbb9da6e", null ],
+    [ "uart_handle_", "classStmLogger.html#a9e48ff976993f72acf026b0bd40fc5fe", null ]
 ];

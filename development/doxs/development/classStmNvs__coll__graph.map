@@ -1,9 +1,13 @@
 <map id="StmNvs" name="StmNvs">
-<area shape="rect" id="Node000001" title="STM32 NVS — stub implementation." alt="" coords="148,184,235,215"/>
+<area shape="rect" id="Node000001" title="STM32 NVS — flash&#45;backed key&#45;value store with wear leveling." alt="" coords="324,203,411,233"/>
 <area shape="rect" id="Node000002" href="$classBaseNvs.html" title="Abstract base class for non&#45;volatile storage operations." alt="" coords="144,104,239,135"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,148,194,184,189,184,189,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,139,343,200,340,205,228,144"/>
 <area shape="rect" id="Node000003" href="$structhf__nvs__statistics__t.html" title="NVS operation statistics." alt="" coords="5,5,175,36"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="117,44,178,102,174,106,113,47"/>
 <area shape="rect" id="Node000004" href="$structhf__nvs__diagnostics__t.html" title="NVS diagnostic information." alt="" coords="199,5,389,36"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="275,49,242,82,213,106,209,102,239,78,271,45"/>
+<area shape="rect" id="Node000005" href="$structhf__stm32__nvs__config__t.html" title="Flash&#45;based NVS configuration for STM32." alt="" coords="263,104,471,135"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="370,148,370,202,365,202,365,148"/>
+<area shape="rect" id="Node000006" href="$structStmNvs_1_1CacheEntry.html" title="RAM cache entry." alt="" coords="496,104,687,135"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="558,144,486,181,412,207,410,202,484,176,555,139"/>
 </map>

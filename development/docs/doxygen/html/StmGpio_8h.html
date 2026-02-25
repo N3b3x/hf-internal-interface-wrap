@@ -99,13 +99,14 @@ $(function(){initNavTree('StmGpio_8h.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 GPIO stub implementation — placeholder for future STM32 HAL integration.  
+<p>STM32 GPIO wrapper — full HAL integration with EXTI interrupt support.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="BaseGpio_8h_source.html">BaseGpio.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="StmTypes_8h_source.html">StmTypes.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for StmGpio.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="StmGpio_8h__incl.svg" width="371" height="278"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="StmGpio_8h__incl.svg" width="483" height="278"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -118,12 +119,15 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStmGpio.html">StmGpio</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 GPIO — stub implementation.  <a href="classStmGpio.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 GPIO implementation with full HAL integration.  <a href="classStmGpio.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 GPIO stub implementation — placeholder for future STM32 HAL integration. </p>
-<p>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </p>
+<div class="textblock"><p>STM32 GPIO wrapper — full HAL integration with EXTI interrupt support. </p>
+<p>Users configure GPIO pins in STM32CubeMX, then use this wrapper to provide the <a class="el" href="classBaseGpio.html" title="Unified GPIO base class for all digital GPIO implementations.">BaseGpio</a> interface. Runtime direction/pull/output-mode changes re-apply HAL_GPIO_Init. EXTI interrupts are routed through a static dispatch table.</p>
+<dl class="section author"><dt>Author</dt><dd>HardFOC </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC — Licensed under GPL v3.0 or later. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

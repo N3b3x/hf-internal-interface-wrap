@@ -1,5 +1,9 @@
 <map id="StmLogger" name="StmLogger">
-<area shape="rect" id="Node000001" title="STM32 Logger — stub implementation." alt="" coords="9,84,120,115"/>
+<area shape="rect" id="Node000001" title="STM32 Logger — production&#45;quality logging over UART/SWO/printf." alt="" coords="188,104,299,135"/>
 <area shape="rect" id="Node000002" href="$classBaseLogger.html" title="Base logger abstract class." alt="" coords="5,5,124,36"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,50,67,84,62,84,62,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,40,218,101,216,106,102,45"/>
+<area shape="rect" id="Node000003" href="$structhf__logger__statistics__t.html" title="Logger statistics structure." alt="" coords="148,5,339,36"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="246,50,246,104,241,104,241,50"/>
+<area shape="rect" id="Node000004" href="$structhf__logger__diagnostics__t.html" title="Logger diagnostics structure." alt="" coords="363,5,575,36"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="425,44,335,82,278,106,276,101,333,78,422,39"/>
 </map>

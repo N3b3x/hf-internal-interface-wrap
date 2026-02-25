@@ -4,11 +4,139 @@
     <compoundname>StmNvs</compoundname>
     <basecompoundref refid="classBaseNvs" prot="public" virt="non-virtual">BaseNvs</basecompoundref>
     <includes refid="StmNvs_8h" local="no">StmNvs.h</includes>
+    <innerclass refid="structStmNvs_1_1CacheEntry" prot="private">StmNvs::CacheEntry</innerclass>
+    <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classStmNvs_1a0bcc4c0e9ca2496bf414508a23ae60db" prot="private" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <name>EntryType</name>
+        <qualifiedname>StmNvs::EntryType</qualifiedname>
+        <enumvalue id="classStmNvs_1a0bcc4c0e9ca2496bf414508a23ae60dbac8bd5bedff8ef192d39a962afc0e19ee" prot="private">
+          <name>U32</name>
+          <initializer>= 0x01</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classStmNvs_1a0bcc4c0e9ca2496bf414508a23ae60dba63b588d5559f64f89a416e656880b949" prot="private">
+          <name>STRING</name>
+          <initializer>= 0x02</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classStmNvs_1a0bcc4c0e9ca2496bf414508a23ae60dba1649cff06611a6025da3dd511a97fb43" prot="private">
+          <name>BLOB</name>
+          <initializer>= 0x03</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classStmNvs_1a0bcc4c0e9ca2496bf414508a23ae60dbad0a0eb3dc879369e4217cd440cb3c5da" prot="private">
+          <name>ERASED</name>
+          <initializer>= 0xFF</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>NVS entry types. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="98" column="5" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="98" bodyend="103"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classStmNvs_1a26a94da96e7a0376bd0859555028a052" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__stm32__nvs__config__t" kindref="compound">hf_stm32_nvs_config_t</ref></type>
+        <definition>hf_stm32_nvs_config_t StmNvs::flash_config_</definition>
+        <argsstring></argsstring>
+        <name>flash_config_</name>
+        <qualifiedname>StmNvs::flash_config_</qualifiedname>
+        <briefdescription>
+<para>Flash region config. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="142" column="27" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmNvs_1afa8a283e260349811907e894d4db4d3c" prot="private" static="no" mutable="no">
+        <type><ref refid="structStmNvs_1_1CacheEntry" kindref="compound">CacheEntry</ref></type>
+        <definition>CacheEntry StmNvs::cache_[kMaxEntries]</definition>
+        <argsstring>[kMaxEntries]</argsstring>
+        <name>cache_</name>
+        <qualifiedname>StmNvs::cache_</qualifiedname>
+        <briefdescription>
+<para>RAM cache. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="144" column="28" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmNvs_1a1deebe21c4521e78c4c25420dc8a6599" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t StmNvs::entry_count_</definition>
+        <argsstring></argsstring>
+        <name>entry_count_</name>
+        <qualifiedname>StmNvs::entry_count_</qualifiedname>
+        <briefdescription>
+<para>Current entry count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="145" column="28" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmNvs_1aea3bc8d29dccd30404408e094e1ec907" prot="private" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t StmNvs::write_offset_</definition>
+        <argsstring></argsstring>
+        <name>write_offset_</name>
+        <qualifiedname>StmNvs::write_offset_</qualifiedname>
+        <briefdescription>
+<para>Current write position in flash. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="146" column="28" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classStmNvs_1addfe90a086182d8e85cacbbbc1a51207" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t StmNvs::kMaxEntries</definition>
+        <argsstring></argsstring>
+        <name>kMaxEntries</name>
+        <qualifiedname>StmNvs::kMaxEntries</qualifiedname>
+        <initializer>= 64</initializer>
+        <briefdescription>
+<para>Max cached entries. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="143" column="29" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classStmNvs_1a26366d606b8f3e0b153bdabccfffcca8" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classStmNvs_1a58c10717e9ebc1e4ba3bdc51fcacac32" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
         <definition>StmNvs::StmNvs</definition>
-        <argsstring>(const char *namespace_name=&quot;default&quot;) noexcept</argsstring>
+        <argsstring>(const char *namespace_name=&quot;default&quot;, const hf_stm32_nvs_config_t &amp;flash_config=hf_stm32_nvs_config_t()) noexcept</argsstring>
         <name>StmNvs</name>
         <qualifiedname>StmNvs::StmNvs</qualifiedname>
         <param>
@@ -16,13 +144,37 @@
           <declname>namespace_name</declname>
           <defval>&quot;default&quot;</defval>
         </param>
+        <param>
+          <type>const <ref refid="structhf__stm32__nvs__config__t" kindref="compound">hf_stm32_nvs_config_t</ref> &amp;</type>
+          <declname>flash_config</declname>
+          <defval><ref refid="structhf__stm32__nvs__config__t" kindref="compound">hf_stm32_nvs_config_t</ref>()</defval>
+        </param>
         <briefdescription>
+<para>Construct with namespace and flash configuration. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>namespace_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Logical namespace (for multi-partition support) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>flash_config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flash region configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="17" column="14" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="10" bodyend="10"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="55" column="14" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="37" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1aec7905feea3b210ced450761f89d2862" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -36,7 +188,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="18" column="5"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="58" column="5" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="51" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1aaf64aac4ece7c73b0815e28a749a1b0d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -55,7 +207,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="20" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="13" bodyend="13"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="62" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="59" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1aa3c53acfbe0d42730c0b17a218273131" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -74,7 +226,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="21" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="14" bodyend="14"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="63" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="82" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a972ac2246d561ede81b3855ea1832122" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -118,7 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="22" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="16" bodyend="18"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="65" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="96" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a24f68fe26b2344cbd2bf817095407a45" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -162,7 +314,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="23" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="19" bodyend="21"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="66" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="107" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a0b4bf4ceacb6f2011bc0a0713415fc70" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -206,7 +358,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="24" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="22" bodyend="24"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="68" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="121" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1ad2f72c91b0926ad9d6390fb1fb9172f9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -275,7 +427,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="25" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="25" bodyend="27"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="69" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="135" bodyend="153"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a4c90c0fadacf110413b37debf4effe0e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -331,7 +483,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="27" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="28" bodyend="30"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="72" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="155" bodyend="165"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a7692514b5c591e201d9e84ea7a9900b6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -400,7 +552,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="28" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="31" bodyend="33"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="73" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="167" bodyend="184"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a6c3d4484e78bf018fff0062902518e26" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -432,7 +584,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="30" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="34" bodyend="36"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="76" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="186" bodyend="196"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a4927951d09db18d392b6b6593809b0ac" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -451,7 +603,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="31" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="37" bodyend="39"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="77" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="198" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a8a8abfb797fa5369d790a1e74501ec26" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -483,7 +635,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="32" column="10" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="40" bodyend="40"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="78" column="10" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="203" bodyend="207"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1ac2993ecb7b30a7dda594c510d8f533b1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -527,7 +679,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="33" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="41" bodyend="43"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="79" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="209" bodyend="218"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a8dae94d149b877cb11f42860f3506ada" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>const char *</type>
@@ -546,7 +698,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="34" column="16" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="44" bodyend="44"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="81" column="16" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="220" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a65148f056f3bde8f09e618fd8d2a256e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>size_t</type>
@@ -565,7 +717,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="35" column="12" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="45" bodyend="45"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="82" column="12" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="224" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a958e824edad543dbb63d1bff36a1c019" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>size_t</type>
@@ -584,13 +736,217 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="36" column="12" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="46" bodyend="46"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="83" column="12" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="228" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1aac8319f591df1a405288b78bcbad42f7" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="structhf__stm32__nvs__config__t" kindref="compound">hf_stm32_nvs_config_t</ref> &amp;</type>
+        <definition>const hf_stm32_nvs_config_t &amp; StmNvs::GetFlashConfig</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetFlashConfig</name>
+        <qualifiedname>StmNvs::GetFlashConfig</qualifiedname>
+        <briefdescription>
+<para>Get the flash configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="88" column="33" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1a36c3f07f83bbd139baf128256f515dbd" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t StmNvs::GetEntryCount</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetEntryCount</name>
+        <qualifiedname>StmNvs::GetEntryCount</qualifiedname>
+        <briefdescription>
+<para>Get number of stored entries. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="91" column="12" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="91" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1ab6dd9137f0cc82102ed2e076f03d3786" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t StmNvs::GetFreeSpace</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetFreeSpace</name>
+        <qualifiedname>StmNvs::GetFreeSpace</qualifiedname>
+        <briefdescription>
+<para>Get available free space in current sector (bytes) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="94" column="12" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="232" bodyend="234"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classStmNvs_1a6151d29c1bdfd4e50fafd0610f972962" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>struct</type>
+        <definition>struct StmNvs::__attribute__</definition>
+        <argsstring>((packed)) EntryHeader</argsstring>
+        <name>__attribute__</name>
+        <qualifiedname>StmNvs::__attribute__</qualifiedname>
+        <param>
+          <type>(packed)</type>
+        </param>
+        <briefdescription>
+<para>Entry header stored in flash (packed) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>&lt; Key string length (not including null)</para>
+<para>&lt; Value type</para>
+<para>&lt; Data length in bytes</para>
+<para>&lt; CRC32 of key + data</para>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="94" column="12" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="106" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1a48ba4510a23c360e0a605de02dd3b26b" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int StmNvs::FindCacheEntry</definition>
+        <argsstring>(const char *key) const noexcept</argsstring>
+        <name>FindCacheEntry</name>
+        <qualifiedname>StmNvs::FindCacheEntry</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Find entry in RAM cache by key. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="124" column="9" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="240" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1af584c17c3ecef3252cf70f79139dab40" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int StmNvs::AddOrUpdateCache</definition>
+        <argsstring>(const char *key, EntryType type, const void *data, size_t data_size) noexcept</argsstring>
+        <name>AddOrUpdateCache</name>
+        <qualifiedname>StmNvs::AddOrUpdateCache</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="classStmNvs_1a0bcc4c0e9ca2496bf414508a23ae60db" kindref="member">EntryType</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>data_size</declname>
+        </param>
+        <briefdescription>
+<para>Add or update entry in RAM cache. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="127" column="9" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="249" bodyend="268"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1ae1e449321a8d845bf60c4e323072f3e1" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool StmNvs::IsValidKey</definition>
+        <argsstring>(const char *key) const noexcept</argsstring>
+        <name>IsValidKey</name>
+        <qualifiedname>StmNvs::IsValidKey</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Validate a key string. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="131" column="10" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="270" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1af0b253a0dd2df51a284a60e1a1e27b15" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t StmNvs::FlushToFlash</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>FlushToFlash</name>
+        <qualifiedname>StmNvs::FlushToFlash</qualifiedname>
+        <briefdescription>
+<para>Write all dirty entries to flash. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="134" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="276" bodyend="346"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1ae6c999eca920d0590c0d544a923823d0" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t StmNvs::LoadFromFlash</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>LoadFromFlash</name>
+        <qualifiedname>StmNvs::LoadFromFlash</qualifiedname>
+        <briefdescription>
+<para>Read entries from flash into RAM cache. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="137" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="348" bodyend="399"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classStmNvs_1ac99989172e7bf3631a4b4afa6635e3f0" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t StmNvs::ComputeCrc32</definition>
+        <argsstring>(const void *data, size_t length) noexcept</argsstring>
+        <name>ComputeCrc32</name>
+        <qualifiedname>StmNvs::ComputeCrc32</qualifiedname>
+        <param>
+          <type>const void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>Simple CRC32 for entry validation. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="140" column="21" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="401" bodyend="412"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>STM32 NVS — stub implementation. </para>
+<para>STM32 NVS — flash-backed key-value store with wear leveling. </para>
     </briefdescription>
     <detaileddescription>
+<para>Design:<itemizedlist>
+<listitem><para>Uses a flat log of {key_len, key[], type, data_len, data[]} entries</para>
+</listitem><listitem><para>New writes append; reads scan from end to find latest value</para>
+</listitem><listitem><para>Commit triggers flash write of dirty entries</para>
+</listitem><listitem><para>When sector is full, compact (copy live entries to backup sector, erase, swap)</para>
+</listitem><listitem><para>Supports U32, String, and Blob value types</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="note"><para>Flash operations require HAL_FLASH_Unlock/Lock — handled internally. </para>
+</simplesect>
+</para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2">
@@ -620,6 +976,16 @@
         <link refid="classStmNvs"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>flash_config_</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>cache_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>StmNvs::CacheEntry</label>
+        <link refid="structStmNvs_1_1CacheEntry"/>
       </node>
       <node id="4">
         <label>hf_nvs_diagnostics_t</label>
@@ -629,20 +995,36 @@
         <label>hf_nvs_statistics_t</label>
         <link refid="structhf__nvs__statistics__t"/>
       </node>
+      <node id="5">
+        <label>hf_stm32_nvs_config_t</label>
+        <link refid="structhf__stm32__nvs__config__t"/>
+      </node>
     </collaborationgraph>
-    <location file="inc/mcu/stm32/StmNvs.h" line="15" column="1" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="15" bodyend="37"/>
+    <location file="inc/mcu/stm32/StmNvs.h" line="48" column="1" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="48" bodyend="147"/>
     <listofallmembers>
+      <member refid="classStmNvs_1a6151d29c1bdfd4e50fafd0610f972962" prot="private" virt="non-virtual"><scope>StmNvs</scope><name>__attribute__</name></member>
+      <member refid="classStmNvs_1af584c17c3ecef3252cf70f79139dab40" prot="private" virt="non-virtual"><scope>StmNvs</scope><name>AddOrUpdateCache</name></member>
       <member refid="classBaseNvs_1abc92e07335f490e560ea1a1513ea63fc" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>BaseNvs</name></member>
       <member refid="classBaseNvs_1abfe625b5e099d438f744514728de9674" prot="protected" virt="non-virtual"><scope>StmNvs</scope><name>BaseNvs</name></member>
+      <member refid="classStmNvs_1afa8a283e260349811907e894d4db4d3c" prot="private" virt="non-virtual"><scope>StmNvs</scope><name>cache_</name></member>
       <member refid="classStmNvs_1a4927951d09db18d392b6b6593809b0ac" prot="public" virt="virtual"><scope>StmNvs</scope><name>Commit</name></member>
+      <member refid="classStmNvs_1ac99989172e7bf3631a4b4afa6635e3f0" prot="private" virt="non-virtual"><scope>StmNvs</scope><name>ComputeCrc32</name></member>
       <member refid="classStmNvs_1aa3c53acfbe0d42730c0b17a218273131" prot="public" virt="virtual"><scope>StmNvs</scope><name>Deinitialize</name></member>
       <member refid="classBaseNvs_1a76a4a9aae7deb785a6773843cc08d366" prot="protected" virt="non-virtual"><scope>StmNvs</scope><name>diagnostics_</name></member>
       <member refid="classBaseNvs_1a4d5a23def2dfdee04a1ada50f8c6e067" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>EnsureDeinitialized</name></member>
       <member refid="classBaseNvs_1a517d0d03678ff0dfdd57eff54dee9da2" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>EnsureInitialized</name></member>
+      <member refid="classStmNvs_1a1deebe21c4521e78c4c25420dc8a6599" prot="private" virt="non-virtual"><scope>StmNvs</scope><name>entry_count_</name></member>
+      <member refid="classStmNvs_1a0bcc4c0e9ca2496bf414508a23ae60db" prot="private" virt="non-virtual"><scope>StmNvs</scope><name>EntryType</name></member>
       <member refid="classStmNvs_1a6c3d4484e78bf018fff0062902518e26" prot="public" virt="virtual"><scope>StmNvs</scope><name>EraseKey</name></member>
+      <member refid="classStmNvs_1a48ba4510a23c360e0a605de02dd3b26b" prot="private" virt="non-virtual"><scope>StmNvs</scope><name>FindCacheEntry</name></member>
+      <member refid="classStmNvs_1a26a94da96e7a0376bd0859555028a052" prot="private" virt="non-virtual"><scope>StmNvs</scope><name>flash_config_</name></member>
+      <member refid="classStmNvs_1af0b253a0dd2df51a284a60e1a1e27b15" prot="private" virt="non-virtual"><scope>StmNvs</scope><name>FlushToFlash</name></member>
       <member refid="classStmNvs_1a7692514b5c591e201d9e84ea7a9900b6" prot="public" virt="virtual"><scope>StmNvs</scope><name>GetBlob</name></member>
       <member refid="classStmNvs_1a8dae94d149b877cb11f42860f3506ada" prot="public" virt="virtual"><scope>StmNvs</scope><name>GetDescription</name></member>
       <member refid="classBaseNvs_1a5fe8b85bd8c8c103d5e8ce9c5060b49c" prot="public" virt="virtual"><scope>StmNvs</scope><name>GetDiagnostics</name></member>
+      <member refid="classStmNvs_1a36c3f07f83bbd139baf128256f515dbd" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>GetEntryCount</name></member>
+      <member refid="classStmNvs_1aac8319f591df1a405288b78bcbad42f7" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>GetFlashConfig</name></member>
+      <member refid="classStmNvs_1ab6dd9137f0cc82102ed2e076f03d3786" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>GetFreeSpace</name></member>
       <member refid="classStmNvs_1a65148f056f3bde8f09e618fd8d2a256e" prot="public" virt="virtual"><scope>StmNvs</scope><name>GetMaxKeyLength</name></member>
       <member refid="classStmNvs_1a958e824edad543dbb63d1bff36a1c019" prot="public" virt="virtual"><scope>StmNvs</scope><name>GetMaxValueSize</name></member>
       <member refid="classBaseNvs_1a6dc238eadbd792da526fcbeea4bf58d5" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>GetNamespace</name></member>
@@ -653,7 +1035,10 @@
       <member refid="classStmNvs_1aaf64aac4ece7c73b0815e28a749a1b0d" prot="public" virt="virtual"><scope>StmNvs</scope><name>Initialize</name></member>
       <member refid="classBaseNvs_1a7a818a3463d3efe8d5eacd8b4d5b87a1" prot="protected" virt="non-virtual"><scope>StmNvs</scope><name>initialized_</name></member>
       <member refid="classBaseNvs_1adaba0a72b0c06873b2b01713f1af3d9b" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>IsInitialized</name></member>
+      <member refid="classStmNvs_1ae1e449321a8d845bf60c4e323072f3e1" prot="private" virt="non-virtual"><scope>StmNvs</scope><name>IsValidKey</name></member>
       <member refid="classStmNvs_1a8a8abfb797fa5369d790a1e74501ec26" prot="public" virt="virtual"><scope>StmNvs</scope><name>KeyExists</name></member>
+      <member refid="classStmNvs_1addfe90a086182d8e85cacbbbc1a51207" prot="private" virt="non-virtual"><scope>StmNvs</scope><name>kMaxEntries</name></member>
+      <member refid="classStmNvs_1ae6c999eca920d0590c0d544a923823d0" prot="private" virt="non-virtual"><scope>StmNvs</scope><name>LoadFromFlash</name></member>
       <member refid="classBaseNvs_1a68e50ee98bc144e5a7c99a27ed5a7314" prot="protected" virt="non-virtual"><scope>StmNvs</scope><name>namespace_name_</name></member>
       <member refid="classBaseNvs_1aeda78da1a1db06a952e14e549eb7f07a" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>operator=</name></member>
       <member refid="classBaseNvs_1a00047694a8eda737718d4ad83c9feb9a" prot="public" virt="virtual"><scope>StmNvs</scope><name>ResetDiagnostics</name></member>
@@ -663,7 +1048,8 @@
       <member refid="classStmNvs_1a0b4bf4ceacb6f2011bc0a0713415fc70" prot="public" virt="virtual"><scope>StmNvs</scope><name>SetString</name></member>
       <member refid="classStmNvs_1a972ac2246d561ede81b3855ea1832122" prot="public" virt="virtual"><scope>StmNvs</scope><name>SetU32</name></member>
       <member refid="classBaseNvs_1a124e82b91afcb3785858a4d56bc9f2f2" prot="protected" virt="non-virtual"><scope>StmNvs</scope><name>statistics_</name></member>
-      <member refid="classStmNvs_1a26366d606b8f3e0b153bdabccfffcca8" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>StmNvs</name></member>
+      <member refid="classStmNvs_1a58c10717e9ebc1e4ba3bdc51fcacac32" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>StmNvs</name></member>
+      <member refid="classStmNvs_1aea3bc8d29dccd30404408e094e1ec907" prot="private" virt="non-virtual"><scope>StmNvs</scope><name>write_offset_</name></member>
       <member refid="classBaseNvs_1a34a0f5777eaeabb861b0bef15c31a11b" prot="public" virt="virtual"><scope>StmNvs</scope><name>~BaseNvs</name></member>
       <member refid="classStmNvs_1aec7905feea3b210ced450761f89d2862" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>~StmNvs</name></member>
     </listofallmembers>

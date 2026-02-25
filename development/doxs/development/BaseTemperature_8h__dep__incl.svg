@@ -103,7 +103,7 @@ var sectionId = 'dynsection-1';
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="StmTemperature_8h.html" target="_top" xlink:title="STM32 Temperature sensor stub — placeholder for internal temp sensor integration.">
+<g id="a_Node000005"><a xlink:href="StmTemperature_8h.html" target="_top" xlink:title="STM32 Temperature sensor — reads the internal temp sensor via ADC or an external sensor via a user&#45;su...">
 <polygon fill="white" stroke="#666666" points="717.5,-97 496.5,-97 496.5,-74 717.5,-74 717.5,-97"/>
 <text text-anchor="middle" x="607" y="-81.8" font-family="Arial" font-size="14.00">inc/mcu/stm32/StmTemperature.h</text>
 </a>
@@ -148,7 +148,7 @@ var sectionId = 'dynsection-1';
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="StmTemperature_8cpp.html" target="_top" xlink:title="STM32 Temperature sensor stub implementation.">
+<g id="a_Node000006"><a xlink:href="StmTemperature_8cpp.html" target="_top" xlink:title="STM32 Temperature sensor implementation — ADC&#45;based with internal/external modes.">
 <polygon fill="white" stroke="#666666" points="748,-30.5 512,-30.5 512,-7.5 748,-7.5 748,-30.5"/>
 <text text-anchor="middle" x="630" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/stm32/StmTemperature.cpp</text>
 </a>

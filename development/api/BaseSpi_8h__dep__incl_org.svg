@@ -76,7 +76,7 @@
 <!-- Node19 -->
 <g id="Node000019" class="node">
 <title>Node19</title>
-<g id="a_Node000019"><a xlink:href="StmSpi_8h.html" target="_top" xlink:title="STM32 SPI stub implementation — placeholder for future STM32 HAL integration.">
+<g id="a_Node000019"><a xlink:href="StmSpi_8h.html" target="_top" xlink:title="STM32 SPI Bus+Device wrapper — wraps STM32 HAL SPI via CubeMX handle.">
 <polygon fill="white" stroke="#666666" points="2104.5,-252.5 1940.5,-252.5 1940.5,-229.5 2104.5,-229.5 2104.5,-252.5"/>
 <text text-anchor="middle" x="2022.5" y="-237.3" font-family="Arial" font-size="14.00">inc/mcu/stm32/StmSpi.h</text>
 </a>
@@ -380,7 +380,7 @@
 <!-- Node20 -->
 <g id="Node000020" class="node">
 <title>Node20</title>
-<g id="a_Node000020"><a xlink:href="StmSpi_8cpp.html" target="_top" xlink:title="STM32 SPI stub implementation.">
+<g id="a_Node000020"><a xlink:href="StmSpi_8cpp.html" target="_top" xlink:title="STM32 SPI wrapper implementation — full STM32 HAL integration.">
 <polygon fill="white" stroke="#666666" points="2116,-178.5 1937,-178.5 1937,-155.5 2116,-155.5 2116,-178.5"/>
 <text text-anchor="middle" x="2026.5" y="-163.3" font-family="Arial" font-size="14.00">src/mcu/stm32/StmSpi.cpp</text>
 </a>

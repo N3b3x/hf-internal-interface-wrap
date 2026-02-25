@@ -94,31 +94,56 @@ $(function(){initNavTree('StmPeriodicTimer_8cpp.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">StmPeriodicTimer.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 Periodic Timer stub implementation.  
+<p>STM32 Periodic Timer implementation — HAL TIM base with ISR dispatch.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="StmPeriodicTimer_8h_source.html">StmPeriodicTimer.h</a>&quot;</code><br />
+<code>#include &lt;cstring&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for StmPeriodicTimer.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="StmPeriodicTimer_8cpp__incl.svg" width="371" height="376"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="StmPeriodicTimer_8cpp__incl.svg" width="484" height="376"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03" id="r_namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03.html">anonymous_namespace{StmPeriodicTimer.cpp}</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:af0f1dc4bc546e616dc198083ef8758df" id="r_af0f1dc4bc546e616dc198083ef8758df"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0f1dc4bc546e616dc198083ef8758df">HAL_TIM_Base_Start_IT</a> (TIM_HandleTypeDef *htim)</td></tr>
+<tr class="separator:af0f1dc4bc546e616dc198083ef8758df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b2045c8f1f3793c17a07bf886fb41fc" id="r_a3b2045c8f1f3793c17a07bf886fb41fc"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b2045c8f1f3793c17a07bf886fb41fc">HAL_TIM_Base_Stop_IT</a> (TIM_HandleTypeDef *htim)</td></tr>
+<tr class="separator:a3b2045c8f1f3793c17a07bf886fb41fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2c4f03d53e997a54e1fd5e80daa55c4" id="r_af2c4f03d53e997a54e1fd5e80daa55c4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2c4f03d53e997a54e1fd5e80daa55c4">HAL_GetTick</a> (void)</td></tr>
+<tr class="separator:af2c4f03d53e997a54e1fd5e80daa55c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a0f42db9e07b169a44131a6ed38921dea" id="r_a0f42db9e07b169a44131a6ed38921dea"><td class="memItemLeft" align="right" valign="top">static constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f42db9e07b169a44131a6ed38921dea">kNotSupported</a> = <a class="el" href="BasePeriodicTimer_8h.html#a1c0d6f452734f65b6537650f26f5e59aa4176a993094d0e534b9ee9f590acb9fb">hf_timer_err_t::TIMER_ERR_UNSUPPORTED_OPERATION</a></td></tr>
-<tr class="separator:a0f42db9e07b169a44131a6ed38921dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addee097d86298b115ec84fdf83c00338" id="r_addee097d86298b115ec84fdf83c00338"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03.html#addee097d86298b115ec84fdf83c00338">anonymous_namespace{StmPeriodicTimer.cpp}::kTimPscOffset</a> = 0x28</td></tr>
+<tr class="separator:addee097d86298b115ec84fdf83c00338"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97674b78566017e519544281700aa2cb" id="r_a97674b78566017e519544281700aa2cb"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03.html#a97674b78566017e519544281700aa2cb">anonymous_namespace{StmPeriodicTimer.cpp}::kTimArrOffset</a> = 0x2C</td></tr>
+<tr class="separator:a97674b78566017e519544281700aa2cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ac00d3cae493e39fd6eda8ca5452c13" id="r_a6ac00d3cae493e39fd6eda8ca5452c13"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03.html#a6ac00d3cae493e39fd6eda8ca5452c13">anonymous_namespace{StmPeriodicTimer.cpp}::kTimEgrOffset</a> = 0x14</td></tr>
+<tr class="separator:a6ac00d3cae493e39fd6eda8ca5452c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad51b447f667e659d0b329fd865ec8e89" id="r_ad51b447f667e659d0b329fd865ec8e89"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03.html#ad51b447f667e659d0b329fd865ec8e89">anonymous_namespace{StmPeriodicTimer.cpp}::kTimEgrUgBit</a> = 0x01</td></tr>
+<tr class="separator:ad51b447f667e659d0b329fd865ec8e89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 Periodic Timer stub implementation. </p>
-<p>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </p>
-</div><h2 class="groupheader">Variable Documentation</h2>
-<a id="a0f42db9e07b169a44131a6ed38921dea" name="a0f42db9e07b169a44131a6ed38921dea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f42db9e07b169a44131a6ed38921dea">&#9670;&#160;</a></span>kNotSupported</h2>
+<div class="textblock"><p>STM32 Periodic Timer implementation — HAL TIM base with ISR dispatch. </p>
+<dl class="section author"><dt>Author</dt><dd>HardFOC </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC — Licensed under GPL v3.0 or later. </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="af2c4f03d53e997a54e1fd5e80daa55c4" name="af2c4f03d53e997a54e1fd5e80daa55c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2c4f03d53e997a54e1fd5e80daa55c4">&#9670;&#160;</a></span>HAL_GetTick()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -127,12 +152,65 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto kNotSupported = <a class="el" href="BasePeriodicTimer_8h.html#a1c0d6f452734f65b6537650f26f5e59aa4176a993094d0e534b9ee9f590acb9fb">hf_timer_err_t::TIMER_ERR_UNSUPPORTED_OPERATION</a></td>
+          <td class="memname">uint32_t HAL_GetTick </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af0f1dc4bc546e616dc198083ef8758df" name="af0f1dc4bc546e616dc198083ef8758df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0f1dc4bc546e616dc198083ef8758df">&#9670;&#160;</a></span>HAL_TIM_Base_Start_IT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t HAL_TIM_Base_Start_IT </td>
+          <td>(</td>
+          <td class="paramtype">TIM_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>htim</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3b2045c8f1f3793c17a07bf886fb41fc" name="a3b2045c8f1f3793c17a07bf886fb41fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b2045c8f1f3793c17a07bf886fb41fc">&#9670;&#160;</a></span>HAL_TIM_Base_Stop_IT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t HAL_TIM_Base_Stop_IT </td>
+          <td>(</td>
+          <td class="paramtype">TIM_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>htim</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

@@ -93,23 +93,171 @@ $(function(){initNavTree('StmTemperature_8cpp.html',''); initResizable(); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">StmTemperature.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 Temperature sensor stub implementation.  
+<p>STM32 Temperature sensor implementation — ADC-based with internal/external modes.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="StmTemperature_8h_source.html">StmTemperature.h</a>&quot;</code><br />
 <code>#include &lt;cstring&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for StmTemperature.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="StmTemperature_8cpp__incl.svg" width="384" height="356"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="StmTemperature_8cpp__incl.svg" width="484" height="356"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-</div><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 Temperature sensor stub implementation. </p>
-<p>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </p>
-</div></div><!-- contents -->
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a82e42045534541edf017880343a9b600" id="r_a82e42045534541edf017880343a9b600"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82e42045534541edf017880343a9b600">HAL_ADC_Start</a> (ADC_HandleTypeDef *hadc)</td></tr>
+<tr class="separator:a82e42045534541edf017880343a9b600"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a418116c66249fa79e168dbeb3e031f79" id="r_a418116c66249fa79e168dbeb3e031f79"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a418116c66249fa79e168dbeb3e031f79">HAL_ADC_PollForConversion</a> (ADC_HandleTypeDef *hadc, uint32_t Timeout)</td></tr>
+<tr class="separator:a418116c66249fa79e168dbeb3e031f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a421008ca3885339acb12f400958ffbe4" id="r_a421008ca3885339acb12f400958ffbe4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a421008ca3885339acb12f400958ffbe4">HAL_ADC_GetValue</a> (ADC_HandleTypeDef *hadc)</td></tr>
+<tr class="separator:a421008ca3885339acb12f400958ffbe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa970b37d281737345184118461a7edeb" id="r_aa970b37d281737345184118461a7edeb"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa970b37d281737345184118461a7edeb">HAL_ADC_Stop</a> (ADC_HandleTypeDef *hadc)</td></tr>
+<tr class="separator:aa970b37d281737345184118461a7edeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae63b34eea12780ca2e1100c2402da18e" id="r_ae63b34eea12780ca2e1100c2402da18e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae63b34eea12780ca2e1100c2402da18e">HAL_Delay</a> (uint32_t Delay)</td></tr>
+<tr class="separator:ae63b34eea12780ca2e1100c2402da18e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>STM32 Temperature sensor implementation — ADC-based with internal/external modes. </p>
+<dl class="section author"><dt>Author</dt><dd>HardFOC </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC — Licensed under GPL v3.0 or later. </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a421008ca3885339acb12f400958ffbe4" name="a421008ca3885339acb12f400958ffbe4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a421008ca3885339acb12f400958ffbe4">&#9670;&#160;</a></span>HAL_ADC_GetValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t HAL_ADC_GetValue </td>
+          <td>(</td>
+          <td class="paramtype">ADC_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>hadc</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a418116c66249fa79e168dbeb3e031f79" name="a418116c66249fa79e168dbeb3e031f79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a418116c66249fa79e168dbeb3e031f79">&#9670;&#160;</a></span>HAL_ADC_PollForConversion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t HAL_ADC_PollForConversion </td>
+          <td>(</td>
+          <td class="paramtype">ADC_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>hadc</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>Timeout</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a82e42045534541edf017880343a9b600" name="a82e42045534541edf017880343a9b600"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82e42045534541edf017880343a9b600">&#9670;&#160;</a></span>HAL_ADC_Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t HAL_ADC_Start </td>
+          <td>(</td>
+          <td class="paramtype">ADC_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>hadc</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa970b37d281737345184118461a7edeb" name="aa970b37d281737345184118461a7edeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa970b37d281737345184118461a7edeb">&#9670;&#160;</a></span>HAL_ADC_Stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t HAL_ADC_Stop </td>
+          <td>(</td>
+          <td class="paramtype">ADC_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>hadc</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae63b34eea12780ca2e1100c2402da18e" name="ae63b34eea12780ca2e1100c2402da18e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae63b34eea12780ca2e1100c2402da18e">&#9670;&#160;</a></span>HAL_Delay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_Delay </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>Delay</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

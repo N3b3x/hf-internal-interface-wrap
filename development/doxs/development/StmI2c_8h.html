@@ -99,16 +99,16 @@ $(function(){initNavTree('StmI2c_8h.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 I2C stub implementation — placeholder for future STM32 HAL integration.  
+<p>STM32 I2C Bus+Device wrapper — wraps STM32 HAL I2C via CubeMX handle.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="BaseI2c_8h_source.html">BaseI2c.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="PlatformMutex_8h_source.html">PlatformMutex.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="StmTypes_8h_source.html">StmTypes.h</a>&quot;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for StmI2c.h:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="StmI2c_8h__incl.svg" width="100%" height="508"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="StmI2c_8h__incl.svg" width="572" height="278"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -121,15 +121,44 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStmI2cDevice.html">StmI2cDevice</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 I2C device — stub implementation.  <a href="classStmI2cDevice.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 I2C device — inherits <a class="el" href="classBaseI2c.html" title="Abstract base class for I2C device implementations.">BaseI2c</a>, delegates I/O to parent bus HAL handle.  <a href="classStmI2cDevice.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStmI2cBus.html">StmI2cBus</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 I2C bus — stub implementation.  <a href="classStmI2cBus.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 I2C bus — manages the HAL handle and device collection.  <a href="classStmI2cBus.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 I2C stub implementation — placeholder for future STM32 HAL integration. </p>
-<p>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </p>
+<div class="textblock"><p>STM32 I2C Bus+Device wrapper — wraps STM32 HAL I2C via CubeMX handle. </p>
+<p>Bus/Device architecture matching the ESP32 pattern:</p><ul>
+<li><a class="el" href="classStmI2cBus.html" title="STM32 I2C bus — manages the HAL handle and device collection.">StmI2cBus</a>: wraps one I2C_HandleTypeDef*, manages device collection</li>
+<li><a class="el" href="classStmI2cDevice.html" title="STM32 I2C device — inherits BaseI2c, delegates I/O to parent bus HAL handle.">StmI2cDevice</a>: inherits <a class="el" href="classBaseI2c.html" title="Abstract base class for I2C device implementations.">BaseI2c</a>, delegates to parent bus HAL handle</li>
+</ul>
+<h1><a class="anchor" id="Usage"></a>
+Usage</h1>
+<div class="fragment"><div class="line"><span class="keyword">extern</span> I2C_HandleTypeDef hi2c1;</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_struct" href="structhf__i2c__bus__config__t.html">hf_i2c_bus_config_t</a> bus_cfg(&amp;hi2c1);</div>
+<div class="line"><a class="code hl_class" href="classStmI2cBus.html">StmI2cBus</a> i2cBus(bus_cfg);</div>
+<div class="line">i2cBus.Initialize();</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_struct" href="structhf__i2c__device__config__t.html">hf_i2c_device_config_t</a> dev_cfg;</div>
+<div class="line">dev_cfg.<a class="code hl_variable" href="structhf__i2c__device__config__t.html#a2043147468665929ffd3b65333a27b19">device_address</a> = 0x68;  <span class="comment">// MPU6050</span></div>
+<div class="line"><span class="keywordtype">int</span> idx = i2cBus.CreateDevice(dev_cfg);</div>
+<div class="line"><a class="code hl_class" href="classBaseI2c.html">BaseI2c</a>* mpu = i2cBus.GetDevice(idx);</div>
+<div class="line">mpu-&gt;<a class="code hl_function" href="classBaseI2c.html#adcdc753cf18e47cbc651cc608759bf32">Initialize</a>();</div>
+<div class="line"> </div>
+<div class="line">uint8_t who_am_i = 0;</div>
+<div class="line">mpu-&gt;<a class="code hl_function" href="classBaseI2c.html#aec25744c5d3ab1ec6c326950001949a0">ReadRegister</a>(0x75, who_am_i);</div>
+<div class="ttc" id="aclassBaseI2c_html"><div class="ttname"><a href="classBaseI2c.html">BaseI2c</a></div><div class="ttdoc">Abstract base class for I2C device implementations.</div><div class="ttdef"><b>Definition</b> BaseI2c.h:196</div></div>
+<div class="ttc" id="aclassBaseI2c_html_adcdc753cf18e47cbc651cc608759bf32"><div class="ttname"><a href="classBaseI2c.html#adcdc753cf18e47cbc651cc608759bf32">BaseI2c::Initialize</a></div><div class="ttdeci">virtual bool Initialize() noexcept=0</div><div class="ttdoc">Initialize the I2C bus.</div></div>
+<div class="ttc" id="aclassBaseI2c_html_aec25744c5d3ab1ec6c326950001949a0"><div class="ttname"><a href="classBaseI2c.html#aec25744c5d3ab1ec6c326950001949a0">BaseI2c::ReadRegister</a></div><div class="ttdeci">virtual bool ReadRegister(hf_u8_t reg_addr, hf_u8_t &amp;data) noexcept</div><div class="ttdoc">Read from a register on the I2C device.</div><div class="ttdef"><b>Definition</b> BaseI2c.h:375</div></div>
+<div class="ttc" id="aclassStmI2cBus_html"><div class="ttname"><a href="classStmI2cBus.html">StmI2cBus</a></div><div class="ttdoc">STM32 I2C bus — manages the HAL handle and device collection.</div><div class="ttdef"><b>Definition</b> StmI2c.h:87</div></div>
+<div class="ttc" id="astructhf__i2c__bus__config__t_html"><div class="ttname"><a href="structhf__i2c__bus__config__t.html">hf_i2c_bus_config_t</a></div><div class="ttdoc">Platform-agnostic I2C bus configuration for STM32. Users pass their CubeMX-generated I2C_HandleTypeDe...</div><div class="ttdef"><b>Definition</b> StmTypes.h:249</div></div>
+<div class="ttc" id="astructhf__i2c__device__config__t_html"><div class="ttname"><a href="structhf__i2c__device__config__t.html">hf_i2c_device_config_t</a></div><div class="ttdoc">I2C device configuration structure.</div><div class="ttdef"><b>Definition</b> EspTypes_I2C.h:225</div></div>
+<div class="ttc" id="astructhf__i2c__device__config__t_html_a2043147468665929ffd3b65333a27b19"><div class="ttname"><a href="structhf__i2c__device__config__t.html#a2043147468665929ffd3b65333a27b19">hf_i2c_device_config_t::device_address</a></div><div class="ttdeci">uint16_t device_address</div><div class="ttdoc">7-bit or 10-bit device address</div><div class="ttdef"><b>Definition</b> EspTypes_I2C.h:226</div></div>
+</div><!-- fragment --><dl class="section author"><dt>Author</dt><dd>HardFOC </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC — Licensed under GPL v3.0 or later. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

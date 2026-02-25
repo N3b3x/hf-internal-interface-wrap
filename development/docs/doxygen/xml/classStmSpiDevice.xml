@@ -5,6 +5,21 @@
     <basecompoundref refid="classBaseSpi" prot="public" virt="non-virtual">BaseSpi</basecompoundref>
     <includes refid="StmSpi_8h" local="no">StmSpi.h</includes>
     <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classStmSpiDevice_1a9bcbb9d85057de78b3b9562d353bce24" prot="private" static="no" mutable="no">
+        <type><ref refid="classStmSpiBus" kindref="compound">StmSpiBus</ref> *</type>
+        <definition>StmSpiBus* StmSpiDevice::parent_bus_</definition>
+        <argsstring></argsstring>
+        <name>parent_bus_</name>
+        <qualifiedname>StmSpiDevice::parent_bus_</qualifiedname>
+        <briefdescription>
+<para>Parent bus reference. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="77" column="26" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="variable" id="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__spi__device__config__t" kindref="compound">hf_spi_device_config_t</ref></type>
         <definition>hf_spi_device_config_t StmSpiDevice::config_</definition>
@@ -12,21 +27,26 @@
         <name>config_</name>
         <qualifiedname>StmSpiDevice::config_</qualifiedname>
         <briefdescription>
+<para>Device configuration. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="33" column="28" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="33" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="78" column="28" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="78" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classStmSpiDevice_1a0870aa9a0f886f72d91dc45addf758d9" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classStmSpiDevice_1afdf4b29ed25cc110f43e67e981a86e45" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
         <definition>StmSpiDevice::StmSpiDevice</definition>
-        <argsstring>(const hf_spi_device_config_t &amp;config) noexcept</argsstring>
+        <argsstring>(StmSpiBus *parent, const hf_spi_device_config_t &amp;config) noexcept</argsstring>
         <name>StmSpiDevice</name>
         <qualifiedname>StmSpiDevice::StmSpiDevice</qualifiedname>
+        <param>
+          <type><ref refid="classStmSpiBus" kindref="compound">StmSpiBus</ref> *</type>
+          <declname>parent</declname>
+        </param>
         <param>
           <type>const <ref refid="structhf__spi__device__config__t" kindref="compound">hf_spi_device_config_t</ref> &amp;</type>
           <declname>config</declname>
@@ -37,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="23" column="14" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="12" bodyend="13"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="50" column="5" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="30" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiDevice_1af28e7126cd16773d1e9bade2f0c889eb" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -51,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="24" column="5"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="51" column="5" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="33" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiDevice_1a8321dbe44a6d665d0b43ce71c5747077" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -72,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="26" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="17" bodyend="17"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="53" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="37" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiDevice_1a71d72c791cff754938477785e843efbb" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -93,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="27" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="18" bodyend="18"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="54" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="50" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiDevice_1aac96933b7c2db6fa0e675ee472e91ec5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref></type>
@@ -166,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="28" column="18" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="20" bodyend="23"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="56" column="18" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="58" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiDevice_1a454179a24cf34d9925fb0f72d240280e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>const void *</type>
@@ -185,14 +205,101 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="30" column="16" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="25" bodyend="27"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="59" column="16" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="101" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiDevice_1a330f2558758a893af42d8efebef57f3f" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="structhf__spi__device__config__t" kindref="compound">hf_spi_device_config_t</ref> &amp;</type>
+        <definition>const hf_spi_device_config_t &amp; StmSpiDevice::GetConfig</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetConfig</name>
+        <qualifiedname>StmSpiDevice::GetConfig</qualifiedname>
+        <briefdescription>
+<para>Get the device configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="62" column="34" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classStmSpiDevice_1a72d8ba6db14002784629df6b66f48d12" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void StmSpiDevice::AssertCS</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>AssertCS</name>
+        <qualifiedname>StmSpiDevice::AssertCS</qualifiedname>
+        <briefdescription>
+<para>Assert CS (drive low/high depending on active_low flag) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="66" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="105" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiDevice_1a14982c1b1dac9337631b08722265baeb" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void StmSpiDevice::DeassertCS</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>DeassertCS</name>
+        <qualifiedname>StmSpiDevice::DeassertCS</qualifiedname>
+        <briefdescription>
+<para>Deassert CS. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="69" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="112" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiDevice_1a101c3f09a77b3a50575d5c03f8223861" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t StmSpiDevice::GetEffectiveTimeout</definition>
+        <argsstring>(hf_u32_t requested_ms) const noexcept</argsstring>
+        <name>GetEffectiveTimeout</name>
+        <qualifiedname>StmSpiDevice::GetEffectiveTimeout</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>requested_ms</declname>
+        </param>
+        <briefdescription>
+<para>Get effective timeout. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="72" column="14" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="118" bodyend="122"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classStmSpiDevice_1ad3874dd35a07942be355864ea4423e86" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref></type>
+        <definition>hf_spi_err_t StmSpiDevice::ConvertHalStatus</definition>
+        <argsstring>(hf_u32_t hal_status) noexcept</argsstring>
+        <name>ConvertHalStatus</name>
+        <qualifiedname>StmSpiDevice::ConvertHalStatus</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>hal_status</declname>
+        </param>
+        <briefdescription>
+<para>Convert HAL status to SPI error. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="75" column="25" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="124" bodyend="132"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>STM32 SPI device — stub implementation. </para>
+<para>STM32 SPI device — manages chip-select and delegates transfers to parent bus. </para>
     </briefdescription>
     <detaileddescription>
-<para>Inherits from <ref refid="classBaseSpi" kindref="compound">BaseSpi</ref> and returns SPI_ERR_UNSUPPORTED_OPERATION for all operations. Integrate STM32CubeMX-generated HAL SPI init code to activate. </para>
+<para>Each device has its own CS pin (managed via HAL_GPIO_WritePin). The actual SPI peripheral (SCK/MOSI/MISO) is shared via the parent bus. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2">
@@ -217,16 +324,30 @@
           <edgelabel>diagnostics_</edgelabel>
         </childnode>
       </node>
+      <node id="5">
+        <label>StmSpiBus</label>
+        <link refid="classStmSpiBus"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>config_</edgelabel>
+        </childnode>
+      </node>
       <node id="1">
         <label>StmSpiDevice</label>
         <link refid="classStmSpiDevice"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
         <childnode refid="5" relation="usage">
+          <edgelabel>parent_bus_</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
           <edgelabel>config_</edgelabel>
         </childnode>
       </node>
-      <node id="5">
+      <node id="6">
+        <label>hf_spi_bus_config_t</label>
+        <link refid="structhf__spi__bus__config__t"/>
+      </node>
+      <node id="7">
         <label>hf_spi_device_config_t</label>
         <link refid="structhf__spi__device__config__t"/>
       </node>
@@ -239,19 +360,24 @@
         <link refid="structhf__spi__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/stm32/StmSpi.h" line="21" column="1" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="21" bodyend="34"/>
+    <location file="inc/mcu/stm32/StmSpi.h" line="48" column="1" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="48" bodyend="79"/>
     <listofallmembers>
+      <member refid="classStmSpiDevice_1a72d8ba6db14002784629df6b66f48d12" prot="private" virt="non-virtual"><scope>StmSpiDevice</scope><name>AssertCS</name></member>
       <member refid="classBaseSpi_1abf33121948481f9001f6d18042da61bb" prot="public" virt="non-virtual"><scope>StmSpiDevice</scope><name>BaseSpi</name></member>
       <member refid="classBaseSpi_1a3e7a45c66f5c951d6f023ad361e00dd2" prot="public" virt="non-virtual"><scope>StmSpiDevice</scope><name>BaseSpi</name></member>
       <member refid="classBaseSpi_1ad499c99d4a592cb117483db0e692f12d" prot="protected" virt="non-virtual"><scope>StmSpiDevice</scope><name>BaseSpi</name></member>
       <member refid="classBaseSpi_1a88b3ba81405134a3566a01ca170bf8bb" prot="public" virt="virtual"><scope>StmSpiDevice</scope><name>Close</name></member>
       <member refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" prot="private" virt="non-virtual"><scope>StmSpiDevice</scope><name>config_</name></member>
+      <member refid="classStmSpiDevice_1ad3874dd35a07942be355864ea4423e86" prot="private" virt="non-virtual"><scope>StmSpiDevice</scope><name>ConvertHalStatus</name></member>
+      <member refid="classStmSpiDevice_1a14982c1b1dac9337631b08722265baeb" prot="private" virt="non-virtual"><scope>StmSpiDevice</scope><name>DeassertCS</name></member>
       <member refid="classStmSpiDevice_1a71d72c791cff754938477785e843efbb" prot="public" virt="virtual"><scope>StmSpiDevice</scope><name>Deinitialize</name></member>
       <member refid="classBaseSpi_1aa215f89886b0839c13e94f52e9725444" prot="protected" virt="non-virtual"><scope>StmSpiDevice</scope><name>diagnostics_</name></member>
       <member refid="classBaseSpi_1acd991c97d9e67d35af31a0594dd5357a" prot="public" virt="non-virtual"><scope>StmSpiDevice</scope><name>EnsureDeinitialized</name></member>
       <member refid="classBaseSpi_1a6e74ff977b2bfd381f25f2880387e5ca" prot="public" virt="non-virtual"><scope>StmSpiDevice</scope><name>EnsureInitialized</name></member>
+      <member refid="classStmSpiDevice_1a330f2558758a893af42d8efebef57f3f" prot="public" virt="non-virtual"><scope>StmSpiDevice</scope><name>GetConfig</name></member>
       <member refid="classStmSpiDevice_1a454179a24cf34d9925fb0f72d240280e" prot="public" virt="virtual"><scope>StmSpiDevice</scope><name>GetDeviceConfig</name></member>
       <member refid="classBaseSpi_1af87f59a0d9b50a13294d72f2c123fdda" prot="public" virt="virtual"><scope>StmSpiDevice</scope><name>GetDiagnostics</name></member>
+      <member refid="classStmSpiDevice_1a101c3f09a77b3a50575d5c03f8223861" prot="private" virt="non-virtual"><scope>StmSpiDevice</scope><name>GetEffectiveTimeout</name></member>
       <member refid="classBaseSpi_1a034862a5015ab8d5bb10ddebfabdd7d6" prot="public" virt="virtual"><scope>StmSpiDevice</scope><name>GetStatistics</name></member>
       <member refid="classStmSpiDevice_1a8321dbe44a6d665d0b43ce71c5747077" prot="public" virt="virtual"><scope>StmSpiDevice</scope><name>Initialize</name></member>
       <member refid="classBaseSpi_1aa74a4ab673ba37d72c3b7f98e963b9dd" prot="protected" virt="non-virtual"><scope>StmSpiDevice</scope><name>initialized_</name></member>
@@ -259,13 +385,14 @@
       <member refid="classBaseSpi_1a00e8995f1ccc7a5ab078e7b4c19ffa95" prot="public" virt="virtual"><scope>StmSpiDevice</scope><name>Open</name></member>
       <member refid="classBaseSpi_1a3c4096c2e9300928a41671fd755d5b30" prot="public" virt="non-virtual"><scope>StmSpiDevice</scope><name>operator=</name></member>
       <member refid="classBaseSpi_1a98b2462a1b60f70c5fd8eaf56b28f2b7" prot="public" virt="non-virtual"><scope>StmSpiDevice</scope><name>operator=</name></member>
+      <member refid="classStmSpiDevice_1a9bcbb9d85057de78b3b9562d353bce24" prot="private" virt="non-virtual"><scope>StmSpiDevice</scope><name>parent_bus_</name></member>
       <member refid="classBaseSpi_1a64493eb569f32c72a0ee8b1cbf90337d" prot="public" virt="virtual"><scope>StmSpiDevice</scope><name>Read</name></member>
       <member refid="classBaseSpi_1af49a8f4a53f964975a4d4645b875e5d1" prot="public" virt="virtual"><scope>StmSpiDevice</scope><name>Read</name></member>
       <member refid="classBaseSpi_1aef966769cc28e0e5f44e627a4a59602b" prot="public" virt="virtual"><scope>StmSpiDevice</scope><name>ReadByte</name></member>
       <member refid="classBaseSpi_1a245c1518757648334ad2d2edd459c2f9" prot="public" virt="virtual"><scope>StmSpiDevice</scope><name>ResetDiagnostics</name></member>
       <member refid="classBaseSpi_1a7f63d12c1a0fad18ede02f8a7f2ab6d6" prot="public" virt="virtual"><scope>StmSpiDevice</scope><name>ResetStatistics</name></member>
       <member refid="classBaseSpi_1a801d2346551161f1d2e1b755501cc1e1" prot="protected" virt="non-virtual"><scope>StmSpiDevice</scope><name>statistics_</name></member>
-      <member refid="classStmSpiDevice_1a0870aa9a0f886f72d91dc45addf758d9" prot="public" virt="non-virtual"><scope>StmSpiDevice</scope><name>StmSpiDevice</name></member>
+      <member refid="classStmSpiDevice_1afdf4b29ed25cc110f43e67e981a86e45" prot="public" virt="non-virtual"><scope>StmSpiDevice</scope><name>StmSpiDevice</name></member>
       <member refid="classStmSpiDevice_1aac96933b7c2db6fa0e675ee472e91ec5" prot="public" virt="virtual"><scope>StmSpiDevice</scope><name>Transfer</name></member>
       <member refid="classBaseSpi_1a949d019c6b5d68d6f3949a63316bfcd0" prot="public" virt="virtual" ambiguityscope="BaseSpi::"><scope>StmSpiDevice</scope><name>Transfer</name></member>
       <member refid="classBaseSpi_1ac4b29e0ea6f6dd6d4c514e8d24ca13d2" prot="public" virt="virtual"><scope>StmSpiDevice</scope><name>TransferByte</name></member>

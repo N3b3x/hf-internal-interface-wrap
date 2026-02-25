@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="STM32 Logger — stub implementation.">
+<g id="a_Node000001"><a xlink:title="STM32 Logger — production&#45;quality logging over UART/SWO/printf.">
 <polygon fill="#999999" stroke="#666666" points="86,-23 3,-23 3,0 86,0 86,-23"/>
 <text text-anchor="middle" x="44.5" y="-7.8" font-family="Arial" font-size="14.00">StmLogger</text>
 </a>

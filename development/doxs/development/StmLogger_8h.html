@@ -99,9 +99,11 @@ $(function(){initNavTree('StmLogger_8h.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 Logger stub — printf-based fallback for non-ESP32 platforms.  
+<p>STM32 Logger — UART/SWO/ITM-based logging with full <a class="el" href="classBaseLogger.html" title="Base logger abstract class.">BaseLogger</a> interface.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="BaseLogger_8h_source.html">BaseLogger.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="StmTypes_8h_source.html">StmTypes.h</a>&quot;</code><br />
+<code>#include &lt;cstdarg&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for StmLogger.h:</div>
 <div class="dyncontent">
@@ -118,12 +120,32 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStmLogger.html">StmLogger</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 Logger — stub implementation.  <a href="classStmLogger.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 Logger — production-quality logging over UART/SWO/printf.  <a href="classStmLogger.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 Logger stub — printf-based fallback for non-ESP32 platforms. </p>
-<p>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </p>
+<div class="textblock"><p>STM32 Logger — UART/SWO/ITM-based logging with full <a class="el" href="classBaseLogger.html" title="Base logger abstract class.">BaseLogger</a> interface. </p>
+<p>Supports multiple output backends:</p><ul>
+<li>UART (via CubeMX UART handle) — most common for STM32</li>
+<li>SWO/ITM (via ITM stimulus port) — for SWD debugging</li>
+<li>printf (via _write syscall / semihosting) — fallback</li>
+</ul>
+<h1><a class="anchor" id="Usage"></a>
+Usage</h1>
+<div class="fragment"><div class="line"><span class="keyword">extern</span> UART_HandleTypeDef huart2;</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_class" href="classStmLogger.html">StmLogger</a> logger(&amp;huart2);</div>
+<div class="line"><a class="code hl_struct" href="structhf__logger__config__t.html">hf_logger_config_t</a> config{};</div>
+<div class="line">config.<a class="code hl_variable" href="structhf__logger__config__t.html#a0544221f8aeeccea37f4512cec656ebb">default_level</a> = hf_log_level_t::HF_LOG_LEVEL_INFO;</div>
+<div class="line">logger.Initialize(config);</div>
+<div class="line"> </div>
+<div class="line">logger.Info(<span class="stringliteral">&quot;APP&quot;</span>, <span class="stringliteral">&quot;System started, version %d.%d&quot;</span>, 1, 0);</div>
+<div class="ttc" id="aclassStmLogger_html"><div class="ttname"><a href="classStmLogger.html">StmLogger</a></div><div class="ttdoc">STM32 Logger — production-quality logging over UART/SWO/printf.</div><div class="ttdef"><b>Definition</b> StmLogger.h:36</div></div>
+<div class="ttc" id="astructhf__logger__config__t_html"><div class="ttname"><a href="structhf__logger__config__t.html">hf_logger_config_t</a></div><div class="ttdoc">Logger configuration structure.</div><div class="ttdef"><b>Definition</b> BaseLogger.h:154</div></div>
+<div class="ttc" id="astructhf__logger__config__t_html_a0544221f8aeeccea37f4512cec656ebb"><div class="ttname"><a href="structhf__logger__config__t.html#a0544221f8aeeccea37f4512cec656ebb">hf_logger_config_t::default_level</a></div><div class="ttdeci">hf_log_level_t default_level</div><div class="ttdoc">Default log level.</div><div class="ttdef"><b>Definition</b> BaseLogger.h:155</div></div>
+</div><!-- fragment --><dl class="section author"><dt>Author</dt><dd>HardFOC </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC — Licensed under GPL v3.0 or later. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

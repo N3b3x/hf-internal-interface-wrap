@@ -1,5 +1,7 @@
 <map id="StmTemperature" name="StmTemperature">
-<area shape="rect" id="Node000001" title="STM32 Temperature sensor — stub implementation." alt="" coords="9,84,167,115"/>
-<area shape="rect" id="Node000002" href="$classBaseTemperature.html" title="Abstract base class for all temperature sensor implementations." alt="" coords="5,5,171,36"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,50,91,84,85,84,85,50"/>
+<area shape="rect" id="Node000001" title="STM32 Temperature sensor implementation." alt="" coords="116,124,273,155"/>
+<area shape="rect" id="Node000002" href="$classBaseTemperature.html" title="Abstract base class for all temperature sensor implementations." alt="" coords="5,15,171,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,54,182,122,179,126,110,58"/>
+<area shape="rect" id="Node000003" href="$structhf__stm32__temp__sensor__config__t.html" title="STM32 Temperature sensor configuration." alt="" coords="195,5,407,56"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="269,68,211,125,207,122,265,64"/>
 </map>

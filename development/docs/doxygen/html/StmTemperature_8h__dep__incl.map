@@ -1,5 +1,5 @@
 <map id="inc/mcu/stm32/StmTemperature.h" name="inc/mcu/stm32/StmTemperature.h">
-<area shape="rect" id="Node000001" title="STM32 Temperature sensor stub — placeholder for internal temp sensor integration." alt="" coords="15,5,310,36"/>
-<area shape="rect" id="Node000002" href="$StmTemperature_8cpp.html" title="STM32 Temperature sensor stub implementation." alt="" coords="5,84,320,115"/>
+<area shape="rect" id="Node000001" title="STM32 Temperature sensor — reads the internal temp sensor via ADC or an external sensor via a user&#45;su..." alt="" coords="15,5,310,36"/>
+<area shape="rect" id="Node000002" href="$StmTemperature_8cpp.html" title="STM32 Temperature sensor implementation — ADC&#45;based with internal/external modes." alt="" coords="5,84,320,115"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,50,165,84,160,84,160,50"/>
 </map>

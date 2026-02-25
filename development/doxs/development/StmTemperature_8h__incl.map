@@ -1,14 +1,20 @@
 <map id="inc/mcu/stm32/StmTemperature.h" name="inc/mcu/stm32/StmTemperature.h">
-<area shape="rect" id="Node000001" title="STM32 Temperature sensor stub — placeholder for internal temp sensor integration." alt="" coords="5,5,300,36"/>
-<area shape="rect" id="Node000002" href="$BaseTemperature_8h.html" title="Abstract base class for temperature sensor implementations in the HardFOC system." alt="" coords="41,84,265,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="155,36,155,70,150,70,150,36"/>
-<area shape="rect" id="Node000003" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="71,163,234,193"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="155,115,155,149,150,149,150,115"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="10,241,85,272"/>
-<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="119,117,88,136,62,164,50,196,48,228,42,227,45,194,57,161,84,132,116,113"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="258,163,370,193"/>
-<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="184,112,273,154,271,159,181,117"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="134,196,80,235,76,231,131,191"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="121,241,185,272"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="155,194,155,228,150,228,150,194"/>
+<area shape="rect" id="Node000001" title="STM32 Temperature sensor — reads the internal temp sensor via ADC or an external sensor via a user&#45;su..." alt="" coords="73,5,368,36"/>
+<area shape="rect" id="Node000002" href="$BaseTemperature_8h.html" title="Abstract base class for temperature sensor implementations in the HardFOC system." alt="" coords="17,84,197,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,39,141,78,138,74,197,34"/>
+<area shape="rect" id="Node000007" href="$StmTypes_8h.html" title="STM32 platform&#45;specific type definitions for hardware abstraction." alt="" coords="274,84,393,115"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="243,34,303,74,300,78,240,39"/>
+<area shape="rect" id="Node000003" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="160,163,323,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="133,113,206,153,203,158,131,117"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="251,241,326,272"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="75,117,47,132,22,151,9,171,9,181,14,192,37,214,60,228,84,234,109,236,167,233,200,234,237,239,237,244,200,239,167,239,109,241,83,240,58,233,34,219,10,195,4,183,4,170,18,147,44,128,72,112"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="24,163,136,193"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="104,116,92,151,87,149,99,114"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="253,192,275,228,270,231,248,195"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="163,241,227,272"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="235,195,213,231,208,228,230,192"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="318,117,271,156,267,152,315,113"/>
+<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="339,115,343,151,342,173,337,194,327,215,314,233,310,229,323,212,332,192,337,172,338,151,334,115"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="398,163,478,193"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="355,113,409,152,406,157,351,117"/>
 </map>

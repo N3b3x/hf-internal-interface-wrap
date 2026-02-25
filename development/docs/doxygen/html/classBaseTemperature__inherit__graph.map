@@ -2,6 +2,6 @@
 <area shape="rect" id="Node000001" title="Abstract base class for all temperature sensor implementations." alt="" coords="89,5,255,36"/>
 <area shape="rect" id="Node000002" href="$classEspTemperature.html" title="ESP32&#45;C6 internal temperature sensor implementation." alt="" coords="5,84,160,115"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,47,101,86,98,82,143,43"/>
-<area shape="rect" id="Node000003" href="$classStmTemperature.html" title="STM32 Temperature sensor — stub implementation." alt="" coords="184,84,341,115"/>
+<area shape="rect" id="Node000003" href="$classStmTemperature.html" title="STM32 Temperature sensor implementation." alt="" coords="184,84,341,115"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,43,247,82,244,86,198,47"/>
 </map>

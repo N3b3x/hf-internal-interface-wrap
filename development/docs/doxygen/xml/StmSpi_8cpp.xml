@@ -29,23 +29,19 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>McuSelect.h</label>
-        <link refid="McuSelect_8h"/>
-      </node>
-      <node id="8">
-        <label>PlatformMutex.h</label>
-        <link refid="PlatformMutex_8h"/>
-        <childnode refid="9" relation="include">
-        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>StmTypes.h</label>
+        <link refid="StmTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
         <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -54,8 +50,8 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="10">
-        <label>atomic</label>
+      <node id="9">
+        <label>cstddef</label>
       </node>
       <node id="5">
         <label>cstdint</label>
@@ -63,81 +59,335 @@
       <node id="6">
         <label>limits</label>
       </node>
-      <node id="12">
+      <node id="11">
         <label>memory</label>
       </node>
       <node id="7">
         <label>string_view</label>
       </node>
-      <node id="11">
+      <node id="10">
         <label>vector</label>
       </node>
     </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="StmSpi_8cpp_1a4ff696578cf600faa8bdf9e8ea063b79" prot="public" static="no" extern="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t HAL_SPI_TransmitReceive</definition>
+        <argsstring>(SPI_HandleTypeDef *hspi, uint8_t *pTxData, uint8_t *pRxData, uint16_t Size, uint32_t Timeout)</argsstring>
+        <name>HAL_SPI_TransmitReceive</name>
+        <param>
+          <type>SPI_HandleTypeDef *</type>
+          <declname>hspi</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>pTxData</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>pRxData</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>Size</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>Timeout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmSpi.cpp" line="17" column="17" declfile="src/mcu/stm32/StmSpi.cpp" declline="17" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="StmSpi_8cpp_1aae7ec2165cdb901dfa40c7af3cd8ad12" prot="public" static="no" extern="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t HAL_SPI_Transmit</definition>
+        <argsstring>(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout)</argsstring>
+        <name>HAL_SPI_Transmit</name>
+        <param>
+          <type>SPI_HandleTypeDef *</type>
+          <declname>hspi</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>pData</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>Size</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>Timeout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmSpi.cpp" line="19" column="17" declfile="src/mcu/stm32/StmSpi.cpp" declline="19" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="StmSpi_8cpp_1a522b087524611e6141543a1b226fa6d3" prot="public" static="no" extern="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t HAL_SPI_Receive</definition>
+        <argsstring>(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout)</argsstring>
+        <name>HAL_SPI_Receive</name>
+        <param>
+          <type>SPI_HandleTypeDef *</type>
+          <declname>hspi</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>pData</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>Size</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>Timeout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmSpi.cpp" line="21" column="17" declfile="src/mcu/stm32/StmSpi.cpp" declline="21" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="StmSpi_8cpp_1aa8ddee65ae45981737ec31c1424022b5" prot="public" static="no" extern="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void HAL_GPIO_WritePin</definition>
+        <argsstring>(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, uint32_t PinState)</argsstring>
+        <name>HAL_GPIO_WritePin</name>
+        <param>
+          <type>GPIO_TypeDef *</type>
+          <declname>GPIOx</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>GPIO_Pin</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>PinState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmSpi.cpp" line="23" column="13" declfile="src/mcu/stm32/StmSpi.cpp" declline="23" declcolumn="13"/>
+      </memberdef>
+    </sectiondef>
     <briefdescription>
-<para>STM32 SPI stub implementation. </para>
+<para>STM32 SPI wrapper implementation — full STM32 HAL integration. </para>
     </briefdescription>
     <detaileddescription>
-<para>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </para>
+<para><simplesect kind="author"><para>HardFOC </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC — Licensed under GPL v3.0 or later. </para>
+</simplesect>
+</para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="StmSpi_8h" kindref="compound">StmSpi.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>──<sp/>StmSpiDevice<sp/>─────────────────────────────────────────────────────────</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="StmSpi_8h" kindref="compound">StmSpi.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"><ref refid="classStmSpiDevice_1a0870aa9a0f886f72d91dc45addf758d9" kindref="member">StmSpiDevice::StmSpiDevice</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__spi__device__config__t" kindref="compound">hf_spi_device_config_t</ref>&amp;<sp/>config)<sp/>noexcept</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>config_(config)<sp/>{}</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"><ref refid="classStmSpiDevice_1af28e7126cd16773d1e9bade2f0c889eb" kindref="member">StmSpiDevice::~StmSpiDevice</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmSpiDevice" kindref="compound">StmSpiDevice</ref>::Initialize()<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmSpiDevice_1a71d72c791cff754938477785e843efbb" kindref="member">StmSpiDevice::Deinitialize</ref>()<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref><sp/><ref refid="classStmSpiDevice_1aac96933b7c2db6fa0e675ee472e91ec5" kindref="member">StmSpiDevice::Transfer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/></highlight><highlight class="comment">/*tx_data*/</highlight><highlight class="normal">,<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/></highlight><highlight class="comment">/*rx_data*/</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/></highlight><highlight class="comment">/*length*/</highlight><highlight class="normal">,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/></highlight><highlight class="comment">/*timeout_ms*/</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377dfac94209db0dd95b18440c1d6057a5b14e" kindref="member">hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
-<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classStmSpiDevice_1a454179a24cf34d9925fb0f72d240280e" kindref="member">StmSpiDevice::GetDeviceConfig</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>;</highlight></codeline>
-<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>──<sp/>StmSpiBus<sp/>────────────────────────────────────────────────────────────</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><ref refid="classStmSpiBus_1a69cafaa6911c26bdd2c288fb10df37be" kindref="member">StmSpiBus::StmSpiBus</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__spi__bus__config__t" kindref="compound">hf_spi_bus_config_t</ref>&amp;<sp/>config)<sp/>noexcept</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>config_(config)<sp/>{}</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><ref refid="classStmSpiBus_1a1b4658e1504d0caa95b0d13cc4d41335" kindref="member">StmSpiBus::~StmSpiBus</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus" kindref="compound">StmSpiBus</ref>::Initialize()<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus_1a22d15c21b574da4cf292b4574e485293" kindref="member">StmSpiBus::IsInitialized</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus_1a611e37f08b9d7ace431eccb29ddc90d0" kindref="member">initialized_</ref>;<sp/>}</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus_1ad4cf41108043a7610f902cb45bcbc8e4" kindref="member">StmSpiBus::Deinitialize</ref>()<sp/>noexcept<sp/>{<sp/><ref refid="classStmSpiBus_1a611e37f08b9d7ace431eccb29ddc90d0" kindref="member">initialized_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus_1a781055ef0cd430c2cb5f12601882a683" kindref="member">StmSpiBus::CreateDevice</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__spi__device__config__t" kindref="compound">hf_spi_device_config_t</ref>&amp;<sp/>device_config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>dev<sp/>=<sp/>std::make_unique&lt;StmSpiDevice&gt;(device_config);</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>devices_.push_back(std::move(dev));</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(devices_.size())<sp/>-<sp/>1;</highlight></codeline>
-<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>STM32<sp/>HAL<sp/>FORWARD<sp/>DECLARATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="StmSpi_8cpp_1a4ff696578cf600faa8bdf9e8ea063b79" kindref="member">HAL_SPI_TransmitReceive</ref>(SPI_HandleTypeDef*<sp/>hspi,<sp/>uint8_t*<sp/>pTxData,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t*<sp/>pRxData,<sp/>uint16_t<sp/>Size,<sp/>uint32_t<sp/>Timeout);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="StmSpi_8cpp_1aae7ec2165cdb901dfa40c7af3cd8ad12" kindref="member">HAL_SPI_Transmit</ref>(SPI_HandleTypeDef*<sp/>hspi,<sp/>uint8_t*<sp/>pData,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>Size,<sp/>uint32_t<sp/>Timeout);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="StmSpi_8cpp_1a522b087524611e6141543a1b226fa6d3" kindref="member">HAL_SPI_Receive</ref>(SPI_HandleTypeDef*<sp/>hspi,<sp/>uint8_t*<sp/>pData,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>Size,<sp/>uint32_t<sp/>Timeout);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="StmSpi_8cpp_1aa8ddee65ae45981737ec31c1424022b5" kindref="member">HAL_GPIO_WritePin</ref>(GPIO_TypeDef*<sp/>GPIOx,<sp/>uint16_t<sp/>GPIO_Pin,<sp/>uint32_t<sp/>PinState);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>StmSpiDevice</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><ref refid="classStmSpiDevice_1afdf4b29ed25cc110f43e67e981a86e45" kindref="member">StmSpiDevice::StmSpiDevice</ref>(<ref refid="classStmSpiBus" kindref="compound">StmSpiBus</ref>*<sp/>parent,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__spi__device__config__t" kindref="compound">hf_spi_device_config_t</ref>&amp;<sp/>config)<sp/>noexcept</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>parent_bus_(parent),<sp/>config_(config)<sp/>{}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><ref refid="classStmSpiDevice_1af28e7126cd16773d1e9bade2f0c889eb" kindref="member">StmSpiDevice::~StmSpiDevice</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBaseSpi_1aa74a4ab673ba37d72c3b7f98e963b9dd" kindref="member">initialized_</ref>)<sp/><ref refid="classStmSpiDevice_1a71d72c791cff754938477785e843efbb" kindref="member">Deinitialize</ref>();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmSpiDevice_1a8321dbe44a6d665d0b43ce71c5747077" kindref="member">StmSpiDevice::Initialize</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBaseSpi_1aa74a4ab673ba37d72c3b7f98e963b9dd" kindref="member">initialized_</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classStmSpiDevice_1a9bcbb9d85057de78b3b9562d353bce24" kindref="member">parent_bus_</ref><sp/>||<sp/>!<ref refid="classStmSpiDevice_1a9bcbb9d85057de78b3b9562d353bce24" kindref="member">parent_bus_</ref>-&gt;<ref refid="classStmSpiBus_1a22d15c21b574da4cf292b4574e485293" kindref="member">IsInitialized</ref>())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Ensure<sp/>CS<sp/>pin<sp/>starts<sp/>deasserted</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>.<ref refid="structhf__spi__device__config__t_1a74b7447d47d3b9dfb732739e82e05b6c" kindref="member">cs_port</ref><sp/>&amp;&amp;<sp/><ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>.<ref refid="structhf__spi__device__config__t_1af85f2826210e7f6d834a654b92c32470" kindref="member">cs_pin</ref><sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStmSpiDevice_1a14982c1b1dac9337631b08722265baeb" kindref="member">DeassertCS</ref>();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><ref refid="classBaseSpi" kindref="compound">BaseSpi</ref>*<sp/><ref refid="classStmSpiBus_1ad1d6e101a95d6af9829a2b6a41a1fc81" kindref="member">StmSpiBus::GetDevice</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(device_index<sp/>&lt;<sp/>0<sp/>||<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(device_index)<sp/>&gt;=<sp/>devices_.size())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>devices_[</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(device_index)].get();</highlight></codeline>
-<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBaseSpi" kindref="compound">BaseSpi</ref>*<sp/><ref refid="classStmSpiBus_1ad1d6e101a95d6af9829a2b6a41a1fc81" kindref="member">StmSpiBus::GetDevice</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(device_index<sp/>&lt;<sp/>0<sp/>||<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(device_index)<sp/>&gt;=<sp/>devices_.size())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>devices_[</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(device_index)].get();</highlight></codeline>
-<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal">std::size_t<sp/><ref refid="classStmSpiBus_1a81d08ab646705ea372874ca8c663367b" kindref="member">StmSpiBus::GetDeviceCount</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus_1a5303b40e97ecdc7f59d91a865cc97d92" kindref="member">devices_</ref>.size();<sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBaseSpi_1aa74a4ab673ba37d72c3b7f98e963b9dd" kindref="member">initialized_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmSpiDevice_1a71d72c791cff754938477785e843efbb" kindref="member">StmSpiDevice::Deinitialize</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>.<ref refid="structhf__spi__device__config__t_1a74b7447d47d3b9dfb732739e82e05b6c" kindref="member">cs_port</ref><sp/>&amp;&amp;<sp/><ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>.<ref refid="structhf__spi__device__config__t_1af85f2826210e7f6d834a654b92c32470" kindref="member">cs_pin</ref><sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStmSpiDevice_1a14982c1b1dac9337631b08722265baeb" kindref="member">DeassertCS</ref>();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBaseSpi_1aa74a4ab673ba37d72c3b7f98e963b9dd" kindref="member">initialized_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus_1ad8fc3bd4ef289384acf536b01700aa3c" kindref="member">StmSpiBus::RemoveDevice</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(device_index<sp/>&lt;<sp/>0<sp/>||<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(device_index)<sp/>&gt;=<sp/>devices_.size())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>devices_.erase(devices_.begin()<sp/>+<sp/>device_index);</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__spi__bus__config__t" kindref="compound">hf_spi_bus_config_t</ref>&amp;<sp/><ref refid="classStmSpiBus_1a285df3f22b4b762454e5ca47af1ad31c" kindref="member">StmSpiBus::GetConfig</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus_1ada6d7feb79b067200075f7bb9a486ea9" kindref="member">config_</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref><sp/><ref refid="classStmSpiDevice_1aac96933b7c2db6fa0e675ee472e91ec5" kindref="member">StmSpiDevice::Transfer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/>tx_data,<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/>rx_data,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>length,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!EnsureInitialized())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377dfab9af989242716c13c20a6349577ef37e" kindref="member">hf_spi_err_t::SPI_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(length<sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377dfad874554c43f09a6ef971d14da2ad71c3" kindref="member">hf_spi_err_t::SPI_ERR_INVALID_PARAMETER</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>SPI_HandleTypeDef*<sp/>hspi<sp/>=<sp/>parent_bus_-&gt;GetHalHandle();</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!hspi)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377dfab9af989242716c13c20a6349577ef37e" kindref="member">hf_spi_err_t::SPI_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>effective_timeout<sp/>=<sp/>GetEffectiveTimeout(timeout_ms);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Assert<sp/>chip<sp/>select</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>AssertCS();</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>status;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tx_data<sp/>&amp;&amp;<sp/>rx_data)<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Full<sp/>duplex<sp/>transfer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="StmSpi_8cpp_1a4ff696578cf600faa8bdf9e8ea063b79" kindref="member">HAL_SPI_TransmitReceive</ref>(</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hspi,<sp/></highlight><highlight class="keyword">const_cast&lt;</highlight><highlight class="normal">uint8_t*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(tx_data),<sp/>rx_data,<sp/>length,<sp/>effective_timeout);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tx_data)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Transmit<sp/>only</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="StmSpi_8cpp_1aae7ec2165cdb901dfa40c7af3cd8ad12" kindref="member">HAL_SPI_Transmit</ref>(hspi,<sp/></highlight><highlight class="keyword">const_cast&lt;</highlight><highlight class="normal">uint8_t*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(tx_data),<sp/>length,<sp/>effective_timeout);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rx_data)<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Receive<sp/>only</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="StmSpi_8cpp_1a522b087524611e6141543a1b226fa6d3" kindref="member">HAL_SPI_Receive</ref>(hspi,<sp/>rx_data,<sp/>length,<sp/>effective_timeout);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DeassertCS();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377dfad874554c43f09a6ef971d14da2ad71c3" kindref="member">hf_spi_err_t::SPI_ERR_INVALID_PARAMETER</ref>;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Deassert<sp/>chip<sp/>select</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>DeassertCS();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>ConvertHalStatus(status);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>==<sp/><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377dfa97ef02822fcfb84b0670dfa0e4f562f4" kindref="member">hf_spi_err_t::SPI_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>statistics_.total_transfers++;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>statistics_.bytes_transferred<sp/>+=<sp/>length;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>statistics_.error_count++;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classStmSpiDevice_1a454179a24cf34d9925fb0f72d240280e" kindref="member">StmSpiDevice::GetDeviceConfig</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStmSpiDevice_1a72d8ba6db14002784629df6b66f48d12" kindref="member">StmSpiDevice::AssertCS</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>.<ref refid="structhf__spi__device__config__t_1a74b7447d47d3b9dfb732739e82e05b6c" kindref="member">cs_port</ref><sp/>||<sp/><ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>.<ref refid="structhf__spi__device__config__t_1af85f2826210e7f6d834a654b92c32470" kindref="member">cs_pin</ref><sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Active<sp/>low:<sp/>assert<sp/>=<sp/>drive<sp/>LOW;<sp/>Active<sp/>high:<sp/>assert<sp/>=<sp/>drive<sp/>HIGH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>state<sp/>=<sp/><ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>.<ref refid="structhf__spi__device__config__t_1a49f0df49a1753c32b1a6cf4d1bf2c3d2" kindref="member">cs_active_low</ref><sp/>?<sp/>0U<sp/>:<sp/>1U;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="StmGpio_8cpp_1aa8ddee65ae45981737ec31c1424022b5" kindref="member">HAL_GPIO_WritePin</ref>(<ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>.<ref refid="structhf__spi__device__config__t_1a74b7447d47d3b9dfb732739e82e05b6c" kindref="member">cs_port</ref>,<sp/><ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>.<ref refid="structhf__spi__device__config__t_1af85f2826210e7f6d834a654b92c32470" kindref="member">cs_pin</ref>,<sp/>state);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStmSpiDevice_1a14982c1b1dac9337631b08722265baeb" kindref="member">StmSpiDevice::DeassertCS</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>.<ref refid="structhf__spi__device__config__t_1a74b7447d47d3b9dfb732739e82e05b6c" kindref="member">cs_port</ref><sp/>||<sp/><ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>.<ref refid="structhf__spi__device__config__t_1af85f2826210e7f6d834a654b92c32470" kindref="member">cs_pin</ref><sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>state<sp/>=<sp/><ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>.<ref refid="structhf__spi__device__config__t_1a49f0df49a1753c32b1a6cf4d1bf2c3d2" kindref="member">cs_active_low</ref><sp/>?<sp/>1U<sp/>:<sp/>0U;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="StmGpio_8cpp_1aa8ddee65ae45981737ec31c1424022b5" kindref="member">HAL_GPIO_WritePin</ref>(<ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>.<ref refid="structhf__spi__device__config__t_1a74b7447d47d3b9dfb732739e82e05b6c" kindref="member">cs_port</ref>,<sp/><ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>.<ref refid="structhf__spi__device__config__t_1af85f2826210e7f6d834a654b92c32470" kindref="member">cs_pin</ref>,<sp/>state);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="classStmSpiDevice_1a101c3f09a77b3a50575d5c03f8223861" kindref="member">StmSpiDevice::GetEffectiveTimeout</ref>(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>requested_ms)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(requested_ms<sp/>&gt;<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>requested_ms;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(parent_bus_)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>parent_bus_-&gt;GetConfig().default_timeout_ms;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1000;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref><sp/><ref refid="classStmSpiDevice_1ad3874dd35a07942be355864ea4423e86" kindref="member">StmSpiDevice::ConvertHalStatus</ref>(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>hal_status)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="namespacehf_1_1stm32_1aa44c1eabd5f8b4f6a76e841873432bc5" kindref="member">hf::stm32::ToHalStatus</ref>(hal_status);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(status)<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacehf_1_1stm32_1aae908749bc986cae79f7b0240fa24fceae0aa021e21dddbd6d8cecec71e9cf564" kindref="member">hf::stm32::HalStatus::OK</ref>:<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377dfa97ef02822fcfb84b0670dfa0e4f562f4" kindref="member">hf_spi_err_t::SPI_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacehf_1_1stm32_1aae908749bc986cae79f7b0240fa24fcea802706a9238e2928077f97736854bad4" kindref="member">hf::stm32::HalStatus::BUSY</ref>:<sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377dfa167cb34315884191f6a15612a1ed4b84" kindref="member">hf_spi_err_t::SPI_ERR_BUS_BUSY</ref>;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacehf_1_1stm32_1aae908749bc986cae79f7b0240fa24fcea070a0fb40f6c308ab544b227660aadff" kindref="member">hf::stm32::HalStatus::TIMEOUT</ref>:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>hf_spi_err_t::SPI_ERR_TIMEOUT;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377dfa0d7aa63d7340cc897199de50039bf319" kindref="member">hf_spi_err_t::SPI_ERR_TRANSFER_FAILED</ref>;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment">//<sp/>StmSpiBus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment">//<sp/>═══════════════════════════════════════════════════════════════════════════════</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><ref refid="classStmSpiBus_1a69cafaa6911c26bdd2c288fb10df37be" kindref="member">StmSpiBus::StmSpiBus</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__spi__bus__config__t" kindref="compound">hf_spi_bus_config_t</ref>&amp;<sp/>config)<sp/>noexcept</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>config_(config)<sp/>{}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><ref refid="classStmSpiBus_1a69cafaa6911c26bdd2c288fb10df37be" kindref="member">StmSpiBus::StmSpiBus</ref>(SPI_HandleTypeDef*<sp/>hal_handle,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms)<sp/>noexcept</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>config_(<ref refid="structhf__spi__bus__config__t" kindref="compound">hf_spi_bus_config_t</ref>(hal_handle,<sp/>timeout_ms))<sp/>{}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><ref refid="classStmSpiBus_1a1b4658e1504d0caa95b0d13cc4d41335" kindref="member">StmSpiBus::~StmSpiBus</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmSpiBus_1ad4cf41108043a7610f902cb45bcbc8e4" kindref="member">Deinitialize</ref>();</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus_1a949a4e26bc00b79272f4e1929aa06064" kindref="member">StmSpiBus::Initialize</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classStmSpiBus_1a611e37f08b9d7ace431eccb29ddc90d0" kindref="member">initialized_</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classStmSpiBus_1ada6d7feb79b067200075f7bb9a486ea9" kindref="member">config_</ref>.<ref refid="structhf__spi__bus__config__t_1a4bb24c90eae4bccd36ec92595fe70983" kindref="member">hal_handle</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmSpiBus_1a611e37f08b9d7ace431eccb29ddc90d0" kindref="member">initialized_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus_1a22d15c21b574da4cf292b4574e485293" kindref="member">StmSpiBus::IsInitialized</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus_1a611e37f08b9d7ace431eccb29ddc90d0" kindref="member">initialized_</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus_1ad4cf41108043a7610f902cb45bcbc8e4" kindref="member">StmSpiBus::Deinitialize</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>dev<sp/>:<sp/><ref refid="classStmSpiBus_1a5303b40e97ecdc7f59d91a865cc97d92" kindref="member">devices_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dev)<sp/>dev-&gt;Deinitialize();</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmSpiBus_1a5303b40e97ecdc7f59d91a865cc97d92" kindref="member">devices_</ref>.clear();</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmSpiBus_1a611e37f08b9d7ace431eccb29ddc90d0" kindref="member">initialized_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus_1a781055ef0cd430c2cb5f12601882a683" kindref="member">StmSpiBus::CreateDevice</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__spi__device__config__t" kindref="compound">hf_spi_device_config_t</ref>&amp;<sp/>device_config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>dev<sp/>=<sp/>std::make_unique&lt;StmSpiDevice&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>device_config);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>devices_.push_back(std::move(dev));</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(devices_.size())<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><ref refid="classBaseSpi" kindref="compound">BaseSpi</ref>*<sp/><ref refid="classStmSpiBus_1ad1d6e101a95d6af9829a2b6a41a1fc81" kindref="member">StmSpiBus::GetDevice</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(device_index<sp/>&lt;<sp/>0<sp/>||<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(device_index)<sp/>&gt;=<sp/>devices_.size())</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>devices_[</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(device_index)].get();</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBaseSpi" kindref="compound">BaseSpi</ref>*<sp/><ref refid="classStmSpiBus_1ad1d6e101a95d6af9829a2b6a41a1fc81" kindref="member">StmSpiBus::GetDevice</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(device_index<sp/>&lt;<sp/>0<sp/>||<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(device_index)<sp/>&gt;=<sp/>devices_.size())</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>devices_[</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(device_index)].get();</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal">std::size_t<sp/><ref refid="classStmSpiBus_1a81d08ab646705ea372874ca8c663367b" kindref="member">StmSpiBus::GetDeviceCount</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus_1a5303b40e97ecdc7f59d91a865cc97d92" kindref="member">devices_</ref>.size();<sp/>}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus_1ad8fc3bd4ef289384acf536b01700aa3c" kindref="member">StmSpiBus::RemoveDevice</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(device_index<sp/>&lt;<sp/>0<sp/>||<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(device_index)<sp/>&gt;=<sp/>devices_.size())</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>devices_[</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(device_index)]-&gt;Deinitialize();</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>devices_.erase(devices_.begin()<sp/>+<sp/>device_index);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__spi__bus__config__t" kindref="compound">hf_spi_bus_config_t</ref>&amp;<sp/><ref refid="classStmSpiBus_1a285df3f22b4b762454e5ca47af1ad31c" kindref="member">StmSpiBus::GetConfig</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus_1ada6d7feb79b067200075f7bb9a486ea9" kindref="member">config_</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal">SPI_HandleTypeDef*<sp/><ref refid="classStmSpiBus_1aeabf2129d32b93d68715d4a1d20e3eee" kindref="member">StmSpiBus::GetHalHandle</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus_1ada6d7feb79b067200075f7bb9a486ea9" kindref="member">config_</ref>.<ref refid="structhf__spi__bus__config__t_1a4bb24c90eae4bccd36ec92595fe70983" kindref="member">hal_handle</ref>;<sp/>}</highlight></codeline>
     </programlisting>
     <location file="src/mcu/stm32/StmSpi.cpp"/>
   </compounddef>

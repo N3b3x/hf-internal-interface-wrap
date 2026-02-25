@@ -1,5 +1,6 @@
 <map id="StmGpio" name="StmGpio">
-<area shape="rect" id="Node000001" title="STM32 GPIO — stub implementation." alt="" coords="149,184,244,215"/>
+<area shape="rect" id="Node000001" title="STM32 GPIO implementation with full HAL integration." alt="" coords="149,184,244,215"/>
+<area shape="poly" id="edge4_Node000001_Node000001" title=" " alt="" coords="259,191,271,199,262,207,245,209,244,204,260,202,265,199,256,195"/>
 <area shape="rect" id="Node000002" href="$classBaseGpio.html" title="Unified GPIO base class for all digital GPIO implementations." alt="" coords="145,104,248,135"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,148,199,184,194,184,194,148"/>
 <area shape="rect" id="Node000003" href="$structhf__gpio__statistics__t.html" title="GPIO operation statistics." alt="" coords="5,5,180,36"/>

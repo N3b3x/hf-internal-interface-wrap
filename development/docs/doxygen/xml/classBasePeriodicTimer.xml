@@ -608,6 +608,7 @@
         <name>GetStatistics</name>
         <qualifiedname>BasePeriodicTimer::GetStatistics</qualifiedname>
         <reimplementedby refid="classEspPeriodicTimer_1a4fa8ad6a89cd1cc21ce5707926565eb2">GetStatistics</reimplementedby>
+        <reimplementedby refid="classStmPeriodicTimer_1a5166c40150f48125d88b5d1e1f8eb560">GetStatistics</reimplementedby>
         <param>
           <type><ref refid="structhf__timer__statistics__t" kindref="compound">hf_timer_statistics_t</ref> &amp;</type>
           <declname>statistics</declname>
@@ -640,6 +641,7 @@
         <name>GetDiagnostics</name>
         <qualifiedname>BasePeriodicTimer::GetDiagnostics</qualifiedname>
         <reimplementedby refid="classEspPeriodicTimer_1a29dc38189cc126d681a893baf2e2ff03">GetDiagnostics</reimplementedby>
+        <reimplementedby refid="classStmPeriodicTimer_1a8677962f1093250861c2be382ec6b01a">GetDiagnostics</reimplementedby>
         <param>
           <type><ref refid="structhf__timer__diagnostics__t" kindref="compound">hf_timer_diagnostics_t</ref> &amp;</type>
           <declname>diagnostics</declname>

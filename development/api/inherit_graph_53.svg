@@ -11,9 +11,9 @@
 <!-- Node0 -->
 <g id="Node000000" class="node">
 <title>Node0</title>
-<g id="a_Node000000"><a xlink:href="structhf__can__status__t.html" target="_top" xlink:title="CAN bus status information structure.">
+<g id="a_Node000000"><a xlink:href="structhf__can__config__t.html" target="_top" xlink:title="Platform&#45;agnostic CAN bus configuration.">
 <polygon fill="white" stroke="#666666" points="112,-23 0,-23 0,0 112,0 112,-23"/>
-<text text-anchor="middle" x="56" y="-7.8" font-family="Arial" font-size="14.00">hf_can_status_t</text>
+<text text-anchor="middle" x="56" y="-7.8" font-family="Arial" font-size="14.00">hf_can_config_t</text>
 </a>
 </g>
 </g>

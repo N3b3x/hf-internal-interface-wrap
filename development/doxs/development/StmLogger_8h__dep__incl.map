@@ -1,5 +1,5 @@
 <map id="inc/mcu/stm32/StmLogger.h" name="inc/mcu/stm32/StmLogger.h">
-<area shape="rect" id="Node000001" title="STM32 Logger stub — printf&#45;based fallback for non&#45;ESP32 platforms." alt="" coords="15,5,263,36"/>
-<area shape="rect" id="Node000002" href="$StmLogger_8cpp.html" title="STM32 Logger stub implementation." alt="" coords="5,84,273,115"/>
+<area shape="rect" id="Node000001" title="STM32 Logger — UART/SWO/ITM&#45;based logging with full BaseLogger interface." alt="" coords="15,5,263,36"/>
+<area shape="rect" id="Node000002" href="$StmLogger_8cpp.html" title="STM32 Logger implementation — UART/SWO/printf output." alt="" coords="5,84,273,115"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,50,142,84,137,84,137,50"/>
 </map>

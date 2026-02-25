@@ -3,6 +3,7 @@
   <compounddef id="classBaseCan" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>BaseCan</compoundname>
     <derivedcompoundref refid="classEspCan" prot="public" virt="non-virtual">EspCan</derivedcompoundref>
+    <derivedcompoundref refid="classStmCan" prot="public" virt="non-virtual">StmCan</derivedcompoundref>
     <includes refid="BaseCan_8h" local="no">BaseCan.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" prot="protected" static="no" mutable="no">
@@ -196,6 +197,7 @@
         <name>Initialize</name>
         <qualifiedname>BaseCan::Initialize</qualifiedname>
         <reimplementedby refid="classEspCan_1a1c5fa10425f845bf9a0a2bb12db8351e">Initialize</reimplementedby>
+        <reimplementedby refid="classStmCan_1a0f32dce0a06d9118f6d5fa10879d9148">Initialize</reimplementedby>
         <briefdescription>
 <para>Initialize the CAN controller (must be implemented by derived classes). </para>
         </briefdescription>
@@ -215,6 +217,7 @@
         <name>Deinitialize</name>
         <qualifiedname>BaseCan::Deinitialize</qualifiedname>
         <reimplementedby refid="classEspCan_1a96ec0a7e2636ba9e99d651f21c4e9153">Deinitialize</reimplementedby>
+        <reimplementedby refid="classStmCan_1a1fe2f60deb481fd28b6bc43e8d96e5ac">Deinitialize</reimplementedby>
         <briefdescription>
 <para>Deinitialize the CAN controller (must be implemented by derived classes). </para>
         </briefdescription>
@@ -233,6 +236,7 @@
         <argsstring>(const hf_can_message_t &amp;message, hf_u32_t timeout_ms=1000) noexcept=0</argsstring>
         <name>SendMessage</name>
         <qualifiedname>BaseCan::SendMessage</qualifiedname>
+        <reimplementedby refid="classStmCan_1a6df12c3fb34bb69834d1b90cf44f2007">SendMessage</reimplementedby>
         <reimplementedby refid="classEspCan_1a3b9bfd81e512b835c89111b6cf0ced79">SendMessage</reimplementedby>
         <param>
           <type>const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
@@ -278,6 +282,7 @@
         <argsstring>(hf_can_message_t &amp;message, hf_u32_t timeout_ms=0) noexcept=0</argsstring>
         <name>ReceiveMessage</name>
         <qualifiedname>BaseCan::ReceiveMessage</qualifiedname>
+        <reimplementedby refid="classStmCan_1ae37b5e26c266f43ca1c4cdf297263bde">ReceiveMessage</reimplementedby>
         <reimplementedby refid="classEspCan_1ad33472b071ef5f1ab76efbdb58f3c855">ReceiveMessage</reimplementedby>
         <param>
           <type><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
@@ -324,6 +329,7 @@
         <name>SetReceiveCallback</name>
         <qualifiedname>BaseCan::SetReceiveCallback</qualifiedname>
         <reimplementedby refid="classEspCan_1a15ded2afcc3564560fa704e661546500">SetReceiveCallback</reimplementedby>
+        <reimplementedby refid="classStmCan_1a8da6e2844530c162698ac763878943b4">SetReceiveCallback</reimplementedby>
         <param>
           <type><ref refid="BaseCan_8h_1a3581a1b02d6350ac14ca81b7c60cdc6f" kindref="member">hf_can_receive_callback_t</ref></type>
           <declname>callback</declname>
@@ -355,6 +361,7 @@
         <argsstring>(hf_u32_t id, hf_u32_t mask, bool extended=false) noexcept=0</argsstring>
         <name>SetAcceptanceFilter</name>
         <qualifiedname>BaseCan::SetAcceptanceFilter</qualifiedname>
+        <reimplementedby refid="classStmCan_1add5ea4ac43276a1e45311eeafa565258">SetAcceptanceFilter</reimplementedby>
         <reimplementedby refid="classEspCan_1a10e2f318110996d269ab9b4c550aa1c7">SetAcceptanceFilter</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -413,6 +420,7 @@
         <name>GetStatus</name>
         <qualifiedname>BaseCan::GetStatus</qualifiedname>
         <reimplementedby refid="classEspCan_1ab663edd5afb99a7ca95a9dd206d9ce85">GetStatus</reimplementedby>
+        <reimplementedby refid="classStmCan_1a7edb045a9c9ae440dbd42367a4b992c9">GetStatus</reimplementedby>
         <param>
           <type><ref refid="structhf__can__status__t" kindref="compound">hf_can_status_t</ref> &amp;</type>
           <declname>status</declname>
@@ -445,6 +453,7 @@
         <name>Reset</name>
         <qualifiedname>BaseCan::Reset</qualifiedname>
         <reimplementedby refid="classEspCan_1a38369430ccabfe4f339052590d5e4960">Reset</reimplementedby>
+        <reimplementedby refid="classStmCan_1a6f503620d924a2090cd818475c1006a8">Reset</reimplementedby>
         <briefdescription>
 <para>Reset the CAN controller. </para>
         </briefdescription>
@@ -536,6 +545,7 @@
         <argsstring>() const noexcept</argsstring>
         <name>SupportsCanFD</name>
         <qualifiedname>BaseCan::SupportsCanFD</qualifiedname>
+        <reimplementedby refid="classStmCan_1a6c7d84e038dd0aa4bea3db1dc601c60e">SupportsCanFD</reimplementedby>
         <briefdescription>
 <para>Check if CAN-FD is supported by this controller. </para>
         </briefdescription>
@@ -1033,6 +1043,12 @@
       <node id="2">
         <label>EspCan</label>
         <link refid="classEspCan"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>StmCan</label>
+        <link refid="classStmCan"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>

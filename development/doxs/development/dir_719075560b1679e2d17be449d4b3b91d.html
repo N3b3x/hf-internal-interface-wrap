@@ -99,37 +99,46 @@ $(function(){initNavTree('dir_719075560b1679e2d17be449d4b3b91d.html',''); initRe
 <div class="dynheader">
 Directory dependency graph for stm32:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="dir_719075560b1679e2d17be449d4b3b91d_dep.svg" width="152" height="172"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="dir_719075560b1679e2d17be449d4b3b91d_dep.svg" width="126" height="172"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
 Files</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="StmAdc_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StmAdc_8h.html">StmAdc.h</a></td></tr>
-<tr class="memdesc:StmAdc_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 ADC stub implementation — placeholder for future STM32 HAL integration. <br /></td></tr>
+<tr class="memdesc:StmAdc_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 ADC wrapper — wraps STM32 HAL ADC via CubeMX-generated handle. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="StmCan_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StmCan_8h.html">StmCan.h</a></td></tr>
+<tr class="memdesc:StmCan_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 CAN wrapper — wraps bxCAN (CAN_HandleTypeDef) or FDCAN (FDCAN_HandleTypeDef) for <a class="el" href="classBaseCan.html" title="Abstract base class defining the unified CAN bus API.">BaseCan</a> interface. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="StmGpio_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StmGpio_8h.html">StmGpio.h</a></td></tr>
-<tr class="memdesc:StmGpio_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 GPIO stub implementation — placeholder for future STM32 HAL integration. <br /></td></tr>
+<tr class="memdesc:StmGpio_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 GPIO wrapper — full HAL integration with EXTI interrupt support. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="StmI2c_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StmI2c_8h.html">StmI2c.h</a></td></tr>
-<tr class="memdesc:StmI2c_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 I2C stub implementation — placeholder for future STM32 HAL integration. <br /></td></tr>
+<tr class="memdesc:StmI2c_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 I2C Bus+Device wrapper — wraps STM32 HAL I2C via CubeMX handle. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="StmLogger_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StmLogger_8h.html">StmLogger.h</a></td></tr>
-<tr class="memdesc:StmLogger_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 Logger stub — printf-based fallback for non-ESP32 platforms. <br /></td></tr>
+<tr class="memdesc:StmLogger_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 Logger — UART/SWO/ITM-based logging with full <a class="el" href="classBaseLogger.html" title="Base logger abstract class.">BaseLogger</a> interface. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="StmNvs_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StmNvs_8h.html">StmNvs.h</a></td></tr>
-<tr class="memdesc:StmNvs_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 NVS (non-volatile storage) stub — placeholder for flash/EEPROM integration. <br /></td></tr>
+<tr class="memdesc:StmNvs_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 NVS (Non-Volatile Storage) — flash-based key-value store. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="StmPeriodicTimer_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StmPeriodicTimer_8h.html">StmPeriodicTimer.h</a></td></tr>
-<tr class="memdesc:StmPeriodicTimer_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 Periodic Timer stub — placeholder for hardware timer integration. <br /></td></tr>
+<tr class="memdesc:StmPeriodicTimer_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 Periodic Timer — wraps TIM_HandleTypeDef for periodic callbacks. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="StmPwm_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StmPwm_8h.html">StmPwm.h</a></td></tr>
+<tr class="memdesc:StmPwm_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 PWM wrapper — wraps TIM_HandleTypeDef for <a class="el" href="classBasePwm.html" title="Abstract base class for PWM implementations.">BasePwm</a> interface. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="StmSpi_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StmSpi_8h.html">StmSpi.h</a></td></tr>
-<tr class="memdesc:StmSpi_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 SPI stub implementation — placeholder for future STM32 HAL integration. <br /></td></tr>
+<tr class="memdesc:StmSpi_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 SPI Bus+Device wrapper — wraps STM32 HAL SPI via CubeMX handle. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="StmTemperature_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StmTemperature_8h.html">StmTemperature.h</a></td></tr>
-<tr class="memdesc:StmTemperature_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 Temperature sensor stub — placeholder for internal temp sensor integration. <br /></td></tr>
+<tr class="memdesc:StmTemperature_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 Temperature sensor — reads the internal temp sensor via ADC or an external sensor via a user-supplied ADC handle + conversion function. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="StmTypes_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StmTypes_8h.html">StmTypes.h</a></td></tr>
 <tr class="memdesc:StmTypes_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 platform-specific type definitions for hardware abstraction. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="StmUart_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StmUart_8h.html">StmUart.h</a></td></tr>
+<tr class="memdesc:StmUart_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 UART wrapper — wraps UART_HandleTypeDef for <a class="el" href="classBaseUart.html" title="Abstract base class for UART driver implementations.">BaseUart</a> interface. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

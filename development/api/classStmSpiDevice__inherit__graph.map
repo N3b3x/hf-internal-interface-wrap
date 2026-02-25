@@ -1,5 +1,5 @@
 <map id="StmSpiDevice" name="StmSpiDevice">
-<area shape="rect" id="Node000001" title="STM32 SPI device — stub implementation." alt="" coords="5,84,141,115"/>
+<area shape="rect" id="Node000001" title="STM32 SPI device — manages chip&#45;select and delegates transfers to parent bus." alt="" coords="5,84,141,115"/>
 <area shape="rect" id="Node000002" href="$classBaseSpi.html" title="Abstract base class for SPI device implementations." alt="" coords="29,5,118,36"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,50,76,84,71,84,71,50"/>
 </map>

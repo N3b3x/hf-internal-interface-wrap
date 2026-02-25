@@ -94,13 +94,16 @@ $(function(){initNavTree('classStmLogger.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classStmLogger-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">StmLogger Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 Logger — stub implementation.  
+<p>STM32 Logger — production-quality logging over UART/SWO/printf.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="StmLogger_8h_source.html">StmLogger.h</a>&gt;</code></p>
@@ -112,13 +115,23 @@ Inheritance diagram for StmLogger:</div>
 <div class="dynheader">
 Collaboration diagram for StmLogger:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classStmLogger__coll__graph.svg" width="130" height="120"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStmLogger__coll__graph.svg" width="580" height="140"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a61646c2f7c850f826a73d37065982705" id="r_a61646c2f7c850f826a73d37065982705"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61646c2f7c850f826a73d37065982705">Backend</a> : hf_u8_t { <a class="el" href="#a61646c2f7c850f826a73d37065982705a2155abd1f12c94db11b3193b912bdddb">UART_HAL</a> = 0
+, <a class="el" href="#a61646c2f7c850f826a73d37065982705ae2c9ebf15d5093c70d71af68714890cb">SWO_ITM</a> = 1
+, <a class="el" href="#a61646c2f7c850f826a73d37065982705a8467aa6a022f2a15244e4db04f419b00">PRINTF</a> = 2
+ }</td></tr>
+<tr class="memdesc:a61646c2f7c850f826a73d37065982705"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output backend selection.  <a href="#a61646c2f7c850f826a73d37065982705">More...</a><br /></td></tr>
+<tr class="separator:a61646c2f7c850f826a73d37065982705"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab80d5c81f30a88b8e51aa5791eee041f" id="r_ab80d5c81f30a88b8e51aa5791eee041f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab80d5c81f30a88b8e51aa5791eee041f">StmLogger</a> () noexcept</td></tr>
-<tr class="separator:ab80d5c81f30a88b8e51aa5791eee041f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1410859d8afce01c97f8ce70c20866ec" id="r_a1410859d8afce01c97f8ce70c20866ec"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1410859d8afce01c97f8ce70c20866ec">StmLogger</a> (UART_HandleTypeDef *uart_handle=nullptr, <a class="el" href="#a61646c2f7c850f826a73d37065982705">Backend</a> backend=<a class="el" href="#a61646c2f7c850f826a73d37065982705a2155abd1f12c94db11b3193b912bdddb">Backend::UART_HAL</a>) noexcept</td></tr>
+<tr class="memdesc:a1410859d8afce01c97f8ce70c20866ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct with UART backend (most common)  <br /></td></tr>
+<tr class="separator:a1410859d8afce01c97f8ce70c20866ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad785842bb793da3d60a5489899742002" id="r_ad785842bb793da3d60a5489899742002"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad785842bb793da3d60a5489899742002">~StmLogger</a> () noexcept override</td></tr>
 <tr class="separator:ad785842bb793da3d60a5489899742002"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2db97b3064db0d5be33c1ab082d1803a" id="r_a2db97b3064db0d5be33c1ab082d1803a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseLogger_8h.html#ac68cbaa2282f1e4e9831a0c6f4801177">hf_logger_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2db97b3064db0d5be33c1ab082d1803a">Initialize</a> (const <a class="el" href="structhf__logger__config__t.html">hf_logger_config_t</a> &amp;config) noexcept override</td></tr>
@@ -204,6 +217,42 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5f705b3c7b590a8427e78a77ade3925c inherit pub_methods_classBaseLogger"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor.  <br /></td></tr>
 <tr class="separator:a5f705b3c7b590a8427e78a77ade3925c inherit pub_methods_classBaseLogger"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aad07a8fb34502403b23fd347390a1c08" id="r_aad07a8fb34502403b23fd347390a1c08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad07a8fb34502403b23fd347390a1c08">OutputString</a> (const char *str, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> length) noexcept</td></tr>
+<tr class="memdesc:aad07a8fb34502403b23fd347390a1c08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write formatted string to output backend.  <br /></td></tr>
+<tr class="separator:aad07a8fb34502403b23fd347390a1c08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f50475b905482fe6b74c83605baff18" id="r_a6f50475b905482fe6b74c83605baff18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseLogger_8h.html#ac68cbaa2282f1e4e9831a0c6f4801177">hf_logger_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f50475b905482fe6b74c83605baff18">FormatAndOutput</a> (<a class="el" href="group__logger.html#gafcafcc6e9ff6e92894e3de5998a51042">hf_log_level_t</a> level, const char *tag, const char *format, va_list args) noexcept</td></tr>
+<tr class="memdesc:a6f50475b905482fe6b74c83605baff18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Format and output a log message.  <br /></td></tr>
+<tr class="separator:a6f50475b905482fe6b74c83605baff18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a13f778052d724f7ce83dade842d94002" id="r_a13f778052d724f7ce83dade842d94002"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a61646c2f7c850f826a73d37065982705">Backend</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13f778052d724f7ce83dade842d94002">backend_</a></td></tr>
+<tr class="memdesc:a13f778052d724f7ce83dade842d94002"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output backend.  <br /></td></tr>
+<tr class="separator:a13f778052d724f7ce83dade842d94002"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e48ff976993f72acf026b0bd40fc5fe" id="r_a9e48ff976993f72acf026b0bd40fc5fe"><td class="memItemLeft" align="right" valign="top">UART_HandleTypeDef *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e48ff976993f72acf026b0bd40fc5fe">uart_handle_</a></td></tr>
+<tr class="memdesc:a9e48ff976993f72acf026b0bd40fc5fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">UART HAL handle (for UART backend)  <br /></td></tr>
+<tr class="separator:a9e48ff976993f72acf026b0bd40fc5fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad636d2f9d50ecc3a69791f70406bf3a2" id="r_ad636d2f9d50ecc3a69791f70406bf3a2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad636d2f9d50ecc3a69791f70406bf3a2">initialized_</a></td></tr>
+<tr class="memdesc:ad636d2f9d50ecc3a69791f70406bf3a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init state.  <br /></td></tr>
+<tr class="separator:ad636d2f9d50ecc3a69791f70406bf3a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9746b9a039d212053454ecd23b6e3cee" id="r_a9746b9a039d212053454ecd23b6e3cee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__logger.html#gafcafcc6e9ff6e92894e3de5998a51042">hf_log_level_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9746b9a039d212053454ecd23b6e3cee">global_level_</a></td></tr>
+<tr class="memdesc:a9746b9a039d212053454ecd23b6e3cee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current global log level.  <br /></td></tr>
+<tr class="separator:a9746b9a039d212053454ecd23b6e3cee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c4e3bddb5d4b2d0e36180cbcbb9da6e" id="r_a9c4e3bddb5d4b2d0e36180cbcbb9da6e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhf__logger__statistics__t.html">hf_logger_statistics_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c4e3bddb5d4b2d0e36180cbcbb9da6e">statistics_</a></td></tr>
+<tr class="memdesc:a9c4e3bddb5d4b2d0e36180cbcbb9da6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statistics.  <br /></td></tr>
+<tr class="separator:a9c4e3bddb5d4b2d0e36180cbcbb9da6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f2a1bd766541bcaade40e485d95c30b" id="r_a3f2a1bd766541bcaade40e485d95c30b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhf__logger__diagnostics__t.html">hf_logger_diagnostics_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f2a1bd766541bcaade40e485d95c30b">diagnostics_</a></td></tr>
+<tr class="memdesc:a3f2a1bd766541bcaade40e485d95c30b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diagnostics.  <br /></td></tr>
+<tr class="separator:a3f2a1bd766541bcaade40e485d95c30b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2e828b85fc6aee9fd5f9cafc69f20c9" id="r_ab2e828b85fc6aee9fd5f9cafc69f20c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseLogger_8h.html#ac68cbaa2282f1e4e9831a0c6f4801177">hf_logger_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2e828b85fc6aee9fd5f9cafc69f20c9">last_error_</a></td></tr>
+<tr class="memdesc:ab2e828b85fc6aee9fd5f9cafc69f20c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last error code.  <br /></td></tr>
+<tr class="separator:ab2e828b85fc6aee9fd5f9cafc69f20c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9385bc2edaebaddaf84544ae3b401ace" id="r_a9385bc2edaebaddaf84544ae3b401ace"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9385bc2edaebaddaf84544ae3b401ace">format_buffer_</a> [256]</td></tr>
+<tr class="memdesc:a9385bc2edaebaddaf84544ae3b401ace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formatting scratch buffer.  <br /></td></tr>
+<tr class="separator:a9385bc2edaebaddaf84544ae3b401ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classBaseLogger"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classBaseLogger')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classBaseLogger.html">BaseLogger</a></td></tr>
@@ -224,11 +273,43 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a576bbb9fc3ac85c96779a3cd041ecb04 inherit pro_methods_classBaseLogger"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 Logger — stub implementation. </p>
-<p>All log methods return LOGGER_ERR_NOT_SUPPORTED. Override with UART/SWO printf-based logging when integrating STM32 HAL. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ab80d5c81f30a88b8e51aa5791eee041f" name="ab80d5c81f30a88b8e51aa5791eee041f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab80d5c81f30a88b8e51aa5791eee041f">&#9670;&#160;</a></span>StmLogger()</h2>
+<div class="textblock"><p>STM32 Logger — production-quality logging over UART/SWO/printf. </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a61646c2f7c850f826a73d37065982705" name="a61646c2f7c850f826a73d37065982705"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61646c2f7c850f826a73d37065982705">&#9670;&#160;</a></span>Backend</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a61646c2f7c850f826a73d37065982705">StmLogger::Backend</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output backend selection. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a61646c2f7c850f826a73d37065982705a2155abd1f12c94db11b3193b912bdddb" name="a61646c2f7c850f826a73d37065982705a2155abd1f12c94db11b3193b912bdddb"></a>UART_HAL&#160;</td><td class="fielddoc"><p>Use HAL_UART_Transmit. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a61646c2f7c850f826a73d37065982705ae2c9ebf15d5093c70d71af68714890cb" name="a61646c2f7c850f826a73d37065982705ae2c9ebf15d5093c70d71af68714890cb"></a>SWO_ITM&#160;</td><td class="fielddoc"><p>Use ITM_SendChar (SWO trace) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a61646c2f7c850f826a73d37065982705a8467aa6a022f2a15244e4db04f419b00" name="a61646c2f7c850f826a73d37065982705a8467aa6a022f2a15244e4db04f419b00"></a>PRINTF&#160;</td><td class="fielddoc"><p>Use printf / _write. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a1410859d8afce01c97f8ce70c20866ec" name="a1410859d8afce01c97f8ce70c20866ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1410859d8afce01c97f8ce70c20866ec">&#9670;&#160;</a></span>StmLogger()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -239,16 +320,22 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">StmLogger::StmLogger </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td class="paramtype">UART_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>uart_handle</em><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="#a61646c2f7c850f826a73d37065982705">Backend</a></td>          <td class="paramname"><span class="paramname"><em>backend</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="#a61646c2f7c850f826a73d37065982705a2155abd1f12c94db11b3193b912bdddb">Backend::UART_HAL</a></span></span>&#160;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Construct with UART backend (most common) </p>
 
 </div>
 </div>
@@ -270,7 +357,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -459,6 +546,47 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>hf_logger_err_t Success or error code </dd></dl>
 
 <p>Implements <a class="el" href="classBaseLogger.html#a37a29d6d49c0a3ec7d5d6163c23aef39">BaseLogger</a>.</p>
+
+</div>
+</div>
+<a id="a6f50475b905482fe6b74c83605baff18" name="a6f50475b905482fe6b74c83605baff18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f50475b905482fe6b74c83605baff18">&#9670;&#160;</a></span>FormatAndOutput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="BaseLogger_8h.html#ac68cbaa2282f1e4e9831a0c6f4801177">hf_logger_err_t</a> StmLogger::FormatAndOutput </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__logger.html#gafcafcc6e9ff6e92894e3de5998a51042">hf_log_level_t</a></td>          <td class="paramname"><span class="paramname"><em>level</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>tag</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>format</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list</td>          <td class="paramname"><span class="paramname"><em>args</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Format and output a log message. </p>
 
 </div>
 </div>
@@ -1007,6 +1135,37 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="aad07a8fb34502403b23fd347390a1c08" name="aad07a8fb34502403b23fd347390a1c08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad07a8fb34502403b23fd347390a1c08">&#9670;&#160;</a></span>OutputString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StmLogger::OutputString </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>str</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a></td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Write formatted string to output backend. </p>
+
+</div>
+</div>
 <a id="acc6e0d3f238a00e169f591787f8bf435" name="acc6e0d3f238a00e169f591787f8bf435"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acc6e0d3f238a00e169f591787f8bf435">&#9670;&#160;</a></span>PrintDiagnostics()</h2>
 
@@ -1322,6 +1481,199 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>hf_logger_err_t Success or error code </dd></dl>
 
 <p>Implements <a class="el" href="classBaseLogger.html#ac1492294d1cc35697eaf02d6b617cce8">BaseLogger</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a13f778052d724f7ce83dade842d94002" name="a13f778052d724f7ce83dade842d94002"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13f778052d724f7ce83dade842d94002">&#9670;&#160;</a></span>backend_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a61646c2f7c850f826a73d37065982705">Backend</a> StmLogger::backend_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output backend. </p>
+
+</div>
+</div>
+<a id="a3f2a1bd766541bcaade40e485d95c30b" name="a3f2a1bd766541bcaade40e485d95c30b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f2a1bd766541bcaade40e485d95c30b">&#9670;&#160;</a></span>diagnostics_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structhf__logger__diagnostics__t.html">hf_logger_diagnostics_t</a> StmLogger::diagnostics_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Diagnostics. </p>
+
+</div>
+</div>
+<a id="a9385bc2edaebaddaf84544ae3b401ace" name="a9385bc2edaebaddaf84544ae3b401ace"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9385bc2edaebaddaf84544ae3b401ace">&#9670;&#160;</a></span>format_buffer_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char StmLogger::format_buffer_[256]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Formatting scratch buffer. </p>
+
+</div>
+</div>
+<a id="a9746b9a039d212053454ecd23b6e3cee" name="a9746b9a039d212053454ecd23b6e3cee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9746b9a039d212053454ecd23b6e3cee">&#9670;&#160;</a></span>global_level_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__logger.html#gafcafcc6e9ff6e92894e3de5998a51042">hf_log_level_t</a> StmLogger::global_level_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Current global log level. </p>
+
+</div>
+</div>
+<a id="ad636d2f9d50ecc3a69791f70406bf3a2" name="ad636d2f9d50ecc3a69791f70406bf3a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad636d2f9d50ecc3a69791f70406bf3a2">&#9670;&#160;</a></span>initialized_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StmLogger::initialized_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Init state. </p>
+
+</div>
+</div>
+<a id="ab2e828b85fc6aee9fd5f9cafc69f20c9" name="ab2e828b85fc6aee9fd5f9cafc69f20c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2e828b85fc6aee9fd5f9cafc69f20c9">&#9670;&#160;</a></span>last_error_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="BaseLogger_8h.html#ac68cbaa2282f1e4e9831a0c6f4801177">hf_logger_err_t</a> StmLogger::last_error_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Last error code. </p>
+
+</div>
+</div>
+<a id="a9c4e3bddb5d4b2d0e36180cbcbb9da6e" name="a9c4e3bddb5d4b2d0e36180cbcbb9da6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c4e3bddb5d4b2d0e36180cbcbb9da6e">&#9670;&#160;</a></span>statistics_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structhf__logger__statistics__t.html">hf_logger_statistics_t</a> StmLogger::statistics_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Statistics. </p>
+
+</div>
+</div>
+<a id="a9e48ff976993f72acf026b0bd40fc5fe" name="a9e48ff976993f72acf026b0bd40fc5fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e48ff976993f72acf026b0bd40fc5fe">&#9670;&#160;</a></span>uart_handle_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UART_HandleTypeDef* StmLogger::uart_handle_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>UART HAL handle (for UART backend) </p>
 
 </div>
 </div>

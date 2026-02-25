@@ -93,22 +93,321 @@ $(function(){initNavTree('StmGpio_8cpp.html',''); initResizable(); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">StmGpio.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 GPIO stub implementation.  
+<p>STM32 GPIO wrapper implementation — full STM32 HAL integration.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="StmGpio_8h_source.html">StmGpio.h</a>&quot;</code><br />
+<code>#include &lt;cstring&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for StmGpio.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="StmGpio_8cpp__incl.svg" width="371" height="356"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="StmGpio_8cpp__incl.svg" width="483" height="356"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-</div><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 GPIO stub implementation. </p>
-<p>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </p>
-</div></div><!-- contents -->
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHF__GPIO__InitTypeDef.html">HF_GPIO_InitTypeDef</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespaceanonymous__namespace_02StmGpio_8cpp_03" id="r_namespaceanonymous__namespace_02StmGpio_8cpp_03"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmGpio_8cpp_03.html">anonymous_namespace{StmGpio.cpp}</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a155de852a926b0df258bee5d61220ff7" id="r_a155de852a926b0df258bee5d61220ff7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a155de852a926b0df258bee5d61220ff7">HF_GPIO_PinState</a> { <a class="el" href="#a155de852a926b0df258bee5d61220ff7a0bedb42c23457b06ec77b958a4240f7a">GPIO_PIN_RESET_VAL</a> = 0
+, <a class="el" href="#a155de852a926b0df258bee5d61220ff7a7d600d2d02182ec4f7afd3ff422b1e14">GPIO_PIN_SET_VAL</a>
+ }</td></tr>
+<tr class="separator:a155de852a926b0df258bee5d61220ff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a9f241c220c67a70e5cdc67b5cac648fb" id="r_a9f241c220c67a70e5cdc67b5cac648fb"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f241c220c67a70e5cdc67b5cac648fb">HAL_GPIO_ReadPin</a> (GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)</td></tr>
+<tr class="separator:a9f241c220c67a70e5cdc67b5cac648fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8ddee65ae45981737ec31c1424022b5" id="r_aa8ddee65ae45981737ec31c1424022b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8ddee65ae45981737ec31c1424022b5">HAL_GPIO_WritePin</a> (GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, uint32_t PinState)</td></tr>
+<tr class="separator:aa8ddee65ae45981737ec31c1424022b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5e0c89f752de5cdedcc30db068133f6" id="r_af5e0c89f752de5cdedcc30db068133f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5e0c89f752de5cdedcc30db068133f6">HAL_GPIO_TogglePin</a> (GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)</td></tr>
+<tr class="separator:af5e0c89f752de5cdedcc30db068133f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a351bd3cea9f43656064a98016a3c9664" id="r_a351bd3cea9f43656064a98016a3c9664"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a351bd3cea9f43656064a98016a3c9664">HAL_GPIO_Init</a> (GPIO_TypeDef *GPIOx, <a class="el" href="structHF__GPIO__InitTypeDef.html">HF_GPIO_InitTypeDef</a> *GPIO_Init)</td></tr>
+<tr class="separator:a351bd3cea9f43656064a98016a3c9664"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0eefe6d6b0f0753c72c5c333677013d3" id="r_a0eefe6d6b0f0753c72c5c333677013d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0eefe6d6b0f0753c72c5c333677013d3">HAL_NVIC_EnableIRQ</a> (int IRQn)</td></tr>
+<tr class="separator:a0eefe6d6b0f0753c72c5c333677013d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab415dab1142deed48fc75d1a2d8729d" id="r_aab415dab1142deed48fc75d1a2d8729d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab415dab1142deed48fc75d1a2d8729d">HAL_NVIC_DisableIRQ</a> (int IRQn)</td></tr>
+<tr class="separator:aab415dab1142deed48fc75d1a2d8729d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ac6af050976f1712d208b7d9ffd10b6" id="r_a3ac6af050976f1712d208b7d9ffd10b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ac6af050976f1712d208b7d9ffd10b6">HAL_NVIC_SetPriority</a> (int IRQn, uint32_t PreemptPriority, uint32_t SubPriority)</td></tr>
+<tr class="separator:a3ac6af050976f1712d208b7d9ffd10b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a039bf1f6c2fe443fd023cab9064b2ac7" id="r_a039bf1f6c2fe443fd023cab9064b2ac7"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a039bf1f6c2fe443fd023cab9064b2ac7">anonymous_namespace{StmGpio.cpp}::kGpioModeInput</a> = 0x00000000U</td></tr>
+<tr class="separator:a039bf1f6c2fe443fd023cab9064b2ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a596e0a38eeae496754ebed50e8130980" id="r_a596e0a38eeae496754ebed50e8130980"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a596e0a38eeae496754ebed50e8130980">anonymous_namespace{StmGpio.cpp}::kGpioModeOutputPP</a> = 0x00000001U</td></tr>
+<tr class="separator:a596e0a38eeae496754ebed50e8130980"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a639868af67a3cc03f09c5229e84cab6c" id="r_a639868af67a3cc03f09c5229e84cab6c"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a639868af67a3cc03f09c5229e84cab6c">anonymous_namespace{StmGpio.cpp}::kGpioModeOutputOD</a> = 0x00000011U</td></tr>
+<tr class="separator:a639868af67a3cc03f09c5229e84cab6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace39575c11102583e690ea3b5ae45703" id="r_ace39575c11102583e690ea3b5ae45703"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmGpio_8cpp_03.html#ace39575c11102583e690ea3b5ae45703">anonymous_namespace{StmGpio.cpp}::kGpioModeItRising</a> = 0x10110000U</td></tr>
+<tr class="separator:ace39575c11102583e690ea3b5ae45703"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42ad3d2dc5c068991ff999b776fbefd3" id="r_a42ad3d2dc5c068991ff999b776fbefd3"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a42ad3d2dc5c068991ff999b776fbefd3">anonymous_namespace{StmGpio.cpp}::kGpioModeItFalling</a> = 0x10210000U</td></tr>
+<tr class="separator:a42ad3d2dc5c068991ff999b776fbefd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75af5da77e5d4ec72a997c78ff210883" id="r_a75af5da77e5d4ec72a997c78ff210883"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a75af5da77e5d4ec72a997c78ff210883">anonymous_namespace{StmGpio.cpp}::kGpioModeItRisFall</a> = 0x10310000U</td></tr>
+<tr class="separator:a75af5da77e5d4ec72a997c78ff210883"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a0a73d5daaebb968f6a2e0efed7588c" id="r_a9a0a73d5daaebb968f6a2e0efed7588c"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a9a0a73d5daaebb968f6a2e0efed7588c">anonymous_namespace{StmGpio.cpp}::kGpioPullNone</a> = 0x00000000U</td></tr>
+<tr class="separator:a9a0a73d5daaebb968f6a2e0efed7588c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef84364fe0a722b1a2fa98a723dbfbab" id="r_aef84364fe0a722b1a2fa98a723dbfbab"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmGpio_8cpp_03.html#aef84364fe0a722b1a2fa98a723dbfbab">anonymous_namespace{StmGpio.cpp}::kGpioPullUp</a> = 0x00000001U</td></tr>
+<tr class="separator:aef84364fe0a722b1a2fa98a723dbfbab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4ddb049348a4b0ee3ea6e477290aa00" id="r_ab4ddb049348a4b0ee3ea6e477290aa00"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmGpio_8cpp_03.html#ab4ddb049348a4b0ee3ea6e477290aa00">anonymous_namespace{StmGpio.cpp}::kGpioPullDown</a> = 0x00000002U</td></tr>
+<tr class="separator:ab4ddb049348a4b0ee3ea6e477290aa00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9a7afbe460c7832a8ee20986d8a516d" id="r_ad9a7afbe460c7832a8ee20986d8a516d"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmGpio_8cpp_03.html#ad9a7afbe460c7832a8ee20986d8a516d">anonymous_namespace{StmGpio.cpp}::kGpioSpeedLow</a> = 0x00000000U</td></tr>
+<tr class="separator:ad9a7afbe460c7832a8ee20986d8a516d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ebb87bc0ef65c74b5179859e7581a82" id="r_a7ebb87bc0ef65c74b5179859e7581a82"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a7ebb87bc0ef65c74b5179859e7581a82">anonymous_namespace{StmGpio.cpp}::kGpioSpeedMedium</a> = 0x00000001U</td></tr>
+<tr class="separator:a7ebb87bc0ef65c74b5179859e7581a82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3a109a152e624d7e22bcb82e9ae8aa4" id="r_ae3a109a152e624d7e22bcb82e9ae8aa4"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmGpio_8cpp_03.html#ae3a109a152e624d7e22bcb82e9ae8aa4">anonymous_namespace{StmGpio.cpp}::kGpioSpeedHigh</a> = 0x00000002U</td></tr>
+<tr class="separator:ae3a109a152e624d7e22bcb82e9ae8aa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79d0c8643c52418574fa734a1408ff63" id="r_a79d0c8643c52418574fa734a1408ff63"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a79d0c8643c52418574fa734a1408ff63">anonymous_namespace{StmGpio.cpp}::kGpioSpeedVeryHigh</a> = 0x00000003U</td></tr>
+<tr class="separator:a79d0c8643c52418574fa734a1408ff63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>STM32 GPIO wrapper implementation — full STM32 HAL integration. </p>
+<p>Delegates all GPIO operations to STM32 HAL functions. Pin initialization is done by CubeMX; this wrapper manages runtime state changes and provides the <a class="el" href="classBaseGpio.html" title="Unified GPIO base class for all digital GPIO implementations.">BaseGpio</a> interface for manager-level consumers.</p>
+<dl class="section author"><dt>Author</dt><dd>HardFOC </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC — Licensed under GPL v3.0 or later. </dd></dl>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a155de852a926b0df258bee5d61220ff7" name="a155de852a926b0df258bee5d61220ff7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a155de852a926b0df258bee5d61220ff7">&#9670;&#160;</a></span>HF_GPIO_PinState</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a155de852a926b0df258bee5d61220ff7">HF_GPIO_PinState</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a155de852a926b0df258bee5d61220ff7a0bedb42c23457b06ec77b958a4240f7a" name="a155de852a926b0df258bee5d61220ff7a0bedb42c23457b06ec77b958a4240f7a"></a>GPIO_PIN_RESET_VAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a155de852a926b0df258bee5d61220ff7a7d600d2d02182ec4f7afd3ff422b1e14" name="a155de852a926b0df258bee5d61220ff7a7d600d2d02182ec4f7afd3ff422b1e14"></a>GPIO_PIN_SET_VAL&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a351bd3cea9f43656064a98016a3c9664" name="a351bd3cea9f43656064a98016a3c9664"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a351bd3cea9f43656064a98016a3c9664">&#9670;&#160;</a></span>HAL_GPIO_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_GPIO_Init </td>
+          <td>(</td>
+          <td class="paramtype">GPIO_TypeDef *</td>          <td class="paramname"><span class="paramname"><em>GPIOx</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structHF__GPIO__InitTypeDef.html">HF_GPIO_InitTypeDef</a> *</td>          <td class="paramname"><span class="paramname"><em>GPIO_Init</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9f241c220c67a70e5cdc67b5cac648fb" name="a9f241c220c67a70e5cdc67b5cac648fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f241c220c67a70e5cdc67b5cac648fb">&#9670;&#160;</a></span>HAL_GPIO_ReadPin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t HAL_GPIO_ReadPin </td>
+          <td>(</td>
+          <td class="paramtype">GPIO_TypeDef *</td>          <td class="paramname"><span class="paramname"><em>GPIOx</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>GPIO_Pin</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af5e0c89f752de5cdedcc30db068133f6" name="af5e0c89f752de5cdedcc30db068133f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5e0c89f752de5cdedcc30db068133f6">&#9670;&#160;</a></span>HAL_GPIO_TogglePin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_GPIO_TogglePin </td>
+          <td>(</td>
+          <td class="paramtype">GPIO_TypeDef *</td>          <td class="paramname"><span class="paramname"><em>GPIOx</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>GPIO_Pin</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa8ddee65ae45981737ec31c1424022b5" name="aa8ddee65ae45981737ec31c1424022b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8ddee65ae45981737ec31c1424022b5">&#9670;&#160;</a></span>HAL_GPIO_WritePin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_GPIO_WritePin </td>
+          <td>(</td>
+          <td class="paramtype">GPIO_TypeDef *</td>          <td class="paramname"><span class="paramname"><em>GPIOx</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>GPIO_Pin</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>PinState</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aab415dab1142deed48fc75d1a2d8729d" name="aab415dab1142deed48fc75d1a2d8729d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab415dab1142deed48fc75d1a2d8729d">&#9670;&#160;</a></span>HAL_NVIC_DisableIRQ()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_NVIC_DisableIRQ </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>IRQn</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0eefe6d6b0f0753c72c5c333677013d3" name="a0eefe6d6b0f0753c72c5c333677013d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eefe6d6b0f0753c72c5c333677013d3">&#9670;&#160;</a></span>HAL_NVIC_EnableIRQ()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_NVIC_EnableIRQ </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>IRQn</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3ac6af050976f1712d208b7d9ffd10b6" name="a3ac6af050976f1712d208b7d9ffd10b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ac6af050976f1712d208b7d9ffd10b6">&#9670;&#160;</a></span>HAL_NVIC_SetPriority()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_NVIC_SetPriority </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>IRQn</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>PreemptPriority</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>SubPriority</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

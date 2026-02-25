@@ -4,20 +4,76 @@
     <compoundname>StmAdc</compoundname>
     <basecompoundref refid="classBaseAdc" prot="public" virt="non-virtual">BaseAdc</basecompoundref>
     <includes refid="StmAdc_8h" local="no">StmAdc.h</includes>
-    <sectiondef kind="public-func">
-      <memberdef kind="function" id="classStmAdc_1a58f7ea6bb92fe69a80af9aba981a6582" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type></type>
-        <definition>StmAdc::StmAdc</definition>
-        <argsstring>() noexcept</argsstring>
-        <name>StmAdc</name>
-        <qualifiedname>StmAdc::StmAdc</qualifiedname>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classStmAdc_1acf127c390af41b399056268e52563484" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__stm32__adc__config__t" kindref="compound">hf_stm32_adc_config_t</ref></type>
+        <definition>hf_stm32_adc_config_t StmAdc::config_</definition>
+        <argsstring></argsstring>
+        <name>config_</name>
+        <qualifiedname>StmAdc::config_</qualifiedname>
         <briefdescription>
+<para>ADC configuration. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmAdc.h" line="17" column="5"/>
+        <location file="inc/mcu/stm32/StmAdc.h" line="96" column="27" bodyfile="inc/mcu/stm32/StmAdc.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classStmAdc_1a4ab34664e67dcacf383492c31c87f0fc" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmAdc::StmAdc</definition>
+        <argsstring>(const hf_stm32_adc_config_t &amp;config) noexcept</argsstring>
+        <name>StmAdc</name>
+        <qualifiedname>StmAdc::StmAdc</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__stm32__adc__config__t" kindref="compound">hf_stm32_adc_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Construct with full configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC config including CubeMX HAL handle, resolution, Vref, channel count </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmAdc.h" line="46" column="14" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="34" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmAdc_1a9d41dca5269c1e37fd8cc2268301dac2" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmAdc::StmAdc</definition>
+        <argsstring>(ADC_HandleTypeDef *hal_handle, hf_u8_t num_channels=1) noexcept</argsstring>
+        <name>StmAdc</name>
+        <qualifiedname>StmAdc::StmAdc</qualifiedname>
+        <param>
+          <type>ADC_HandleTypeDef *</type>
+          <declname>hal_handle</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>num_channels</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+<para>Construct from raw HAL handle with defaults. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmAdc.h" line="49" column="14" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="37" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1a4203f8df6170b0f2a4dae7189c51e9b4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -31,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmAdc.h" line="18" column="5"/>
+        <location file="inc/mcu/stm32/StmAdc.h" line="51" column="5" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="40" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1a1151c9bbc4aa559ded1de1bd4208f5c8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -50,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmAdc.h" line="20" column="10" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="13" bodyend="13"/>
+        <location file="inc/mcu/stm32/StmAdc.h" line="55" column="10" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="50" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1a1b96f7e2030b803b9dbd1c9d3e66ec61" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -69,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmAdc.h" line="21" column="10" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="14" bodyend="14"/>
+        <location file="inc/mcu/stm32/StmAdc.h" line="56" column="10" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="60" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1a0eab5dfcaa6aa67e6ca5b472d7b7210b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -88,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmAdc.h" line="22" column="13" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="15" bodyend="15"/>
+        <location file="inc/mcu/stm32/StmAdc.h" line="57" column="13" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="71" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1a59285ceb3a921fa3f4f9176192f891b1" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -120,7 +176,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmAdc.h" line="23" column="10" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="16" bodyend="16"/>
+        <location file="inc/mcu/stm32/StmAdc.h" line="58" column="10" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="75" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1a286ffea7c4ef9dfb1545c3d46b44a941" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -190,7 +246,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmAdc.h" line="24" column="18" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="18" bodyend="20"/>
+        <location file="inc/mcu/stm32/StmAdc.h" line="60" column="18" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="83" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1a521d82bd23bd0e474acbf0fa7552ea84" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -260,7 +316,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmAdc.h" line="27" column="18" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="22" bodyend="24"/>
+        <location file="inc/mcu/stm32/StmAdc.h" line="64" column="18" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="111" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1ad29fe9f5de756d6ea75cf7f0f4898a03" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -342,13 +398,142 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmAdc.h" line="30" column="18" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="26" bodyend="28"/>
+        <location file="inc/mcu/stm32/StmAdc.h" line="68" column="18" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="138" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmAdc_1a4a3ab5e2ba045538e61444c6bbb3e49a" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>ADC_HandleTypeDef *</type>
+        <definition>ADC_HandleTypeDef * StmAdc::GetHalHandle</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetHalHandle</name>
+        <qualifiedname>StmAdc::GetHalHandle</qualifiedname>
+        <briefdescription>
+<para>Get the underlying HAL ADC handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmAdc.h" line="75" column="23" bodyfile="inc/mcu/stm32/StmAdc.h" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmAdc_1a5e82f1ed7fca48f4ad8c8f2466043a0c" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float StmAdc::GetVref</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetVref</name>
+        <qualifiedname>StmAdc::GetVref</qualifiedname>
+        <briefdescription>
+<para>Get the configured reference voltage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmAdc.h" line="78" column="11" bodyfile="inc/mcu/stm32/StmAdc.h" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmAdc_1abb3c30d0e2beb128762d29b0739850c3" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t StmAdc::GetResolutionBits</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetResolutionBits</name>
+        <qualifiedname>StmAdc::GetResolutionBits</qualifiedname>
+        <briefdescription>
+<para>Get the current ADC resolution in bits. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmAdc.h" line="81" column="13" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="155" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmAdc_1a7598441d585c4e275fa99da7724d6593" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t StmAdc::GetMaxCount</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetMaxCount</name>
+        <qualifiedname>StmAdc::GetMaxCount</qualifiedname>
+        <briefdescription>
+<para>Get the maximum ADC count for current resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmAdc.h" line="84" column="14" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="159" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmAdc_1a6d5db74ebfc1eed67933bb9f2d297c12" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float StmAdc::CountToVoltage</definition>
+        <argsstring>(hf_u32_t count) const noexcept</argsstring>
+        <name>CountToVoltage</name>
+        <qualifiedname>StmAdc::CountToVoltage</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+<para>Convert raw ADC count to voltage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmAdc.h" line="87" column="11" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="163" bodyend="167"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classStmAdc_1a970888a2a3b00ce170b40c043014c3f5" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t StmAdc::ReadRawCount</definition>
+        <argsstring>(hf_u32_t &amp;count) noexcept</argsstring>
+        <name>ReadRawCount</name>
+        <qualifiedname>StmAdc::ReadRawCount</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+<para>Perform a single ADC conversion and return the raw count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmAdc.h" line="91" column="18" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="173" bodyend="194"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classStmAdc_1a7eb73d7d1ca0f9d255dbb3264541b953" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t StmAdc::ConvertHalStatus</definition>
+        <argsstring>(hf_u32_t hal_status) noexcept</argsstring>
+        <name>ConvertHalStatus</name>
+        <qualifiedname>StmAdc::ConvertHalStatus</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>hal_status</declname>
+        </param>
+        <briefdescription>
+<para>Convert HAL status to ADC error code. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmAdc.h" line="94" column="25" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="196" bodyend="204"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>STM32 ADC — stub implementation. </para>
+<para>STM32 ADC wrapper — wraps STM32 HAL ADC with full channel management. </para>
     </briefdescription>
     <detaileddescription>
+<para>Features:<itemizedlist>
+<listitem><para>Single-conversion and multi-sample averaging via HAL_ADC_Start/PollForConversion</para>
+</listitem><listitem><para>Voltage conversion using configurable Vref and resolution</para>
+</listitem><listitem><para>Raw count reading for custom calibration workflows</para>
+</listitem><listitem><para>Combined count + voltage reads in a single call</para>
+</listitem><listitem><para>Statistics tracking (total reads, errors, timing) </para>
+</listitem></itemizedlist>
+</para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2">
@@ -378,6 +563,9 @@
         <link refid="classStmAdc"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>config_</edgelabel>
+        </childnode>
       </node>
       <node id="4">
         <label>hf_adc_diagnostics_t</label>
@@ -387,19 +575,30 @@
         <label>hf_adc_statistics_t</label>
         <link refid="structhf__adc__statistics__t"/>
       </node>
+      <node id="5">
+        <label>hf_stm32_adc_config_t</label>
+        <link refid="structhf__stm32__adc__config__t"/>
+      </node>
     </collaborationgraph>
-    <location file="inc/mcu/stm32/StmAdc.h" line="15" column="1" bodyfile="inc/mcu/stm32/StmAdc.h" bodystart="15" bodyend="33"/>
+    <location file="inc/mcu/stm32/StmAdc.h" line="40" column="1" bodyfile="inc/mcu/stm32/StmAdc.h" bodystart="40" bodyend="97"/>
     <listofallmembers>
       <member refid="classBaseAdc_1afa09240c509104a18d40aa2dbbbc5e9d" prot="public" virt="non-virtual"><scope>StmAdc</scope><name>BaseAdc</name></member>
       <member refid="classBaseAdc_1a37498a3ef03c848856290a4846c87dd7" prot="public" virt="non-virtual"><scope>StmAdc</scope><name>BaseAdc</name></member>
       <member refid="classBaseAdc_1aebc6e018b001afd845543708c1b3cb86" prot="protected" virt="non-virtual"><scope>StmAdc</scope><name>BaseAdc</name></member>
+      <member refid="classStmAdc_1acf127c390af41b399056268e52563484" prot="private" virt="non-virtual"><scope>StmAdc</scope><name>config_</name></member>
+      <member refid="classStmAdc_1a7eb73d7d1ca0f9d255dbb3264541b953" prot="private" virt="non-virtual"><scope>StmAdc</scope><name>ConvertHalStatus</name></member>
+      <member refid="classStmAdc_1a6d5db74ebfc1eed67933bb9f2d297c12" prot="public" virt="non-virtual"><scope>StmAdc</scope><name>CountToVoltage</name></member>
       <member refid="classStmAdc_1a1b96f7e2030b803b9dbd1c9d3e66ec61" prot="public" virt="virtual"><scope>StmAdc</scope><name>Deinitialize</name></member>
       <member refid="classBaseAdc_1a25dc8f1131a75e21d463f60fc4bad79f" prot="protected" virt="non-virtual"><scope>StmAdc</scope><name>diagnostics_</name></member>
       <member refid="classBaseAdc_1ac97e5b49f3e9705bcdd0d9a500532e2f" prot="public" virt="non-virtual"><scope>StmAdc</scope><name>EnsureDeinitialized</name></member>
       <member refid="classBaseAdc_1a7a0ce14e616b94b41b7f5f3103c75b61" prot="public" virt="non-virtual"><scope>StmAdc</scope><name>EnsureInitialized</name></member>
       <member refid="classBaseAdc_1a1c15d97ea32b60ab3472744ca9a99ffd" prot="public" virt="virtual"><scope>StmAdc</scope><name>GetDiagnostics</name></member>
+      <member refid="classStmAdc_1a4a3ab5e2ba045538e61444c6bbb3e49a" prot="public" virt="non-virtual"><scope>StmAdc</scope><name>GetHalHandle</name></member>
       <member refid="classStmAdc_1a0eab5dfcaa6aa67e6ca5b472d7b7210b" prot="public" virt="virtual"><scope>StmAdc</scope><name>GetMaxChannels</name></member>
+      <member refid="classStmAdc_1a7598441d585c4e275fa99da7724d6593" prot="public" virt="non-virtual"><scope>StmAdc</scope><name>GetMaxCount</name></member>
+      <member refid="classStmAdc_1abb3c30d0e2beb128762d29b0739850c3" prot="public" virt="non-virtual"><scope>StmAdc</scope><name>GetResolutionBits</name></member>
       <member refid="classBaseAdc_1ae0c135b27c4cb07a5ff357f7c5e1be50" prot="public" virt="virtual"><scope>StmAdc</scope><name>GetStatistics</name></member>
+      <member refid="classStmAdc_1a5e82f1ed7fca48f4ad8c8f2466043a0c" prot="public" virt="non-virtual"><scope>StmAdc</scope><name>GetVref</name></member>
       <member refid="classStmAdc_1a1151c9bbc4aa559ded1de1bd4208f5c8" prot="public" virt="virtual"><scope>StmAdc</scope><name>Initialize</name></member>
       <member refid="classBaseAdc_1ad8935a60ec6b85a8916e2ebdfc55ecf2" prot="protected" virt="non-virtual"><scope>StmAdc</scope><name>initialized_</name></member>
       <member refid="classStmAdc_1a59285ceb3a921fa3f4f9176192f891b1" prot="public" virt="virtual"><scope>StmAdc</scope><name>IsChannelAvailable</name></member>
@@ -410,10 +609,12 @@
       <member refid="classStmAdc_1a521d82bd23bd0e474acbf0fa7552ea84" prot="public" virt="virtual"><scope>StmAdc</scope><name>ReadChannelCount</name></member>
       <member refid="classStmAdc_1a286ffea7c4ef9dfb1545c3d46b44a941" prot="public" virt="virtual"><scope>StmAdc</scope><name>ReadChannelV</name></member>
       <member refid="classBaseAdc_1a7757f481ae8ab250b7df876e0370ef5a" prot="public" virt="virtual"><scope>StmAdc</scope><name>ReadMultipleChannels</name></member>
+      <member refid="classStmAdc_1a970888a2a3b00ce170b40c043014c3f5" prot="private" virt="non-virtual"><scope>StmAdc</scope><name>ReadRawCount</name></member>
       <member refid="classBaseAdc_1ab7b9a99f3eaa4fc36dae5ec9fcb0571d" prot="public" virt="virtual"><scope>StmAdc</scope><name>ResetDiagnostics</name></member>
       <member refid="classBaseAdc_1a10742f7d342d53682b6d3cec14176f0f" prot="public" virt="virtual"><scope>StmAdc</scope><name>ResetStatistics</name></member>
       <member refid="classBaseAdc_1a0b37c5f9bbeb2dfdd81a879570abe58d" prot="protected" virt="non-virtual"><scope>StmAdc</scope><name>statistics_</name></member>
-      <member refid="classStmAdc_1a58f7ea6bb92fe69a80af9aba981a6582" prot="public" virt="non-virtual"><scope>StmAdc</scope><name>StmAdc</name></member>
+      <member refid="classStmAdc_1a4ab34664e67dcacf383492c31c87f0fc" prot="public" virt="non-virtual"><scope>StmAdc</scope><name>StmAdc</name></member>
+      <member refid="classStmAdc_1a9d41dca5269c1e37fd8cc2268301dac2" prot="public" virt="non-virtual"><scope>StmAdc</scope><name>StmAdc</name></member>
       <member refid="classBaseAdc_1a33e66d850746427789319566e201e6b9" prot="public" virt="virtual"><scope>StmAdc</scope><name>~BaseAdc</name></member>
       <member refid="classStmAdc_1a4203f8df6170b0f2a4dae7189c51e9b4" prot="public" virt="non-virtual"><scope>StmAdc</scope><name>~StmAdc</name></member>
     </listofallmembers>

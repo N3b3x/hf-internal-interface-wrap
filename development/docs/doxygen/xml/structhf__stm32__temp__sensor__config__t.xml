@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__stm32__temp__sensor__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_stm32_temp_sensor_config_t</compoundname>
+    <includes refid="StmTemperature_8h" local="no">StmTemperature.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__stm32__temp__sensor__config__t_1a2c32d9830af682cafea7532370bb8eb9" prot="public" static="no" mutable="no">
+        <type>ADC_HandleTypeDef *</type>
+        <definition>ADC_HandleTypeDef* hf_stm32_temp_sensor_config_t::hadc</definition>
+        <argsstring></argsstring>
+        <name>hadc</name>
+        <qualifiedname>hf_stm32_temp_sensor_config_t::hadc</qualifiedname>
+        <briefdescription>
+<para>ADC handle (CubeMX) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="34" column="28" bodyfile="inc/mcu/stm32/StmTemperature.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__temp__sensor__config__t_1aa27bb09db96a42bd880d396e5927daf2" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_stm32_temp_sensor_config_t::channel</definition>
+        <argsstring></argsstring>
+        <name>channel</name>
+        <qualifiedname>hf_stm32_temp_sensor_config_t::channel</qualifiedname>
+        <briefdescription>
+<para>ADC channel number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="35" column="29" bodyfile="inc/mcu/stm32/StmTemperature.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__temp__sensor__config__t_1ab265e6eb80eda270b17df8ae954d3290" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_stm32_temp_sensor_config_t::resolution_bits</definition>
+        <argsstring></argsstring>
+        <name>resolution_bits</name>
+        <qualifiedname>hf_stm32_temp_sensor_config_t::resolution_bits</qualifiedname>
+        <briefdescription>
+<para>ADC resolution (8/10/12/16) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="36" column="29" bodyfile="inc/mcu/stm32/StmTemperature.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__temp__sensor__config__t_1ad173fc8b2f0b892505980d83c8b4c802" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_stm32_temp_sensor_config_t::vref_mv</definition>
+        <argsstring></argsstring>
+        <name>vref_mv</name>
+        <qualifiedname>hf_stm32_temp_sensor_config_t::vref_mv</qualifiedname>
+        <briefdescription>
+<para>ADC reference voltage in mV. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="37" column="29" bodyfile="inc/mcu/stm32/StmTemperature.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__temp__sensor__config__t_1a580289da5373cba3aa73123cbb79a10c" prot="public" static="no" mutable="no">
+        <type><ref refid="StmTemperature_8h_1a3171edb2ca9f73177f41c30dec7b0460" kindref="member">hf_stm32_temp_convert_fn</ref></type>
+        <definition>hf_stm32_temp_convert_fn hf_stm32_temp_sensor_config_t::convert_fn</definition>
+        <argsstring></argsstring>
+        <name>convert_fn</name>
+        <qualifiedname>hf_stm32_temp_sensor_config_t::convert_fn</qualifiedname>
+        <briefdescription>
+<para>Optional custom conversion. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="38" column="30" bodyfile="inc/mcu/stm32/StmTemperature.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__temp__sensor__config__t_1afe748da02e51b47e20f2733629cd3d23" prot="public" static="no" mutable="no">
+        <type><ref refid="BaseTemperature_8h_1a698a95604ca19f87ee2ff5c99f903577" kindref="member">hf_temp_sensor_type_t</ref></type>
+        <definition>hf_temp_sensor_type_t hf_stm32_temp_sensor_config_t::sensor_type</definition>
+        <argsstring></argsstring>
+        <name>sensor_type</name>
+        <qualifiedname>hf_stm32_temp_sensor_config_t::sensor_type</qualifiedname>
+        <briefdescription>
+<para>Sensor type hint. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="39" column="29" bodyfile="inc/mcu/stm32/StmTemperature.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__temp__sensor__config__t_1af2fe2952b0ae3ee81099f35d7655b766" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_stm32_temp_sensor_config_t::range_min_celsius</definition>
+        <argsstring></argsstring>
+        <name>range_min_celsius</name>
+        <qualifiedname>hf_stm32_temp_sensor_config_t::range_min_celsius</qualifiedname>
+        <briefdescription>
+<para>Min measurable temp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="40" column="29" bodyfile="inc/mcu/stm32/StmTemperature.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__temp__sensor__config__t_1ac80849093bf17f211e41eb27dcb8c747" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_stm32_temp_sensor_config_t::range_max_celsius</definition>
+        <argsstring></argsstring>
+        <name>range_max_celsius</name>
+        <qualifiedname>hf_stm32_temp_sensor_config_t::range_max_celsius</qualifiedname>
+        <briefdescription>
+<para>Max measurable temp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="41" column="29" bodyfile="inc/mcu/stm32/StmTemperature.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__temp__sensor__config__t_1a10ed8f58340a300bc57b6c3c5a4e28d3" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_stm32_temp_sensor_config_t::sample_count</definition>
+        <argsstring></argsstring>
+        <name>sample_count</name>
+        <qualifiedname>hf_stm32_temp_sensor_config_t::sample_count</qualifiedname>
+        <briefdescription>
+<para>Oversampling count (1 = no avg) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="42" column="29" bodyfile="inc/mcu/stm32/StmTemperature.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__temp__sensor__config__t_1a7e6b4469e8c7641f3e126ec02098ef4d" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_stm32_temp_sensor_config_t::timeout_ms</definition>
+        <argsstring></argsstring>
+        <name>timeout_ms</name>
+        <qualifiedname>hf_stm32_temp_sensor_config_t::timeout_ms</qualifiedname>
+        <briefdescription>
+<para>ADC poll timeout. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="43" column="29" bodyfile="inc/mcu/stm32/StmTemperature.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__stm32__temp__sensor__config__t_1a73df7de9f9db5276ca44f5a28ce075f6" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_stm32_temp_sensor_config_t::hf_stm32_temp_sensor_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_stm32_temp_sensor_config_t</name>
+        <qualifiedname>hf_stm32_temp_sensor_config_t::hf_stm32_temp_sensor_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="45" column="5" bodyfile="inc/mcu/stm32/StmTemperature.h" bodystart="45" bodyend="49"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>STM32 Temperature sensor configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/stm32/StmTemperature.h" line="33" column="1" bodyfile="inc/mcu/stm32/StmTemperature.h" bodystart="33" bodyend="50"/>
+    <listofallmembers>
+      <member refid="structhf__stm32__temp__sensor__config__t_1aa27bb09db96a42bd880d396e5927daf2" prot="public" virt="non-virtual"><scope>hf_stm32_temp_sensor_config_t</scope><name>channel</name></member>
+      <member refid="structhf__stm32__temp__sensor__config__t_1a580289da5373cba3aa73123cbb79a10c" prot="public" virt="non-virtual"><scope>hf_stm32_temp_sensor_config_t</scope><name>convert_fn</name></member>
+      <member refid="structhf__stm32__temp__sensor__config__t_1a2c32d9830af682cafea7532370bb8eb9" prot="public" virt="non-virtual"><scope>hf_stm32_temp_sensor_config_t</scope><name>hadc</name></member>
+      <member refid="structhf__stm32__temp__sensor__config__t_1a73df7de9f9db5276ca44f5a28ce075f6" prot="public" virt="non-virtual"><scope>hf_stm32_temp_sensor_config_t</scope><name>hf_stm32_temp_sensor_config_t</name></member>
+      <member refid="structhf__stm32__temp__sensor__config__t_1ac80849093bf17f211e41eb27dcb8c747" prot="public" virt="non-virtual"><scope>hf_stm32_temp_sensor_config_t</scope><name>range_max_celsius</name></member>
+      <member refid="structhf__stm32__temp__sensor__config__t_1af2fe2952b0ae3ee81099f35d7655b766" prot="public" virt="non-virtual"><scope>hf_stm32_temp_sensor_config_t</scope><name>range_min_celsius</name></member>
+      <member refid="structhf__stm32__temp__sensor__config__t_1ab265e6eb80eda270b17df8ae954d3290" prot="public" virt="non-virtual"><scope>hf_stm32_temp_sensor_config_t</scope><name>resolution_bits</name></member>
+      <member refid="structhf__stm32__temp__sensor__config__t_1a10ed8f58340a300bc57b6c3c5a4e28d3" prot="public" virt="non-virtual"><scope>hf_stm32_temp_sensor_config_t</scope><name>sample_count</name></member>
+      <member refid="structhf__stm32__temp__sensor__config__t_1afe748da02e51b47e20f2733629cd3d23" prot="public" virt="non-virtual"><scope>hf_stm32_temp_sensor_config_t</scope><name>sensor_type</name></member>
+      <member refid="structhf__stm32__temp__sensor__config__t_1a7e6b4469e8c7641f3e126ec02098ef4d" prot="public" virt="non-virtual"><scope>hf_stm32_temp_sensor_config_t</scope><name>timeout_ms</name></member>
+      <member refid="structhf__stm32__temp__sensor__config__t_1ad173fc8b2f0b892505980d83c8b4c802" prot="public" virt="non-virtual"><scope>hf_stm32_temp_sensor_config_t</scope><name>vref_mv</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

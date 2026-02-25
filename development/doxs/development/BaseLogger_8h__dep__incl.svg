@@ -103,7 +103,7 @@ var sectionId = 'dynsection-1';
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="StmLogger_8h.html" target="_top" xlink:title="STM32 Logger stub — printf&#45;based fallback for non&#45;ESP32 platforms.">
+<g id="a_Node000005"><a xlink:href="StmLogger_8h.html" target="_top" xlink:title="STM32 Logger — UART/SWO/ITM&#45;based logging with full BaseLogger interface.">
 <polygon fill="white" stroke="#666666" points="616,-97 430,-97 430,-74 616,-74 616,-97"/>
 <text text-anchor="middle" x="523" y="-81.8" font-family="Arial" font-size="14.00">inc/mcu/stm32/StmLogger.h</text>
 </a>
@@ -148,7 +148,7 @@ var sectionId = 'dynsection-1';
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="StmLogger_8cpp.html" target="_top" xlink:title="STM32 Logger stub implementation.">
+<g id="a_Node000006"><a xlink:href="StmLogger_8cpp.html" target="_top" xlink:title="STM32 Logger implementation — UART/SWO/printf output.">
 <polygon fill="white" stroke="#666666" points="644.5,-30.5 443.5,-30.5 443.5,-7.5 644.5,-7.5 644.5,-30.5"/>
 <text text-anchor="middle" x="544" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/stm32/StmLogger.cpp</text>
 </a>

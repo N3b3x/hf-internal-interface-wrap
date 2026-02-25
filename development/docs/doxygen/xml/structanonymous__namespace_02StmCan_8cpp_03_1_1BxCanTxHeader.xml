@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader" kind="struct" language="C++" prot="public">
+    <compoundname>anonymous_namespace{StmCan.cpp}::BxCanTxHeader</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader_1a1f6972bfb46fbac42cf58aed98038027" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanTxHeader::StdId</definition>
+        <argsstring></argsstring>
+        <name>StdId</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanTxHeader::StdId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="62" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader_1a4be2f05cc96699d6a03e71ced32d3caa" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanTxHeader::ExtId</definition>
+        <argsstring></argsstring>
+        <name>ExtId</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanTxHeader::ExtId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="63" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader_1a7889abf8b547bd50cfa84fcbf7603af7" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanTxHeader::IDE</definition>
+        <argsstring></argsstring>
+        <name>IDE</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanTxHeader::IDE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="64" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader_1a4611e7b5e3922dbe956cf70dcc975c22" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanTxHeader::RTR</definition>
+        <argsstring></argsstring>
+        <name>RTR</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanTxHeader::RTR</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="65" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader_1a986101a511e88456408831aeaf409add" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanTxHeader::DLC</definition>
+        <argsstring></argsstring>
+        <name>DLC</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanTxHeader::DLC</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="66" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader_1a9c3fcc17a0aa7262b4c5bd83d599b7ed" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanTxHeader::TransmitGlobalTime</definition>
+        <argsstring></argsstring>
+        <name>TransmitGlobalTime</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanTxHeader::TransmitGlobalTime</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="67" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/stm32/StmCan.cpp" line="61" column="5" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="61" bodyend="68"/>
+    <listofallmembers>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader_1a986101a511e88456408831aeaf409add" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanTxHeader</scope><name>DLC</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader_1a4be2f05cc96699d6a03e71ced32d3caa" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanTxHeader</scope><name>ExtId</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader_1a7889abf8b547bd50cfa84fcbf7603af7" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanTxHeader</scope><name>IDE</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader_1a4611e7b5e3922dbe956cf70dcc975c22" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanTxHeader</scope><name>RTR</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader_1a1f6972bfb46fbac42cf58aed98038027" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanTxHeader</scope><name>StdId</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader_1a9c3fcc17a0aa7262b4c5bd83d599b7ed" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanTxHeader</scope><name>TransmitGlobalTime</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

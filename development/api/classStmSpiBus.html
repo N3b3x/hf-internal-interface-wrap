@@ -101,7 +101,7 @@ $(function(){initNavTree('classStmSpiBus.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 SPI bus — stub implementation.  
+<p>STM32 SPI bus — manages the HAL handle and device collection.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="StmSpi_8h_source.html">StmSpi.h</a>&gt;</code></p>
@@ -115,6 +115,9 @@ Collaboration diagram for StmSpiBus:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a69cafaa6911c26bdd2c288fb10df37be" id="r_a69cafaa6911c26bdd2c288fb10df37be"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69cafaa6911c26bdd2c288fb10df37be">StmSpiBus</a> (const <a class="el" href="structhf__spi__bus__config__t.html">hf_spi_bus_config_t</a> &amp;config) noexcept</td></tr>
 <tr class="separator:a69cafaa6911c26bdd2c288fb10df37be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9b391925b8b34a47d17a91cdabb87cf" id="r_ae9b391925b8b34a47d17a91cdabb87cf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9b391925b8b34a47d17a91cdabb87cf">StmSpiBus</a> (SPI_HandleTypeDef *hal_handle, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms=1000) noexcept</td></tr>
+<tr class="memdesc:ae9b391925b8b34a47d17a91cdabb87cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience: construct directly from HAL handle.  <br /></td></tr>
+<tr class="separator:ae9b391925b8b34a47d17a91cdabb87cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b4658e1504d0caa95b0d13cc4d41335" id="r_a1b4658e1504d0caa95b0d13cc4d41335"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b4658e1504d0caa95b0d13cc4d41335">~StmSpiBus</a> () noexcept</td></tr>
 <tr class="separator:a1b4658e1504d0caa95b0d13cc4d41335"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a949a4e26bc00b79272f4e1929aa06064" id="r_a949a4e26bc00b79272f4e1929aa06064"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a949a4e26bc00b79272f4e1929aa06064">Initialize</a> () noexcept</td></tr>
@@ -135,6 +138,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad8fc3bd4ef289384acf536b01700aa3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a285df3f22b4b762454e5ca47af1ad31c" id="r_a285df3f22b4b762454e5ca47af1ad31c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structhf__spi__bus__config__t.html">hf_spi_bus_config_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a285df3f22b4b762454e5ca47af1ad31c">GetConfig</a> () const noexcept</td></tr>
 <tr class="separator:a285df3f22b4b762454e5ca47af1ad31c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeabf2129d32b93d68715d4a1d20e3eee" id="r_aeabf2129d32b93d68715d4a1d20e3eee"><td class="memItemLeft" align="right" valign="top">SPI_HandleTypeDef *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeabf2129d32b93d68715d4a1d20e3eee">GetHalHandle</a> () const noexcept</td></tr>
+<tr class="memdesc:aeabf2129d32b93d68715d4a1d20e3eee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the STM32 HAL SPI handle.  <br /></td></tr>
+<tr class="separator:aeabf2129d32b93d68715d4a1d20e3eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -146,10 +152,11 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a5303b40e97ecdc7f59d91a865cc97d92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 SPI bus — stub implementation. </p>
+<div class="textblock"><p>STM32 SPI bus — manages the HAL handle and device collection. </p>
+<p>One bus instance per SPI peripheral (SPI1, SPI2, etc.). </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a69cafaa6911c26bdd2c288fb10df37be" name="a69cafaa6911c26bdd2c288fb10df37be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69cafaa6911c26bdd2c288fb10df37be">&#9670;&#160;</a></span>StmSpiBus()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a69cafaa6911c26bdd2c288fb10df37be">&#9670;&#160;</a></span>StmSpiBus() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -173,6 +180,37 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ae9b391925b8b34a47d17a91cdabb87cf" name="ae9b391925b8b34a47d17a91cdabb87cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9b391925b8b34a47d17a91cdabb87cf">&#9670;&#160;</a></span>StmSpiBus() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">StmSpiBus::StmSpiBus </td>
+          <td>(</td>
+          <td class="paramtype">SPI_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>hal_handle</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a></td>          <td class="paramname"><span class="paramname"><em>timeout_ms</em><span class="paramdefsep"> = </span><span class="paramdefval">1000</span></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convenience: construct directly from HAL handle. </p>
+
+</div>
+</div>
 <a id="a1b4658e1504d0caa95b0d13cc4d41335" name="a1b4658e1504d0caa95b0d13cc4d41335"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1b4658e1504d0caa95b0d13cc4d41335">&#9670;&#160;</a></span>~StmSpiBus()</h2>
 
@@ -191,7 +229,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -346,6 +384,33 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeabf2129d32b93d68715d4a1d20e3eee" name="aeabf2129d32b93d68715d4a1d20e3eee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeabf2129d32b93d68715d4a1d20e3eee">&#9670;&#160;</a></span>GetHalHandle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SPI_HandleTypeDef * StmSpiBus::GetHalHandle </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the STM32 HAL SPI handle. </p>
 
 </div>
 </div>

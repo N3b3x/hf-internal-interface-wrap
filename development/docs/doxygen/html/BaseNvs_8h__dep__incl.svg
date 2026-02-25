@@ -86,7 +86,7 @@
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="StmNvs_8h.html" target="_top" xlink:title="STM32 NVS (non&#45;volatile storage) stub — placeholder for flash/EEPROM integration.">
+<g id="a_Node000006"><a xlink:href="StmNvs_8h.html" target="_top" xlink:title="STM32 NVS (Non&#45;Volatile Storage) — flash&#45;based key&#45;value store.">
 <polygon fill="white" stroke="#666666" points="481.5,-163.5 313.5,-163.5 313.5,-140.5 481.5,-140.5 481.5,-163.5"/>
 <text text-anchor="middle" x="397.5" y="-148.3" font-family="Arial" font-size="14.00">inc/mcu/stm32/StmNvs.h</text>
 </a>
@@ -140,7 +140,7 @@
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
-<g id="a_Node000007"><a xlink:href="StmNvs_8cpp.html" target="_top" xlink:title="STM32 NVS stub implementation.">
+<g id="a_Node000007"><a xlink:href="StmNvs_8cpp.html" target="_top" xlink:title="STM32 NVS implementation — flash&#45;backed key&#45;value store.">
 <polygon fill="white" stroke="#666666" points="490,-97 307,-97 307,-74 490,-74 490,-97"/>
 <text text-anchor="middle" x="398.5" y="-81.8" font-family="Arial" font-size="14.00">src/mcu/stm32/StmNvs.cpp</text>
 </a>

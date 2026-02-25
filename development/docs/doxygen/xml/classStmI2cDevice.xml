@@ -12,12 +12,13 @@
         <name>parent_bus_</name>
         <qualifiedname>StmI2cDevice::parent_bus_</qualifiedname>
         <briefdescription>
+<para>Parent bus reference. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="38" column="15" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="38" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="77" column="25" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classStmI2cDevice_1a30cf0c80323678784650324431024fc0" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref></type>
@@ -26,19 +27,20 @@
         <name>config_</name>
         <qualifiedname>StmI2cDevice::config_</qualifiedname>
         <briefdescription>
+<para>Device configuration. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="39" column="28" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="39" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="78" column="28" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="78" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classStmI2cDevice_1a500c016c1e38b66087caa52d6e669c99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classStmI2cDevice_1ae1ee48b91ec267b628c39a69329799da" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
         <definition>StmI2cDevice::StmI2cDevice</definition>
-        <argsstring>(StmI2cBus *parent, const hf_i2c_device_config_t &amp;config)</argsstring>
+        <argsstring>(StmI2cBus *parent, const hf_i2c_device_config_t &amp;config) noexcept</argsstring>
         <name>StmI2cDevice</name>
         <qualifiedname>StmI2cDevice::StmI2cDevice</qualifiedname>
         <param>
@@ -55,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="22" column="5" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="12" bodyend="13"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="49" column="5" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="35" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1ae7a31f63df015bbc5044861df221fe3d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -69,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="23" column="5"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="50" column="5" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="38" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1a5d069dc6f8e90fe5aaccdd603111a07d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -88,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="25" column="10" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="17" bodyend="17"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="52" column="10" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="42" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1ab3a261efe8437ab6a349af90829b86c5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -107,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="26" column="10" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="18" bodyend="18"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="53" column="10" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="62" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1a8a705c4068676dcca9a36054eddfe15c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -166,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="28" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="20" bodyend="23"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="55" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="67" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1a8cd7f86df640e25578aaaabe4ca194ec" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -225,7 +227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="30" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="25" bodyend="28"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="57" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="90" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1a785e780f32c9353a7aa5ad48784352df" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -308,7 +310,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="32" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="30" bodyend="34"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="59" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="112" bodyend="149"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1aae434c3a1e5f13290326c0a862cebc37" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -327,13 +329,86 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="35" column="14" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="36" bodyend="38"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="62" column="14" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="151" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmI2cDevice_1a540861718a8da891acf2df06e51c8b25" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref> &amp;</type>
+        <definition>const hf_i2c_device_config_t &amp; StmI2cDevice::GetConfig</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetConfig</name>
+        <qualifiedname>StmI2cDevice::GetConfig</qualifiedname>
+        <briefdescription>
+<para>Get the device configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmI2c.h" line="65" column="34" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmI2cDevice_1a85d54c5784ac4a070c9752112d57f2dc" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classStmI2cBus" kindref="compound">StmI2cBus</ref> *</type>
+        <definition>StmI2cBus * StmI2cDevice::GetParentBus</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetParentBus</name>
+        <qualifiedname>StmI2cDevice::GetParentBus</qualifiedname>
+        <briefdescription>
+<para>Get the parent bus. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmI2c.h" line="68" column="15" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classStmI2cDevice_1ad39db07781cc86805ff4646466b1235c" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t StmI2cDevice::GetEffectiveTimeout</definition>
+        <argsstring>(hf_u32_t requested_ms) const noexcept</argsstring>
+        <name>GetEffectiveTimeout</name>
+        <qualifiedname>StmI2cDevice::GetEffectiveTimeout</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>requested_ms</declname>
+        </param>
+        <briefdescription>
+<para>Get effective timeout (device override or bus default) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmI2c.h" line="72" column="14" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="155" bodyend="159"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classStmI2cDevice_1af0d017a0135b577c8fb6e252eedf0c29" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
+        <definition>hf_i2c_err_t StmI2cDevice::ConvertHalStatus</definition>
+        <argsstring>(hf_u32_t hal_status) noexcept</argsstring>
+        <name>ConvertHalStatus</name>
+        <qualifiedname>StmI2cDevice::ConvertHalStatus</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>hal_status</declname>
+        </param>
+        <briefdescription>
+<para>Convert HAL status to I2C error. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmI2c.h" line="75" column="25" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="161" bodyend="169"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>STM32 I2C device — stub implementation. </para>
+<para>STM32 I2C device — inherits <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref>, delegates I/O to parent bus HAL handle. </para>
     </briefdescription>
     <detaileddescription>
+<para>Each device represents one slave address on the bus. The parent bus manages the I2C_HandleTypeDef* and provides the HAL layer. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2">
@@ -394,19 +469,23 @@
         <link refid="structhf__i2c__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/stm32/StmI2c.h" line="20" column="1" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="20" bodyend="40"/>
+    <location file="inc/mcu/stm32/StmI2c.h" line="47" column="1" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="47" bodyend="79"/>
     <listofallmembers>
       <member refid="classBaseI2c_1a0ef4a4a50952a71b4c7be2f13660282d" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>BaseI2c</name></member>
       <member refid="classBaseI2c_1a092d769aa9bf48da2c730a6a27a4d93c" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>BaseI2c</name></member>
       <member refid="classBaseI2c_1af9b69abc680d2951321217d64e2eaa12" prot="protected" virt="non-virtual"><scope>StmI2cDevice</scope><name>BaseI2c</name></member>
       <member refid="classBaseI2c_1a53ffda673e3b0774c31da385b27a7c3f" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>Close</name></member>
       <member refid="classStmI2cDevice_1a30cf0c80323678784650324431024fc0" prot="private" virt="non-virtual"><scope>StmI2cDevice</scope><name>config_</name></member>
+      <member refid="classStmI2cDevice_1af0d017a0135b577c8fb6e252eedf0c29" prot="private" virt="non-virtual"><scope>StmI2cDevice</scope><name>ConvertHalStatus</name></member>
       <member refid="classStmI2cDevice_1ab3a261efe8437ab6a349af90829b86c5" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>Deinitialize</name></member>
       <member refid="classBaseI2c_1ac79fd093442994accf495c0731e40d30" prot="protected" virt="non-virtual"><scope>StmI2cDevice</scope><name>diagnostics_</name></member>
       <member refid="classBaseI2c_1a35f3b7343c0e4ace25937060f39d44be" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>EnsureDeinitialized</name></member>
       <member refid="classBaseI2c_1ab2ba276139755eda4f52d7f9a523ed4e" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>EnsureInitialized</name></member>
+      <member refid="classStmI2cDevice_1a540861718a8da891acf2df06e51c8b25" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>GetConfig</name></member>
       <member refid="classStmI2cDevice_1aae434c3a1e5f13290326c0a862cebc37" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>GetDeviceAddress</name></member>
       <member refid="classBaseI2c_1a6c002a6a3a2ab1d9616fd8dad1f9c8e7" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>GetDiagnostics</name></member>
+      <member refid="classStmI2cDevice_1ad39db07781cc86805ff4646466b1235c" prot="private" virt="non-virtual"><scope>StmI2cDevice</scope><name>GetEffectiveTimeout</name></member>
+      <member refid="classStmI2cDevice_1a85d54c5784ac4a070c9752112d57f2dc" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>GetParentBus</name></member>
       <member refid="classBaseI2c_1a211b5abbe37a9905cf74312799eca5d4" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>GetStatistics</name></member>
       <member refid="classStmI2cDevice_1a5d069dc6f8e90fe5aaccdd603111a07d" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>Initialize</name></member>
       <member refid="classBaseI2c_1a87bf0b1caa8c82523adc4e1816467232" prot="protected" virt="non-virtual"><scope>StmI2cDevice</scope><name>initialized_</name></member>
@@ -424,7 +503,7 @@
       <member refid="classBaseI2c_1af4abdee0440286a09b39680211ed19a5" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>ResetDiagnostics</name></member>
       <member refid="classBaseI2c_1a11d9d717f2176de6ceaa57b0f29bd2f9" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>ResetStatistics</name></member>
       <member refid="classBaseI2c_1a2caa8cbbbdda3f001603da5bc8bc5913" prot="protected" virt="non-virtual"><scope>StmI2cDevice</scope><name>statistics_</name></member>
-      <member refid="classStmI2cDevice_1a500c016c1e38b66087caa52d6e669c99" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>StmI2cDevice</name></member>
+      <member refid="classStmI2cDevice_1ae1ee48b91ec267b628c39a69329799da" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>StmI2cDevice</name></member>
       <member refid="classStmI2cDevice_1a8a705c4068676dcca9a36054eddfe15c" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>Write</name></member>
       <member refid="classBaseI2c_1afe9cee66898c28c58ac7a146375e3a63" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>WriteByte</name></member>
       <member refid="classStmI2cDevice_1a785e780f32c9353a7aa5ad48784352df" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>WriteRead</name></member>

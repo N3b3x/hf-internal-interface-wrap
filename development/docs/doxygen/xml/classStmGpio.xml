@@ -4,16 +4,128 @@
     <compoundname>StmGpio</compoundname>
     <basecompoundref refid="classBaseGpio" prot="public" virt="non-virtual">BaseGpio</basecompoundref>
     <includes refid="StmGpio_8h" local="no">StmGpio.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classStmGpio_1ad25d7497412c54842ceda554f256014f" prot="private" static="no" mutable="no">
+        <type>GPIO_TypeDef *</type>
+        <definition>GPIO_TypeDef* StmGpio::port_</definition>
+        <argsstring></argsstring>
+        <name>port_</name>
+        <qualifiedname>StmGpio::port_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmGpio.h" line="101" column="24" bodyfile="inc/mcu/stm32/StmGpio.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmGpio_1a4dfa24041f88568ef03618f3cbed18d5" prot="private" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>hf_u16_t StmGpio::hal_pin_mask_</definition>
+        <argsstring></argsstring>
+        <name>hal_pin_mask_</name>
+        <qualifiedname>StmGpio::hal_pin_mask_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmGpio.h" line="102" column="25" bodyfile="inc/mcu/stm32/StmGpio.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmGpio_1a926c4236afdfdfe1b55a5ae4b583481a" prot="private" static="no" mutable="no">
+        <type><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref></type>
+        <definition>hf_gpio_direction_t StmGpio::direction_</definition>
+        <argsstring></argsstring>
+        <name>direction_</name>
+        <qualifiedname>StmGpio::direction_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmGpio.h" line="103" column="25" bodyfile="inc/mcu/stm32/StmGpio.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmGpio_1a4dbeaa835a1c40e656ddcbdb40cccc15" prot="private" static="no" mutable="no">
+        <type><ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref></type>
+        <definition>hf_gpio_output_mode_t StmGpio::output_mode_</definition>
+        <argsstring></argsstring>
+        <name>output_mode_</name>
+        <qualifiedname>StmGpio::output_mode_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmGpio.h" line="104" column="27" bodyfile="inc/mcu/stm32/StmGpio.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmGpio_1a80bc4fbd21c1df9d2a7cb9051a3fcc47" prot="private" static="no" mutable="no">
+        <type><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref></type>
+        <definition>hf_gpio_pull_mode_t StmGpio::pull_mode_</definition>
+        <argsstring></argsstring>
+        <name>pull_mode_</name>
+        <qualifiedname>StmGpio::pull_mode_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmGpio.h" line="105" column="25" bodyfile="inc/mcu/stm32/StmGpio.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmGpio_1a1bdca7f6a81e892b1e4d082bd10a92ea" prot="private" static="no" mutable="no">
+        <type>hf_gpio_drive_cap_t</type>
+        <definition>hf_gpio_drive_cap_t StmGpio::drive_cap_</definition>
+        <argsstring></argsstring>
+        <name>drive_cap_</name>
+        <qualifiedname>StmGpio::drive_cap_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmGpio.h" line="106" column="25" bodyfile="inc/mcu/stm32/StmGpio.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classStmGpio_1a4d7adf495edd48dab7ddb7f3392bb764" prot="private" static="yes" mutable="no">
+        <type><ref refid="classStmGpio" kindref="compound">StmGpio</ref> *</type>
+        <definition>StmGpio * StmGpio::s_exti_instances_</definition>
+        <argsstring>[16]</argsstring>
+        <name>s_exti_instances_</name>
+        <qualifiedname>StmGpio::s_exti_instances_</qualifiedname>
+        <initializer>= {}</initializer>
+        <briefdescription>
+<para>Static EXTI dispatch table — one slot per EXTI line (0–15). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmGpio.h" line="112" column="20" bodyfile="inc/mcu/stm32/StmGpio.h" bodystart="73" bodyend="73"/>
+      </memberdef>
+    </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classStmGpio_1a13ec17edceac22e440b175f913e3f8e8" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classStmGpio_1a353fdb27f68f3f77db34b973ca17f538" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
         <definition>StmGpio::StmGpio</definition>
-        <argsstring>(hf_pin_num_t pin_num, hf_gpio_direction_t direction=hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT, hf_gpio_active_state_t active_state=hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH, hf_gpio_output_mode_t output_mode=hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL, hf_gpio_pull_mode_t pull_mode=hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING, hf_gpio_drive_cap_t drive_capability=hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM) noexcept</argsstring>
+        <argsstring>(hf_pin_num_t pin_num, GPIO_TypeDef *port, hf_u16_t hal_pin_mask, hf_gpio_direction_t direction=hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT, hf_gpio_active_state_t active_state=hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH, hf_gpio_output_mode_t output_mode=hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL, hf_gpio_pull_mode_t pull_mode=hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING, hf_gpio_drive_cap_t drive_capability=hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM) noexcept</argsstring>
         <name>StmGpio</name>
         <qualifiedname>StmGpio::StmGpio</qualifiedname>
         <param>
           <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
           <declname>pin_num</declname>
+        </param>
+        <param>
+          <type>GPIO_TypeDef *</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>hal_pin_mask</declname>
         </param>
         <param>
           <type><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref></type>
@@ -41,17 +153,103 @@
           <defval>hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM</defval>
         </param>
         <briefdescription>
+<para>Full constructor with HAL port + pin mask. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pin_num</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Logical pin number (encoded: port*16 + pin_index). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO_TypeDef* port (e.g. GPIOA). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>hal_pin_mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>HAL pin bitmask (e.g. GPIO_PIN_5 = 1&lt;&lt;5). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input / Output / Bidirectional. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>active_state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Active high / low. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>output_mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Push-pull / Open-drain. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pull_mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>None / Pull-up / Pull-down. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>drive_capability</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Low / Medium / High / Very-High. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmGpio.h" line="48" column="14" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="79" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmGpio_1a7a409e87f85d07b6587079eeaf39c2ad" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmGpio::StmGpio</definition>
+        <argsstring>(const hf_stm32_gpio_config_t &amp;config) noexcept</argsstring>
+        <name>StmGpio</name>
+        <qualifiedname>StmGpio::StmGpio</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__stm32__gpio__config__t" kindref="compound">hf_stm32_gpio_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Construct from config struct. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="20" column="14" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="10" bodyend="18"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="62" column="14"/>
       </memberdef>
-      <memberdef kind="function" id="classStmGpio_1aa9c7d16581d45c0ce2741e7054a3a8b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classStmGpio_1aa33b880ddbb4f6ab7c30507129c699b9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
         <definition>StmGpio::~StmGpio</definition>
-        <argsstring>() override</argsstring>
+        <argsstring>() noexcept override</argsstring>
         <name>~StmGpio</name>
         <qualifiedname>StmGpio::~StmGpio</qualifiedname>
         <briefdescription>
@@ -60,7 +258,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="26" column="5"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="64" column="5" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="100" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1ad108587cd354d234cdd7267876da4be8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -79,7 +277,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="29" column="10" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="22" bodyend="22"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="67" column="10" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="111" bodyend="122"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a08972988dbdb87d8449efbcbe544e95b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -98,7 +296,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="30" column="10" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="23" bodyend="23"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="68" column="10" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="124" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1ab4019f83455349f50b1a65280c0b282b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -117,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="31" column="13" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="24" bodyend="24"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="69" column="13" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="128" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a7c8c088887133a57c4c68884fe310e4b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>const char *</type>
@@ -136,7 +334,60 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="32" column="16" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="25" bodyend="25"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="70" column="16" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="132" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmGpio_1a7fb86a0903ac2402015aacf4b7d27160" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>GPIO_TypeDef *</type>
+        <definition>GPIO_TypeDef * StmGpio::GetPort</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetPort</name>
+        <qualifiedname>StmGpio::GetPort</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmGpio.h" line="86" column="18" bodyfile="inc/mcu/stm32/StmGpio.h" bodystart="86" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmGpio_1ae650105a8e831333ed34b6bbf6871682" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>hf_u16_t StmGpio::GetHalPinMask</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetHalPinMask</name>
+        <qualifiedname>StmGpio::GetHalPinMask</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmGpio.h" line="87" column="14" bodyfile="inc/mcu/stm32/StmGpio.h" bodystart="87" bodyend="87"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classStmGpio_1ab65299b0d8ae49f10374a65be90a05a1" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void StmGpio::ExtiCallbackDispatch</definition>
+        <argsstring>(hf_u16_t gpio_pin_mask) noexcept</argsstring>
+        <name>ExtiCallbackDispatch</name>
+        <qualifiedname>StmGpio::ExtiCallbackDispatch</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>gpio_pin_mask</declname>
+        </param>
+        <briefdescription>
+<para>Route EXTI callback to the registered <ref refid="classStmGpio" kindref="compound">StmGpio</ref> instance. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Usage: <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_GPIO_EXTI_Callback(uint16_t<sp/>GPIO_Pin)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmGpio_1ab65299b0d8ae49f10374a65be90a05a1" kindref="member">StmGpio::ExtiCallbackDispatch</ref>(GPIO_Pin);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmGpio.h" line="83" column="17" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="282" bodyend="293"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -170,7 +421,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="36" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="27" bodyend="29"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="91" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="140" bodyend="145"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a351efa2429353dfbe32e0b4df7cfb311" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -204,7 +455,7 @@ Reads the actual direction configuration from hardware registers. Useful for fau
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="37" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="30" bodyend="32"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="92" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="147" bodyend="150"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1aff454893b825f08f0e99e015698ba489" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -236,7 +487,7 @@ Reads the actual direction configuration from hardware registers. Useful for fau
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="38" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="33" bodyend="35"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="93" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="156" bodyend="161"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a47cd403eff983464ee19daa3a6814cdf" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -270,7 +521,7 @@ Reads the actual output mode configuration from hardware registers. Useful for f
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="39" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="36" bodyend="38"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="94" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="163" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a7676c66a241eabd1d7e15fff38ece2fa" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -302,7 +553,7 @@ Reads the actual output mode configuration from hardware registers. Useful for f
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="40" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="39" bodyend="41"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="95" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="172" bodyend="177"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a34c2b35a33ae2764946619cd80d89e66" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref></type>
@@ -323,7 +574,7 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="41" column="25" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="42" bodyend="44"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="96" column="25" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="179" bodyend="181"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a4e5f0c8b9977a69c648b59d6d9ac32e4" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -355,7 +606,7 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="42" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="45" bodyend="47"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="97" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="187" bodyend="193"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a4a2b1e9a2202d89f8ede64702efecf77" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -387,14 +638,37 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="43" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="48" bodyend="50"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="98" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="195" bodyend="202"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classStmGpio_1a60cfdb35581560221763d251203e1439" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void StmGpio::ApplyHalConfig</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ApplyHalConfig</name>
+        <qualifiedname>StmGpio::ApplyHalConfig</qualifiedname>
+        <briefdescription>
+<para>Rebuild and apply HAL_GPIO_Init for the current config. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmGpio.h" line="109" column="10" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="321" bodyend="370"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>STM32 GPIO — stub implementation. </para>
+<para>STM32 GPIO implementation with full HAL integration. </para>
     </briefdescription>
     <detaileddescription>
-<para>Override only the pure virtual methods from <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref>. All operations return GPIO_ERR_UNSUPPORTED_OPERATION. </para>
+<para>Design:<itemizedlist>
+<listitem><para>Constructor accepts the HAL port pointer + pin mask (matching CubeMX output).</para>
+</listitem><listitem><para>Alternatively can use the hf_pin_num_t encoding (port_index * 16 + pin_index) if the port array is registered via StmTypes utility functions.</para>
+</listitem><listitem><para>Runtime reconfiguration calls HAL_GPIO_Init with a rebuilt InitTypeDef.</para>
+</listitem><listitem><para>EXTI dispatch: a static array of 16 slots (one per EXTI line) routes HAL_GPIO_EXTI_Callback to the correct instance. </para>
+</listitem></itemizedlist>
+</para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2">
@@ -424,6 +698,9 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
         <link refid="classStmGpio"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+        <childnode refid="1" relation="usage">
+          <edgelabel>s_exti_instances_</edgelabel>
+        </childnode>
       </node>
       <node id="4">
         <label>hf_gpio_diagnostics_t</label>
@@ -434,9 +711,10 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
         <link refid="structhf__gpio__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/stm32/StmGpio.h" line="18" column="1" bodyfile="inc/mcu/stm32/StmGpio.h" bodystart="18" bodyend="44"/>
+    <location file="inc/mcu/stm32/StmGpio.h" line="34" column="1" bodyfile="inc/mcu/stm32/StmGpio.h" bodystart="34" bodyend="113"/>
     <listofallmembers>
       <member refid="classBaseGpio_1aa521b7b75306b4a53b6c726fa07406e9" prot="protected" virt="non-virtual"><scope>StmGpio</scope><name>active_state_</name></member>
+      <member refid="classStmGpio_1a60cfdb35581560221763d251203e1439" prot="private" virt="non-virtual"><scope>StmGpio</scope><name>ApplyHalConfig</name></member>
       <member refid="classBaseGpio_1a182759a9452aa9b39f6ec0bcfdc1827f" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>BaseGpio</name></member>
       <member refid="classBaseGpio_1a1a1c7695af0b0dcb1d3f0fb745673b72" prot="protected" virt="non-virtual"><scope>StmGpio</scope><name>BaseGpio</name></member>
       <member refid="classBaseGpio_1a850ba260aec4cda209a53136c9c270b9" prot="public" virt="virtual"><scope>StmGpio</scope><name>ClearInterruptStats</name></member>
@@ -445,25 +723,31 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
       <member refid="classBaseGpio_1a69461140f1f8e9717926235118bae0b9" prot="protected" virt="non-virtual"><scope>StmGpio</scope><name>current_state_</name></member>
       <member refid="classBaseGpio_1a10393bd9b8eeacc40bc2e643be69576d" prot="public" virt="virtual"><scope>StmGpio</scope><name>Deinitialize</name></member>
       <member refid="classBaseGpio_1a82ac9df6b2e7c01355b72ccbc007b201" prot="protected" virt="non-virtual"><scope>StmGpio</scope><name>diagnostics_</name></member>
+      <member refid="classStmGpio_1a926c4236afdfdfe1b55a5ae4b583481a" prot="private" virt="non-virtual"><scope>StmGpio</scope><name>direction_</name></member>
       <member refid="classBaseGpio_1ab2a4153923e1411a7abd5e7a0e406018" prot="public" virt="virtual"><scope>StmGpio</scope><name>DisableInterrupt</name></member>
+      <member refid="classStmGpio_1a1bdca7f6a81e892b1e4d082bd10a92ea" prot="private" virt="non-virtual"><scope>StmGpio</scope><name>drive_cap_</name></member>
       <member refid="classBaseGpio_1a379720946db91ef301fe14d8385d8208" prot="public" virt="virtual"><scope>StmGpio</scope><name>EnableInterrupt</name></member>
       <member refid="classBaseGpio_1a33c01186a67211b905c9efd8a64af2b1" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>EnsureDeinitialized</name></member>
       <member refid="classBaseGpio_1a363769239e2d658315215af324ee5aba" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>EnsureInitialized</name></member>
+      <member refid="classStmGpio_1ab65299b0d8ae49f10374a65be90a05a1" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>ExtiCallbackDispatch</name></member>
       <member refid="classBaseGpio_1a3bf8b64e2c0cdc440540f1b81e347952" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>GetActiveState</name></member>
       <member refid="classBaseGpio_1a0a9b9db4afeedbd326fad93037717337" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>GetCurrentState</name></member>
       <member refid="classStmGpio_1a7c8c088887133a57c4c68884fe310e4b" prot="public" virt="virtual"><scope>StmGpio</scope><name>GetDescription</name></member>
       <member refid="classBaseGpio_1a53728ff73bade39aa3ed6c34cff93023" prot="public" virt="virtual"><scope>StmGpio</scope><name>GetDiagnostics</name></member>
       <member refid="classBaseGpio_1a962ee940c181b782f4612f913fb352a7" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>GetDirection</name></member>
       <member refid="classStmGpio_1a351efa2429353dfbe32e0b4df7cfb311" prot="protected" virt="virtual"><scope>StmGpio</scope><name>GetDirectionImpl</name></member>
+      <member refid="classStmGpio_1ae650105a8e831333ed34b6bbf6871682" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>GetHalPinMask</name></member>
       <member refid="classBaseGpio_1aa6ea99f5b6bfc64f0e94c50f9e91f2e1" prot="public" virt="virtual"><scope>StmGpio</scope><name>GetInterruptStatus</name></member>
       <member refid="classStmGpio_1ab4019f83455349f50b1a65280c0b282b" prot="public" virt="virtual"><scope>StmGpio</scope><name>GetMaxPins</name></member>
       <member refid="classBaseGpio_1af619dacf07dd2b15e40c0f5bfb1c5cb7" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>GetOutputMode</name></member>
       <member refid="classStmGpio_1a47cd403eff983464ee19daa3a6814cdf" prot="protected" virt="virtual"><scope>StmGpio</scope><name>GetOutputModeImpl</name></member>
       <member refid="classBaseGpio_1a33f1c7b8d1ab1f2d2d1bcb3ccb1860d3" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>GetPin</name></member>
       <member refid="classStmGpio_1a4a2b1e9a2202d89f8ede64702efecf77" prot="protected" virt="virtual"><scope>StmGpio</scope><name>GetPinLevelImpl</name></member>
+      <member refid="classStmGpio_1a7fb86a0903ac2402015aacf4b7d27160" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>GetPort</name></member>
       <member refid="classBaseGpio_1aa5786db64ba7dc4114de02ae2b91483c" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>GetPullMode</name></member>
       <member refid="classStmGpio_1a34c2b35a33ae2764946619cd80d89e66" prot="protected" virt="virtual"><scope>StmGpio</scope><name>GetPullModeImpl</name></member>
       <member refid="classBaseGpio_1aeb544b838a8508af37bc8e6d40b056da" prot="public" virt="virtual"><scope>StmGpio</scope><name>GetStatistics</name></member>
+      <member refid="classStmGpio_1a4dfa24041f88568ef03618f3cbed18d5" prot="private" virt="non-virtual"><scope>StmGpio</scope><name>hal_pin_mask_</name></member>
       <member refid="classStmGpio_1ad108587cd354d234cdd7267876da4be8" prot="public" virt="virtual"><scope>StmGpio</scope><name>Initialize</name></member>
       <member refid="classBaseGpio_1ac5c36e8f02f1483820a15c7dbcdc8e6c" prot="protected" virt="non-virtual"><scope>StmGpio</scope><name>initialized_</name></member>
       <member refid="classBaseGpio_1a7f2adc44918574595986177767494092" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>IsActive</name></member>
@@ -473,11 +757,13 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
       <member refid="classStmGpio_1a08972988dbdb87d8449efbcbe544e95b" prot="public" virt="virtual"><scope>StmGpio</scope><name>IsPinAvailable</name></member>
       <member refid="classBaseGpio_1aeaf2282b59e4b9d06c5af433eab74953" prot="protected" virt="non-virtual"><scope>StmGpio</scope><name>LevelToState</name></member>
       <member refid="classBaseGpio_1a80f934a9f41ef0315bae75ba3883c426" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>operator=</name></member>
-      <member refid="classBaseGpio_1a009b41614328663508a6dfccdd1bfa8e" prot="protected" virt="non-virtual"><scope>StmGpio</scope><name>output_mode_</name></member>
+      <member refid="classStmGpio_1a4dbeaa835a1c40e656ddcbdb40cccc15" prot="private" virt="non-virtual"><scope>StmGpio</scope><name>output_mode_</name></member>
       <member refid="classBaseGpio_1ae1bd179f793ec92b56b56bf6ea386546" prot="protected" virt="non-virtual"><scope>StmGpio</scope><name>pin_</name></member>
-      <member refid="classBaseGpio_1a47fd29eb70c7eb4f7ea6ff00782539a5" prot="protected" virt="non-virtual"><scope>StmGpio</scope><name>pull_mode_</name></member>
+      <member refid="classStmGpio_1ad25d7497412c54842ceda554f256014f" prot="private" virt="non-virtual"><scope>StmGpio</scope><name>port_</name></member>
+      <member refid="classStmGpio_1a80bc4fbd21c1df9d2a7cb9051a3fcc47" prot="private" virt="non-virtual"><scope>StmGpio</scope><name>pull_mode_</name></member>
       <member refid="classBaseGpio_1a3d3400ff38b0f0531ecce0a432b25367" prot="public" virt="virtual"><scope>StmGpio</scope><name>ResetDiagnostics</name></member>
       <member refid="classBaseGpio_1ab90fba65d84dd0249076b89052568bcb" prot="public" virt="virtual"><scope>StmGpio</scope><name>ResetStatistics</name></member>
+      <member refid="classStmGpio_1a4d7adf495edd48dab7ddb7f3392bb764" prot="private" virt="non-virtual"><scope>StmGpio</scope><name>s_exti_instances_</name></member>
       <member refid="classBaseGpio_1aa2a7854a7829455131113f059f498af0" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>SetActive</name></member>
       <member refid="classBaseGpio_1a17782f317993dcb800ba05411f157d70" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>SetActiveState</name></member>
       <member refid="classBaseGpio_1a54987f95debcc8faef0a7ecd38447031" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>SetDirection</name></member>
@@ -491,7 +777,8 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
       <member refid="classBaseGpio_1a9d5e847076559bec0fdd3724eb3a6e31" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>SetState</name></member>
       <member refid="classBaseGpio_1ade6e9755735a8eb9f08db59396dbecc4" prot="protected" virt="non-virtual"><scope>StmGpio</scope><name>StateToLevel</name></member>
       <member refid="classBaseGpio_1acc7b7575c32b77a766adf3e275bd1973" prot="protected" virt="non-virtual"><scope>StmGpio</scope><name>statistics_</name></member>
-      <member refid="classStmGpio_1a13ec17edceac22e440b175f913e3f8e8" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>StmGpio</name></member>
+      <member refid="classStmGpio_1a353fdb27f68f3f77db34b973ca17f538" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>StmGpio</name></member>
+      <member refid="classStmGpio_1a7a409e87f85d07b6587079eeaf39c2ad" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>StmGpio</name></member>
       <member refid="classBaseGpio_1a90af5a4646e3d15940bf2604a705233d" prot="public" virt="virtual"><scope>StmGpio</scope><name>SupportsInterrupts</name></member>
       <member refid="classBaseGpio_1a7defeeabf3fbb66f820178a668a62148" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>Toggle</name></member>
       <member refid="classBaseGpio_1a26162b7180af0e0715fe0d8f37e695a3" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>ToString</name></member>
@@ -507,7 +794,7 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
       <member refid="classBaseGpio_1a21fe3e0c3a8f2c6a78803e986b195ef6" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>VerifyOutputMode</name></member>
       <member refid="classBaseGpio_1a38643a8949be75f6944f15f140904d25" prot="public" virt="virtual"><scope>StmGpio</scope><name>WaitForInterrupt</name></member>
       <member refid="classBaseGpio_1a882c3e3be74c5efb0ee4b3768d864462" prot="public" virt="virtual"><scope>StmGpio</scope><name>~BaseGpio</name></member>
-      <member refid="classStmGpio_1aa9c7d16581d45c0ce2741e7054a3a8b5" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>~StmGpio</name></member>
+      <member refid="classStmGpio_1aa33b880ddbb4f6ab7c30507129c699b9" prot="public" virt="non-virtual"><scope>StmGpio</scope><name>~StmGpio</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

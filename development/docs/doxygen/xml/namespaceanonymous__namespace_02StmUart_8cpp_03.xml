@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespaceanonymous__namespace_02StmUart_8cpp_03" kind="namespace" language="C++">
+    <compoundname>anonymous_namespace{StmUart.cpp}</compoundname>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmUart_8cpp_03_1ab2a4d5fbf0156cc690a4ac7ed0757a95" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t anonymous_namespace{StmUart.cpp}::kDefaultTimeoutMs</definition>
+        <argsstring></argsstring>
+        <name>kDefaultTimeoutMs</name>
+        <qualifiedname>anonymous_namespace{StmUart.cpp}::kDefaultTimeoutMs</qualifiedname>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmUart.cpp" line="29" column="24" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmUart_8cpp_03_1a370188345c76a4506f6731ba8e1fbf27" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int anonymous_namespace{StmUart.cpp}::kPrintfBufSize</definition>
+        <argsstring></argsstring>
+        <name>kPrintfBufSize</name>
+        <qualifiedname>anonymous_namespace{StmUart.cpp}::kPrintfBufSize</qualifiedname>
+        <initializer>= 256</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmUart.cpp" line="30" column="19" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/stm32/StmUart.cpp" line="28" column="1"/>
+  </compounddef>
+</doxygen>

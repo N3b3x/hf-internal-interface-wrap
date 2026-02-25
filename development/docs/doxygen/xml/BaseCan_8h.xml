@@ -9,6 +9,7 @@
     <includedby refid="CanComprehensiveTest_8cpp" local="yes">examples/esp32/main/CanComprehensiveTest.cpp</includedby>
     <includedby refid="EspCan_8h" local="yes">inc/mcu/esp32/EspCan.h</includedby>
     <includedby refid="EspTypes__CAN_8h" local="yes">inc/mcu/esp32/utils/EspTypes_CAN.h</includedby>
+    <includedby refid="StmCan_8h" local="yes">inc/mcu/stm32/StmCan.h</includedby>
     <incdepgraph>
       <node id="1">
         <label>inc/base/BaseCan.h</label>
@@ -76,6 +77,8 @@
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -148,6 +151,12 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
+      <node id="22">
+        <label>inc/mcu/stm32/StmCan.h</label>
+        <link refid="StmCan_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
       <node id="4">
         <label>src/mcu/esp32/EspCan.cpp</label>
         <link refid="EspCan_8cpp"/>
@@ -171,6 +180,10 @@
       <node id="21">
         <label>src/mcu/esp32/EspUart.cpp</label>
         <link refid="EspUart_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/mcu/stm32/StmCan.cpp</label>
+        <link refid="StmCan_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structhf__can__config__t" prot="public">hf_can_config_t</innerclass>

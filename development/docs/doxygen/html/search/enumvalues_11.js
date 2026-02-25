@@ -37,5 +37,7 @@ var searchData=
   ['stop_5f1_34',['STOP_1',['../StmTypes_8h.html#aa8b4cce069a27d9eb825d3ddaa1a2a1aa59c261d7c703b9ed285f54bfb950945d',1,'StmTypes.h']]],
   ['stop_5f2_35',['STOP_2',['../StmTypes_8h.html#aa8b4cce069a27d9eb825d3ddaa1a2a1aa18bf1b094b70bf06841b4a65ddb2723d',1,'StmTypes.h']]],
   ['strict_5fno_5feviction_36',['STRICT_NO_EVICTION',['../EspTypes__PWM_8h.html#ac87a4c9f233c95c6036c956aa21fdf72a149573f7fc27bf6e07f0d47846625809',1,'EspTypes_PWM.h']]],
-  ['suggest_5falternative_37',['SUGGEST_ALTERNATIVE',['../EspTypes__PWM_8h.html#afe53e31a856c24db0547fcf306e1b312a4d410384cd4aae825bad97f4d13cf7b5',1,'EspTypes_PWM.h']]]
+  ['string_37',['STRING',['../classStmNvs.html#a0bcc4c0e9ca2496bf414508a23ae60dba63b588d5559f64f89a416e656880b949',1,'StmNvs']]],
+  ['suggest_5falternative_38',['SUGGEST_ALTERNATIVE',['../EspTypes__PWM_8h.html#afe53e31a856c24db0547fcf306e1b312a4d410384cd4aae825bad97f4d13cf7b5',1,'EspTypes_PWM.h']]],
+  ['swo_5fitm_39',['SWO_ITM',['../classStmLogger.html#a61646c2f7c850f826a73d37065982705ae2c9ebf15d5093c70d71af68714890cb',1,'StmLogger']]]
 ];

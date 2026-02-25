@@ -1,10 +1,38 @@
-warning: Tag 'DOT_FONTNAME' at line 2695 of file '/tmp/doxyfile.UWtjph' has become obsolete.
+warning: Tag 'DOT_FONTNAME' at line 2695 of file '/tmp/doxyfile.tdqOp8' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-warning: Tag 'DOT_FONTSIZE' at line 2696 of file '/tmp/doxyfile.UWtjph' has become obsolete.
+warning: Tag 'DOT_FONTSIZE' at line 2696 of file '/tmp/doxyfile.tdqOp8' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-warning: Tag 'DOT_TRANSPARENT' at line 2699 of file '/tmp/doxyfile.UWtjph' has become obsolete.
+warning: Tag 'DOT_TRANSPARENT' at line 2699 of file '/tmp/doxyfile.tdqOp8' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
+/home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/mcu/stm32/StmI2c.h:9: warning: multiple use of section label 'Usage' while adding section, (first occurrence: /home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/mcu/stm32/StmAdc.h, line 8)
+/home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/mcu/stm32/StmLogger.h:10: warning: multiple use of section label 'Usage' while adding section, (first occurrence: /home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/mcu/stm32/StmAdc.h, line 8)
+/home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/mcu/stm32/StmNvs.h:11: warning: multiple use of section label 'Usage' while adding section, (first occurrence: /home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/mcu/stm32/StmAdc.h, line 8)
+/home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/mcu/stm32/StmSpi.h:9: warning: multiple use of section label 'Usage' while adding section, (first occurrence: /home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/mcu/stm32/StmAdc.h, line 8)
+/home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/mcu/stm32/StmTypes.h:19: warning: multiple use of section label 'Usage' while adding section, (first occurrence: /home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/mcu/stm32/StmAdc.h, line 8)
 /home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/mcu/stm32/StmTypes.h:2: warning: Found non-existing group 'stm32_types' for the command '@ingroup', ignoring command
+/home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/src/mcu/stm32/StmGpio.cpp:208: warning: no uniquely matching class member found for 
+  bool StmGpio::SupportsInterrupts() const
+Possible candidates:
+  'virtual hf_gpio_err_t BaseGpio::SupportsInterrupts() const noexcept' at line 588 of file /home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/base/BaseGpio.h
+  'hf_gpio_err_t EspGpio::SupportsInterrupts() const noexcept override' at line 144 of file /home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/mcu/esp32/EspGpio.h
+/home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/src/mcu/stm32/StmGpio.cpp:212: warning: no uniquely matching class member found for 
+  hf_gpio_err_t StmGpio::ConfigureInterrupt(hf_gpio_interrupt_trigger_t trigger, InterruptCallback callback, void *user_data)
+Possible candidates:
+  'virtual hf_gpio_err_t BaseGpio::ConfigureInterrupt(hf_gpio_interrupt_trigger_t trigger, InterruptCallback callback=nullptr, void *user_data=nullptr) noexcept' at line 599 of file /home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/base/BaseGpio.h
+  'hf_gpio_err_t EspGpio::ConfigureInterrupt(hf_gpio_interrupt_trigger_t trigger, InterruptCallback callback=nullptr, void *user_data=nullptr) noexcept override' at line 153 of file /home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/mcu/esp32/EspGpio.h
+/home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/src/mcu/stm32/StmGpio.cpp:261: warning: no uniquely matching class member found for 
+  hf_gpio_err_t StmGpio::EnableInterrupt()
+Possible candidates:
+  'virtual hf_gpio_err_t BaseGpio::EnableInterrupt() noexcept' at line 609 of file /home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/base/BaseGpio.h
+  'hf_gpio_err_t EspGpio::EnableInterrupt() noexcept override' at line 161 of file /home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/mcu/esp32/EspGpio.h
+/home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/src/mcu/stm32/StmGpio.cpp:272: warning: no uniquely matching class member found for 
+  hf_gpio_err_t StmGpio::DisableInterrupt()
+Possible candidates:
+  'virtual hf_gpio_err_t BaseGpio::DisableInterrupt() noexcept' at line 617 of file /home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/base/BaseGpio.h
+  'hf_gpio_err_t EspGpio::DisableInterrupt() noexcept override' at line 167 of file /home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/inc/mcu/esp32/EspGpio.h
+/home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/src/mcu/stm32/StmGpio.cpp:295: warning: documented symbol 'void StmGpio::RegisterExtiInstance' was not declared or defined.
+/home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/src/mcu/stm32/StmGpio.cpp:302: warning: documented symbol 'void StmGpio::UnregisterExtiInstance' was not declared or defined.
+/home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/src/mcu/stm32/StmGpio.cpp:313: warning: documented symbol 'hf_u8_t StmGpio::GetPinIndex' was not declared or defined.
 error: Project logo 'assets/images/logo.png' specified by PROJECT_LOGO does not exist!
 /home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/README.md:226: warning: unable to resolve reference to '/home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/examples/esp32/docs/README.md' for \ref command
 /home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/README.md:226: warning: unable to resolve reference to '/home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/examples/esp32/docs/README.md' for \ref command

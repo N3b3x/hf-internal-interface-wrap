@@ -99,16 +99,16 @@ $(function(){initNavTree('StmSpi_8h.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 SPI stub implementation — placeholder for future STM32 HAL integration.  
+<p>STM32 SPI Bus+Device wrapper — wraps STM32 HAL SPI via CubeMX handle.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="BaseSpi_8h_source.html">BaseSpi.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="PlatformMutex_8h_source.html">PlatformMutex.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="StmTypes_8h_source.html">StmTypes.h</a>&quot;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for StmSpi.h:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="StmSpi_8h__incl.svg" width="100%" height="508"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="StmSpi_8h__incl.svg" width="574" height="278"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -121,15 +121,46 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStmSpiDevice.html">StmSpiDevice</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 SPI device — stub implementation.  <a href="classStmSpiDevice.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 SPI device — manages chip-select and delegates transfers to parent bus.  <a href="classStmSpiDevice.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStmSpiBus.html">StmSpiBus</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 SPI bus — stub implementation.  <a href="classStmSpiBus.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 SPI bus — manages the HAL handle and device collection.  <a href="classStmSpiBus.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 SPI stub implementation — placeholder for future STM32 HAL integration. </p>
-<p>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </p>
+<div class="textblock"><p>STM32 SPI Bus+Device wrapper — wraps STM32 HAL SPI via CubeMX handle. </p>
+<p>Bus/Device architecture:</p><ul>
+<li><a class="el" href="classStmSpiBus.html" title="STM32 SPI bus — manages the HAL handle and device collection.">StmSpiBus</a>: wraps one SPI_HandleTypeDef*, manages device collection</li>
+<li><a class="el" href="classStmSpiDevice.html" title="STM32 SPI device — manages chip-select and delegates transfers to parent bus.">StmSpiDevice</a>: inherits <a class="el" href="classBaseSpi.html" title="Abstract base class for SPI device implementations.">BaseSpi</a>, manages CS pin, delegates SPI I/O to bus</li>
+</ul>
+<h1><a class="anchor" id="Usage"></a>
+Usage</h1>
+<div class="fragment"><div class="line"><span class="keyword">extern</span> SPI_HandleTypeDef hspi1;</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_struct" href="structhf__spi__bus__config__t.html">hf_spi_bus_config_t</a> bus_cfg(&amp;hspi1);</div>
+<div class="line"><a class="code hl_class" href="classStmSpiBus.html">StmSpiBus</a> spiBus(bus_cfg);</div>
+<div class="line">spiBus.Initialize();</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_struct" href="structhf__spi__device__config__t.html">hf_spi_device_config_t</a> dev_cfg;</div>
+<div class="line">dev_cfg.<a class="code hl_variable" href="structhf__spi__device__config__t.html#a74b7447d47d3b9dfb732739e82e05b6c">cs_port</a> = GPIOA;</div>
+<div class="line">dev_cfg.<a class="code hl_variable" href="structhf__spi__device__config__t.html#af85f2826210e7f6d834a654b92c32470">cs_pin</a>  = GPIO_PIN_4;</div>
+<div class="line"><span class="keywordtype">int</span> idx = spiBus.CreateDevice(dev_cfg);</div>
+<div class="line"><a class="code hl_class" href="classBaseSpi.html">BaseSpi</a>* sensor = spiBus.GetDevice(idx);</div>
+<div class="line">sensor-&gt;<a class="code hl_function" href="classBaseSpi.html#a0ee4d13f589e319c6fbb3d5bb6492784">Initialize</a>();</div>
+<div class="line"> </div>
+<div class="line">uint8_t tx = 0x80, rx = 0;</div>
+<div class="line">sensor-&gt;<a class="code hl_function" href="classBaseSpi.html#a7951cfcc329ab963764013ebe47288c0">Transfer</a>(&amp;tx, &amp;rx, 1);</div>
+<div class="ttc" id="aclassBaseSpi_html"><div class="ttname"><a href="classBaseSpi.html">BaseSpi</a></div><div class="ttdoc">Abstract base class for SPI device implementations.</div><div class="ttdef"><b>Definition</b> BaseSpi.h:184</div></div>
+<div class="ttc" id="aclassBaseSpi_html_a0ee4d13f589e319c6fbb3d5bb6492784"><div class="ttname"><a href="classBaseSpi.html#a0ee4d13f589e319c6fbb3d5bb6492784">BaseSpi::Initialize</a></div><div class="ttdeci">virtual bool Initialize() noexcept=0</div><div class="ttdoc">Initialize the SPI bus.</div></div>
+<div class="ttc" id="aclassBaseSpi_html_a7951cfcc329ab963764013ebe47288c0"><div class="ttname"><a href="classBaseSpi.html#a7951cfcc329ab963764013ebe47288c0">BaseSpi::Transfer</a></div><div class="ttdeci">virtual hf_spi_err_t Transfer(const hf_u8_t *tx_data, hf_u8_t *rx_data, hf_u16_t length, hf_u32_t timeout_ms=0) noexcept=0</div><div class="ttdoc">Perform a full-duplex SPI transfer.</div></div>
+<div class="ttc" id="aclassStmSpiBus_html"><div class="ttname"><a href="classStmSpiBus.html">StmSpiBus</a></div><div class="ttdoc">STM32 SPI bus — manages the HAL handle and device collection.</div><div class="ttdef"><b>Definition</b> StmSpi.h:86</div></div>
+<div class="ttc" id="astructhf__spi__bus__config__t_html"><div class="ttname"><a href="structhf__spi__bus__config__t.html">hf_spi_bus_config_t</a></div><div class="ttdoc">Platform-agnostic SPI bus configuration for STM32.</div><div class="ttdef"><b>Definition</b> EspTypes_SPI.h:150</div></div>
+<div class="ttc" id="astructhf__spi__device__config__t_html"><div class="ttname"><a href="structhf__spi__device__config__t.html">hf_spi_device_config_t</a></div><div class="ttdoc">SPI device configuration for STM32.</div><div class="ttdef"><b>Definition</b> EspTypes_SPI.h:210</div></div>
+<div class="ttc" id="astructhf__spi__device__config__t_html_a74b7447d47d3b9dfb732739e82e05b6c"><div class="ttname"><a href="structhf__spi__device__config__t.html#a74b7447d47d3b9dfb732739e82e05b6c">hf_spi_device_config_t::cs_port</a></div><div class="ttdeci">GPIO_TypeDef * cs_port</div><div class="ttdoc">CS GPIO port (e.g., GPIOA)</div><div class="ttdef"><b>Definition</b> StmTypes.h:308</div></div>
+<div class="ttc" id="astructhf__spi__device__config__t_html_af85f2826210e7f6d834a654b92c32470"><div class="ttname"><a href="structhf__spi__device__config__t.html#af85f2826210e7f6d834a654b92c32470">hf_spi_device_config_t::cs_pin</a></div><div class="ttdeci">hf_pin_num_t cs_pin</div><div class="ttdoc">CS pin (or -1 for software CS)</div><div class="ttdef"><b>Definition</b> EspTypes_SPI.h:213</div></div>
+</div><!-- fragment --><dl class="section author"><dt>Author</dt><dd>HardFOC </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC — Licensed under GPL v3.0 or later. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

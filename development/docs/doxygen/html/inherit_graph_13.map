@@ -1,7 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classBaseTemperature.html" title="Abstract base class for all temperature sensor implementations." alt="" coords="5,33,171,64"/>
-<area shape="rect" id="Node000001" href="$classEspTemperature.html" title="ESP32&#45;C6 internal temperature sensor implementation." alt="" coords="220,5,375,36"/>
-<area shape="poly" id="edge17_Node000000_Node000001" title=" " alt="" coords="184,33,220,28,220,34,185,38"/>
-<area shape="rect" id="Node000002" href="$classStmTemperature.html" title="STM32 Temperature sensor — stub implementation." alt="" coords="219,60,376,91"/>
-<area shape="poly" id="edge18_Node000000_Node000002" title=" " alt="" coords="185,58,219,63,218,68,184,64"/>
+<area shape="rect" id="Node000000" href="$classBaseLogger.html" title="Base logger abstract class." alt="" coords="5,5,124,36"/>
+<area shape="rect" id="Node000001" href="$classStmLogger.html" title="STM32 Logger — production&#45;quality logging over UART/SWO/printf." alt="" coords="172,5,283,36"/>
+<area shape="poly" id="edge9_Node000000_Node000001" title=" " alt="" coords="138,18,172,18,172,23,138,23"/>
 </map>

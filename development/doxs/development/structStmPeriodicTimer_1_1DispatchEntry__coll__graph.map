@@ -1,0 +1,14 @@
+<map id="StmPeriodicTimer::DispatchEntry" name="StmPeriodicTimer::DispatchEntry">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,104,252,155"/>
+<area shape="rect" id="Node000002" href="$classStmPeriodicTimer.html" title="STM32 Periodic Timer implementation." alt="" coords="228,223,395,253"/>
+<area shape="poly" id="edge6_Node000002_Node000001" title=" " alt="" coords="123,169,124,184,131,197,145,207,168,215,228,227,227,232,167,221,142,212,127,200,119,185,118,169"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="281,216,234,181,187,157,190,152,237,176,284,212"/>
+<area shape="rect" id="Node000003" href="$classBasePeriodicTimer.html" title="Abstract base class for periodic timer operations." alt="" coords="276,114,451,145"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="359,159,343,200,326,224,322,221,338,197,354,157"/>
+<area shape="rect" id="Node000004" href="$structhf__timer__statistics__t.html" title="Timer operation statistics." alt="" coords="163,5,345,36"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="280,44,351,112,347,116,277,48"/>
+<area shape="rect" id="Node000005" href="$structhf__timer__diagnostics__t.html" title="Timer diagnostic information." alt="" coords="370,5,573,36"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="449,48,380,116,376,112,445,44"/>
+<area shape="rect" id="Node000006" href="$structhf__timer__stats__t.html" title="Timer statistics structure." alt="" coords="475,114,625,145"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="507,153,344,225,342,220,505,148"/>
+</map>

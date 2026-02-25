@@ -13,5 +13,8 @@ var searchData=
   ['basespi_10',['BaseSpi',['../classBaseSpi.html',1,'']]],
   ['basetemperature_11',['BaseTemperature',['../classBaseTemperature.html',1,'']]],
   ['baseuart_12',['BaseUart',['../classBaseUart.html',1,'']]],
-  ['basewifi_13',['BaseWifi',['../classBaseWifi.html',1,'']]]
+  ['basewifi_13',['BaseWifi',['../classBaseWifi.html',1,'']]],
+  ['bxcanfilterconfig_14',['BxCanFilterConfig',['../structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig.html',1,'anonymous_namespace{StmCan.cpp}']]],
+  ['bxcanrxheader_15',['BxCanRxHeader',['../structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader.html',1,'anonymous_namespace{StmCan.cpp}']]],
+  ['bxcantxheader_16',['BxCanTxHeader',['../structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader.html',1,'anonymous_namespace{StmCan.cpp}']]]
 ];

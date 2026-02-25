@@ -21,7 +21,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="STM32 ADC stub implementation — placeholder for future STM32 HAL integration.">
+<g id="a_Node000001"><a xlink:title="STM32 ADC wrapper — wraps STM32 HAL ADC via CubeMX&#45;generated handle.">
 <polygon fill="#999999" stroke="#666666" points="175.5,-82 7.5,-82 7.5,-59 175.5,-59 175.5,-82"/>
 <text text-anchor="middle" x="91.5" y="-66.8" font-family="Arial" font-size="14.00">inc/mcu/stm32/StmAdc.h</text>
 </a>
@@ -30,7 +30,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="StmAdc_8cpp.html" target="_top" xlink:title="STM32 ADC stub implementation.">
+<g id="a_Node000002"><a xlink:href="StmAdc_8cpp.html" target="_top" xlink:title="STM32 ADC wrapper implementation — full STM32 HAL integration.">
 <polygon fill="white" stroke="#666666" points="183,-23 0,-23 0,0 183,0 183,-23"/>
 <text text-anchor="middle" x="91.5" y="-7.8" font-family="Arial" font-size="14.00">src/mcu/stm32/StmAdc.cpp</text>
 </a>

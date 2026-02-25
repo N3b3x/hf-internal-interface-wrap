@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespaceanonymous__namespace_02StmLogger_8cpp_03" kind="namespace" language="C++">
+    <compoundname>anonymous_namespace{StmLogger.cpp}</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceanonymous__namespace_02StmLogger_8cpp_03_1a7851fb0201253a204b1fc6c2da664dd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * anonymous_namespace{StmLogger.cpp}::LevelToPrefix</definition>
+        <argsstring>(hf_log_level_t level)</argsstring>
+        <name>LevelToPrefix</name>
+        <qualifiedname>anonymous_namespace{StmLogger.cpp}::LevelToPrefix</qualifiedname>
+        <param>
+          <type><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref></type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmLogger.cpp" line="36" column="16" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="36" bodyend="45"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/stm32/StmLogger.cpp" line="35" column="1"/>
+  </compounddef>
+</doxygen>

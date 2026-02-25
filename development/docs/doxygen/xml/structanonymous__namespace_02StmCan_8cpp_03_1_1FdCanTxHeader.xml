@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader" kind="struct" language="C++" prot="public">
+    <compoundname>anonymous_namespace{StmCan.cpp}::FdCanTxHeader</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1ac27e061811c0a0b383fbba9498666f1e" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::Identifier</definition>
+        <argsstring></argsstring>
+        <name>Identifier</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::FdCanTxHeader::Identifier</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="95" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1a013ed1a3960177d9d02e66f0207c3362" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::IdType</definition>
+        <argsstring></argsstring>
+        <name>IdType</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::FdCanTxHeader::IdType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="96" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1ac0d3fd9c5c95bfd1b2763a1f6b7b13c3" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::TxFrameType</definition>
+        <argsstring></argsstring>
+        <name>TxFrameType</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::FdCanTxHeader::TxFrameType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="97" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1ac8af54066a16b626cdb857d9949758cd" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::DataLength</definition>
+        <argsstring></argsstring>
+        <name>DataLength</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::FdCanTxHeader::DataLength</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="98" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1aa4d19915abf99f0a45cd0613df9efbca" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::ErrorStateIndicator</definition>
+        <argsstring></argsstring>
+        <name>ErrorStateIndicator</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::FdCanTxHeader::ErrorStateIndicator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="99" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1a5551bd00ae60c2a30fc79bfab2395e23" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::BitRateSwitch</definition>
+        <argsstring></argsstring>
+        <name>BitRateSwitch</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::FdCanTxHeader::BitRateSwitch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="100" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1a14a05a7038cc88fadd889192191f8316" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::FDFormat</definition>
+        <argsstring></argsstring>
+        <name>FDFormat</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::FdCanTxHeader::FDFormat</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="101" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1a3aea62c5fbf77d292af7c7245ef4bbae" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::TxEventFifoControl</definition>
+        <argsstring></argsstring>
+        <name>TxEventFifoControl</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::FdCanTxHeader::TxEventFifoControl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="102" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1ab92105698a3c82a8a78ef1951337748f" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::MessageMarker</definition>
+        <argsstring></argsstring>
+        <name>MessageMarker</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::FdCanTxHeader::MessageMarker</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="103" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="103" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/stm32/StmCan.cpp" line="94" column="5" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="94" bodyend="104"/>
+    <listofallmembers>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1a5551bd00ae60c2a30fc79bfab2395e23" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::FdCanTxHeader</scope><name>BitRateSwitch</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1ac8af54066a16b626cdb857d9949758cd" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::FdCanTxHeader</scope><name>DataLength</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1aa4d19915abf99f0a45cd0613df9efbca" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::FdCanTxHeader</scope><name>ErrorStateIndicator</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1a14a05a7038cc88fadd889192191f8316" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::FdCanTxHeader</scope><name>FDFormat</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1ac27e061811c0a0b383fbba9498666f1e" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::FdCanTxHeader</scope><name>Identifier</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1a013ed1a3960177d9d02e66f0207c3362" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::FdCanTxHeader</scope><name>IdType</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1ab92105698a3c82a8a78ef1951337748f" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::FdCanTxHeader</scope><name>MessageMarker</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1a3aea62c5fbf77d292af7c7245ef4bbae" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::FdCanTxHeader</scope><name>TxEventFifoControl</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1ac0d3fd9c5c95bfd1b2763a1f6b7b13c3" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::FdCanTxHeader</scope><name>TxFrameType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

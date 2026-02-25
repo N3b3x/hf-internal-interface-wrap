@@ -3,6 +3,7 @@
   <compounddef id="classBasePwm" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>BasePwm</compoundname>
     <derivedcompoundref refid="classEspPwm" prot="public" virt="non-virtual">EspPwm</derivedcompoundref>
+    <derivedcompoundref refid="classStmPwm" prot="public" virt="non-virtual">StmPwm</derivedcompoundref>
     <includes refid="BasePwm_8h" local="no">BasePwm.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classBasePwm_1a6506053d333fbed35bfea3ee3bd74693" prot="protected" static="no" mutable="no">
@@ -73,6 +74,7 @@
         <name>Initialize</name>
         <qualifiedname>BasePwm::Initialize</qualifiedname>
         <reimplementedby refid="classEspPwm_1aedb8649c68e856258d6278bf399aab05">Initialize</reimplementedby>
+        <reimplementedby refid="classStmPwm_1a269e1545813e6519a75956a2981e8325">Initialize</reimplementedby>
         <briefdescription>
 <para>Initialize the PWM system. </para>
         </briefdescription>
@@ -92,6 +94,7 @@
         <name>Deinitialize</name>
         <qualifiedname>BasePwm::Deinitialize</qualifiedname>
         <reimplementedby refid="classEspPwm_1a28c857a39efec61ad79770770fca878c">Deinitialize</reimplementedby>
+        <reimplementedby refid="classStmPwm_1a0c8868d1b3c749646274682350b78675">Deinitialize</reimplementedby>
         <briefdescription>
 <para>Deinitialize the PWM system. </para>
         </briefdescription>
@@ -169,6 +172,7 @@
         <name>EnableChannel</name>
         <qualifiedname>BasePwm::EnableChannel</qualifiedname>
         <reimplementedby refid="classEspPwm_1a3bd515c8685db84d5ff92a475063d663">EnableChannel</reimplementedby>
+        <reimplementedby refid="classStmPwm_1a91107816ec9fe8f31aa1c0570be97bfa">EnableChannel</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
           <declname>channel_id</declname>
@@ -201,6 +205,7 @@
         <name>DisableChannel</name>
         <qualifiedname>BasePwm::DisableChannel</qualifiedname>
         <reimplementedby refid="classEspPwm_1a8ff1addad40e1a81afa83a975b136e89">DisableChannel</reimplementedby>
+        <reimplementedby refid="classStmPwm_1a2891a6812ae9d9867f9f624e7e6a3e90">DisableChannel</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
           <declname>channel_id</declname>
@@ -233,6 +238,7 @@
         <name>IsChannelEnabled</name>
         <qualifiedname>BasePwm::IsChannelEnabled</qualifiedname>
         <reimplementedby refid="classEspPwm_1a07c737787080435a486d47ad3c6803e9">IsChannelEnabled</reimplementedby>
+        <reimplementedby refid="classStmPwm_1a169948bffba231f28cfb8e2a21e47d9d">IsChannelEnabled</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
           <declname>channel_id</declname>
@@ -265,6 +271,7 @@
         <name>SetDutyCycle</name>
         <qualifiedname>BasePwm::SetDutyCycle</qualifiedname>
         <reimplementedby refid="classEspPwm_1ae4170c3b4661c0d4b9646eb3d775c88c">SetDutyCycle</reimplementedby>
+        <reimplementedby refid="classStmPwm_1a74511e0bf0a9768ab57a0375d687e6ac">SetDutyCycle</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
           <declname>channel_id</declname>
@@ -309,6 +316,7 @@
         <name>SetDutyCycleRaw</name>
         <qualifiedname>BasePwm::SetDutyCycleRaw</qualifiedname>
         <reimplementedby refid="classEspPwm_1a6bc8906d106762d5c9b1bcfd68ff0636">SetDutyCycleRaw</reimplementedby>
+        <reimplementedby refid="classStmPwm_1ac65700326e03a2ee18ce2df6d8fa5697">SetDutyCycleRaw</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
           <declname>channel_id</declname>
@@ -353,6 +361,7 @@
         <name>SetFrequency</name>
         <qualifiedname>BasePwm::SetFrequency</qualifiedname>
         <reimplementedby refid="classEspPwm_1a185108e6adbaaa23bcef4fbd8bda1b91">SetFrequency</reimplementedby>
+        <reimplementedby refid="classStmPwm_1aac3185d5b8f42ab6c1ef3409df8c3365">SetFrequency</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
           <declname>channel_id</declname>
@@ -397,6 +406,7 @@
         <name>SetPhaseShift</name>
         <qualifiedname>BasePwm::SetPhaseShift</qualifiedname>
         <reimplementedby refid="classEspPwm_1a6096fdc1d06345204c8062d2f86bd0c5">SetPhaseShift</reimplementedby>
+        <reimplementedby refid="classStmPwm_1acfcd13854f8131d08b2531e54e358e1b">SetPhaseShift</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
           <declname>channel_id</declname>
@@ -441,6 +451,7 @@
         <name>StartAll</name>
         <qualifiedname>BasePwm::StartAll</qualifiedname>
         <reimplementedby refid="classEspPwm_1a130153d9f4bdaee4219736cb248d78f6">StartAll</reimplementedby>
+        <reimplementedby refid="classStmPwm_1a2a31bf7fe022850cbed5111052860ade">StartAll</reimplementedby>
         <briefdescription>
 <para>Start all enabled channels simultaneously. </para>
         </briefdescription>
@@ -460,6 +471,7 @@
         <name>StopAll</name>
         <qualifiedname>BasePwm::StopAll</qualifiedname>
         <reimplementedby refid="classEspPwm_1a8be25ecab27ff61499a66535f303df2e">StopAll</reimplementedby>
+        <reimplementedby refid="classStmPwm_1a9470315dbe5b4eb9f8cf9127f9d738e8">StopAll</reimplementedby>
         <briefdescription>
 <para>Stop all channels. </para>
         </briefdescription>
@@ -479,6 +491,7 @@
         <name>UpdateAll</name>
         <qualifiedname>BasePwm::UpdateAll</qualifiedname>
         <reimplementedby refid="classEspPwm_1a5681d5ceb230b6dc0a459f3ef9630b8b">UpdateAll</reimplementedby>
+        <reimplementedby refid="classStmPwm_1a99e0b7151be12ebcb541611ab0983a74">UpdateAll</reimplementedby>
         <briefdescription>
 <para>Update all channel outputs simultaneously (for synchronized updates) </para>
         </briefdescription>
@@ -498,6 +511,7 @@
         <name>SetComplementaryOutput</name>
         <qualifiedname>BasePwm::SetComplementaryOutput</qualifiedname>
         <reimplementedby refid="classEspPwm_1a6c4cc0b3c19e7258a063b1900f9d291a">SetComplementaryOutput</reimplementedby>
+        <reimplementedby refid="classStmPwm_1af35aaae19259f5a3d4ffcbbda992673e">SetComplementaryOutput</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
           <declname>primary_channel</declname>
@@ -554,6 +568,7 @@
         <name>GetDutyCycle</name>
         <qualifiedname>BasePwm::GetDutyCycle</qualifiedname>
         <reimplementedby refid="classEspPwm_1aeb3eda73cca25d298a3c7e3cbf133f03">GetDutyCycle</reimplementedby>
+        <reimplementedby refid="classStmPwm_1af0f3f38f53d25e5707f2e7fac065b585">GetDutyCycle</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
           <declname>channel_id</declname>
@@ -586,6 +601,7 @@
         <name>GetFrequency</name>
         <qualifiedname>BasePwm::GetFrequency</qualifiedname>
         <reimplementedby refid="classEspPwm_1a4687559ad8744ece1ef578796b21eb02">GetFrequency</reimplementedby>
+        <reimplementedby refid="classStmPwm_1a2421266985d533853c9894912e09a79f">GetFrequency</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
           <declname>channel_id</declname>
@@ -1118,6 +1134,12 @@
       <node id="2">
         <label>EspPwm</label>
         <link refid="classEspPwm"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>StmPwm</label>
+        <link refid="classStmPwm"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>

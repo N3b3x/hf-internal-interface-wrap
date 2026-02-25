@@ -1,25 +1,24 @@
 <map id="inc/mcu/stm32/StmI2c.h" name="inc/mcu/stm32/StmI2c.h">
-<area shape="rect" id="Node000001" title="STM32 I2C stub implementation — placeholder for future STM32 HAL integration." alt="" coords="427,5,645,36"/>
-<area shape="rect" id="Node000002" href="$BaseI2c_8h.html" title="Abstract base class for I2C device implementations in the HardFOC system." alt="" coords="241,84,343,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="491,39,351,83,349,77,490,34"/>
-<area shape="rect" id="Node000007" href="$PlatformMutex_8h.html" title="Cross&#45;platform RTOS mutex and synchronization primitives." alt="" coords="391,84,545,115"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="525,38,492,75,488,72,521,35"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="570,84,641,115"/>
-<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="551,34,585,72,581,75,547,38"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="665,84,754,115"/>
-<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="569,34,666,76,664,81,567,39"/>
-<area shape="rect" id="Node000003" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="5,163,168,193"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="255,117,138,160,136,155,253,112"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="304,241,379,272"/>
-<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="300,114,319,162,337,227,332,228,313,164,295,116"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="192,163,304,193"/>
-<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="286,116,265,152,261,149,281,114"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="135,191,292,238,290,243,133,196"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="55,241,119,272"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="89,194,89,228,84,228,84,194"/>
-<area shape="poly" id="edge10_Node000007_Node000004" title=" " alt="" coords="458,117,364,232,360,229,454,113"/>
-<area shape="rect" id="Node000008" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="429,163,552,193"/>
-<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="475,114,485,149,480,150,470,116"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="577,163,653,193"/>
-<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="496,112,577,154,574,159,494,117"/>
+<area shape="rect" id="Node000001" title="STM32 I2C Bus+Device wrapper — wraps STM32 HAL I2C via CubeMX handle." alt="" coords="250,5,467,36"/>
+<area shape="rect" id="Node000002" href="$BaseI2c_8h.html" title="Abstract base class for I2C device implementations in the HardFOC system." alt="" coords="42,84,145,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="310,39,156,83,155,78,309,34"/>
+<area shape="rect" id="Node000007" href="$StmTypes_8h.html" title="STM32 platform&#45;specific type definitions for hardware abstraction." alt="" coords="241,84,359,115"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="350,38,321,75,317,71,345,35"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="383,84,454,115"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="372,35,401,72,397,75,368,38"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="478,84,567,115"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="390,34,481,76,479,81,388,39"/>
+<area shape="rect" id="Node000003" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="160,163,323,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="122,112,203,154,201,159,120,117"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="251,241,325,272"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="67,117,42,133,20,152,9,172,9,182,14,192,37,214,60,228,84,234,109,236,167,233,200,234,237,239,236,244,200,239,167,239,109,241,83,240,58,233,34,219,10,195,4,183,3,171,16,148,39,128,64,113"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="24,163,136,193"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="93,115,87,149,82,148,88,115"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="252,192,274,228,270,231,248,195"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="163,241,227,272"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="235,195,213,231,208,228,230,192"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="291,117,263,153,259,150,287,113"/>
+<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="314,114,334,149,340,172,337,194,327,215,314,233,310,229,323,212,332,193,334,172,329,151,309,116"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="397,163,477,193"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="327,113,401,153,398,158,325,117"/>
 </map>

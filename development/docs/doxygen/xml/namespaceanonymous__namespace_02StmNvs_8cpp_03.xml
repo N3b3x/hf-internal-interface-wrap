@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespaceanonymous__namespace_02StmNvs_8cpp_03" kind="namespace" language="C++">
+    <compoundname>anonymous_namespace{StmNvs.cpp}</compoundname>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmNvs_8cpp_03_1ac7a9adc51e5ed1cdd49b551cc2217fad" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t anonymous_namespace{StmNvs.cpp}::kFlashTypeProgramByte</definition>
+        <argsstring></argsstring>
+        <name>kFlashTypeProgramByte</name>
+        <qualifiedname>anonymous_namespace{StmNvs.cpp}::kFlashTypeProgramByte</qualifiedname>
+        <initializer>= 0x00U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmNvs.cpp" line="27" column="24" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmNvs_8cpp_03_1ab52bb688b31f1a467cc33543577eb6c2" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t anonymous_namespace{StmNvs.cpp}::kFlashTypeProgramHalfWord</definition>
+        <argsstring></argsstring>
+        <name>kFlashTypeProgramHalfWord</name>
+        <qualifiedname>anonymous_namespace{StmNvs.cpp}::kFlashTypeProgramHalfWord</qualifiedname>
+        <initializer>= 0x01U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmNvs.cpp" line="28" column="24" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmNvs_8cpp_03_1ad68afd2725df899e49349a9ba095842a" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t anonymous_namespace{StmNvs.cpp}::kFlashTypeProgramWord</definition>
+        <argsstring></argsstring>
+        <name>kFlashTypeProgramWord</name>
+        <qualifiedname>anonymous_namespace{StmNvs.cpp}::kFlashTypeProgramWord</qualifiedname>
+        <initializer>= 0x02U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmNvs.cpp" line="29" column="24" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmNvs_8cpp_03_1a213e29d94ccd46ce58da6c3d04482735" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t anonymous_namespace{StmNvs.cpp}::kFlashTypeProgramDWord</definition>
+        <argsstring></argsstring>
+        <name>kFlashTypeProgramDWord</name>
+        <qualifiedname>anonymous_namespace{StmNvs.cpp}::kFlashTypeProgramDWord</qualifiedname>
+        <initializer>= 0x03U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmNvs.cpp" line="30" column="24" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/stm32/StmNvs.cpp" line="26" column="1"/>
+  </compounddef>
+</doxygen>

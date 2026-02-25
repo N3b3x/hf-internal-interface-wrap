@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanFilterConfig" kind="struct" language="C++" prot="public">
+    <compoundname>anonymous_namespace{StmCan.cpp}::FdCanFilterConfig</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanFilterConfig_1a18d2f07a6334fed96096ce3df3ea1e9d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanFilterConfig::IdType</definition>
+        <argsstring></argsstring>
+        <name>IdType</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::FdCanFilterConfig::IdType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="120" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanFilterConfig_1a4309dfc9188c19d6c7e97f086a53c291" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanFilterConfig::FilterIndex</definition>
+        <argsstring></argsstring>
+        <name>FilterIndex</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::FdCanFilterConfig::FilterIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="121" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanFilterConfig_1a2899689a3c1fc1bb7a728261a1405805" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanFilterConfig::FilterType</definition>
+        <argsstring></argsstring>
+        <name>FilterType</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::FdCanFilterConfig::FilterType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="122" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanFilterConfig_1ab72021c1e2e29858396c828e50242f36" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanFilterConfig::FilterConfig</definition>
+        <argsstring></argsstring>
+        <name>FilterConfig</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::FdCanFilterConfig::FilterConfig</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="123" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanFilterConfig_1a09c31d9e22e7b70391071d0189b30171" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanFilterConfig::FilterID1</definition>
+        <argsstring></argsstring>
+        <name>FilterID1</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::FdCanFilterConfig::FilterID1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="124" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanFilterConfig_1af9e7f563e804f5329780185c8628ce0d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanFilterConfig::FilterID2</definition>
+        <argsstring></argsstring>
+        <name>FilterID2</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::FdCanFilterConfig::FilterID2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="125" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="125" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/stm32/StmCan.cpp" line="119" column="5" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="119" bodyend="126"/>
+    <listofallmembers>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanFilterConfig_1ab72021c1e2e29858396c828e50242f36" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::FdCanFilterConfig</scope><name>FilterConfig</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanFilterConfig_1a09c31d9e22e7b70391071d0189b30171" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::FdCanFilterConfig</scope><name>FilterID1</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanFilterConfig_1af9e7f563e804f5329780185c8628ce0d" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::FdCanFilterConfig</scope><name>FilterID2</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanFilterConfig_1a4309dfc9188c19d6c7e97f086a53c291" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::FdCanFilterConfig</scope><name>FilterIndex</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanFilterConfig_1a2899689a3c1fc1bb7a728261a1405805" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::FdCanFilterConfig</scope><name>FilterType</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanFilterConfig_1a18d2f07a6334fed96096ce3df3ea1e9d" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::FdCanFilterConfig</scope><name>IdType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

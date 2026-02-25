@@ -122,7 +122,7 @@ var sectionId = 'dynsection-1';
 <!-- Node36 -->
 <g id="Node000036" class="node">
 <title>Node36</title>
-<g id="a_Node000036"><a xlink:href="StmGpio_8h.html" target="_top" xlink:title="STM32 GPIO stub implementation — placeholder for future STM32 HAL integration.">
+<g id="a_Node000036"><a xlink:href="StmGpio_8h.html" target="_top" xlink:title="STM32 GPIO wrapper — full HAL integration with EXTI interrupt support.">
 <polygon fill="white" stroke="#666666" points="2272.5,-341.5 2098.5,-341.5 2098.5,-318.5 2272.5,-318.5 2272.5,-341.5"/>
 <text text-anchor="middle" x="2185.5" y="-326.3" font-family="Arial" font-size="14.00">inc/mcu/stm32/StmGpio.h</text>
 </a>
@@ -881,7 +881,7 @@ var sectionId = 'dynsection-1';
 <!-- Node37 -->
 <g id="Node000037" class="node">
 <title>Node37</title>
-<g id="a_Node000037"><a xlink:href="StmGpio_8cpp.html" target="_top" xlink:title="STM32 GPIO stub implementation.">
+<g id="a_Node000037"><a xlink:href="StmGpio_8cpp.html" target="_top" xlink:title="STM32 GPIO wrapper implementation — full STM32 HAL integration.">
 <polygon fill="white" stroke="#666666" points="2399,-267.5 2210,-267.5 2210,-244.5 2399,-244.5 2399,-267.5"/>
 <text text-anchor="middle" x="2304.5" y="-252.3" font-family="Arial" font-size="14.00">src/mcu/stm32/StmGpio.cpp</text>
 </a>

@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structStmPeriodicTimer_1_1DispatchEntry" kind="struct" language="C++" prot="private">
+    <compoundname>StmPeriodicTimer::DispatchEntry</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structStmPeriodicTimer_1_1DispatchEntry_1ab95a7578987409752bfd1d3ce218c669" prot="public" static="no" mutable="no">
+        <type>TIM_HandleTypeDef *</type>
+        <definition>TIM_HandleTypeDef* StmPeriodicTimer::DispatchEntry::htim</definition>
+        <argsstring></argsstring>
+        <name>htim</name>
+        <qualifiedname>StmPeriodicTimer::DispatchEntry::htim</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="105" column="27" bodyfile="inc/mcu/stm32/StmPeriodicTimer.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structStmPeriodicTimer_1_1DispatchEntry_1a810983123ccca1ea2de34d3df1dd92ff" prot="public" static="no" mutable="no">
+        <type><ref refid="classStmPeriodicTimer" kindref="compound">StmPeriodicTimer</ref> *</type>
+        <definition>StmPeriodicTimer* StmPeriodicTimer::DispatchEntry::instance</definition>
+        <argsstring></argsstring>
+        <name>instance</name>
+        <qualifiedname>StmPeriodicTimer::DispatchEntry::instance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="106" column="27" bodyfile="inc/mcu/stm32/StmPeriodicTimer.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>BasePeriodicTimer</label>
+        <link refid="classBasePeriodicTimer"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>StmPeriodicTimer</label>
+        <link refid="classStmPeriodicTimer"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>stats_</edgelabel>
+        </childnode>
+        <childnode refid="1" relation="usage">
+          <edgelabel>s_dispatch_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>StmPeriodicTimer::DispatchEntry</label>
+        <link refid="structStmPeriodicTimer_1_1DispatchEntry"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>instance</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>hf_timer_diagnostics_t</label>
+        <link refid="structhf__timer__diagnostics__t"/>
+      </node>
+      <node id="4">
+        <label>hf_timer_statistics_t</label>
+        <link refid="structhf__timer__statistics__t"/>
+      </node>
+      <node id="6">
+        <label>hf_timer_stats_t</label>
+        <link refid="structhf__timer__stats__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="104" column="5" bodyfile="inc/mcu/stm32/StmPeriodicTimer.h" bodystart="104" bodyend="107"/>
+    <listofallmembers>
+      <member refid="structStmPeriodicTimer_1_1DispatchEntry_1ab95a7578987409752bfd1d3ce218c669" prot="public" virt="non-virtual"><scope>StmPeriodicTimer::DispatchEntry</scope><name>htim</name></member>
+      <member refid="structStmPeriodicTimer_1_1DispatchEntry_1a810983123ccca1ea2de34d3df1dd92ff" prot="public" virt="non-virtual"><scope>StmPeriodicTimer::DispatchEntry</scope><name>instance</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -96,10 +96,13 @@ $(function(){initNavTree('functions_s.html',''); initResizable(); });
 <div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
+<li>s_dispatch_&#160;:&#160;<a class="el" href="classStmPeriodicTimer.html#a7245352f00a028fbf5ab7b20ddc8d149">StmPeriodicTimer</a></li>
+<li>s_dispatch_count_&#160;:&#160;<a class="el" href="classStmPeriodicTimer.html#ab2611715f13c7814ccee47ce450cd51e">StmPeriodicTimer</a></li>
+<li>s_exti_instances_&#160;:&#160;<a class="el" href="classStmGpio.html#a4d7adf495edd48dab7ddb7f3392bb764">StmGpio</a></li>
 <li>s_refcount_&#160;:&#160;<a class="el" href="classEspTemperature.html#aef85506e203917c06e7d951370f983ad">EspTemperature</a></li>
 <li>s_shared_handle_&#160;:&#160;<a class="el" href="classEspTemperature.html#acc45986a38969e94e206b1531eedcbac">EspTemperature</a></li>
 <li>s_shared_mutex_&#160;:&#160;<a class="el" href="classEspTemperature.html#a50349f2a25b47c680ad6544677e3f693">EspTemperature</a></li>
-<li>sample_count&#160;:&#160;<a class="el" href="structadc__queue__message__t.html#a3a061e2d958466414ef03180cdc02c97">adc_queue_message_t</a></li>
+<li>sample_count&#160;:&#160;<a class="el" href="structadc__queue__message__t.html#a3a061e2d958466414ef03180cdc02c97">adc_queue_message_t</a>, <a class="el" href="structhf__stm32__temp__sensor__config__t.html#a10ed8f58340a300bc57b6c3c5a4e28d3">hf_stm32_temp_sensor_config_t</a></li>
 <li>sample_freq_hz&#160;:&#160;<a class="el" href="structhf__adc__continuous__config__t.html#a5368296c2faab03b7221b29e82e79b0b">hf_adc_continuous_config_t</a></li>
 <li>sample_point_permill&#160;:&#160;<a class="el" href="structhf__esp__can__config__t.html#a3fc23f7e02de25e15735f902fb8d9612">hf_esp_can_config_t</a></li>
 <li>sample_rate_hz&#160;:&#160;<a class="el" href="structesp__temp__config__t.html#a3f4ff437b88cf71e9a611d91086ce7d7">esp_temp_config_t</a>, <a class="el" href="structesp__temp__state__t.html#ab8a38c3e4b46c890de26651536f7ee8e">esp_temp_state_t</a>, <a class="el" href="structhf__temp__config__t.html#af2267a06c12d6761d6625a60428aa071">hf_temp_config_t</a></li>
@@ -127,21 +130,23 @@ $(function(){initNavTree('functions_s.html',''); initResizable(); });
 <li>send_buf_depth&#160;:&#160;<a class="el" href="structhf__i2c__slave__config__t.html#a03ed86e49f8146fa143e0652861fbdf7">hf_i2c_slave_config_t</a></li>
 <li>send_failures&#160;:&#160;<a class="el" href="structhf__can__statistics__t.html#a6fa2a6fc5344b483c30049aacc0ce429">hf_can_statistics_t</a></li>
 <li>SendBreak()&#160;:&#160;<a class="el" href="classEspUart.html#a0e8ee47992f3d875c2e65fb61ce20449">EspUart</a></li>
+<li>SendBxCan()&#160;:&#160;<a class="el" href="classStmCan.html#a302a71793014211b86b914acbd20f647">StmCan</a></li>
 <li>SendData()&#160;:&#160;<a class="el" href="classBaseBluetooth.html#aeb6a2808eba39d846234d4daa5e7721a">BaseBluetooth</a>, <a class="el" href="classEspBluetooth.html#a58b807e84ea7ad6634530fb83f410750">EspBluetooth</a></li>
-<li>SendMessage()&#160;:&#160;<a class="el" href="classBaseCan.html#ac3ec4c6e8a5d45cbcbb4266d58f0faf8">BaseCan</a>, <a class="el" href="classEspCan.html#a3b9bfd81e512b835c89111b6cf0ced79">EspCan</a></li>
+<li>SendFdCan()&#160;:&#160;<a class="el" href="classStmCan.html#a36ff228e37fae748b5d3774eace802db">StmCan</a></li>
+<li>SendMessage()&#160;:&#160;<a class="el" href="classBaseCan.html#ac3ec4c6e8a5d45cbcbb4266d58f0faf8">BaseCan</a>, <a class="el" href="classEspCan.html#a3b9bfd81e512b835c89111b6cf0ced79">EspCan</a>, <a class="el" href="classStmCan.html#a6df12c3fb34bb69834d1b90cf44f2007">StmCan</a></li>
 <li>SendMessageBatch()&#160;:&#160;<a class="el" href="classBaseCan.html#a6aa06ee8540daad6ffef529802cb2334">BaseCan</a>, <a class="el" href="classEspCan.html#a1c80557f426bd1c1b78cd0a7e0bbb8ee">EspCan</a></li>
 <li>sensor_available&#160;:&#160;<a class="el" href="structhf__temp__diagnostics__t.html#a76b07c86189bda15f081ebdafbc1dadd">hf_temp_diagnostics_t</a></li>
 <li>sensor_healthy&#160;:&#160;<a class="el" href="structhf__temp__diagnostics__t.html#a32db512c61749abbdac3e7190dfbe8e2">hf_temp_diagnostics_t</a></li>
-<li>sensor_type&#160;:&#160;<a class="el" href="structhf__temp__config__t.html#a769ae892b2aa374d76d64643f5570656">hf_temp_config_t</a>, <a class="el" href="structhf__temp__sensor__info__t.html#a43a9d6e0c1515f6587ff105a0ea0e320">hf_temp_sensor_info_t</a></li>
+<li>sensor_type&#160;:&#160;<a class="el" href="structhf__stm32__temp__sensor__config__t.html#afe748da02e51b47e20f2733629cd3d23">hf_stm32_temp_sensor_config_t</a>, <a class="el" href="structhf__temp__config__t.html#a769ae892b2aa374d76d64643f5570656">hf_temp_config_t</a>, <a class="el" href="structhf__temp__sensor__info__t.html#a43a9d6e0c1515f6587ff105a0ea0e320">hf_temp_sensor_info_t</a></li>
 <li>sequence_number&#160;:&#160;<a class="el" href="structhf__can__message__t.html#aebce75130b1812c8ae6e5ed59c6c5ded">hf_can_message_t</a></li>
-<li>SetAcceptanceFilter()&#160;:&#160;<a class="el" href="classBaseCan.html#addc8594d5ac480f4aa2ac03b6f08d06c">BaseCan</a>, <a class="el" href="classEspCan.html#a10e2f318110996d269ab9b4c550aa1c7">EspCan</a></li>
+<li>SetAcceptanceFilter()&#160;:&#160;<a class="el" href="classBaseCan.html#addc8594d5ac480f4aa2ac03b6f08d06c">BaseCan</a>, <a class="el" href="classEspCan.html#a10e2f318110996d269ab9b4c550aa1c7">EspCan</a>, <a class="el" href="classStmCan.html#add5ea4ac43276a1e45311eeafa565258">StmCan</a></li>
 <li>SetActive()&#160;:&#160;<a class="el" href="classBaseGpio.html#aa2a7854a7829455131113f059f498af0">BaseGpio</a>, <a class="el" href="classDigitalOutputGuard.html#a1ec6a7a545175077da4bb7efa2c90f34">DigitalOutputGuard</a></li>
 <li>SetActiveState()&#160;:&#160;<a class="el" href="classBaseGpio.html#a17782f317993dcb800ba05411f157d70">BaseGpio</a></li>
 <li>SetAdvancedConfig()&#160;:&#160;<a class="el" href="classEspWifi.html#a14f566033c19a84722983c1d5888cf4d">EspWifi</a></li>
 <li>SetBandwidth()&#160;:&#160;<a class="el" href="classEspWifi.html#a8a1834e3fa7ee01a5cab72d28e1ccfa6">EspWifi</a></li>
 <li>SetBaudRate()&#160;:&#160;<a class="el" href="classEspUart.html#ad0d639fbd3ff5f8ced77af29f13a081d">EspUart</a></li>
 <li>SetBlob()&#160;:&#160;<a class="el" href="classBaseNvs.html#a22431b512d09cb8c0397cf15a8a73b19">BaseNvs</a>, <a class="el" href="classEspNvs.html#a1aa18744b55b8b15dcc9c35b7867635f">EspNvs</a>, <a class="el" href="classStmNvs.html#a4c90c0fadacf110413b37debf4effe0e">StmNvs</a></li>
-<li>SetCalibrationOffset()&#160;:&#160;<a class="el" href="classBaseTemperature.html#a97cd78cf3f336211747e15a1c25d61ee">BaseTemperature</a>, <a class="el" href="classEspTemperature.html#a2665b30cb4301b8fccb577f74e4fa7fc">EspTemperature</a></li>
+<li>SetCalibrationOffset()&#160;:&#160;<a class="el" href="classBaseTemperature.html#a97cd78cf3f336211747e15a1c25d61ee">BaseTemperature</a>, <a class="el" href="classEspTemperature.html#a2665b30cb4301b8fccb577f74e4fa7fc">EspTemperature</a>, <a class="el" href="classStmTemperature.html#a2fd741be7e01983487293cd79ea6694c">StmTemperature</a></li>
 <li>SetCallback()&#160;:&#160;<a class="el" href="classBasePeriodicTimer.html#a08f803dc4610824e48525474e163ec3a">BasePeriodicTimer</a></li>
 <li>SetCanFDMode()&#160;:&#160;<a class="el" href="classBaseCan.html#a2148e9e19a394699809d6e4592df5b5c">BaseCan</a></li>
 <li>SetChannel()&#160;:&#160;<a class="el" href="classBaseWifi.html#aa79383d99aa5aa88a4802e8bd724dba7">BaseWifi</a>, <a class="el" href="classEspWifi.html#a5b8740b211b5cc982dd341a3a3cf5e5b">EspWifi</a></li>
@@ -151,7 +156,7 @@ $(function(){initNavTree('functions_s.html',''); initResizable(); });
 <li>SetChannelPriority()&#160;:&#160;<a class="el" href="classEspPwm.html#a77340b2ecd211629ea79e7d9f151e063">EspPwm</a></li>
 <li>SetClockSource()&#160;:&#160;<a class="el" href="classEspPio.html#a5c58bbc45366736bd54f043cf39fc9a1">EspPio</a></li>
 <li>SetCommunicationMode()&#160;:&#160;<a class="el" href="classEspUart.html#a19b04e570d86170dfa65a03c9555977f">EspUart</a></li>
-<li>SetComplementaryOutput()&#160;:&#160;<a class="el" href="classBasePwm.html#a4b7f8834e3f06fbf5995b3bfd3e7aa71">BasePwm</a>, <a class="el" href="classEspPwm.html#a6c4cc0b3c19e7258a063b1900f9d291a">EspPwm</a></li>
+<li>SetComplementaryOutput()&#160;:&#160;<a class="el" href="classBasePwm.html#a4b7f8834e3f06fbf5995b3bfd3e7aa71">BasePwm</a>, <a class="el" href="classEspPwm.html#a6c4cc0b3c19e7258a063b1900f9d291a">EspPwm</a>, <a class="el" href="classStmPwm.html#af35aaae19259f5a3d4ffcbbda992673e">StmPwm</a></li>
 <li>SetDataFrame()&#160;:&#160;<a class="el" href="structhf__can__message__t.html#a940cb35d37db09a774cc87bad9a02f34">hf_can_message_t</a></li>
 <li>SetDeviceName()&#160;:&#160;<a class="el" href="classBaseBluetooth.html#a4fb3e215a996b0d5adba08851ef6902b">BaseBluetooth</a>, <a class="el" href="classEspBluetooth.html#a4d7f45a579ce77fd3d19ea5bd1b8ac15">EspBluetooth</a></li>
 <li>SetDirection()&#160;:&#160;<a class="el" href="classBaseGpio.html#a54987f95debcc8faef0a7ecd38447031">BaseGpio</a></li>
@@ -159,8 +164,8 @@ $(function(){initNavTree('functions_s.html',''); initResizable(); });
 <li>SetDiscoverable()&#160;:&#160;<a class="el" href="classBaseBluetooth.html#af19e222b1e62772e76669918d4ecacb5">BaseBluetooth</a>, <a class="el" href="classEspBluetooth.html#ad7672c3765524c2f179cd7b127ab708f">EspBluetooth</a></li>
 <li>SetDLC()&#160;:&#160;<a class="el" href="structhf__can__message__t.html#af328325d29d8cd4fa0a54b2184f13a22">hf_can_message_t</a></li>
 <li>SetDriveCapability()&#160;:&#160;<a class="el" href="classEspGpio.html#a68e7e6cf53c58d706a7ae00e321f1e3d">EspGpio</a></li>
-<li>SetDutyCycle()&#160;:&#160;<a class="el" href="classBasePwm.html#a4883325ace0e9fd9d096fc87a24317c3">BasePwm</a>, <a class="el" href="classEspPwm.html#ae4170c3b4661c0d4b9646eb3d775c88c">EspPwm</a></li>
-<li>SetDutyCycleRaw()&#160;:&#160;<a class="el" href="classBasePwm.html#aa9f97e6e7c9af42aae99b8aeae5e7c67">BasePwm</a>, <a class="el" href="classEspPwm.html#a6bc8906d106762d5c9b1bcfd68ff0636">EspPwm</a></li>
+<li>SetDutyCycle()&#160;:&#160;<a class="el" href="classBasePwm.html#a4883325ace0e9fd9d096fc87a24317c3">BasePwm</a>, <a class="el" href="classEspPwm.html#ae4170c3b4661c0d4b9646eb3d775c88c">EspPwm</a>, <a class="el" href="classStmPwm.html#a74511e0bf0a9768ab57a0375d687e6ac">StmPwm</a></li>
+<li>SetDutyCycleRaw()&#160;:&#160;<a class="el" href="classBasePwm.html#aa9f97e6e7c9af42aae99b8aeae5e7c67">BasePwm</a>, <a class="el" href="classEspPwm.html#a6bc8906d106762d5c9b1bcfd68ff0636">EspPwm</a>, <a class="el" href="classStmPwm.html#ac65700326e03a2ee18ce2df6d8fa5697">StmPwm</a></li>
 <li>SetErrorCallback()&#160;:&#160;<a class="el" href="classBasePio.html#aa01d1974a8f2a1c36648bb7aa78632de">BasePio</a>, <a class="el" href="classEspCan.html#ae49c30b2a556b92b8a8dbb12d1eec148">EspCan</a>, <a class="el" href="classEspPio.html#a5c5371ff00a9b3f4c8f753907d8a40ff">EspPio</a></li>
 <li>SetEspMonitoringCallback()&#160;:&#160;<a class="el" href="classEspTemperature.html#a9b9b794154ed4bde92c25a416e01141d">EspTemperature</a></li>
 <li>SetEspThresholdCallback()&#160;:&#160;<a class="el" href="classEspTemperature.html#a97fcaa3460eec5f22eafb70e6c243642">EspTemperature</a></li>
@@ -168,7 +173,7 @@ $(function(){initNavTree('functions_s.html',''); initResizable(); });
 <li>SetEvictionPolicy()&#160;:&#160;<a class="el" href="classEspPwm.html#a57006756d21e8f6b6c6c65c919b991e0">EspPwm</a></li>
 <li>SetExtendedFrame()&#160;:&#160;<a class="el" href="structhf__can__message__t.html#acc7892375611b12a9846bc20add934bd">hf_can_message_t</a></li>
 <li>SetFlowControl()&#160;:&#160;<a class="el" href="classEspUart.html#a9fce2787e7b457164702660ce5f762d0">EspUart</a></li>
-<li>SetFrequency()&#160;:&#160;<a class="el" href="classBasePwm.html#ad192230babf2e4dc7a37477b4a0153b8">BasePwm</a>, <a class="el" href="classEspPwm.html#a185108e6adbaaa23bcef4fbd8bda1b91">EspPwm</a></li>
+<li>SetFrequency()&#160;:&#160;<a class="el" href="classBasePwm.html#ad192230babf2e4dc7a37477b4a0153b8">BasePwm</a>, <a class="el" href="classEspPwm.html#a185108e6adbaaa23bcef4fbd8bda1b91">EspPwm</a>, <a class="el" href="classStmPwm.html#aac3185d5b8f42ab6c1ef3409df8c3365">StmPwm</a></li>
 <li>SetFrequencyAndResolution()&#160;:&#160;<a class="el" href="classEspPwm.html#aa98797ac6975b2f6ec3c297113bbf99d">EspPwm</a></li>
 <li>SetFrequencyWithAutoFallback()&#160;:&#160;<a class="el" href="classEspPwm.html#abe00eaeddf0a329994bdebf61d3439f9">EspPwm</a></li>
 <li>SetFrequencyWithResolution()&#160;:&#160;<a class="el" href="classEspPwm.html#aa1e2001e94083e72e12e0bf1a6f34d77">EspPwm</a></li>
@@ -186,13 +191,13 @@ $(function(){initNavTree('functions_s.html',''); initResizable(); });
 <li>SetOutputMode()&#160;:&#160;<a class="el" href="classBaseGpio.html#aa33e02658b1a9eb41851c723b236758c">BaseGpio</a></li>
 <li>SetOutputModeImpl()&#160;:&#160;<a class="el" href="classBaseGpio.html#a868d9c20441512c174d66f4ceabfcfd6">BaseGpio</a>, <a class="el" href="classEspGpio.html#a9661ef14697ca21f3a580add2f3a4623">EspGpio</a>, <a class="el" href="classStmGpio.html#aff454893b825f08f0e99e015698ba489">StmGpio</a></li>
 <li>SetPeriod()&#160;:&#160;<a class="el" href="classBasePeriodicTimer.html#a22c103ed4866bb4f45eef55d77730a09">BasePeriodicTimer</a>, <a class="el" href="classEspPeriodicTimer.html#a2feb5be89d39cdaf1813cf82edb281a1">EspPeriodicTimer</a>, <a class="el" href="classStmPeriodicTimer.html#aed5d65ee70d33c9945653dd1fa1f53ac">StmPeriodicTimer</a></li>
-<li>SetPhaseShift()&#160;:&#160;<a class="el" href="classBasePwm.html#ad2d69c4057b84358f120f1c27fb3e2c1">BasePwm</a>, <a class="el" href="classEspPwm.html#a6096fdc1d06345204c8062d2f86bd0c5">EspPwm</a></li>
+<li>SetPhaseShift()&#160;:&#160;<a class="el" href="classBasePwm.html#ad2d69c4057b84358f120f1c27fb3e2c1">BasePwm</a>, <a class="el" href="classEspPwm.html#a6096fdc1d06345204c8062d2f86bd0c5">EspPwm</a>, <a class="el" href="classStmPwm.html#acfcd13854f8131d08b2531e54e358e1b">StmPwm</a></li>
 <li>SetPinLevelImpl()&#160;:&#160;<a class="el" href="classBaseGpio.html#a6571c0de7f07268d4dcb6c2e175573d5">BaseGpio</a>, <a class="el" href="classEspGpio.html#a4625ee672d358bf48bff8c3d1f9d8201">EspGpio</a>, <a class="el" href="classStmGpio.html#a4e5f0c8b9977a69c648b59d6d9ac32e4">StmGpio</a></li>
 <li>SetPowerSave()&#160;:&#160;<a class="el" href="classBaseWifi.html#a833f86dcbf72369e30120d1f86973086">BaseWifi</a>, <a class="el" href="classEspWifi.html#abc2b87f78fb769ad1a6cbf653bbb6ff8">EspWifi</a></li>
 <li>SetPullMode()&#160;:&#160;<a class="el" href="classBaseGpio.html#a7493f384bf9965b89632ce86fbab82ab">BaseGpio</a></li>
 <li>SetPullModeImpl()&#160;:&#160;<a class="el" href="classBaseGpio.html#ae48e68b2c746371a64d1ffea39d7fe13">BaseGpio</a>, <a class="el" href="classEspGpio.html#aeb44f0d33e47afd3bf0437b24fed0ae9">EspGpio</a>, <a class="el" href="classStmGpio.html#a7676c66a241eabd1d7e15fff38ece2fa">StmGpio</a></li>
-<li>SetRange()&#160;:&#160;<a class="el" href="classBaseTemperature.html#a1bfe9f1a1069222166008b4dafe5a282">BaseTemperature</a>, <a class="el" href="classEspTemperature.html#a92b30bf532e07d1f1927d4fccf5322ba">EspTemperature</a></li>
-<li>SetReceiveCallback()&#160;:&#160;<a class="el" href="classBaseCan.html#a9cef56fa208f09304bbd7129914a51a8">BaseCan</a>, <a class="el" href="classBasePio.html#ab5ed24fe603fab13d06265849e0dcab7">BasePio</a>, <a class="el" href="classEspCan.html#a15ded2afcc3564560fa704e661546500">EspCan</a>, <a class="el" href="classEspPio.html#a80cc3f6b0def51b6d46dfb15d9ab4d95">EspPio</a></li>
+<li>SetRange()&#160;:&#160;<a class="el" href="classBaseTemperature.html#a1bfe9f1a1069222166008b4dafe5a282">BaseTemperature</a>, <a class="el" href="classEspTemperature.html#a92b30bf532e07d1f1927d4fccf5322ba">EspTemperature</a>, <a class="el" href="classStmTemperature.html#a608596a4778ff7dbcc6b29099d525afb">StmTemperature</a></li>
+<li>SetReceiveCallback()&#160;:&#160;<a class="el" href="classBaseCan.html#a9cef56fa208f09304bbd7129914a51a8">BaseCan</a>, <a class="el" href="classBasePio.html#ab5ed24fe603fab13d06265849e0dcab7">BasePio</a>, <a class="el" href="classEspCan.html#a15ded2afcc3564560fa704e661546500">EspCan</a>, <a class="el" href="classEspPio.html#a80cc3f6b0def51b6d46dfb15d9ab4d95">EspPio</a>, <a class="el" href="classStmCan.html#a8da6e2844530c162698ac763878943b4">StmCan</a></li>
 <li>SetReceiveCallbackEx()&#160;:&#160;<a class="el" href="classEspCan.html#aacf7899068a281cb12144f913660aa49">EspCan</a></li>
 <li>SetReceiveCallbackFD()&#160;:&#160;<a class="el" href="classBaseCan.html#a44753662096232f45e49ad752e8f68e4">BaseCan</a></li>
 <li>SetRemoteFrame()&#160;:&#160;<a class="el" href="structhf__can__message__t.html#af05e6e7e32eb639af3dfda8228cc74e0">hf_can_message_t</a></li>
@@ -222,6 +227,7 @@ $(function(){initNavTree('functions_s.html',''); initResizable(); });
 <li>size&#160;:&#160;<a class="el" href="structhf__adc__continuous__data__t.html#a9ea7c24e238c3ed502c066385706a655">hf_adc_continuous_data_t</a>, <a class="el" href="structhf__nvs__entry__info__t.html#a51ffd60006efd11887cbfdc224a8a45d">hf_nvs_entry_info_t</a>, <a class="el" href="structhf__uart__event__t.html#ab767636a5abe68c979e61ace6da45a14">hf_uart_event_t</a></li>
 <li>sjw&#160;:&#160;<a class="el" href="structhf__esp__can__timing__config__t.html#a1e31613cf98266e147cd883871f9000a">hf_esp_can_timing_config_t</a></li>
 <li>slave_addr&#160;:&#160;<a class="el" href="structhf__i2c__slave__config__t.html#a6d56483b7a2e91d18ac2f30bf67942ef">hf_i2c_slave_config_t</a></li>
+<li>SlaveStartFilterBank&#160;:&#160;<a class="el" href="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig.html#a90dc4dfc8990a249cd269dd2b207be79">anonymous_namespace{StmCan.cpp}::BxCanFilterConfig</a></li>
 <li>sleep_config_&#160;:&#160;<a class="el" href="classEspGpio.html#a1bb6b5cb2d2217cef56f1b3cf426ed49">EspGpio</a></li>
 <li>sleep_retention_enable&#160;:&#160;<a class="el" href="structhf__uart__power__config__t.html#a6740faaace817d6ca3c1ff12b5f7c2e0">hf_uart_power_config_t</a></li>
 <li>smartconfig_type&#160;:&#160;<a class="el" href="structEspWifiAdvancedConfig.html#a504040340e8d1ba248281c3d952a26b8">EspWifiAdvancedConfig</a></li>
@@ -229,6 +235,7 @@ $(function(){initNavTree('functions_s.html',''); initResizable(); });
 <li>software_flow_enabled_&#160;:&#160;<a class="el" href="classEspUart.html#a8919e3c9d6a7f2f4e0dc81915b77b491">EspUart</a></li>
 <li>sort_method&#160;:&#160;<a class="el" href="structhf__wifi__station__config__t.html#af9150571eac6a1dacf0f02bd9650f152">hf_wifi_station_config_t</a></li>
 <li>source_clock_hz&#160;:&#160;<a class="el" href="structEspPio_1_1ChannelState.html#a9a314ac007120b3b36eee4c9fac74254">EspPio::ChannelState</a></li>
+<li>Speed&#160;:&#160;<a class="el" href="structHF__GPIO__InitTypeDef.html#aeb6ac2a26b2a7597ca0f944d2853c693">HF_GPIO_InitTypeDef</a></li>
 <li>speed_mode&#160;:&#160;<a class="el" href="structhf__pwm__channel__config__t.html#aa8d425a4003718321869192e7cf61845">hf_pwm_channel_config_t</a></li>
 <li>ssid&#160;:&#160;<a class="el" href="structhf__wifi__ap__config__t.html#a0b0565f4d761b1e192fd0b96c041808d">hf_wifi_ap_config_t</a>, <a class="el" href="structhf__wifi__network__info__t.html#adb0be4315a17235da186ae21e13a791a">hf_wifi_network_info_t</a>, <a class="el" href="structhf__wifi__station__config__t.html#a9bec5a9a39cf0f7827fa697c46ed338a">hf_wifi_station_config_t</a></li>
 <li>ssid_hidden&#160;:&#160;<a class="el" href="structhf__wifi__ap__config__t.html#a4ec44f492940c72feba4b3c5a0b6cfb9">hf_wifi_ap_config_t</a></li>
@@ -238,7 +245,7 @@ $(function(){initNavTree('functions_s.html',''); initResizable(); });
 <li>start_count&#160;:&#160;<a class="el" href="structhf__timer__stats__t.html#ab63857c835e4c81c23062556c6ffdef8">hf_timer_stats_t</a></li>
 <li>StartAccessPoint()&#160;:&#160;<a class="el" href="classBaseWifi.html#a991becb698084ea2a2f808dd62608a9e">BaseWifi</a>, <a class="el" href="classEspWifi.html#a6675c88804049307415424d9f37f8c9e">EspWifi</a></li>
 <li>StartAdvertising()&#160;:&#160;<a class="el" href="classBaseBluetooth.html#a3e3e5cc0fb48993075b7b17345a75e7b">BaseBluetooth</a>, <a class="el" href="classEspBluetooth.html#a05a308e2fb973a28ea7e24a62e59dd6c">EspBluetooth</a></li>
-<li>StartAll()&#160;:&#160;<a class="el" href="classBasePwm.html#a02e791636c4d544d702b06014695ed31">BasePwm</a>, <a class="el" href="classEspPwm.html#a130153d9f4bdaee4219736cb248d78f6">EspPwm</a></li>
+<li>StartAll()&#160;:&#160;<a class="el" href="classBasePwm.html#a02e791636c4d544d702b06014695ed31">BasePwm</a>, <a class="el" href="classEspPwm.html#a130153d9f4bdaee4219736cb248d78f6">EspPwm</a>, <a class="el" href="classStmPwm.html#a2a31bf7fe022850cbed5111052860ade">StmPwm</a></li>
 <li>StartAsyncOperationTracking()&#160;:&#160;<a class="el" href="classEspI2cDevice.html#a5f0c9dae9c6fbbd45b41f02156240e9f">EspI2cDevice</a></li>
 <li>StartContinuousMonitoring()&#160;:&#160;<a class="el" href="classBaseTemperature.html#afd5288a4ce54793f06fab19960b38253">BaseTemperature</a>, <a class="el" href="classEspTemperature.html#acc1ea9c3a109b70bd67e4f285594e474">EspTemperature</a></li>
 <li>StartMeshChild()&#160;:&#160;<a class="el" href="classEspWifi.html#a9e5c92a07f6b5adbc9dfb18102321b81">EspWifi</a></li>
@@ -252,26 +259,30 @@ $(function(){initNavTree('functions_s.html',''); initResizable(); });
 <li>stateChanges&#160;:&#160;<a class="el" href="structhf__gpio__statistics__t.html#a2ef0b7f917094e424422c87466dca139">hf_gpio_statistics_t</a></li>
 <li>StateToLevel()&#160;:&#160;<a class="el" href="classBaseGpio.html#ade6e9755735a8eb9f08db59396dbecc4">BaseGpio</a></li>
 <li>StaticInterruptHandler()&#160;:&#160;<a class="el" href="classEspGpio.html#ab4d46bf3ab5605b703c8a418cf900f3c">EspGpio</a></li>
-<li>statistics_&#160;:&#160;<a class="el" href="classBaseAdc.html#a0b37c5f9bbeb2dfdd81a879570abe58d">BaseAdc</a>, <a class="el" href="classBaseCan.html#a20b7f5289833676f369d33616fd2b05b">BaseCan</a>, <a class="el" href="classBaseGpio.html#acc7b7575c32b77a766adf3e275bd1973">BaseGpio</a>, <a class="el" href="classBaseI2c.html#a2caa8cbbbdda3f001603da5bc8bc5913">BaseI2c</a>, <a class="el" href="classBaseNvs.html#a124e82b91afcb3785858a4d56bc9f2f2">BaseNvs</a>, <a class="el" href="classBasePeriodicTimer.html#a8d311b0b20ea0785d63ad24a074180ae">BasePeriodicTimer</a>, <a class="el" href="classBasePio.html#a4391997ece89f854a236dbe006748369">BasePio</a>, <a class="el" href="classBasePwm.html#ae8107794611a82a5cceedbaaa2b61c78">BasePwm</a>, <a class="el" href="classBaseSpi.html#a801d2346551161f1d2e1b755501cc1e1">BaseSpi</a>, <a class="el" href="classBaseUart.html#a27d6cf918e8a0ff9bdc345d3871d0876">BaseUart</a>, <a class="el" href="classEspCan.html#a2598cfa17215039375d57ff8a0682873">EspCan</a>, <a class="el" href="classEspI2cBus.html#a8206592fe0beaf37815e03efd162527d">EspI2cBus</a>, <a class="el" href="classEspI2cDevice.html#afd4fa9c207eaa593ead720c7579e5bcd">EspI2cDevice</a>, <a class="el" href="classEspNvs.html#a4d851eb75d04a90ec7b25e77e1db6de5">EspNvs</a>, <a class="el" href="classEspPwm.html#aefe4a2dfe1bccd062a299b1febb8aef8">EspPwm</a>, <a class="el" href="classEspTemperature.html#a4b7b5323acb43d653d70ed4bb9a665f9">EspTemperature</a>, <a class="el" href="classEspUart.html#a22e961a9c6a2396d310552e1ff23c60d">EspUart</a></li>
-<li>stats_&#160;:&#160;<a class="el" href="classEspPeriodicTimer.html#a75d9db377b27d539a693ca70d75ead34">EspPeriodicTimer</a></li>
+<li>statistics_&#160;:&#160;<a class="el" href="classBaseAdc.html#a0b37c5f9bbeb2dfdd81a879570abe58d">BaseAdc</a>, <a class="el" href="classBaseCan.html#a20b7f5289833676f369d33616fd2b05b">BaseCan</a>, <a class="el" href="classBaseGpio.html#acc7b7575c32b77a766adf3e275bd1973">BaseGpio</a>, <a class="el" href="classBaseI2c.html#a2caa8cbbbdda3f001603da5bc8bc5913">BaseI2c</a>, <a class="el" href="classBaseNvs.html#a124e82b91afcb3785858a4d56bc9f2f2">BaseNvs</a>, <a class="el" href="classBasePeriodicTimer.html#a8d311b0b20ea0785d63ad24a074180ae">BasePeriodicTimer</a>, <a class="el" href="classBasePio.html#a4391997ece89f854a236dbe006748369">BasePio</a>, <a class="el" href="classBasePwm.html#ae8107794611a82a5cceedbaaa2b61c78">BasePwm</a>, <a class="el" href="classBaseSpi.html#a801d2346551161f1d2e1b755501cc1e1">BaseSpi</a>, <a class="el" href="classBaseUart.html#a27d6cf918e8a0ff9bdc345d3871d0876">BaseUart</a>, <a class="el" href="classEspCan.html#a2598cfa17215039375d57ff8a0682873">EspCan</a>, <a class="el" href="classEspI2cBus.html#a8206592fe0beaf37815e03efd162527d">EspI2cBus</a>, <a class="el" href="classEspI2cDevice.html#afd4fa9c207eaa593ead720c7579e5bcd">EspI2cDevice</a>, <a class="el" href="classEspNvs.html#a4d851eb75d04a90ec7b25e77e1db6de5">EspNvs</a>, <a class="el" href="classEspPwm.html#aefe4a2dfe1bccd062a299b1febb8aef8">EspPwm</a>, <a class="el" href="classEspTemperature.html#a4b7b5323acb43d653d70ed4bb9a665f9">EspTemperature</a>, <a class="el" href="classEspUart.html#a22e961a9c6a2396d310552e1ff23c60d">EspUart</a>, <a class="el" href="classStmLogger.html#a9c4e3bddb5d4b2d0e36180cbcbb9da6e">StmLogger</a></li>
+<li>stats_&#160;:&#160;<a class="el" href="classEspPeriodicTimer.html#a75d9db377b27d539a693ca70d75ead34">EspPeriodicTimer</a>, <a class="el" href="classStmPeriodicTimer.html#a1af0d975e8575ab981cb3920a31c1b4d">StmPeriodicTimer</a></li>
 <li>stats_mutex_&#160;:&#160;<a class="el" href="classEspCan.html#aec77a14159f7553e096e1fd9eccd5a9d">EspCan</a></li>
 <li>status&#160;:&#160;<a class="el" href="structEspPio_1_1ChannelState.html#a8818461d1b2f31924a3ad472573fc8d4">EspPio::ChannelState</a></li>
-<li>StmAdc()&#160;:&#160;<a class="el" href="classStmAdc.html#a58f7ea6bb92fe69a80af9aba981a6582">StmAdc</a></li>
-<li>StmGpio()&#160;:&#160;<a class="el" href="classStmGpio.html#a13ec17edceac22e440b175f913e3f8e8">StmGpio</a></li>
+<li>StdId&#160;:&#160;<a class="el" href="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader.html#a6c0eb104ab6fa161db608c242559aede">anonymous_namespace{StmCan.cpp}::BxCanRxHeader</a>, <a class="el" href="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader.html#a1f6972bfb46fbac42cf58aed98038027">anonymous_namespace{StmCan.cpp}::BxCanTxHeader</a></li>
+<li>StmAdc()&#160;:&#160;<a class="el" href="classStmAdc.html#a4ab34664e67dcacf383492c31c87f0fc">StmAdc</a></li>
+<li>StmCan()&#160;:&#160;<a class="el" href="classStmCan.html#affa71a3bc73953543145b74ed31e7e2d">StmCan</a></li>
+<li>StmGpio()&#160;:&#160;<a class="el" href="classStmGpio.html#a7a409e87f85d07b6587079eeaf39c2ad">StmGpio</a></li>
 <li>StmI2cBus()&#160;:&#160;<a class="el" href="classStmI2cBus.html#ac49054609128569d92c431dc8e9596df">StmI2cBus</a></li>
-<li>StmI2cDevice()&#160;:&#160;<a class="el" href="classStmI2cDevice.html#a500c016c1e38b66087caa52d6e669c99">StmI2cDevice</a></li>
-<li>StmLogger()&#160;:&#160;<a class="el" href="classStmLogger.html#ab80d5c81f30a88b8e51aa5791eee041f">StmLogger</a></li>
-<li>StmNvs()&#160;:&#160;<a class="el" href="classStmNvs.html#a26366d606b8f3e0b153bdabccfffcca8">StmNvs</a></li>
-<li>StmPeriodicTimer()&#160;:&#160;<a class="el" href="classStmPeriodicTimer.html#a39f9012601da28f919f61dc0a8025e62">StmPeriodicTimer</a></li>
+<li>StmI2cDevice()&#160;:&#160;<a class="el" href="classStmI2cDevice.html#ae1ee48b91ec267b628c39a69329799da">StmI2cDevice</a></li>
+<li>StmLogger()&#160;:&#160;<a class="el" href="classStmLogger.html#a1410859d8afce01c97f8ce70c20866ec">StmLogger</a></li>
+<li>StmNvs()&#160;:&#160;<a class="el" href="classStmNvs.html#a58c10717e9ebc1e4ba3bdc51fcacac32">StmNvs</a></li>
+<li>StmPeriodicTimer()&#160;:&#160;<a class="el" href="classStmPeriodicTimer.html#a1ed2ec11ae49a3a1648e7d0da91d4444">StmPeriodicTimer</a></li>
+<li>StmPwm()&#160;:&#160;<a class="el" href="classStmPwm.html#a826dd0be1ba064c3275670bbcff6c40e">StmPwm</a></li>
 <li>StmSpiBus()&#160;:&#160;<a class="el" href="classStmSpiBus.html#a69cafaa6911c26bdd2c288fb10df37be">StmSpiBus</a></li>
-<li>StmSpiDevice()&#160;:&#160;<a class="el" href="classStmSpiDevice.html#a0870aa9a0f886f72d91dc45addf758d9">StmSpiDevice</a></li>
-<li>StmTemperature()&#160;:&#160;<a class="el" href="classStmTemperature.html#af087266daab79e72cb84e9e13bd1a24a">StmTemperature</a></li>
+<li>StmSpiDevice()&#160;:&#160;<a class="el" href="classStmSpiDevice.html#afdf4b29ed25cc110f43e67e981a86e45">StmSpiDevice</a></li>
+<li>StmTemperature()&#160;:&#160;<a class="el" href="classStmTemperature.html#a2461c1a385e2832b121f947c3dbb4875">StmTemperature</a></li>
+<li>StmUart()&#160;:&#160;<a class="el" href="classStmUart.html#a4d6e4b1b6165be28c65820777a7ddc23">StmUart</a></li>
 <li>Stop()&#160;:&#160;<a class="el" href="classBasePeriodicTimer.html#a614629ba36264694b66baffe7e72ab08">BasePeriodicTimer</a>, <a class="el" href="classEspPeriodicTimer.html#ab7916bb8965569cba0e5f2da171b2b5d">EspPeriodicTimer</a>, <a class="el" href="classStmPeriodicTimer.html#afd2adf7d275eb82d67bca9b7829a17e6">StmPeriodicTimer</a></li>
 <li>stop_bits&#160;:&#160;<a class="el" href="structhf__uart__config__t.html#a7cec6d7832a7847af8b1eb20fb107bef">hf_uart_config_t</a></li>
 <li>stop_count&#160;:&#160;<a class="el" href="structhf__timer__stats__t.html#aca0212566a23961dfcc8699937286bd4">hf_timer_stats_t</a></li>
 <li>StopAccessPoint()&#160;:&#160;<a class="el" href="classBaseWifi.html#ac23900e794081ad63752108f36943fac">BaseWifi</a>, <a class="el" href="classEspWifi.html#ada59d1e26730024d5aec32ff04c4b351">EspWifi</a></li>
 <li>StopAdvertising()&#160;:&#160;<a class="el" href="classBaseBluetooth.html#ad325001eb59f7db35f1ac71d4fddfdfc">BaseBluetooth</a>, <a class="el" href="classEspBluetooth.html#a0b1a24c6ce5b17f1f29de6a2d81dad37">EspBluetooth</a></li>
-<li>StopAll()&#160;:&#160;<a class="el" href="classBasePwm.html#a0dc5b8704b7f3107745224441d7b3a5b">BasePwm</a>, <a class="el" href="classEspPwm.html#a8be25ecab27ff61499a66535f303df2e">EspPwm</a></li>
+<li>StopAll()&#160;:&#160;<a class="el" href="classBasePwm.html#a0dc5b8704b7f3107745224441d7b3a5b">BasePwm</a>, <a class="el" href="classEspPwm.html#a8be25ecab27ff61499a66535f303df2e">EspPwm</a>, <a class="el" href="classStmPwm.html#a9470315dbe5b4eb9f8cf9127f9d738e8">StmPwm</a></li>
 <li>StopContinuousMonitoring()&#160;:&#160;<a class="el" href="classBaseTemperature.html#a30f3527c16c76f65e2deb4a89412e231">BaseTemperature</a>, <a class="el" href="classEspTemperature.html#aa34b741f4daf7a52dc832e65dc58e34f">EspTemperature</a></li>
 <li>StopHardwareFade()&#160;:&#160;<a class="el" href="classEspPwm.html#ab3d06a21a6eda6c081f660895d81bbb1">EspPwm</a></li>
 <li>StopMesh()&#160;:&#160;<a class="el" href="classEspWifi.html#a4fc6b2c0a4eca9a2160641815a573a56">EspWifi</a></li>
@@ -303,7 +314,7 @@ $(function(){initNavTree('functions_s.html',''); initResizable(); });
 <li>supports_sleep_retention&#160;:&#160;<a class="el" href="structhf__pwm__capabilities__t.html#a8193026ef5e9a5fc865277f6383ed4a7">hf_pwm_capabilities_t</a></li>
 <li>supports_wear_leveling&#160;:&#160;<a class="el" href="structhf__nvs__capabilities__t.html#a9141725a7918dc37664bcb87b19b447c">hf_nvs_capabilities_t</a></li>
 <li>supports_xts_encryption&#160;:&#160;<a class="el" href="structhf__nvs__capabilities__t.html#a56c576b20942aea101189f90471a1288">hf_nvs_capabilities_t</a></li>
-<li>SupportsCanFD()&#160;:&#160;<a class="el" href="classBaseCan.html#a5af808724133b48742ebdcd448e93515">BaseCan</a></li>
+<li>SupportsCanFD()&#160;:&#160;<a class="el" href="classBaseCan.html#a5af808724133b48742ebdcd448e93515">BaseCan</a>, <a class="el" href="classStmCan.html#a6c7d84e038dd0aa4bea3db1dc601c60e">StmCan</a></li>
 <li>SupportsGlitchFilter()&#160;:&#160;<a class="el" href="classEspGpio.html#a8a8afa2c6f5cdf99fee057869e33be43">EspGpio</a></li>
 <li>SupportsInterrupts()&#160;:&#160;<a class="el" href="classBaseGpio.html#a90af5a4646e3d15940bf2604a705233d">BaseGpio</a>, <a class="el" href="classEspGpio.html#af0b68c0d1b3fda915803ba602ddab7fe">EspGpio</a></li>
 <li>SupportsRtcGpio()&#160;:&#160;<a class="el" href="classEspGpio.html#a278d4f15f4a47c2f602e0b5bc8e92166">EspGpio</a></li>

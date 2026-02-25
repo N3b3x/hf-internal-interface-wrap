@@ -9,7 +9,8 @@ var hierarchy =
       [ "EspBluetooth", "classEspBluetooth.html", null ]
     ] ],
     [ "BaseCan", "classBaseCan.html", [
-      [ "EspCan", "classEspCan.html", null ]
+      [ "EspCan", "classEspCan.html", null ],
+      [ "StmCan", "classStmCan.html", null ]
     ] ],
     [ "BaseGpio", "classBaseGpio.html", [
       [ "EspGpio", "classEspGpio.html", null ],
@@ -34,7 +35,8 @@ var hierarchy =
       [ "EspPio", "classEspPio.html", null ]
     ] ],
     [ "BasePwm", "classBasePwm.html", [
-      [ "EspPwm", "classEspPwm.html", null ]
+      [ "EspPwm", "classEspPwm.html", null ],
+      [ "StmPwm", "classStmPwm.html", null ]
     ] ],
     [ "BaseSpi", "classBaseSpi.html", [
       [ "EspSpiDevice", "classEspSpiDevice.html", null ],
@@ -45,22 +47,31 @@ var hierarchy =
       [ "StmTemperature", "classStmTemperature.html", null ]
     ] ],
     [ "BaseUart", "classBaseUart.html", [
-      [ "EspUart", "classEspUart.html", null ]
+      [ "EspUart", "classEspUart.html", null ],
+      [ "StmUart", "classStmUart.html", null ]
     ] ],
     [ "BaseWifi", "classBaseWifi.html", [
       [ "EspWifi", "classEspWifi.html", null ]
     ] ],
+    [ "anonymous_namespace{StmCan.cpp}::BxCanFilterConfig", "structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig.html", null ],
+    [ "anonymous_namespace{StmCan.cpp}::BxCanRxHeader", "structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader.html", null ],
+    [ "anonymous_namespace{StmCan.cpp}::BxCanTxHeader", "structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader.html", null ],
+    [ "StmNvs::CacheEntry", "structStmNvs_1_1CacheEntry.html", null ],
     [ "CallbackTestData", "structCallbackTestData.html", null ],
     [ "EspPio::ChannelState", "structEspPio_1_1ChannelState.html", null ],
     [ "EspPwm::ChannelState", "structEspPwm_1_1ChannelState.html", null ],
     [ "EspPwm::ComplementaryPair", "structEspPwm_1_1ComplementaryPair.html", null ],
     [ "DigitalOutputGuard", "classDigitalOutputGuard.html", null ],
+    [ "StmPeriodicTimer::DispatchEntry", "structStmPeriodicTimer_1_1DispatchEntry.html", null ],
     [ "esp_temp_config_t", "structesp__temp__config__t.html", null ],
     [ "esp_temp_range_info_t", "structesp__temp__range__info__t.html", null ],
     [ "esp_temp_state_t", "structesp__temp__state__t.html", null ],
     [ "EspI2cBus", "classEspI2cBus.html", null ],
     [ "EspSpiBus", "classEspSpiBus.html", null ],
     [ "EspWifiAdvancedConfig", "structEspWifiAdvancedConfig.html", null ],
+    [ "anonymous_namespace{StmCan.cpp}::FdCanFilterConfig", "structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanFilterConfig.html", null ],
+    [ "anonymous_namespace{StmCan.cpp}::FdCanRxHeader", "structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader.html", null ],
+    [ "anonymous_namespace{StmCan.cpp}::FdCanTxHeader", "structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader.html", null ],
     [ "hf_adc_calibration_config_t", "structhf__adc__calibration__config__t.html", null ],
     [ "hf_adc_channel_config_t", "structhf__adc__channel__config__t.html", null ],
     [ "hf_adc_continuous_config_t", "structhf__adc__continuous__config__t.html", null ],
@@ -91,6 +102,7 @@ var hierarchy =
     [ "hf_esp_can_timing_config_t", "structhf__esp__can__timing__config__t.html", null ],
     [ "hf_esp_can_tx_info_t", "structhf__esp__can__tx__info__t.html", null ],
     [ "hf_gpio_diagnostics_t", "structhf__gpio__diagnostics__t.html", null ],
+    [ "HF_GPIO_InitTypeDef", "structHF__GPIO__InitTypeDef.html", null ],
     [ "hf_gpio_statistics_t", "structhf__gpio__statistics__t.html", null ],
     [ "hf_i2c_async_result_t", "structhf__i2c__async__result__t.html", null ],
     [ "hf_i2c_bus_config_t", "structhf__i2c__bus__config__t.html", null ],
@@ -140,6 +152,7 @@ var hierarchy =
     [ "hf_stm32_gpio_config_t", "structhf__stm32__gpio__config__t.html", null ],
     [ "hf_stm32_nvs_config_t", "structhf__stm32__nvs__config__t.html", null ],
     [ "hf_stm32_pwm_config_t", "structhf__stm32__pwm__config__t.html", null ],
+    [ "hf_stm32_temp_sensor_config_t", "structhf__stm32__temp__sensor__config__t.html", null ],
     [ "hf_stm32_timer_config_t", "structhf__stm32__timer__config__t.html", null ],
     [ "hf_stm32_uart_config_t", "structhf__stm32__uart__config__t.html", null ],
     [ "hf_temp_config_t", "structhf__temp__config__t.html", null ],

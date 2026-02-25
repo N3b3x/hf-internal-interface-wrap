@@ -104,6 +104,7 @@ $(function(){initNavTree('functions_func_c.html',''); initResizable(); });
 <li>Calibrate()&#160;:&#160;<a class="el" href="classBaseTemperature.html#a4d84a21b7f330d3bc80accbd9f26b1c7">BaseTemperature</a></li>
 <li>CallbackTestData()&#160;:&#160;<a class="el" href="structCallbackTestData.html#a71a2c9139b97cbe6186b07fd7230de26">CallbackTestData</a></li>
 <li>ChannelState()&#160;:&#160;<a class="el" href="structEspPio_1_1ChannelState.html#a2b569f282be1e6daf7dd32ede6b2581e">EspPio::ChannelState</a>, <a class="el" href="structEspPwm_1_1ChannelState.html#a8607beb52006f48c76dd9c5fc7d532f0">EspPwm::ChannelState</a></li>
+<li>ChannelToHal()&#160;:&#160;<a class="el" href="classStmPwm.html#a997f31c05794dcc46492b9e315ca28d1">StmPwm</a></li>
 <li>CheckHealth()&#160;:&#160;<a class="el" href="classBaseTemperature.html#a201bfff0c78242bec04cadd6363d7b5d">BaseTemperature</a>, <a class="el" href="classEspTemperature.html#a0715fa9a6cd6888fa147ee67b428f193">EspTemperature</a></li>
 <li>CheckThresholds()&#160;:&#160;<a class="el" href="classEspTemperature.html#ac0b3dd90b074db26ee48e66748597faa">EspTemperature</a></li>
 <li>ClampDutyCycle()&#160;:&#160;<a class="el" href="classBasePwm.html#a675192d0ee597e7603a8d6831a3c227c">BasePwm</a></li>
@@ -127,6 +128,7 @@ $(function(){initNavTree('functions_func_c.html',''); initResizable(); });
 <li>Close()&#160;:&#160;<a class="el" href="classBaseI2c.html#a53ffda673e3b0774c31da385b27a7c3f">BaseI2c</a>, <a class="el" href="classBaseSpi.html#a88b3ba81405134a3566a01ca170bf8bb">BaseSpi</a>, <a class="el" href="classBaseUart.html#aec851bc0079da79a3cbc617fafad7432">BaseUart</a></li>
 <li>Commit()&#160;:&#160;<a class="el" href="classBaseNvs.html#a0921ba6eb0dda4285a5ea33ec1b80f11">BaseNvs</a>, <a class="el" href="classEspNvs.html#a2ac83396eb5f21034a028331c600ad9f">EspNvs</a>, <a class="el" href="classStmNvs.html#a4927951d09db18d392b6b6593809b0ac">StmNvs</a></li>
 <li>ComplementaryPair()&#160;:&#160;<a class="el" href="structEspPwm_1_1ComplementaryPair.html#ab5c2b9cc82d9057a6f6bff1e9bce5403">EspPwm::ComplementaryPair</a></li>
+<li>ComputeCrc32()&#160;:&#160;<a class="el" href="classStmNvs.html#ac99989172e7bf3631a4b4afa6635e3f0">StmNvs</a></li>
 <li>ConfigureAccessPoint()&#160;:&#160;<a class="el" href="classBaseWifi.html#a6ab63d13615654924cfd13934d6d0c24">BaseWifi</a>, <a class="el" href="classEspWifi.html#a723c96c78ce26eaf2574569778b02037">EspWifi</a></li>
 <li>ConfigureAdvancedFilter()&#160;:&#160;<a class="el" href="classEspCan.html#a2dceac78571417483299cfc7360e4cda">EspCan</a></li>
 <li>ConfigureAdvancedRmt()&#160;:&#160;<a class="el" href="classEspPio.html#a93a977f86b70a0e074e75fc68156d7e6">EspPio</a></li>
@@ -165,12 +167,14 @@ $(function(){initNavTree('functions_func_c.html',''); initResizable(); });
 <li>ConvertFromEspMode()&#160;:&#160;<a class="el" href="classEspWifi.html#abd1b5b7ed9c18fe3f6731e125c78e385">EspWifi</a></li>
 <li>ConvertFromRmtSymbols()&#160;:&#160;<a class="el" href="classEspPio.html#a9941024800163ea0fa4c06a7a5131046">EspPio</a></li>
 <li>ConvertFromTwaiFrame()&#160;:&#160;<a class="el" href="classEspCan.html#a1b91c8ad9fd014b9eba4417e7abbbb1d">EspCan</a></li>
+<li>ConvertHalStatus()&#160;:&#160;<a class="el" href="classStmAdc.html#a7eb73d7d1ca0f9d255dbb3264541b953">StmAdc</a>, <a class="el" href="classStmI2cDevice.html#af0d017a0135b577c8fb6e252eedf0c29">StmI2cDevice</a>, <a class="el" href="classStmSpiDevice.html#ad3874dd35a07942be355864ea4423e86">StmSpiDevice</a></li>
 <li>ConvertMcuError()&#160;:&#160;<a class="el" href="classEspNvs.html#ae92a0823375c316e604edba55e7978ee">EspNvs</a></li>
 <li>ConvertPlatformError()&#160;:&#160;<a class="el" href="classEspUart.html#a55983273a666678ced3622dbb9bf0797">EspUart</a></li>
 <li>ConvertToEspAuthMode()&#160;:&#160;<a class="el" href="classEspWifi.html#a85184affd47380dc4c18243c52695aff">EspWifi</a></li>
 <li>ConvertToEspMode()&#160;:&#160;<a class="el" href="classEspWifi.html#a02d8d51377fc2b7c74b040bd2b376a81">EspWifi</a></li>
 <li>ConvertToRmtSymbols()&#160;:&#160;<a class="el" href="classEspPio.html#a4ac66d796bb5d5087cd20d49e26c4b49">EspPio</a></li>
 <li>ConvertToTwaiFrame()&#160;:&#160;<a class="el" href="classEspCan.html#ae27d8b7560c7ce88f8a927dd2df94836">EspCan</a></li>
+<li>CountToVoltage()&#160;:&#160;<a class="el" href="classStmAdc.html#a6d5db74ebfc1eed67933bb9f2d297c12">StmAdc</a></li>
 <li>CreateDevice()&#160;:&#160;<a class="el" href="classEspI2cBus.html#a578c36e975b01c96fe15a492de148e51">EspI2cBus</a>, <a class="el" href="classEspSpiBus.html#a53555ddb858bd9e9957d2faf30d9c19e">EspSpiBus</a>, <a class="el" href="classStmI2cBus.html#a8a8333a7f2c46e1c89da0d80b19e1f79">StmI2cBus</a>, <a class="el" href="classStmSpiBus.html#a781055ef0cd430c2cb5f12601882a683">StmSpiBus</a></li>
 <li>CreateTimerHandle()&#160;:&#160;<a class="el" href="classEspPeriodicTimer.html#a2d830235ededf0da8e79050c044bc239">EspPeriodicTimer</a></li>
 <li>CustomFastProbe()&#160;:&#160;<a class="el" href="classEspI2cBus.html#a7c12d7a9b61f69cf5e581ad40b9a3ff6">EspI2cBus</a></li>

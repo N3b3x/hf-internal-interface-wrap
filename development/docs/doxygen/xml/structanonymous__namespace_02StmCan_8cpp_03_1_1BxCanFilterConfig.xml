@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig" kind="struct" language="C++" prot="public">
+    <compoundname>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a5ef27f38f4b34810ee5dc4e68528def3" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterIdHigh</definition>
+        <argsstring></argsstring>
+        <name>FilterIdHigh</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterIdHigh</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="81" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1aae57c2e70949ef5318aa2a000fab2c78" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterIdLow</definition>
+        <argsstring></argsstring>
+        <name>FilterIdLow</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterIdLow</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="82" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a0a3ff18283b0cb5282105e6980b9e624" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterMaskIdHigh</definition>
+        <argsstring></argsstring>
+        <name>FilterMaskIdHigh</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterMaskIdHigh</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="83" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a0a3f10835c734080cf2eec0126de736a" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterMaskIdLow</definition>
+        <argsstring></argsstring>
+        <name>FilterMaskIdLow</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterMaskIdLow</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="84" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a58961fc7676f78f2f95c2b212af1b315" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterFIFOAssignment</definition>
+        <argsstring></argsstring>
+        <name>FilterFIFOAssignment</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterFIFOAssignment</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="85" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1ad31584ea2bf99ae6e04a7c0caf2a3ab2" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterBank</definition>
+        <argsstring></argsstring>
+        <name>FilterBank</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterBank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="86" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a7514bd5580fd64c5f0ef054fc125f8d1" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterMode</definition>
+        <argsstring></argsstring>
+        <name>FilterMode</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterMode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="87" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1ab96793d44e6b509bf353e91d243dc40c" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterScale</definition>
+        <argsstring></argsstring>
+        <name>FilterScale</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterScale</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="88" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1ae8c007d46f5effe189bce6fd910f53b7" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterActivation</definition>
+        <argsstring></argsstring>
+        <name>FilterActivation</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterActivation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="89" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a90dc4dfc8990a249cd269dd2b207be79" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::SlaveStartFilterBank</definition>
+        <argsstring></argsstring>
+        <name>SlaveStartFilterBank</name>
+        <qualifiedname>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::SlaveStartFilterBank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmCan.cpp" line="90" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/stm32/StmCan.cpp" line="80" column="5" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="80" bodyend="91"/>
+    <listofallmembers>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1ae8c007d46f5effe189bce6fd910f53b7" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig</scope><name>FilterActivation</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1ad31584ea2bf99ae6e04a7c0caf2a3ab2" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig</scope><name>FilterBank</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a58961fc7676f78f2f95c2b212af1b315" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig</scope><name>FilterFIFOAssignment</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a5ef27f38f4b34810ee5dc4e68528def3" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig</scope><name>FilterIdHigh</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1aae57c2e70949ef5318aa2a000fab2c78" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig</scope><name>FilterIdLow</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a0a3ff18283b0cb5282105e6980b9e624" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig</scope><name>FilterMaskIdHigh</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a0a3f10835c734080cf2eec0126de736a" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig</scope><name>FilterMaskIdLow</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a7514bd5580fd64c5f0ef054fc125f8d1" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig</scope><name>FilterMode</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1ab96793d44e6b509bf353e91d243dc40c" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig</scope><name>FilterScale</name></member>
+      <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a90dc4dfc8990a249cd269dd2b207be79" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig</scope><name>SlaveStartFilterBank</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

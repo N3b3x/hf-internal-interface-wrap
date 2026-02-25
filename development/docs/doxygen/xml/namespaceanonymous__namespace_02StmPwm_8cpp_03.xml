@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespaceanonymous__namespace_02StmPwm_8cpp_03" kind="namespace" language="C++">
+    <compoundname>anonymous_namespace{StmPwm.cpp}</compoundname>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a2c1b6c3eb9057e3d5e7cfcd041105bf3" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimChannel1</definition>
+        <argsstring></argsstring>
+        <name>kTimChannel1</name>
+        <qualifiedname>anonymous_namespace{StmPwm.cpp}::kTimChannel1</qualifiedname>
+        <initializer>= 0x00000000U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmPwm.cpp" line="26" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1aaec9ba4dfdd164a17152237daf3f7280" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimChannel2</definition>
+        <argsstring></argsstring>
+        <name>kTimChannel2</name>
+        <qualifiedname>anonymous_namespace{StmPwm.cpp}::kTimChannel2</qualifiedname>
+        <initializer>= 0x00000004U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmPwm.cpp" line="27" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a74092637af54de9be82774f9dc83cd6f" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimChannel3</definition>
+        <argsstring></argsstring>
+        <name>kTimChannel3</name>
+        <qualifiedname>anonymous_namespace{StmPwm.cpp}::kTimChannel3</qualifiedname>
+        <initializer>= 0x00000008U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmPwm.cpp" line="28" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1afdf6cafd03df6e1a381d091a8400fefa" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimChannel4</definition>
+        <argsstring></argsstring>
+        <name>kTimChannel4</name>
+        <qualifiedname>anonymous_namespace{StmPwm.cpp}::kTimChannel4</qualifiedname>
+        <initializer>= 0x0000000CU</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmPwm.cpp" line="29" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a10577d1da5280b680c46bcd3eeacc184" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimPscOffset</definition>
+        <argsstring></argsstring>
+        <name>kTimPscOffset</name>
+        <qualifiedname>anonymous_namespace{StmPwm.cpp}::kTimPscOffset</qualifiedname>
+        <initializer>= 0x28</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmPwm.cpp" line="32" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a80c8505c255f089e57c8b05b91cb911f" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimArrOffset</definition>
+        <argsstring></argsstring>
+        <name>kTimArrOffset</name>
+        <qualifiedname>anonymous_namespace{StmPwm.cpp}::kTimArrOffset</qualifiedname>
+        <initializer>= 0x2C</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmPwm.cpp" line="33" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1ab68943c4f3e5f6e4be77de41651e58cc" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimCcr1Offset</definition>
+        <argsstring></argsstring>
+        <name>kTimCcr1Offset</name>
+        <qualifiedname>anonymous_namespace{StmPwm.cpp}::kTimCcr1Offset</qualifiedname>
+        <initializer>= 0x34</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmPwm.cpp" line="34" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a3fc05ec82865a303d1594bf3f7a01e12" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimEgrOffset</definition>
+        <argsstring></argsstring>
+        <name>kTimEgrOffset</name>
+        <qualifiedname>anonymous_namespace{StmPwm.cpp}::kTimEgrOffset</qualifiedname>
+        <initializer>= 0x14</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmPwm.cpp" line="35" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a61d1a038fe4834cc60d19733b4aaedba" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimBdtrOffset</definition>
+        <argsstring></argsstring>
+        <name>kTimBdtrOffset</name>
+        <qualifiedname>anonymous_namespace{StmPwm.cpp}::kTimBdtrOffset</qualifiedname>
+        <initializer>= 0x44</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmPwm.cpp" line="36" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a95f6191ea8aef44939ee4420bb6700ea" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimEgrUgBit</definition>
+        <argsstring></argsstring>
+        <name>kTimEgrUgBit</name>
+        <qualifiedname>anonymous_namespace{StmPwm.cpp}::kTimEgrUgBit</qualifiedname>
+        <initializer>= 0x01</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmPwm.cpp" line="37" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/stm32/StmPwm.cpp" line="25" column="1"/>
+  </compounddef>
+</doxygen>

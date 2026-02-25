@@ -4,7 +4,7 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1280,45,1219,86,1168,137,1128,184,1124,181,1164,133,1216,82,1277,41"/>
 <area shape="rect" id="Node000003" href="$EspTypes__ADC_8h.html" title="ESP32 ADC type definitions for hardware abstraction." alt="" coords="1229,84,1405,135"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1320,50,1320,84,1315,84,1315,50"/>
-<area shape="rect" id="Node000020" href="$StmAdc_8h.html" title="STM32 ADC stub implementation — placeholder for future STM32 HAL integration." alt="" coords="1449,94,1673,125"/>
+<area shape="rect" id="Node000020" href="$StmAdc_8h.html" title="STM32 ADC wrapper — wraps STM32 HAL ADC via CubeMX&#45;generated handle." alt="" coords="1449,94,1673,125"/>
 <area shape="poly" id="edge20_Node000001_Node000020" title=" " alt="" coords="1371,38,1522,91,1521,97,1369,43"/>
 <area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="1253,143,1162,185,1159,180,1251,138"/>
 <area shape="rect" id="Node000004" href="$EspTypes_8h.html" title="Consolidated MCU&#45;specific type definitions for hardware abstraction (hf_* types)." alt="" coords="1259,183,1435,233"/>
@@ -39,6 +39,6 @@
 <area shape="poly" id="edge18_Node000017_Node000018" title=" " alt="" coords="2283,336,2283,380,2277,380,2277,336"/>
 <area shape="rect" id="Node000019" href="$EspUart_8cpp.html" title="Implementation of ESP32 UART controller for the HardFOC system." alt="" coords="2431,390,2675,421"/>
 <area shape="poly" id="edge19_Node000017_Node000019" title=" " alt="" coords="2334,324,2514,387,2512,392,2332,329"/>
-<area shape="rect" id="Node000021" href="$StmAdc_8cpp.html" title="STM32 ADC stub implementation." alt="" coords="1459,193,1703,223"/>
+<area shape="rect" id="Node000021" href="$StmAdc_8cpp.html" title="STM32 ADC wrapper implementation — full STM32 HAL integration." alt="" coords="1459,193,1703,223"/>
 <area shape="poly" id="edge21_Node000020_Node000021" title=" " alt="" coords="1570,138,1581,192,1576,193,1564,139"/>
 </map>

@@ -419,6 +419,7 @@
         <name>SetRange</name>
         <qualifiedname>BaseTemperature::SetRange</qualifiedname>
         <reimplementedby refid="classEspTemperature_1a92b30bf532e07d1f1927d4fccf5322ba">SetRange</reimplementedby>
+        <reimplementedby refid="classStmTemperature_1a608596a4778ff7dbcc6b29099d525afb">SetRange</reimplementedby>
         <param>
           <type>float</type>
           <declname>min_celsius</declname>
@@ -463,6 +464,7 @@
         <name>GetRange</name>
         <qualifiedname>BaseTemperature::GetRange</qualifiedname>
         <reimplementedby refid="classEspTemperature_1a5763ab0b92fff25c5854bcfb04a8ba9f">GetRange</reimplementedby>
+        <reimplementedby refid="classStmTemperature_1a42c8899bcbec1bd9ef5d6273db3f6842">GetRange</reimplementedby>
         <param>
           <type>float *</type>
           <declname>min_celsius</declname>
@@ -846,6 +848,7 @@
         <name>SetCalibrationOffset</name>
         <qualifiedname>BaseTemperature::SetCalibrationOffset</qualifiedname>
         <reimplementedby refid="classEspTemperature_1a2665b30cb4301b8fccb577f74e4fa7fc">SetCalibrationOffset</reimplementedby>
+        <reimplementedby refid="classStmTemperature_1a2fd741be7e01983487293cd79ea6694c">SetCalibrationOffset</reimplementedby>
         <param>
           <type>float</type>
           <declname>offset_celsius</declname>
@@ -878,6 +881,7 @@
         <name>GetCalibrationOffset</name>
         <qualifiedname>BaseTemperature::GetCalibrationOffset</qualifiedname>
         <reimplementedby refid="classEspTemperature_1ad6ee47301f32825678e5838b453bd1f1">GetCalibrationOffset</reimplementedby>
+        <reimplementedby refid="classStmTemperature_1af6ea97a7123fac478b300b7a6e6c76d1">GetCalibrationOffset</reimplementedby>
         <param>
           <type>float *</type>
           <declname>offset_celsius</declname>

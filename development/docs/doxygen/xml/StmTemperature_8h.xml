@@ -2,11 +2,12 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
   <compounddef id="StmTemperature_8h" kind="file" language="C++">
     <compoundname>StmTemperature.h</compoundname>
-    <includes refid="BaseTemperature_8h" local="yes">base/BaseTemperature.h</includes>
+    <includes refid="BaseTemperature_8h" local="yes">BaseTemperature.h</includes>
+    <includes refid="StmTypes_8h" local="yes">StmTypes.h</includes>
     <includedby refid="StmTemperature_8cpp" local="yes">src/mcu/stm32/StmTemperature.cpp</includedby>
     <incdepgraph>
       <node id="2">
-        <label>base/BaseTemperature.h</label>
+        <label>BaseTemperature.h</label>
         <link refid="BaseTemperature_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
@@ -28,6 +29,21 @@
         <link refid="StmTemperature_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>StmTypes.h</label>
+        <link refid="StmTypes_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>cstddef</label>
       </node>
       <node id="4">
         <label>cstdint</label>
@@ -51,34 +67,100 @@
         <link refid="StmTemperature_8cpp"/>
       </node>
     </invincdepgraph>
+    <innerclass refid="structhf__stm32__temp__sensor__config__t" prot="public">hf_stm32_temp_sensor_config_t</innerclass>
     <innerclass refid="classStmTemperature" prot="public">StmTemperature</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="StmTemperature_8h_1a3171edb2ca9f73177f41c30dec7b0460" prot="public" static="no">
+        <type>float(*)(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> raw_adc_count, <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> resolution_bits)</type>
+        <definition>using hf_stm32_temp_convert_fn =  float(*)(hf_u32_t raw_adc_count, hf_u8_t resolution_bits)</definition>
+        <argsstring></argsstring>
+        <name>hf_stm32_temp_convert_fn</name>
+        <briefdescription>
+<para>User-supplied function to convert a raw ADC count to Celsius. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For the STM32 internal sensor the typical formula is: T(°C) = ((V_SENSE – V_25) / Avg_Slope) + 25 but calibration constants differ per family (see RM).</para>
+<para>For external NTC / PTC / thermocouple channels the user provides their own linearisation function. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="28" column="1" bodyfile="inc/mcu/stm32/StmTemperature.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
     <briefdescription>
-<para>STM32 Temperature sensor stub — placeholder for internal temp sensor integration. </para>
+<para>STM32 Temperature sensor — reads the internal temp sensor via ADC or an external sensor via a user-supplied ADC handle + conversion function. </para>
     </briefdescription>
     <detaileddescription>
-<para>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </para>
+<para><simplesect kind="author"><para>HardFOC </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC — Licensed under GPL v3.0 or later. </para>
+</simplesect>
+</para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseTemperature_8h" kindref="compound">base/BaseTemperature.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15" refid="classStmTemperature" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classStmTemperature" kindref="compound">StmTemperature</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classBaseTemperature" kindref="compound">BaseTemperature</ref><sp/>{</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="17" refid="classStmTemperature_1af087266daab79e72cb84e9e13bd1a24a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmTemperature_1af087266daab79e72cb84e9e13bd1a24a" kindref="member">StmTemperature</ref>()<sp/>noexcept;</highlight></codeline>
-<codeline lineno="18" refid="classStmTemperature_1a8f5ed0c8568d7c5cd199851ba7da359b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>~<ref refid="classStmTemperature" kindref="compound">StmTemperature</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Public<sp/>pure<sp/>virtuals</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classStmTemperature_1a6d6f95d8acc8e7ebf80314022f6f2eac" kindref="member">GetSensorInfo</ref>(<ref refid="structhf__temp__sensor__info__t" kindref="compound">hf_temp_sensor_info_t</ref>*<sp/>info)<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="classStmTemperature_1a00eac441e907fd899ac7df305bd1ead6" kindref="member">GetCapabilities</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal">protected:</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Protected<sp/>pure<sp/>virtuals</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmTemperature_1ac638c0fb9b58e5736ebbd3d750d533fa" kindref="member">Initialize</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmTemperature_1abac4e09afd8ae32e0f2f9196643e47b1" kindref="member">Deinitialize</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classStmTemperature_1aec6918308bc56058d12cd1d5dde7aa03" kindref="member">ReadTemperatureCelsiusImpl</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>temperature_celsius)<sp/>noexcept<sp/>override;</highlight></codeline>
-<codeline lineno="29"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseTemperature_8h" kindref="compound">BaseTemperature.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="StmTypes_8h" kindref="compound">StmTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">ADC_HandleTypeDef;<sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>declaration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="StmTemperature_8h_1a3171edb2ca9f73177f41c30dec7b0460" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="StmTemperature_8h_1a3171edb2ca9f73177f41c30dec7b0460" kindref="member">hf_stm32_temp_convert_fn</ref><sp/>=<sp/>float(*)(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>raw_adc_count,<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>resolution_bits);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="structhf__stm32__temp__sensor__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__stm32__temp__sensor__config__t" kindref="compound">hf_stm32_temp_sensor_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="34" refid="structhf__stm32__temp__sensor__config__t_1a2c32d9830af682cafea7532370bb8eb9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>ADC_HandleTypeDef*<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__stm32__temp__sensor__config__t_1a2c32d9830af682cafea7532370bb8eb9" kindref="member">hadc</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="35" refid="structhf__stm32__temp__sensor__config__t_1aa27bb09db96a42bd880d396e5927daf2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__stm32__temp__sensor__config__t_1aa27bb09db96a42bd880d396e5927daf2" kindref="member">channel</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="36" refid="structhf__stm32__temp__sensor__config__t_1ab265e6eb80eda270b17df8ae954d3290" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__stm32__temp__sensor__config__t_1ab265e6eb80eda270b17df8ae954d3290" kindref="member">resolution_bits</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="37" refid="structhf__stm32__temp__sensor__config__t_1ad173fc8b2f0b892505980d83c8b4c802" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__stm32__temp__sensor__config__t_1ad173fc8b2f0b892505980d83c8b4c802" kindref="member">vref_mv</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="38" refid="structhf__stm32__temp__sensor__config__t_1a580289da5373cba3aa73123cbb79a10c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="StmTemperature_8h_1a3171edb2ca9f73177f41c30dec7b0460" kindref="member">hf_stm32_temp_convert_fn</ref><sp/><ref refid="structhf__stm32__temp__sensor__config__t_1a580289da5373cba3aa73123cbb79a10c" kindref="member">convert_fn</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="39" refid="structhf__stm32__temp__sensor__config__t_1afe748da02e51b47e20f2733629cd3d23" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseTemperature_8h_1a698a95604ca19f87ee2ff5c99f903577" kindref="member">hf_temp_sensor_type_t</ref><sp/><sp/><sp/><ref refid="structhf__stm32__temp__sensor__config__t_1afe748da02e51b47e20f2733629cd3d23" kindref="member">sensor_type</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="40" refid="structhf__stm32__temp__sensor__config__t_1af2fe2952b0ae3ee81099f35d7655b766" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__stm32__temp__sensor__config__t_1af2fe2952b0ae3ee81099f35d7655b766" kindref="member">range_min_celsius</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="41" refid="structhf__stm32__temp__sensor__config__t_1ac80849093bf17f211e41eb27dcb8c747" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__stm32__temp__sensor__config__t_1ac80849093bf17f211e41eb27dcb8c747" kindref="member">range_max_celsius</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42" refid="structhf__stm32__temp__sensor__config__t_1a10ed8f58340a300bc57b6c3c5a4e28d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__stm32__temp__sensor__config__t_1a10ed8f58340a300bc57b6c3c5a4e28d3" kindref="member">sample_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43" refid="structhf__stm32__temp__sensor__config__t_1a7e6b4469e8c7641f3e126ec02098ef4d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__stm32__temp__sensor__config__t_1a7e6b4469e8c7641f3e126ec02098ef4d" kindref="member">timeout_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="structhf__stm32__temp__sensor__config__t_1a73df7de9f9db5276ca44f5a28ce075f6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__stm32__temp__sensor__config__t_1a73df7de9f9db5276ca44f5a28ce075f6" kindref="member">hf_stm32_temp_sensor_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__stm32__temp__sensor__config__t_1a2c32d9830af682cafea7532370bb8eb9" kindref="member">hadc</ref>(</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">),<sp/><ref refid="structhf__stm32__temp__sensor__config__t_1aa27bb09db96a42bd880d396e5927daf2" kindref="member">channel</ref>(0),<sp/><ref refid="structhf__stm32__temp__sensor__config__t_1ab265e6eb80eda270b17df8ae954d3290" kindref="member">resolution_bits</ref>(12),<sp/><ref refid="structhf__stm32__temp__sensor__config__t_1ad173fc8b2f0b892505980d83c8b4c802" kindref="member">vref_mv</ref>(3300.0f)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/><ref refid="structhf__stm32__temp__sensor__config__t_1a580289da5373cba3aa73123cbb79a10c" kindref="member">convert_fn</ref>(</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">),<sp/><ref refid="structhf__stm32__temp__sensor__config__t_1afe748da02e51b47e20f2733629cd3d23" kindref="member">sensor_type</ref>(<ref refid="BaseTemperature_8h_1a698a95604ca19f87ee2ff5c99f903577a8aa8f97a4549bc156de54f576307198f" kindref="member">HF_TEMP_SENSOR_TYPE_INTERNAL</ref>)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/><ref refid="structhf__stm32__temp__sensor__config__t_1af2fe2952b0ae3ee81099f35d7655b766" kindref="member">range_min_celsius</ref>(-40.0f),<sp/><ref refid="structhf__stm32__temp__sensor__config__t_1ac80849093bf17f211e41eb27dcb8c747" kindref="member">range_max_celsius</ref>(125.0f)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/><ref refid="structhf__stm32__temp__sensor__config__t_1a10ed8f58340a300bc57b6c3c5a4e28d3" kindref="member">sample_count</ref>(4),<sp/><ref refid="structhf__stm32__temp__sensor__config__t_1a7e6b4469e8c7641f3e126ec02098ef4d" kindref="member">timeout_ms</ref>(100)<sp/>{}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classStmTemperature" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classStmTemperature" kindref="compound">StmTemperature</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classBaseTemperature" kindref="compound">BaseTemperature</ref><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classStmTemperature_1a2461c1a385e2832b121f947c3dbb4875" kindref="member">StmTemperature</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__stm32__temp__sensor__config__t" kindref="compound">hf_stm32_temp_sensor_config_t</ref>&amp;<sp/>config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classStmTemperature_1a2461c1a385e2832b121f947c3dbb4875" kindref="member">StmTemperature</ref>(ADC_HandleTypeDef*<sp/>hadc<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>resolution_bits<sp/>=<sp/>12,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>vref_mv<sp/>=<sp/>3300.0f)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmTemperature_1a8f5ed0c8568d7c5cd199851ba7da359b" kindref="member">~StmTemperature</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>──<sp/>Pure<sp/>virtuals<sp/>from<sp/>BaseTemperature<sp/>──────────────────────────────────</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classStmTemperature_1a6d6f95d8acc8e7ebf80314022f6f2eac" kindref="member">GetSensorInfo</ref>(<ref refid="structhf__temp__sensor__info__t" kindref="compound">hf_temp_sensor_info_t</ref>*<sp/>info)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="classStmTemperature_1a00eac441e907fd899ac7df305bd1ead6" kindref="member">GetCapabilities</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>──<sp/>Optional<sp/>overrides<sp/>──────────────────────────────────────────────────</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classStmTemperature_1a608596a4778ff7dbcc6b29099d525afb" kindref="member">SetRange</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>min_celsius,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>max_celsius)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classStmTemperature_1a42c8899bcbec1bd9ef5d6273db3f6842" kindref="member">GetRange</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>min_celsius,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>max_celsius)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classStmTemperature_1a2fd741be7e01983487293cd79ea6694c" kindref="member">SetCalibrationOffset</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>offset_celsius)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classStmTemperature_1af6ea97a7123fac478b300b7a6e6c76d1" kindref="member">GetCalibrationOffset</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>offset_celsius)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmTemperature_1ac638c0fb9b58e5736ebbd3d750d533fa" kindref="member">Initialize</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmTemperature_1abac4e09afd8ae32e0f2f9196643e47b1" kindref="member">Deinitialize</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classStmTemperature_1aec6918308bc56058d12cd1d5dde7aa03" kindref="member">ReadTemperatureCelsiusImpl</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>temperature_celsius)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="96" refid="classStmTemperature_1af833b26ce90ace49f0378788e914f780" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__stm32__temp__sensor__config__t" kindref="compound">hf_stm32_temp_sensor_config_t</ref><sp/><ref refid="classStmTemperature_1af833b26ce90ace49f0378788e914f780" kindref="member">config_</ref>;</highlight></codeline>
+<codeline lineno="97" refid="classStmTemperature_1a4d89f1c6728aad5a458c13599254a4bc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classStmTemperature_1a4d89f1c6728aad5a458c13599254a4bc" kindref="member">calibration_offset_</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classStmTemperature_1ab1c67e3bbe93cc7834df421a75547c0e" kindref="member">DefaultInternalConvert</ref>(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>raw,<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>resolution_bits);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="inc/mcu/stm32/StmTemperature.h"/>
   </compounddef>

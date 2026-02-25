@@ -10,11 +10,12 @@ var searchData=
   ['was_5foutput_5fmode_5f_7',['was_output_mode_',['../classDigitalOutputGuard.html#aee20e95f884029b17d08eaff68156304',1,'DigitalOutputGuard']]],
   ['with_5fdma_8',['with_dma',['../structhf__rmt__transmit__config__t.html#a2eaa37be6151c91b183715162ae3d59c',1,'hf_rmt_transmit_config_t::with_dma'],['../structhf__rmt__receive__config__t.html#a8cfc5833c6a98455e2ef6742bb998290',1,'hf_rmt_receive_config_t::with_dma']]],
   ['write_5ferrors_9',['write_errors',['../structhf__logger__statistics__t.html#ad0b98afd9aa45cc49049b6b11f08daaa',1,'hf_logger_statistics_t']]],
-  ['writer_5factive_5f_10',['writer_active_',['../classPlatformSharedMutex.html#a556ab68ae31e7c5f6b06c233c6c14c61',1,'PlatformSharedMutex']]],
-  ['writer_5fmutex_5f_11',['writer_mutex_',['../classPlatformSharedMutex.html#a068badf177d9e1bdc79d4eaa0501fcd8',1,'PlatformSharedMutex']]],
-  ['ws2812_5freset_12',['WS2812_RESET',['../PioComprehensiveTest_8cpp.html#abd9d2ba60a745d0fc53bc62087ab8fea',1,'PioComprehensiveTest.cpp']]],
-  ['ws2812_5ft0h_13',['WS2812_T0H',['../PioComprehensiveTest_8cpp.html#a7393b3e27bbd2ed66b2d688e6fe6260b',1,'PioComprehensiveTest.cpp']]],
-  ['ws2812_5ft0l_14',['WS2812_T0L',['../PioComprehensiveTest_8cpp.html#a527042d1a190dcf2b1530817fb8f33d2',1,'PioComprehensiveTest.cpp']]],
-  ['ws2812_5ft1h_15',['WS2812_T1H',['../PioComprehensiveTest_8cpp.html#a0a1512fe5816d1f27ad3a792366f7e43',1,'PioComprehensiveTest.cpp']]],
-  ['ws2812_5ft1l_16',['WS2812_T1L',['../PioComprehensiveTest_8cpp.html#a06c7ca5e8ebce4c41102a215e5939b40',1,'PioComprehensiveTest.cpp']]]
+  ['write_5foffset_5f_10',['write_offset_',['../classStmNvs.html#aea3bc8d29dccd30404408e094e1ec907',1,'StmNvs']]],
+  ['writer_5factive_5f_11',['writer_active_',['../classPlatformSharedMutex.html#a556ab68ae31e7c5f6b06c233c6c14c61',1,'PlatformSharedMutex']]],
+  ['writer_5fmutex_5f_12',['writer_mutex_',['../classPlatformSharedMutex.html#a068badf177d9e1bdc79d4eaa0501fcd8',1,'PlatformSharedMutex']]],
+  ['ws2812_5freset_13',['WS2812_RESET',['../PioComprehensiveTest_8cpp.html#abd9d2ba60a745d0fc53bc62087ab8fea',1,'PioComprehensiveTest.cpp']]],
+  ['ws2812_5ft0h_14',['WS2812_T0H',['../PioComprehensiveTest_8cpp.html#a7393b3e27bbd2ed66b2d688e6fe6260b',1,'PioComprehensiveTest.cpp']]],
+  ['ws2812_5ft0l_15',['WS2812_T0L',['../PioComprehensiveTest_8cpp.html#a527042d1a190dcf2b1530817fb8f33d2',1,'PioComprehensiveTest.cpp']]],
+  ['ws2812_5ft1h_16',['WS2812_T1H',['../PioComprehensiveTest_8cpp.html#a0a1512fe5816d1f27ad3a792366f7e43',1,'PioComprehensiveTest.cpp']]],
+  ['ws2812_5ft1l_17',['WS2812_T1L',['../PioComprehensiveTest_8cpp.html#a06c7ca5e8ebce4c41102a215e5939b40',1,'PioComprehensiveTest.cpp']]]
 ];

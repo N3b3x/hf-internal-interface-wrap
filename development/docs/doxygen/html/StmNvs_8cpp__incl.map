@@ -1,16 +1,27 @@
 <map id="src/mcu/stm32/StmNvs.cpp" name="src/mcu/stm32/StmNvs.cpp">
-<area shape="rect" id="Node000001" title="STM32 NVS stub implementation." alt="" coords="26,5,270,36"/>
-<area shape="rect" id="Node000002" href="$StmNvs_8h.html" title="STM32 NVS (non&#45;volatile storage) stub — placeholder for flash/EEPROM integration." alt="" coords="97,84,199,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,36,151,70,145,70,145,36"/>
-<area shape="rect" id="Node000003" href="$BaseNvs_8h.html" title="Abstract base class for Non&#45;Volatile Storage implementations in the HardFOC system." alt="" coords="93,163,203,193"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="151,115,151,149,145,149,145,115"/>
-<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="67,241,229,272"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="151,194,151,228,145,228,145,194"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="5,320,80,351"/>
-<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="114,196,83,215,57,243,46,274,43,306,38,306,40,273,52,240,80,211,112,191"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="253,241,365,272"/>
-<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="179,191,268,233,266,238,177,196"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="130,274,75,314,72,310,127,270"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="116,320,180,351"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="151,272,151,306,145,306,145,272"/>
+<area shape="rect" id="Node000001" title="STM32 NVS implementation — flash&#45;backed key&#45;value store." alt="" coords="254,5,498,36"/>
+<area shape="rect" id="Node000002" href="$StmNvs_8h.html" title="STM32 NVS (Non&#45;Volatile Storage) — flash&#45;based key&#45;value store." alt="" coords="231,84,332,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="360,38,312,77,309,73,357,34"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="347,163,422,193"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="380,36,386,149,380,149,374,36"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="414,84,483,115"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="392,34,428,72,424,76,388,38"/>
+<area shape="rect" id="Node000003" href="$BaseNvs_8h.html" title="Abstract base class for Non&#45;Volatile Storage implementations in the HardFOC system." alt="" coords="214,163,323,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="282,115,276,149,271,148,277,115"/>
+<area shape="rect" id="Node000008" href="$StmTypes_8h.html" title="STM32 platform&#45;specific type definitions for hardware abstraction." alt="" coords="68,163,186,193"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="254,117,169,159,167,154,252,112"/>
+<area shape="poly" id="edge12_Node000002_Node000010" title=" " alt="" coords="303,113,356,152,352,156,299,117"/>
+<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="128,241,291,272"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="259,195,231,232,227,229,255,192"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="219,320,294,351"/>
+<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="282,192,303,228,308,250,306,273,296,293,283,311,278,308,291,291,300,271,303,251,298,230,278,195"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="366,241,478,272"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="298,191,383,233,380,238,296,196"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="221,271,243,307,238,310,216,274"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="131,320,195,351"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="203,274,181,310,177,307,199,271"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="144,192,186,230,182,234,141,196"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="85,196,53,210,24,228,15,238,9,249,9,259,15,270,34,290,53,303,73,309,95,311,145,311,206,317,205,323,145,317,95,317,72,314,51,307,30,295,10,274,4,260,4,247,10,235,21,224,50,206,83,191"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="24,241,104,272"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="117,195,87,232,83,229,113,192"/>
 </map>
