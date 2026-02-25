@@ -94,13 +94,19 @@ $(function(){initNavTree('classStmNvs.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="classStmNvs-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">StmNvs Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 NVS — stub implementation.  
+<p>STM32 NVS — flash-backed key-value store with wear leveling.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="StmNvs_8h_source.html">StmNvs.h</a>&gt;</code></p>
@@ -112,13 +118,20 @@ Inheritance diagram for StmNvs:</div>
 <div class="dynheader">
 Collaboration diagram for StmNvs:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classStmNvs__coll__graph.svg" width="395" height="220"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classStmNvs__coll__graph.svg" width="100%" height="479"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structStmNvs_1_1CacheEntry.html">CacheEntry</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RAM cache entry.  <a href="structStmNvs_1_1CacheEntry.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a26366d606b8f3e0b153bdabccfffcca8" id="r_a26366d606b8f3e0b153bdabccfffcca8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26366d606b8f3e0b153bdabccfffcca8">StmNvs</a> (const char *namespace_name=&quot;default&quot;) noexcept</td></tr>
-<tr class="separator:a26366d606b8f3e0b153bdabccfffcca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58c10717e9ebc1e4ba3bdc51fcacac32" id="r_a58c10717e9ebc1e4ba3bdc51fcacac32"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58c10717e9ebc1e4ba3bdc51fcacac32">StmNvs</a> (const char *namespace_name=&quot;default&quot;, const <a class="el" href="structhf__stm32__nvs__config__t.html">hf_stm32_nvs_config_t</a> &amp;flash_config=<a class="el" href="structhf__stm32__nvs__config__t.html">hf_stm32_nvs_config_t</a>()) noexcept</td></tr>
+<tr class="memdesc:a58c10717e9ebc1e4ba3bdc51fcacac32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct with namespace and flash configuration.  <br /></td></tr>
+<tr class="separator:a58c10717e9ebc1e4ba3bdc51fcacac32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec7905feea3b210ced450761f89d2862" id="r_aec7905feea3b210ced450761f89d2862"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec7905feea3b210ced450761f89d2862">~StmNvs</a> () noexcept override</td></tr>
 <tr class="separator:aec7905feea3b210ced450761f89d2862"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf64aac4ece7c73b0815e28a749a1b0d" id="r_aaf64aac4ece7c73b0815e28a749a1b0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseNvs_8h.html#a0a4f43b41760df506a65240a5ca415a4">hf_nvs_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf64aac4ece7c73b0815e28a749a1b0d">Initialize</a> () noexcept override</td></tr>
@@ -166,6 +179,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a958e824edad543dbb63d1bff36a1c019" id="r_a958e824edad543dbb63d1bff36a1c019"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a958e824edad543dbb63d1bff36a1c019">GetMaxValueSize</a> () const noexcept override</td></tr>
 <tr class="memdesc:a958e824edad543dbb63d1bff36a1c019"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get maximum value size supported.  <br /></td></tr>
 <tr class="separator:a958e824edad543dbb63d1bff36a1c019"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac8319f591df1a405288b78bcbad42f7" id="r_aac8319f591df1a405288b78bcbad42f7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structhf__stm32__nvs__config__t.html">hf_stm32_nvs_config_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac8319f591df1a405288b78bcbad42f7">GetFlashConfig</a> () const noexcept</td></tr>
+<tr class="memdesc:aac8319f591df1a405288b78bcbad42f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the flash configuration.  <br /></td></tr>
+<tr class="separator:aac8319f591df1a405288b78bcbad42f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36c3f07f83bbd139baf128256f515dbd" id="r_a36c3f07f83bbd139baf128256f515dbd"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36c3f07f83bbd139baf128256f515dbd">GetEntryCount</a> () const noexcept</td></tr>
+<tr class="memdesc:a36c3f07f83bbd139baf128256f515dbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of stored entries.  <br /></td></tr>
+<tr class="separator:a36c3f07f83bbd139baf128256f515dbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6dd9137f0cc82102ed2e076f03d3786" id="r_ab6dd9137f0cc82102ed2e076f03d3786"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6dd9137f0cc82102ed2e076f03d3786">GetFreeSpace</a> () const noexcept</td></tr>
+<tr class="memdesc:ab6dd9137f0cc82102ed2e076f03d3786"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get available free space in current sector (bytes)  <br /></td></tr>
+<tr class="separator:ab6dd9137f0cc82102ed2e076f03d3786"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classBaseNvs"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classBaseNvs')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classBaseNvs.html">BaseNvs</a></td></tr>
 <tr class="memitem:a34a0f5777eaeabb861b0bef15c31a11b inherit pub_methods_classBaseNvs" id="r_a34a0f5777eaeabb861b0bef15c31a11b"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseNvs.html#a34a0f5777eaeabb861b0bef15c31a11b">~BaseNvs</a> () noexcept=default</td></tr>
 <tr class="memdesc:a34a0f5777eaeabb861b0bef15c31a11b inherit pub_methods_classBaseNvs"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor to ensure proper cleanup.  <br /></td></tr>
@@ -199,6 +221,64 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5fe8b85bd8c8c103d5e8ce9c5060b49c inherit pub_methods_classBaseNvs"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get NVS diagnostic information.  <br /></td></tr>
 <tr class="separator:a5fe8b85bd8c8c103d5e8ce9c5060b49c inherit pub_methods_classBaseNvs"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a0bcc4c0e9ca2496bf414508a23ae60db" id="r_a0bcc4c0e9ca2496bf414508a23ae60db"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bcc4c0e9ca2496bf414508a23ae60db">EntryType</a> : hf_u8_t { <a class="el" href="#a0bcc4c0e9ca2496bf414508a23ae60dbac8bd5bedff8ef192d39a962afc0e19ee">U32</a> = 0x01
+, <a class="el" href="#a0bcc4c0e9ca2496bf414508a23ae60dba63b588d5559f64f89a416e656880b949">STRING</a> = 0x02
+, <a class="el" href="#a0bcc4c0e9ca2496bf414508a23ae60dba1649cff06611a6025da3dd511a97fb43">BLOB</a> = 0x03
+, <a class="el" href="#a0bcc4c0e9ca2496bf414508a23ae60dbad0a0eb3dc879369e4217cd440cb3c5da">ERASED</a> = 0xFF
+ }</td></tr>
+<tr class="memdesc:a0bcc4c0e9ca2496bf414508a23ae60db"><td class="mdescLeft">&#160;</td><td class="mdescRight">NVS entry types.  <a href="#a0bcc4c0e9ca2496bf414508a23ae60db">More...</a><br /></td></tr>
+<tr class="separator:a0bcc4c0e9ca2496bf414508a23ae60db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a6151d29c1bdfd4e50fafd0610f972962" id="r_a6151d29c1bdfd4e50fafd0610f972962"><td class="memItemLeft" align="right" valign="top">struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6151d29c1bdfd4e50fafd0610f972962">__attribute__</a> ((packed)) EntryHeader</td></tr>
+<tr class="memdesc:a6151d29c1bdfd4e50fafd0610f972962"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entry header stored in flash (packed)  <br /></td></tr>
+<tr class="separator:a6151d29c1bdfd4e50fafd0610f972962"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48ba4510a23c360e0a605de02dd3b26b" id="r_a48ba4510a23c360e0a605de02dd3b26b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48ba4510a23c360e0a605de02dd3b26b">FindCacheEntry</a> (const char *key) const noexcept</td></tr>
+<tr class="memdesc:a48ba4510a23c360e0a605de02dd3b26b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find entry in RAM cache by key.  <br /></td></tr>
+<tr class="separator:a48ba4510a23c360e0a605de02dd3b26b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af584c17c3ecef3252cf70f79139dab40" id="r_af584c17c3ecef3252cf70f79139dab40"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af584c17c3ecef3252cf70f79139dab40">AddOrUpdateCache</a> (const char *key, <a class="el" href="#a0bcc4c0e9ca2496bf414508a23ae60db">EntryType</a> type, const void *data, size_t data_size) noexcept</td></tr>
+<tr class="memdesc:af584c17c3ecef3252cf70f79139dab40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add or update entry in RAM cache.  <br /></td></tr>
+<tr class="separator:af584c17c3ecef3252cf70f79139dab40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1e449321a8d845bf60c4e323072f3e1" id="r_ae1e449321a8d845bf60c4e323072f3e1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1e449321a8d845bf60c4e323072f3e1">IsValidKey</a> (const char *key) const noexcept</td></tr>
+<tr class="memdesc:ae1e449321a8d845bf60c4e323072f3e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate a key string.  <br /></td></tr>
+<tr class="separator:ae1e449321a8d845bf60c4e323072f3e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0b253a0dd2df51a284a60e1a1e27b15" id="r_af0b253a0dd2df51a284a60e1a1e27b15"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseNvs_8h.html#a0a4f43b41760df506a65240a5ca415a4">hf_nvs_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0b253a0dd2df51a284a60e1a1e27b15">FlushToFlash</a> () noexcept</td></tr>
+<tr class="memdesc:af0b253a0dd2df51a284a60e1a1e27b15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write all dirty entries to flash.  <br /></td></tr>
+<tr class="separator:af0b253a0dd2df51a284a60e1a1e27b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6c999eca920d0590c0d544a923823d0" id="r_ae6c999eca920d0590c0d544a923823d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseNvs_8h.html#a0a4f43b41760df506a65240a5ca415a4">hf_nvs_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6c999eca920d0590c0d544a923823d0">LoadFromFlash</a> () noexcept</td></tr>
+<tr class="memdesc:ae6c999eca920d0590c0d544a923823d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read entries from flash into RAM cache.  <br /></td></tr>
+<tr class="separator:ae6c999eca920d0590c0d544a923823d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:ac99989172e7bf3631a4b4afa6635e3f0" id="r_ac99989172e7bf3631a4b4afa6635e3f0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac99989172e7bf3631a4b4afa6635e3f0">ComputeCrc32</a> (const void *data, size_t length) noexcept</td></tr>
+<tr class="memdesc:ac99989172e7bf3631a4b4afa6635e3f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple CRC32 for entry validation.  <br /></td></tr>
+<tr class="separator:ac99989172e7bf3631a4b4afa6635e3f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a26a94da96e7a0376bd0859555028a052" id="r_a26a94da96e7a0376bd0859555028a052"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhf__stm32__nvs__config__t.html">hf_stm32_nvs_config_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26a94da96e7a0376bd0859555028a052">flash_config_</a></td></tr>
+<tr class="memdesc:a26a94da96e7a0376bd0859555028a052"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flash region config.  <br /></td></tr>
+<tr class="separator:a26a94da96e7a0376bd0859555028a052"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa8a283e260349811907e894d4db4d3c" id="r_afa8a283e260349811907e894d4db4d3c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structStmNvs_1_1CacheEntry.html">CacheEntry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa8a283e260349811907e894d4db4d3c">cache_</a> [<a class="el" href="#addfe90a086182d8e85cacbbbc1a51207">kMaxEntries</a>]</td></tr>
+<tr class="memdesc:afa8a283e260349811907e894d4db4d3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">RAM cache.  <br /></td></tr>
+<tr class="separator:afa8a283e260349811907e894d4db4d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1deebe21c4521e78c4c25420dc8a6599" id="r_a1deebe21c4521e78c4c25420dc8a6599"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1deebe21c4521e78c4c25420dc8a6599">entry_count_</a></td></tr>
+<tr class="memdesc:a1deebe21c4521e78c4c25420dc8a6599"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current entry count.  <br /></td></tr>
+<tr class="separator:a1deebe21c4521e78c4c25420dc8a6599"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea3bc8d29dccd30404408e094e1ec907" id="r_aea3bc8d29dccd30404408e094e1ec907"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea3bc8d29dccd30404408e094e1ec907">write_offset_</a></td></tr>
+<tr class="memdesc:aea3bc8d29dccd30404408e094e1ec907"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current write position in flash.  <br /></td></tr>
+<tr class="separator:aea3bc8d29dccd30404408e094e1ec907"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:addfe90a086182d8e85cacbbbc1a51207" id="r_addfe90a086182d8e85cacbbbc1a51207"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addfe90a086182d8e85cacbbbc1a51207">kMaxEntries</a> = 64</td></tr>
+<tr class="memdesc:addfe90a086182d8e85cacbbbc1a51207"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max cached entries.  <br /></td></tr>
+<tr class="separator:addfe90a086182d8e85cacbbbc1a51207"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classBaseNvs"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classBaseNvs')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classBaseNvs.html">BaseNvs</a></td></tr>
@@ -223,10 +303,49 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a76a4a9aae7deb785a6773843cc08d366 inherit pro_attribs_classBaseNvs"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 NVS — stub implementation. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a26366d606b8f3e0b153bdabccfffcca8" name="a26366d606b8f3e0b153bdabccfffcca8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26366d606b8f3e0b153bdabccfffcca8">&#9670;&#160;</a></span>StmNvs()</h2>
+<div class="textblock"><p>STM32 NVS — flash-backed key-value store with wear leveling. </p>
+<p>Design:</p><ul>
+<li>Uses a flat log of {key_len, key[], type, data_len, data[]} entries</li>
+<li>New writes append; reads scan from end to find latest value</li>
+<li>Commit triggers flash write of dirty entries</li>
+<li>When sector is full, compact (copy live entries to backup sector, erase, swap)</li>
+<li>Supports U32, String, and Blob value types</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>Flash operations require HAL_FLASH_Unlock/Lock — handled internally. </dd></dl>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a0bcc4c0e9ca2496bf414508a23ae60db" name="a0bcc4c0e9ca2496bf414508a23ae60db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bcc4c0e9ca2496bf414508a23ae60db">&#9670;&#160;</a></span>EntryType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a0bcc4c0e9ca2496bf414508a23ae60db">StmNvs::EntryType</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>NVS entry types. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0bcc4c0e9ca2496bf414508a23ae60dbac8bd5bedff8ef192d39a962afc0e19ee" name="a0bcc4c0e9ca2496bf414508a23ae60dbac8bd5bedff8ef192d39a962afc0e19ee"></a>U32&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0bcc4c0e9ca2496bf414508a23ae60dba63b588d5559f64f89a416e656880b949" name="a0bcc4c0e9ca2496bf414508a23ae60dba63b588d5559f64f89a416e656880b949"></a>STRING&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0bcc4c0e9ca2496bf414508a23ae60dba1649cff06611a6025da3dd511a97fb43" name="a0bcc4c0e9ca2496bf414508a23ae60dba1649cff06611a6025da3dd511a97fb43"></a>BLOB&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0bcc4c0e9ca2496bf414508a23ae60dbad0a0eb3dc879369e4217cd440cb3c5da" name="a0bcc4c0e9ca2496bf414508a23ae60dbad0a0eb3dc879369e4217cd440cb3c5da"></a>ERASED&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a58c10717e9ebc1e4ba3bdc51fcacac32" name="a58c10717e9ebc1e4ba3bdc51fcacac32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58c10717e9ebc1e4ba3bdc51fcacac32">&#9670;&#160;</a></span>StmNvs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -237,8 +356,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">StmNvs::StmNvs </td>
           <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>namespace_name</em><span class="paramdefsep"> = </span><span class="paramdefval">&quot;default&quot;</span></span></td><td>)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>namespace_name</em><span class="paramdefsep"> = </span><span class="paramdefval">&quot;default&quot;</span>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="structhf__stm32__nvs__config__t.html">hf_stm32_nvs_config_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>flash_config</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="structhf__stm32__nvs__config__t.html">hf_stm32_nvs_config_t</a>()</span></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -247,6 +370,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Construct with namespace and flash configuration. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">namespace_name</td><td>Logical namespace (for multi-partition support) </td></tr>
+    <tr><td class="paramname">flash_config</td><td>Flash region configuration </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -268,7 +400,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -276,6 +408,78 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6151d29c1bdfd4e50fafd0610f972962" name="a6151d29c1bdfd4e50fafd0610f972962"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6151d29c1bdfd4e50fafd0610f972962">&#9670;&#160;</a></span>__attribute__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct StmNvs::__attribute__ </td>
+          <td>(</td>
+          <td class="paramtype">(packed)</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Entry header stored in flash (packed) </p>
+<p>&lt; Key string length (not including null)</p>
+<p>&lt; Value type</p>
+<p>&lt; Data length in bytes</p>
+<p>&lt; CRC32 of key + data</p>
+
+</div>
+</div>
+<a id="af584c17c3ecef3252cf70f79139dab40" name="af584c17c3ecef3252cf70f79139dab40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af584c17c3ecef3252cf70f79139dab40">&#9670;&#160;</a></span>AddOrUpdateCache()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int StmNvs::AddOrUpdateCache </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>key</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a0bcc4c0e9ca2496bf414508a23ae60db">EntryType</a></td>          <td class="paramname"><span class="paramname"><em>type</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>data</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>data_size</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add or update entry in RAM cache. </p>
+
+</div>
+</div>
 <a id="a4927951d09db18d392b6b6593809b0ac" name="a4927951d09db18d392b6b6593809b0ac"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4927951d09db18d392b6b6593809b0ac">&#9670;&#160;</a></span>Commit()</h2>
 
@@ -303,6 +507,37 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseNvs_8h.html#a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296">hf_nvs_err_t::NVS_SUCCESS</a> if successful, error code otherwise </dd></dl>
 
 <p>Implements <a class="el" href="classBaseNvs.html#a0921ba6eb0dda4285a5ea33ec1b80f11">BaseNvs</a>.</p>
+
+</div>
+</div>
+<a id="ac99989172e7bf3631a4b4afa6635e3f0" name="ac99989172e7bf3631a4b4afa6635e3f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac99989172e7bf3631a4b4afa6635e3f0">&#9670;&#160;</a></span>ComputeCrc32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> StmNvs::ComputeCrc32 </td>
+          <td>(</td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>data</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Simple CRC32 for entry validation. </p>
 
 </div>
 </div>
@@ -369,6 +604,60 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseNvs_8h.html#a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296">hf_nvs_err_t::NVS_SUCCESS</a> if successful, error code otherwise </dd></dl>
 
 <p>Implements <a class="el" href="classBaseNvs.html#ac3a2738d1f6a3e488c08edaecf49af9d">BaseNvs</a>.</p>
+
+</div>
+</div>
+<a id="a48ba4510a23c360e0a605de02dd3b26b" name="a48ba4510a23c360e0a605de02dd3b26b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48ba4510a23c360e0a605de02dd3b26b">&#9670;&#160;</a></span>FindCacheEntry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int StmNvs::FindCacheEntry </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Find entry in RAM cache by key. </p>
+
+</div>
+</div>
+<a id="af0b253a0dd2df51a284a60e1a1e27b15" name="af0b253a0dd2df51a284a60e1a1e27b15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0b253a0dd2df51a284a60e1a1e27b15">&#9670;&#160;</a></span>FlushToFlash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="BaseNvs_8h.html#a0a4f43b41760df506a65240a5ca415a4">hf_nvs_err_t</a> StmNvs::FlushToFlash </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Write all dirty entries to flash. </p>
 
 </div>
 </div>
@@ -452,6 +741,87 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Description string </dd></dl>
 
 <p>Implements <a class="el" href="classBaseNvs.html#a66680f0959c3ba928b402f6a9fbb700a">BaseNvs</a>.</p>
+
+</div>
+</div>
+<a id="a36c3f07f83bbd139baf128256f515dbd" name="a36c3f07f83bbd139baf128256f515dbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36c3f07f83bbd139baf128256f515dbd">&#9670;&#160;</a></span>GetEntryCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t StmNvs::GetEntryCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get number of stored entries. </p>
+
+</div>
+</div>
+<a id="aac8319f591df1a405288b78bcbad42f7" name="aac8319f591df1a405288b78bcbad42f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac8319f591df1a405288b78bcbad42f7">&#9670;&#160;</a></span>GetFlashConfig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structhf__stm32__nvs__config__t.html">hf_stm32_nvs_config_t</a> &amp; StmNvs::GetFlashConfig </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the flash configuration. </p>
+
+</div>
+</div>
+<a id="ab6dd9137f0cc82102ed2e076f03d3786" name="ab6dd9137f0cc82102ed2e076f03d3786"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6dd9137f0cc82102ed2e076f03d3786">&#9670;&#160;</a></span>GetFreeSpace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t StmNvs::GetFreeSpace </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get available free space in current sector (bytes) </p>
 
 </div>
 </div>
@@ -680,6 +1050,33 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="ae1e449321a8d845bf60c4e323072f3e1" name="ae1e449321a8d845bf60c4e323072f3e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1e449321a8d845bf60c4e323072f3e1">&#9670;&#160;</a></span>IsValidKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StmNvs::IsValidKey </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Validate a key string. </p>
+
+</div>
+</div>
 <a id="a8a8abfb797fa5369d790a1e74501ec26" name="a8a8abfb797fa5369d790a1e74501ec26"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8a8abfb797fa5369d790a1e74501ec26">&#9670;&#160;</a></span>KeyExists()</h2>
 
@@ -713,6 +1110,33 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>true if key exists, false otherwise </dd></dl>
 
 <p>Implements <a class="el" href="classBaseNvs.html#a911caf95d3c25047f044ca748164df39">BaseNvs</a>.</p>
+
+</div>
+</div>
+<a id="ae6c999eca920d0590c0d544a923823d0" name="ae6c999eca920d0590c0d544a923823d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6c999eca920d0590c0d544a923823d0">&#9670;&#160;</a></span>LoadFromFlash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="BaseNvs_8h.html#a0a4f43b41760df506a65240a5ca415a4">hf_nvs_err_t</a> StmNvs::LoadFromFlash </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Read entries from flash into RAM cache. </p>
 
 </div>
 </div>
@@ -842,6 +1266,127 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseNvs_8h.html#a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296">hf_nvs_err_t::NVS_SUCCESS</a> if successful, error code otherwise </dd></dl>
 
 <p>Implements <a class="el" href="classBaseNvs.html#a8f2069d78e8f913e752ba4449255a86b">BaseNvs</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="afa8a283e260349811907e894d4db4d3c" name="afa8a283e260349811907e894d4db4d3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa8a283e260349811907e894d4db4d3c">&#9670;&#160;</a></span>cache_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structStmNvs_1_1CacheEntry.html">CacheEntry</a> StmNvs::cache_[<a class="el" href="#addfe90a086182d8e85cacbbbc1a51207">kMaxEntries</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>RAM cache. </p>
+
+</div>
+</div>
+<a id="a1deebe21c4521e78c4c25420dc8a6599" name="a1deebe21c4521e78c4c25420dc8a6599"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1deebe21c4521e78c4c25420dc8a6599">&#9670;&#160;</a></span>entry_count_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t StmNvs::entry_count_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Current entry count. </p>
+
+</div>
+</div>
+<a id="a26a94da96e7a0376bd0859555028a052" name="a26a94da96e7a0376bd0859555028a052"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26a94da96e7a0376bd0859555028a052">&#9670;&#160;</a></span>flash_config_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structhf__stm32__nvs__config__t.html">hf_stm32_nvs_config_t</a> StmNvs::flash_config_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flash region config. </p>
+
+</div>
+</div>
+<a id="addfe90a086182d8e85cacbbbc1a51207" name="addfe90a086182d8e85cacbbbc1a51207"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addfe90a086182d8e85cacbbbc1a51207">&#9670;&#160;</a></span>kMaxEntries</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr size_t StmNvs::kMaxEntries = 64</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Max cached entries. </p>
+
+</div>
+</div>
+<a id="aea3bc8d29dccd30404408e094e1ec907" name="aea3bc8d29dccd30404408e094e1ec907"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea3bc8d29dccd30404408e094e1ec907">&#9670;&#160;</a></span>write_offset_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> StmNvs::write_offset_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Current write position in flash. </p>
 
 </div>
 </div>

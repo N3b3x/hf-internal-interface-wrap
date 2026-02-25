@@ -1,5 +1,5 @@
 <map id="StmI2cDevice" name="StmI2cDevice">
-<area shape="rect" id="Node000001" title="STM32 I2C device — stub implementation." alt="" coords="5,84,140,115"/>
+<area shape="rect" id="Node000001" title="STM32 I2C device — inherits BaseI2c, delegates I/O to parent bus HAL handle." alt="" coords="5,84,140,115"/>
 <area shape="rect" id="Node000002" href="$classBaseI2c.html" title="Abstract base class for I2C device implementations." alt="" coords="29,5,116,36"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,50,75,84,70,84,70,50"/>
 </map>

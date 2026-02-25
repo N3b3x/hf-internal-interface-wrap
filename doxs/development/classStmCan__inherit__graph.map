@@ -1,0 +1,5 @@
+<map id="StmCan" name="StmCan">
+<area shape="rect" id="Node000001" title="STM32 CAN implementation." alt="" coords="9,84,97,115"/>
+<area shape="rect" id="Node000002" href="$classBaseCan.html" title="Abstract base class defining the unified CAN bus API." alt="" coords="5,5,101,36"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="56,50,56,84,51,84,51,50"/>
+</map>

@@ -4,11 +4,11 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="284,43,246,61,212,86,191,109,174,135,150,184,146,181,169,132,187,106,208,82,243,57,281,39"/>
 <area shape="rect" id="Node000003" href="$EspPeriodicTimer_8h.html" title="MCU&#45;integrated periodic timer implementation." alt="" coords="222,84,462,135"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="345,50,345,84,339,84,339,50"/>
-<area shape="rect" id="Node000005" href="$StmPeriodicTimer_8h.html" title="STM32 Periodic Timer stub — placeholder for hardware timer integration." alt="" coords="547,84,790,135"/>
+<area shape="rect" id="Node000005" href="$StmPeriodicTimer_8h.html" title="STM32 Periodic Timer — wraps TIM_HandleTypeDef for periodic callbacks." alt="" coords="547,84,790,135"/>
 <area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="409,37,578,81,576,86,408,42"/>
 <area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="280,143,191,185,189,180,277,138"/>
 <area shape="rect" id="Node000004" href="$EspPeriodicTimer_8cpp.html" title="Implementation of MCU&#45;integrated periodic timer." alt="" coords="297,183,539,233"/>
 <area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="372,144,401,180,396,184,368,147"/>
-<area shape="rect" id="Node000006" href="$StmPeriodicTimer_8cpp.html" title="STM32 Periodic Timer stub implementation." alt="" coords="563,183,807,233"/>
+<area shape="rect" id="Node000006" href="$StmPeriodicTimer_8cpp.html" title="STM32 Periodic Timer implementation — HAL TIM base with ISR dispatch." alt="" coords="563,183,807,233"/>
 <area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="678,148,683,182,678,183,672,149"/>
 </map>

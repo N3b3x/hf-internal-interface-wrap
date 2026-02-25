@@ -104,7 +104,7 @@ var sectionId = 'dynsection-1';
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="StmPeriodicTimer_8h.html" target="_top" xlink:title="STM32 Periodic Timer stub — placeholder for hardware timer integration.">
+<g id="a_Node000005"><a xlink:href="StmPeriodicTimer_8h.html" target="_top" xlink:title="STM32 Periodic Timer — wraps TIM_HandleTypeDef for periodic callbacks.">
 <polygon fill="white" stroke="#666666" points="588.5,-112 406.5,-112 406.5,-74 588.5,-74 588.5,-112"/>
 <text text-anchor="start" x="414.5" y="-96.8" font-family="Arial" font-size="14.00">inc/mcu/stm32/StmPeriodic</text>
 <text text-anchor="middle" x="497.5" y="-81.8" font-family="Arial" font-size="14.00">Timer.h</text>
@@ -151,7 +151,7 @@ var sectionId = 'dynsection-1';
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="StmPeriodicTimer_8cpp.html" target="_top" xlink:title="STM32 Periodic Timer stub implementation.">
+<g id="a_Node000006"><a xlink:href="StmPeriodicTimer_8cpp.html" target="_top" xlink:title="STM32 Periodic Timer implementation — HAL TIM base with ISR dispatch.">
 <polygon fill="white" stroke="#666666" points="601,-38 418,-38 418,0 601,0 601,-38"/>
 <text text-anchor="start" x="426" y="-22.8" font-family="Arial" font-size="14.00">src/mcu/stm32/StmPeriodic</text>
 <text text-anchor="middle" x="509.5" y="-7.8" font-family="Arial" font-size="14.00">Timer.cpp</text>

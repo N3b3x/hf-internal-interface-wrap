@@ -1,5 +1,13 @@
 var annotated_dup =
 [
+    [ "anonymous_namespace{StmCan.cpp}", "namespaceanonymous__namespace_02StmCan_8cpp_03.html", [
+      [ "BxCanFilterConfig", "structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig.html", "structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig" ],
+      [ "BxCanRxHeader", "structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader.html", "structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader" ],
+      [ "BxCanTxHeader", "structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader.html", "structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanTxHeader" ],
+      [ "FdCanFilterConfig", "structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanFilterConfig.html", "structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanFilterConfig" ],
+      [ "FdCanRxHeader", "structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader.html", "structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader" ],
+      [ "FdCanTxHeader", "structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader.html", "structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader" ]
+    ] ],
     [ "adc_queue_message_t", "structadc__queue__message__t.html", "structadc__queue__message__t" ],
     [ "AsciiArtGenerator", "classAsciiArtGenerator.html", "classAsciiArtGenerator" ],
     [ "BaseAdc", "classBaseAdc.html", "classBaseAdc" ],
@@ -66,6 +74,7 @@ var annotated_dup =
     [ "hf_esp_can_timing_config_t", "structhf__esp__can__timing__config__t.html", "structhf__esp__can__timing__config__t" ],
     [ "hf_esp_can_tx_info_t", "structhf__esp__can__tx__info__t.html", "structhf__esp__can__tx__info__t" ],
     [ "hf_gpio_diagnostics_t", "structhf__gpio__diagnostics__t.html", "structhf__gpio__diagnostics__t" ],
+    [ "HF_GPIO_InitTypeDef", "structHF__GPIO__InitTypeDef.html", "structHF__GPIO__InitTypeDef" ],
     [ "hf_gpio_statistics_t", "structhf__gpio__statistics__t.html", "structhf__gpio__statistics__t" ],
     [ "hf_i2c_async_result_t", "structhf__i2c__async__result__t.html", "structhf__i2c__async__result__t" ],
     [ "hf_i2c_bus_config_t", "structhf__i2c__bus__config__t.html", "structhf__i2c__bus__config__t" ],
@@ -115,6 +124,7 @@ var annotated_dup =
     [ "hf_stm32_gpio_config_t", "structhf__stm32__gpio__config__t.html", "structhf__stm32__gpio__config__t" ],
     [ "hf_stm32_nvs_config_t", "structhf__stm32__nvs__config__t.html", "structhf__stm32__nvs__config__t" ],
     [ "hf_stm32_pwm_config_t", "structhf__stm32__pwm__config__t.html", "structhf__stm32__pwm__config__t" ],
+    [ "hf_stm32_temp_sensor_config_t", "structhf__stm32__temp__sensor__config__t.html", "structhf__stm32__temp__sensor__config__t" ],
     [ "hf_stm32_timer_config_t", "structhf__stm32__timer__config__t.html", "structhf__stm32__timer__config__t" ],
     [ "hf_stm32_uart_config_t", "structhf__stm32__uart__config__t.html", "structhf__stm32__uart__config__t" ],
     [ "hf_temp_config_t", "structhf__temp__config__t.html", "structhf__temp__config__t" ],
@@ -149,15 +159,18 @@ var annotated_dup =
     [ "PlatformTime", "classPlatformTime.html", "classPlatformTime" ],
     [ "PlatformUniqueLock", "classPlatformUniqueLock.html", "classPlatformUniqueLock" ],
     [ "StmAdc", "classStmAdc.html", "classStmAdc" ],
+    [ "StmCan", "classStmCan.html", "classStmCan" ],
     [ "StmGpio", "classStmGpio.html", "classStmGpio" ],
     [ "StmI2cBus", "classStmI2cBus.html", "classStmI2cBus" ],
     [ "StmI2cDevice", "classStmI2cDevice.html", "classStmI2cDevice" ],
     [ "StmLogger", "classStmLogger.html", "classStmLogger" ],
     [ "StmNvs", "classStmNvs.html", "classStmNvs" ],
     [ "StmPeriodicTimer", "classStmPeriodicTimer.html", "classStmPeriodicTimer" ],
+    [ "StmPwm", "classStmPwm.html", "classStmPwm" ],
     [ "StmSpiBus", "classStmSpiBus.html", "classStmSpiBus" ],
     [ "StmSpiDevice", "classStmSpiDevice.html", "classStmSpiDevice" ],
     [ "StmTemperature", "classStmTemperature.html", "classStmTemperature" ],
+    [ "StmUart", "classStmUart.html", "classStmUart" ],
     [ "TestResults", "structTestResults.html", "structTestResults" ],
     [ "TestTaskContext", "structTestTaskContext.html", "structTestTaskContext" ]
 ];

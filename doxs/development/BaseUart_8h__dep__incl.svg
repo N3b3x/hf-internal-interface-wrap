@@ -46,7 +46,7 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 2011;
+var viewWidth = 2125;
 var viewHeight = 327;
 var sectionId = 'dynsection-1';
 </script>
@@ -58,8 +58,8 @@ var sectionId = 'dynsection-1';
 <g id="Node000001" class="node">
 <title>Node1</title>
 <g id="a_Node000001"><a xlink:title="Abstract base class for UART driver implementations in the HardFOC system.">
-<polygon fill="#999999" stroke="#666666" points="208.5,-319 70.5,-319 70.5,-296 208.5,-296 208.5,-319"/>
-<text text-anchor="middle" x="139.5" y="-303.8" font-family="Arial" font-size="14.00">inc/base/BaseUart.h</text>
+<polygon fill="#999999" stroke="#666666" points="1925.5,-319 1787.5,-319 1787.5,-296 1925.5,-296 1925.5,-319"/>
+<text text-anchor="middle" x="1856.5" y="-303.8" font-family="Arial" font-size="14.00">inc/base/BaseUart.h</text>
 </a>
 </g>
 </g>
@@ -67,9 +67,9 @@ var sectionId = 'dynsection-1';
 <g id="Node000002" class="node">
 <title>Node2</title>
 <g id="a_Node000002"><a xlink:href="UartComprehensiveTest_8cpp.html" target="_top" xlink:title="Comprehensive UART testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)">
-<polygon fill="white" stroke="#666666" points="191,-38 0,-38 0,0 191,0 191,-38"/>
-<text text-anchor="start" x="8" y="-22.8" font-family="Arial" font-size="14.00">examples/esp32/main</text>
-<text text-anchor="middle" x="95.5" y="-7.8" font-family="Arial" font-size="14.00">/UartComprehensiveTest.cpp</text>
+<polygon fill="white" stroke="#666666" points="2002,-38 1811,-38 1811,0 2002,0 2002,-38"/>
+<text text-anchor="start" x="1819" y="-22.8" font-family="Arial" font-size="14.00">examples/esp32/main</text>
+<text text-anchor="middle" x="1906.5" y="-7.8" font-family="Arial" font-size="14.00">/UartComprehensiveTest.cpp</text>
 </a>
 </g>
 </g>
@@ -77,8 +77,8 @@ var sectionId = 'dynsection-1';
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node1&#45;&gt;Node2</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M136.35,-285.96C128.12,-232.41 106.12,-89.14 98.3,-38.25"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="132.9,-286.61 137.88,-295.96 139.82,-285.55 132.9,-286.61"/>
+<path fill="none" stroke="#63b8ff" d="M1871.18,-287.51C1876.62,-279.46 1882.26,-269.7 1885.5,-260 1912.01,-180.66 1909.92,-78.8 1907.73,-38.04"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1868.23,-285.62 1865.25,-295.79 1873.92,-289.7 1868.23,-285.62"/>
 </a>
 </g>
 </g>
@@ -86,8 +86,8 @@ var sectionId = 'dynsection-1';
 <g id="Node000003" class="node">
 <title>Node3</title>
 <g id="a_Node000003"><a xlink:href="EspUart_8h.html" target="_top" xlink:title="ESP32 UART implementation for the HardFOC system.">
-<polygon fill="white" stroke="#666666" points="376.5,-104.5 208.5,-104.5 208.5,-81.5 376.5,-81.5 376.5,-104.5"/>
-<text text-anchor="middle" x="292.5" y="-89.3" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspUart.h</text>
+<polygon fill="white" stroke="#666666" points="1789.5,-104.5 1621.5,-104.5 1621.5,-81.5 1789.5,-81.5 1789.5,-104.5"/>
+<text text-anchor="middle" x="1705.5" y="-89.3" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspUart.h</text>
 </a>
 </g>
 </g>
@@ -95,8 +95,8 @@ var sectionId = 'dynsection-1';
 <g id="edge2_Node000001_Node000003" class="edge">
 <title>Node1&#45;&gt;Node3</title>
 <g id="a_edge2_Node000001_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M140.8,-285.72C142.68,-267.84 147.27,-241.85 158.5,-222 188.59,-168.79 247.83,-124.06 276.37,-104.53"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="137.29,-285.66 139.93,-295.92 144.27,-286.26 137.29,-285.66"/>
+<path fill="none" stroke="#63b8ff" d="M1783.67,-292.78C1764.83,-285.89 1746.28,-275.54 1733.5,-260 1695.07,-213.27 1700.48,-133.58 1703.96,-104.78"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1782.62,-296.12 1793.22,-295.99 1784.85,-289.49 1782.62,-296.12"/>
 </a>
 </g>
 </g>
@@ -104,9 +104,9 @@ var sectionId = 'dynsection-1';
 <g id="Node000005" class="node">
 <title>Node5</title>
 <g id="a_Node000005"><a xlink:href="EspTypes__UART_8h.html" target="_top" xlink:title="ESP32 UART type definitions for hardware abstraction.">
-<polygon fill="white" stroke="#666666" points="301.5,-260 167.5,-260 167.5,-222 301.5,-222 301.5,-260"/>
-<text text-anchor="start" x="175.5" y="-244.8" font-family="Arial" font-size="14.00">inc/mcu/esp32/utils</text>
-<text text-anchor="middle" x="234.5" y="-229.8" font-family="Arial" font-size="14.00">/EspTypes_UART.h</text>
+<polygon fill="white" stroke="#666666" points="1876.5,-260 1742.5,-260 1742.5,-222 1876.5,-222 1876.5,-260"/>
+<text text-anchor="start" x="1750.5" y="-244.8" font-family="Arial" font-size="14.00">inc/mcu/esp32/utils</text>
+<text text-anchor="middle" x="1809.5" y="-229.8" font-family="Arial" font-size="14.00">/EspTypes_UART.h</text>
 </a>
 </g>
 </g>
@@ -114,8 +114,26 @@ var sectionId = 'dynsection-1';
 <g id="edge5_Node000001_Node000005" class="edge">
 <title>Node1&#45;&gt;Node5</title>
 <g id="a_edge5_Node000001_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M163.47,-290.22C176.92,-281.09 193.74,-269.68 207.63,-260.24"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="161.49,-287.34 155.19,-295.85 165.43,-293.13 161.49,-287.34"/>
+<path fill="none" stroke="#63b8ff" d="M1842.7,-287.56C1836.41,-278.94 1829.01,-268.78 1822.79,-260.24"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1840.02,-289.83 1848.74,-295.85 1845.68,-285.71 1840.02,-289.83"/>
+</a>
+</g>
+</g>
+<!-- Node19 -->
+<g id="Node000019" class="node">
+<title>Node19</title>
+<g id="a_Node000019"><a xlink:href="StmUart_8h.html" target="_top" xlink:title="STM32 UART wrapper — wraps UART_HandleTypeDef for BaseUart interface.">
+<polygon fill="white" stroke="#666666" points="2106.5,-252.5 1936.5,-252.5 1936.5,-229.5 2106.5,-229.5 2106.5,-252.5"/>
+<text text-anchor="middle" x="2021.5" y="-237.3" font-family="Arial" font-size="14.00">inc/mcu/stm32/StmUart.h</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node19 -->
+<g id="edge21_Node000001_Node000019" class="edge">
+<title>Node1&#45;&gt;Node19</title>
+<g id="a_edge21_Node000001_Node000019"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1892.88,-292.28C1923.62,-280.26 1966.95,-263.32 1994.63,-252.5"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1891.42,-289.09 1883.38,-295.99 1893.97,-295.61 1891.42,-289.09"/>
 </a>
 </g>
 </g>
@@ -123,8 +141,8 @@ var sectionId = 'dynsection-1';
 <g id="edge3_Node000003_Node000002" class="edge">
 <title>Node3&#45;&gt;Node2</title>
 <g id="a_edge3_Node000003_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M253.8,-77.85C222.64,-66.47 178.65,-50.39 144.95,-38.07"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="252.84,-81.23 263.43,-81.38 255.24,-74.66 252.84,-81.23"/>
+<path fill="none" stroke="#63b8ff" d="M1744.58,-78C1776.39,-66.61 1821.51,-50.44 1856.05,-38.07"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1743.39,-74.71 1735.16,-81.38 1745.75,-81.3 1743.39,-74.71"/>
 </a>
 </g>
 </g>
@@ -132,8 +150,8 @@ var sectionId = 'dynsection-1';
 <g id="Node000004" class="node">
 <title>Node4</title>
 <g id="a_Node000004"><a xlink:href="EspUart_8cpp.html" target="_top" xlink:title="Implementation of ESP32 UART controller for the HardFOC system.">
-<polygon fill="white" stroke="#666666" points="392,-30.5 209,-30.5 209,-7.5 392,-7.5 392,-30.5"/>
-<text text-anchor="middle" x="300.5" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspUart.cpp</text>
+<polygon fill="white" stroke="#666666" points="1793,-30.5 1610,-30.5 1610,-7.5 1793,-7.5 1793,-30.5"/>
+<text text-anchor="middle" x="1701.5" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspUart.cpp</text>
 </a>
 </g>
 </g>
@@ -141,8 +159,8 @@ var sectionId = 'dynsection-1';
 <g id="edge4_Node000003_Node000004" class="edge">
 <title>Node3&#45;&gt;Node4</title>
 <g id="a_edge4_Node000003_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M294.81,-71.23C296.28,-57.97 298.13,-41.32 299.31,-30.67"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="291.31,-71.05 293.68,-81.38 298.26,-71.82 291.31,-71.05"/>
+<path fill="none" stroke="#63b8ff" d="M1704.35,-71.23C1703.61,-57.97 1702.68,-41.32 1702.09,-30.67"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1700.86,-71.59 1704.91,-81.38 1707.85,-71.2 1700.86,-71.59"/>
 </a>
 </g>
 </g>
@@ -150,8 +168,8 @@ var sectionId = 'dynsection-1';
 <g id="edge6_Node000005_Node000002" class="edge">
 <title>Node5&#45;&gt;Node2</title>
 <g id="a_edge6_Node000005_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M217.63,-213.31C188.99,-167.97 131.56,-77.07 107.03,-38.25"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="214.82,-215.41 223.13,-222 220.74,-211.67 214.82,-215.41"/>
+<path fill="none" stroke="#63b8ff" d="M1821.52,-212.74C1841.59,-167.21 1881.41,-76.91 1898.45,-38.25"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1818.27,-211.43 1817.44,-222 1824.67,-214.26 1818.27,-211.43"/>
 </a>
 </g>
 </g>
@@ -159,9 +177,9 @@ var sectionId = 'dynsection-1';
 <g id="Node000006" class="node">
 <title>Node6</title>
 <g id="a_Node000006"><a xlink:href="EspTypes_8h.html" target="_top" xlink:title="Consolidated MCU&#45;specific type definitions for hardware abstraction (hf_* types).">
-<polygon fill="white" stroke="#666666" points="866.5,-186 734.5,-186 734.5,-148 866.5,-148 866.5,-186"/>
-<text text-anchor="start" x="742.5" y="-170.8" font-family="Arial" font-size="14.00">inc/mcu/esp32/utils</text>
-<text text-anchor="middle" x="800.5" y="-155.8" font-family="Arial" font-size="14.00">/EspTypes.h</text>
+<polygon fill="white" stroke="#666666" points="1248.5,-186 1116.5,-186 1116.5,-148 1248.5,-148 1248.5,-186"/>
+<text text-anchor="start" x="1124.5" y="-170.8" font-family="Arial" font-size="14.00">inc/mcu/esp32/utils</text>
+<text text-anchor="middle" x="1182.5" y="-155.8" font-family="Arial" font-size="14.00">/EspTypes.h</text>
 </a>
 </g>
 </g>
@@ -169,8 +187,8 @@ var sectionId = 'dynsection-1';
 <g id="edge7_Node000005_Node000006" class="edge">
 <title>Node5&#45;&gt;Node6</title>
 <g id="a_edge7_Node000005_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M311.85,-230.16C423.79,-215.92 629,-189.82 734.31,-176.42"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="311.13,-226.72 301.65,-231.46 312.01,-233.67 311.13,-226.72"/>
+<path fill="none" stroke="#63b8ff" d="M1732.2,-231.12C1607.84,-216.84 1365.5,-189.01 1248.65,-175.6"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1732.07,-234.63 1742.4,-232.29 1732.86,-227.68 1732.07,-234.63"/>
 </a>
 </g>
 </g>
@@ -178,8 +196,8 @@ var sectionId = 'dynsection-1';
 <g id="edge20_Node000006_Node000003" class="edge">
 <title>Node6&#45;&gt;Node3</title>
 <g id="a_edge20_Node000006_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M724.37,-155.21C627.84,-141.53 462.51,-118.1 366.85,-104.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="723.96,-158.69 734.35,-156.62 724.94,-151.76 723.96,-158.69"/>
+<path fill="none" stroke="#63b8ff" d="M1258.69,-155.51C1357.82,-141.86 1530.04,-118.16 1629.22,-104.5"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1258.17,-152.05 1248.74,-156.88 1259.12,-158.98 1258.17,-152.05"/>
 </a>
 </g>
 </g>
@@ -187,8 +205,8 @@ var sectionId = 'dynsection-1';
 <g id="Node000007" class="node">
 <title>Node7</title>
 <g id="a_Node000007"><a xlink:href="EspI2c_8h.html" target="_top" xlink:title="Advanced ESP32&#45;integrated I2C controller for ESP&#45;IDF v5.5+ with proper bus&#45;device architecture.">
-<polygon fill="white" stroke="#666666" points="1379,-104.5 1218,-104.5 1218,-81.5 1379,-81.5 1379,-104.5"/>
-<text text-anchor="middle" x="1298.5" y="-89.3" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspI2c.h</text>
+<polygon fill="white" stroke="#666666" points="1162,-104.5 1001,-104.5 1001,-81.5 1162,-81.5 1162,-104.5"/>
+<text text-anchor="middle" x="1081.5" y="-89.3" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspI2c.h</text>
 </a>
 </g>
 </g>
@@ -196,8 +214,8 @@ var sectionId = 'dynsection-1';
 <g id="edge8_Node000006_Node000007" class="edge">
 <title>Node6&#45;&gt;Node7</title>
 <g id="a_edge8_Node000006_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M876.73,-154.98C971.57,-141.27 1132.36,-118.02 1225.62,-104.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="876.03,-151.54 866.63,-156.44 877.03,-158.47 876.03,-151.54"/>
+<path fill="none" stroke="#63b8ff" d="M1148.59,-141.83C1130.84,-129.17 1110.01,-114.32 1096.32,-104.57"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1146.84,-144.88 1157.01,-147.83 1150.9,-139.18 1146.84,-144.88"/>
 </a>
 </g>
 </g>
@@ -205,9 +223,9 @@ var sectionId = 'dynsection-1';
 <g id="Node000010" class="node">
 <title>Node10</title>
 <g id="a_Node000010"><a xlink:href="EspPeriodicTimer_8h.html" target="_top" xlink:title="MCU&#45;integrated periodic timer implementation.">
-<polygon fill="white" stroke="#666666" points="1793.5,-112 1613.5,-112 1613.5,-74 1793.5,-74 1793.5,-112"/>
-<text text-anchor="start" x="1621.5" y="-96.8" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspPeriodic</text>
-<text text-anchor="middle" x="1703.5" y="-81.8" font-family="Arial" font-size="14.00">Timer.h</text>
+<polygon fill="white" stroke="#666666" points="1372.5,-112 1192.5,-112 1192.5,-74 1372.5,-74 1372.5,-112"/>
+<text text-anchor="start" x="1200.5" y="-96.8" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspPeriodic</text>
+<text text-anchor="middle" x="1282.5" y="-81.8" font-family="Arial" font-size="14.00">Timer.h</text>
 </a>
 </g>
 </g>
@@ -215,8 +233,8 @@ var sectionId = 'dynsection-1';
 <g id="edge11_Node000006_Node000010" class="edge">
 <title>Node6&#45;&gt;Node10</title>
 <g id="a_edge11_Node000006_Node000010"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M876.65,-159.93C1042.47,-146.71 1435.58,-115.36 1613.39,-101.19"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="876.22,-156.45 866.53,-160.73 876.78,-163.43 876.22,-156.45"/>
+<path fill="none" stroke="#63b8ff" d="M1215.87,-141.97C1229.38,-132.25 1244.72,-121.2 1257.27,-112.16"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1213.8,-139.15 1207.73,-147.83 1217.89,-144.83 1213.8,-139.15"/>
 </a>
 </g>
 </g>
@@ -224,8 +242,8 @@ var sectionId = 'dynsection-1';
 <g id="Node000013" class="node">
 <title>Node13</title>
 <g id="a_Node000013"><a xlink:href="EspPio_8h.html" target="_top" xlink:title="ESP32C6 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features.">
-<polygon fill="white" stroke="#666666" points="782.5,-104.5 620.5,-104.5 620.5,-81.5 782.5,-81.5 782.5,-104.5"/>
-<text text-anchor="middle" x="701.5" y="-89.3" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspPio.h</text>
+<polygon fill="white" stroke="#666666" points="368.5,-104.5 206.5,-104.5 206.5,-81.5 368.5,-81.5 368.5,-104.5"/>
+<text text-anchor="middle" x="287.5" y="-89.3" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspPio.h</text>
 </a>
 </g>
 </g>
@@ -233,8 +251,8 @@ var sectionId = 'dynsection-1';
 <g id="edge14_Node000006_Node000013" class="edge">
 <title>Node6&#45;&gt;Node13</title>
 <g id="a_edge14_Node000006_Node000013"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M767.26,-141.83C749.86,-129.17 729.44,-114.32 716.03,-104.57"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="765.37,-144.78 775.52,-147.83 769.49,-139.12 765.37,-144.78"/>
+<path fill="none" stroke="#63b8ff" d="M1106.11,-159.85C938.59,-146.38 540.23,-114.33 368.53,-100.52"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1106.08,-163.36 1116.33,-160.68 1106.64,-156.39 1106.08,-163.36"/>
 </a>
 </g>
 </g>
@@ -242,8 +260,8 @@ var sectionId = 'dynsection-1';
 <g id="Node000016" class="node">
 <title>Node16</title>
 <g id="a_Node000016"><a xlink:href="EspSpi_8h.html" target="_top" xlink:title="Advanced MCU&#45;integrated SPI controller implementation with ESP32C6/ESP&#45;IDF v5.5+ features.">
-<polygon fill="white" stroke="#666666" points="981.5,-104.5 819.5,-104.5 819.5,-81.5 981.5,-81.5 981.5,-104.5"/>
-<text text-anchor="middle" x="900.5" y="-89.3" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspSpi.h</text>
+<polygon fill="white" stroke="#666666" points="766.5,-104.5 604.5,-104.5 604.5,-81.5 766.5,-81.5 766.5,-104.5"/>
+<text text-anchor="middle" x="685.5" y="-89.3" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspSpi.h</text>
 </a>
 </g>
 </g>
@@ -251,8 +269,8 @@ var sectionId = 'dynsection-1';
 <g id="edge17_Node000006_Node000016" class="edge">
 <title>Node6&#45;&gt;Node16</title>
 <g id="a_edge17_Node000006_Node000016"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M834.07,-141.83C851.65,-129.17 872.28,-114.32 885.83,-104.57"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="831.8,-139.15 825.73,-147.83 835.89,-144.83 831.8,-139.15"/>
+<path fill="none" stroke="#63b8ff" d="M1106.16,-154.94C1011.45,-141.22 851.12,-117.99 758.15,-104.52"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1105.85,-158.43 1116.25,-156.4 1106.85,-151.5 1105.85,-158.43"/>
 </a>
 </g>
 </g>
@@ -260,9 +278,9 @@ var sectionId = 'dynsection-1';
 <g id="Node000008" class="node">
 <title>Node8</title>
 <g id="a_Node000008"><a xlink:href="I2cComprehensiveTest_8cpp.html" target="_top" xlink:title="Comprehensive I2C testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)">
-<polygon fill="white" stroke="#666666" points="1390.5,-38 1206.5,-38 1206.5,0 1390.5,0 1390.5,-38"/>
-<text text-anchor="start" x="1214.5" y="-22.8" font-family="Arial" font-size="14.00">examples/esp32/main</text>
-<text text-anchor="middle" x="1298.5" y="-7.8" font-family="Arial" font-size="14.00">/I2cComprehensiveTest.cpp</text>
+<polygon fill="white" stroke="#666666" points="1173.5,-38 989.5,-38 989.5,0 1173.5,0 1173.5,-38"/>
+<text text-anchor="start" x="997.5" y="-22.8" font-family="Arial" font-size="14.00">examples/esp32/main</text>
+<text text-anchor="middle" x="1081.5" y="-7.8" font-family="Arial" font-size="14.00">/I2cComprehensiveTest.cpp</text>
 </a>
 </g>
 </g>
@@ -270,8 +288,8 @@ var sectionId = 'dynsection-1';
 <g id="edge9_Node000007_Node000008" class="edge">
 <title>Node7&#45;&gt;Node8</title>
 <g id="a_edge9_Node000007_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1298.5,-71.1C1298.5,-60.69 1298.5,-48.23 1298.5,-38.21"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1295,-71.38 1298.5,-81.38 1302,-71.38 1295,-71.38"/>
+<path fill="none" stroke="#63b8ff" d="M1081.5,-71.1C1081.5,-60.69 1081.5,-48.23 1081.5,-38.21"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1078,-71.38 1081.5,-81.38 1085,-71.38 1078,-71.38"/>
 </a>
 </g>
 </g>
@@ -279,8 +297,8 @@ var sectionId = 'dynsection-1';
 <g id="Node000009" class="node">
 <title>Node9</title>
 <g id="a_Node000009"><a xlink:href="EspI2c_8cpp.html" target="_top" xlink:title="Implementation of ESP32&#45;integrated I2C controller with proper bus&#45;device architecture.">
-<polygon fill="white" stroke="#666666" points="1584.5,-30.5 1408.5,-30.5 1408.5,-7.5 1584.5,-7.5 1584.5,-30.5"/>
-<text text-anchor="middle" x="1496.5" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspI2c.cpp</text>
+<polygon fill="white" stroke="#666666" points="971.5,-30.5 795.5,-30.5 795.5,-7.5 971.5,-7.5 971.5,-30.5"/>
+<text text-anchor="middle" x="883.5" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspI2c.cpp</text>
 </a>
 </g>
 </g>
@@ -288,8 +306,8 @@ var sectionId = 'dynsection-1';
 <g id="edge10_Node000007_Node000009" class="edge">
 <title>Node7&#45;&gt;Node9</title>
 <g id="a_edge10_Node000007_Node000009"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1337.47,-77.83C1375.7,-63.93 1433.11,-43.05 1467.49,-30.55"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1335.92,-74.67 1327.72,-81.38 1338.31,-81.25 1335.92,-74.67"/>
+<path fill="none" stroke="#63b8ff" d="M1042.53,-77.83C1004.3,-63.93 946.89,-43.05 912.51,-30.55"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1041.69,-81.25 1052.28,-81.38 1044.08,-74.67 1041.69,-81.25"/>
 </a>
 </g>
 </g>
@@ -297,9 +315,9 @@ var sectionId = 'dynsection-1';
 <g id="Node000011" class="node">
 <title>Node11</title>
 <g id="a_Node000011"><a xlink:href="TimerComprehensiveTest_8cpp.html" target="_top" xlink:title="ESP32&#45;C6 Periodic Timer Comprehensive Test Suite v2.0.">
-<polygon fill="white" stroke="#666666" points="1804,-38 1603,-38 1603,0 1804,0 1804,-38"/>
-<text text-anchor="start" x="1611" y="-22.8" font-family="Arial" font-size="14.00">examples/esp32/main</text>
-<text text-anchor="middle" x="1703.5" y="-7.8" font-family="Arial" font-size="14.00">/TimerComprehensiveTest.cpp</text>
+<polygon fill="white" stroke="#666666" points="1592,-38 1391,-38 1391,0 1592,0 1592,-38"/>
+<text text-anchor="start" x="1399" y="-22.8" font-family="Arial" font-size="14.00">examples/esp32/main</text>
+<text text-anchor="middle" x="1491.5" y="-7.8" font-family="Arial" font-size="14.00">/TimerComprehensiveTest.cpp</text>
 </a>
 </g>
 </g>
@@ -307,8 +325,8 @@ var sectionId = 'dynsection-1';
 <g id="edge12_Node000010_Node000011" class="edge">
 <title>Node10&#45;&gt;Node11</title>
 <g id="a_edge12_Node000010_Node000011"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1703.5,-63.57C1703.5,-55.11 1703.5,-46.06 1703.5,-38.41"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1700,-63.83 1703.5,-73.83 1707,-63.83 1700,-63.83"/>
+<path fill="none" stroke="#63b8ff" d="M1344.52,-70.64C1374.59,-60.28 1410.31,-47.97 1439.01,-38.08"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1343.28,-67.36 1334.97,-73.92 1345.56,-73.98 1343.28,-67.36"/>
 </a>
 </g>
 </g>
@@ -316,9 +334,9 @@ var sectionId = 'dynsection-1';
 <g id="Node000012" class="node">
 <title>Node12</title>
 <g id="a_Node000012"><a xlink:href="EspPeriodicTimer_8cpp.html" target="_top" xlink:title="Implementation of MCU&#45;integrated periodic timer.">
-<polygon fill="white" stroke="#666666" points="2003,-38 1822,-38 1822,0 2003,0 2003,-38"/>
-<text text-anchor="start" x="1830" y="-22.8" font-family="Arial" font-size="14.00">src/mcu/esp32/EspPeriodic</text>
-<text text-anchor="middle" x="1912.5" y="-7.8" font-family="Arial" font-size="14.00">Timer.cpp</text>
+<polygon fill="white" stroke="#666666" points="1373,-38 1192,-38 1192,0 1373,0 1373,-38"/>
+<text text-anchor="start" x="1200" y="-22.8" font-family="Arial" font-size="14.00">src/mcu/esp32/EspPeriodic</text>
+<text text-anchor="middle" x="1282.5" y="-7.8" font-family="Arial" font-size="14.00">Timer.cpp</text>
 </a>
 </g>
 </g>
@@ -326,8 +344,8 @@ var sectionId = 'dynsection-1';
 <g id="edge13_Node000010_Node000012" class="edge">
 <title>Node10&#45;&gt;Node12</title>
 <g id="a_edge13_Node000010_Node000012"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1765.52,-70.64C1795.59,-60.28 1831.31,-47.97 1860.01,-38.08"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1764.28,-67.36 1755.97,-73.92 1766.56,-73.98 1764.28,-67.36"/>
+<path fill="none" stroke="#63b8ff" d="M1282.5,-63.57C1282.5,-55.11 1282.5,-46.06 1282.5,-38.41"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1279,-63.83 1282.5,-73.83 1286,-63.83 1279,-63.83"/>
 </a>
 </g>
 </g>
@@ -335,9 +353,9 @@ var sectionId = 'dynsection-1';
 <g id="Node000014" class="node">
 <title>Node14</title>
 <g id="a_Node000014"><a xlink:href="PioComprehensiveTest_8cpp.html" target="_top" xlink:title="Comprehensive PIO testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 with RMT peripheral (noexcept)">
-<polygon fill="white" stroke="#666666" points="595,-38 410,-38 410,0 595,0 595,-38"/>
-<text text-anchor="start" x="418" y="-22.8" font-family="Arial" font-size="14.00">examples/esp32/main</text>
-<text text-anchor="middle" x="502.5" y="-7.8" font-family="Arial" font-size="14.00">/PioComprehensiveTest.cpp</text>
+<polygon fill="white" stroke="#666666" points="380,-38 195,-38 195,0 380,0 380,-38"/>
+<text text-anchor="start" x="203" y="-22.8" font-family="Arial" font-size="14.00">examples/esp32/main</text>
+<text text-anchor="middle" x="287.5" y="-7.8" font-family="Arial" font-size="14.00">/PioComprehensiveTest.cpp</text>
 </a>
 </g>
 </g>
@@ -345,8 +363,8 @@ var sectionId = 'dynsection-1';
 <g id="edge15_Node000013_Node000014" class="edge">
 <title>Node13&#45;&gt;Node14</title>
 <g id="a_edge15_Node000013_Node000014"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M662.4,-77.85C630.93,-66.47 586.49,-50.39 552.45,-38.07"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="661.54,-81.27 672.14,-81.38 663.92,-74.68 661.54,-81.27"/>
+<path fill="none" stroke="#63b8ff" d="M287.5,-71.1C287.5,-60.69 287.5,-48.23 287.5,-38.21"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="284,-71.38 287.5,-81.38 291,-71.38 284,-71.38"/>
 </a>
 </g>
 </g>
@@ -354,8 +372,8 @@ var sectionId = 'dynsection-1';
 <g id="Node000015" class="node">
 <title>Node15</title>
 <g id="a_Node000015"><a xlink:href="EspPio_8cpp.html" target="_top" xlink:title="ESP32C6 RMT&#45;based Programmable IO Channel implementation.">
-<polygon fill="white" stroke="#666666" points="790,-30.5 613,-30.5 613,-7.5 790,-7.5 790,-30.5"/>
-<text text-anchor="middle" x="701.5" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspPio.cpp</text>
+<polygon fill="white" stroke="#666666" points="177,-30.5 0,-30.5 0,-7.5 177,-7.5 177,-30.5"/>
+<text text-anchor="middle" x="88.5" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspPio.cpp</text>
 </a>
 </g>
 </g>
@@ -363,8 +381,8 @@ var sectionId = 'dynsection-1';
 <g id="edge16_Node000013_Node000015" class="edge">
 <title>Node13&#45;&gt;Node15</title>
 <g id="a_edge16_Node000013_Node000015"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M701.5,-71.23C701.5,-57.97 701.5,-41.32 701.5,-30.67"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="698,-71.38 701.5,-81.38 705,-71.38 698,-71.38"/>
+<path fill="none" stroke="#63b8ff" d="M248.33,-77.83C209.91,-63.93 152.21,-43.05 117.66,-30.55"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="247.54,-81.27 258.14,-81.38 249.92,-74.68 247.54,-81.27"/>
 </a>
 </g>
 </g>
@@ -372,9 +390,9 @@ var sectionId = 'dynsection-1';
 <g id="Node000017" class="node">
 <title>Node17</title>
 <g id="a_Node000017"><a xlink:href="SpiComprehensiveTest_8cpp.html" target="_top" xlink:title="Comprehensive SPI testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)">
-<polygon fill="white" stroke="#666666" points="993,-38 808,-38 808,0 993,0 993,-38"/>
-<text text-anchor="start" x="816" y="-22.8" font-family="Arial" font-size="14.00">examples/esp32/main</text>
-<text text-anchor="middle" x="900.5" y="-7.8" font-family="Arial" font-size="14.00">/SpiComprehensiveTest.cpp</text>
+<polygon fill="white" stroke="#666666" points="778,-38 593,-38 593,0 778,0 778,-38"/>
+<text text-anchor="start" x="601" y="-22.8" font-family="Arial" font-size="14.00">examples/esp32/main</text>
+<text text-anchor="middle" x="685.5" y="-7.8" font-family="Arial" font-size="14.00">/SpiComprehensiveTest.cpp</text>
 </a>
 </g>
 </g>
@@ -382,8 +400,8 @@ var sectionId = 'dynsection-1';
 <g id="edge18_Node000016_Node000017" class="edge">
 <title>Node16&#45;&gt;Node17</title>
 <g id="a_edge18_Node000016_Node000017"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M900.5,-71.1C900.5,-60.69 900.5,-48.23 900.5,-38.21"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="897,-71.38 900.5,-81.38 904,-71.38 897,-71.38"/>
+<path fill="none" stroke="#63b8ff" d="M685.5,-71.1C685.5,-60.69 685.5,-48.23 685.5,-38.21"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="682,-71.38 685.5,-81.38 689,-71.38 682,-71.38"/>
 </a>
 </g>
 </g>
@@ -391,8 +409,8 @@ var sectionId = 'dynsection-1';
 <g id="Node000018" class="node">
 <title>Node18</title>
 <g id="a_Node000018"><a xlink:href="EspSpi_8cpp.html" target="_top" xlink:title="Implementation of MCU&#45;integrated SPI controller for ESP32C6 with ESP&#45;IDF v5.5+ features.">
-<polygon fill="white" stroke="#666666" points="1188,-30.5 1011,-30.5 1011,-7.5 1188,-7.5 1188,-30.5"/>
-<text text-anchor="middle" x="1099.5" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspSpi.cpp</text>
+<polygon fill="white" stroke="#666666" points="575,-30.5 398,-30.5 398,-7.5 575,-7.5 575,-30.5"/>
+<text text-anchor="middle" x="486.5" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspSpi.cpp</text>
 </a>
 </g>
 </g>
@@ -400,8 +418,26 @@ var sectionId = 'dynsection-1';
 <g id="edge19_Node000016_Node000018" class="edge">
 <title>Node16&#45;&gt;Node18</title>
 <g id="a_edge19_Node000016_Node000018"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M939.67,-77.83C978.09,-63.93 1035.79,-43.05 1070.34,-30.55"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="938.08,-74.68 929.86,-81.38 940.46,-81.27 938.08,-74.68"/>
+<path fill="none" stroke="#63b8ff" d="M646.33,-77.83C607.91,-63.93 550.21,-43.05 515.66,-30.55"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="645.54,-81.27 656.14,-81.38 647.92,-74.68 645.54,-81.27"/>
+</a>
+</g>
+</g>
+<!-- Node20 -->
+<g id="Node000020" class="node">
+<title>Node20</title>
+<g id="a_Node000020"><a xlink:href="StmUart_8cpp.html" target="_top" xlink:title="STM32 UART implementation — blocking TX/RX with optional ring buffer.">
+<polygon fill="white" stroke="#666666" points="2117,-178.5 1932,-178.5 1932,-155.5 2117,-155.5 2117,-178.5"/>
+<text text-anchor="middle" x="2024.5" y="-163.3" font-family="Arial" font-size="14.00">src/mcu/stm32/StmUart.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node19&#45;&gt;Node20 -->
+<g id="edge22_Node000019_Node000020" class="edge">
+<title>Node19&#45;&gt;Node20</title>
+<g id="a_edge22_Node000019_Node000020"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M2022.37,-219.23C2022.92,-205.97 2023.61,-189.32 2024.06,-178.67"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2018.86,-219.24 2021.94,-229.38 2025.86,-219.53 2018.86,-219.24"/>
 </a>
 </g>
 </g>

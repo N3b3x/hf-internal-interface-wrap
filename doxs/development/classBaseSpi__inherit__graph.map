@@ -2,6 +2,6 @@
 <area shape="rect" id="Node000001" title="Abstract base class for SPI device implementations." alt="" coords="108,5,197,36"/>
 <area shape="rect" id="Node000002" href="$classEspSpiDevice.html" title="Represents a single SPI device on a bus (CS/config/handle)." alt="" coords="5,84,140,115"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,48,89,86,86,82,126,44"/>
-<area shape="rect" id="Node000003" href="$classStmSpiDevice.html" title="STM32 SPI device — stub implementation." alt="" coords="165,84,301,115"/>
+<area shape="rect" id="Node000003" href="$classStmSpiDevice.html" title="STM32 SPI device — manages chip&#45;select and delegates transfers to parent bus." alt="" coords="165,84,301,115"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="179,44,220,82,216,86,176,48"/>
 </map>

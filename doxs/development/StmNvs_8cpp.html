@@ -93,22 +93,172 @@ $(function(){initNavTree('StmNvs_8cpp.html',''); initResizable(); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">StmNvs.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 NVS stub implementation.  
+<p>STM32 NVS implementation — flash-backed key-value store.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="StmNvs_8h_source.html">StmNvs.h</a>&quot;</code><br />
+<code>#include &lt;cstring&gt;</code><br />
+<code>#include &lt;cstdio&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for StmNvs.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="StmNvs_8cpp__incl.svg" width="371" height="356"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="StmNvs_8cpp__incl.svg" width="504" height="356"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-</div><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 NVS stub implementation. </p>
-<p>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </p>
-</div></div><!-- contents -->
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespaceanonymous__namespace_02StmNvs_8cpp_03" id="r_namespaceanonymous__namespace_02StmNvs_8cpp_03"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmNvs_8cpp_03.html">anonymous_namespace{StmNvs.cpp}</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:aeeff9bea79726094fc3a4fdda3bfe50a" id="r_aeeff9bea79726094fc3a4fdda3bfe50a"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeeff9bea79726094fc3a4fdda3bfe50a">HAL_FLASH_Unlock</a> (void)</td></tr>
+<tr class="separator:aeeff9bea79726094fc3a4fdda3bfe50a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaf6b5a92d157e7ea873f78a84094e5a" id="r_aaaf6b5a92d157e7ea873f78a84094e5a"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaaf6b5a92d157e7ea873f78a84094e5a">HAL_FLASH_Lock</a> (void)</td></tr>
+<tr class="separator:aaaf6b5a92d157e7ea873f78a84094e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac88663b054cd4d4f556817663c50111b" id="r_ac88663b054cd4d4f556817663c50111b"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac88663b054cd4d4f556817663c50111b">HAL_FLASH_Program</a> (uint32_t TypeProgram, uint32_t Address, uint64_t Data)</td></tr>
+<tr class="separator:ac88663b054cd4d4f556817663c50111b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e438e96b674721e44bae034d1a6b9fd" id="r_a6e438e96b674721e44bae034d1a6b9fd"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e438e96b674721e44bae034d1a6b9fd">HAL_FLASHEx_Erase</a> (void *pEraseInit, uint32_t *SectorError)</td></tr>
+<tr class="separator:a6e438e96b674721e44bae034d1a6b9fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ac7a9adc51e5ed1cdd49b551cc2217fad" id="r_ac7a9adc51e5ed1cdd49b551cc2217fad"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmNvs_8cpp_03.html#ac7a9adc51e5ed1cdd49b551cc2217fad">anonymous_namespace{StmNvs.cpp}::kFlashTypeProgramByte</a> = 0x00U</td></tr>
+<tr class="separator:ac7a9adc51e5ed1cdd49b551cc2217fad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab52bb688b31f1a467cc33543577eb6c2" id="r_ab52bb688b31f1a467cc33543577eb6c2"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmNvs_8cpp_03.html#ab52bb688b31f1a467cc33543577eb6c2">anonymous_namespace{StmNvs.cpp}::kFlashTypeProgramHalfWord</a> = 0x01U</td></tr>
+<tr class="separator:ab52bb688b31f1a467cc33543577eb6c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad68afd2725df899e49349a9ba095842a" id="r_ad68afd2725df899e49349a9ba095842a"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmNvs_8cpp_03.html#ad68afd2725df899e49349a9ba095842a">anonymous_namespace{StmNvs.cpp}::kFlashTypeProgramWord</a> = 0x02U</td></tr>
+<tr class="separator:ad68afd2725df899e49349a9ba095842a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a213e29d94ccd46ce58da6c3d04482735" id="r_a213e29d94ccd46ce58da6c3d04482735"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmNvs_8cpp_03.html#a213e29d94ccd46ce58da6c3d04482735">anonymous_namespace{StmNvs.cpp}::kFlashTypeProgramDWord</a> = 0x03U</td></tr>
+<tr class="separator:a213e29d94ccd46ce58da6c3d04482735"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>STM32 NVS implementation — flash-backed key-value store. </p>
+<dl class="section author"><dt>Author</dt><dd>HardFOC </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC — Licensed under GPL v3.0 or later. </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="aaaf6b5a92d157e7ea873f78a84094e5a" name="aaaf6b5a92d157e7ea873f78a84094e5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaaf6b5a92d157e7ea873f78a84094e5a">&#9670;&#160;</a></span>HAL_FLASH_Lock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t HAL_FLASH_Lock </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac88663b054cd4d4f556817663c50111b" name="ac88663b054cd4d4f556817663c50111b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac88663b054cd4d4f556817663c50111b">&#9670;&#160;</a></span>HAL_FLASH_Program()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t HAL_FLASH_Program </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>TypeProgram</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>Address</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>Data</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeeff9bea79726094fc3a4fdda3bfe50a" name="aeeff9bea79726094fc3a4fdda3bfe50a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeeff9bea79726094fc3a4fdda3bfe50a">&#9670;&#160;</a></span>HAL_FLASH_Unlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t HAL_FLASH_Unlock </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6e438e96b674721e44bae034d1a6b9fd" name="a6e438e96b674721e44bae034d1a6b9fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e438e96b674721e44bae034d1a6b9fd">&#9670;&#160;</a></span>HAL_FLASHEx_Erase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t HAL_FLASHEx_Erase </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>pEraseInit</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *</td>          <td class="paramname"><span class="paramname"><em>SectorError</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

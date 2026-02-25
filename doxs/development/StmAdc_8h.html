@@ -99,13 +99,14 @@ $(function(){initNavTree('StmAdc_8h.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 ADC stub implementation — placeholder for future STM32 HAL integration.  
+<p>STM32 ADC wrapper — wraps STM32 HAL ADC via CubeMX-generated handle.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="BaseAdc_8h_source.html">BaseAdc.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="StmTypes_8h_source.html">StmTypes.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for StmAdc.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="StmAdc_8h__incl.svg" width="371" height="278"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="StmAdc_8h__incl.svg" width="484" height="278"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -118,12 +119,27 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStmAdc.html">StmAdc</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 ADC — stub implementation.  <a href="classStmAdc.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 ADC wrapper — wraps STM32 HAL ADC with full channel management.  <a href="classStmAdc.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 ADC stub implementation — placeholder for future STM32 HAL integration. </p>
-<p>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </p>
+<div class="textblock"><p>STM32 ADC wrapper — wraps STM32 HAL ADC via CubeMX-generated handle. </p>
+<p>Provides the full <a class="el" href="classBaseAdc.html" title="Base class for ADCs.">BaseAdc</a> interface for STM32 ADC peripherals. Users configure ADC channels in STM32CubeMX and pass the ADC_HandleTypeDef* to this wrapper.</p>
+<h1><a class="anchor" id="Usage"></a>
+Usage</h1>
+<div class="fragment"><div class="line"><span class="keyword">extern</span> ADC_HandleTypeDef hadc1;</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_struct" href="structhf__stm32__adc__config__t.html">hf_stm32_adc_config_t</a> config(&amp;hadc1, 4, 3.3f);  <span class="comment">// 4 channels, 3.3V Vref</span></div>
+<div class="line"><a class="code hl_class" href="classStmAdc.html">StmAdc</a> adc(config);</div>
+<div class="line">adc.Initialize();</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">float</span> voltage = 0.0f;</div>
+<div class="line">adc.ReadChannelV(0, voltage);</div>
+<div class="ttc" id="aclassStmAdc_html"><div class="ttname"><a href="classStmAdc.html">StmAdc</a></div><div class="ttdoc">STM32 ADC wrapper — wraps STM32 HAL ADC with full channel management.</div><div class="ttdef"><b>Definition</b> StmAdc.h:40</div></div>
+<div class="ttc" id="astructhf__stm32__adc__config__t_html"><div class="ttname"><a href="structhf__stm32__adc__config__t.html">hf_stm32_adc_config_t</a></div><div class="ttdoc">ADC configuration for STM32.</div><div class="ttdef"><b>Definition</b> StmTypes.h:431</div></div>
+</div><!-- fragment --><dl class="section author"><dt>Author</dt><dd>HardFOC </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC — Licensed under GPL v3.0 or later. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

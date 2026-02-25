@@ -58,7 +58,7 @@
 <!-- Node20 -->
 <g id="Node000020" class="node">
 <title>Node20</title>
-<g id="a_Node000020"><a xlink:href="StmAdc_8h.html" target="_top" xlink:title="STM32 ADC stub implementation — placeholder for future STM32 HAL integration.">
+<g id="a_Node000020"><a xlink:href="StmAdc_8h.html" target="_top" xlink:title="STM32 ADC wrapper — wraps STM32 HAL ADC via CubeMX&#45;generated handle.">
 <polygon fill="white" stroke="#666666" points="1251,-252.5 1083,-252.5 1083,-229.5 1251,-229.5 1251,-252.5"/>
 <text text-anchor="middle" x="1167" y="-237.3" font-family="Arial" font-size="14.00">inc/mcu/stm32/StmAdc.h</text>
 </a>
@@ -381,7 +381,7 @@
 <!-- Node21 -->
 <g id="Node000021" class="node">
 <title>Node21</title>
-<g id="a_Node000021"><a xlink:href="StmAdc_8cpp.html" target="_top" xlink:title="STM32 ADC stub implementation.">
+<g id="a_Node000021"><a xlink:href="StmAdc_8cpp.html" target="_top" xlink:title="STM32 ADC wrapper implementation — full STM32 HAL integration.">
 <polygon fill="white" stroke="#666666" points="1273.5,-178.5 1090.5,-178.5 1090.5,-155.5 1273.5,-155.5 1273.5,-178.5"/>
 <text text-anchor="middle" x="1182" y="-163.3" font-family="Arial" font-size="14.00">src/mcu/stm32/StmAdc.cpp</text>
 </a>

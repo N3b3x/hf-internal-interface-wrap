@@ -1,5 +1,5 @@
 <map id="inc/mcu/stm32/StmAdc.h" name="inc/mcu/stm32/StmAdc.h">
-<area shape="rect" id="Node000001" title="STM32 ADC stub implementation — placeholder for future STM32 HAL integration." alt="" coords="15,5,239,36"/>
-<area shape="rect" id="Node000002" href="$StmAdc_8cpp.html" title="STM32 ADC stub implementation." alt="" coords="5,84,249,115"/>
+<area shape="rect" id="Node000001" title="STM32 ADC wrapper — wraps STM32 HAL ADC via CubeMX&#45;generated handle." alt="" coords="15,5,239,36"/>
+<area shape="rect" id="Node000002" href="$StmAdc_8cpp.html" title="STM32 ADC wrapper implementation — full STM32 HAL integration." alt="" coords="5,84,249,115"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,50,130,84,125,84,125,50"/>
 </map>

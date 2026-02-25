@@ -99,13 +99,15 @@ $(function(){initNavTree('StmNvs_8h.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 NVS (non-volatile storage) stub — placeholder for flash/EEPROM integration.  
+<p>STM32 NVS (Non-Volatile Storage) — flash-based key-value store.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="BaseNvs_8h_source.html">BaseNvs.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="StmTypes_8h_source.html">StmTypes.h</a>&quot;</code><br />
+<code>#include &lt;cstring&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for StmNvs.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="StmNvs_8h__incl.svg" width="371" height="278"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="StmNvs_8h__incl.svg" width="484" height="278"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -118,12 +120,33 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStmNvs.html">StmNvs</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 NVS — stub implementation.  <a href="classStmNvs.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STM32 NVS — flash-backed key-value store with wear leveling.  <a href="classStmNvs.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structStmNvs_1_1CacheEntry.html">StmNvs::CacheEntry</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RAM cache entry.  <a href="structStmNvs_1_1CacheEntry.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 NVS (non-volatile storage) stub — placeholder for flash/EEPROM integration. </p>
-<p>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </p>
+<div class="textblock"><p>STM32 NVS (Non-Volatile Storage) — flash-based key-value store. </p>
+<p>Implements <a class="el" href="classBaseNvs.html" title="Abstract base class for non-volatile storage operations.">BaseNvs</a> using STM32 internal flash. Provides a simple key-value store suitable for configuration persistence, calibration data, etc.</p>
+<p>The storage format is a compact key-value log in a designated flash region. Users specify the flash region via <a class="el" href="structhf__stm32__nvs__config__t.html" title="Flash-based NVS configuration for STM32.">hf_stm32_nvs_config_t</a> (start address, size).</p>
+<h1><a class="anchor" id="Usage"></a>
+Usage</h1>
+<div class="fragment"><div class="line"><span class="comment">// Reserve last 2 sectors of flash (e.g., sector 6 &amp; 7 on STM32F4)</span></div>
+<div class="line"><a class="code hl_struct" href="structhf__stm32__nvs__config__t.html">hf_stm32_nvs_config_t</a> nvs_cfg(0x08060000, 2 * 0x20000);</div>
+<div class="line"><a class="code hl_class" href="classStmNvs.html">StmNvs</a> nvs(<span class="stringliteral">&quot;app_config&quot;</span>, nvs_cfg);</div>
+<div class="line">nvs.Initialize();</div>
+<div class="line"> </div>
+<div class="line">nvs.SetU32(<span class="stringliteral">&quot;boot_count&quot;</span>, 42);</div>
+<div class="line">nvs.Commit();</div>
+<div class="line"> </div>
+<div class="line">uint32_t count = 0;</div>
+<div class="line">nvs.GetU32(<span class="stringliteral">&quot;boot_count&quot;</span>, count);</div>
+<div class="ttc" id="aclassStmNvs_html"><div class="ttname"><a href="classStmNvs.html">StmNvs</a></div><div class="ttdoc">STM32 NVS — flash-backed key-value store with wear leveling.</div><div class="ttdef"><b>Definition</b> StmNvs.h:48</div></div>
+<div class="ttc" id="astructhf__stm32__nvs__config__t_html"><div class="ttname"><a href="structhf__stm32__nvs__config__t.html">hf_stm32_nvs_config_t</a></div><div class="ttdoc">Flash-based NVS configuration for STM32.</div><div class="ttdef"><b>Definition</b> StmTypes.h:457</div></div>
+</div><!-- fragment --><dl class="section author"><dt>Author</dt><dd>HardFOC </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC — Licensed under GPL v3.0 or later. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

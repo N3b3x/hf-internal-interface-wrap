@@ -48,7 +48,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classStmNvs.html" target="_top" xlink:title="STM32 NVS — stub implementation.">
+<g id="a_Node000003"><a xlink:href="classStmNvs.html" target="_top" xlink:title="STM32 NVS — flash&#45;backed key&#45;value store with wear leveling.">
 <polygon fill="white" stroke="#666666" points="146,-23 81,-23 81,0 146,0 146,-23"/>
 <text text-anchor="middle" x="113.5" y="-7.8" font-family="Arial" font-size="14.00">StmNvs</text>
 </a>

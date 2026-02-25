@@ -1,5 +1,5 @@
 <map id="StmNvs" name="StmNvs">
-<area shape="rect" id="Node000001" title="STM32 NVS — stub implementation." alt="" coords="9,84,96,115"/>
+<area shape="rect" id="Node000001" title="STM32 NVS — flash&#45;backed key&#45;value store with wear leveling." alt="" coords="9,84,96,115"/>
 <area shape="rect" id="Node000002" href="$classBaseNvs.html" title="Abstract base class for non&#45;volatile storage operations." alt="" coords="5,5,100,36"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="55,50,55,84,50,84,50,50"/>
 </map>

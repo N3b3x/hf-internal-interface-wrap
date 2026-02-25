@@ -6,7 +6,7 @@
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="2126,41,2573,289,2570,294,2124,45"/>
 <area shape="rect" id="Node000021" href="$EspTypes__GPIO_8h.html" title="ESP32 GPIO type definitions for hardware abstraction." alt="" coords="2507,84,2686,135"/>
 <area shape="poly" id="edge27_Node000001_Node000021" title=" " alt="" coords="2184,36,2508,90,2507,96,2183,41"/>
-<area shape="rect" id="Node000036" href="$StmGpio_8h.html" title="STM32 GPIO stub implementation — placeholder for future STM32 HAL integration." alt="" coords="2803,94,3035,125"/>
+<area shape="rect" id="Node000036" href="$StmGpio_8h.html" title="STM32 GPIO wrapper — full HAL integration with EXTI interrupt support." alt="" coords="2803,94,3035,125"/>
 <area shape="poly" id="edge51_Node000001_Node000036" title=" " alt="" coords="2196,30,2698,81,2804,93,2803,98,2698,87,2195,35"/>
 <area shape="rect" id="Node000038" href="$DigitalOutputGuard_8h.html" title="Header file for the DigitalOutputGuard class." alt="" coords="417,94,675,125"/>
 <area shape="poly" id="edge53_Node000001_Node000038" title=" " alt="" coords="1979,31,676,103,675,98,1979,25"/>
@@ -88,7 +88,7 @@
 <area shape="poly" id="edge48_Node000034_Node000007" title=" " alt="" coords="2906,328,3111,486,3108,490,2903,333"/>
 <area shape="rect" id="Node000035" href="$EspPwm_8cpp.html" title="Implementation of ESP32 family LEDC (PWM) controller for the HardFOC system." alt="" coords="3065,390,3315,421"/>
 <area shape="poly" id="edge49_Node000034_Node000035" title=" " alt="" coords="2935,323,3145,387,3143,392,2933,329"/>
-<area shape="rect" id="Node000037" href="$StmGpio_8cpp.html" title="STM32 GPIO stub implementation." alt="" coords="2952,193,3204,223"/>
+<area shape="rect" id="Node000037" href="$StmGpio_8cpp.html" title="STM32 GPIO wrapper implementation — full STM32 HAL integration." alt="" coords="2952,193,3204,223"/>
 <area shape="poly" id="edge52_Node000036_Node000037" title=" " alt="" coords="2956,130,3056,190,3053,195,2953,134"/>
 <area shape="poly" id="edge54_Node000038_Node000004" title=" " alt="" coords="548,138,541,185,533,211,522,235,492,276,457,315,380,384,301,440,231,481,228,476,298,435,377,380,453,312,488,273,517,232,528,209,536,184,543,138"/>
 <area shape="rect" id="Node000039" href="$DigitalOutputGuard_8cpp.html" title="Implementation of the DigitalOutputGuard class for unified DigitalGpio." alt="" coords="229,193,508,223"/>
