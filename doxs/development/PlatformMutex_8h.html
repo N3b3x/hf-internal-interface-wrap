@@ -100,15 +100,14 @@ $(function(){initNavTree('PlatformMutex_8h.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>Cross-platform RTOS mutex and synchronization primitives.  
+<p>Cross-platform mutex and synchronization primitives with pluggable backend.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="McuSelect_8h_source.html">McuSelect.h</a>&quot;</code><br />
-<code>#include &lt;atomic&gt;</code><br />
+<div class="textblock"><code>#include &lt;atomic&gt;</code><br />
 <code>#include &lt;cstdint&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for PlatformMutex.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="PlatformMutex_8h__incl.svg" width="334" height="120"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="PlatformMutex_8h__incl.svg" width="231" height="120"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -120,34 +119,64 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNullMutexBackend.html">NullMutexBackend</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">No-op mutex backend &ndash; all operations compile to nothing.  <a href="structNullMutexBackend.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlatformTime.html">PlatformTime</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlatformMutex.html">PlatformMutex</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlatformMutexImpl.html">PlatformMutexImpl&lt; Backend &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursive mutex templated on a backend policy.  <a href="classPlatformMutexImpl.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlatformSharedMutex.html">PlatformSharedMutex</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlatformSharedMutexImpl.html">PlatformSharedMutexImpl&lt; Backend &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reader-writer mutex using two regular mutexes + atomic counters.  <a href="classPlatformSharedMutexImpl.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlatformUniqueLock.html">PlatformUniqueLock&lt; Mutex &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RAII exclusive lock guard for any mutex with lock()/try_lock_for()/unlock().  <a href="classPlatformUniqueLock.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlatformSharedLock.html">PlatformSharedLock&lt; SharedMutex &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RAII shared (reader) lock guard for any shared mutex.  <a href="classPlatformSharedLock.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:a0fa5da30b653fe8b9576911f39562a7d" id="r_a0fa5da30b653fe8b9576911f39562a7d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fa5da30b653fe8b9576911f39562a7d">PlatformMutexActiveBackend</a> = <a class="el" href="structNullMutexBackend.html">NullMutexBackend</a></td></tr>
+<tr class="memdesc:a0fa5da30b653fe8b9576911f39562a7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default: all mutex operations compile to nothing.  <br /></td></tr>
+<tr class="separator:a0fa5da30b653fe8b9576911f39562a7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3448b54e0a94193058b38d135c1254ef" id="r_a3448b54e0a94193058b38d135c1254ef"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3448b54e0a94193058b38d135c1254ef">PlatformMutex</a> = <a class="el" href="classPlatformMutexImpl.html">PlatformMutexImpl</a>&lt;<a class="el" href="#a0fa5da30b653fe8b9576911f39562a7d">PlatformMutexActiveBackend</a>&gt;</td></tr>
+<tr class="memdesc:a3448b54e0a94193058b38d135c1254ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concrete recursive mutex using the active backend.  <br /></td></tr>
+<tr class="separator:a3448b54e0a94193058b38d135c1254ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dab6fdaf8d72d84ebef1678033424a4" id="r_a3dab6fdaf8d72d84ebef1678033424a4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3dab6fdaf8d72d84ebef1678033424a4">PlatformSharedMutex</a> = <a class="el" href="classPlatformSharedMutexImpl.html">PlatformSharedMutexImpl</a>&lt;<a class="el" href="#a0fa5da30b653fe8b9576911f39562a7d">PlatformMutexActiveBackend</a>&gt;</td></tr>
+<tr class="memdesc:a3dab6fdaf8d72d84ebef1678033424a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concrete reader-writer mutex using the active backend.  <br /></td></tr>
+<tr class="separator:a3dab6fdaf8d72d84ebef1678033424a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e65865add93ca50ec0af02b8a5a3737" id="r_a9e65865add93ca50ec0af02b8a5a3737"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e65865add93ca50ec0af02b8a5a3737">PlatformMutexLockGuard</a> = <a class="el" href="classPlatformUniqueLock.html">PlatformUniqueLock</a>&lt;<a class="el" href="#a3448b54e0a94193058b38d135c1254ef">PlatformMutex</a>&gt;</td></tr>
+<tr class="memdesc:a9e65865add93ca50ec0af02b8a5a3737"><td class="mdescLeft">&#160;</td><td class="mdescRight">RAII exclusive lock guard for PlatformMutex.  <br /></td></tr>
+<tr class="separator:a9e65865add93ca50ec0af02b8a5a3737"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b9f484b1baa691901486c8cfd7080d1" id="r_a5b9f484b1baa691901486c8cfd7080d1"><td class="memTemplParams" colspan="2">template&lt;typename Mutex &gt; </td></tr>
 <tr class="memitem:a5b9f484b1baa691901486c8cfd7080d1"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a5b9f484b1baa691901486c8cfd7080d1">PlatformLockGuard</a> = <a class="el" href="classPlatformUniqueLock.html">PlatformUniqueLock</a>&lt;Mutex&gt;</td></tr>
-<tr class="memdesc:a5b9f484b1baa691901486c8cfd7080d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience alias for unique lock guard.  <br /></td></tr>
+<tr class="memdesc:a5b9f484b1baa691901486c8cfd7080d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic RAII lock guard alias.  <br /></td></tr>
 <tr class="separator:a5b9f484b1baa691901486c8cfd7080d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e65865add93ca50ec0af02b8a5a3737" id="r_a9e65865add93ca50ec0af02b8a5a3737"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e65865add93ca50ec0af02b8a5a3737">PlatformMutexLockGuard</a> = <a class="el" href="classPlatformUniqueLock.html">PlatformUniqueLock</a>&lt;<a class="el" href="classPlatformMutex.html">PlatformMutex</a>&gt;</td></tr>
-<tr class="memdesc:a9e65865add93ca50ec0af02b8a5a3737"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience alias for <a class="el" href="classPlatformMutex.html">PlatformMutex</a> lock guard.  <br /></td></tr>
-<tr class="separator:a9e65865add93ca50ec0af02b8a5a3737"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Cross-platform RTOS mutex and synchronization primitives. </p>
-<p>This header provides platform-agnostic mutex, lock guard, and timing utilities that work across different RTOS implementations (FreeRTOS on ESP32, STM32, RP2040). The implementation includes standard mutexes, shared mutexes for reader-writer patterns, RAII lock guards, and high-resolution timing functions for synchronization.</p>
+<div class="textblock"><p>Cross-platform mutex and synchronization primitives with pluggable backend. </p>
+<p>This header is FULLY SELF-CONTAINED within hf-internal-interface-wrap. It has NO external dependencies beyond C++ standard headers (&lt;atomic&gt;, &lt;cstdint&gt;).</p>
+<p>=== BACKEND ARCHITECTURE ===</p>
+<p>All mutex operations delegate to a compile-time Backend policy class. By default, the backend is <a class="el" href="structNullMutexBackend.html" title="No-op mutex backend – all operations compile to nothing.">NullMutexBackend</a> &ndash; all operations are constexpr inline no-ops that the optimizer eliminates completely (zero code generated).</p>
+<p>At the core/ layer (where hf-internal-interface-wrap and hf-utils-rtos-wrap are brought together), a "PlatformMutexBackend.h" configuration header may be placed on the include path. This header defines a concrete backend struct that delegates to the RTOS abstraction layer (OsAbstraction.h) for real mutex protection under FreeRTOS or another RTOS.</p>
+<p>=== ZERO-OVERHEAD PRINCIPLE ===</p>
+<p>When no backend config is found (standalone interface-wrap builds, host builds, MCU=NONE, RTOS=NONE), <a class="el" href="structNullMutexBackend.html" title="No-op mutex backend – all operations compile to nothing.">NullMutexBackend</a> is used:</p><ul>
+<li>Every mutex operation is constexpr and compiles to nothing</li>
+<li>Handle types are uint8_t (1 byte member instead of pointer)</li>
+<li>No RTOS headers are included, no external dependencies exist</li>
+</ul>
+<p>=== CUSTOMIZATION (for core/ layer or other consumers) ===</p>
+<p>Create "PlatformMutexBackend.h" on the include path and:</p><ol type="1">
+<li>Define a backend struct satisfying the same contract as <a class="el" href="structNullMutexBackend.html" title="No-op mutex backend – all operations compile to nothing.">NullMutexBackend</a></li>
+<li>typedef: using PlatformMutexActiveBackend = YourBackendType;</li>
+<li>#define PLATFORM_MUTEX_BACKEND_CONFIGURED</li>
+</ol>
 <dl class="section author"><dt>Author</dt><dd>Nebiyu Tadesse </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Platform support includes ESP32 (FreeRTOS), STM32 (CMSIS-OS), and RP2040 (FreeRTOS). </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC </dd></dl>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="a5b9f484b1baa691901486c8cfd7080d1" name="a5b9f484b1baa691901486c8cfd7080d1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5b9f484b1baa691901486c8cfd7080d1">&#9670;&#160;</a></span>PlatformLockGuard</h2>
@@ -163,7 +192,39 @@ template&lt;typename Mutex &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Convenience alias for unique lock guard. </p>
+<p>Generic RAII lock guard alias. </p>
+
+</div>
+</div>
+<a id="a3448b54e0a94193058b38d135c1254ef" name="a3448b54e0a94193058b38d135c1254ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3448b54e0a94193058b38d135c1254ef">&#9670;&#160;</a></span>PlatformMutex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a3448b54e0a94193058b38d135c1254ef">PlatformMutex</a> = <a class="el" href="classPlatformMutexImpl.html">PlatformMutexImpl</a>&lt;<a class="el" href="#a0fa5da30b653fe8b9576911f39562a7d">PlatformMutexActiveBackend</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Concrete recursive mutex using the active backend. </p>
+
+</div>
+</div>
+<a id="a0fa5da30b653fe8b9576911f39562a7d" name="a0fa5da30b653fe8b9576911f39562a7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fa5da30b653fe8b9576911f39562a7d">&#9670;&#160;</a></span>PlatformMutexActiveBackend</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a0fa5da30b653fe8b9576911f39562a7d">PlatformMutexActiveBackend</a> = <a class="el" href="structNullMutexBackend.html">NullMutexBackend</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Default: all mutex operations compile to nothing. </p>
 
 </div>
 </div>
@@ -174,12 +235,28 @@ template&lt;typename Mutex &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a9e65865add93ca50ec0af02b8a5a3737">PlatformMutexLockGuard</a> = <a class="el" href="classPlatformUniqueLock.html">PlatformUniqueLock</a>&lt;<a class="el" href="classPlatformMutex.html">PlatformMutex</a>&gt;</td>
+          <td class="memname">using <a class="el" href="#a9e65865add93ca50ec0af02b8a5a3737">PlatformMutexLockGuard</a> = <a class="el" href="classPlatformUniqueLock.html">PlatformUniqueLock</a>&lt;<a class="el" href="#a3448b54e0a94193058b38d135c1254ef">PlatformMutex</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Convenience alias for <a class="el" href="classPlatformMutex.html">PlatformMutex</a> lock guard. </p>
+<p>RAII exclusive lock guard for PlatformMutex. </p>
+
+</div>
+</div>
+<a id="a3dab6fdaf8d72d84ebef1678033424a4" name="a3dab6fdaf8d72d84ebef1678033424a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dab6fdaf8d72d84ebef1678033424a4">&#9670;&#160;</a></span>PlatformSharedMutex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a3dab6fdaf8d72d84ebef1678033424a4">PlatformSharedMutex</a> = <a class="el" href="classPlatformSharedMutexImpl.html">PlatformSharedMutexImpl</a>&lt;<a class="el" href="#a0fa5da30b653fe8b9576911f39562a7d">PlatformMutexActiveBackend</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Concrete reader-writer mutex using the active backend. </p>
 
 </div>
 </div>

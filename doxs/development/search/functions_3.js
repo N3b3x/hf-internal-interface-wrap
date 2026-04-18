@@ -96,6 +96,8 @@ var searchData=
   ['create_5fws2812_5freset_5fsymbol_93',['create_ws2812_reset_symbol',['../PioComprehensiveTest_8cpp.html#a38fc9425b3eb294a9141f4e734d1a4d8',1,'PioComprehensiveTest.cpp']]],
   ['create_5fws2812_5frgb_5fsymbols_94',['create_ws2812_rgb_symbols',['../PioComprehensiveTest_8cpp.html#a9241ad808f313742527785d8e8c634e7',1,'PioComprehensiveTest.cpp']]],
   ['createdevice_95',['CreateDevice',['../classEspI2cBus.html#a578c36e975b01c96fe15a492de148e51',1,'EspI2cBus::CreateDevice()'],['../classEspSpiBus.html#a53555ddb858bd9e9957d2faf30d9c19e',1,'EspSpiBus::CreateDevice()'],['../classStmI2cBus.html#a8a8333a7f2c46e1c89da0d80b19e1f79',1,'StmI2cBus::CreateDevice()'],['../classStmSpiBus.html#a781055ef0cd430c2cb5f12601882a683',1,'StmSpiBus::CreateDevice()']]],
-  ['createtimerhandle_96',['CreateTimerHandle',['../classEspPeriodicTimer.html#a2d830235ededf0da8e79050c044bc239',1,'EspPeriodicTimer']]],
-  ['customfastprobe_97',['CustomFastProbe',['../classEspI2cBus.html#a7c12d7a9b61f69cf5e581ad40b9a3ff6',1,'EspI2cBus']]]
+  ['createmutex_96',['createMutex',['../structNullMutexBackend.html#ab0b9cb0474e2ffe22a961194b2b8e804',1,'NullMutexBackend']]],
+  ['createrecursive_97',['createRecursive',['../structNullMutexBackend.html#a937bfd87c256d66122f4006fcd98c831',1,'NullMutexBackend']]],
+  ['createtimerhandle_98',['CreateTimerHandle',['../classEspPeriodicTimer.html#a2d830235ededf0da8e79050c044bc239',1,'EspPeriodicTimer']]],
+  ['customfastprobe_99',['CustomFastProbe',['../classEspI2cBus.html#a7c12d7a9b61f69cf5e581ad40b9a3ff6',1,'EspI2cBus']]]
 ];

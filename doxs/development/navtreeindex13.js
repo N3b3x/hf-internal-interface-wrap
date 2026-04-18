@@ -1,5 +1,8 @@
 var NAVTREEINDEX13 =
 {
+"namespaceanonymous__namespace_02StmGpio_8cpp_03.html#ab4ddb049348a4b0ee3ea6e477290aa00":[2,0,1,6],
+"namespaceanonymous__namespace_02StmGpio_8cpp_03.html#ace39575c11102583e690ea3b5ae45703":[2,0,1,3],
+"namespaceanonymous__namespace_02StmGpio_8cpp_03.html#ad9a7afbe460c7832a8ee20986d8a516d":[2,0,1,10],
 "namespaceanonymous__namespace_02StmGpio_8cpp_03.html#ae3a109a152e624d7e22bcb82e9ae8aa4":[2,0,1,9],
 "namespaceanonymous__namespace_02StmGpio_8cpp_03.html#aef84364fe0a722b1a2fa98a723dbfbab":[2,0,1,8],
 "namespaceanonymous__namespace_02StmLogger_8cpp_03.html":[2,0,2],
@@ -246,8 +249,5 @@ var NAVTREEINDEX13 =
 "structEspUart_1_1UartState.html#af3e1cad0ad315b431b9528d1133c2d7e":[3,0,34,0,4],
 "structEspWifiAdvancedConfig.html":[3,0,36],
 "structEspWifiAdvancedConfig.html#a0ca767a9cd3f740abfd6928ebe5225a1":[3,0,36,20],
-"structEspWifiAdvancedConfig.html#a0f91e24acf08df67f5818bad2732f76b":[3,0,36,10],
-"structEspWifiAdvancedConfig.html#a3c0742f820dc69240755884b768916eb":[3,0,36,12],
-"structEspWifiAdvancedConfig.html#a43255aa1401cd585ebaedf078418c0a0":[3,0,36,1],
-"structEspWifiAdvancedConfig.html#a4eb23f1ab59c951fef8112cf91e5fb1c":[3,0,36,7]
+"structEspWifiAdvancedConfig.html#a0f91e24acf08df67f5818bad2732f76b":[3,0,36,10]
 };
