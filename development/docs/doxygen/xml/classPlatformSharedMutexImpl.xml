@@ -1,0 +1,328 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classPlatformSharedMutexImpl" kind="class" language="C++" prot="public">
+    <compoundname>PlatformSharedMutexImpl</compoundname>
+    <includes refid="PlatformMutex_8h" local="no">PlatformMutex.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Backend</type>
+        <defval><ref refid="PlatformMutex_8h_1a0fa5da30b653fe8b9576911f39562a7d" kindref="member">PlatformMutexActiveBackend</ref></defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPlatformSharedMutexImpl_1a85983fd6c7ba0602a874741d2a8d8a99" prot="private" static="no" mutable="no">
+        <type>Backend::MutexHandle</type>
+        <definition>Backend::MutexHandle PlatformSharedMutexImpl&lt; Backend &gt;::writer_mutex_</definition>
+        <argsstring></argsstring>
+        <name>writer_mutex_</name>
+        <qualifiedname>PlatformSharedMutexImpl::writer_mutex_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="393" column="35" bodyfile="inc/utils/PlatformMutex.h" bodystart="393" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPlatformSharedMutexImpl_1aed22877700be075a928abe6b6d9c8f54" prot="private" static="no" mutable="no">
+        <type>Backend::MutexHandle</type>
+        <definition>Backend::MutexHandle PlatformSharedMutexImpl&lt; Backend &gt;::reader_mutex_</definition>
+        <argsstring></argsstring>
+        <name>reader_mutex_</name>
+        <qualifiedname>PlatformSharedMutexImpl::reader_mutex_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="394" column="35" bodyfile="inc/utils/PlatformMutex.h" bodystart="394" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPlatformSharedMutexImpl_1abac6d0e7bb98ecd214163fad80840c26" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; int &gt;</type>
+        <definition>std::atomic&lt;int&gt; PlatformSharedMutexImpl&lt; Backend &gt;::readers_</definition>
+        <argsstring></argsstring>
+        <name>readers_</name>
+        <qualifiedname>PlatformSharedMutexImpl::readers_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="395" column="17" bodyfile="inc/utils/PlatformMutex.h" bodystart="395" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPlatformSharedMutexImpl_1afeb8141ca69abc4d454f7b385786b675" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; PlatformSharedMutexImpl&lt; Backend &gt;::writer_active_</definition>
+        <argsstring></argsstring>
+        <name>writer_active_</name>
+        <qualifiedname>PlatformSharedMutexImpl::writer_active_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="396" column="17" bodyfile="inc/utils/PlatformMutex.h" bodystart="396" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPlatformSharedMutexImpl_1a98fdd657265ba7aaa40ef719666733f1" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>PlatformSharedMutexImpl&lt; Backend &gt;::PlatformSharedMutexImpl</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>PlatformSharedMutexImpl</name>
+        <qualifiedname>PlatformSharedMutexImpl::PlatformSharedMutexImpl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="254" column="5" bodyfile="inc/utils/PlatformMutex.h" bodystart="254" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedMutexImpl_1a392662a9411e3753809f452f67103e2b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>PlatformSharedMutexImpl&lt; Backend &gt;::~PlatformSharedMutexImpl</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~PlatformSharedMutexImpl</name>
+        <qualifiedname>PlatformSharedMutexImpl::~PlatformSharedMutexImpl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="260" column="5" bodyfile="inc/utils/PlatformMutex.h" bodystart="260" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedMutexImpl_1ac24092ef0fb42102cdc0866fb98b1781" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PlatformSharedMutexImpl&lt; Backend &gt;::PlatformSharedMutexImpl</definition>
+        <argsstring>(const PlatformSharedMutexImpl &amp;)=delete</argsstring>
+        <name>PlatformSharedMutexImpl</name>
+        <qualifiedname>PlatformSharedMutexImpl::PlatformSharedMutexImpl</qualifiedname>
+        <param>
+          <type>const <ref refid="classPlatformSharedMutexImpl" kindref="compound">PlatformSharedMutexImpl</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="266" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedMutexImpl_1abfb55f84824adfc976967c220d71d2df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPlatformSharedMutexImpl" kindref="compound">PlatformSharedMutexImpl</ref> &amp;</type>
+        <definition>PlatformSharedMutexImpl &amp; PlatformSharedMutexImpl&lt; Backend &gt;::operator=</definition>
+        <argsstring>(const PlatformSharedMutexImpl &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>PlatformSharedMutexImpl::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classPlatformSharedMutexImpl" kindref="compound">PlatformSharedMutexImpl</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="267" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedMutexImpl_1a6cf8cde19ebc13494838c464dfc3d332" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>PlatformSharedMutexImpl&lt; Backend &gt;::PlatformSharedMutexImpl</definition>
+        <argsstring>(PlatformSharedMutexImpl &amp;&amp;other) noexcept</argsstring>
+        <name>PlatformSharedMutexImpl</name>
+        <qualifiedname>PlatformSharedMutexImpl::PlatformSharedMutexImpl</qualifiedname>
+        <param>
+          <type><ref refid="classPlatformSharedMutexImpl" kindref="compound">PlatformSharedMutexImpl</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="270" column="5" bodyfile="inc/utils/PlatformMutex.h" bodystart="270" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedMutexImpl_1a719038d8754d1dad1b1e54e262d8a023" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classPlatformSharedMutexImpl" kindref="compound">PlatformSharedMutexImpl</ref> &amp;</type>
+        <definition>PlatformSharedMutexImpl &amp; PlatformSharedMutexImpl&lt; Backend &gt;::operator=</definition>
+        <argsstring>(PlatformSharedMutexImpl &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>PlatformSharedMutexImpl::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classPlatformSharedMutexImpl" kindref="compound">PlatformSharedMutexImpl</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="279" column="29" bodyfile="inc/utils/PlatformMutex.h" bodystart="279" bodyend="293"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedMutexImpl_1a11c4d1d8aa24ddd257abef90668f36d3" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PlatformSharedMutexImpl&lt; Backend &gt;::lock</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>lock</name>
+        <qualifiedname>PlatformSharedMutexImpl::lock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="297" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="297" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedMutexImpl_1a52d3da97b39407e463850bab1185dfac" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PlatformSharedMutexImpl&lt; Backend &gt;::try_lock</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>try_lock</name>
+        <qualifiedname>PlatformSharedMutexImpl::try_lock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="304" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="304" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedMutexImpl_1a1adf9ca5db069eaa480f9efc5c15f118" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PlatformSharedMutexImpl&lt; Backend &gt;::try_lock_for</definition>
+        <argsstring>(uint32_t timeout_ms) noexcept</argsstring>
+        <name>try_lock_for</name>
+        <qualifiedname>PlatformSharedMutexImpl::try_lock_for</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="315" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="315" bodyend="332"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedMutexImpl_1a9a0c1a1ecd846d64b3fd84808330ecbb" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlatformSharedMutexImpl&lt; Backend &gt;::unlock</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>unlock</name>
+        <qualifiedname>PlatformSharedMutexImpl::unlock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="334" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="334" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedMutexImpl_1aad0a612b3ffc69bc7cbac8f94c88dd8e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PlatformSharedMutexImpl&lt; Backend &gt;::lock_shared</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>lock_shared</name>
+        <qualifiedname>PlatformSharedMutexImpl::lock_shared</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="341" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="341" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedMutexImpl_1abc5584a273f1bdadb85c6d52ad08f332" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PlatformSharedMutexImpl&lt; Backend &gt;::try_lock_shared</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>try_lock_shared</name>
+        <qualifiedname>PlatformSharedMutexImpl::try_lock_shared</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="354" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="354" bodyend="363"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedMutexImpl_1ae20932eb9d0a6010289eb12feba03be6" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PlatformSharedMutexImpl&lt; Backend &gt;::try_lock_shared_for</definition>
+        <argsstring>(uint32_t timeout_ms) noexcept</argsstring>
+        <name>try_lock_shared_for</name>
+        <qualifiedname>PlatformSharedMutexImpl::try_lock_shared_for</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="365" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="365" bodyend="383"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedMutexImpl_1a633c17dfb96432934ae5494c883dc357" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlatformSharedMutexImpl&lt; Backend &gt;::unlock_shared</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>unlock_shared</name>
+        <qualifiedname>PlatformSharedMutexImpl::unlock_shared</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="385" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="385" bodyend="390"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Reader-writer mutex using two regular mutexes + atomic counters. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Multiple readers can hold the lock concurrently; writers have exclusive access. When Backend = <ref refid="structNullMutexBackend" kindref="compound">NullMutexBackend</ref>, all operations compile away.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Backend</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Static policy class satisfying the <ref refid="structNullMutexBackend" kindref="compound">NullMutexBackend</ref> contract. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <location file="inc/utils/PlatformMutex.h" line="252" column="1" bodyfile="inc/utils/PlatformMutex.h" bodystart="252" bodyend="397"/>
+    <listofallmembers>
+      <member refid="classPlatformSharedMutexImpl_1a11c4d1d8aa24ddd257abef90668f36d3" prot="public" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>lock</name></member>
+      <member refid="classPlatformSharedMutexImpl_1aad0a612b3ffc69bc7cbac8f94c88dd8e" prot="public" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>lock_shared</name></member>
+      <member refid="classPlatformSharedMutexImpl_1abfb55f84824adfc976967c220d71d2df" prot="public" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>operator=</name></member>
+      <member refid="classPlatformSharedMutexImpl_1a719038d8754d1dad1b1e54e262d8a023" prot="public" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>operator=</name></member>
+      <member refid="classPlatformSharedMutexImpl_1a98fdd657265ba7aaa40ef719666733f1" prot="public" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>PlatformSharedMutexImpl</name></member>
+      <member refid="classPlatformSharedMutexImpl_1ac24092ef0fb42102cdc0866fb98b1781" prot="public" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>PlatformSharedMutexImpl</name></member>
+      <member refid="classPlatformSharedMutexImpl_1a6cf8cde19ebc13494838c464dfc3d332" prot="public" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>PlatformSharedMutexImpl</name></member>
+      <member refid="classPlatformSharedMutexImpl_1aed22877700be075a928abe6b6d9c8f54" prot="private" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>reader_mutex_</name></member>
+      <member refid="classPlatformSharedMutexImpl_1abac6d0e7bb98ecd214163fad80840c26" prot="private" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>readers_</name></member>
+      <member refid="classPlatformSharedMutexImpl_1a52d3da97b39407e463850bab1185dfac" prot="public" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>try_lock</name></member>
+      <member refid="classPlatformSharedMutexImpl_1a1adf9ca5db069eaa480f9efc5c15f118" prot="public" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>try_lock_for</name></member>
+      <member refid="classPlatformSharedMutexImpl_1abc5584a273f1bdadb85c6d52ad08f332" prot="public" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>try_lock_shared</name></member>
+      <member refid="classPlatformSharedMutexImpl_1ae20932eb9d0a6010289eb12feba03be6" prot="public" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>try_lock_shared_for</name></member>
+      <member refid="classPlatformSharedMutexImpl_1a9a0c1a1ecd846d64b3fd84808330ecbb" prot="public" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>unlock</name></member>
+      <member refid="classPlatformSharedMutexImpl_1a633c17dfb96432934ae5494c883dc357" prot="public" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>unlock_shared</name></member>
+      <member refid="classPlatformSharedMutexImpl_1afeb8141ca69abc4d454f7b385786b675" prot="private" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>writer_active_</name></member>
+      <member refid="classPlatformSharedMutexImpl_1a85983fd6c7ba0602a874741d2a8d8a99" prot="private" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>writer_mutex_</name></member>
+      <member refid="classPlatformSharedMutexImpl_1a392662a9411e3753809f452f67103e2b" prot="public" virt="non-virtual"><scope>PlatformSharedMutexImpl</scope><name>~PlatformSharedMutexImpl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

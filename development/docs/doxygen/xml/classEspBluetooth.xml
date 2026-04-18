@@ -104,7 +104,7 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="189" column="29" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="189" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1adb8956d2c364a44f81356624b016b136" prot="private" static="no" mutable="yes">
-        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <type><ref refid="PlatformMutex_8h_1a3448b54e0a94193058b38d135c1254ef" kindref="member">PlatformMutex</ref></type>
         <definition>PlatformMutex EspBluetooth::m_device_mutex</definition>
         <argsstring></argsstring>
         <name>m_device_mutex</name>
@@ -118,7 +118,7 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="192" column="25" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="192" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1a79785c1f5dcc09583bbcf50df257df1a" prot="private" static="no" mutable="yes">
-        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <type><ref refid="PlatformMutex_8h_1a3448b54e0a94193058b38d135c1254ef" kindref="member">PlatformMutex</ref></type>
         <definition>PlatformMutex EspBluetooth::m_state_mutex</definition>
         <argsstring></argsstring>
         <name>m_state_mutex</name>
@@ -1832,8 +1832,8 @@
         </childnode>
       </node>
       <node id="4">
-        <label>PlatformMutex</label>
-        <link refid="classPlatformMutex"/>
+        <label>PlatformMutexImpl&lt; PlatformMutexActiveBackend &gt;</label>
+        <link refid="classPlatformMutexImpl"/>
       </node>
       <node id="3">
         <label>hf_bluetooth_ble_config_t</label>

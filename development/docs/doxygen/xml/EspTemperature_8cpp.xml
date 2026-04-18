@@ -32,6 +32,8 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
@@ -42,23 +44,15 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>McuSelect.h</label>
-        <link refid="McuSelect_8h"/>
       </node>
       <node id="8">
         <label>utils/PlatformMutex.h</label>
         <link refid="PlatformMutex_8h"/>
         <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -68,47 +62,47 @@
         <link refid="EspTemperature_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
         <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
       </node>
-      <node id="18">
+      <node id="17">
         <label>algorithm</label>
       </node>
-      <node id="10">
+      <node id="9">
         <label>atomic</label>
       </node>
-      <node id="19">
+      <node id="18">
         <label>cmath</label>
       </node>
       <node id="5">
         <label>cstdint</label>
       </node>
-      <node id="20">
+      <node id="19">
         <label>cstring</label>
       </node>
-      <node id="11">
+      <node id="10">
         <label>driver/temperature_sensor.h</label>
       </node>
-      <node id="12">
+      <node id="11">
         <label>esp_err.h</label>
       </node>
-      <node id="13">
+      <node id="12">
         <label>esp_log.h</label>
       </node>
-      <node id="14">
+      <node id="13">
         <label>esp_timer.h</label>
       </node>
-      <node id="15">
+      <node id="14">
         <label>freertos/FreeRTOS.h</label>
       </node>
-      <node id="16">
+      <node id="15">
         <label>freertos/task.h</label>
       </node>
-      <node id="17">
+      <node id="16">
         <label>functional</label>
       </node>
       <node id="6">
@@ -161,7 +155,7 @@
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classEspTemperature_1a0e3aba6824d5d671a2298f402d2b397c" kindref="member">EspTemperature::TAG</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;EspTemperature&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspTemperature_1a50349f2a25b47c680ad6544677e3f693" kindref="member">EspTemperature::s_shared_mutex_</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><ref refid="classPlatformMutexImpl" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspTemperature_1a50349f2a25b47c680ad6544677e3f693" kindref="member">EspTemperature::s_shared_mutex_</ref>;</highlight></codeline>
 <codeline lineno="41"><highlight class="normal">std::atomic&lt;int&gt;<sp/><ref refid="classEspTemperature_1aef85506e203917c06e7d951370f983ad" kindref="member">EspTemperature::s_refcount_</ref>{0};</highlight></codeline>
 <codeline lineno="42"><highlight class="normal">temperature_sensor_handle_t<sp/><ref refid="classEspTemperature_1acc45986a38969e94e206b1531eedcbac" kindref="member">EspTemperature::s_shared_handle_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>

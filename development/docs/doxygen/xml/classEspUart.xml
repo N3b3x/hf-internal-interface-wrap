@@ -105,7 +105,7 @@
     </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classEspUart_1a23f67c7d005df9d732c27a70cd190eb8" prot="private" static="no" mutable="yes">
-        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <type><ref refid="PlatformMutex_8h_1a3448b54e0a94193058b38d135c1254ef" kindref="member">PlatformMutex</ref></type>
         <definition>PlatformMutex EspUart::mutex_</definition>
         <argsstring></argsstring>
         <name>mutex_</name>
@@ -2252,8 +2252,8 @@
         </childnode>
       </node>
       <node id="5">
-        <label>PlatformMutex</label>
-        <link refid="classPlatformMutex"/>
+        <label>PlatformMutexImpl&lt; PlatformMutexActiveBackend &gt;</label>
+        <link refid="classPlatformMutexImpl"/>
       </node>
       <node id="6">
         <label>hf_uart_config_t</label>

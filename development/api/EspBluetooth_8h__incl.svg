@@ -109,9 +109,9 @@ var sectionId = 'dynsection-0';
 </g>
 </g>
 <!-- Node1&#45;&gt;Node7 -->
-<g id="edge18_Node000001_Node000007" class="edge">
+<g id="edge17_Node000001_Node000007" class="edge">
 <title>Node1&#45;&gt;Node7</title>
-<g id="a_edge18_Node000001_Node000007"><a xlink:title=" ">
+<g id="a_edge17_Node000001_Node000007"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M461.07,-177C450.05,-168.7 436.28,-156.04 430,-141 422.83,-123.81 432.61,-104.24 442.71,-90.25"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="445.49,-92.37 448.88,-82.33 439.97,-88.07 445.49,-92.37"/>
 </a>
@@ -127,9 +127,9 @@ var sectionId = 'dynsection-0';
 </g>
 </g>
 <!-- Node1&#45;&gt;Node10 -->
-<g id="edge20_Node000001_Node000010" class="edge">
+<g id="edge19_Node000001_Node000010" class="edge">
 <title>Node1&#45;&gt;Node10</title>
-<g id="a_edge20_Node000001_Node000010"><a xlink:title=" ">
+<g id="a_edge19_Node000001_Node000010"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M470.87,-176.89C463.51,-162.61 453.38,-136.82 464,-118 472.83,-102.34 489.29,-91.37 504.73,-84.02"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="506.37,-87.13 514.14,-79.91 503.57,-80.71 506.37,-87.13"/>
 </a>
@@ -174,7 +174,7 @@ var sectionId = 'dynsection-0';
 <!-- Node13 -->
 <g id="Node000013" class="node">
 <title>Node13</title>
-<g id="a_Node000013"><a xlink:href="PlatformMutex_8h.html" target="_top" xlink:title="Cross&#45;platform RTOS mutex and synchronization primitives.">
+<g id="a_Node000013"><a xlink:href="PlatformMutex_8h.html" target="_top" xlink:title="Cross&#45;platform mutex and synchronization primitives with pluggable backend.">
 <polygon fill="white" stroke="#666666" points="785,-141 669,-141 669,-118 785,-118 785,-141"/>
 <text text-anchor="middle" x="727" y="-125.8" font-family="Arial" font-size="14.00">PlatformMutex.h</text>
 </a>
@@ -189,19 +189,19 @@ var sectionId = 'dynsection-0';
 </a>
 </g>
 </g>
-<!-- Node16 -->
-<g id="Node000016" class="node">
-<title>Node16</title>
-<g id="a_Node000016"><a xlink:title=" ">
+<!-- Node15 -->
+<g id="Node000015" class="node">
+<title>Node15</title>
+<g id="a_Node000015"><a xlink:title=" ">
 <polygon fill="#e0e0e0" stroke="#999999" points="847,-141 803,-141 803,-118 847,-118 847,-141"/>
 <text text-anchor="middle" x="825" y="-125.8" font-family="Arial" font-size="14.00">map</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node16 -->
-<g id="edge19_Node000001_Node000016" class="edge">
-<title>Node1&#45;&gt;Node16</title>
-<g id="a_edge19_Node000001_Node000016"><a xlink:title=" ">
+<!-- Node1&#45;&gt;Node15 -->
+<g id="edge18_Node000001_Node000015" class="edge">
+<title>Node1&#45;&gt;Node15</title>
+<g id="a_edge18_Node000001_Node000015"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M577.12,-177.51C637.37,-170.4 715.62,-159.21 792.88,-140.94"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="793.89,-144.3 802.79,-138.56 792.25,-137.49 793.89,-144.3"/>
 </a>
@@ -334,9 +334,9 @@ var sectionId = 'dynsection-0';
 </g>
 </g>
 <!-- Node13&#45;&gt;Node4 -->
-<g id="edge17_Node000013_Node000004" class="edge">
+<g id="edge16_Node000013_Node000004" class="edge">
 <title>Node13&#45;&gt;Node4</title>
-<g id="a_edge17_Node000013_Node000004"><a xlink:title=" ">
+<g id="a_edge16_Node000013_Node000004"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M708.21,-117.88C680.4,-102.61 626.26,-74.58 577,-59 501.53,-35.12 409.47,-22.18 358.55,-16.37"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="358.65,-12.86 348.33,-15.24 357.88,-19.82 358.65,-12.86"/>
 </a>
@@ -345,9 +345,9 @@ var sectionId = 'dynsection-0';
 <!-- Node14 -->
 <g id="Node000014" class="node">
 <title>Node14</title>
-<g id="a_Node000014"><a xlink:href="McuSelect_8h.html" target="_top" xlink:title="Centralized MCU platform selection and configuration header.">
-<polygon fill="white" stroke="#666666" points="759,-82 667,-82 667,-59 759,-59 759,-82"/>
-<text text-anchor="middle" x="713" y="-66.8" font-family="Arial" font-size="14.00">McuSelect.h</text>
+<g id="a_Node000014"><a xlink:title=" ">
+<polygon fill="#e0e0e0" stroke="#999999" points="755.5,-82 698.5,-82 698.5,-59 755.5,-59 755.5,-82"/>
+<text text-anchor="middle" x="727" y="-66.8" font-family="Arial" font-size="14.00">atomic</text>
 </a>
 </g>
 </g>
@@ -355,26 +355,8 @@ var sectionId = 'dynsection-0';
 <g id="edge15_Node000013_Node000014" class="edge">
 <title>Node13&#45;&gt;Node14</title>
 <g id="a_edge15_Node000013_Node000014"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M724.37,-117.78C722.59,-110.53 720.18,-100.74 718.04,-92.02"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="721.41,-91.05 715.62,-82.17 714.61,-92.72 721.41,-91.05"/>
-</a>
-</g>
-</g>
-<!-- Node15 -->
-<g id="Node000015" class="node">
-<title>Node15</title>
-<g id="a_Node000015"><a xlink:title=" ">
-<polygon fill="#e0e0e0" stroke="#999999" points="834.5,-82 777.5,-82 777.5,-59 834.5,-59 834.5,-82"/>
-<text text-anchor="middle" x="806" y="-66.8" font-family="Arial" font-size="14.00">atomic</text>
-</a>
-</g>
-</g>
-<!-- Node13&#45;&gt;Node15 -->
-<g id="edge16_Node000013_Node000015" class="edge">
-<title>Node13&#45;&gt;Node15</title>
-<g id="a_edge16_Node000013_Node000015"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M741.86,-117.78C753.45,-109.42 769.74,-97.66 783.01,-88.09"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="785.15,-90.86 791.21,-82.17 781.05,-85.19 785.15,-90.86"/>
+<path fill="none" stroke="#63b8ff" d="M727,-117.78C727,-110.61 727,-100.95 727,-92.31"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="730.5,-92.17 727,-82.17 723.5,-92.17 730.5,-92.17"/>
 </a>
 </g>
 </g>

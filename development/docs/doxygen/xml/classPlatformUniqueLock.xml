@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="387" column="9" bodyfile="inc/utils/PlatformMutex.h" bodystart="387" bodyend="-1"/>
+        <location file="inc/utils/PlatformMutex.h" line="457" column="11" bodyfile="inc/utils/PlatformMutex.h" bodystart="457" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPlatformUniqueLock_1a8aab9c90f6600d676f3eae0bb39939ba" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="388" column="8" bodyfile="inc/utils/PlatformMutex.h" bodystart="388" bodyend="-1"/>
+        <location file="inc/utils/PlatformMutex.h" line="458" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="458" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="339" column="12" bodyfile="inc/utils/PlatformMutex.h" bodystart="339" bodyend="346"/>
+        <location file="inc/utils/PlatformMutex.h" line="410" column="14" bodyfile="inc/utils/PlatformMutex.h" bodystart="410" bodyend="417"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformUniqueLock_1a1de056bf6d04a2b21ddab9d07af39cf3" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="348" column="3" bodyfile="inc/utils/PlatformMutex.h" bodystart="348" bodyend="352"/>
+        <location file="inc/utils/PlatformMutex.h" line="419" column="5" bodyfile="inc/utils/PlatformMutex.h" bodystart="419" bodyend="423"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformUniqueLock_1a4ede2f8053aa987340916a4d6b59ee85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="354" column="3"/>
+        <location file="inc/utils/PlatformMutex.h" line="426" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformUniqueLock_1a69104e36e3a6f19cb0c0d397fcc0e1d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock</ref> &amp;</type>
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="355" column="22"/>
+        <location file="inc/utils/PlatformMutex.h" line="427" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformUniqueLock_1a1d89086e96e7ba1faa7c66f6470cd232" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -126,7 +126,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="357" column="3" bodyfile="inc/utils/PlatformMutex.h" bodystart="357" bodyend="360"/>
+        <location file="inc/utils/PlatformMutex.h" line="430" column="5" bodyfile="inc/utils/PlatformMutex.h" bodystart="430" bodyend="434"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformUniqueLock_1a7f8dcd217e9a1aea82ec046a5ec8d313" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock</ref> &amp;</type>
@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="362" column="22" bodyfile="inc/utils/PlatformMutex.h" bodystart="362" bodyend="373"/>
+        <location file="inc/utils/PlatformMutex.h" line="436" column="24" bodyfile="inc/utils/PlatformMutex.h" bodystart="436" bodyend="445"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformUniqueLock_1a871d9440659f9b5c645d61f148fa2f4a" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -158,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="375" column="9" bodyfile="inc/utils/PlatformMutex.h" bodystart="375" bodyend="377"/>
+        <location file="inc/utils/PlatformMutex.h" line="447" column="11" bodyfile="inc/utils/PlatformMutex.h" bodystart="447" bodyend="447"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformUniqueLock_1ab2caf1f955482a39cc775a2460ce225b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -172,14 +172,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="379" column="8" bodyfile="inc/utils/PlatformMutex.h" bodystart="379" bodyend="384"/>
+        <location file="inc/utils/PlatformMutex.h" line="449" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="449" bodyend="454"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>RAII exclusive lock guard for any mutex with lock()/try_lock_for()/unlock(). </para>
     </briefdescription>
     <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Mutex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type providing lock(), try_lock_for(uint32_t), unlock(). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
     </detaileddescription>
-    <location file="inc/utils/PlatformMutex.h" line="337" column="1" bodyfile="inc/utils/PlatformMutex.h" bodystart="337" bodyend="389"/>
+    <location file="inc/utils/PlatformMutex.h" line="408" column="1" bodyfile="inc/utils/PlatformMutex.h" bodystart="408" bodyend="459"/>
     <listofallmembers>
       <member refid="classPlatformUniqueLock_1a871d9440659f9b5c645d61f148fa2f4a" prot="public" virt="non-virtual"><scope>PlatformUniqueLock</scope><name>IsLocked</name></member>
       <member refid="classPlatformUniqueLock_1a8aab9c90f6600d676f3eae0bb39939ba" prot="private" virt="non-virtual"><scope>PlatformUniqueLock</scope><name>locked_</name></member>

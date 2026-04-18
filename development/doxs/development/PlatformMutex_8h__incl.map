@@ -1,9 +1,7 @@
 <map id="inc/utils/PlatformMutex.h" name="inc/utils/PlatformMutex.h">
-<area shape="rect" id="Node000001" title="Cross&#45;platform RTOS mutex and synchronization primitives." alt="" coords="81,5,301,36"/>
-<area shape="rect" id="Node000002" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="5,84,128,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="169,39,103,79,100,74,166,34"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="153,84,229,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="193,36,193,70,188,70,188,36"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="253,84,328,115"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="211,34,263,73,259,78,208,38"/>
+<area shape="rect" id="Node000001" title="Cross&#45;platform mutex and synchronization primitives with pluggable backend." alt="" coords="5,5,225,36"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="28,84,104,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,38,85,74,80,71,104,35"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="129,84,203,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="127,35,151,71,147,74,123,38"/>
 </map>

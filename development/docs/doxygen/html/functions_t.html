@@ -98,7 +98,7 @@ $(function(){initNavTree('functions_t.html',''); initResizable(); });
 <h3><a id="index_t" name="index_t"></a>- t -</h3><ul>
 <li>TAG&#160;:&#160;<a class="el" href="classEspPio.html#a6961547bda9a07105b8a285b884922c1">EspPio</a>, <a class="el" href="classEspTemperature.html#a0e3aba6824d5d671a2298f402d2b397c">EspTemperature</a></li>
 <li>tag&#160;:&#160;<a class="el" href="structhf__log__message__t.html#a6b5fd3140e501bb1ba3439d3f0a7d910">hf_log_message_t</a>, <a class="el" href="structTestTaskContext.html#ae51f49c33ea802bc7f8bdde560a27304">TestTaskContext</a></li>
-<li>Take()&#160;:&#160;<a class="el" href="classPlatformMutex.html#ab80aa6f15a0f87f62502d74f583ce696">PlatformMutex</a></li>
+<li>Take()&#160;:&#160;<a class="el" href="classPlatformMutexImpl.html#a27cf792c7fbe61795a6b20f8d5cf2d49">PlatformMutexImpl&lt; Backend &gt;</a></li>
 <li>target_duty&#160;:&#160;<a class="el" href="structhf__pwm__fade__config__t.html#a75f729d28fc4dbf771e930591ea181ea">hf_pwm_fade_config_t</a></li>
 <li>temperature_celsius&#160;:&#160;<a class="el" href="structhf__temp__reading__t.html#ad8b20df88ef338aef1912deba6301f0a">hf_temp_reading_t</a></li>
 <li>temperature_raw&#160;:&#160;<a class="el" href="structhf__temp__reading__t.html#ae59b1774ec745080207c403ac5d0de9a">hf_temp_reading_t</a></li>
@@ -115,6 +115,7 @@ $(function(){initNavTree('functions_t.html',''); initResizable(); });
 <li>threshold_user_data_&#160;:&#160;<a class="el" href="classEspTemperature.html#a64679e2522454245be7bdba622ef8176">EspTemperature</a></li>
 <li>threshold_violations&#160;:&#160;<a class="el" href="structhf__temp__statistics__t.html#a379b39e99a1d9ba0fce526476576fcd5">hf_temp_statistics_t</a></li>
 <li>thresholdViolations&#160;:&#160;<a class="el" href="structhf__adc__statistics__t.html#a14707f325b1525644a047cd323c9874f">hf_adc_statistics_t</a></li>
+<li>TICK_RATE_HZ&#160;:&#160;<a class="el" href="structNullMutexBackend.html#ab5390057386e19dd4dab8024246f68b8">NullMutexBackend</a></li>
 <li>timeout_count&#160;:&#160;<a class="el" href="structhf__i2c__statistics__t.html#a771aea8bf99b697af6945629cbe6ce09">hf_i2c_statistics_t</a>, <a class="el" href="structhf__uart__statistics__t.html#a761200538387ff51d156edabe337bf48">hf_uart_statistics_t</a></li>
 <li>timeout_flag&#160;:&#160;<a class="el" href="structhf__uart__event__t.html#a6a8642e30e8aa3174f501fadf0bf08b7">hf_uart_event_t</a></li>
 <li>timeout_ms&#160;:&#160;<a class="el" href="structhf__i2c__custom__command__t.html#a0b9cd5102b234d69e51d4162b1314ee1">hf_i2c_custom_command_t</a>, <a class="el" href="structhf__i2c__multi__buffer__transaction__t.html#add9884a93fe8a9def556d7e48441c03f">hf_i2c_multi_buffer_transaction_t</a>, <a class="el" href="structhf__spi__bus__config__t.html#a1a89b70d19c0f6aa437a27ce9b4dd98b">hf_spi_bus_config_t</a>, <a class="el" href="structhf__stm32__temp__sensor__config__t.html#a7e6b4469e8c7641f3e126ec02098ef4d">hf_stm32_temp_sensor_config_t</a>, <a class="el" href="structhf__temp__config__t.html#aee9c9a3af10ac889e79442f561b3dd0c">hf_temp_config_t</a>, <a class="el" href="structhf__uart__config__t.html#a81763a86639f22bd295d61dd4b070f21">hf_uart_config_t</a></li>
@@ -172,10 +173,12 @@ $(function(){initNavTree('functions_t.html',''); initResizable(); });
 <li>TransmitRawRmtSymbols()&#160;:&#160;<a class="el" href="classEspPio.html#adec787e469920ae4dca1302c31940b55">EspPio</a></li>
 <li>trigger_type&#160;:&#160;<a class="el" href="structInterruptStatus.html#a9f18143aa438cbe4065bc7c923048887">InterruptStatus</a></li>
 <li>TriggerEvent()&#160;:&#160;<a class="el" href="classEspBluetooth.html#aba97116a09dbb885c55d3f503fe34433">EspBluetooth</a></li>
-<li>try_lock()&#160;:&#160;<a class="el" href="classPlatformMutex.html#a5d7c63169e0c54a0c9f3d250861139bf">PlatformMutex</a>, <a class="el" href="classPlatformSharedMutex.html#a344b2c1db97307baf08618dfce6305bc">PlatformSharedMutex</a></li>
-<li>try_lock_for()&#160;:&#160;<a class="el" href="classPlatformMutex.html#a71294990b69c8bb08c8d0ca45b753284">PlatformMutex</a>, <a class="el" href="classPlatformSharedMutex.html#abe91e65f1609953753a3e1f9badea77f">PlatformSharedMutex</a></li>
-<li>try_lock_shared()&#160;:&#160;<a class="el" href="classPlatformMutex.html#a4a2b6f3996cf317162aead04ac286a54">PlatformMutex</a>, <a class="el" href="classPlatformSharedMutex.html#af641caab9ce5170f51046a484c42d304">PlatformSharedMutex</a></li>
-<li>try_lock_shared_for()&#160;:&#160;<a class="el" href="classPlatformMutex.html#aeee6794b3a8daa9e4fb7ec4dc242ec70">PlatformMutex</a>, <a class="el" href="classPlatformSharedMutex.html#a2ae2aafacbc7526877303d231b39396f">PlatformSharedMutex</a></li>
+<li>try_lock()&#160;:&#160;<a class="el" href="classPlatformMutexImpl.html#a7cb640e84998c67527df6744417cc3c4">PlatformMutexImpl&lt; Backend &gt;</a>, <a class="el" href="classPlatformSharedMutexImpl.html#a52d3da97b39407e463850bab1185dfac">PlatformSharedMutexImpl&lt; Backend &gt;</a></li>
+<li>try_lock_for()&#160;:&#160;<a class="el" href="classPlatformMutexImpl.html#aef4c34e1c15f9762fd18c3b27a71c34f">PlatformMutexImpl&lt; Backend &gt;</a>, <a class="el" href="classPlatformSharedMutexImpl.html#a1adf9ca5db069eaa480f9efc5c15f118">PlatformSharedMutexImpl&lt; Backend &gt;</a></li>
+<li>try_lock_shared()&#160;:&#160;<a class="el" href="classPlatformMutexImpl.html#a7b0de6bc850396566a1f533847ef23ce">PlatformMutexImpl&lt; Backend &gt;</a>, <a class="el" href="classPlatformSharedMutexImpl.html#abc5584a273f1bdadb85c6d52ad08f332">PlatformSharedMutexImpl&lt; Backend &gt;</a></li>
+<li>try_lock_shared_for()&#160;:&#160;<a class="el" href="classPlatformMutexImpl.html#ac9f85b0692b69251c30e6195f5ccce9f">PlatformMutexImpl&lt; Backend &gt;</a>, <a class="el" href="classPlatformSharedMutexImpl.html#ae20932eb9d0a6010289eb12feba03be6">PlatformSharedMutexImpl&lt; Backend &gt;</a></li>
+<li>tryLockMutex()&#160;:&#160;<a class="el" href="structNullMutexBackend.html#abda2aa2e7aac56a65621014ca3d22662">NullMutexBackend</a></li>
+<li>tryLockRecursive()&#160;:&#160;<a class="el" href="structNullMutexBackend.html#ad5a3feacb3a1f8dc01cd3e96bd77c607">NullMutexBackend</a></li>
 <li>tseg_1&#160;:&#160;<a class="el" href="structhf__esp__can__timing__config__t.html#aa98d242b37b3da2655c639c8b7de74a6">hf_esp_can_timing_config_t</a></li>
 <li>tseg_2&#160;:&#160;<a class="el" href="structhf__esp__can__timing__config__t.html#a883463586954e5fa6a850c3844bac131">hf_esp_can_timing_config_t</a></li>
 <li>twai_node_handle_&#160;:&#160;<a class="el" href="classEspCan.html#a836c7bd0fe611a5d232929a3c21b3995">EspCan</a></li>

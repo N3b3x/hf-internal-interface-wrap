@@ -7,5 +7,6 @@ var searchData=
   ['monitor_5fcallback_4',['monitor_callback',['../AdcComprehensiveTest_8cpp.html#af27f6afa257763e81799a31cee1a993f',1,'AdcComprehensiveTest.cpp']]],
   ['monitoring_5fcallback_5',['monitoring_callback',['../TemperatureComprehensiveTest_8cpp.html#a64981704d5cf479bfdc3cf0d30503f76',1,'TemperatureComprehensiveTest.cpp']]],
   ['monitoringtimercallback_6',['MonitoringTimerCallback',['../classEspTemperature.html#abe6ae1ced0d8c565b722b416cb64e9ae',1,'EspTemperature']]],
-  ['mstoticks_7',['MsToTicks',['../classPlatformTime.html#a14b850d58c7deb0bb81c72f06490a4c4',1,'PlatformTime']]]
+  ['mstoticks_7',['MsToTicks',['../classPlatformTime.html#a8cff669a89cba4fa58a44687ec3ce4d4',1,'PlatformTime']]],
+  ['mstoticks_8',['msToTicks',['../structNullMutexBackend.html#a49290ba91fee448733d3b184c58b586c',1,'NullMutexBackend']]]
 ];

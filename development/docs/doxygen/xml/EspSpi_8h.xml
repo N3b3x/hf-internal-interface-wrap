@@ -28,7 +28,7 @@
         <link refid="BaseCan_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -112,7 +112,7 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
@@ -125,12 +125,12 @@
         <childnode refid="37" relation="include">
         </childnode>
       </node>
-      <node id="10">
+      <node id="9">
         <label>utils/EspTypes.h</label>
         <link refid="EspTypes_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -162,7 +162,7 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -172,11 +172,11 @@
       <node id="13">
         <label>EspTypes_Base.h</label>
         <link refid="EspTypes__Base_8h"/>
-        <childnode refid="8" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -190,7 +190,7 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="18">
@@ -202,7 +202,7 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="20">
@@ -214,7 +214,7 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -230,7 +230,7 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="26">
@@ -240,7 +240,7 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
@@ -256,7 +256,7 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
@@ -268,7 +268,7 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
@@ -282,10 +282,10 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="8">
+      <node id="10">
         <label>McuSelect.h</label>
         <link refid="McuSelect_8h"/>
       </node>
@@ -294,12 +294,10 @@
         <link refid="PlatformMutex_8h"/>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="9">
+      <node id="8">
         <label>atomic</label>
       </node>
       <node id="4">
@@ -456,7 +454,7 @@
 <codeline lineno="156" refid="classEspSpiDevice_1a600b28bd83ef66f3645f6ecb56315eb2" refkind="member"><highlight class="normal"><sp/><sp/>spi_device_handle_t<sp/><ref refid="classEspSpiDevice_1a600b28bd83ef66f3645f6ecb56315eb2" kindref="member">handle_</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="157" refid="classEspSpiDevice_1a178c4ca0df69e47b6930c09787d7295b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__spi__device__config__t" kindref="compound">hf_spi_device_config_t</ref><sp/><ref refid="classEspSpiDevice_1a178c4ca0df69e47b6930c09787d7295b" kindref="member">config_</ref>;<sp/></highlight></codeline>
 <codeline lineno="158" refid="classEspSpiDevice_1ad547b708efaac31e0f6dca17d76184e2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspSpiDevice_1ad547b708efaac31e0f6dca17d76184e2" kindref="member">initialized_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="159" refid="classEspSpiDevice_1a22fd9577e6aaa1ec056206c12c58efe4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspSpiDevice_1a22fd9577e6aaa1ec056206c12c58efe4" kindref="member">mutex_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="159" refid="classEspSpiDevice_1a22fd9577e6aaa1ec056206c12c58efe4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classPlatformMutexImpl" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspSpiDevice_1a22fd9577e6aaa1ec056206c12c58efe4" kindref="member">mutex_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="160"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="161"><highlight class="normal"></highlight></codeline>
 <codeline lineno="169" refid="classEspSpiBus" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classEspSpiBus" kindref="compound">EspSpiBus</ref><sp/>{</highlight></codeline>
@@ -490,7 +488,7 @@
 <codeline lineno="258"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="259" refid="classEspSpiBus_1a066b8df253bffacf1e21d729850bf99e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__spi__bus__config__t" kindref="compound">hf_spi_bus_config_t</ref><sp/><ref refid="classEspSpiBus_1a066b8df253bffacf1e21d729850bf99e" kindref="member">config_</ref>;<sp/></highlight></codeline>
 <codeline lineno="260" refid="classEspSpiBus_1a697d0f6da659676a7506145ebbec98f5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspSpiBus_1a697d0f6da659676a7506145ebbec98f5" kindref="member">initialized_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="261" refid="classEspSpiBus_1a707ea256f7b4a767db203d5855bc6c07" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspSpiBus_1a707ea256f7b4a767db203d5855bc6c07" kindref="member">mutex_</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="261" refid="classEspSpiBus_1a707ea256f7b4a767db203d5855bc6c07" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classPlatformMutexImpl" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspSpiBus_1a707ea256f7b4a767db203d5855bc6c07" kindref="member">mutex_</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="262" refid="classEspSpiBus_1a4f89488fce018ca532e6753d6f864280" refkind="member"><highlight class="normal"><sp/><sp/>std::vector&lt;std::unique_ptr&lt;EspSpiDevice&gt;&gt;<sp/><ref refid="classEspSpiBus_1a4f89488fce018ca532e6753d6f864280" kindref="member">devices_</ref>;<sp/></highlight></codeline>
 <codeline lineno="263"><highlight class="normal">};</highlight></codeline>
     </programlisting>

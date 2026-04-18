@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['take_0',['Take',['../classPlatformMutex.html#ab80aa6f15a0f87f62502d74f583ce696',1,'PlatformMutex']]],
+  ['take_0',['Take',['../classPlatformMutexImpl.html#a27cf792c7fbe61795a6b20f8d5cf2d49',1,'PlatformMutexImpl']]],
   ['test_5facceptance_5ffiltering_1',['test_acceptance_filtering',['../CanComprehensiveTest_8cpp.html#aa95fe692493d545854a7d1efec334b6e',1,'CanComprehensiveTest.cpp']]],
   ['test_5fadc_5faveraging_2',['test_adc_averaging',['../AdcComprehensiveTest_8cpp.html#a8d6ce47f62aea0a979618c8a074e8ba4',1,'AdcComprehensiveTest.cpp']]],
   ['test_5fadc_5fbasic_5fconversion_3',['test_adc_basic_conversion',['../AdcComprehensiveTest_8cpp.html#a2c1dceda8a69d0327f24f8006b02cae6',1,'AdcComprehensiveTest.cpp']]],
@@ -287,9 +287,11 @@ var searchData=
   ['transmit_284',['Transmit',['../classBasePio.html#a06f76799267d04b7f55f2c525256387e',1,'BasePio::Transmit()'],['../classEspPio.html#a1c50e6baeb6ca6934d4893b3bb3c62f5',1,'EspPio::Transmit(hf_u8_t channel_id, const hf_pio_symbol_t *symbols, size_t symbol_count, bool wait_completion=false) noexcept override']]],
   ['transmitrawrmtsymbols_285',['TransmitRawRmtSymbols',['../classEspPio.html#adec787e469920ae4dca1302c31940b55',1,'EspPio']]],
   ['triggerevent_286',['TriggerEvent',['../classEspBluetooth.html#aba97116a09dbb885c55d3f503fe34433',1,'EspBluetooth']]],
-  ['try_5flock_287',['try_lock',['../classPlatformMutex.html#a5d7c63169e0c54a0c9f3d250861139bf',1,'PlatformMutex::try_lock()'],['../classPlatformSharedMutex.html#a344b2c1db97307baf08618dfce6305bc',1,'PlatformSharedMutex::try_lock()']]],
-  ['try_5flock_5ffor_288',['try_lock_for',['../classPlatformMutex.html#a71294990b69c8bb08c8d0ca45b753284',1,'PlatformMutex::try_lock_for()'],['../classPlatformSharedMutex.html#abe91e65f1609953753a3e1f9badea77f',1,'PlatformSharedMutex::try_lock_for()']]],
-  ['try_5flock_5fshared_289',['try_lock_shared',['../classPlatformMutex.html#a4a2b6f3996cf317162aead04ac286a54',1,'PlatformMutex::try_lock_shared()'],['../classPlatformSharedMutex.html#af641caab9ce5170f51046a484c42d304',1,'PlatformSharedMutex::try_lock_shared()']]],
-  ['try_5flock_5fshared_5ffor_290',['try_lock_shared_for',['../classPlatformMutex.html#aeee6794b3a8daa9e4fb7ec4dc242ec70',1,'PlatformMutex::try_lock_shared_for()'],['../classPlatformSharedMutex.html#a2ae2aafacbc7526877303d231b39396f',1,'PlatformSharedMutex::try_lock_shared_for()']]],
-  ['txbyteswaiting_291',['TxBytesWaiting',['../classEspUart.html#a95d705a9febfd27db46df2520f669692',1,'EspUart']]]
+  ['try_5flock_287',['try_lock',['../classPlatformMutexImpl.html#a7cb640e84998c67527df6744417cc3c4',1,'PlatformMutexImpl::try_lock()'],['../classPlatformSharedMutexImpl.html#a52d3da97b39407e463850bab1185dfac',1,'PlatformSharedMutexImpl::try_lock()']]],
+  ['try_5flock_5ffor_288',['try_lock_for',['../classPlatformMutexImpl.html#aef4c34e1c15f9762fd18c3b27a71c34f',1,'PlatformMutexImpl::try_lock_for()'],['../classPlatformSharedMutexImpl.html#a1adf9ca5db069eaa480f9efc5c15f118',1,'PlatformSharedMutexImpl::try_lock_for()']]],
+  ['try_5flock_5fshared_289',['try_lock_shared',['../classPlatformMutexImpl.html#a7b0de6bc850396566a1f533847ef23ce',1,'PlatformMutexImpl::try_lock_shared()'],['../classPlatformSharedMutexImpl.html#abc5584a273f1bdadb85c6d52ad08f332',1,'PlatformSharedMutexImpl::try_lock_shared()']]],
+  ['try_5flock_5fshared_5ffor_290',['try_lock_shared_for',['../classPlatformMutexImpl.html#ac9f85b0692b69251c30e6195f5ccce9f',1,'PlatformMutexImpl::try_lock_shared_for()'],['../classPlatformSharedMutexImpl.html#ae20932eb9d0a6010289eb12feba03be6',1,'PlatformSharedMutexImpl::try_lock_shared_for()']]],
+  ['trylockmutex_291',['tryLockMutex',['../structNullMutexBackend.html#abda2aa2e7aac56a65621014ca3d22662',1,'NullMutexBackend']]],
+  ['trylockrecursive_292',['tryLockRecursive',['../structNullMutexBackend.html#ad5a3feacb3a1f8dc01cd3e96bd77c607',1,'NullMutexBackend']]],
+  ['txbyteswaiting_293',['TxBytesWaiting',['../classEspUart.html#a95d705a9febfd27db46df2520f669692',1,'EspUart']]]
 ];

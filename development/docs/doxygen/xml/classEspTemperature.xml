@@ -6,7 +6,7 @@
     <includes refid="EspTemperature_8h" local="no">EspTemperature.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classEspTemperature_1a6ffead68c2dd6cf1d96c59927c625545" prot="private" static="no" mutable="yes">
-        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <type><ref refid="PlatformMutex_8h_1a3448b54e0a94193058b38d135c1254ef" kindref="member">PlatformMutex</ref></type>
         <definition>PlatformMutex EspTemperature::mutex_</definition>
         <argsstring></argsstring>
         <name>mutex_</name>
@@ -242,7 +242,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="604" column="38" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="52" bodyend="57"/>
       </memberdef>
       <memberdef kind="variable" id="classEspTemperature_1a50349f2a25b47c680ad6544677e3f693" prot="private" static="yes" mutable="no">
-        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <type><ref refid="PlatformMutex_8h_1a3448b54e0a94193058b38d135c1254ef" kindref="member">PlatformMutex</ref></type>
         <definition>PlatformMutex EspTemperature::s_shared_mutex_</definition>
         <argsstring></argsstring>
         <name>s_shared_mutex_</name>
@@ -1915,8 +1915,8 @@
         </childnode>
       </node>
       <node id="3">
-        <label>PlatformMutex</label>
-        <link refid="classPlatformMutex"/>
+        <label>PlatformMutexImpl&lt; PlatformMutexActiveBackend &gt;</label>
+        <link refid="classPlatformMutexImpl"/>
       </node>
       <node id="5">
         <label>esp_temp_config_t</label>

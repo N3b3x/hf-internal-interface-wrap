@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/EspSpi.h" line="260" column="8" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="260" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspSpiBus_1a707ea256f7b4a767db203d5855bc6c07" prot="private" static="no" mutable="yes">
-        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <type><ref refid="PlatformMutex_8h_1a3448b54e0a94193058b38d135c1254ef" kindref="member">PlatformMutex</ref></type>
         <definition>PlatformMutex EspSpiBus::mutex_</definition>
         <argsstring></argsstring>
         <name>mutex_</name>
@@ -423,8 +423,8 @@
         </childnode>
       </node>
       <node id="3">
-        <label>PlatformMutex</label>
-        <link refid="classPlatformMutex"/>
+        <label>PlatformMutexImpl&lt; PlatformMutexActiveBackend &gt;</label>
+        <link refid="classPlatformMutexImpl"/>
       </node>
       <node id="2">
         <label>hf_spi_bus_config_t</label>

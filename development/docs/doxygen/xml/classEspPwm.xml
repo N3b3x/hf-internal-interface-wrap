@@ -93,7 +93,7 @@
     </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classEspPwm_1a44234a30be061859ee7bf6ffa2d9748b" prot="private" static="no" mutable="yes">
-        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <type><ref refid="PlatformMutex_8h_1a3448b54e0a94193058b38d135c1254ef" kindref="member">PlatformMutex</ref></type>
         <definition>PlatformMutex EspPwm::mutex_</definition>
         <argsstring></argsstring>
         <name>mutex_</name>
@@ -3495,7 +3495,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
 <sect2 id="classEspPwm_1autotoc_md6">
 <title>Key Design Features:</title><para><itemizedlist>
 <listitem><para><bold>Variant-Aware:</bold> Automatically detects and adapts to ESP32 variant capabilities</para>
-</listitem><listitem><para><bold>Thread-Safe:</bold> Full <ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref> protection for concurrent access</para>
+</listitem><listitem><para><bold>Thread-Safe:</bold> Full PlatformMutex protection for concurrent access</para>
 </listitem><listitem><para><bold>Smart Timer Management:</bold> Automatic allocation with conflict resolution</para>
 </listitem><listitem><para><bold>Hardware Fade Support:</bold> Native LEDC fade functionality</para>
 </listitem><listitem><para><bold>Error Recovery:</bold> Comprehensive fault detection and recovery mechanisms</para>
@@ -3551,8 +3551,8 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </childnode>
       </node>
       <node id="5">
-        <label>PlatformMutex</label>
-        <link refid="classPlatformMutex"/>
+        <label>PlatformMutexImpl&lt; PlatformMutexActiveBackend &gt;</label>
+        <link refid="classPlatformMutexImpl"/>
       </node>
       <node id="4">
         <label>hf_pwm_diagnostics_t</label>

@@ -99,7 +99,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="384" column="14" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="384" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPio_1a2d085ce577321dca4a9cb824c27d6128" prot="private" static="no" mutable="yes">
-        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <type><ref refid="PlatformMutex_8h_1a3448b54e0a94193058b38d135c1254ef" kindref="member">PlatformMutex</ref></type>
         <definition>PlatformMutex EspPio::state_mutex_</definition>
         <argsstring></argsstring>
         <name>state_mutex_</name>
@@ -2217,8 +2217,8 @@
         </childnode>
       </node>
       <node id="5">
-        <label>PlatformMutex</label>
-        <link refid="classPlatformMutex"/>
+        <label>PlatformMutexImpl&lt; PlatformMutexActiveBackend &gt;</label>
+        <link refid="classPlatformMutexImpl"/>
       </node>
       <node id="4">
         <label>hf_pio_diagnostics_t</label>

@@ -96,7 +96,7 @@
         <location file="inc/mcu/esp32/EspI2c.h" line="523" column="32" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="523" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1a7ea3e8c3a34b51996caccceab08253d0" prot="private" static="no" mutable="yes">
-        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <type><ref refid="PlatformMutex_8h_1a3448b54e0a94193058b38d135c1254ef" kindref="member">PlatformMutex</ref></type>
         <definition>PlatformMutex EspI2cDevice::mutex_</definition>
         <argsstring></argsstring>
         <name>mutex_</name>
@@ -1687,7 +1687,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
     </briefdescription>
     <detaileddescription>
 <para>Inherits from <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> and delegates operations to the parent bus. Provides full configuration and control for a single I2C device, including per-device clock speed, addressing mode, and ESP-IDF v5.5+ features.</para>
-<para><simplesect kind="note"><para>Thread-safe. All operations are protected by <ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref>. </para>
+<para><simplesect kind="note"><para>Thread-safe. All operations are protected by PlatformMutex. </para>
 </simplesect>
 <simplesect kind="note"><para>Each device maintains its own handle and configuration. </para>
 </simplesect>
@@ -1758,8 +1758,8 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </childnode>
       </node>
       <node id="7">
-        <label>PlatformMutex</label>
-        <link refid="classPlatformMutex"/>
+        <label>PlatformMutexImpl&lt; PlatformMutexActiveBackend &gt;</label>
+        <link refid="classPlatformMutexImpl"/>
       </node>
       <node id="8">
         <label>hf_i2c_device_config_t</label>

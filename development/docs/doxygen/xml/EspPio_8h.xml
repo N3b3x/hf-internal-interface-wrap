@@ -289,8 +289,6 @@
       <node id="34">
         <label>PlatformMutex.h</label>
         <link refid="PlatformMutex_8h"/>
-        <childnode refid="8" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
@@ -594,7 +592,7 @@
 <codeline lineno="382"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="383"><highlight class="normal"></highlight></codeline>
 <codeline lineno="384" refid="classEspPio_1a2cfe917257c8f0d1e35914b545690c6b" refkind="member"><highlight class="normal"><sp/><sp/>std::array&lt;ChannelState,<sp/>MAX_CHANNELS&gt;<sp/><ref refid="classEspPio_1a2cfe917257c8f0d1e35914b545690c6b" kindref="member">channels_</ref>;</highlight></codeline>
-<codeline lineno="385" refid="classEspPio_1a2d085ce577321dca4a9cb824c27d6128" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspPio_1a2d085ce577321dca4a9cb824c27d6128" kindref="member">state_mutex_</ref>;</highlight></codeline>
+<codeline lineno="385" refid="classEspPio_1a2d085ce577321dca4a9cb824c27d6128" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classPlatformMutexImpl" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspPio_1a2d085ce577321dca4a9cb824c27d6128" kindref="member">state_mutex_</ref>;</highlight></codeline>
 <codeline lineno="386"><highlight class="normal"></highlight></codeline>
 <codeline lineno="387"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Global<sp/>statistics<sp/>and<sp/>diagnostics</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="388" refid="classEspPio_1a83171490adbcc59ea168e231a436cf8d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__pio__statistics__t" kindref="compound">hf_pio_statistics_t</ref><sp/><ref refid="classEspPio_1a83171490adbcc59ea168e231a436cf8d" kindref="member">global_statistics_</ref>;</highlight></codeline>

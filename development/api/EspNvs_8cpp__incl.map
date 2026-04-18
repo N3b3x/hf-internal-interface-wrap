@@ -1,38 +1,37 @@
 <map id="src/mcu/esp32/EspNvs.cpp" name="src/mcu/esp32/EspNvs.cpp">
-<area shape="rect" id="Node000001" title="World&#45;class ESP32&#45;C6 NVS implementation with ESP&#45;IDF v5.5+ advanced features." alt="" coords="386,5,628,36"/>
+<area shape="rect" id="Node000001" title="World&#45;class ESP32&#45;C6 NVS implementation with ESP&#45;IDF v5.5+ advanced features." alt="" coords="386,5,627,36"/>
 <area shape="rect" id="Node000002" href="$EspNvs_8h.html" title="World&#45;class ESP32&#45;C6 NVS storage implementation with ESP&#45;IDF v5.5+ features." alt="" coords="364,84,463,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="491,38,443,77,440,73,488,34"/>
-<area shape="rect" id="Node000013" title=" " alt="" coords="630,241,704,272"/>
-<area shape="poly" id="edge23_Node000001_Node000013" title=" " alt="" coords="519,35,652,229,647,232,514,38"/>
-<area shape="rect" id="Node000003" href="$BaseNvs_8h.html" title="Abstract base class for Non&#45;Volatile Storage implementations in the HardFOC system." alt="" coords="496,241,606,272"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="458,113,495,132,528,161,544,194,552,227,546,228,539,196,523,164,492,136,455,117"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="299,399,374,429"/>
-<area shape="poly" id="edge22_Node000002_Node000005" title=" " alt="" coords="364,104,283,111,236,119,186,132,137,150,90,173,49,204,14,243,9,256,9,272,20,304,38,333,52,349,93,368,155,383,286,404,285,410,154,389,92,373,49,353,34,336,15,307,3,272,4,255,10,240,45,200,87,169,134,145,184,127,234,114,283,105,364,98"/>
-<area shape="rect" id="Node000008" href="$PlatformMutex_8h.html" title="Cross&#45;platform RTOS mutex and synchronization primitives." alt="" coords="24,241,179,272"/>
-<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="386,117,143,238,141,233,384,113"/>
-<area shape="rect" id="Node000011" href="$EspTypes__NVS_8h.html" title="ESP32 NVS type definitions for hardware abstraction." alt="" coords="314,163,514,193"/>
-<area shape="poly" id="edge12_Node000002_Node000011" title=" " alt="" coords="416,115,416,149,411,149,411,115"/>
-<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="374,320,536,351"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="534,274,485,313,482,309,531,270"/>
-<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="558,272,563,310,560,332,550,353,528,365,487,378,388,404,386,399,485,373,526,360,546,349,555,331,557,310,553,273"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="611,320,723,351"/>
-<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="574,270,635,310,632,314,571,275"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="434,353,372,393,369,389,431,349"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="423,399,487,429"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="458,351,458,385,452,385,452,351"/>
-<area shape="poly" id="edge11_Node000008_Node000005" title=" " alt="" coords="89,274,75,291,64,311,59,331,65,349,79,360,100,371,158,387,224,399,285,406,285,411,224,404,157,392,98,376,76,365,61,352,53,331,59,309,71,288,85,271"/>
-<area shape="rect" id="Node000009" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="176,320,299,351"/>
-<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="128,270,201,311,199,315,126,275"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="76,320,152,351"/>
-<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="106,272,112,306,107,307,101,273"/>
-<area shape="poly" id="edge13_Node000011_Node000003" title=" " alt="" coords="441,191,514,232,512,237,438,196"/>
-<area shape="poly" id="edge19_Node000011_Node000004" title=" " alt="" coords="421,193,436,241,452,306,447,307,431,242,416,194"/>
-<area shape="poly" id="edge20_Node000011_Node000009" title=" " alt="" coords="319,196,278,214,260,227,245,243,237,257,234,274,234,307,229,307,228,273,232,256,241,240,256,223,275,209,317,191"/>
-<area shape="rect" id="Node000012" href="$EspTypes__Base_8h.html" title="ESP32 base type definitions for hardware abstraction." alt="" coords="254,241,421,272"/>
-<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="401,196,363,233,360,229,397,192"/>
-<area shape="poly" id="edge21_Node000011_Node000013" title=" " alt="" coords="461,191,617,238,616,243,460,196"/>
-<area shape="poly" id="edge16_Node000012_Node000004" title=" " alt="" coords="361,270,423,310,420,314,358,275"/>
-<area shape="poly" id="edge18_Node000012_Node000005" title=" " alt="" coords="340,272,339,385,334,385,335,272"/>
-<area shape="poly" id="edge15_Node000012_Node000009" title=" " alt="" coords="320,274,269,314,266,309,317,270"/>
-<area shape="poly" id="edge17_Node000012_Node000010" title=" " alt="" coords="297,275,165,319,164,314,295,270"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="491,38,443,77,440,73,487,34"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="629,241,704,272"/>
+<area shape="poly" id="edge22_Node000001_Node000013" title=" " alt="" coords="519,35,652,229,647,232,514,38"/>
+<area shape="rect" id="Node000003" href="$BaseNvs_8h.html" title="Abstract base class for Non&#45;Volatile Storage implementations in the HardFOC system." alt="" coords="496,241,605,272"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="457,113,494,132,527,161,544,194,551,227,546,228,539,196,523,164,491,136,455,117"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="147,399,221,429"/>
+<area shape="poly" id="edge21_Node000002_Node000005" title=" " alt="" coords="364,104,283,111,235,119,186,132,136,150,90,173,48,204,14,243,9,256,9,270,19,303,36,332,50,349,69,365,90,378,134,397,132,402,88,382,66,369,46,353,32,335,14,305,3,271,4,255,10,240,45,200,87,169,134,145,184,127,234,114,282,105,363,98"/>
+<area shape="rect" id="Node000008" href="$PlatformMutex_8h.html" title="Cross&#45;platform mutex and synchronization primitives with pluggable backend." alt="" coords="24,241,179,272"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="386,117,143,238,140,233,383,113"/>
+<area shape="rect" id="Node000010" href="$EspTypes__NVS_8h.html" title="ESP32 NVS type definitions for hardware abstraction." alt="" coords="313,163,513,193"/>
+<area shape="poly" id="edge11_Node000002_Node000010" title=" " alt="" coords="416,115,416,149,411,149,411,115"/>
+<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="435,320,597,351"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="546,273,530,309,526,306,542,271"/>
+<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="572,270,592,287,610,308,619,330,617,342,611,353,592,363,556,373,454,390,235,412,235,406,453,384,555,368,590,358,607,349,612,340,613,331,605,310,588,291,569,274"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="672,320,784,351"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="585,270,684,312,681,317,582,275"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="455,353,235,404,234,398,454,348"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="484,399,548,429"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="519,351,519,385,513,385,513,351"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="88,274,73,290,61,310,55,330,60,349,74,367,92,381,134,399,132,404,90,385,70,371,55,352,49,330,56,308,69,287,84,271"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="70,320,146,351"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="105,272,108,306,103,306,100,273"/>
+<area shape="poly" id="edge12_Node000010_Node000003" title=" " alt="" coords="440,191,514,232,511,237,438,196"/>
+<area shape="poly" id="edge18_Node000010_Node000004" title=" " alt="" coords="425,192,501,307,497,310,420,195"/>
+<area shape="rect" id="Node000011" href="$EspTypes__Base_8h.html" title="ESP32 base type definitions for hardware abstraction." alt="" coords="203,241,370,272"/>
+<area shape="poly" id="edge13_Node000010_Node000011" title=" " alt="" coords="391,196,324,236,321,232,388,191"/>
+<area shape="rect" id="Node000012" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="221,320,411,351"/>
+<area shape="poly" id="edge19_Node000010_Node000012" title=" " alt="" coords="413,194,404,231,385,273,368,295,348,313,345,309,364,291,380,271,399,230,408,193"/>
+<area shape="poly" id="edge20_Node000010_Node000013" title=" " alt="" coords="461,191,617,238,615,243,460,196"/>
+<area shape="poly" id="edge15_Node000011_Node000004" title=" " alt="" coords="330,270,461,313,460,318,328,275"/>
+<area shape="poly" id="edge17_Node000011_Node000005" title=" " alt="" coords="263,274,236,294,211,321,197,353,189,386,184,384,192,352,207,319,232,291,260,270"/>
+<area shape="poly" id="edge16_Node000011_Node000009" title=" " alt="" coords="254,275,154,317,152,312,252,270"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="295,271,308,306,303,308,290,273"/>
 </map>

@@ -66,7 +66,7 @@
         <location file="inc/mcu/esp32/EspSpi.h" line="158" column="8" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="158" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspSpiDevice_1a22fd9577e6aaa1ec056206c12c58efe4" prot="private" static="no" mutable="no">
-        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <type><ref refid="PlatformMutex_8h_1a3448b54e0a94193058b38d135c1254ef" kindref="member">PlatformMutex</ref></type>
         <definition>PlatformMutex EspSpiDevice::mutex_</definition>
         <argsstring></argsstring>
         <name>mutex_</name>
@@ -408,7 +408,7 @@
     </briefdescription>
     <detaileddescription>
 <para>Inherits from <ref refid="classBaseSpi" kindref="compound">BaseSpi</ref> and delegates transfers to the parent bus. Provides full configuration and control for a single SPI device, including DMA, queueing, and advanced ESP-IDF v5.5+ features.</para>
-<para><simplesect kind="note"><para>Thread-safe. All operations are protected by <ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref>. </para>
+<para><simplesect kind="note"><para>Thread-safe. All operations are protected by PlatformMutex. </para>
 </simplesect>
 </para>
     </detaileddescription>
@@ -461,8 +461,8 @@
         </childnode>
       </node>
       <node id="7">
-        <label>PlatformMutex</label>
-        <link refid="classPlatformMutex"/>
+        <label>PlatformMutexImpl&lt; PlatformMutexActiveBackend &gt;</label>
+        <link refid="classPlatformMutexImpl"/>
       </node>
       <node id="6">
         <label>hf_spi_bus_config_t</label>

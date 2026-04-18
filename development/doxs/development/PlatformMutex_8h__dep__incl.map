@@ -1,5 +1,5 @@
 <map id="inc/utils/PlatformMutex.h" name="inc/utils/PlatformMutex.h">
-<area shape="rect" id="Node000001" title="Cross&#45;platform RTOS mutex and synchronization primitives." alt="" coords="2989,5,3209,36"/>
+<area shape="rect" id="Node000001" title="Cross&#45;platform mutex and synchronization primitives with pluggable backend." alt="" coords="2989,5,3209,36"/>
 <area shape="rect" id="Node000002" href="$EspBluetooth_8h.html" title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32C6)" alt="" coords="337,84,603,115"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2976,28,914,87,604,96,603,91,914,81,2975,23"/>
 <area shape="rect" id="Node000005" href="$EspCan_8h.html" title="ESP32 CAN (TWAI) implementation for the HardFOC system &#45; ESP&#45;IDF v5.5 Compatible." alt="" coords="927,84,1149,115"/>

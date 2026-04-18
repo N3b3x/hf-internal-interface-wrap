@@ -40,6 +40,8 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
@@ -50,52 +52,44 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>McuSelect.h</label>
-        <link refid="McuSelect_8h"/>
       </node>
       <node id="7">
         <label>utils/PlatformMutex.h</label>
         <link refid="PlatformMutex_8h"/>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="9">
+      <node id="8">
         <label>atomic</label>
       </node>
       <node id="4">
         <label>cstdint</label>
       </node>
-      <node id="10">
+      <node id="9">
         <label>driver/temperature_sensor.h</label>
       </node>
-      <node id="11">
+      <node id="10">
         <label>esp_err.h</label>
       </node>
-      <node id="12">
+      <node id="11">
         <label>esp_log.h</label>
       </node>
-      <node id="13">
+      <node id="12">
         <label>esp_timer.h</label>
       </node>
-      <node id="14">
+      <node id="13">
         <label>freertos/FreeRTOS.h</label>
       </node>
-      <node id="15">
+      <node id="14">
         <label>freertos/task.h</label>
       </node>
-      <node id="16">
+      <node id="15">
         <label>functional</label>
       </node>
       <node id="5">
@@ -636,7 +630,7 @@
 <codeline lineno="498"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>[PRIVATE]<sp/>MEMBER<sp/>VARIABLES</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="499"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="500"><highlight class="normal"></highlight></codeline>
-<codeline lineno="501" refid="classEspTemperature_1a6ffead68c2dd6cf1d96c59927c625545" refkind="member"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspTemperature_1a6ffead68c2dd6cf1d96c59927c625545" kindref="member">mutex_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="501" refid="classEspTemperature_1a6ffead68c2dd6cf1d96c59927c625545" refkind="member"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="classPlatformMutexImpl" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspTemperature_1a6ffead68c2dd6cf1d96c59927c625545" kindref="member">mutex_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="502" refid="classEspTemperature_1ae8aab5a3d2118ef3061ec62c63fc0103" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structesp__temp__state__t" kindref="compound">esp_temp_state_t</ref><sp/><ref refid="classEspTemperature_1ae8aab5a3d2118ef3061ec62c63fc0103" kindref="member">esp_state_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="503" refid="classEspTemperature_1a629744fc883c865e06a3f2369b577175" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structesp__temp__config__t" kindref="compound">esp_temp_config_t</ref><sp/><ref refid="classEspTemperature_1a629744fc883c865e06a3f2369b577175" kindref="member">esp_config_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="504" refid="classEspTemperature_1a2587c0df6c5c4169bbec7d4fa5611917" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__temp__config__t" kindref="compound">hf_temp_config_t</ref><sp/><ref refid="classEspTemperature_1a2587c0df6c5c4169bbec7d4fa5611917" kindref="member">base_config_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
@@ -686,7 +680,7 @@
 <codeline lineno="604"><highlight class="normal"><sp/><sp/>static<sp/>const<sp/><ref refid="structesp__temp__range__info__t" kindref="compound">esp_temp_range_info_t</ref><sp/><ref refid="classEspTemperature_1aa829f22f1d02247e2da26709702812ae" kindref="member">RANGE_INFO</ref>[];<sp/></highlight></codeline>
 <codeline lineno="605"><highlight class="normal"></highlight></codeline>
 <codeline lineno="606"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Global<sp/>shared<sp/>driver<sp/>state<sp/>(ESP-IDF<sp/>temperature<sp/>sensor<sp/>is<sp/>singleton)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="607" refid="classEspTemperature_1a50349f2a25b47c680ad6544677e3f693" refkind="member"><highlight class="normal"><sp/><sp/>static<sp/><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspTemperature_1a50349f2a25b47c680ad6544677e3f693" kindref="member">s_shared_mutex_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="607" refid="classEspTemperature_1a50349f2a25b47c680ad6544677e3f693" refkind="member"><highlight class="normal"><sp/><sp/>static<sp/><ref refid="classPlatformMutexImpl" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspTemperature_1a50349f2a25b47c680ad6544677e3f693" kindref="member">s_shared_mutex_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="608"><highlight class="normal"><sp/><sp/>static<sp/>std::atomic&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/><ref refid="classEspTemperature_1aef85506e203917c06e7d951370f983ad" kindref="member">s_refcount_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="609" refid="classEspTemperature_1acc45986a38969e94e206b1531eedcbac" refkind="member"><highlight class="normal"><sp/><sp/>static<sp/>temperature_sensor_handle_t<sp/><ref refid="classEspTemperature_1acc45986a38969e94e206b1531eedcbac" kindref="member">s_shared_handle_</ref>;<sp/></highlight></codeline>
 <codeline lineno="610"><highlight class="normal">};</highlight></codeline>

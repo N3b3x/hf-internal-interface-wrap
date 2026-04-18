@@ -34,39 +34,39 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>EspTypes_Base.h</label>
-        <link refid="EspTypes__Base_8h"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
       <node id="10">
-        <label>utils/EspTypes_NVS.h</label>
-        <link refid="EspTypes__NVS_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>utils/EspTypes_NVS.h</label>
+        <link refid="EspTypes__NVS_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>McuSelect.h</label>
+      <node id="11">
+        <label>../../utils/McuSelect.h</label>
         <link refid="McuSelect_8h"/>
       </node>
       <node id="7">
@@ -74,12 +74,10 @@
         <link refid="PlatformMutex_8h"/>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="9">
+      <node id="8">
         <label>atomic</label>
       </node>
       <node id="4">
@@ -246,7 +244,7 @@
 <codeline lineno="293" refid="classEspNvs_1a28022b4a28a1934cebe2e10d5099fe54" refkind="member"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="structhf__nvs__diagnostics__t" kindref="compound">hf_nvs_diagnostics_t</ref><sp/><ref refid="classEspNvs_1a28022b4a28a1934cebe2e10d5099fe54" kindref="member">diagnostics_</ref>;<sp/></highlight></codeline>
 <codeline lineno="294"><highlight class="normal"></highlight></codeline>
 <codeline lineno="295"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Thread<sp/>safety</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="296" refid="classEspNvs_1a557fd9219b05531404ba663b340e8cfa" refkind="member"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspNvs_1a557fd9219b05531404ba663b340e8cfa" kindref="member">mutex_</ref>;<sp/></highlight></codeline>
+<codeline lineno="296" refid="classEspNvs_1a557fd9219b05531404ba663b340e8cfa" refkind="member"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="classPlatformMutexImpl" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspNvs_1a557fd9219b05531404ba663b340e8cfa" kindref="member">mutex_</ref>;<sp/></highlight></codeline>
 <codeline lineno="297"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="inc/mcu/esp32/EspNvs.h"/>

@@ -1,0 +1,337 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structNullMutexBackend" kind="struct" language="C++" prot="public">
+    <compoundname>NullMutexBackend</compoundname>
+    <includes refid="PlatformMutex_8h" local="no">PlatformMutex.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structNullMutexBackend_1a21f429e791d9a7fbe98f960bd6c5f9f5" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>using NullMutexBackend::RecursiveMutexHandle =  uint8_t</definition>
+        <argsstring></argsstring>
+        <name>RecursiveMutexHandle</name>
+        <qualifiedname>NullMutexBackend::RecursiveMutexHandle</qualifiedname>
+        <briefdescription>
+<para>Opaque handle for a recursive mutex (1 byte, unused by no-op backend) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="64" column="5" bodyfile="inc/utils/PlatformMutex.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structNullMutexBackend_1a626a22c11595822e794d8611a486811e" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>using NullMutexBackend::MutexHandle =  uint8_t</definition>
+        <argsstring></argsstring>
+        <name>MutexHandle</name>
+        <qualifiedname>NullMutexBackend::MutexHandle</qualifiedname>
+        <briefdescription>
+<para>Opaque handle for a regular (non-recursive) mutex (1 byte, unused) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="66" column="5" bodyfile="inc/utils/PlatformMutex.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structNullMutexBackend_1a2b8667732688763bc985f913d0a16add" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t NullMutexBackend::MAX_DELAY</definition>
+        <argsstring></argsstring>
+        <name>MAX_DELAY</name>
+        <qualifiedname>NullMutexBackend::MAX_DELAY</qualifiedname>
+        <initializer>= 0xFFFFFFFFU</initializer>
+        <briefdescription>
+<para>Infinite wait. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="69" column="31" bodyfile="inc/utils/PlatformMutex.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNullMutexBackend_1ab5390057386e19dd4dab8024246f68b8" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t NullMutexBackend::TICK_RATE_HZ</definition>
+        <argsstring></argsstring>
+        <name>TICK_RATE_HZ</name>
+        <qualifiedname>NullMutexBackend::TICK_RATE_HZ</qualifiedname>
+        <initializer>= 1000U</initializer>
+        <briefdescription>
+<para>Assumed tick rate. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="70" column="31" bodyfile="inc/utils/PlatformMutex.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structNullMutexBackend_1a937bfd87c256d66122f4006fcd98c831" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr void</type>
+        <definition>static constexpr void NullMutexBackend::createRecursive</definition>
+        <argsstring>(RecursiveMutexHandle *) noexcept</argsstring>
+        <name>createRecursive</name>
+        <qualifiedname>NullMutexBackend::createRecursive</qualifiedname>
+        <param>
+          <type><ref refid="structNullMutexBackend_1a21f429e791d9a7fbe98f960bd6c5f9f5" kindref="member">RecursiveMutexHandle</ref> *</type>
+        </param>
+        <briefdescription>
+<para>Create a recursive mutex. Backend writes into *h. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="74" column="27" bodyfile="inc/utils/PlatformMutex.h" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="structNullMutexBackend_1afeb7b8c41e2fe964b2e690188a6acbdc" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr void</type>
+        <definition>static constexpr void NullMutexBackend::destroyRecursive</definition>
+        <argsstring>(RecursiveMutexHandle *) noexcept</argsstring>
+        <name>destroyRecursive</name>
+        <qualifiedname>NullMutexBackend::destroyRecursive</qualifiedname>
+        <param>
+          <type><ref refid="structNullMutexBackend_1a21f429e791d9a7fbe98f960bd6c5f9f5" kindref="member">RecursiveMutexHandle</ref> *</type>
+        </param>
+        <briefdescription>
+<para>Destroy a recursive mutex pointed to by *h. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="76" column="27" bodyfile="inc/utils/PlatformMutex.h" bodystart="76" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="structNullMutexBackend_1ae1e4064ecbb884a82018a134eb5a897d" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>static constexpr bool NullMutexBackend::lockRecursive</definition>
+        <argsstring>(RecursiveMutexHandle *, uint32_t) noexcept</argsstring>
+        <name>lockRecursive</name>
+        <qualifiedname>NullMutexBackend::lockRecursive</qualifiedname>
+        <param>
+          <type><ref refid="structNullMutexBackend_1a21f429e791d9a7fbe98f960bd6c5f9f5" kindref="member">RecursiveMutexHandle</ref> *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+        </param>
+        <briefdescription>
+<para>Lock recursively with timeout (ticks). Returns true on success. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="78" column="27" bodyfile="inc/utils/PlatformMutex.h" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="structNullMutexBackend_1ad5a3feacb3a1f8dc01cd3e96bd77c607" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>static constexpr bool NullMutexBackend::tryLockRecursive</definition>
+        <argsstring>(RecursiveMutexHandle *) noexcept</argsstring>
+        <name>tryLockRecursive</name>
+        <qualifiedname>NullMutexBackend::tryLockRecursive</qualifiedname>
+        <param>
+          <type><ref refid="structNullMutexBackend_1a21f429e791d9a7fbe98f960bd6c5f9f5" kindref="member">RecursiveMutexHandle</ref> *</type>
+        </param>
+        <briefdescription>
+<para>Try lock (non-blocking). Returns true on success. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="80" column="27" bodyfile="inc/utils/PlatformMutex.h" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="structNullMutexBackend_1a78c20173ade0f09e7af899e90e873ed1" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr void</type>
+        <definition>static constexpr void NullMutexBackend::unlockRecursive</definition>
+        <argsstring>(RecursiveMutexHandle *) noexcept</argsstring>
+        <name>unlockRecursive</name>
+        <qualifiedname>NullMutexBackend::unlockRecursive</qualifiedname>
+        <param>
+          <type><ref refid="structNullMutexBackend_1a21f429e791d9a7fbe98f960bd6c5f9f5" kindref="member">RecursiveMutexHandle</ref> *</type>
+        </param>
+        <briefdescription>
+<para>Unlock recursive mutex. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="82" column="27" bodyfile="inc/utils/PlatformMutex.h" bodystart="82" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="structNullMutexBackend_1ab0b9cb0474e2ffe22a961194b2b8e804" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr void</type>
+        <definition>static constexpr void NullMutexBackend::createMutex</definition>
+        <argsstring>(MutexHandle *) noexcept</argsstring>
+        <name>createMutex</name>
+        <qualifiedname>NullMutexBackend::createMutex</qualifiedname>
+        <param>
+          <type><ref refid="structNullMutexBackend_1a626a22c11595822e794d8611a486811e" kindref="member">MutexHandle</ref> *</type>
+        </param>
+        <briefdescription>
+<para>Create a regular (non-recursive) mutex. Backend writes into *h. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="86" column="27" bodyfile="inc/utils/PlatformMutex.h" bodystart="86" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="structNullMutexBackend_1a6af250f79bd775eb7ddae3e701e33668" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr void</type>
+        <definition>static constexpr void NullMutexBackend::destroyMutex</definition>
+        <argsstring>(MutexHandle *) noexcept</argsstring>
+        <name>destroyMutex</name>
+        <qualifiedname>NullMutexBackend::destroyMutex</qualifiedname>
+        <param>
+          <type><ref refid="structNullMutexBackend_1a626a22c11595822e794d8611a486811e" kindref="member">MutexHandle</ref> *</type>
+        </param>
+        <briefdescription>
+<para>Destroy a regular mutex pointed to by *h. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="88" column="27" bodyfile="inc/utils/PlatformMutex.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="structNullMutexBackend_1a4e538989d9e17fe275c7a1f39db11965" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>static constexpr bool NullMutexBackend::lockMutex</definition>
+        <argsstring>(MutexHandle *, uint32_t) noexcept</argsstring>
+        <name>lockMutex</name>
+        <qualifiedname>NullMutexBackend::lockMutex</qualifiedname>
+        <param>
+          <type><ref refid="structNullMutexBackend_1a626a22c11595822e794d8611a486811e" kindref="member">MutexHandle</ref> *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+        </param>
+        <briefdescription>
+<para>Lock with timeout (ticks). Returns true on success. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="90" column="27" bodyfile="inc/utils/PlatformMutex.h" bodystart="90" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="structNullMutexBackend_1abda2aa2e7aac56a65621014ca3d22662" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>static constexpr bool NullMutexBackend::tryLockMutex</definition>
+        <argsstring>(MutexHandle *) noexcept</argsstring>
+        <name>tryLockMutex</name>
+        <qualifiedname>NullMutexBackend::tryLockMutex</qualifiedname>
+        <param>
+          <type><ref refid="structNullMutexBackend_1a626a22c11595822e794d8611a486811e" kindref="member">MutexHandle</ref> *</type>
+        </param>
+        <briefdescription>
+<para>Try lock (non-blocking). Returns true on success. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="92" column="27" bodyfile="inc/utils/PlatformMutex.h" bodystart="92" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="structNullMutexBackend_1a5a728b894a38c860d3d96c5413f84502" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr void</type>
+        <definition>static constexpr void NullMutexBackend::unlockMutex</definition>
+        <argsstring>(MutexHandle *) noexcept</argsstring>
+        <name>unlockMutex</name>
+        <qualifiedname>NullMutexBackend::unlockMutex</qualifiedname>
+        <param>
+          <type><ref refid="structNullMutexBackend_1a626a22c11595822e794d8611a486811e" kindref="member">MutexHandle</ref> *</type>
+        </param>
+        <briefdescription>
+<para>Unlock regular mutex. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="94" column="27" bodyfile="inc/utils/PlatformMutex.h" bodystart="94" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="structNullMutexBackend_1afaa669fd91d19ca6b790b74650031708" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr uint32_t</type>
+        <definition>static constexpr uint32_t NullMutexBackend::getTickCount</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>getTickCount</name>
+        <qualifiedname>NullMutexBackend::getTickCount</qualifiedname>
+        <briefdescription>
+<para>Get current RTOS tick count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="98" column="31" bodyfile="inc/utils/PlatformMutex.h" bodystart="98" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="structNullMutexBackend_1a49290ba91fee448733d3b184c58b586c" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr uint32_t</type>
+        <definition>static constexpr uint32_t NullMutexBackend::msToTicks</definition>
+        <argsstring>(uint32_t ms) noexcept</argsstring>
+        <name>msToTicks</name>
+        <qualifiedname>NullMutexBackend::msToTicks</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>ms</declname>
+        </param>
+        <briefdescription>
+<para>Convert milliseconds to RTOS ticks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="100" column="31" bodyfile="inc/utils/PlatformMutex.h" bodystart="100" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="structNullMutexBackend_1ae4af09a2f1c352ffc802cb3eb3d56f9d" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr void</type>
+        <definition>static constexpr void NullMutexBackend::yield</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>yield</name>
+        <qualifiedname>NullMutexBackend::yield</qualifiedname>
+        <briefdescription>
+<para>Yield to other tasks (no-op in single-threaded). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="102" column="27" bodyfile="inc/utils/PlatformMutex.h" bodystart="102" bodyend="102"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>No-op mutex backend <ndash/> all operations compile to nothing. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This is the default backend when no RTOS or threading support is configured. Handle types are minimal (uint8_t) so mutex members occupy a single byte. Every operation is constexpr / inline and produces no machine code.</para>
+<para>This struct also serves as the DOCUMENTATION of the backend contract: any concrete backend must provide the exact same set of static methods with compatible signatures. </para>
+    </detaileddescription>
+    <location file="inc/utils/PlatformMutex.h" line="61" column="1" bodyfile="inc/utils/PlatformMutex.h" bodystart="61" bodyend="103"/>
+    <listofallmembers>
+      <member refid="structNullMutexBackend_1ab0b9cb0474e2ffe22a961194b2b8e804" prot="public" virt="non-virtual"><scope>NullMutexBackend</scope><name>createMutex</name></member>
+      <member refid="structNullMutexBackend_1a937bfd87c256d66122f4006fcd98c831" prot="public" virt="non-virtual"><scope>NullMutexBackend</scope><name>createRecursive</name></member>
+      <member refid="structNullMutexBackend_1a6af250f79bd775eb7ddae3e701e33668" prot="public" virt="non-virtual"><scope>NullMutexBackend</scope><name>destroyMutex</name></member>
+      <member refid="structNullMutexBackend_1afeb7b8c41e2fe964b2e690188a6acbdc" prot="public" virt="non-virtual"><scope>NullMutexBackend</scope><name>destroyRecursive</name></member>
+      <member refid="structNullMutexBackend_1afaa669fd91d19ca6b790b74650031708" prot="public" virt="non-virtual"><scope>NullMutexBackend</scope><name>getTickCount</name></member>
+      <member refid="structNullMutexBackend_1a4e538989d9e17fe275c7a1f39db11965" prot="public" virt="non-virtual"><scope>NullMutexBackend</scope><name>lockMutex</name></member>
+      <member refid="structNullMutexBackend_1ae1e4064ecbb884a82018a134eb5a897d" prot="public" virt="non-virtual"><scope>NullMutexBackend</scope><name>lockRecursive</name></member>
+      <member refid="structNullMutexBackend_1a2b8667732688763bc985f913d0a16add" prot="public" virt="non-virtual"><scope>NullMutexBackend</scope><name>MAX_DELAY</name></member>
+      <member refid="structNullMutexBackend_1a49290ba91fee448733d3b184c58b586c" prot="public" virt="non-virtual"><scope>NullMutexBackend</scope><name>msToTicks</name></member>
+      <member refid="structNullMutexBackend_1a626a22c11595822e794d8611a486811e" prot="public" virt="non-virtual"><scope>NullMutexBackend</scope><name>MutexHandle</name></member>
+      <member refid="structNullMutexBackend_1a21f429e791d9a7fbe98f960bd6c5f9f5" prot="public" virt="non-virtual"><scope>NullMutexBackend</scope><name>RecursiveMutexHandle</name></member>
+      <member refid="structNullMutexBackend_1ab5390057386e19dd4dab8024246f68b8" prot="public" virt="non-virtual"><scope>NullMutexBackend</scope><name>TICK_RATE_HZ</name></member>
+      <member refid="structNullMutexBackend_1abda2aa2e7aac56a65621014ca3d22662" prot="public" virt="non-virtual"><scope>NullMutexBackend</scope><name>tryLockMutex</name></member>
+      <member refid="structNullMutexBackend_1ad5a3feacb3a1f8dc01cd3e96bd77c607" prot="public" virt="non-virtual"><scope>NullMutexBackend</scope><name>tryLockRecursive</name></member>
+      <member refid="structNullMutexBackend_1a5a728b894a38c860d3d96c5413f84502" prot="public" virt="non-virtual"><scope>NullMutexBackend</scope><name>unlockMutex</name></member>
+      <member refid="structNullMutexBackend_1a78c20173ade0f09e7af899e90e873ed1" prot="public" virt="non-virtual"><scope>NullMutexBackend</scope><name>unlockRecursive</name></member>
+      <member refid="structNullMutexBackend_1ae4af09a2f1c352ffc802cb3eb3d56f9d" prot="public" virt="non-virtual"><scope>NullMutexBackend</scope><name>yield</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

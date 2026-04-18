@@ -42,11 +42,11 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
@@ -54,11 +54,11 @@
       <node id="12">
         <label>EspTypes_Base.h</label>
         <link refid="EspTypes__Base_8h"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -72,33 +72,31 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="11">
+      <node id="10">
         <label>utils/EspTypes_PWM.h</label>
         <link refid="EspTypes__PWM_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="9">
-        <label>McuSelect.h</label>
+      <node id="11">
+        <label>../../../utils/McuSelect.h</label>
         <link refid="McuSelect_8h"/>
       </node>
       <node id="8">
         <label>PlatformMutex.h</label>
         <link refid="PlatformMutex_8h"/>
         <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -121,7 +119,7 @@
       <node id="15">
         <label>array</label>
       </node>
-      <node id="10">
+      <node id="9">
         <label>atomic</label>
       </node>
       <node id="5">
@@ -169,7 +167,7 @@
 <listitem><para><bold>Variant-Agnostic Design:</bold> Automatic adaptation to ESP32 variant capabilities</para>
 </listitem><listitem><para><bold>LEDC Peripheral Integration:</bold> Full utilization of hardware fade, timer sharing, and interrupts</para>
 </listitem><listitem><para><bold>Smart Resource Management:</bold> Automatic timer allocation with conflict resolution and eviction policies</para>
-</listitem><listitem><para><bold>Thread-Safe Operations:</bold> Complete <ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref> protection for concurrent access</para>
+</listitem><listitem><para><bold>Thread-Safe Operations:</bold> Complete PlatformMutex protection for concurrent access</para>
 </listitem><listitem><para><bold>Comprehensive Validation:</bold> Hardware constraint validation with detailed error reporting</para>
 </listitem><listitem><para><bold>Performance Optimization:</bold> Efficient timer sharing and minimal overhead design</para>
 </listitem><listitem><para><bold>Motor Control Features:</bold> Complementary outputs, deadtime, and synchronized operations</para>

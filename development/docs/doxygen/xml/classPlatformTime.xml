@@ -11,16 +11,20 @@
         <name>GetCurrentTimeUs</name>
         <qualifiedname>PlatformTime::GetCurrentTimeUs</qualifiedname>
         <briefdescription>
+<para>Get current time in microseconds (from RTOS tick count). </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>Microseconds since RTOS start, or 0 if no RTOS. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="65" column="19" bodyfile="inc/utils/PlatformMutex.h" bodystart="65" bodyend="67"/>
+        <location file="inc/utils/PlatformMutex.h" line="139" column="21" bodyfile="inc/utils/PlatformMutex.h" bodystart="139" bodyend="144"/>
       </memberdef>
-      <memberdef kind="function" id="classPlatformTime_1a14b850d58c7deb0bb81c72f06490a4c4" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>TickType_t</type>
-        <definition>static TickType_t PlatformTime::MsToTicks</definition>
+      <memberdef kind="function" id="classPlatformTime_1a8cff669a89cba4fa58a44687ec3ce4d4" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>static uint32_t PlatformTime::MsToTicks</definition>
         <argsstring>(uint32_t ms) noexcept</argsstring>
         <name>MsToTicks</name>
         <qualifiedname>PlatformTime::MsToTicks</qualifiedname>
@@ -29,22 +33,23 @@
           <declname>ms</declname>
         </param>
         <briefdescription>
+<para>Convert milliseconds to RTOS ticks (minimum 1 tick for non-zero input). </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="69" column="21" bodyfile="inc/utils/PlatformMutex.h" bodystart="69" bodyend="75"/>
+        <location file="inc/utils/PlatformMutex.h" line="149" column="21" bodyfile="inc/utils/PlatformMutex.h" bodystart="149" bodyend="153"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/utils/PlatformMutex.h" line="63" column="1" bodyfile="inc/utils/PlatformMutex.h" bodystart="63" bodyend="76"/>
+    <location file="inc/utils/PlatformMutex.h" line="133" column="1" bodyfile="inc/utils/PlatformMutex.h" bodystart="133" bodyend="154"/>
     <listofallmembers>
       <member refid="classPlatformTime_1adfd9d6d2d3429c90ead4430ba565bce9" prot="public" virt="non-virtual"><scope>PlatformTime</scope><name>GetCurrentTimeUs</name></member>
-      <member refid="classPlatformTime_1a14b850d58c7deb0bb81c72f06490a4c4" prot="public" virt="non-virtual"><scope>PlatformTime</scope><name>MsToTicks</name></member>
+      <member refid="classPlatformTime_1a8cff669a89cba4fa58a44687ec3ce4d4" prot="public" virt="non-virtual"><scope>PlatformTime</scope><name>MsToTicks</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -43,6 +43,8 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
@@ -51,24 +53,16 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>McuSelect.h</label>
-        <link refid="McuSelect_8h"/>
       </node>
       <node id="10">
         <label>utils/PlatformMutex.h</label>
         <link refid="PlatformMutex_8h"/>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="12">
+      <node id="11">
         <label>atomic</label>
       </node>
       <node id="6">
@@ -77,7 +71,7 @@
       <node id="4">
         <label>cstdint</label>
       </node>
-      <node id="13">
+      <node id="12">
         <label>cstring</label>
       </node>
       <node id="7">
@@ -86,10 +80,10 @@
       <node id="5">
         <label>limits</label>
       </node>
-      <node id="14">
+      <node id="13">
         <label>map</label>
       </node>
-      <node id="15">
+      <node id="14">
         <label>memory</label>
       </node>
       <node id="8">
@@ -98,7 +92,7 @@
       <node id="9">
         <label>string_view</label>
       </node>
-      <node id="16">
+      <node id="15">
         <label>vector</label>
       </node>
     </incdepgraph>
@@ -276,7 +270,7 @@
 <codeline lineno="424"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>MEMBERS</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="425"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="426"><highlight class="normal"></highlight></codeline>
-<codeline lineno="427"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref><sp/>mutex_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="classPlatformMutexImpl" kindref="compound">PlatformMutex</ref><sp/>mutex_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="428"><highlight class="normal"><sp/><sp/>std::atomic&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">&gt;<sp/>initialized_;<sp/></highlight></codeline>
 <codeline lineno="429"><highlight class="normal"><sp/><sp/>std::atomic&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">&gt;<sp/>healthy_;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="430"><highlight class="normal"></highlight></codeline>

@@ -46,7 +46,7 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 677;
+var viewWidth = 701;
 var viewHeight = 338;
 var sectionId = 'dynsection-1';
 </script>
@@ -58,8 +58,8 @@ var sectionId = 'dynsection-1';
 <g id="Node000001" class="node">
 <title>Node1</title>
 <g id="a_Node000001"><a xlink:title="Represents a single I2C device on a bus.">
-<polygon fill="#999999" stroke="#666666" points="669,-195 570,-195 570,-172 669,-172 669,-195"/>
-<text text-anchor="middle" x="619.5" y="-179.8" font-family="Arial" font-size="14.00">EspI2cDevice</text>
+<polygon fill="#999999" stroke="#666666" points="693,-195 594,-195 594,-172 693,-172 693,-195"/>
+<text text-anchor="middle" x="643.5" y="-179.8" font-family="Arial" font-size="14.00">EspI2cDevice</text>
 </a>
 </g>
 </g>
@@ -67,8 +67,8 @@ var sectionId = 'dynsection-1';
 <g id="Node000002" class="node">
 <title>Node2</title>
 <g id="a_Node000002"><a xlink:href="classBaseI2c.html" target="_top" xlink:title="Abstract base class for I2C device implementations.">
-<polygon fill="white" stroke="#666666" points="410.5,-255 345.5,-255 345.5,-232 410.5,-232 410.5,-255"/>
-<text text-anchor="middle" x="378" y="-239.8" font-family="Arial" font-size="14.00">BaseI2c</text>
+<polygon fill="white" stroke="#666666" points="434.5,-255 369.5,-255 369.5,-232 434.5,-232 434.5,-255"/>
+<text text-anchor="middle" x="402" y="-239.8" font-family="Arial" font-size="14.00">BaseI2c</text>
 </a>
 </g>
 </g>
@@ -76,8 +76,8 @@ var sectionId = 'dynsection-1';
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node2&#45;&gt;Node1</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M420.76,-238.8C456.21,-234.16 508.15,-225.79 552,-212.5 566.95,-207.97 583.02,-201.02 595.61,-195.07"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="420.25,-235.34 410.77,-240.07 421.14,-242.28 420.25,-235.34"/>
+<path fill="none" stroke="#63b8ff" d="M444.76,-238.8C480.21,-234.16 532.15,-225.79 576,-212.5 590.95,-207.97 607.02,-201.02 619.61,-195.07"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="444.25,-235.34 434.77,-240.07 445.14,-242.28 444.25,-235.34"/>
 </a>
 </g>
 </g>
@@ -85,8 +85,8 @@ var sectionId = 'dynsection-1';
 <g id="Node000003" class="node">
 <title>Node3</title>
 <g id="a_Node000003"><a xlink:href="structhf__i2c__statistics__t.html" target="_top" xlink:title="I2C operation statistics.">
-<polygon fill="white" stroke="#666666" points="154.5,-319 31.5,-319 31.5,-296 154.5,-296 154.5,-319"/>
-<text text-anchor="middle" x="93" y="-303.8" font-family="Arial" font-size="14.00">hf_i2c_statistics_t</text>
+<polygon fill="white" stroke="#666666" points="166.5,-319 43.5,-319 43.5,-296 166.5,-296 166.5,-319"/>
+<text text-anchor="middle" x="105" y="-303.8" font-family="Arial" font-size="14.00">hf_i2c_statistics_t</text>
 </a>
 </g>
 </g>
@@ -94,28 +94,28 @@ var sectionId = 'dynsection-1';
 <g id="edge10_Node000001_Node000003" class="edge">
 <title>Node3&#45;&gt;Node1</title>
 <g id="a_edge10_Node000001_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M165.02,-318.62C200.61,-322.43 244.26,-324.41 283,-318.5 406.82,-299.62 440.82,-292.17 552,-234.5 572.67,-223.78 593.48,-206.54 606.18,-195.12"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="165.07,-315.11 154.73,-317.45 164.27,-322.06 165.07,-315.11"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M176.68,-318.43C215.36,-322.64 264.03,-325.05 307,-318.5 430.82,-299.62 464.82,-292.17 576,-234.5 596.67,-223.78 617.48,-206.54 630.18,-195.12"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="176.9,-314.93 166.56,-317.26 176.09,-321.89 176.9,-314.93"/>
 </a>
 </g>
-<text text-anchor="middle" x="378" y="-318.3" font-family="Arial" font-size="14.00" fill="grey"> statistics_</text>
+<text text-anchor="middle" x="402" y="-318.3" font-family="Arial" font-size="14.00" fill="grey"> statistics_</text>
 </g>
 <!-- Node3&#45;&gt;Node2 -->
 <g id="edge2_Node000002_Node000003" class="edge">
 <title>Node3&#45;&gt;Node2</title>
 <g id="a_edge2_Node000002_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M165.27,-304.34C201.09,-301.46 244.87,-295.97 283,-285.5 309.2,-278.3 337.43,-264.85 356.04,-255.1"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="164.61,-300.88 154.9,-305.11 165.14,-307.86 164.61,-300.88"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M176.91,-305.12C215.85,-302.48 264.7,-296.96 307,-285.5 333.22,-278.39 361.45,-264.92 380.05,-255.14"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="176.48,-301.64 166.72,-305.76 176.92,-308.62 176.48,-301.64"/>
 </a>
 </g>
-<text text-anchor="middle" x="243.5" y="-303.3" font-family="Arial" font-size="14.00" fill="grey"> statistics_</text>
+<text text-anchor="middle" x="267.5" y="-303.3" font-family="Arial" font-size="14.00" fill="grey"> statistics_</text>
 </g>
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
 <g id="a_Node000005"><a xlink:href="classEspI2cBus.html" target="_top" xlink:title="Manages a single I2C bus. Handles bus initialization and device creation.">
-<polygon fill="white" stroke="#666666" points="418.5,-162 337.5,-162 337.5,-139 418.5,-139 418.5,-162"/>
-<text text-anchor="middle" x="378" y="-146.8" font-family="Arial" font-size="14.00">EspI2cBus</text>
+<polygon fill="white" stroke="#666666" points="442.5,-162 361.5,-162 361.5,-139 442.5,-139 442.5,-162"/>
+<text text-anchor="middle" x="402" y="-146.8" font-family="Arial" font-size="14.00">EspI2cBus</text>
 </a>
 </g>
 </g>
@@ -123,18 +123,18 @@ var sectionId = 'dynsection-1';
 <g id="edge7_Node000005_Node000003" class="edge">
 <title>Node3&#45;&gt;Node5</title>
 <g id="a_edge7_Node000005_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M132.18,-292.1C153.18,-283.93 179.81,-274.04 204,-266.5 238.58,-255.71 257.34,-272.06 283,-246.5 305.76,-223.83 279.19,-200.08 301,-176.5 310.47,-166.26 324.14,-160.06 337.28,-156.29"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="130.68,-288.93 122.65,-295.84 133.24,-295.45 130.68,-288.93"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M147.5,-292.54C170.97,-284.34 200.94,-274.28 228,-266.5 262.7,-256.52 281.31,-272.88 307,-247.5 330.16,-224.62 302.94,-200.44 325,-176.5 334.45,-166.25 348.12,-160.04 361.26,-156.28"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="146.14,-289.31 137.87,-295.93 148.46,-295.91 146.14,-289.31"/>
 </a>
 </g>
-<text text-anchor="middle" x="243.5" y="-270.3" font-family="Arial" font-size="14.00" fill="grey"> statistics_</text>
+<text text-anchor="middle" x="267.5" y="-270.3" font-family="Arial" font-size="14.00" fill="grey"> statistics_</text>
 </g>
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
 <g id="a_Node000004"><a xlink:href="structhf__i2c__diagnostics__t.html" target="_top" xlink:title="I2C diagnostic information.">
-<polygon fill="white" stroke="#666666" points="162.5,-210 23.5,-210 23.5,-187 162.5,-187 162.5,-210"/>
-<text text-anchor="middle" x="93" y="-194.8" font-family="Arial" font-size="14.00">hf_i2c_diagnostics_t</text>
+<polygon fill="white" stroke="#666666" points="174.5,-210 35.5,-210 35.5,-187 174.5,-187 174.5,-210"/>
+<text text-anchor="middle" x="105" y="-194.8" font-family="Arial" font-size="14.00">hf_i2c_diagnostics_t</text>
 </a>
 </g>
 </g>
@@ -142,48 +142,48 @@ var sectionId = 'dynsection-1';
 <g id="edge11_Node000001_Node000004" class="edge">
 <title>Node4&#45;&gt;Node1</title>
 <g id="a_edge11_Node000001_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M172.61,-196.25C282.53,-193.11 478.89,-187.49 569.82,-184.89"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="172.47,-192.75 162.57,-196.54 172.67,-199.75 172.47,-192.75"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M185.05,-196.29C297.7,-193.14 501.05,-187.45 593.9,-184.86"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="184.66,-192.8 174.77,-196.58 184.86,-199.8 184.66,-192.8"/>
 </a>
 </g>
-<text text-anchor="middle" x="378" y="-195.3" font-family="Arial" font-size="14.00" fill="grey"> diagnostics_</text>
+<text text-anchor="middle" x="402" y="-195.3" font-family="Arial" font-size="14.00" fill="grey"> diagnostics_</text>
 </g>
 <!-- Node4&#45;&gt;Node2 -->
 <g id="edge3_Node000002_Node000004" class="edge">
 <title>Node4&#45;&gt;Node2</title>
 <g id="a_edge3_Node000002_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M172.58,-211C229.6,-220.06 303.73,-231.85 345.24,-238.45"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="172.93,-207.51 162.51,-209.39 171.83,-214.42 172.93,-207.51"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M184.69,-210.5C245.14,-219.72 325.45,-231.98 369.23,-238.65"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="185.21,-207.04 174.79,-208.99 184.15,-213.96 185.21,-207.04"/>
 </a>
 </g>
-<text text-anchor="middle" x="243.5" y="-231.3" font-family="Arial" font-size="14.00" fill="grey"> diagnostics_</text>
+<text text-anchor="middle" x="267.5" y="-232.3" font-family="Arial" font-size="14.00" fill="grey"> diagnostics_</text>
 </g>
 <!-- Node4&#45;&gt;Node5 -->
 <g id="edge8_Node000005_Node000004" class="edge">
 <title>Node4&#45;&gt;Node5</title>
 <g id="a_edge8_Node000005_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M141.83,-184.24C161.01,-178.95 183.41,-173.32 204,-169.5 249.3,-161.09 302.02,-155.96 337.25,-153.18"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="140.8,-180.89 132.12,-186.96 142.69,-187.63 140.8,-180.89"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M158.52,-184.51C179.95,-179.2 205.04,-173.47 228,-169.5 273.4,-161.64 326.1,-156.4 361.3,-153.45"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="157.49,-181.16 148.64,-186.99 159.19,-187.95 157.49,-181.16"/>
 </a>
 </g>
-<text text-anchor="middle" x="243.5" y="-173.3" font-family="Arial" font-size="14.00" fill="grey"> diagnostics_</text>
+<text text-anchor="middle" x="267.5" y="-173.3" font-family="Arial" font-size="14.00" fill="grey"> diagnostics_</text>
 </g>
 <!-- Node5&#45;&gt;Node1 -->
 <g id="edge4_Node000001_Node000005" class="edge">
 <title>Node5&#45;&gt;Node1</title>
 <g id="a_edge4_Node000001_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M428.99,-154.68C463.63,-157.9 510.76,-162.91 552,-169.5 557.83,-170.43 563.91,-171.53 569.94,-172.7"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="428.93,-151.16 418.66,-153.74 428.3,-158.13 428.93,-151.16"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M452.99,-154.68C487.63,-157.9 534.76,-162.91 576,-169.5 581.83,-170.43 587.91,-171.53 593.94,-172.7"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="452.93,-151.16 442.66,-153.74 452.3,-158.13 452.93,-151.16"/>
 </a>
 </g>
-<text text-anchor="middle" x="512.5" y="-173.3" font-family="Arial" font-size="14.00" fill="grey"> parent_bus_</text>
+<text text-anchor="middle" x="536.5" y="-173.3" font-family="Arial" font-size="14.00" fill="grey"> parent_bus_</text>
 </g>
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
 <g id="a_Node000006"><a xlink:href="structhf__i2c__master__bus__config__t.html" target="_top" xlink:title="I2C master bus configuration structure.">
-<polygon fill="white" stroke="#666666" points="186,-142 0,-142 0,-119 186,-119 186,-142"/>
-<text text-anchor="middle" x="93" y="-126.8" font-family="Arial" font-size="14.00">hf_i2c_master_bus_config_t</text>
+<polygon fill="white" stroke="#666666" points="198,-142 12,-142 12,-119 198,-119 198,-142"/>
+<text text-anchor="middle" x="105" y="-126.8" font-family="Arial" font-size="14.00">hf_i2c_master_bus_config_t</text>
 </a>
 </g>
 </g>
@@ -191,18 +191,19 @@ var sectionId = 'dynsection-1';
 <g id="edge5_Node000005_Node000006" class="edge">
 <title>Node6&#45;&gt;Node5</title>
 <g id="a_edge5_Node000005_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M196.7,-127.42C224.74,-127.57 255.09,-128.63 283,-131.5 301.05,-133.35 320.77,-137.07 337.47,-140.73"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="196.48,-123.92 186.48,-127.41 196.47,-130.92 196.48,-123.92"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M208.19,-127.17C239.92,-127.17 274.97,-128.21 307,-131.5 325.05,-133.35 344.77,-137.07 361.47,-140.73"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="208,-123.67 198.01,-127.21 208.02,-130.67 208,-123.67"/>
 </a>
 </g>
-<text text-anchor="middle" x="243.5" y="-135.3" font-family="Arial" font-size="14.00" fill="grey"> config_</text>
+<text text-anchor="middle" x="267.5" y="-135.3" font-family="Arial" font-size="14.00" fill="grey"> config_</text>
 </g>
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
-<g id="a_Node000007"><a xlink:href="classPlatformMutex.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="145.5,-86 40.5,-86 40.5,-63 145.5,-63 145.5,-86"/>
-<text text-anchor="middle" x="93" y="-70.8" font-family="Arial" font-size="14.00">PlatformMutex</text>
+<g id="a_Node000007"><a xlink:href="classPlatformMutexImpl.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="210,-89.5 0,-89.5 0,-51.5 210,-51.5 210,-89.5"/>
+<text text-anchor="start" x="8" y="-74.3" font-family="Arial" font-size="14.00">PlatformMutexImpl&lt;</text>
+<text text-anchor="middle" x="105" y="-59.3" font-family="Arial" font-size="14.00"> PlatformMutexActiveBackend &gt;</text>
 </a>
 </g>
 </g>
@@ -210,28 +211,28 @@ var sectionId = 'dynsection-1';
 <g id="edge12_Node000001_Node000007" class="edge">
 <title>Node7&#45;&gt;Node1</title>
 <g id="a_edge12_Node000001_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M155.94,-75.29C228.84,-77.64 352.89,-86.1 455,-115.5 506.85,-130.43 564.45,-156.85 595.55,-171.98"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="155.66,-71.78 145.57,-74.99 155.46,-78.78 155.66,-71.78"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M220.66,-74.84C295.42,-79.97 394.44,-91.16 479,-115.5 530.85,-130.43 588.45,-156.85 619.55,-171.98"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="220.49,-71.32 210.28,-74.16 220.03,-78.31 220.49,-71.32"/>
 </a>
 </g>
-<text text-anchor="middle" x="378" y="-119.3" font-family="Arial" font-size="14.00" fill="grey"> mutex_</text>
+<text text-anchor="middle" x="402" y="-119.3" font-family="Arial" font-size="14.00" fill="grey"> mutex_</text>
 </g>
 <!-- Node7&#45;&gt;Node5 -->
 <g id="edge6_Node000005_Node000007" class="edge">
 <title>Node7&#45;&gt;Node5</title>
 <g id="a_edge6_Node000005_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M156.01,-81.26C193.36,-86.32 241.56,-94.64 283,-107.5 309.05,-115.59 337.31,-129.23 355.96,-138.98"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="156.15,-77.74 145.78,-79.91 155.24,-84.68 156.15,-77.74"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M220.28,-86.49C248.94,-91.87 279.38,-98.79 307,-107.5 332.84,-115.65 360.9,-129.15 379.57,-138.85"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="220.69,-83.01 210.23,-84.65 219.43,-89.89 220.69,-83.01"/>
 </a>
 </g>
-<text text-anchor="middle" x="243.5" y="-111.3" font-family="Arial" font-size="14.00" fill="grey"> mutex_</text>
+<text text-anchor="middle" x="267.5" y="-111.3" font-family="Arial" font-size="14.00" fill="grey"> mutex_</text>
 </g>
 <!-- Node8 -->
 <g id="Node000008" class="node">
 <title>Node8</title>
 <g id="a_Node000008"><a xlink:href="structhf__i2c__device__config__t.html" target="_top" xlink:title="I2C device configuration structure.">
-<polygon fill="white" stroke="#666666" points="455,-23 301,-23 301,0 455,0 455,-23"/>
-<text text-anchor="middle" x="378" y="-7.8" font-family="Arial" font-size="14.00">hf_i2c_device_config_t</text>
+<polygon fill="white" stroke="#666666" points="479,-23 325,-23 325,0 479,0 479,-23"/>
+<text text-anchor="middle" x="402" y="-7.8" font-family="Arial" font-size="14.00">hf_i2c_device_config_t</text>
 </a>
 </g>
 </g>
@@ -239,11 +240,11 @@ var sectionId = 'dynsection-1';
 <g id="edge9_Node000001_Node000008" class="edge">
 <title>Node8&#45;&gt;Node1</title>
 <g id="a_edge9_Node000001_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M465.38,-4.05C495.28,-5.61 527.41,-12.38 552,-30.5 599.8,-65.72 613.69,-142.65 617.32,-171.9"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="465.45,-0.55 455.34,-3.71 465.22,-7.54 465.45,-0.55"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M489.38,-4.05C519.28,-5.61 551.41,-12.38 576,-30.5 623.8,-65.72 637.69,-142.65 641.32,-171.9"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="489.45,-0.55 479.34,-3.71 489.22,-7.54 489.45,-0.55"/>
 </a>
 </g>
-<text text-anchor="middle" x="512.5" y="-34.3" font-family="Arial" font-size="14.00" fill="grey"> config_</text>
+<text text-anchor="middle" x="536.5" y="-34.3" font-family="Arial" font-size="14.00" fill="grey"> config_</text>
 </g>
 </g>
 </svg>

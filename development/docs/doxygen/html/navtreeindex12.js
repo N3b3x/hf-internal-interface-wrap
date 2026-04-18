@@ -1,5 +1,8 @@
 var NAVTREEINDEX12 =
 {
+"group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a71db6ff144b9f71fa28145c8cbaa9777":[1,1,20,7],
+"group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a753931953f23b5cc068055937c80552b":[1,1,20,12],
+"group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a8698e792ee9d5acc8dcbf81107d8583f":[1,1,20,10],
 "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a9a4a8f71381ef88584170af7dcb47fc5":[1,1,20,14],
 "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a9cae1d3824ed47edc938b2d9559df828":[1,1,20,13],
 "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67aa58f2d09c8736ca6643e519469c311ac":[1,1,20,11],
@@ -246,8 +249,5 @@ var NAVTREEINDEX12 =
 "namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a75af5da77e5d4ec72a997c78ff210883":[2,0,1,2],
 "namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a79d0c8643c52418574fa734a1408ff63":[2,0,1,12],
 "namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a7ebb87bc0ef65c74b5179859e7581a82":[2,0,1,11],
-"namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a9a0a73d5daaebb968f6a2e0efed7588c":[2,0,1,7],
-"namespaceanonymous__namespace_02StmGpio_8cpp_03.html#ab4ddb049348a4b0ee3ea6e477290aa00":[2,0,1,6],
-"namespaceanonymous__namespace_02StmGpio_8cpp_03.html#ace39575c11102583e690ea3b5ae45703":[2,0,1,3],
-"namespaceanonymous__namespace_02StmGpio_8cpp_03.html#ad9a7afbe460c7832a8ee20986d8a516d":[2,0,1,10]
+"namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a9a0a73d5daaebb968f6a2e0efed7588c":[2,0,1,7]
 };

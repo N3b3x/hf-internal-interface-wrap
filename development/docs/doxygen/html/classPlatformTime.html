@@ -105,9 +105,11 @@ $(function(){initNavTree('classPlatformTime.html',''); initResizable(); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:adfd9d6d2d3429c90ead4430ba565bce9" id="r_adfd9d6d2d3429c90ead4430ba565bce9"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfd9d6d2d3429c90ead4430ba565bce9">GetCurrentTimeUs</a> () noexcept</td></tr>
+<tr class="memdesc:adfd9d6d2d3429c90ead4430ba565bce9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current time in microseconds (from RTOS tick count).  <br /></td></tr>
 <tr class="separator:adfd9d6d2d3429c90ead4430ba565bce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14b850d58c7deb0bb81c72f06490a4c4" id="r_a14b850d58c7deb0bb81c72f06490a4c4"><td class="memItemLeft" align="right" valign="top">static TickType_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14b850d58c7deb0bb81c72f06490a4c4">MsToTicks</a> (uint32_t ms) noexcept</td></tr>
-<tr class="separator:a14b850d58c7deb0bb81c72f06490a4c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cff669a89cba4fa58a44687ec3ce4d4" id="r_a8cff669a89cba4fa58a44687ec3ce4d4"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8cff669a89cba4fa58a44687ec3ce4d4">MsToTicks</a> (uint32_t ms) noexcept</td></tr>
+<tr class="memdesc:a8cff669a89cba4fa58a44687ec3ce4d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert milliseconds to RTOS ticks (minimum 1 tick for non-zero input).  <br /></td></tr>
+<tr class="separator:a8cff669a89cba4fa58a44687ec3ce4d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="adfd9d6d2d3429c90ead4430ba565bce9" name="adfd9d6d2d3429c90ead4430ba565bce9"></a>
@@ -133,10 +135,13 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Get current time in microseconds (from RTOS tick count). </p>
+<dl class="section return"><dt>Returns</dt><dd>Microseconds since RTOS start, or 0 if no RTOS. </dd></dl>
+
 </div>
 </div>
-<a id="a14b850d58c7deb0bb81c72f06490a4c4" name="a14b850d58c7deb0bb81c72f06490a4c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a14b850d58c7deb0bb81c72f06490a4c4">&#9670;&#160;</a></span>MsToTicks()</h2>
+<a id="a8cff669a89cba4fa58a44687ec3ce4d4" name="a8cff669a89cba4fa58a44687ec3ce4d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cff669a89cba4fa58a44687ec3ce4d4">&#9670;&#160;</a></span>MsToTicks()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -145,7 +150,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static TickType_t PlatformTime::MsToTicks </td>
+          <td class="memname">static uint32_t PlatformTime::MsToTicks </td>
           <td>(</td>
           <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>ms</em></span></td><td>)</td>
           <td></td>
@@ -157,6 +162,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Convert milliseconds to RTOS ticks (minimum 1 tick for non-zero input). </p>
 
 </div>
 </div>

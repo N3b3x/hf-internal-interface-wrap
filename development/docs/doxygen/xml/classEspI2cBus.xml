@@ -50,7 +50,7 @@
         <location file="inc/mcu/esp32/EspI2c.h" line="884" column="8" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="884" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" prot="private" static="no" mutable="yes">
-        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <type><ref refid="PlatformMutex_8h_1a3448b54e0a94193058b38d135c1254ef" kindref="member">PlatformMutex</ref></type>
         <definition>PlatformMutex EspI2cBus::mutex_</definition>
         <argsstring></argsstring>
         <name>mutex_</name>
@@ -1402,8 +1402,8 @@
         </childnode>
       </node>
       <node id="3">
-        <label>PlatformMutex</label>
-        <link refid="classPlatformMutex"/>
+        <label>PlatformMutexImpl&lt; PlatformMutexActiveBackend &gt;</label>
+        <link refid="classPlatformMutexImpl"/>
       </node>
       <node id="5">
         <label>hf_i2c_diagnostics_t</label>

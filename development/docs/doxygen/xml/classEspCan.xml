@@ -51,7 +51,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="514" column="15" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="514" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a5c404a379b240e8bb5b3a32421736fdf" prot="private" static="no" mutable="yes">
-        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <type><ref refid="PlatformMutex_8h_1a3448b54e0a94193058b38d135c1254ef" kindref="member">PlatformMutex</ref></type>
         <definition>PlatformMutex EspCan::config_mutex_</definition>
         <argsstring></argsstring>
         <name>config_mutex_</name>
@@ -66,7 +66,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="517" column="25" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="517" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1aec77a14159f7553e096e1fd9eccd5a9d" prot="private" static="no" mutable="yes">
-        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <type><ref refid="PlatformMutex_8h_1a3448b54e0a94193058b38d135c1254ef" kindref="member">PlatformMutex</ref></type>
         <definition>PlatformMutex EspCan::stats_mutex_</definition>
         <argsstring></argsstring>
         <name>stats_mutex_</name>
@@ -81,7 +81,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="518" column="25" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="518" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1af4c1631f449f4f29375f50cb3e76e0ca" prot="private" static="no" mutable="yes">
-        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <type><ref refid="PlatformMutex_8h_1a3448b54e0a94193058b38d135c1254ef" kindref="member">PlatformMutex</ref></type>
         <definition>PlatformMutex EspCan::callback_mutex_</definition>
         <argsstring></argsstring>
         <name>callback_mutex_</name>
@@ -1646,8 +1646,8 @@
         </childnode>
       </node>
       <node id="6">
-        <label>PlatformMutex</label>
-        <link refid="classPlatformMutex"/>
+        <label>PlatformMutexImpl&lt; PlatformMutexActiveBackend &gt;</label>
+        <link refid="classPlatformMutexImpl"/>
       </node>
       <node id="4">
         <label>hf_can_diagnostics_t</label>

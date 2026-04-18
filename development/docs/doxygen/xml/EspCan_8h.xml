@@ -84,8 +84,6 @@
       <node id="11">
         <label>PlatformMutex.h</label>
         <link refid="PlatformMutex_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
@@ -503,9 +501,9 @@
 <codeline lineno="514" refid="classEspCan_1a9268e3542c090d15173658df7154e683" refkind="member"><highlight class="normal"><sp/><sp/>std::atomic&lt;bool&gt;<sp/><ref refid="classEspCan_1a9268e3542c090d15173658df7154e683" kindref="member">is_recovering_</ref>;<sp/></highlight></codeline>
 <codeline lineno="515"><highlight class="normal"></highlight></codeline>
 <codeline lineno="516"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Thread<sp/>safety<sp/>(PlatformMutex)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="517" refid="classEspCan_1a5c404a379b240e8bb5b3a32421736fdf" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspCan_1a5c404a379b240e8bb5b3a32421736fdf" kindref="member">config_mutex_</ref>;<sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="518" refid="classEspCan_1aec77a14159f7553e096e1fd9eccd5a9d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspCan_1aec77a14159f7553e096e1fd9eccd5a9d" kindref="member">stats_mutex_</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="519" refid="classEspCan_1af4c1631f449f4f29375f50cb3e76e0ca" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspCan_1af4c1631f449f4f29375f50cb3e76e0ca" kindref="member">callback_mutex_</ref>;<sp/></highlight></codeline>
+<codeline lineno="517" refid="classEspCan_1a5c404a379b240e8bb5b3a32421736fdf" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classPlatformMutexImpl" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspCan_1a5c404a379b240e8bb5b3a32421736fdf" kindref="member">config_mutex_</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="518" refid="classEspCan_1aec77a14159f7553e096e1fd9eccd5a9d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classPlatformMutexImpl" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspCan_1aec77a14159f7553e096e1fd9eccd5a9d" kindref="member">stats_mutex_</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="519" refid="classEspCan_1af4c1631f449f4f29375f50cb3e76e0ca" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classPlatformMutexImpl" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspCan_1af4c1631f449f4f29375f50cb3e76e0ca" kindref="member">callback_mutex_</ref>;<sp/></highlight></codeline>
 <codeline lineno="520"><highlight class="normal"></highlight></codeline>
 <codeline lineno="521"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>v5.5<sp/>TWAI<sp/>node<sp/>handle</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="522" refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" refkind="member"><highlight class="normal"><sp/><sp/>twai_node_handle_t<sp/><ref refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" kindref="member">twai_node_handle_</ref>;<sp/></highlight></codeline>

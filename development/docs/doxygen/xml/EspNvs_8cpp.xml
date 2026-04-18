@@ -30,47 +30,45 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>EspTypes_Base.h</label>
-        <link refid="EspTypes__Base_8h"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
       <node id="11">
-        <label>utils/EspTypes_NVS.h</label>
-        <link refid="EspTypes__NVS_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>utils/EspTypes_NVS.h</label>
+        <link refid="EspTypes__NVS_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="9">
-        <label>McuSelect.h</label>
+      <node id="12">
+        <label>../../utils/McuSelect.h</label>
         <link refid="McuSelect_8h"/>
       </node>
       <node id="8">
         <label>PlatformMutex.h</label>
         <link refid="PlatformMutex_8h"/>
         <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -83,7 +81,7 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="10">
+      <node id="9">
         <label>atomic</label>
       </node>
       <node id="5">

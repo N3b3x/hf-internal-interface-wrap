@@ -66,7 +66,7 @@
         <location file="inc/mcu/esp32/EspNvs.h" line="293" column="32" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="293" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspNvs_1a557fd9219b05531404ba663b340e8cfa" prot="private" static="no" mutable="yes">
-        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <type><ref refid="PlatformMutex_8h_1a3448b54e0a94193058b38d135c1254ef" kindref="member">PlatformMutex</ref></type>
         <definition>PlatformMutex EspNvs::mutex_</definition>
         <argsstring></argsstring>
         <name>mutex_</name>
@@ -932,8 +932,8 @@
         </childnode>
       </node>
       <node id="5">
-        <label>PlatformMutex</label>
-        <link refid="classPlatformMutex"/>
+        <label>PlatformMutexImpl&lt; PlatformMutexActiveBackend &gt;</label>
+        <link refid="classPlatformMutexImpl"/>
       </node>
       <node id="4">
         <label>hf_nvs_diagnostics_t</label>

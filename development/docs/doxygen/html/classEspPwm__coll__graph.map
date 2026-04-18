@@ -1,17 +1,17 @@
 <map id="EspPwm" name="EspPwm">
-<area shape="rect" id="Node000001" title="ESP32 PWM implementation using LEDC peripheral with comprehensive ESP32 variant support." alt="" coords="803,161,897,191"/>
-<area shape="rect" id="Node000002" href="$classBasePwm.html" title="Abstract base class for PWM implementations." alt="" coords="429,69,533,99"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="547,81,658,91,720,104,780,123,810,139,834,158,831,163,807,144,778,128,719,109,657,97,547,87"/>
-<area shape="rect" id="Node000003" href="$structhf__pwm__statistics__t.html" title="PWM statistics information." alt="" coords="16,22,196,53"/>
-<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="210,27,336,27,405,28,465,26,568,22,616,26,666,36,720,55,780,87,801,103,818,122,843,159,838,162,814,126,797,107,777,92,718,60,665,41,616,31,568,27,465,31,405,33,336,32,210,33"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="210,47,429,75,429,80,209,53"/>
-<area shape="rect" id="Node000004" href="$structhf__pwm__diagnostics__t.html" title="PWM diagnostics information." alt="" coords="5,97,207,127"/>
-<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="221,118,779,160,803,164,802,169,778,165,220,123"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="220,104,336,96,429,87,429,92,336,101,221,109"/>
-<area shape="rect" id="Node000005" href="$classPlatformMutex.html" title=" " alt="" coords="411,193,551,223"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="565,199,778,180,802,178,803,183,779,185,565,204"/>
-<area shape="rect" id="Node000006" href="$structhf__pwm__unit__config__t.html" title="ESP32 PWM unit configuration." alt="" coords="382,247,581,278"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="594,256,685,244,732,233,778,219,805,205,828,189,831,194,808,210,780,224,734,238,686,249,595,261"/>
-<area shape="rect" id="Node000007" href="$structhf__pwm__eviction__request__t.html" title="Eviction request information passed to user callback." alt="" coords="360,302,603,333"/>
-<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="616,322,657,318,699,310,740,298,777,279,800,260,818,236,841,190,846,193,823,239,804,264,780,284,742,303,700,316,658,323,617,327"/>
+<area shape="rect" id="Node000001" title="ESP32 PWM implementation using LEDC peripheral with comprehensive ESP32 variant support." alt="" coords="840,171,935,202"/>
+<area shape="rect" id="Node000002" href="$classBasePwm.html" title="Abstract base class for PWM implementations." alt="" coords="448,74,552,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="565,85,621,87,685,94,752,107,817,128,849,147,873,169,870,173,845,152,815,133,751,112,684,99,621,93,565,90"/>
+<area shape="rect" id="Node000003" href="$structhf__pwm__statistics__t.html" title="PWM statistics information." alt="" coords="16,27,196,58"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="210,32,231,31,336,31,411,31,476,29,588,23,641,26,695,36,753,58,817,92,839,110,857,130,881,170,876,173,853,134,835,113,815,97,751,62,693,41,640,31,588,28,476,34,411,37,336,36,231,36,210,37"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="210,52,448,81,448,86,209,58"/>
+<area shape="rect" id="Node000004" href="$structhf__pwm__diagnostics__t.html" title="PWM diagnostics information." alt="" coords="5,102,207,133"/>
+<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="220,123,360,133,489,140,589,144,689,150,816,167,840,171,839,177,816,172,688,155,589,149,488,146,360,139,220,128"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="220,109,336,101,448,92,448,97,336,107,221,114"/>
+<area shape="rect" id="Node000005" href="$classPlatformMutexImpl.html" title=" " alt="" coords="360,197,640,248"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="654,206,839,188,840,194,654,211"/>
+<area shape="rect" id="Node000006" href="$structhf__pwm__unit__config__t.html" title="ESP32 PWM unit configuration." alt="" coords="401,273,599,303"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="612,277,713,261,765,248,815,231,842,216,866,200,869,204,845,221,817,236,766,253,714,266,613,283"/>
+<area shape="rect" id="Node000007" href="$structhf__pwm__eviction__request__t.html" title="Eviction request information passed to user callback." alt="" coords="379,327,621,358"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="635,346,680,342,727,333,773,318,814,296,838,275,856,250,879,201,884,203,861,252,842,279,818,301,775,323,729,338,681,347,635,351"/>
 </map>

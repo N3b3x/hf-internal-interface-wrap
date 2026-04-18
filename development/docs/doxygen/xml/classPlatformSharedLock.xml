@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="442" column="15" bodyfile="inc/utils/PlatformMutex.h" bodystart="442" bodyend="-1"/>
+        <location file="inc/utils/PlatformMutex.h" line="515" column="17" bodyfile="inc/utils/PlatformMutex.h" bodystart="515" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPlatformSharedLock_1aa1428c7278f03c457be11c411b17a5e8" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="443" column="8" bodyfile="inc/utils/PlatformMutex.h" bodystart="443" bodyend="-1"/>
+        <location file="inc/utils/PlatformMutex.h" line="516" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="516" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="394" column="12" bodyfile="inc/utils/PlatformMutex.h" bodystart="394" bodyend="401"/>
+        <location file="inc/utils/PlatformMutex.h" line="468" column="14" bodyfile="inc/utils/PlatformMutex.h" bodystart="468" bodyend="475"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformSharedLock_1a6d5e22650f77fe32f43b110d729be396" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="403" column="3" bodyfile="inc/utils/PlatformMutex.h" bodystart="403" bodyend="407"/>
+        <location file="inc/utils/PlatformMutex.h" line="477" column="5" bodyfile="inc/utils/PlatformMutex.h" bodystart="477" bodyend="481"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformSharedLock_1ae8c1eb943ba67bb0b8448d00b721e682" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="409" column="3"/>
+        <location file="inc/utils/PlatformMutex.h" line="484" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformSharedLock_1ab0791c81e103fa5b1bc123b4637e61c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classPlatformSharedLock" kindref="compound">PlatformSharedLock</ref> &amp;</type>
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="410" column="22"/>
+        <location file="inc/utils/PlatformMutex.h" line="485" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformSharedLock_1aaf794f171b9d7712d0f77242e96613f5" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -126,7 +126,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="412" column="3" bodyfile="inc/utils/PlatformMutex.h" bodystart="412" bodyend="415"/>
+        <location file="inc/utils/PlatformMutex.h" line="488" column="5" bodyfile="inc/utils/PlatformMutex.h" bodystart="488" bodyend="492"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformSharedLock_1aef93d92f524e42b63779e17caf6f904a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classPlatformSharedLock" kindref="compound">PlatformSharedLock</ref> &amp;</type>
@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="417" column="22" bodyfile="inc/utils/PlatformMutex.h" bodystart="417" bodyend="428"/>
+        <location file="inc/utils/PlatformMutex.h" line="494" column="24" bodyfile="inc/utils/PlatformMutex.h" bodystart="494" bodyend="503"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformSharedLock_1a1271e1fa2051eb24d536f21c637bee32" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -158,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="430" column="9" bodyfile="inc/utils/PlatformMutex.h" bodystart="430" bodyend="432"/>
+        <location file="inc/utils/PlatformMutex.h" line="505" column="11" bodyfile="inc/utils/PlatformMutex.h" bodystart="505" bodyend="505"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformSharedLock_1a7c02b27cf0e7b31a1ccc1b7f987beb80" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -172,14 +172,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/PlatformMutex.h" line="434" column="8" bodyfile="inc/utils/PlatformMutex.h" bodystart="434" bodyend="439"/>
+        <location file="inc/utils/PlatformMutex.h" line="507" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="507" bodyend="512"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>RAII shared (reader) lock guard for any shared mutex. </para>
     </briefdescription>
     <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>SharedMutex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type providing lock_shared()/try_lock_shared_for()/unlock_shared(). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
     </detaileddescription>
-    <location file="inc/utils/PlatformMutex.h" line="392" column="1" bodyfile="inc/utils/PlatformMutex.h" bodystart="392" bodyend="444"/>
+    <location file="inc/utils/PlatformMutex.h" line="466" column="1" bodyfile="inc/utils/PlatformMutex.h" bodystart="466" bodyend="517"/>
     <listofallmembers>
       <member refid="classPlatformSharedLock_1a1271e1fa2051eb24d536f21c637bee32" prot="public" virt="non-virtual"><scope>PlatformSharedLock</scope><name>IsLocked</name></member>
       <member refid="classPlatformSharedLock_1aa1428c7278f03c457be11c411b17a5e8" prot="private" virt="non-virtual"><scope>PlatformSharedLock</scope><name>locked_</name></member>

@@ -2776,25 +2776,44 @@
     <member refid="structInterruptStatus_1a64629d99731ed513155bebd9fd11a3c1" kind="variable"><name>interrupt_count</name></member>
     <member refid="structInterruptStatus_1a55d2170d02fd159469846fac43c5b15d" kind="variable"><name>has_callback</name></member>
   </compound>
-  <compound refid="classPlatformMutex" kind="class"><name>PlatformMutex</name>
-    <member refid="classPlatformMutex_1a0ecef2a16d5560f96d8a9764c5811dca" kind="variable"><name>handle_</name></member>
-    <member refid="classPlatformMutex_1a95a553a2b425c4ea7b7f8ec1fa0e623f" kind="function"><name>PlatformMutex</name></member>
-    <member refid="classPlatformMutex_1a048bf6b7ce5fc3e8808a20b5e7f54676" kind="function"><name>~PlatformMutex</name></member>
-    <member refid="classPlatformMutex_1a8305ecc459f3e0334d9647cfb0b75fc9" kind="function"><name>PlatformMutex</name></member>
-    <member refid="classPlatformMutex_1aad16dc73f5cc847981248e710ed5e467" kind="function"><name>operator=</name></member>
-    <member refid="classPlatformMutex_1a35ead53d0d95b9b519629fd1c3ae7756" kind="function"><name>PlatformMutex</name></member>
-    <member refid="classPlatformMutex_1a656280b8f2e8be129c53e3d348c820d0" kind="function"><name>operator=</name></member>
-    <member refid="classPlatformMutex_1a6a23b8dae26a7515f7bbff026cffec7c" kind="function"><name>lock</name></member>
-    <member refid="classPlatformMutex_1a5d7c63169e0c54a0c9f3d250861139bf" kind="function"><name>try_lock</name></member>
-    <member refid="classPlatformMutex_1a71294990b69c8bb08c8d0ca45b753284" kind="function"><name>try_lock_for</name></member>
-    <member refid="classPlatformMutex_1a654e7cdda8e5b56938ec0102b5adf4aa" kind="function"><name>unlock</name></member>
-    <member refid="classPlatformMutex_1a0bb274f74486f122d5c20ca164ab19f4" kind="function"><name>native_handle</name></member>
-    <member refid="classPlatformMutex_1ab80aa6f15a0f87f62502d74f583ce696" kind="function"><name>Take</name></member>
-    <member refid="classPlatformMutex_1a02aa50333a4a54e9215d4016e23a92df" kind="function"><name>Give</name></member>
-    <member refid="classPlatformMutex_1a88fc7442ce670d760b8782659319c03d" kind="function"><name>lock_shared</name></member>
-    <member refid="classPlatformMutex_1a4a2b6f3996cf317162aead04ac286a54" kind="function"><name>try_lock_shared</name></member>
-    <member refid="classPlatformMutex_1aeee6794b3a8daa9e4fb7ec4dc242ec70" kind="function"><name>try_lock_shared_for</name></member>
-    <member refid="classPlatformMutex_1a134d74bc93d2600250ba7c732083ac89" kind="function"><name>unlock_shared</name></member>
+  <compound refid="structNullMutexBackend" kind="struct"><name>NullMutexBackend</name>
+    <member refid="structNullMutexBackend_1a21f429e791d9a7fbe98f960bd6c5f9f5" kind="typedef"><name>RecursiveMutexHandle</name></member>
+    <member refid="structNullMutexBackend_1a626a22c11595822e794d8611a486811e" kind="typedef"><name>MutexHandle</name></member>
+    <member refid="structNullMutexBackend_1a2b8667732688763bc985f913d0a16add" kind="variable"><name>MAX_DELAY</name></member>
+    <member refid="structNullMutexBackend_1ab5390057386e19dd4dab8024246f68b8" kind="variable"><name>TICK_RATE_HZ</name></member>
+    <member refid="structNullMutexBackend_1a937bfd87c256d66122f4006fcd98c831" kind="function"><name>createRecursive</name></member>
+    <member refid="structNullMutexBackend_1afeb7b8c41e2fe964b2e690188a6acbdc" kind="function"><name>destroyRecursive</name></member>
+    <member refid="structNullMutexBackend_1ae1e4064ecbb884a82018a134eb5a897d" kind="function"><name>lockRecursive</name></member>
+    <member refid="structNullMutexBackend_1ad5a3feacb3a1f8dc01cd3e96bd77c607" kind="function"><name>tryLockRecursive</name></member>
+    <member refid="structNullMutexBackend_1a78c20173ade0f09e7af899e90e873ed1" kind="function"><name>unlockRecursive</name></member>
+    <member refid="structNullMutexBackend_1ab0b9cb0474e2ffe22a961194b2b8e804" kind="function"><name>createMutex</name></member>
+    <member refid="structNullMutexBackend_1a6af250f79bd775eb7ddae3e701e33668" kind="function"><name>destroyMutex</name></member>
+    <member refid="structNullMutexBackend_1a4e538989d9e17fe275c7a1f39db11965" kind="function"><name>lockMutex</name></member>
+    <member refid="structNullMutexBackend_1abda2aa2e7aac56a65621014ca3d22662" kind="function"><name>tryLockMutex</name></member>
+    <member refid="structNullMutexBackend_1a5a728b894a38c860d3d96c5413f84502" kind="function"><name>unlockMutex</name></member>
+    <member refid="structNullMutexBackend_1afaa669fd91d19ca6b790b74650031708" kind="function"><name>getTickCount</name></member>
+    <member refid="structNullMutexBackend_1a49290ba91fee448733d3b184c58b586c" kind="function"><name>msToTicks</name></member>
+    <member refid="structNullMutexBackend_1ae4af09a2f1c352ffc802cb3eb3d56f9d" kind="function"><name>yield</name></member>
+  </compound>
+  <compound refid="classPlatformMutexImpl" kind="class"><name>PlatformMutexImpl</name>
+    <member refid="classPlatformMutexImpl_1abee357e9f72250474b90a54486a77776" kind="variable"><name>handle_</name></member>
+    <member refid="classPlatformMutexImpl_1aaf03f1b389e662d87b47290fe22fab19" kind="function"><name>PlatformMutexImpl</name></member>
+    <member refid="classPlatformMutexImpl_1ab42f0344edec9d7ea766c514e1e46c5b" kind="function"><name>~PlatformMutexImpl</name></member>
+    <member refid="classPlatformMutexImpl_1a94e235d1efdbf6660454628d4aa70101" kind="function"><name>PlatformMutexImpl</name></member>
+    <member refid="classPlatformMutexImpl_1ad3ad24812ed1dc86565ac3168ef044e4" kind="function"><name>operator=</name></member>
+    <member refid="classPlatformMutexImpl_1a51e54f3bcaa326f376b181cf1b7b50ee" kind="function"><name>PlatformMutexImpl</name></member>
+    <member refid="classPlatformMutexImpl_1ab7bcc976cca7cc689aac14c24d6d40b8" kind="function"><name>operator=</name></member>
+    <member refid="classPlatformMutexImpl_1a4c67001d36046dac4fab38edf9fcc824" kind="function"><name>lock</name></member>
+    <member refid="classPlatformMutexImpl_1a7cb640e84998c67527df6744417cc3c4" kind="function"><name>try_lock</name></member>
+    <member refid="classPlatformMutexImpl_1aef4c34e1c15f9762fd18c3b27a71c34f" kind="function"><name>try_lock_for</name></member>
+    <member refid="classPlatformMutexImpl_1ac5c9c4a196c14c114a8022bf1a9777c8" kind="function"><name>unlock</name></member>
+    <member refid="classPlatformMutexImpl_1ab6f6f54ccd9d1028106f641eb0332d15" kind="function"><name>native_handle</name></member>
+    <member refid="classPlatformMutexImpl_1a27cf792c7fbe61795a6b20f8d5cf2d49" kind="function"><name>Take</name></member>
+    <member refid="classPlatformMutexImpl_1a665d771a73e1e9dbe6ef96199e5cb8bf" kind="function"><name>Give</name></member>
+    <member refid="classPlatformMutexImpl_1a506e37379a7e19bc65b8e33ec82e84f7" kind="function"><name>lock_shared</name></member>
+    <member refid="classPlatformMutexImpl_1a7b0de6bc850396566a1f533847ef23ce" kind="function"><name>try_lock_shared</name></member>
+    <member refid="classPlatformMutexImpl_1ac9f85b0692b69251c30e6195f5ccce9f" kind="function"><name>try_lock_shared_for</name></member>
+    <member refid="classPlatformMutexImpl_1a20b8a9240d599160642471da26d08a96" kind="function"><name>unlock_shared</name></member>
   </compound>
   <compound refid="classPlatformSharedLock" kind="class"><name>PlatformSharedLock</name>
     <member refid="classPlatformSharedLock_1a196205586ec7624b45328670e47b6e4c" kind="variable"><name>mutex_</name></member>
@@ -2808,29 +2827,29 @@
     <member refid="classPlatformSharedLock_1a1271e1fa2051eb24d536f21c637bee32" kind="function"><name>IsLocked</name></member>
     <member refid="classPlatformSharedLock_1a7c02b27cf0e7b31a1ccc1b7f987beb80" kind="function"><name>Unlock</name></member>
   </compound>
-  <compound refid="classPlatformSharedMutex" kind="class"><name>PlatformSharedMutex</name>
-    <member refid="classPlatformSharedMutex_1a068badf177d9e1bdc79d4eaa0501fcd8" kind="variable"><name>writer_mutex_</name></member>
-    <member refid="classPlatformSharedMutex_1aa40b57136a23bee80b87398ace9ba169" kind="variable"><name>reader_mutex_</name></member>
-    <member refid="classPlatformSharedMutex_1a9eb1baa21663574d3549ae3e8a9e6236" kind="variable"><name>readers_</name></member>
-    <member refid="classPlatformSharedMutex_1a556ab68ae31e7c5f6b06c233c6c14c61" kind="variable"><name>writer_active_</name></member>
-    <member refid="classPlatformSharedMutex_1a511b3ce665fbf78a6d653bfaefd9005b" kind="function"><name>PlatformSharedMutex</name></member>
-    <member refid="classPlatformSharedMutex_1a52239b5174912320203c0e80f4cdf380" kind="function"><name>~PlatformSharedMutex</name></member>
-    <member refid="classPlatformSharedMutex_1a912def42b9dbf2d0d99b035d4764db23" kind="function"><name>PlatformSharedMutex</name></member>
-    <member refid="classPlatformSharedMutex_1a028e6aea838949de052f8dc199d2da4a" kind="function"><name>operator=</name></member>
-    <member refid="classPlatformSharedMutex_1a9a830ac1318b056f815bf730794f1655" kind="function"><name>PlatformSharedMutex</name></member>
-    <member refid="classPlatformSharedMutex_1af6fdeb25e49fcecc0e3fe269e7bacb4e" kind="function"><name>operator=</name></member>
-    <member refid="classPlatformSharedMutex_1add5e4f313bd9e1a5543222dadeadd079" kind="function"><name>lock</name></member>
-    <member refid="classPlatformSharedMutex_1a344b2c1db97307baf08618dfce6305bc" kind="function"><name>try_lock</name></member>
-    <member refid="classPlatformSharedMutex_1abe91e65f1609953753a3e1f9badea77f" kind="function"><name>try_lock_for</name></member>
-    <member refid="classPlatformSharedMutex_1a4663a92b507cd53a306a8633477e9b28" kind="function"><name>unlock</name></member>
-    <member refid="classPlatformSharedMutex_1ae2e5f9e2684fd9a9e3a581222cffdc12" kind="function"><name>lock_shared</name></member>
-    <member refid="classPlatformSharedMutex_1af641caab9ce5170f51046a484c42d304" kind="function"><name>try_lock_shared</name></member>
-    <member refid="classPlatformSharedMutex_1a2ae2aafacbc7526877303d231b39396f" kind="function"><name>try_lock_shared_for</name></member>
-    <member refid="classPlatformSharedMutex_1a83d6b6b7badfd4e15444d3a9340d2331" kind="function"><name>unlock_shared</name></member>
+  <compound refid="classPlatformSharedMutexImpl" kind="class"><name>PlatformSharedMutexImpl</name>
+    <member refid="classPlatformSharedMutexImpl_1a85983fd6c7ba0602a874741d2a8d8a99" kind="variable"><name>writer_mutex_</name></member>
+    <member refid="classPlatformSharedMutexImpl_1aed22877700be075a928abe6b6d9c8f54" kind="variable"><name>reader_mutex_</name></member>
+    <member refid="classPlatformSharedMutexImpl_1abac6d0e7bb98ecd214163fad80840c26" kind="variable"><name>readers_</name></member>
+    <member refid="classPlatformSharedMutexImpl_1afeb8141ca69abc4d454f7b385786b675" kind="variable"><name>writer_active_</name></member>
+    <member refid="classPlatformSharedMutexImpl_1a98fdd657265ba7aaa40ef719666733f1" kind="function"><name>PlatformSharedMutexImpl</name></member>
+    <member refid="classPlatformSharedMutexImpl_1a392662a9411e3753809f452f67103e2b" kind="function"><name>~PlatformSharedMutexImpl</name></member>
+    <member refid="classPlatformSharedMutexImpl_1ac24092ef0fb42102cdc0866fb98b1781" kind="function"><name>PlatformSharedMutexImpl</name></member>
+    <member refid="classPlatformSharedMutexImpl_1abfb55f84824adfc976967c220d71d2df" kind="function"><name>operator=</name></member>
+    <member refid="classPlatformSharedMutexImpl_1a6cf8cde19ebc13494838c464dfc3d332" kind="function"><name>PlatformSharedMutexImpl</name></member>
+    <member refid="classPlatformSharedMutexImpl_1a719038d8754d1dad1b1e54e262d8a023" kind="function"><name>operator=</name></member>
+    <member refid="classPlatformSharedMutexImpl_1a11c4d1d8aa24ddd257abef90668f36d3" kind="function"><name>lock</name></member>
+    <member refid="classPlatformSharedMutexImpl_1a52d3da97b39407e463850bab1185dfac" kind="function"><name>try_lock</name></member>
+    <member refid="classPlatformSharedMutexImpl_1a1adf9ca5db069eaa480f9efc5c15f118" kind="function"><name>try_lock_for</name></member>
+    <member refid="classPlatformSharedMutexImpl_1a9a0c1a1ecd846d64b3fd84808330ecbb" kind="function"><name>unlock</name></member>
+    <member refid="classPlatformSharedMutexImpl_1aad0a612b3ffc69bc7cbac8f94c88dd8e" kind="function"><name>lock_shared</name></member>
+    <member refid="classPlatformSharedMutexImpl_1abc5584a273f1bdadb85c6d52ad08f332" kind="function"><name>try_lock_shared</name></member>
+    <member refid="classPlatformSharedMutexImpl_1ae20932eb9d0a6010289eb12feba03be6" kind="function"><name>try_lock_shared_for</name></member>
+    <member refid="classPlatformSharedMutexImpl_1a633c17dfb96432934ae5494c883dc357" kind="function"><name>unlock_shared</name></member>
   </compound>
   <compound refid="classPlatformTime" kind="class"><name>PlatformTime</name>
     <member refid="classPlatformTime_1adfd9d6d2d3429c90ead4430ba565bce9" kind="function"><name>GetCurrentTimeUs</name></member>
-    <member refid="classPlatformTime_1a14b850d58c7deb0bb81c72f06490a4c4" kind="function"><name>MsToTicks</name></member>
+    <member refid="classPlatformTime_1a8cff669a89cba4fa58a44687ec3ce4d4" kind="function"><name>MsToTicks</name></member>
   </compound>
   <compound refid="classPlatformUniqueLock" kind="class"><name>PlatformUniqueLock</name>
     <member refid="classPlatformUniqueLock_1af63a258e9de4c30039dee48d3aeaac4b" kind="variable"><name>mutex_</name></member>
@@ -5290,8 +5309,11 @@
   <compound refid="memory__utils_8h" kind="file"><name>memory_utils.h</name>
   </compound>
   <compound refid="PlatformMutex_8h" kind="file"><name>PlatformMutex.h</name>
-    <member refid="PlatformMutex_8h_1a5b9f484b1baa691901486c8cfd7080d1" kind="typedef"><name>PlatformLockGuard</name></member>
+    <member refid="PlatformMutex_8h_1a0fa5da30b653fe8b9576911f39562a7d" kind="typedef"><name>PlatformMutexActiveBackend</name></member>
+    <member refid="PlatformMutex_8h_1a3448b54e0a94193058b38d135c1254ef" kind="typedef"><name>PlatformMutex</name></member>
+    <member refid="PlatformMutex_8h_1a3dab6fdaf8d72d84ebef1678033424a4" kind="typedef"><name>PlatformSharedMutex</name></member>
     <member refid="PlatformMutex_8h_1a9e65865add93ca50ec0af02b8a5a3737" kind="typedef"><name>PlatformMutexLockGuard</name></member>
+    <member refid="PlatformMutex_8h_1a5b9f484b1baa691901486c8cfd7080d1" kind="typedef"><name>PlatformLockGuard</name></member>
   </compound>
   <compound refid="README_8md" kind="file"><name>README.md</name>
   </compound>
