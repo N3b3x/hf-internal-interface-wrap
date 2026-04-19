@@ -301,6 +301,29 @@ bool EspGpio::Initialize() noexcept {
   }
 
   initialized_ = true;
+
+  // Safety default: drive every output pin to its INACTIVE electrical
+  // level immediately after the peripheral is configured.
+  //
+  // `gpio_config()` only programs direction / pull / interrupt-type — it
+  // does NOT set the GPIO_OUT register, which retains its power-on
+  // default of 0. The instant we switch a pin to OUTPUT mode it starts
+  // driving electrical LOW. For ACTIVE_HIGH outputs this is harmless
+  // (LOW = INACTIVE = "off"), but for ACTIVE_LOW outputs (chip RESN
+  // pins, shutdown lines, fault-clear signals) it means the pin boots
+  // ASSERTED — e.g. a slave's RESN held in reset until the application
+  // gets around to driving it HIGH, which can be hundreds of ms later
+  // and create a long unwanted reset pulse.
+  //
+  // Driving SetInactive() right after gpio_config() makes every output
+  // pin power-on into its "safe / not asserting anything" logical
+  // state, regardless of polarity. ACTIVE_HIGH pins stay LOW (no
+  // change), ACTIVE_LOW pins flip to HIGH and stay HIGH until the
+  // owning driver explicitly asserts them.
+  if (current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {
+    (void)SetInactive();
+  }
+
   ESP_LOGI(TAG, "GPIO%d initialized successfully", static_cast<int>(pin_));
   return true;
 }
