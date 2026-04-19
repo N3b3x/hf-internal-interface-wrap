@@ -90,7 +90,7 @@ hf_pwm_err_t EspPwm::Initialize() noexcept {
     return hf_pwm_err_t::PWM_ERR_ALREADY_INITIALIZED;
   }
 
-  ESP_LOGI(TAG, "Initializing ESP32C6 PWM system with unit_id=%d, mode=%d, base_clock=%lu Hz",
+  ESP_LOGI(TAG, "Initializing ESP32 PWM system with unit_id=%d, mode=%d, base_clock=%lu Hz",
            unit_config_.unit_id, static_cast<int>(unit_config_.mode), base_clock_hz_);
 
   // Initialize timers and channels using lifecycle helpers
@@ -121,7 +121,7 @@ hf_pwm_err_t EspPwm::Initialize() noexcept {
   statistics_.initialization_timestamp = esp_timer_get_time();
   statistics_.last_activity_timestamp = statistics_.initialization_timestamp;
 
-  ESP_LOGI(TAG, "ESP32C6 PWM system initialized successfully");
+  ESP_LOGI(TAG, "ESP32 PWM system initialized successfully");
   return hf_pwm_err_t::PWM_SUCCESS;
 }
 
@@ -130,7 +130,7 @@ hf_pwm_err_t EspPwm::Deinitialize() noexcept {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  ESP_LOGI(TAG, "Deinitializing ESP32C6 PWM system");
+  ESP_LOGI(TAG, "Deinitializing ESP32 PWM system");
 
   // 1. Unregister all fade callbacks FIRST (while fade service is still installed)
   for (hf_channel_id_t channel_id = 0; channel_id < MAX_CHANNELS; channel_id++) {
@@ -200,7 +200,7 @@ hf_pwm_err_t EspPwm::Deinitialize() noexcept {
   last_global_error_ = hf_pwm_err_t::PWM_SUCCESS;
   statistics_.last_activity_timestamp = esp_timer_get_time();
 
-  ESP_LOGI(TAG, "ESP32C6 PWM system deinitialized with comprehensive cleanup");
+  ESP_LOGI(TAG, "ESP32 PWM system deinitialized with comprehensive cleanup");
   return hf_pwm_err_t::PWM_SUCCESS;
 }
 
@@ -687,7 +687,7 @@ hf_pwm_err_t EspPwm::SetFrequency(hf_channel_id_t channel_id,
     // Strategy 2: Find existing timer with same frequency that has room
     for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
       if (timers_[timer_id].in_use && timers_[timer_id].frequency_hz == frequency_hz &&
-          timers_[timer_id].channel_count < 8) { // ESP32-C6 supports up to 8 channels per timer
+          timers_[timer_id].channel_count < 8) { // ESP32 supports up to 8 channels per timer
 
         ESP_LOGD(TAG, "Moving channel %d to timer %d (freq=%lu Hz, channels=%d)", channel_id,
                  timer_id, frequency_hz, timers_[timer_id].channel_count);
@@ -780,9 +780,9 @@ hf_pwm_err_t EspPwm::SetPhaseShift(hf_channel_id_t channel_id, float phase_shift
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
-  // ESP32C6 LEDC doesn't support phase shifting directly
+  // ESP32 LEDC doesn't support phase shifting directly
   // This would require advanced timer configuration
-  ESP_LOGW(TAG, "Phase shift not supported on ESP32C6 LEDC peripheral");
+  ESP_LOGW(TAG, "Phase shift not supported on ESP32 LEDC peripheral");
   SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER);
   return hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER;
 }
@@ -1166,7 +1166,7 @@ hf_pwm_err_t EspPwm::UpdateAll() noexcept {
 
   PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
-  // For ESP32C6, we can update all channels simultaneously
+  // For ESP32, we can update all channels simultaneously
   for (hf_channel_id_t channel_id = 0; channel_id < MAX_CHANNELS; channel_id++) {
     if (channels_[channel_id].configured && channels_[channel_id].enabled) {
       esp_err_t ret =
@@ -1390,7 +1390,7 @@ hf_pwm_err_t EspPwm::SetChannelFadeCallback(
 }
 
 //==============================================================================
-// ESP32C6-SPECIFIC FEATURES
+// ESP32-SPECIFIC FEATURES
 //==============================================================================
 
 hf_pwm_err_t EspPwm::SetHardwareFade(hf_channel_id_t channel_id, float target_duty_cycle,
@@ -1759,7 +1759,7 @@ hf_i8_t EspPwm::FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bi
   for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
     if (timers_[timer_id].in_use && timers_[timer_id].frequency_hz == frequency_hz &&
         timers_[timer_id].resolution_bits == resolution_bits &&
-        timers_[timer_id].channel_count < MAX_CHANNELS && // ESP32-C6 has 6 channels total
+        timers_[timer_id].channel_count < MAX_CHANNELS && // ESP32 has 6 channels total
         !timers_[timer_id].has_hardware_conflicts &&
         IsClockSourceCompatible(timers_[timer_id].clock_source, clock_source)) {
       timers_[timer_id].channel_count++;
@@ -1773,7 +1773,7 @@ hf_i8_t EspPwm::FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bi
   const float frequency_tolerance = 0.05f;
   for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
     if (timers_[timer_id].in_use && timers_[timer_id].resolution_bits == resolution_bits &&
-        timers_[timer_id].channel_count < MAX_CHANNELS && // ESP32-C6 has 6 channels
+        timers_[timer_id].channel_count < MAX_CHANNELS && // ESP32 has 6 channels
         !timers_[timer_id].has_hardware_conflicts &&
         IsClockSourceCompatible(timers_[timer_id].clock_source, clock_source)) {
       float freq_diff =
@@ -2076,7 +2076,7 @@ void EspPwm::HandleFadeComplete(hf_channel_id_t channel_id) noexcept {
 }
 
 //==============================================================================
-// ADDITIONAL ESP32C6-SPECIFIC METHODS
+// ADDITIONAL ESP32-SPECIFIC METHODS
 //==============================================================================
 
 hf_pwm_err_t EspPwm::RegisterLedcFadeCallback(hf_channel_id_t channel_id) noexcept {
@@ -2095,7 +2095,7 @@ hf_pwm_err_t EspPwm::RegisterLedcFadeCallback(hf_channel_id_t channel_id) noexce
   // Use ESP-IDF v5.5 LEDC callback registration API
   // Convert HF channel ID to ESP-IDF LEDC channel
   ledc_channel_t ledc_channel = static_cast<ledc_channel_t>(channel_id);
-  ledc_mode_t ledc_mode = LEDC_LOW_SPEED_MODE; // ESP32-C6 uses low-speed mode
+  ledc_mode_t ledc_mode = LEDC_LOW_SPEED_MODE; // ESP32 uses low-speed mode
 
   // Create LEDC callback structure
   ledc_cbs_t cbs = {
@@ -2127,7 +2127,7 @@ hf_pwm_err_t EspPwm::UnregisterLedcFadeCallback(hf_channel_id_t channel_id) noex
 #ifdef HF_MCU_FAMILY_ESP32
   // Convert HF channel ID to ESP-IDF LEDC channel
   ledc_channel_t ledc_channel = static_cast<ledc_channel_t>(channel_id);
-  ledc_mode_t ledc_mode = LEDC_LOW_SPEED_MODE; // ESP32-C6 uses low-speed mode
+  ledc_mode_t ledc_mode = LEDC_LOW_SPEED_MODE; // ESP32 uses low-speed mode
 
   // Create empty LEDC callback structure to unregister
   ledc_cbs_t cbs = {
@@ -2371,7 +2371,7 @@ EspPwm::ValidationResult EspPwm::ValidateFrequencyResolutionComplete(
     return result;
   }
 
-  // Phase 2: Hardware constraint validation (ESP32-C6 LEDC fundamental limit)
+  // Phase 2: Hardware constraint validation (ESP32 LEDC fundamental limit)
   if (result.required_clock_hz > result.available_clock_hz) {
     result.error_code = hf_pwm_err_t::PWM_ERR_FREQUENCY_TOO_HIGH;
     result.reason = "Required timer clock exceeds source clock frequency";
@@ -2531,7 +2531,7 @@ std::string EspPwm::GetTimerUsageInfo(hf_u8_t timer_id) const noexcept {
 }
 
 //==============================================================================
-// ADVANCED TIMER MANAGEMENT METHODS (ESP32-C6 OPTIMIZED)
+// ADVANCED TIMER MANAGEMENT METHODS (ESP32 OPTIMIZED)
 //==============================================================================
 
 hf_i8_t EspPwm::AttemptSafeEviction(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept {

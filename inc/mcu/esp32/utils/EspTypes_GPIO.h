@@ -496,11 +496,11 @@ constexpr const char* hf_gpio_result_to_string(hf_gpio_result_t result) {
 
 // Compile-time assertions to ensure configuration consistency (variant-aware)
 #if defined(HF_MCU_ESP32C6)
-static_assert(HF_MCU_GPIO_PIN_COUNT == 31, "ESP32-C6 should have 31 GPIO pins");
-static_assert(HF_MCU_GPIO_MAX_PIN_NUMBER == 30, "ESP32-C6 max GPIO should be 30");
+static_assert(HF_MCU_GPIO_PIN_COUNT == 31, "ESP32 should have 31 GPIO pins");
+static_assert(HF_MCU_GPIO_MAX_PIN_NUMBER == 30, "ESP32 max GPIO should be 30");
 #elif defined(HF_MCU_ESP32S3)
-static_assert(HF_MCU_GPIO_PIN_COUNT == 49, "ESP32-S3 should have 49 GPIO pins");
-static_assert(HF_MCU_GPIO_MAX_PIN_NUMBER == 48, "ESP32-S3 max GPIO should be 48");
+static_assert(HF_MCU_GPIO_PIN_COUNT == 49, "ESP32 should have 49 GPIO pins");
+static_assert(HF_MCU_GPIO_MAX_PIN_NUMBER == 48, "ESP32 max GPIO should be 48");
 #elif defined(HF_MCU_ESP32)
 static_assert(HF_MCU_GPIO_PIN_COUNT == 40, "ESP32 should have 40 GPIO pins");
 static_assert(HF_MCU_GPIO_MAX_PIN_NUMBER == 39, "ESP32 max GPIO should be 39");

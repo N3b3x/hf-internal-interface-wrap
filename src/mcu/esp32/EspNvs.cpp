@@ -1,15 +1,15 @@
 /**
  * @file EspNvs.cpp
- * @brief World-class ESP32-C6 NVS implementation with ESP-IDF v5.5+ advanced features.
+ * @brief World-class ESP32 NVS implementation with ESP-IDF v5.5+ advanced features.
  *
  * This file provides a comprehensive, production-ready NVS (Non-Volatile Storage) implementation
- * for the ESP32-C6 microcontroller using modern ESP-IDF v5.5+ APIs. The implementation leverages
+ * for the ESP32 microcontroller using modern ESP-IDF v5.5+ APIs. The implementation leverages
  * all advanced features including encryption support, enhanced error handling, statistics tracking,
  * iterator support, and comprehensive security configurations.
  *
  * Key Features Implemented:
  * - Modern ESP-IDF v5.5+ NVS API with full thread safety
- * - ESP32-C6 HMAC-based encryption support for secure storage
+ * - ESP32 HMAC-based encryption support for secure storage
  * - Comprehensive error detection and mapping to HardFOC error codes
  * - Advanced NVS features: iterators, statistics, partition management
  * - Production-ready error handling with graceful degradation
@@ -18,7 +18,7 @@
  * - Performance optimization for high-frequency operations
  *
  * Security Features:
- * - HMAC-based encryption scheme (ESP32-C6 specific)
+ * - HMAC-based encryption scheme (ESP32 specific)
  * - XTS encryption for data protection
  * - Secure key generation and management
  * - eFuse-based key storage for tamper resistance
@@ -32,7 +32,7 @@
  * - Statistics tracking for performance monitoring
  *
  * Hardware Requirements:
- * - ESP32-C6 microcontroller with NVS partition
+ * - ESP32 microcontroller with NVS partition
  * - Properly configured partition table with NVS partition
  * - Optional: eFuse keys for encryption (HMAC-based scheme)
  * - Adequate flash space for data and metadata
@@ -41,7 +41,7 @@
  * @date 2025
  * @copyright HardFOC
  *
- * @note This implementation is specifically optimized for ESP32-C6 and production environments.
+ * @note This implementation is specifically optimized for ESP32 and production environments.
  * @note Requires ESP-IDF v5.5 or later for full feature support.
  * @note Supports both encrypted and non-encrypted NVS partitions.
  */
@@ -87,7 +87,7 @@ static constexpr size_t NVS_MAX_NAMESPACE_LENGTH_ESP32 = 15; ///< ESP32 NVS name
 //==============================================================================
 
 //==============================================================================
-// CONSTRUCTOR AND DESTRUCTOR - Enhanced for ESP32-C6 Production Use
+// CONSTRUCTOR AND DESTRUCTOR - Enhanced for ESP32 Production Use
 //==============================================================================
 
 EspNvs::EspNvs(const char* namespace_name) noexcept
@@ -627,7 +627,7 @@ hf_nvs_err_t EspNvs::GetDiagnostics(hf_nvs_diagnostics_t& diagnostics) const noe
 //==============================================================================
 
 hf_nvs_err_t EspNvs::ConvertMcuError(int mcu_error) const noexcept {
-  // Comprehensive ESP32-C6 NVS error code mapping for ESP-IDF v5.5+
+  // Comprehensive ESP32 NVS error code mapping for ESP-IDF v5.5+
   switch (mcu_error) {
   case ESP_OK:
     return hf_nvs_err_t::NVS_SUCCESS;
@@ -656,7 +656,7 @@ hf_nvs_err_t EspNvs::ConvertMcuError(int mcu_error) const noexcept {
   case ESP_ERR_NVS_VALUE_TOO_LONG:
     return hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE; // Value too long for entry
 
-  // Encryption-related errors (ESP32-C6 specific)
+  // Encryption-related errors (ESP32 specific)
   case ESP_ERR_NVS_XTS_ENCR_FAILED:
     return hf_nvs_err_t::NVS_ERR_ENCRYPTION_FAILED; // Encryption operation failed
   case ESP_ERR_NVS_XTS_DECR_FAILED:

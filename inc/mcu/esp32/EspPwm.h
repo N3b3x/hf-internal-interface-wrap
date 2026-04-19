@@ -1,9 +1,9 @@
 /**
  * @file EspPwm.h
  * @ingroup pwm
- * @brief ESP32C6 LEDC (PWM) controller implementation for the HardFOC system.
+ * @brief ESP32 LEDC (PWM) controller implementation for the HardFOC system.
  *
- * This header provides a comprehensive PWM implementation for ESP32C6 using the
+ * This header provides a comprehensive PWM implementation for ESP32 using the
  * LEDC (LED Controller) peripheral which provides high-resolution PWM generation.
  * The implementation supports multiple channels, configurable frequency and resolution,
  * complementary outputs with deadtime, hardware fade support, and interrupt-driven
@@ -58,9 +58,9 @@
  * - **Resolution:** Up to 14-bit resolution
  * - **Special Features:** Unified speed mode, improved power efficiency
  *
- * ### ESP32-C3/C6/H2:
- * - **Channels:** 6 channels (ESP32-C6), 6 channels (ESP32-C3), 4 channels (ESP32-H2)
- * - **Timers:** 4 timers (C3/C6), 2 timers (H2)
+ * ### Other ESP32 Variants:
+ * - **Channels:** Up to 6 channels depending on variant
+ * - **Timers:** Up to 4 timers depending on variant
  * - **Clock Sources:** APB_CLK (80MHz), REF_TICK (1MHz), XTAL_CLK
  * - **Resolution:** Up to 14-bit resolution
  * - **Special Features:** Compact design, optimized for IoT applications
@@ -110,7 +110,7 @@ public:
   //==============================================================================
 
   /**
-   * @brief Constructor for ESP32C6 PWM controller
+   * @brief Constructor for ESP32 PWM controller
    * @param config PWM unit configuration
    * @note Uses lazy initialization - no hardware action until first operation
    */
@@ -544,11 +544,11 @@ public:
    * @return PWM_SUCCESS on success, error code on failure
    *
    * @details Registers a per-channel callback function that is triggered when a hardware
-   * fade operation completes on the specified channel. This uses the native ESP32-C6 LEDC
+   * fade operation completes on the specified channel. This uses the native ESP32 LEDC
    * fade completion interrupt mechanism.
    *
    * **Fade Completion Detection:**
-   * - **LEDC Hardware Interrupt:** Native ESP32-C6 fade completion interrupt
+   * - **LEDC Hardware Interrupt:** Native ESP32 fade completion interrupt
    * - **Per-Channel Granularity:** Each channel can have its own fade callback
    * - **Automatic Registration:** Uses `ledc_cb_register()` for proper ESP-IDF integration
    *
@@ -575,7 +575,7 @@ public:
                                       void(*callback)(hf_channel_id_t)) noexcept;
 
   //==============================================================================
-  // ESP32C6-SPECIFIC FEATURES
+  // ESP32-SPECIFIC FEATURES
   //==============================================================================
 
   /**

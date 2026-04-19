@@ -6,11 +6,11 @@
  * This file contains the ESP32 CAN (TWAI) implementation that extends the BaseCan
  * abstract class. It provides a clean, minimal, and robust CAN interface using
  * the modern ESP-IDF v5.5+ handle-based TWAI node API with comprehensive
- * testing support for ESP32-C6 with external SN65 transceiver.
+ * testing support for ESP32 with external SN65 transceiver.
  *
  * Key Features:
  * - ESP-IDF v5.5+ handle-based TWAI node API
- * - ESP32-C6 compatible TWAI controller support
+ * - ESP32 compatible TWAI controller support
  * - Event-driven callback-based message reception
  * - Advanced acceptance filtering (single/dual mask modes)
  * - Comprehensive error detection and bus recovery
@@ -76,7 +76,7 @@ struct hf_esp_can_config_t {
   uint32_t rx_queue_depth; ///< Receive queue depth (internal)
 
   // Node behavior configuration
-  hf_can_controller_id_t controller_id; ///< Controller ID (0 for ESP32-C6)
+  hf_can_controller_id_t controller_id; ///< Controller ID (0 for ESP32)
   hf_can_mode_t mode;                   ///< Operating mode
   int8_t fail_retry_cnt;                ///< Retry count (-1 = infinite, 0 = single shot)
   uint8_t intr_priority;                ///< Interrupt priority (0-3)
@@ -185,11 +185,11 @@ using hf_esp_can_tx_callback_t =
  *
  * This class provides clean, comprehensive CAN communication using the ESP32's TWAI
  * (Two-Wire Automotive Interface) controllers with modern ESP-IDF v5.5+ node-based APIs.
- * The implementation supports ESP32-C6 and external SN65 CAN transceivers.
+ * The implementation supports ESP32 and external SN65 CAN transceivers.
  *
  * Key Features:
  * - ESP-IDF v5.5+ handle-based TWAI node API
- * - ESP32-C6 compatible TWAI controller support
+ * - ESP32 compatible TWAI controller support
  * - Event-driven callback-based message reception
  * - Advanced acceptance filtering (single/dual mask modes)
  * - Comprehensive error detection and bus recovery

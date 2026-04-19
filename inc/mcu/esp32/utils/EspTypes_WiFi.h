@@ -29,7 +29,7 @@ extern "C" {
 #include "esp_smartconfig.h"
 #include "esp_wifi.h"
 #include "esp_wifi_types.h"
-// WPS not available on ESP32-C6
+// WPS not available on ESP32
 // #include "esp_wps.h"
 #include "lwip/ip_addr.h"
 

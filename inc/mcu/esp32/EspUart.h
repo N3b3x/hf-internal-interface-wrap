@@ -13,7 +13,7 @@
  * @copyright HardFOC
  *
  * @note This implementation is designed for all ESP32 variants using ESP-IDF v5.5+
- * @note Supports ESP32-C6, ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C2, ESP32-H2
+ * @note Supports all ESP32 family variants
  * @note Each EspUart instance represents a single UART port
  * @note Higher-level applications should instantiate multiple EspUart objects for multi-port boards
  */
@@ -71,7 +71,7 @@ extern "C" {
  *
  * Usage Example (Single UART Port):
  * @code
- * // For ESP32-C6 (3 ports)
+ * // For ESP32 (3 ports)
  * EspUart uart0({.port_number = 0, .baud_rate = 115200, .tx_pin = 21, .rx_pin = 20});
  *
  * // For ESP32-C3 (2 ports)

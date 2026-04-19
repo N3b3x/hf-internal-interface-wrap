@@ -1,15 +1,15 @@
 /**
  * @file EspSpi.h
  * @ingroup spi
- * @brief Advanced MCU-integrated SPI controller implementation with ESP32C6/ESP-IDF v5.5+ features.
+ * @brief Advanced MCU-integrated SPI controller implementation with ESP32/ESP-IDF v5.5+ features.
  *
  * This header provides a comprehensive SPI implementation that utilizes all the advanced
- * features available in ESP-IDF v5.5+ for ESP32C6, including DMA acceleration, octal/quad modes,
+ * features available in ESP-IDF v5.5+ for ESP32, including DMA acceleration, octal/quad modes,
  * advanced timing control, multi-device management, power optimization, and comprehensive
  * error handling. The implementation supports both master and slave modes with extensive
  * configuration options for high-performance and low-power applications.
  *
- * Key ESP32C6/ESP-IDF v5.5+ Features Supported:
+ * Key ESP32/ESP-IDF v5.5+ Features Supported:
  * - High-speed SPI Master with DMA support (up to 80MHz)
  * - Multiple clock sources (APB, XTAL) for power optimization
  * - IOMUX optimization for high-frequency operations
@@ -24,7 +24,7 @@
  * @copyright HardFOC
  *
  * @note This implementation fully complies with ESP-IDF v5.5 SPI Master driver API
- * @note Supports ESP32C6 hardware features including dual/quad/octal SPI modes
+ * @note Supports ESP32 hardware features including dual/quad/octal SPI modes
  * @note Thread-safe operations using RTOS mutex protection
  */
 

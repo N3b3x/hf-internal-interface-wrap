@@ -1,16 +1,16 @@
 /**
  * @file EspBluetooth.cpp
  * @ingroup bluetooth
- * @brief ESP32 Bluetooth implementation using NimBLE for BLE-only support (ESP32C6)
+ * @brief ESP32 Bluetooth implementation using NimBLE for BLE support
  *
  * This file contains the ESP32-specific implementation of the Bluetooth interface
- * using NimBLE stack for ESP32C6 BLE-only support on ESP-IDF v5.5.
+ * using NimBLE stack for ESP32 BLE support on ESP-IDF v5.5.
  *
  * Implementation details:
- * - ESP32C6: Optimized NimBLE BLE-only implementation
- * - ESP32/ESP32S3: Full Bluetooth Classic + BLE support
- * - ESP32C3/H2: BLE-only using Bluedroid
- * - ESP32S2: Stub implementation (no Bluetooth support)
+ * - ESP32: NimBLE BLE implementation with variant-specific capability detection
+ * - Full Bluetooth Classic + BLE support on capable variants
+ * - BLE-only using Bluedroid on limited variants
+ * - Stub implementation for variants without Bluetooth support
  *
  * @author HardFOC Team
  * @date 2025
@@ -34,8 +34,8 @@ static const char* TAG = "EspBluetooth";
 EspBluetooth* EspBluetooth::s_instance = nullptr;
 
 // NimBLE specific constants
-static const uint8_t DEVICE_NAME[] = "ESP32C6-HardFOC";
-static const uint16_t DEFAULT_MTU = 247; // ESP32C6 supports up to 247 bytes MTU
+static const uint8_t DEVICE_NAME[] = "ESP32-HardFOC";
+static const uint16_t DEFAULT_MTU = 247; // ESP32 supports up to 247 bytes MTU
 static const uint32_t DEFAULT_SCAN_DURATION_MS = 10000;
 static const uint32_t DEFAULT_CONN_TIMEOUT_MS = 30000;
 
@@ -67,7 +67,7 @@ EspBluetooth::EspBluetooth()
 #endif
 
   // Initialize BLE configuration defaults
-  m_ble_config.device_name = "ESP32C6-HardFOC";
+  m_ble_config.device_name = "ESP32-HardFOC";
   m_ble_config.advertising = false;
   m_ble_config.scannable = true;
   m_ble_config.connectable = true;
@@ -102,10 +102,10 @@ hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) noexcept {
   }
 
 #if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
-  // ESP32C6 supports only BLE mode
+  // ESP32 supports only BLE mode
   if (mode != hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE &&
       mode != hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL) {
-    ESP_LOGE(TAG, "ESP32C6 only supports BLE mode");
+    ESP_LOGE(TAG, "This ESP32 variant only supports BLE mode");
     return hf_bluetooth_err_t::BLUETOOTH_ERR_INVALID_PARAM;
   }
 
@@ -294,10 +294,10 @@ hf_bluetooth_err_t EspBluetooth::SetMode(hf_bluetooth_mode_t mode) noexcept {
   PlatformMutexLockGuard lock(m_state_mutex);
 
 #if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
-  // ESP32C6 only supports BLE
+  // ESP32 only supports BLE
   if (mode != hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE &&
       mode != hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL) {
-    ESP_LOGE(TAG, "ESP32C6 only supports BLE mode");
+    ESP_LOGE(TAG, "This ESP32 variant only supports BLE mode");
     return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
   }
   m_mode = hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE;
@@ -318,7 +318,7 @@ hf_bluetooth_mode_t EspBluetooth::GetMode() const noexcept {
 #if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
 
 hf_bluetooth_err_t EspBluetooth::InitializeNimBLE() {
-  ESP_LOGI(TAG, "Initializing NimBLE for ESP32C6");
+  ESP_LOGI(TAG, "Initializing NimBLE for ESP32");
 
   // Initialize NimBLE port
   int ret = nimble_port_init();
@@ -955,17 +955,17 @@ hf_bluetooth_err_t EspBluetooth::UnregisterDataCallback() noexcept {
 // ========== Classic Bluetooth Methods (stub implementations) ==========
 
 hf_bluetooth_err_t EspBluetooth::ConfigureClassic(const hf_bluetooth_classic_config_t& config) noexcept {
-  ESP_LOGW(TAG, "ConfigureClassic not supported on ESP32C6");
+  ESP_LOGW(TAG, "ConfigureClassic not supported on this ESP32 variant");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 hf_bluetooth_err_t EspBluetooth::SetDiscoverable(bool discoverable, uint32_t timeout_ms) noexcept {
-  ESP_LOGW(TAG, "SetDiscoverable not supported on ESP32C6");
+  ESP_LOGW(TAG, "SetDiscoverable not supported on this ESP32 variant");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 bool EspBluetooth::IsDiscoverable() const noexcept {
-  return false; // ESP32C6 doesn't support Classic Bluetooth
+  return false; // This ESP32 variant doesn't support Classic Bluetooth
 }
 
 hf_bluetooth_err_t EspBluetooth::ConfigureBle(const hf_bluetooth_ble_config_t& config) noexcept {
@@ -987,7 +987,7 @@ std::string EspBluetooth::GetImplementationInfo() const {
   info << "ESP-IDF Version: " << IDF_VER << "\n";
 
 #if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
-  info << "Stack: NimBLE (ESP32C6 optimized)\n";
+  info << "Stack: NimBLE (ESP32 optimized)\n";
   info << "Features: BLE-only\n";
 #elif HAS_BLUEDROID_SUPPORT && defined(CONFIG_BT_ENABLED)
   info << "Stack: Bluedroid\n";
@@ -1079,8 +1079,8 @@ hf_bluetooth_address_t EspBluetooth::StringToAddress(const std::string& address_
 
 // Stub implementations for platforms without Bluetooth support (ESP32S2)
 // Note: This section is only compiled when HAS_BLE_SUPPORT is not defined (ESP32S2)
-// For ESP32-C6, HAS_BLE_SUPPORT should be 1, so this code should not be reached.
+// For ESP32, HAS_BLE_SUPPORT should be 1, so this code should not be reached.
 
-#error "ESP32-C6 should have BLE support enabled. Check conditional compilation."
+#error "ESP32 should have BLE support enabled. Check conditional compilation."
 
 #endif // HAS_BLE_SUPPORT

@@ -1,9 +1,9 @@
 /**
  * @file EspPio.cpp
- * @brief ESP32C6 RMT-based Programmable IO Channel implementation.
+ * @brief ESP32 RMT-based Programmable IO Channel implementation.
  *
  * This file provides the implementation for PIO operations using the
- * ESP32C6's RMT (Remote Control Transceiver) peripheral. The RMT peripheral
+ * ESP32's RMT (Remote Control Transceiver) peripheral. The RMT peripheral
  * provides hardware-accelerated symbol encoding/decoding with precise timing
  * for custom protocols, IR communication, and other timing-critical
  * applications with nanosecond-level precision and interrupt-driven operation.
@@ -726,7 +726,7 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
 
     if (config.direction == hf_pio_direction_t::Transmit ||
         config.direction == hf_pio_direction_t::Bidirectional) {
-      // Configure advanced TX channel for ESP32-C6 compatibility
+      // Configure advanced TX channel for ESP32 compatibility
       rmt_tx_channel_config_t tx_config = {};
       tx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
       tx_config.clk_src = RMT_CLK_SRC_DEFAULT; // APB on ESP32, PLL_F80M on C6 (both 80 MHz)
@@ -792,7 +792,7 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
 
     if (config.direction == hf_pio_direction_t::Receive ||
         config.direction == hf_pio_direction_t::Bidirectional) {
-      // Configure advanced RX channel for ESP32-C6 compatibility
+      // Configure advanced RX channel for ESP32 compatibility
       rmt_rx_channel_config_t rx_config = {};
       rx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
       rx_config.clk_src = RMT_CLK_SRC_DEFAULT; // APB on ESP32, PLL_F80M on C6 (both 80 MHz)
@@ -1164,7 +1164,7 @@ hf_pio_err_t EspPio::ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t*
 }
 
 size_t EspPio::GetMaxSymbolCount() const noexcept {
-  // ESP32C6 RMT can handle large symbol counts with DMA enabled
+  // ESP32 RMT can handle large symbol counts with DMA enabled
   return 4096; // Reasonable limit for most applications
 }
 
@@ -1655,7 +1655,7 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
 
   if (config.direction == hf_pio_direction_t::Receive ||
       config.direction == hf_pio_direction_t::Bidirectional) {
-    // Configure advanced RX channel for ESP32-C6 compatibility
+    // Configure advanced RX channel for ESP32 compatibility
     rmt_rx_channel_config_t rx_config = {};
     rx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
     rx_config.clk_src = RMT_CLK_SRC_DEFAULT; // APB on ESP32, PLL_F80M on C6 (both 80 MHz)

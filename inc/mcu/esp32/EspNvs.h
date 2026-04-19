@@ -1,16 +1,16 @@
 /**
  * @file EspNvs.h
  * @ingroup nvs
- * @brief World-class ESP32-C6 NVS storage implementation with ESP-IDF v5.5+ features.
+ * @brief World-class ESP32 NVS storage implementation with ESP-IDF v5.5+ features.
  *
  * This header provides a production-ready NVS implementation for microcontrollers with
- * built-in non-volatile storage capabilities. On ESP32-C6, this leverages the modern
+ * built-in non-volatile storage capabilities. On ESP32, this leverages the modern
  * ESP-IDF v5.5+ NVS API with comprehensive security features, encryption support,
  * performance optimizations, and robust error handling.
  *
  * Key Features:
  * - Modern ESP-IDF v5.5+ NVS API with handle-based operations
- * - ESP32-C6 HMAC-based encryption support for secure storage
+ * - ESP32 HMAC-based encryption support for secure storage
  * - Comprehensive error handling and mapping to HardFOC error codes
  * - Advanced NVS features: statistics, validation, performance monitoring
  * - Thread-safe operations with optional mutex protection
@@ -19,7 +19,7 @@
  * - Atomic operations and consistency guarantees
  *
  * Security Features:
- * - HMAC-based encryption scheme (ESP32-C6 specific)
+ * - HMAC-based encryption scheme (ESP32 specific)
  * - XTS encryption for data protection
  * - Secure key generation and eFuse-based key storage
  * - Flash encryption compatibility
@@ -36,7 +36,7 @@
  * @date 2025
  * @copyright HardFOC
  *
- * @note This implementation is specifically optimized for ESP32-C6 production environments.
+ * @note This implementation is specifically optimized for ESP32 production environments.
  * @note Requires ESP-IDF v5.5 or later for full feature support.
  * @note All platform-specific types are abstracted through McuTypes.h.
  * @note Uses McuSelect.h for centralized platform configuration.
@@ -48,14 +48,14 @@
 #include "utils/EspTypes_NVS.h" // Centralized ESP32 NVS type definitions
 #include <cstdint>
 
-// ESP32-C6 NVS abstracted types for portability
+// ESP32 NVS abstracted types for portability
 
 /**
  * @class EspNvs
  * @brief Production-ready MCU-integrated non-volatile storage implementation.
  *
  * This class provides comprehensive non-volatile storage using the microcontroller's
- * built-in storage mechanisms with enterprise-grade features. On ESP32-C6, it leverages
+ * built-in storage mechanisms with enterprise-grade features. On ESP32, it leverages
  * the modern ESP-IDF v5.5+ NVS library with advanced security, performance optimizations,
  * and comprehensive error handling. The implementation provides the unified BaseNvs
  * API while exposing platform-specific advanced features.
@@ -68,11 +68,11 @@
  * - Performance monitoring and statistics tracking
  * - Thread-safe operations with optional mutex protection
  *
- * ESP32-C6 Advanced Features:
+ * ESP32 Advanced Features:
  * - HMAC-based encryption for secure storage without flash encryption
  * - XTS encryption with eFuse-based key management
  * - Handle-based modern ESP-IDF v5.5+ API with improved performance
- * - Comprehensive error mapping for all ESP32-C6 NVS error conditions
+ * - Comprehensive error mapping for all ESP32 NVS error conditions
  * - Support for encrypted and non-encrypted partitions
  * - Advanced partition management and configuration options
  *
@@ -84,14 +84,14 @@
  * - Key validation with comprehensive constraint checking
  *
  * Security Features:
- * - Hardware-backed encryption using ESP32-C6 HMAC peripheral
+ * - Hardware-backed encryption using ESP32 HMAC peripheral
  * - Tamper-resistant key storage in eFuse blocks
  * - Data integrity validation and corruption detection
  * - Secure key generation and management
  * - Protection against unauthorized access and data tampering
  *
  * @note This implementation requires sufficient flash storage on the MCU.
- * @note ESP32-C6 encryption features require proper eFuse configuration.
+ * @note ESP32 encryption features require proper eFuse configuration.
  * @note Thread safety is optional and controlled by HF_THREAD_SAFE define.
  * @note All operations are atomic and provide consistency guarantees.
  *
@@ -257,7 +257,7 @@ private:
 
   /**
    * @brief Convert MCU-specific error code to HardFOC NVS error.
-   * @details Provides comprehensive mapping from ESP32-C6 NVS error codes
+   * @details Provides comprehensive mapping from ESP32 NVS error codes
    *          to unified HardFOC error enumeration, including all encryption
    *          and advanced feature error conditions.
    * @param mcu_error MCU-specific error code (esp_err_t on ESP32)

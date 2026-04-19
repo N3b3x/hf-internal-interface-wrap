@@ -1,13 +1,13 @@
 /**
  * @file EspGpio.h
  * @ingroup gpio
- * @brief Advanced MCU-specific implementation of the unified BaseGpio class with ESP32C6/ESP-IDF
+ * @brief Advanced MCU-specific implementation of the unified BaseGpio class with ESP32/ESP-IDF
  * v5.5+ features.
  *
  * This file provides concrete implementations of the unified BaseGpio class
  * for microcontroller-based GPIO pins with support for both basic and advanced features.
  * It supports dynamic mode switching, pull resistor configuration, various output drive modes,
- * and advanced ESP32C6-specific features like glitch filtering, power management, and RTC GPIO.
+ * and advanced ESP32-specific features like glitch filtering, power management, and RTC GPIO.
  * The implementation includes interrupt handling, debouncing, and hardware-accelerated operations.
  *
  * @author Nebiyu Tadesse
@@ -37,7 +37,7 @@ extern "C" {
 
 /**
  * @class EspGpio
- * @brief Advanced MCU-specific implementation of unified BaseGpio with ESP32C6/ESP-IDF v5.5+
+ * @brief Advanced MCU-specific implementation of unified BaseGpio with ESP32/ESP-IDF v5.5+
  * features.
  * @details This class provides a comprehensive implementation of BaseGpio for MCU-based
  *          GPIO pins with support for both basic and advanced features including:
@@ -49,7 +49,7 @@ extern "C" {
  *          - Output drive modes (push-pull, open-drain)
  *          - Thread-safe state management
  *
- *          **Advanced Features (ESP32C6/ESP-IDF v5.5+):**
+ *          **Advanced Features (ESP32/ESP-IDF v5.5+):**
  *          - Glitch filtering (pin and flexible filters)
  *          - RTC GPIO support for ultra-low power operations
  *          - Sleep configuration and state retention
@@ -60,7 +60,7 @@ extern "C" {
  *
  * @note This class is designed to be platform-agnostic within the MCU domain.
  *       Platform-specific details are handled through conditional compilation.
- * @note Advanced features require ESP32C6 with ESP-IDF v5.5+ for full functionality.
+ * @note Advanced features require ESP32 with ESP-IDF v5.5+ for full functionality.
  */
 class EspGpio : public BaseGpio {
 public:
@@ -289,7 +289,7 @@ protected:
 
 public:
   //==============================================================//
-  // ADVANCED GPIO FEATURES (ESP32C6/ESP-IDF v5.5+)
+  // ADVANCED GPIO FEATURES (ESP32/ESP-IDF v5.5+)
   //==============================================================//
 
   /**
@@ -326,7 +326,7 @@ public:
   hf_gpio_err_t ConfigurePinGlitchFilter(bool enable) noexcept;
 
   /**
-   * @brief Configure advanced glitch filter (pin/flex) for ESP32C6.
+   * @brief Configure advanced glitch filter (pin/flex) for ESP32.
    * @param filter_type Glitch filter type (none, pin, flex, both)
    * @param flex_config Optional pointer to flexible filter config
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
@@ -336,7 +336,7 @@ public:
       const hf_gpio_flex_filter_config_t* flex_config = nullptr) noexcept;
 
   /**
-   * @brief Configure sleep mode for ESP32C6 GPIO.
+   * @brief Configure sleep mode for ESP32 GPIO.
    * @param sleep_config Sleep configuration struct
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
@@ -411,7 +411,7 @@ public:
   [[nodiscard]] bool IsHeld() const noexcept;
 
   //==============================================================//
-  // STATIC UTILITY METHODS FOR ESP32C6 PIN VALIDATION
+  // STATIC UTILITY METHODS FOR ESP32 PIN VALIDATION
   //==============================================================//
 
   /**
@@ -457,7 +457,7 @@ public:
    * @brief Check if pin supports RTC GPIO functionality.
    * @param pin_num Pin number to check
    * @return true if pin supports RTC GPIO (deep sleep, analog functions)
-   * @details ESP32C6: GPIO0-7 support RTC functionality.
+   * @details ESP32: GPIO0-7 support RTC functionality.
    */
   static bool IsRtcGpio(hf_pin_num_t pin_num) noexcept;
 
@@ -465,7 +465,7 @@ public:
    * @brief Check if pin is a strapping pin requiring caution.
    * @param pin_num Pin number to check
    * @return true if pin is a strapping pin
-   * @details ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15.
+   * @details ESP32 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15.
    */
   static bool IsStrappingPin(hf_pin_num_t pin_num) noexcept;
 

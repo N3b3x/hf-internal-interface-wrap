@@ -49,7 +49,7 @@ static constexpr uint8_t HF_RMT_TX_CHANNEL_START = 0; // TX channels: 0-3
 static constexpr uint8_t HF_RMT_RX_CHANNEL_START = 0; // RX channels: 0-3
 
 #elif defined(CONFIG_IDF_TARGET_ESP32S3)
-// ESP32-S3: 8 channels, hardcoded TX/RX allocation
+// ESP32: 8 channels, hardcoded TX/RX allocation
 static constexpr uint8_t HF_RMT_MAX_CHANNELS = 8;
 static constexpr uint8_t HF_RMT_MAX_TX_CHANNELS = 4;  // Channels 0-3 are hardcoded for TX
 static constexpr uint8_t HF_RMT_MAX_RX_CHANNELS = 4;  // Channels 4-7 are hardcoded for RX
@@ -169,7 +169,7 @@ struct hf_rmt_carrier_config_t {
 #define HF_RMT_IS_VALID_TX_CHANNEL(ch) ((ch) < HF_RMT_MAX_CHANNELS)
 #define HF_RMT_IS_VALID_RX_CHANNEL(ch) ((ch) < HF_RMT_MAX_CHANNELS)
 #elif defined(CONFIG_IDF_TARGET_ESP32S3)
-// ESP32-S3: Channels 0-3 for TX, 4-7 for RX
+// ESP32: Channels 0-3 for TX, 4-7 for RX
 #define HF_RMT_IS_VALID_TX_CHANNEL(ch) ((ch) >= 0 && (ch) < 4)
 #define HF_RMT_IS_VALID_RX_CHANNEL(ch) ((ch) >= 4 && (ch) < 8)
 #elif defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32C6) ||                  \

@@ -1,14 +1,14 @@
 /**
  * @file EspTemperature.cpp
- * @brief ESP32-C6 internal temperature sensor implementation for the HardFOC system.
+ * @brief ESP32 internal temperature sensor implementation for the HardFOC system.
  *
- * This file contains the complete implementation of the ESP32-C6 temperature sensor driver
+ * This file contains the complete implementation of the ESP32 temperature sensor driver
  * that extends the BaseTemperature abstract class. It provides comprehensive support for all
- * ESP32-C6 temperature sensor features including multiple measurement ranges, threshold monitoring,
+ * ESP32 temperature sensor features including multiple measurement ranges, threshold monitoring,
  * continuous monitoring, calibration, and power management.
  *
  * Key features implemented:
- * - ESP32-C6 internal temperature sensor using ESP-IDF v5.x APIs
+ * - ESP32 internal temperature sensor using ESP-IDF v5.x APIs
  * - Multiple predefined measurement ranges with different accuracy levels
  * - Hardware threshold monitoring with interrupt callbacks
  * - Continuous monitoring using ESP32 timers
@@ -22,7 +22,7 @@
  * @date 2025
  * @copyright HardFOC
  *
- * @note ESP32-C6 specific implementation using ESP-IDF v5.x
+ * @note ESP32 specific implementation using ESP-IDF v5.x
  * @note Thread-safe design suitable for multi-threaded applications
  * @note Follows HardFOC coding standards and patterns
  */
@@ -42,12 +42,12 @@ std::atomic<int> EspTemperature::s_refcount_{0};
 temperature_sensor_handle_t EspTemperature::s_shared_handle_ = nullptr;
 
 //--------------------------------------
-//  ESP32-C6 Temperature Range Configuration
+//  ESP32 Temperature Range Configuration
 //--------------------------------------
 
 /**
- * @brief ESP32-C6 temperature sensor range information table
- * @details Based on ESP32-C6 hardware specifications and ESP-IDF documentation
+ * @brief ESP32 temperature sensor range information table
+ * @details Based on ESP32 hardware specifications and ESP-IDF documentation
  */
 const esp_temp_range_info_t EspTemperature::RANGE_INFO[] = {
     {ESP_TEMP_RANGE_NEG10_80, -10.0f, 80.0f, 1.0f, "-10°C to 80°C (±1°C accuracy, recommended)"},
@@ -136,7 +136,7 @@ bool EspTemperature::Initialize() noexcept {
     return true;
   }
 
-  ESP_LOGI(TAG, "Initializing ESP32-C6 temperature sensor...");
+  ESP_LOGI(TAG, "Initializing ESP32 temperature sensor...");
 
   // Configure or adopt shared temperature sensor
   float min_temp, max_temp, accuracy;
@@ -184,7 +184,7 @@ bool EspTemperature::Initialize() noexcept {
     diagnostics_.threshold_monitoring_enabled = true;
   }
 
-  ESP_LOGI(TAG, "ESP32-C6 temperature sensor initialized successfully");
+  ESP_LOGI(TAG, "ESP32 temperature sensor initialized successfully");
   ESP_LOGI(TAG, "Range: %.0f°C to %.0f°C, Accuracy: ±%.1f°C", min_temp, max_temp, accuracy);
 
   UpdateStatistics(true, GetCurrentTimeUs() - start_time);
@@ -203,7 +203,7 @@ bool EspTemperature::Deinitialize() noexcept {
     return true;
   }
 
-  ESP_LOGI(TAG, "Deinitializing ESP32-C6 temperature sensor...");
+  ESP_LOGI(TAG, "Deinitializing ESP32 temperature sensor...");
 
   // Stop continuous monitoring if active
   if (esp_state_.continuous_monitoring_active) {
@@ -278,10 +278,10 @@ bool EspTemperature::Deinitialize() noexcept {
   monitoring_user_data_ = nullptr;
 
   if (success) {
-    ESP_LOGI(TAG, "ESP32-C6 temperature sensor deinitialized successfully");
+    ESP_LOGI(TAG, "ESP32 temperature sensor deinitialized successfully");
     SetLastError(hf_temp_err_t::TEMP_SUCCESS);
   } else {
-    ESP_LOGE(TAG, "ESP32-C6 temperature sensor deinitialization completed with errors");
+    ESP_LOGE(TAG, "ESP32 temperature sensor deinitialization completed with errors");
     SetLastError(hf_temp_err_t::TEMP_ERR_FAILURE);
   }
 
@@ -314,7 +314,7 @@ hf_temp_err_t EspTemperature::ReadTemperatureCelsiusImpl(float* temperature_cels
 
   current_state_ = HF_TEMP_STATE_READING;
 
-  // Read raw temperature from ESP32-C6
+  // Read raw temperature from ESP32
   float raw_temp;
   esp_err_t esp_err = temperature_sensor_get_celsius(esp_state_.handle, &raw_temp);
 
@@ -398,7 +398,7 @@ hf_temp_err_t EspTemperature::GetSensorInfo(hf_temp_sensor_info_t* info) const n
   info->response_time_ms = ESP_TEMP_DEFAULT_RESPONSE_TIME_MS;
   info->capabilities = GetCapabilities();
   info->manufacturer = "Espressif";
-  info->model = "ESP32-C6 Internal Temperature Sensor";
+  info->model = "ESP32 Internal Temperature Sensor";
   info->version = "ESP-IDF v5.x";
 
   return hf_temp_err_t::TEMP_SUCCESS;
@@ -411,7 +411,7 @@ hf_u32_t EspTemperature::GetCapabilities() const noexcept {
 }
 
 //==============================================================================
-// ADVANCED FEATURES (SUPPORTED BY ESP32-C6)
+// ADVANCED FEATURES (SUPPORTED BY ESP32)
 //==============================================================================
 
 hf_temp_err_t EspTemperature::SetRange(float min_celsius, float max_celsius) noexcept {
@@ -867,7 +867,7 @@ hf_temp_err_t EspTemperature::ResetDiagnostics() noexcept {
 }
 
 //==============================================================================
-// ESP32-C6 SPECIFIC METHODS
+// ESP32 SPECIFIC METHODS
 //==============================================================================
 
 hf_temp_err_t EspTemperature::InitializeEsp32(const esp_temp_config_t& esp_config) noexcept {

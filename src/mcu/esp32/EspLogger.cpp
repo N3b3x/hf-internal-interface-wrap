@@ -803,35 +803,40 @@ hf_logger_err_t EspLogger::WriteMessageV(hf_log_level_t level, const char* tag, 
     return hf_logger_err_t::LOGGER_ERR_NULL_POINTER;
   }
 
+  // Format the user message first
+  char user_message[512];
+  vsnprintf(user_message, sizeof(user_message), format, args);
+
   // Use custom output callback if configured
   if (config_.custom_output_callback) {
-    // Format message for custom callback
-    char formatted_message[config_.max_message_length];
-    int len = vsnprintf(formatted_message, sizeof(formatted_message), format, args);
-    if (len > 0) {
-      config_.custom_output_callback(formatted_message, static_cast<hf_u32_t>(len));
-    }
+    config_.custom_output_callback(user_message, std::strlen(user_message));
     return hf_logger_err_t::LOGGER_SUCCESS;
   }
 
-  esp_log_level_t esp_level = ConvertLogLevel(level);
-
-  // Use appropriate ESP-IDF logging method based on version
-  if (log_v2_available_) {
-#ifdef CONFIG_LOG_VERSION_2
-    // Log V2: Use esp_log() for better performance and flexibility
-    esp_log(esp_level, tag, format, args);
-    return hf_logger_err_t::LOGGER_SUCCESS;
-#else
-    // Fallback to Log V1
-    esp_log_writev(esp_level, tag, format, args);
-    return hf_logger_err_t::LOGGER_SUCCESS;
-#endif
-  } else {
-    // Log V1: Use esp_log_writev
-    esp_log_writev(esp_level, tag, format, args);
-    return hf_logger_err_t::LOGGER_SUCCESS;
+  // Use ESP_LOG macros directly for proper formatting (timestamp, level, tag prefix)
+  // This ensures output matches standard ESP_LOG format: "I (123) TAG: message"
+  switch (level) {
+    case hf_log_level_t::LOG_LEVEL_ERROR:
+      ESP_LOGE(tag, "%s", user_message);
+      break;
+    case hf_log_level_t::LOG_LEVEL_WARN:
+      ESP_LOGW(tag, "%s", user_message);
+      break;
+    case hf_log_level_t::LOG_LEVEL_INFO:
+      ESP_LOGI(tag, "%s", user_message);
+      break;
+    case hf_log_level_t::LOG_LEVEL_DEBUG:
+      ESP_LOGD(tag, "%s", user_message);
+      break;
+    case hf_log_level_t::LOG_LEVEL_VERBOSE:
+      ESP_LOGV(tag, "%s", user_message);
+      break;
+    default:
+      ESP_LOGI(tag, "%s", user_message);
+      break;
   }
+
+  return hf_logger_err_t::LOGGER_SUCCESS;
 }
 
 void EspLogger::UpdateStatistics(hf_log_level_t level, hf_u32_t message_length,

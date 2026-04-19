@@ -1,9 +1,9 @@
 /**
  * @file EspGpio.cpp
- * @brief Production-quality ESP32C6 GPIO implementation with ESP-IDF v5.5+ advanced features.
+ * @brief Production-quality ESP32 GPIO implementation with ESP-IDF v5.5+ advanced features.
  *
  * This file contains a world-class implementation of MCU-specific GPIO
- * for the BaseGpio class with comprehensive ESP32C6/ESP-IDF v5.5+ feature support.
+ * for the BaseGpio class with comprehensive ESP32/ESP-IDF v5.5+ feature support.
  * Features include dynamic mode switching, advanced glitch filtering, RTC GPIO,
  * power management, sleep configuration, wake-up support, interrupt handling,
  * and comprehensive diagnostics for industrial-grade applications.
@@ -29,7 +29,7 @@
 extern "C" {
 #endif
 
-// ESP32-C6 specific includes with ESP-IDF v5.5+ features
+// ESP32 specific includes with ESP-IDF v5.5+ features
 #include "driver/gpio.h"
 #include "driver/gpio_filter.h"
 #include "driver/rtc_io.h"
@@ -67,7 +67,7 @@ namespace {
 std::atomic<hf_u32_t> g_total_gpio_interrupts{0};
 std::atomic<hf_u32_t> g_active_gpio_count{0};
 
-// GPIO pin capabilities lookup table for ESP32C6
+// GPIO pin capabilities lookup table for ESP32
 #ifdef HF_MCU_ESP32C6
 constexpr hf_gpio_pin_capabilities_t GPIO_PIN_CAPABILITIES[HF_MCU_GPIO_PIN_COUNT] = {
     // GPIO0-GPIO7: ADC and RTC capable
@@ -214,7 +214,7 @@ bool EspGpio::Initialize() noexcept {
     return true;
   }
 
-  ESP_LOGI(TAG, "Initializing GPIO%d with advanced ESP32C6 features", static_cast<int>(pin_));
+  ESP_LOGI(TAG, "Initializing GPIO%d with advanced ESP32 features", static_cast<int>(pin_));
 
   // Configure GPIO using ESP-IDF v5.5+ advanced configuration
   gpio_config_t io_conf = {};
@@ -353,7 +353,7 @@ const char* EspGpio::GetDescription() const noexcept {
   static char desc_buffer[128];
 #ifdef HF_MCU_ESP32C6
   const auto& caps = GPIO_PIN_CAPABILITIES[pin_];
-  snprintf(desc_buffer, sizeof(desc_buffer), "ESP32C6 GPIO%d (ADC:%s, RTC:%s, Strapping:%s)",
+  snprintf(desc_buffer, sizeof(desc_buffer), "ESP32 GPIO%d (ADC:%s, RTC:%s, Strapping:%s)",
            static_cast<int>(pin_), caps.supports_adc ? "Yes" : "No",
            caps.supports_rtc ? "Yes" : "No", caps.is_strapping_pin ? "Yes" : "No");
 #else
@@ -367,7 +367,7 @@ const char* EspGpio::GetDescription() const noexcept {
 //==============================================================================
 
 hf_gpio_err_t EspGpio::SupportsInterrupts() const noexcept {
-  return hf_gpio_err_t::GPIO_SUCCESS; // All ESP32C6 GPIOs support interrupts
+  return hf_gpio_err_t::GPIO_SUCCESS; // All ESP32 GPIOs support interrupts
 }
 
 //==============================================================================
@@ -774,7 +774,7 @@ hf_gpio_err_t EspGpio::GetOutputModeImpl(hf_gpio_output_mode_t& mode) const noex
 }
 
 //==============================================================================
-// ADVANCED ESP32C6 FEATURES IMPLEMENTATION
+// ADVANCED ESP32 FEATURES IMPLEMENTATION
 //==============================================================================
 
 hf_gpio_err_t EspGpio::SetDriveCapability(hf_gpio_drive_cap_t capability) noexcept {
@@ -1396,7 +1396,7 @@ hf_gpio_err_t EspGpio::GetPinCapabilities(hf_gpio_pin_capabilities_t& capabiliti
 
   return hf_gpio_err_t::GPIO_SUCCESS;
 #else
-  // Generic capabilities for non-ESP32C6 platforms
+  // Generic capabilities for other ESP32 variants
   capabilities.pin_number = pin_;
   capabilities.supports_input = true;
   capabilities.supports_output = true;

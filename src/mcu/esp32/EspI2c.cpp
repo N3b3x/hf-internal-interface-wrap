@@ -16,14 +16,14 @@
  * - Automatic resource cleanup and lifecycle management
  *
  * The implementation closely follows ESP-IDF v5.5 I2C Master driver documentation:
- * https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32c6/api-reference/peripherals/i2c.html
+ * https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32/api-reference/peripherals/i2c.html
  *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
  *
  * @note Fully compliant with ESP-IDF v5.5 I2C Master driver API
- * @note Optimized for ESP32C6 hardware capabilities
+ * @note Optimized for ESP32 hardware capabilities
  * @note Thread-safe for multi-device I2C bus management
  * @note Follows the same architectural pattern as EspSpi
  */
@@ -33,7 +33,7 @@
 #include <algorithm>
 #include <cstring>
 
-// ESP-IDF additional includes for ESP32C6 features
+// ESP-IDF additional includes for ESP32 features
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -156,7 +156,7 @@ bool EspI2cBus::Initialize() noexcept {
 
   ESP_LOGI(TAG, "I2C master bus created successfully");
 
-  // Wait for bus to be fully ready (ESP32-C6 requirement)
+  // Wait for bus to be fully ready (ESP32 requirement)
   // This ensures the I2C peripheral is fully initialized before any operations
   err = i2c_master_bus_wait_all_done(bus_handle_, 100);
   if (err != ESP_OK) {
@@ -609,7 +609,7 @@ bool EspI2cBus::ProbeDevice(hf_u16_t device_addr, hf_u32_t timeout_ms) noexcept 
   device_found = CustomFastProbe(device_addr, actual_timeout);
 #else
   // Use ESP-IDF's broken probe function (for comparison/testing)
-  ESP_LOGI(TAG, "ProbeDevice: Using ESP-IDF PROBE (known to be broken on ESP32C6)");
+  ESP_LOGI(TAG, "ProbeDevice: Using ESP-IDF PROBE (known to be broken on some ESP32 variants)");
 
   // Use provided timeout or default to 1000ms for ESP-IDF probe
   hf_u32_t esp_timeout = (timeout_ms > 0) ? timeout_ms : 1000;
@@ -1842,7 +1842,7 @@ bool EspI2cDevice::InternalAsyncCallback(i2c_master_dev_handle_t i2c_dev,
     case I2C_EVENT_DONE:
       // Transaction completed successfully
       result = hf_i2c_err_t::I2C_SUCCESS;
-      // For ESP32-C6, we need to determine bytes transferred based on operation type
+      // For ESP32, we need to determine bytes transferred based on operation type
       // Since ESP-IDF doesn't provide this in event data, we'll use the operation tracking
       if (device->current_op_type_ == hf_i2c_transaction_type_t::HF_I2C_TRANS_WRITE) {
         bytes_transferred = device->last_write_length_;

@@ -35,7 +35,7 @@ static constexpr uint32_t HF_UART_BREAK_MAX_DURATION = 1000; ///< Maximum break 
 
 // ESP32 UART port limits
 #ifdef HF_MCU_ESP32C6
-static constexpr uint8_t HF_ESP32_UART_MAX_PORTS = 3; // ESP32-C6 has 3 UART ports
+static constexpr uint8_t HF_ESP32_UART_MAX_PORTS = 3; // ESP32 has 3 UART ports
 #elif defined(HF_MCU_ESP32) || defined(HF_MCU_ESP32S2) || defined(HF_MCU_ESP32S3)
 static constexpr uint8_t HF_ESP32_UART_MAX_PORTS = 3; // ESP32 Classic/S2/S3 have 3 UART ports
 #elif defined(HF_MCU_ESP32C3) || defined(HF_MCU_ESP32C2) || defined(HF_MCU_ESP32H2)
@@ -287,7 +287,7 @@ using hf_uart_break_callback_t = bool (*)(uint32_t break_duration, void* user_da
 // ESP32 UART PIN MAP DEFINITIONS
 //==============================================================================
 
-// ESP32-C6 UART Pin Mappings
+// ESP32 UART Pin Mappings
 #ifdef HF_MCU_ESP32C6
 struct hf_uart_pin_map_esp32c6_t {
   static constexpr hf_pin_num_t UART0_TX_PIN = 21;  // GPIO21
@@ -347,7 +347,7 @@ struct hf_uart_pin_map_esp32s2_t {
 };
 #endif
 
-// ESP32-S3 UART Pin Mappings
+// ESP32 UART Pin Mappings
 #ifdef HF_MCU_ESP32S3
 struct hf_uart_pin_map_esp32s3_t {
   static constexpr hf_pin_num_t UART0_TX_PIN = 43;  // GPIO43

@@ -446,7 +446,7 @@ hf_uart_err_t EspUart::SetFlowControl(bool enable) noexcept {
   PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   uart_hw_flowcontrol_t flow_ctrl = enable ? UART_HW_FLOWCTRL_CTS_RTS : UART_HW_FLOWCTRL_DISABLE;
-  // ESP32-C6 UART FIFO is only 128 bytes, use a reasonable threshold
+  // ESP32 UART FIFO is only 128 bytes, use a reasonable threshold
   uint8_t threshold = enable ? 64 : 0; // 50% of FIFO size when enabled
   esp_err_t result = uart_set_hw_flow_ctrl(uart_port_, flow_ctrl, threshold);
   if (result == ESP_OK) {
@@ -493,7 +493,7 @@ hf_uart_err_t EspUart::SendBreak(hf_u32_t duration_ms) noexcept {
 
   PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
-  // Try multiple approaches for sending break signal on ESP32-C6
+  // Try multiple approaches for sending break signal on ESP32
   esp_err_t result = ESP_ERR_NOT_SUPPORTED;
 
   // Approach 1: Try uart_write_bytes_with_break (ESP-IDF v5.5 standard)
@@ -507,7 +507,7 @@ hf_uart_err_t EspUart::SendBreak(hf_u32_t duration_ms) noexcept {
   }
 
   // Approach 2: If uart_write_bytes_with_break fails, try manual break via GPIO control
-  // This is a fallback for ESP32-C6 which may have issues with the standard break function
+  // This is a fallback for ESP32 which may have issues with the standard break function
   ESP_LOGW(TAG, "uart_write_bytes_with_break failed (%s), trying manual break via GPIO",
            esp_err_to_name(result));
 
@@ -533,7 +533,7 @@ hf_uart_err_t EspUart::SendBreak(hf_u32_t duration_ms) noexcept {
                    port_config_.cts_pin);
 
       statistics_.break_count++;
-      ESP_LOGW(TAG, "Break condition sent via manual GPIO control for %lu ms (ESP32-C6 fallback)",
+      ESP_LOGW(TAG, "Break condition sent via manual GPIO control for %lu ms (ESP32 fallback)",
                duration_ms);
       return hf_uart_err_t::UART_SUCCESS;
     } else {
@@ -545,7 +545,7 @@ hf_uart_err_t EspUart::SendBreak(hf_u32_t duration_ms) noexcept {
 
   // Approach 3: If all else fails, log the issue and return appropriate error
   ESP_LOGE(TAG,
-           "All break signal methods failed on ESP32-C6. This is a known hardware limitation.");
+           "All break signal methods failed on ESP32. This is a known hardware limitation.");
   ESP_LOGE(TAG, "Break signal functionality may not be fully supported on this MCU variant.");
 
   // Return a specific error code for unsupported operations
@@ -1277,7 +1277,7 @@ bool IsValidUartPort(hf_port_num_t port_number) noexcept {
 
 bool GetDefaultUartPins(hf_port_num_t port_number, hf_pin_num_t& tx_pin, hf_pin_num_t& rx_pin,
                         hf_pin_num_t& rts_pin, hf_pin_num_t& cts_pin) noexcept {
-// ESP32-C6 Pin Mappings
+// ESP32 Pin Mappings (variant-specific)
 #if defined(HF_MCU_ESP32C6)
   switch (port_number) {
   case 0:
@@ -1352,7 +1352,7 @@ bool GetDefaultUartPins(hf_port_num_t port_number, hf_pin_num_t& tx_pin, hf_pin_
     return false;
   }
 
-// ESP32-S3 Pin Mappings
+// ESP32 Pin Mappings (variant-specific)
 #elif defined(HF_MCU_ESP32S3)
   switch (port_number) {
   case 0:

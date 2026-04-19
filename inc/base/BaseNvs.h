@@ -57,7 +57,7 @@
   X(NVS_ERR_INVALID_DATA, 12, "Invalid data")                                                      \
   X(NVS_ERR_READ_ONLY, 13, "Read only mode")                                                       \
   X(NVS_ERR_CORRUPTED, 14, "Data corrupted")                                                       \
-  /* ESP32-C6 encryption and advanced feature errors */                                            \
+  /* ESP32 encryption and advanced feature errors */                                            \
   X(NVS_ERR_ENCRYPTION_FAILED, 15, "Encryption operation failed")                                  \
   X(NVS_ERR_DECRYPTION_FAILED, 16, "Decryption operation failed")                                  \
   X(NVS_ERR_ENCRYPTION_NOT_CONFIGURED, 17, "Encryption not configured")                            \

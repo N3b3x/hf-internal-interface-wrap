@@ -19,7 +19,7 @@
  * @copyright HardFOC
  *
  * @note This implementation is designed for all ESP32 variants using ESP-IDF v5.5+
- * @note Supports ESP32-C6, ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C2, ESP32-H2
+ * @note Supports all ESP32 family variants
  * @note Each EspAdc instance represents a single ADC unit
  * @note Higher-level applications should instantiate multiple EspAdc objects for multi-unit boards
  */
@@ -65,12 +65,12 @@ extern "C" {
 // ESP32 VARIANT-SPECIFIC ADC CONFIGURATION
 //==============================================================================
 
-// ESP32-C6 Configuration
+// ESP32 Configuration
 #if defined(HF_MCU_ESP32C6)
-#define HF_ESP32_ADC_MAX_UNITS 1                  ///< ESP32-C6 has 1 ADC unit (ADC1)
-#define HF_ESP32_ADC_MAX_CHANNELS 7               ///< ESP32-C6 has 7 ADC channels (0-6)
-#define HF_ESP32_ADC_MAX_FILTERS 2                ///< ESP32-C6 supports 2 IIR filters
-#define HF_ESP32_ADC_MAX_MONITORS 2               ///< ESP32-C6 supports 2 threshold monitors
+#define HF_ESP32_ADC_MAX_UNITS 1                  ///< ESP32 has 1 ADC unit (ADC1)
+#define HF_ESP32_ADC_MAX_CHANNELS 7               ///< ESP32 has 7 ADC channels (0-6)
+#define HF_ESP32_ADC_MAX_FILTERS 2                ///< ESP32 supports 2 IIR filters
+#define HF_ESP32_ADC_MAX_MONITORS 2               ///< ESP32 supports 2 threshold monitors
 #define HF_ESP32_ADC_MAX_RAW_VALUE 4095           ///< 12-bit ADC
 #define HF_ESP32_ADC_REFERENCE_VOLTAGE_MV 1100    ///< 1.1V reference
 #define HF_ESP32_ADC_MAX_SAMPLING_FREQ 100000     ///< 100kSPS max
@@ -122,12 +122,12 @@ extern "C" {
 #define HF_ESP32_ADC_CONTINUOUS_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_ULP_MODE ADC_ULP_MODE_DISABLE               ///< ULP mode disabled by default
 
-// ESP32-S3 Configuration
+// ESP32 Configuration
 #elif defined(HF_MCU_ESP32S3)
-#define HF_ESP32_ADC_MAX_UNITS 2                  ///< ESP32-S3 has 2 ADC units (ADC1, ADC2)
-#define HF_ESP32_ADC_MAX_CHANNELS 10              ///< ESP32-S3 has 10 ADC channels per unit (0-9)
-#define HF_ESP32_ADC_MAX_FILTERS 2                ///< ESP32-S3 supports 2 IIR filters
-#define HF_ESP32_ADC_MAX_MONITORS 2               ///< ESP32-S3 supports 2 threshold monitors
+#define HF_ESP32_ADC_MAX_UNITS 2                  ///< ESP32 has 2 ADC units (ADC1, ADC2)
+#define HF_ESP32_ADC_MAX_CHANNELS 10              ///< ESP32 has 10 ADC channels per unit (0-9)
+#define HF_ESP32_ADC_MAX_FILTERS 2                ///< ESP32 supports 2 IIR filters
+#define HF_ESP32_ADC_MAX_MONITORS 2               ///< ESP32 supports 2 threshold monitors
 #define HF_ESP32_ADC_MAX_RAW_VALUE 4095           ///< 12-bit ADC
 #define HF_ESP32_ADC_REFERENCE_VOLTAGE_MV 1100    ///< 1.1V reference
 #define HF_ESP32_ADC_MAX_SAMPLING_FREQ 200000     ///< 200kSPS max
@@ -224,7 +224,7 @@ extern "C" {
  *
  * Usage Example (Single ADC Unit):
  * @code
- * // For ESP32-C6 (single unit)
+ * // For ESP32 (single unit)
  * EspAdc adc1({.unit_id = 0}); // ADC1
  *
  * // For ESP32 Classic (two units)

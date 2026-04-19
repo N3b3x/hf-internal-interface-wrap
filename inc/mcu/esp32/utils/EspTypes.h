@@ -7,7 +7,7 @@
  * the specialized peripheral headers. This maintains backward compatibility
  * while providing a cleaner, modular organization.
  *
- * @details ESP32C6/ESP-IDF v5.5+ Features Supported:
+ * @details ESP32/ESP-IDF v5.5+ Features Supported:
  * - Dual TWAI/CAN controllers with v2 API support
  * - GPIO hardware glitch filters (pin + 8 flexible filters)
  * - RTC GPIO with sleep retention and wake-up sources

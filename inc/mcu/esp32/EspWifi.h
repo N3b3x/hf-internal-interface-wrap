@@ -36,7 +36,7 @@ extern "C" {
 #include "esp_netif.h"
 #include "esp_smartconfig.h"
 #include "esp_wifi.h"
-// WPS not available on ESP32-C6
+// WPS not available on ESP32
 // #include "esp_wps.h"
 #include "lwip/err.h"
 #include "lwip/sys.h"
@@ -98,7 +98,7 @@ struct EspWifiAdvancedConfig {
   // Smart config and provisioning
   bool enable_smartconfig;             /**< Enable SmartConfig */
   smartconfig_type_t smartconfig_type; /**< SmartConfig type */
-  // WPS not available on ESP32-C6
+  // WPS not available on ESP32
   // bool enable_wps;                     /**< Enable WPS */
   // wps_type_t wps_type;                 /**< WPS type */
 };
@@ -264,7 +264,7 @@ public:
    */
   hf_wifi_err_t StopSmartConfig();
 
-  // WPS not available on ESP32-C6
+  // WPS not available on ESP32
   // /**
   //  * @brief Start WPS provisioning
   //  * @param type WPS type

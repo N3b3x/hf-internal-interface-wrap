@@ -4,11 +4,11 @@
  *
  * This file provides a comprehensive CAN bus implementation for the ESP32
  * microcontroller family using modern ESP-IDF v5.5+ TWAI node-based APIs.
- * The implementation provides advanced features for ESP32-C6 with external SN65 transceivers.
+ * The implementation provides advanced features for ESP32 with external SN65 transceivers.
  *
  * Key Features Implemented:
  * - ESP-IDF v5.5+ handle-based TWAI node API
- * - ESP32-C6 compatible TWAI controller support
+ * - ESP32 compatible TWAI controller support
  * - Event-driven callback-based message reception
  * - Advanced acceptance filtering (single/dual mask modes)
  * - Comprehensive error detection and bus recovery

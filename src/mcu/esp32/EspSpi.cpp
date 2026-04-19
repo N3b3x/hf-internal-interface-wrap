@@ -1,8 +1,8 @@
 /**
  * @file EspSpi.cpp
- * @brief Implementation of MCU-integrated SPI controller for ESP32C6 with ESP-IDF v5.5+ features.
+ * @brief Implementation of MCU-integrated SPI controller for ESP32 with ESP-IDF v5.5+ features.
  *
- * This file provides the implementation for SPI bus communication using the ESP32C6's
+ * This file provides the implementation for SPI bus communication using the ESP32's
  * built-in SPI peripheral with full ESP-IDF v5.5+ capabilities. The implementation supports:
  *
  * - Full-duplex and half-duplex communication modes
@@ -18,14 +18,14 @@
  * - Proper BaseSpi class integration for portability
  *
  * The implementation closely follows ESP-IDF v5.5 SPI Master driver documentation:
- * https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32c6/api-reference/peripherals/spi_master.html
+ * https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32/api-reference/peripherals/spi_master.html
  *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
  *
  * @note Fully compliant with ESP-IDF v5.5 SPI Master driver API
- * @note Optimized for ESP32C6 hardware capabilities
+ * @note Optimized for ESP32 hardware capabilities
  * @note Thread-safe for multi-device SPI bus management
  */
 
@@ -33,7 +33,7 @@
 #include "utils/memory_utils.h"
 #include <cstring>
 
-// ESP-IDF additional includes for ESP32C6 features
+// ESP-IDF additional includes for ESP32 features
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -69,7 +69,7 @@ bool EspSpiBus::Initialize() noexcept {
   bus_cfg.quadwp_io_num = -1; // Set to -1 unless using quad SPI
   bus_cfg.quadhd_io_num = -1; // Set to -1 unless using quad SPI
 
-  // ESP32C6 allows larger transfer sizes with proper DMA configuration
+  // ESP32 allows larger transfer sizes with proper DMA configuration
   bus_cfg.max_transfer_sz = (config_.dma_channel != 0xFF) ? 4092 : 64;
 
   // Enhanced flags based on ESP-IDF v5.5+ capabilities
@@ -78,7 +78,7 @@ bool EspSpiBus::Initialize() noexcept {
     bus_cfg.flags |= SPICOMMON_BUSFLAG_IOMUX_PINS;
   }
 
-  // Add ESP32C6-specific optimizations
+  // Add ESP32-specific optimizations
   bus_cfg.flags |= SPICOMMON_BUSFLAG_MASTER; // Explicit master mode
 
   spi_host_device_t host = static_cast<spi_host_device_t>(config_.host);
@@ -248,16 +248,16 @@ bool EspSpiDevice::Initialize() noexcept {
     dev_cfg.post_cb = reinterpret_cast<transaction_cb_t>(config_.post_cb);
   }
 
-  // Set clock source and sampling point with ESP32-C6 compatible defaults
+  // Set clock source and sampling point with ESP32 compatible defaults
   dev_cfg.clock_source = (config_.clock_source != 0)
                              ? static_cast<spi_clock_source_t>(config_.clock_source)
                              : SPI_CLK_SRC_DEFAULT;
 
-  // ESP32-C6 only supports PHASE_0 sampling point
+  // ESP32 only supports PHASE_0 sampling point
   if (config_.sampling_point != 0) {
     dev_cfg.sample_point = static_cast<spi_sampling_point_t>(config_.sampling_point);
     if (dev_cfg.sample_point != SPI_SAMPLING_POINT_PHASE_0) {
-      ESP_LOGW(TAG, "ESP32-C6 only supports PHASE_0 sampling point, using default");
+      ESP_LOGW(TAG, "ESP32 only supports PHASE_0 sampling point, using default");
       dev_cfg.sample_point = SPI_SAMPLING_POINT_PHASE_0;
     }
   } else {

@@ -12,7 +12,7 @@
  * separates bus management from device operations, providing clean abstraction and optimal resource
  * management.
  *
- * @section features ESP32C6/ESP-IDF v5.5+ Features Supported:
+ * @section features ESP32/ESP-IDF v5.5+ Features Supported:
  * - **Bus-Device Architecture**: Separate EspI2cBus and EspI2cDevice classes
  * - **Modern API**: Uses i2c_new_master_bus() and i2c_master_bus_add_device()
  * - **Mode-Aware Operations**: Single mode variable determines sync vs async capabilities
@@ -26,7 +26,7 @@
  * @section performance Performance Characteristics:
  * - Standard Mode: 100 kHz
  * - Fast Mode: 400 kHz
- * - Fast Mode Plus: 1 MHz (ESP32C6)
+ * - Fast Mode Plus: 1 MHz (ESP32)
  * - 7-bit and 10-bit addressing support
  * - Clock stretching with configurable timeout
  * - Hardware FIFO utilization
@@ -37,7 +37,7 @@
  * @copyright HardFOC
  * @version 4.0.0 - Mode-aware architecture with DRY implementation
  *
- * @note This implementation requires ESP-IDF v5.5+ and is optimized for ESP32C6.
+ * @note This implementation requires ESP-IDF v5.5+ and is optimized for ESP32.
  * @note Thread-safe operation is guaranteed for all public methods.
  * @note Follows the same architectural pattern as EspSpi for consistency.
  * @note ESP-IDF v5.5+ enforces strict separation between sync/async modes.

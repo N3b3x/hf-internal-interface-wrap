@@ -69,10 +69,10 @@ enum class hf_spi_mode_t : uint8_t {
 //       static_cast<uint8_t>(spi_host_device_t::SPI2_HOST), ///< SPI2 host (general purpose) -
 //       ESP-IDF SPI2_HOST
 // #ifdef HF_MCU_ESP32C6
-//   // ESP32-C6 only has SPI2_HOST available for general purpose use
+//   // ESP32 only has SPI2_HOST available for general purpose use
 //   HF_SPI_HOST_MAX =
 //       static_cast<uint8_t>(spi_host_device_t::SPI2_HOST + 1), ///< Maximum number of SPI hosts
-//       for ESP32-C6
+//       for ESP32
 // #else
 //   HF_SPI3_HOST =
 //       static_cast<uint8_t>(spi_host_device_t::SPI3_HOST), ///< SPI3 host (general purpose) -
@@ -205,7 +205,7 @@ struct hf_spi_bus_config_t {
  * @var hf_spi_device_config_t::user_ctx
  *   User context for callbacks
  * @var hf_spi_device_config_t::clock_source
- *   Clock source selection for ESP32C6 (0=default, see spi_clock_source_t)
+ *   Clock source selection for ESP32 (0=default, see spi_clock_source_t)
  */
 struct hf_spi_device_config_t {
   hf_u32_t clock_speed_hz;                ///< Device clock speed (Hz)
@@ -223,8 +223,8 @@ struct hf_spi_device_config_t {
   void (*pre_cb)(void*);                  ///< Pre-transfer callback (optional)
   void (*post_cb)(void*);                 ///< Post-transfer callback (optional)
   void* user_ctx;                         ///< User context for callbacks
-  hf_spi_clock_source_t clock_source;     ///< Clock source selection (0=default, ESP32C6 specific)
-  hf_spi_sampling_point_t sampling_point; ///< Sampling point for data (ESP32C6 specific)
+  hf_spi_clock_source_t clock_source;     ///< Clock source selection (0=default, ESP32 specific)
+  hf_spi_sampling_point_t sampling_point; ///< Sampling point for data (ESP32 specific)
 
   hf_spi_device_config_t() noexcept
       : clock_speed_hz(1000000), mode(hf_spi_mode_t::HF_SPI_MODE_0), cs_pin(HF_INVALID_PIN),

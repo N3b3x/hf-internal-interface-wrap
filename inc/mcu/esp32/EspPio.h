@@ -1,9 +1,9 @@
 /**
  * @file EspPio.h
  * @ingroup pio
- * @brief ESP32C6 RMT-based Programmable IO Channel implementation with ESP-IDF v5.5+ features.
+ * @brief ESP32 RMT-based Programmable IO Channel implementation with ESP-IDF v5.5+ features.
  *
- * This header provides a comprehensive PIO implementation for ESP32C6 microcontrollers using
+ * This header provides a comprehensive PIO implementation for ESP32 microcontrollers using
  * the advanced RMT (Remote Control Transceiver) peripheral with full ESP-IDF v5.5+ support.
  * The RMT peripheral provides precise timing control, hardware buffering, DMA support, and
  * advanced features ideal for high-performance PIO operations.
@@ -13,7 +13,7 @@
  * - Custom protocols, IR communication, and generic digital signaling
  * - Interrupt-driven operation with minimal CPU overhead
  * - Advanced carrier modulation and configurable idle levels
- * - ESP32C6-specific optimizations and ESP-IDF v5.5+ features
+ * - ESP32-specific optimizations and ESP-IDF v5.5+ features
  * - True lazy initialization for optimal resource usage
  * - Thread-safe operation with comprehensive error handling
  *
@@ -23,7 +23,7 @@
  * * @note Features include up to 8 RMT channels, nanosecond-level timing precision,
  *       hardware symbol encoding/decoding, interrupt-driven operation, support for
  *       IR, custom protocols, configurable idle levels, and carrier modulation.
- * @note Requires ESP32C6 with ESP-IDF v5.5+ for full advanced feature support.
+ * @note Requires ESP32 with ESP-IDF v5.5+ for full advanced feature support.
  */
 
 #pragma once
@@ -66,15 +66,15 @@ struct hf_pio_channel_statistics_t {
 
 /**
  * @class EspPio
- * @brief ESP32C6 RMT-based Programmable IO Channel implementation with advanced ESP-IDF v5.5+
+ * @brief ESP32 RMT-based Programmable IO Channel implementation with advanced ESP-IDF v5.5+
  * features.
  *
- * This class implements the BasePio interface using the ESP32C6's advanced RMT peripheral
+ * This class implements the BasePio interface using the ESP32's advanced RMT peripheral
  * with full ESP-IDF v5.5+ feature support. The RMT peripheral is specifically designed for
  * generating and receiving infrared remote control signals, but it's versatile enough to
  * handle many types of precisely-timed digital protocols with hardware acceleration.
  *
- * **Key ESP32C6 RMT features utilized:**
+ * **Key ESP32 RMT features utilized:**
  * - Hardware symbol encoding with configurable timing and DMA support
  * - Built-in carrier generation for IR protocols with precise frequency control
  * - Configurable idle levels and end markers with hardware validation
@@ -374,9 +374,9 @@ private:
   static constexpr hf_u8_t MAX_CHANNELS = HF_RMT_MAX_CHANNELS; // Use centralized constant
   static constexpr size_t MAX_SYMBOLS_PER_TRANSMISSION = 256;
   static constexpr uint32_t DEFAULT_RESOLUTION_NS = 1000; // 1 microsecond
-// ESP32-C6 specific clock frequency configuration
+// ESP32 specific clock frequency configuration
 #if defined(CONFIG_IDF_TARGET_ESP32C6)
-  static constexpr uint32_t RMT_CLK_SRC_FREQ = 80000000; // ESP32-C6 APB clock (80 MHz)
+  static constexpr uint32_t RMT_CLK_SRC_FREQ = 80000000; // ESP32 APB clock (80 MHz)
 #else
   static constexpr uint32_t RMT_CLK_SRC_FREQ = 80000000; // 80 MHz APB clock
 #endif

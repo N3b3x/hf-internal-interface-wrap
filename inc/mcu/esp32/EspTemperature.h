@@ -1,14 +1,14 @@
 /**
  * @file EspTemperature.h
  * @ingroup temperature
- * @brief ESP32-C6 internal temperature sensor implementation for the HardFOC system.
+ * @brief ESP32 internal temperature sensor implementation for the HardFOC system.
  *
  * This file contains the declaration of the EspTemperature class that extends the
- * BaseTemperature abstract class to provide comprehensive ESP32-C6 temperature sensor
+ * BaseTemperature abstract class to provide comprehensive ESP32 temperature sensor
  * functionality using the ESP-IDF temperature sensor driver.
  *
  * Key features implemented:
- * - ESP32-C6 internal temperature sensor support using ESP-IDF v5.x APIs
+ * - ESP32 internal temperature sensor support using ESP-IDF v5.x APIs
  * - Multiple measurement ranges with different accuracy levels
  * - Hardware calibration and offset compensation
  * - Threshold monitoring with interrupt callbacks
@@ -23,7 +23,7 @@
  * @date 2025
  * @copyright HardFOC
  *
- * @note ESP32-C6 specific implementation using ESP-IDF v5.x
+ * @note ESP32 specific implementation using ESP-IDF v5.x
  * @note Each EspTemperature instance represents the internal chip temperature sensor
  * @note Thread-safe design suitable for multi-threaded applications
  */
@@ -55,11 +55,11 @@ extern "C" {
 #include <functional>
 
 //--------------------------------------
-//  ESP32-C6 Temperature Constants
+//  ESP32 Temperature Constants
 //--------------------------------------
 
 /**
- * @brief ESP32-C6 Temperature sensor measurement ranges
+ * @brief ESP32 Temperature sensor measurement ranges
  * @details Each range has different accuracy characteristics optimized for specific use cases.
  *          Lower ranges generally provide better accuracy.
  */
@@ -73,7 +73,7 @@ typedef enum {
 } esp_temp_range_t;
 
 /**
- * @brief ESP32-C6 Temperature sensor default values
+ * @brief ESP32 Temperature sensor default values
  */
 #define ESP_TEMP_DEFAULT_RESOLUTION_CELSIUS 0.25f ///< Default resolution (0.25°C)
 #define ESP_TEMP_DEFAULT_RESPONSE_TIME_MS 50      ///< Typical response time (50ms)
@@ -83,7 +83,7 @@ typedef enum {
 #define ESP_TEMP_DEFAULT_TIMEOUT_MS 1000          ///< Default operation timeout
 
 /**
- * @brief ESP32-C6 Temperature sensor range limits
+ * @brief ESP32 Temperature sensor range limits
  */
 #define ESP_TEMP_ABSOLUTE_MIN_CELSIUS -40.0f    ///< Absolute minimum temperature
 #define ESP_TEMP_ABSOLUTE_MAX_CELSIUS 125.0f    ///< Absolute maximum temperature
@@ -91,11 +91,11 @@ typedef enum {
 #define ESP_TEMP_RECOMMENDED_MAX_CELSIUS 80.0f  ///< Recommended maximum for best accuracy
 
 //--------------------------------------
-//  ESP32-C6 Temperature Configuration
+//  ESP32 Temperature Configuration
 //--------------------------------------
 
 /**
- * @brief ESP32-C6 specific temperature sensor state
+ * @brief ESP32 specific temperature sensor state
  */
 typedef struct {
   temperature_sensor_handle_t handle;  ///< ESP-IDF temperature sensor handle
@@ -111,7 +111,7 @@ typedef struct {
 } esp_temp_state_t;
 
 /**
- * @brief ESP32-C6 specific temperature sensor configuration
+ * @brief ESP32 specific temperature sensor configuration
  */
 typedef struct {
   esp_temp_range_t range;            ///< Measurement range
@@ -126,7 +126,7 @@ typedef struct {
 } esp_temp_config_t;
 
 //--------------------------------------
-//  ESP32-C6 Temperature Range Information
+//  ESP32 Temperature Range Information
 //--------------------------------------
 
 /**
@@ -147,17 +147,17 @@ typedef struct {
 class EspTemperature;
 
 //--------------------------------------
-//  ESP32-C6 Temperature Callback Types
+//  ESP32 Temperature Callback Types
 //--------------------------------------
 
 /**
- * @brief ESP32-C6 threshold callback function type
+ * @brief ESP32 threshold callback function type
  */
 using esp_temp_threshold_callback_t =
     std::function<void(EspTemperature* sensor, float temperature, bool is_high_threshold)>;
 
 /**
- * @brief ESP32-C6 continuous monitoring callback function type
+ * @brief ESP32 continuous monitoring callback function type
  */
 using esp_temp_monitoring_callback_t =
     std::function<void(EspTemperature* sensor, float temperature, hf_u64_t timestamp_us)>;
@@ -168,10 +168,10 @@ using esp_temp_monitoring_callback_t =
 
 /**
  * @class EspTemperature
- * @brief ESP32-C6 internal temperature sensor implementation
+ * @brief ESP32 internal temperature sensor implementation
  *
  * This class provides a complete implementation of the BaseTemperature interface
- * specifically for the ESP32-C6 internal temperature sensor. It leverages the
+ * specifically for the ESP32 internal temperature sensor. It leverages the
  * ESP-IDF temperature sensor driver to provide accurate temperature measurements
  * with advanced features like threshold monitoring and continuous sampling.
  *
@@ -251,24 +251,24 @@ public:
   //==============================================================//
 
   /**
-   * @brief Get ESP32-C6 temperature sensor information
+   * @brief Get ESP32 temperature sensor information
    * @param info Pointer to store sensor information
    * @return Error code (TEMP_SUCCESS on success)
    */
   hf_temp_err_t GetSensorInfo(hf_temp_sensor_info_t* info) const noexcept override;
 
   /**
-   * @brief Get ESP32-C6 temperature sensor capabilities
+   * @brief Get ESP32 temperature sensor capabilities
    * @return Capabilities flags (hf_temp_capabilities_t)
    */
   [[nodiscard]] hf_u32_t GetCapabilities() const noexcept override;
 
   //==============================================================//
-  // ADVANCED FEATURES (SUPPORTED BY ESP32-C6)
+  // ADVANCED FEATURES (SUPPORTED BY ESP32)
   //==============================================================//
 
   /**
-   * @brief Set temperature measurement range (ESP32-C6 supported)
+   * @brief Set temperature measurement range (ESP32 supported)
    * @param min_celsius Minimum temperature in Celsius
    * @param max_celsius Maximum temperature in Celsius
    * @return Error code (TEMP_SUCCESS on success)
@@ -276,7 +276,7 @@ public:
   hf_temp_err_t SetRange(float min_celsius, float max_celsius) noexcept override;
 
   /**
-   * @brief Get temperature measurement range (ESP32-C6 supported)
+   * @brief Get temperature measurement range (ESP32 supported)
    * @param min_celsius Pointer to store minimum temperature
    * @param max_celsius Pointer to store maximum temperature
    * @return Error code (TEMP_SUCCESS on success)
@@ -284,14 +284,14 @@ public:
   hf_temp_err_t GetRange(float* min_celsius, float* max_celsius) const noexcept override;
 
   /**
-   * @brief Get measurement resolution (ESP32-C6 supported)
+   * @brief Get measurement resolution (ESP32 supported)
    * @param resolution_celsius Pointer to store resolution
    * @return Error code (TEMP_SUCCESS on success)
    */
   hf_temp_err_t GetResolution(float* resolution_celsius) const noexcept override;
 
   /**
-   * @brief Set temperature thresholds (ESP32-C6 supported)
+   * @brief Set temperature thresholds (ESP32 supported)
    * @param low_threshold_celsius Low temperature threshold
    * @param high_threshold_celsius High temperature threshold
    * @return Error code (TEMP_SUCCESS on success)
@@ -300,7 +300,7 @@ public:
                               float high_threshold_celsius) noexcept override;
 
   /**
-   * @brief Get temperature thresholds (ESP32-C6 supported)
+   * @brief Get temperature thresholds (ESP32 supported)
    * @param low_threshold_celsius Pointer to store low threshold
    * @param high_threshold_celsius Pointer to store high threshold
    * @return Error code (TEMP_SUCCESS on success)
@@ -309,7 +309,7 @@ public:
                               float* high_threshold_celsius) const noexcept override;
 
   /**
-   * @brief Enable threshold monitoring (ESP32-C6 supported)
+   * @brief Enable threshold monitoring (ESP32 supported)
    * @param callback Callback function for threshold events
    * @param user_data User data to pass to callback
    * @return Error code (TEMP_SUCCESS on success)
@@ -318,13 +318,13 @@ public:
                                           void* user_data) noexcept override;
 
   /**
-   * @brief Disable threshold monitoring (ESP32-C6 supported)
+   * @brief Disable threshold monitoring (ESP32 supported)
    * @return Error code (TEMP_SUCCESS on success)
    */
   hf_temp_err_t DisableThresholdMonitoring() noexcept override;
 
   /**
-   * @brief Start continuous temperature monitoring (ESP32-C6 supported)
+   * @brief Start continuous temperature monitoring (ESP32 supported)
    * @param sample_rate_hz Sampling rate in Hz
    * @param callback Callback function for each reading
    * @param user_data User data to pass to callback
@@ -335,95 +335,95 @@ public:
                                           void* user_data) noexcept override;
 
   /**
-   * @brief Stop continuous temperature monitoring (ESP32-C6 supported)
+   * @brief Stop continuous temperature monitoring (ESP32 supported)
    * @return Error code (TEMP_SUCCESS on success)
    */
   hf_temp_err_t StopContinuousMonitoring() noexcept override;
 
   /**
-   * @brief Check if continuous monitoring is active (ESP32-C6 supported)
+   * @brief Check if continuous monitoring is active (ESP32 supported)
    * @return true if monitoring is active, false otherwise
    */
   [[nodiscard]] bool IsMonitoringActive() const noexcept override;
 
   /**
-   * @brief Set calibration offset (ESP32-C6 supported)
+   * @brief Set calibration offset (ESP32 supported)
    * @param offset_celsius Calibration offset in Celsius
    * @return Error code (TEMP_SUCCESS on success)
    */
   hf_temp_err_t SetCalibrationOffset(float offset_celsius) noexcept override;
 
   /**
-   * @brief Get calibration offset (ESP32-C6 supported)
+   * @brief Get calibration offset (ESP32 supported)
    * @param offset_celsius Pointer to store calibration offset
    * @return Error code (TEMP_SUCCESS on success)
    */
   hf_temp_err_t GetCalibrationOffset(float* offset_celsius) const noexcept override;
 
   /**
-   * @brief Reset calibration to default (ESP32-C6 supported)
+   * @brief Reset calibration to default (ESP32 supported)
    * @return Error code (TEMP_SUCCESS on success)
    */
   hf_temp_err_t ResetCalibration() noexcept override;
 
   /**
-   * @brief Enter low power mode (ESP32-C6 supported)
+   * @brief Enter low power mode (ESP32 supported)
    * @return Error code (TEMP_SUCCESS on success)
    */
   hf_temp_err_t EnterSleepMode() noexcept override;
 
   /**
-   * @brief Exit low power mode (ESP32-C6 supported)
+   * @brief Exit low power mode (ESP32 supported)
    * @return Error code (TEMP_SUCCESS on success)
    */
   hf_temp_err_t ExitSleepMode() noexcept override;
 
   /**
-   * @brief Check if sensor is in sleep mode (ESP32-C6 supported)
+   * @brief Check if sensor is in sleep mode (ESP32 supported)
    * @return true if in sleep mode, false otherwise
    */
   [[nodiscard]] bool IsSleeping() const noexcept override;
 
   /**
-   * @brief Perform sensor self-test (ESP32-C6 supported)
+   * @brief Perform sensor self-test (ESP32 supported)
    * @return Error code (TEMP_SUCCESS on success)
    */
   hf_temp_err_t SelfTest() noexcept override;
 
   /**
-   * @brief Check sensor health status (ESP32-C6 supported)
+   * @brief Check sensor health status (ESP32 supported)
    * @return Error code (TEMP_SUCCESS if healthy)
    */
   hf_temp_err_t CheckHealth() noexcept override;
 
   /**
-   * @brief Get operation statistics (ESP32-C6 supported)
+   * @brief Get operation statistics (ESP32 supported)
    * @param statistics Reference to statistics structure to fill
    * @return Error code (TEMP_SUCCESS on success)
    */
   hf_temp_err_t GetStatistics(hf_temp_statistics_t& statistics) noexcept override;
 
   /**
-   * @brief Get diagnostic information (ESP32-C6 supported)
+   * @brief Get diagnostic information (ESP32 supported)
    * @param diagnostics Reference to diagnostics structure to fill
    * @return Error code (TEMP_SUCCESS on success)
    */
   hf_temp_err_t GetDiagnostics(hf_temp_diagnostics_t& diagnostics) noexcept override;
 
   /**
-   * @brief Reset operation statistics (ESP32-C6 supported)
+   * @brief Reset operation statistics (ESP32 supported)
    * @return Error code (TEMP_SUCCESS on success)
    */
   hf_temp_err_t ResetStatistics() noexcept override;
 
   /**
-   * @brief Reset diagnostic information (ESP32-C6 supported)
+   * @brief Reset diagnostic information (ESP32 supported)
    * @return Error code (TEMP_SUCCESS on success)
    */
   hf_temp_err_t ResetDiagnostics() noexcept override;
 
   //==============================================================//
-  // ESP32-C6 SPECIFIC METHODS
+  // ESP32 SPECIFIC METHODS
   //==============================================================//
 
   /**
@@ -614,7 +614,7 @@ private:
 //--------------------------------------
 
 /**
- * @brief Default ESP32-C6 temperature sensor configuration
+ * @brief Default ESP32 temperature sensor configuration
  */
 #define ESP_TEMP_CONFIG_DEFAULT()                                                                  \
   {.range = ESP_TEMP_RANGE_NEG10_80,                                                               \

@@ -1,12 +1,12 @@
 /**
  * @file EspBluetooth.h
  * @ingroup bluetooth
- * @brief ESP32 Bluetooth implementation using NimBLE for BLE-only support (ESP32C6)
+ * @brief ESP32 Bluetooth implementation using NimBLE for BLE-only support (ESP32)
  *
  * This file contains the ESP32-specific implementation of the Bluetooth interface
- * using NimBLE stack for ESP32C6 BLE-only support on ESP-IDF v5.5.
+ * using NimBLE stack for ESP32 BLE-only support on ESP-IDF v5.5.
  *
- * ESP32C6 supports Bluetooth LE 5.0 and is certified for Bluetooth LE 5.3.
+ * ESP32 supports Bluetooth LE 5.0 and is certified for Bluetooth LE 5.3.
  * This implementation provides:
  * - BLE advertising and scanning
  * - GATT client and server operations
@@ -18,8 +18,8 @@
  * @date 2025
  * @copyright HardFOC
  *
- * @note This implementation is specifically optimized for ESP32C6 using NimBLE
- * @note For ESP32 and ESP32S3, both Classic BT and BLE are supported
+ * @note This implementation is specifically optimized for ESP32 using NimBLE
+ * @note For ESP32 and ESP32, both Classic BT and BLE are supported
  * @note For ESP32C3/H2, BLE-only using Bluedroid
  * @note ESP32S2 has no Bluetooth support
  */
@@ -57,7 +57,7 @@ extern "C" {
 #define HAS_BLUEDROID_SUPPORT 1
 #endif
 #elif defined(CONFIG_IDF_TARGET_ESP32C6)
-// BLE-only with NimBLE (preferred for ESP32C6)
+// BLE-only with NimBLE (preferred for ESP32)
 #define HAS_CLASSIC_BLUETOOTH 0
 #define HAS_BLE_SUPPORT 1
 #define HAS_A2DP_SUPPORT 0
@@ -108,7 +108,7 @@ extern "C" {
 #if HAS_BLE_SUPPORT
 
 #if HAS_NIMBLE_SUPPORT && defined(CONFIG_BT_ENABLED) && defined(CONFIG_BT_NIMBLE_ENABLED)
-// NimBLE headers for ESP32C6 (ESP-IDF v5.5+)
+// NimBLE headers for ESP32 (ESP-IDF v5.5+)
 #define NIMBLE_HEADERS_AVAILABLE 1
 extern "C" {
 #include "host/ble_att.h"
@@ -143,7 +143,7 @@ extern "C" {
 #endif
 
 #if HAS_CLASSIC_BLUETOOTH && defined(CONFIG_BT_ENABLED)
-// Classic Bluetooth headers (ESP32/ESP32S3 only)
+// Classic Bluetooth headers (ESP32/ESP32 only)
 extern "C" {
 #include "esp_gap_bt_api.h"
 #include "esp_hf_client_api.h"
@@ -168,8 +168,8 @@ extern "C" {
  *
  * This class provides ESP32-specific Bluetooth functionality with conditional
  * compilation for different ESP32 variants:
- * - ESP32C6: BLE-only using NimBLE (optimized)
- * - ESP32/ESP32S3: Full Bluetooth with Classic + BLE
+ * - ESP32: BLE-only using NimBLE (optimized)
+ * - ESP32/ESP32: Full Bluetooth with Classic + BLE
  * - ESP32C3/H2: BLE-only using Bluedroid
  * - ESP32S2: No Bluetooth support
  */
@@ -266,7 +266,7 @@ public:
    * @param mode Bluetooth operating mode
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    *
-   * @note For ESP32C6, only BLE mode is supported
+   * @note For ESP32, only BLE mode is supported
    */
   hf_bluetooth_err_t Initialize(hf_bluetooth_mode_t mode) noexcept override;
 

@@ -372,7 +372,7 @@ hf_wifi_err_t EspWifi::Deinitialize() noexcept {
     m_smartconfig_active = false;
   }
 
-  // WPS not available on ESP32-C6
+  // WPS not available on ESP32
   // if (m_wps_active) {
   //   esp_wifi_wps_disable();
   //   m_wps_active = false;
