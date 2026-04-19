@@ -30,7 +30,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classEspTemperature.html" target="_top" xlink:title="ESP32&#45;C6 internal temperature sensor implementation.">
+<g id="a_Node000002"><a xlink:href="classEspTemperature.html" target="_top" xlink:title="ESP32 internal temperature sensor implementation.">
 <polygon fill="white" stroke="#666666" points="116,-23 0,-23 0,0 116,0 116,-23"/>
 <text text-anchor="middle" x="58" y="-7.8" font-family="Arial" font-size="14.00">EspTemperature</text>
 </a>

@@ -98,13 +98,13 @@
       </node>
     </incdepgraph>
     <briefdescription>
-<para>World-class ESP32-C6 NVS implementation with ESP-IDF v5.5+ advanced features. </para>
+<para>World-class ESP32 NVS implementation with ESP-IDF v5.5+ advanced features. </para>
     </briefdescription>
     <detaileddescription>
-<para>This file provides a comprehensive, production-ready NVS (Non-Volatile Storage) implementation for the ESP32-C6 microcontroller using modern ESP-IDF v5.5+ APIs. The implementation leverages all advanced features including encryption support, enhanced error handling, statistics tracking, iterator support, and comprehensive security configurations.</para>
+<para>This file provides a comprehensive, production-ready NVS (Non-Volatile Storage) implementation for the ESP32 microcontroller using modern ESP-IDF v5.5+ APIs. The implementation leverages all advanced features including encryption support, enhanced error handling, statistics tracking, iterator support, and comprehensive security configurations.</para>
 <para>Key Features Implemented:<itemizedlist>
 <listitem><para>Modern ESP-IDF v5.5+ NVS API with full thread safety</para>
-</listitem><listitem><para>ESP32-C6 HMAC-based encryption support for secure storage</para>
+</listitem><listitem><para>ESP32 HMAC-based encryption support for secure storage</para>
 </listitem><listitem><para>Comprehensive error detection and mapping to HardFOC error codes</para>
 </listitem><listitem><para>Advanced NVS features: iterators, statistics, partition management</para>
 </listitem><listitem><para>Production-ready error handling with graceful degradation</para>
@@ -114,7 +114,7 @@
 </listitem></itemizedlist>
 </para>
 <para>Security Features:<itemizedlist>
-<listitem><para>HMAC-based encryption scheme (ESP32-C6 specific)</para>
+<listitem><para>HMAC-based encryption scheme (ESP32 specific)</para>
 </listitem><listitem><para>XTS encryption for data protection</para>
 </listitem><listitem><para>Secure key generation and management</para>
 </listitem><listitem><para>eFuse-based key storage for tamper resistance</para>
@@ -130,7 +130,7 @@
 </listitem></itemizedlist>
 </para>
 <para>Hardware Requirements:<itemizedlist>
-<listitem><para>ESP32-C6 microcontroller with NVS partition</para>
+<listitem><para>ESP32 microcontroller with NVS partition</para>
 </listitem><listitem><para>Properly configured partition table with NVS partition</para>
 </listitem><listitem><para>Optional: eFuse keys for encryption (HMAC-based scheme)</para>
 </listitem><listitem><para>Adequate flash space for data and metadata</para>
@@ -142,7 +142,7 @@
 </simplesect>
 <simplesect kind="copyright"><para>HardFOC</para>
 </simplesect>
-<simplesect kind="note"><para>This implementation is specifically optimized for ESP32-C6 and production environments. </para>
+<simplesect kind="note"><para>This implementation is specifically optimized for ESP32 and production environments. </para>
 </simplesect>
 <simplesect kind="note"><para>Requires ESP-IDF v5.5 or later for full feature support. </para>
 </simplesect>
@@ -193,7 +193,7 @@
 <codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CONSTRUCTOR<sp/>AND<sp/>DESTRUCTOR<sp/>-<sp/>Enhanced<sp/>for<sp/>ESP32-C6<sp/>Production<sp/>Use</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CONSTRUCTOR<sp/>AND<sp/>DESTRUCTOR<sp/>-<sp/>Enhanced<sp/>for<sp/>ESP32<sp/>Production<sp/>Use</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><ref refid="classEspNvs_1a3abe92b89d2f9be3be2074ed54fa9f99" kindref="member">EspNvs::EspNvs</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>namespace_name)<sp/>noexcept</highlight></codeline>
@@ -733,7 +733,7 @@
 <codeline lineno="627"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="628"><highlight class="normal"></highlight></codeline>
 <codeline lineno="629"><highlight class="normal"><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classEspNvs_1ae92a0823375c316e604edba55e7978ee" kindref="member">EspNvs::ConvertMcuError</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mcu_error)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="630"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Comprehensive<sp/>ESP32-C6<sp/>NVS<sp/>error<sp/>code<sp/>mapping<sp/>for<sp/>ESP-IDF<sp/>v5.5+</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="630"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Comprehensive<sp/>ESP32<sp/>NVS<sp/>error<sp/>code<sp/>mapping<sp/>for<sp/>ESP-IDF<sp/>v5.5+</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="631"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(mcu_error)<sp/>{</highlight></codeline>
 <codeline lineno="632"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>ESP_OK:</highlight></codeline>
 <codeline lineno="633"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref>;</highlight></codeline>
@@ -762,7 +762,7 @@
 <codeline lineno="656"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>ESP_ERR_NVS_VALUE_TOO_LONG:</highlight></codeline>
 <codeline lineno="657"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a425a15ffde2218cc0115fc07c19770dc" kindref="member">hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE</ref>;<sp/></highlight><highlight class="comment">//<sp/>Value<sp/>too<sp/>long<sp/>for<sp/>entry</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="658"><highlight class="normal"></highlight></codeline>
-<codeline lineno="659"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Encryption-related<sp/>errors<sp/>(ESP32-C6<sp/>specific)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="659"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Encryption-related<sp/>errors<sp/>(ESP32<sp/>specific)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="660"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>ESP_ERR_NVS_XTS_ENCR_FAILED:</highlight></codeline>
 <codeline lineno="661"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4ad8a199ce86c9ad133a5d732342b970e9" kindref="member">hf_nvs_err_t::NVS_ERR_ENCRYPTION_FAILED</ref>;<sp/></highlight><highlight class="comment">//<sp/>Encryption<sp/>operation<sp/>failed</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="662"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>ESP_ERR_NVS_XTS_DECR_FAILED:</highlight></codeline>

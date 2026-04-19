@@ -463,7 +463,7 @@
     <detaileddescription>
 <para>This header provides a comprehensive I2C implementation that properly utilizes the ESP-IDF v5.5+ bus-device model, following the same pattern as the SPI implementation. The architecture separates bus management from device operations, providing clean abstraction and optimal resource management.</para>
 <sect1 id="EspI2c_8h_1features">
-<title>ESP32C6/ESP-IDF v5.5+ Features Supported:</title><para><itemizedlist>
+<title>ESP32/ESP-IDF v5.5+ Features Supported:</title><para><itemizedlist>
 <listitem><para><bold>Bus-Device Architecture</bold>: Separate <ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref> and <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> classes</para>
 </listitem><listitem><para><bold>Modern API</bold>: Uses i2c_new_master_bus() and i2c_master_bus_add_device()</para>
 </listitem><listitem><para><bold>Mode-Aware Operations</bold>: Single mode variable determines sync vs async capabilities</para>
@@ -480,7 +480,7 @@
 <title>Performance Characteristics:</title><para><itemizedlist>
 <listitem><para>Standard Mode: 100 kHz</para>
 </listitem><listitem><para>Fast Mode: 400 kHz</para>
-</listitem><listitem><para>Fast Mode Plus: 1 MHz (ESP32C6)</para>
+</listitem><listitem><para>Fast Mode Plus: 1 MHz (ESP32)</para>
 </listitem><listitem><para>7-bit and 10-bit addressing support</para>
 </listitem><listitem><para>Clock stretching with configurable timeout</para>
 </listitem><listitem><para>Hardware FIFO utilization</para>
@@ -495,7 +495,7 @@
 </simplesect>
 <simplesect kind="version"><para>4.0.0 - Mode-aware architecture with DRY implementation</para>
 </simplesect>
-<simplesect kind="note"><para>This implementation requires ESP-IDF v5.5+ and is optimized for ESP32C6. </para>
+<simplesect kind="note"><para>This implementation requires ESP-IDF v5.5+ and is optimized for ESP32. </para>
 </simplesect>
 <simplesect kind="note"><para>Thread-safe operation is guaranteed for all public methods. </para>
 </simplesect>

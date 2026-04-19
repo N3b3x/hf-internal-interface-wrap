@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32C6)">
+<g id="a_Node000001"><a xlink:title="ESP32 Bluetooth implementation using NimBLE for BLE support.">
 <polygon fill="#999999" stroke="#666666" points="776.5,-259 561.5,-259 561.5,-236 776.5,-236 776.5,-259"/>
 <text text-anchor="middle" x="669" y="-243.8" font-family="Arial" font-size="14.00">src/mcu/esp32/EspBluetooth.cpp</text>
 </a>
@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="EspBluetooth_8h.html" target="_top" xlink:title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32C6)">
+<g id="a_Node000002"><a xlink:href="EspBluetooth_8h.html" target="_top" xlink:title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32)">
 <polygon fill="white" stroke="#666666" points="531,-200 423,-200 423,-177 531,-177 531,-200"/>
 <text text-anchor="middle" x="477" y="-184.8" font-family="Arial" font-size="14.00">EspBluetooth.h</text>
 </a>

@@ -48,6 +48,7 @@ var EspTypes__ADC_8h =
     [ "GpioToAdcChannel", "EspTypes__ADC_8h.html#a533cce13ca00ccf121b42a983444b202", null ],
     [ "IsValidContinuousConfig", "EspTypes__ADC_8h.html#a27d1b6ec26f0479dfa9252b4508b371b", null ],
     [ "IsValidFrameSize", "EspTypes__ADC_8h.html#a9df44982fceca349503b732a7a846c2a", null ],
+    [ "HF_ADC_CFG_MAX_CHANNELS", "EspTypes__ADC_8h.html#a1ae5f3a2cdf4694d1e5241bd993af956", null ],
     [ "HF_ESP32_ADC_DATA_BYTES_PER_CONV", "EspTypes__ADC_8h.html#a001d3833197b85f64477deac14db1ee2", null ],
     [ "HF_ESP32_ADC_DEFAULT_FRAME_SIZE", "EspTypes__ADC_8h.html#a88c7e42243a630cc63bb11c92d4624db", null ],
     [ "HF_ESP32_ADC_MAX_FRAME_SIZE", "EspTypes__ADC_8h.html#aba493558405c96bb021a15187a5e3b9a", null ],

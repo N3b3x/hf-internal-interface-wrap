@@ -21,7 +21,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Advanced MCU&#45;integrated SPI controller implementation with ESP32C6/ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000001"><a xlink:title="Advanced MCU&#45;integrated SPI controller implementation with ESP32/ESP&#45;IDF v5.5+ features.">
 <polygon fill="#999999" stroke="#666666" points="272.5,-97 110.5,-97 110.5,-74 272.5,-74 272.5,-97"/>
 <text text-anchor="middle" x="191.5" y="-81.8" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspSpi.h</text>
 </a>
@@ -49,7 +49,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="EspSpi_8cpp.html" target="_top" xlink:title="Implementation of MCU&#45;integrated SPI controller for ESP32C6 with ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000003"><a xlink:href="EspSpi_8cpp.html" target="_top" xlink:title="Implementation of MCU&#45;integrated SPI controller for ESP32 with ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="380,-30.5 203,-30.5 203,-7.5 380,-7.5 380,-30.5"/>
 <text text-anchor="middle" x="291.5" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspSpi.cpp</text>
 </a>

@@ -85,7 +85,7 @@ var sectionId = 'dynsection-1';
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="EspPwm_8h.html" target="_top" xlink:title="ESP32C6 LEDC (PWM) controller implementation for the HardFOC system.">
+<g id="a_Node000003"><a xlink:href="EspPwm_8h.html" target="_top" xlink:title="ESP32 LEDC (PWM) controller implementation for the HardFOC system.">
 <polygon fill="white" stroke="#666666" points="410.5,-178.5 237.5,-178.5 237.5,-155.5 410.5,-155.5 410.5,-178.5"/>
 <text text-anchor="middle" x="324" y="-163.3" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspPwm.h</text>
 </a>
@@ -232,7 +232,7 @@ var sectionId = 'dynsection-1';
 <!-- Node13 -->
 <g id="Node000013" class="node">
 <title>Node13</title>
-<g id="a_Node000013"><a xlink:href="EspPio_8h.html" target="_top" xlink:title="ESP32C6 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000013"><a xlink:href="EspPio_8h.html" target="_top" xlink:title="ESP32 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="988,-104.5 826,-104.5 826,-81.5 988,-81.5 988,-104.5"/>
 <text text-anchor="middle" x="907" y="-89.3" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspPio.h</text>
 </a>
@@ -250,7 +250,7 @@ var sectionId = 'dynsection-1';
 <!-- Node16 -->
 <g id="Node000016" class="node">
 <title>Node16</title>
-<g id="a_Node000016"><a xlink:href="EspSpi_8h.html" target="_top" xlink:title="Advanced MCU&#45;integrated SPI controller implementation with ESP32C6/ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000016"><a xlink:href="EspSpi_8h.html" target="_top" xlink:title="Advanced MCU&#45;integrated SPI controller implementation with ESP32/ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="1386,-104.5 1224,-104.5 1224,-81.5 1386,-81.5 1386,-104.5"/>
 <text text-anchor="middle" x="1305" y="-89.3" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspSpi.h</text>
 </a>
@@ -380,7 +380,7 @@ var sectionId = 'dynsection-1';
 <!-- Node15 -->
 <g id="Node000015" class="node">
 <title>Node15</title>
-<g id="a_Node000015"><a xlink:href="EspPio_8cpp.html" target="_top" xlink:title="ESP32C6 RMT&#45;based Programmable IO Channel implementation.">
+<g id="a_Node000015"><a xlink:href="EspPio_8cpp.html" target="_top" xlink:title="ESP32 RMT&#45;based Programmable IO Channel implementation.">
 <polygon fill="white" stroke="#666666" points="1194.5,-30.5 1017.5,-30.5 1017.5,-7.5 1194.5,-7.5 1194.5,-30.5"/>
 <text text-anchor="middle" x="1106" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspPio.cpp</text>
 </a>
@@ -417,7 +417,7 @@ var sectionId = 'dynsection-1';
 <!-- Node18 -->
 <g id="Node000018" class="node">
 <title>Node18</title>
-<g id="a_Node000018"><a xlink:href="EspSpi_8cpp.html" target="_top" xlink:title="Implementation of MCU&#45;integrated SPI controller for ESP32C6 with ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000018"><a xlink:href="EspSpi_8cpp.html" target="_top" xlink:title="Implementation of MCU&#45;integrated SPI controller for ESP32 with ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="1592.5,-30.5 1415.5,-30.5 1415.5,-7.5 1592.5,-7.5 1592.5,-30.5"/>
 <text text-anchor="middle" x="1504" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspSpi.cpp</text>
 </a>

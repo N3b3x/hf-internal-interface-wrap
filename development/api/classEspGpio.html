@@ -106,7 +106,7 @@ $(function(){initNavTree('classEspGpio.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>Advanced MCU-specific implementation of unified <a class="el" href="classBaseGpio.html" title="Unified GPIO base class for all digital GPIO implementations.">BaseGpio</a> with ESP32C6/ESP-IDF v5.5+ features.  
+<p>Advanced MCU-specific implementation of unified <a class="el" href="classBaseGpio.html" title="Unified GPIO base class for all digital GPIO implementations.">BaseGpio</a> with ESP32/ESP-IDF v5.5+ features.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="EspGpio_8h_source.html">EspGpio.h</a>&gt;</code></p>
@@ -124,7 +124,7 @@ Collaboration diagram for EspGpio:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a6500c4b82a610d0ec0a1aa95fdccb284" id="r_a6500c4b82a610d0ec0a1aa95fdccb284"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6500c4b82a610d0ec0a1aa95fdccb284">EspGpio</a> (<a class="el" href="HardwareTypes_8h.html#a60a0d0e5d76ed481be9bf64c307520f9">hf_pin_num_t</a> pin_num, <a class="el" href="group__gpio.html#ga6b3450e1c9d6cba3355cc3567bb0cce3">hf_gpio_direction_t</a> direction=<a class="el" href="group__gpio.html#gga6b3450e1c9d6cba3355cc3567bb0cce3a5090403a0f4f177d6fb813cd9d06bf1e">hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT</a>, <a class="el" href="group__gpio.html#gaf02cdaf150fa829e4a871e58ed772c6d">hf_gpio_active_state_t</a> active_state=<a class="el" href="group__gpio.html#ggaf02cdaf150fa829e4a871e58ed772c6dab2e7e26dbb35ac48971828008f86b356">hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH</a>, <a class="el" href="group__gpio.html#ga825412a54660defc9ecbf8ad1ea1cf7b">hf_gpio_output_mode_t</a> output_mode=<a class="el" href="group__gpio.html#gga825412a54660defc9ecbf8ad1ea1cf7ba26b362f67afa6dbc264fb539c0dc304d">hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL</a>, <a class="el" href="group__gpio.html#ga7d27555a7050f5d9d9006c96b841e335">hf_gpio_pull_mode_t</a> pull_mode=<a class="el" href="group__gpio.html#gga7d27555a7050f5d9d9006c96b841e335ae17c8cfbde2e4323ba15750747758875">hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING</a>, hf_gpio_drive_cap_t drive_capability=hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM) noexcept</td></tr>
-<tr class="memdesc:a6500c4b82a610d0ec0a1aa95fdccb284"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="classEspGpio.html" title="Advanced MCU-specific implementation of unified BaseGpio with ESP32C6/ESP-IDF v5.5+ features.">EspGpio</a> with full configuration including advanced features.  <br /></td></tr>
+<tr class="memdesc:a6500c4b82a610d0ec0a1aa95fdccb284"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="classEspGpio.html" title="Advanced MCU-specific implementation of unified BaseGpio with ESP32/ESP-IDF v5.5+ features.">EspGpio</a> with full configuration including advanced features.  <br /></td></tr>
 <tr class="separator:a6500c4b82a610d0ec0a1aa95fdccb284"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0e709e0e5748f81116fb9f15425fd78" id="r_ae0e709e0e5748f81116fb9f15425fd78"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0e709e0e5748f81116fb9f15425fd78">~EspGpio</a> () override</td></tr>
 <tr class="memdesc:ae0e709e0e5748f81116fb9f15425fd78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor - ensures proper cleanup including interrupt resources.  <br /></td></tr>
@@ -187,10 +187,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a093fe910f55946ecd55ccb6d2139824a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure pin glitch filter (fixed 2 clock cycles).  <br /></td></tr>
 <tr class="separator:a093fe910f55946ecd55ccb6d2139824a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c71bcffe9a6180b770a22d00af34571" id="r_a2c71bcffe9a6180b770a22d00af34571"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__gpio.html#ga2632aac2351807c35e790ec20bda305d">hf_gpio_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c71bcffe9a6180b770a22d00af34571">ConfigureGlitchFilter</a> (hf_gpio_glitch_filter_type_t filter_type, const hf_gpio_flex_filter_config_t *flex_config=nullptr) noexcept</td></tr>
-<tr class="memdesc:a2c71bcffe9a6180b770a22d00af34571"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure advanced glitch filter (pin/flex) for ESP32C6.  <br /></td></tr>
+<tr class="memdesc:a2c71bcffe9a6180b770a22d00af34571"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure advanced glitch filter (pin/flex) for ESP32.  <br /></td></tr>
 <tr class="separator:a2c71bcffe9a6180b770a22d00af34571"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c79c703fa89be2d6c180e43e8a5be19" id="r_a2c79c703fa89be2d6c180e43e8a5be19"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__gpio.html#ga2632aac2351807c35e790ec20bda305d">hf_gpio_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c79c703fa89be2d6c180e43e8a5be19">ConfigureSleepMode</a> (const hf_gpio_sleep_config_t &amp;sleep_config) noexcept</td></tr>
-<tr class="memdesc:a2c79c703fa89be2d6c180e43e8a5be19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure sleep mode for ESP32C6 GPIO.  <br /></td></tr>
+<tr class="memdesc:a2c79c703fa89be2d6c180e43e8a5be19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure sleep mode for ESP32 GPIO.  <br /></td></tr>
 <tr class="separator:a2c79c703fa89be2d6c180e43e8a5be19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a185dff0a8d47139e29b2a11b627aa916" id="r_a185dff0a8d47139e29b2a11b627aa916"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__gpio.html#ga2632aac2351807c35e790ec20bda305d">hf_gpio_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a185dff0a8d47139e29b2a11b627aa916">ConfigureFlexGlitchFilter</a> (const hf_gpio_flex_filter_config_t &amp;config) noexcept</td></tr>
 <tr class="memdesc:a185dff0a8d47139e29b2a11b627aa916"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure flexible glitch filter with custom timing.  <br /></td></tr>
@@ -510,7 +510,7 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a82ac9df6b2e7c01355b72ccbc007b201 inherit pro_attribs_classBaseGpio"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Advanced MCU-specific implementation of unified <a class="el" href="classBaseGpio.html" title="Unified GPIO base class for all digital GPIO implementations.">BaseGpio</a> with ESP32C6/ESP-IDF v5.5+ features. </p>
+<div class="textblock"><p>Advanced MCU-specific implementation of unified <a class="el" href="classBaseGpio.html" title="Unified GPIO base class for all digital GPIO implementations.">BaseGpio</a> with ESP32/ESP-IDF v5.5+ features. </p>
 <p>This class provides a comprehensive implementation of <a class="el" href="classBaseGpio.html" title="Unified GPIO base class for all digital GPIO implementations.">BaseGpio</a> for MCU-based GPIO pins with support for both basic and advanced features including:</p>
 <p><b>Basic Features:</b></p><ul>
 <li>Dynamic switching between input and output modes</li>
@@ -519,7 +519,7 @@ Additional Inherited Members</h2></td></tr>
 <li>Output drive modes (push-pull, open-drain)</li>
 <li>Thread-safe state management</li>
 </ul>
-<p><b>Advanced Features (ESP32C6/ESP-IDF v5.5+):</b></p><ul>
+<p><b>Advanced Features (ESP32/ESP-IDF v5.5+):</b></p><ul>
 <li>Glitch filtering (pin and flexible filters)</li>
 <li>RTC GPIO support for ultra-low power operations</li>
 <li>Sleep configuration and state retention</li>
@@ -530,7 +530,7 @@ Additional Inherited Members</h2></td></tr>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>This class is designed to be platform-agnostic within the MCU domain. Platform-specific details are handled through conditional compilation. </dd>
 <dd>
-Advanced features require ESP32C6 with ESP-IDF v5.5+ for full functionality. </dd></dl>
+Advanced features require ESP32 with ESP-IDF v5.5+ for full functionality. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6500c4b82a610d0ec0a1aa95fdccb284" name="a6500c4b82a610d0ec0a1aa95fdccb284"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6500c4b82a610d0ec0a1aa95fdccb284">&#9670;&#160;</a></span>EspGpio()</h2>
@@ -579,7 +579,7 @@ Advanced features require ESP32C6 with ESP-IDF v5.5+ for full functionality. </d
 </table>
 </div><div class="memdoc">
 
-<p>Constructor for <a class="el" href="classEspGpio.html" title="Advanced MCU-specific implementation of unified BaseGpio with ESP32C6/ESP-IDF v5.5+ features.">EspGpio</a> with full configuration including advanced features. </p>
+<p>Constructor for <a class="el" href="classEspGpio.html" title="Advanced MCU-specific implementation of unified BaseGpio with ESP32/ESP-IDF v5.5+ features.">EspGpio</a> with full configuration including advanced features. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pin_num</td><td>Platform-agnostic GPIO pin number </td></tr>
@@ -796,7 +796,7 @@ Advanced features require ESP32C6 with ESP-IDF v5.5+ for full functionality. </d
 </table>
 </div><div class="memdoc">
 
-<p>Configure advanced glitch filter (pin/flex) for ESP32C6. </p>
+<p>Configure advanced glitch filter (pin/flex) for ESP32. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">filter_type</td><td>Glitch filter type (none, pin, flex, both) </td></tr>
@@ -983,7 +983,7 @@ Advanced features require ESP32C6 with ESP-IDF v5.5+ for full functionality. </d
 </table>
 </div><div class="memdoc">
 
-<p>Configure sleep mode for ESP32C6 GPIO. </p>
+<p>Configure sleep mode for ESP32 GPIO. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sleep_config</td><td>Sleep configuration struct </td></tr>
@@ -1875,7 +1875,7 @@ Advanced features require ESP32C6 with ESP-IDF v5.5+ for full functionality. </d
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if pin supports RTC GPIO (deep sleep, analog functions)</dd></dl>
-<p>ESP32C6: GPIO0-7 support RTC functionality. </p>
+<p>ESP32: GPIO0-7 support RTC functionality. </p>
 
 </div>
 </div>
@@ -1910,7 +1910,7 @@ Advanced features require ESP32C6 with ESP-IDF v5.5+ for full functionality. </d
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if pin is a strapping pin</dd></dl>
-<p>ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </p>
+<p>ESP32 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </p>
 
 </div>
 </div>
@@ -2217,7 +2217,7 @@ Advanced features require ESP32C6 with ESP-IDF v5.5+ for full functionality. </d
 <p>Static interrupt service routine handler. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">arg</td><td>Pointer to <a class="el" href="classEspGpio.html" title="Advanced MCU-specific implementation of unified BaseGpio with ESP32C6/ESP-IDF v5.5+ features.">EspGpio</a> instance </td></tr>
+    <tr><td class="paramname">arg</td><td>Pointer to <a class="el" href="classEspGpio.html" title="Advanced MCU-specific implementation of unified BaseGpio with ESP32/ESP-IDF v5.5+ features.">EspGpio</a> instance </td></tr>
   </table>
   </dd>
 </dl>

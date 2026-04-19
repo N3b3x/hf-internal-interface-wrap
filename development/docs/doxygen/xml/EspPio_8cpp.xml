@@ -351,10 +351,10 @@
       </node>
     </incdepgraph>
     <briefdescription>
-<para>ESP32C6 RMT-based Programmable IO Channel implementation. </para>
+<para>ESP32 RMT-based Programmable IO Channel implementation. </para>
     </briefdescription>
     <detaileddescription>
-<para>This file provides the implementation for PIO operations using the ESP32C6&apos;s RMT (Remote Control Transceiver) peripheral. The RMT peripheral provides hardware-accelerated symbol encoding/decoding with precise timing for custom protocols, IR communication, and other timing-critical applications with nanosecond-level precision and interrupt-driven operation.</para>
+<para>This file provides the implementation for PIO operations using the ESP32&apos;s RMT (Remote Control Transceiver) peripheral. The RMT peripheral provides hardware-accelerated symbol encoding/decoding with precise timing for custom protocols, IR communication, and other timing-critical applications with nanosecond-level precision and interrupt-driven operation.</para>
 <para><simplesect kind="author"><para>Nebiyu Tadesse </para>
 </simplesect>
 <simplesect kind="date"><para>2025 </para>
@@ -1079,7 +1079,7 @@
 <codeline lineno="726"><highlight class="normal"></highlight></codeline>
 <codeline lineno="727"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(config.direction<sp/>==<sp/><ref refid="BasePio_8h_1a4f686da1410313a12d85e6ae3d7af655a6c2958de5e2295b8cb67bac908244879" kindref="member">hf_pio_direction_t::Transmit</ref><sp/>||</highlight></codeline>
 <codeline lineno="728"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>config.direction<sp/>==<sp/><ref refid="BasePio_8h_1a4f686da1410313a12d85e6ae3d7af655aabd4328c725637aabedbd02d3b7ffd40" kindref="member">hf_pio_direction_t::Bidirectional</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="729"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>advanced<sp/>TX<sp/>channel<sp/>for<sp/>ESP32-C6<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="729"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>advanced<sp/>TX<sp/>channel<sp/>for<sp/>ESP32<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="730"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rmt_tx_channel_config_t<sp/>tx_config<sp/>=<sp/>{};</highlight></codeline>
 <codeline lineno="731"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tx_config.gpio_num<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">gpio_num_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(config.gpio_pin);</highlight></codeline>
 <codeline lineno="732"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tx_config.clk_src<sp/>=<sp/>RMT_CLK_SRC_DEFAULT;<sp/></highlight><highlight class="comment">//<sp/>APB<sp/>on<sp/>ESP32,<sp/>PLL_F80M<sp/>on<sp/>C6<sp/>(both<sp/>80<sp/>MHz)</highlight><highlight class="normal"></highlight></codeline>
@@ -1145,7 +1145,7 @@
 <codeline lineno="792"><highlight class="normal"></highlight></codeline>
 <codeline lineno="793"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(config.direction<sp/>==<sp/><ref refid="BasePio_8h_1a4f686da1410313a12d85e6ae3d7af655a5639d3df5aea3d9e78027b843ee3cbb2" kindref="member">hf_pio_direction_t::Receive</ref><sp/>||</highlight></codeline>
 <codeline lineno="794"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>config.direction<sp/>==<sp/><ref refid="BasePio_8h_1a4f686da1410313a12d85e6ae3d7af655aabd4328c725637aabedbd02d3b7ffd40" kindref="member">hf_pio_direction_t::Bidirectional</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="795"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>advanced<sp/>RX<sp/>channel<sp/>for<sp/>ESP32-C6<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="795"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>advanced<sp/>RX<sp/>channel<sp/>for<sp/>ESP32<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="796"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rmt_rx_channel_config_t<sp/>rx_config<sp/>=<sp/>{};</highlight></codeline>
 <codeline lineno="797"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rx_config.gpio_num<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">gpio_num_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(config.gpio_pin);</highlight></codeline>
 <codeline lineno="798"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rx_config.clk_src<sp/>=<sp/>RMT_CLK_SRC_DEFAULT;<sp/></highlight><highlight class="comment">//<sp/>APB<sp/>on<sp/>ESP32,<sp/>PLL_F80M<sp/>on<sp/>C6<sp/>(both<sp/>80<sp/>MHz)</highlight><highlight class="normal"></highlight></codeline>
@@ -1517,7 +1517,7 @@
 <codeline lineno="1164"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1165"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1166"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classEspPio_1aa5050a7a117545e320540581461d2c08" kindref="member">EspPio::GetMaxSymbolCount</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="1167"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP32C6<sp/>RMT<sp/>can<sp/>handle<sp/>large<sp/>symbol<sp/>counts<sp/>with<sp/>DMA<sp/>enabled</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1167"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP32<sp/>RMT<sp/>can<sp/>handle<sp/>large<sp/>symbol<sp/>counts<sp/>with<sp/>DMA<sp/>enabled</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1168"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>4096;<sp/></highlight><highlight class="comment">//<sp/>Reasonable<sp/>limit<sp/>for<sp/>most<sp/>applications</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1169"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1170"><highlight class="normal"></highlight></codeline>
@@ -2008,7 +2008,7 @@
 <codeline lineno="1655"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1656"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(config.direction<sp/>==<sp/><ref refid="BasePio_8h_1a4f686da1410313a12d85e6ae3d7af655a5639d3df5aea3d9e78027b843ee3cbb2" kindref="member">hf_pio_direction_t::Receive</ref><sp/>||</highlight></codeline>
 <codeline lineno="1657"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>config.direction<sp/>==<sp/><ref refid="BasePio_8h_1a4f686da1410313a12d85e6ae3d7af655aabd4328c725637aabedbd02d3b7ffd40" kindref="member">hf_pio_direction_t::Bidirectional</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="1658"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>advanced<sp/>RX<sp/>channel<sp/>for<sp/>ESP32-C6<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1658"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>advanced<sp/>RX<sp/>channel<sp/>for<sp/>ESP32<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1659"><highlight class="normal"><sp/><sp/><sp/><sp/>rmt_rx_channel_config_t<sp/>rx_config<sp/>=<sp/>{};</highlight></codeline>
 <codeline lineno="1660"><highlight class="normal"><sp/><sp/><sp/><sp/>rx_config.gpio_num<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">gpio_num_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(config.gpio_pin);</highlight></codeline>
 <codeline lineno="1661"><highlight class="normal"><sp/><sp/><sp/><sp/>rx_config.clk_src<sp/>=<sp/>RMT_CLK_SRC_DEFAULT;<sp/></highlight><highlight class="comment">//<sp/>APB<sp/>on<sp/>ESP32,<sp/>PLL_F80M<sp/>on<sp/>C6<sp/>(both<sp/>80<sp/>MHz)</highlight><highlight class="normal"></highlight></codeline>

@@ -234,8 +234,8 @@
 <para>Range information table. </para>
         </briefdescription>
         <detaileddescription>
-<para>ESP32-C6 temperature sensor range information table.</para>
-<para>Based on ESP32-C6 hardware specifications and ESP-IDF documentation </para>
+<para>ESP32 temperature sensor range information table.</para>
+<para>Based on ESP32 hardware specifications and ESP-IDF documentation </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -397,7 +397,7 @@
           <declname>info</declname>
         </param>
         <briefdescription>
-<para>Get ESP32-C6 temperature sensor information. </para>
+<para>Get ESP32 temperature sensor information. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -425,7 +425,7 @@
         <qualifiedname>EspTemperature::GetCapabilities</qualifiedname>
         <reimplements refid="classBaseTemperature_1a765c86c7680b43f7d075b9f392188611">GetCapabilities</reimplements>
         <briefdescription>
-<para>Get ESP32-C6 temperature sensor capabilities. </para>
+<para>Get ESP32 temperature sensor capabilities. </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="return"><para>Capabilities flags (hf_temp_capabilities_t) </para>
@@ -452,7 +452,7 @@
           <declname>max_celsius</declname>
         </param>
         <briefdescription>
-<para>Set temperature measurement range (ESP32-C6 supported) </para>
+<para>Set temperature measurement range (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -496,7 +496,7 @@
           <declname>max_celsius</declname>
         </param>
         <briefdescription>
-<para>Get temperature measurement range (ESP32-C6 supported) </para>
+<para>Get temperature measurement range (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -536,7 +536,7 @@
           <declname>resolution_celsius</declname>
         </param>
         <briefdescription>
-<para>Get measurement resolution (ESP32-C6 supported) </para>
+<para>Get measurement resolution (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -572,7 +572,7 @@
           <declname>high_threshold_celsius</declname>
         </param>
         <briefdescription>
-<para>Set temperature thresholds (ESP32-C6 supported) </para>
+<para>Set temperature thresholds (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -616,7 +616,7 @@
           <declname>high_threshold_celsius</declname>
         </param>
         <briefdescription>
-<para>Get temperature thresholds (ESP32-C6 supported) </para>
+<para>Get temperature thresholds (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -660,7 +660,7 @@
           <declname>user_data</declname>
         </param>
         <briefdescription>
-<para>Enable threshold monitoring (ESP32-C6 supported) </para>
+<para>Enable threshold monitoring (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -696,7 +696,7 @@
         <qualifiedname>EspTemperature::DisableThresholdMonitoring</qualifiedname>
         <reimplements refid="classBaseTemperature_1ad0326eb2b71271b06e2eccffe79561cd">DisableThresholdMonitoring</reimplements>
         <briefdescription>
-<para>Disable threshold monitoring (ESP32-C6 supported) </para>
+<para>Disable threshold monitoring (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="return"><para>Error code (TEMP_SUCCESS on success) </para>
@@ -727,7 +727,7 @@
           <declname>user_data</declname>
         </param>
         <briefdescription>
-<para>Start continuous temperature monitoring (ESP32-C6 supported) </para>
+<para>Start continuous temperature monitoring (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -771,7 +771,7 @@
         <qualifiedname>EspTemperature::StopContinuousMonitoring</qualifiedname>
         <reimplements refid="classBaseTemperature_1a30f3527c16c76f65e2deb4a89412e231">StopContinuousMonitoring</reimplements>
         <briefdescription>
-<para>Stop continuous temperature monitoring (ESP32-C6 supported) </para>
+<para>Stop continuous temperature monitoring (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="return"><para>Error code (TEMP_SUCCESS on success) </para>
@@ -790,7 +790,7 @@
         <qualifiedname>EspTemperature::IsMonitoringActive</qualifiedname>
         <reimplements refid="classBaseTemperature_1ab965dfed096914ca4a8e733b17bc978e">IsMonitoringActive</reimplements>
         <briefdescription>
-<para>Check if continuous monitoring is active (ESP32-C6 supported) </para>
+<para>Check if continuous monitoring is active (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="return"><para>true if monitoring is active, false otherwise </para>
@@ -813,7 +813,7 @@
           <declname>offset_celsius</declname>
         </param>
         <briefdescription>
-<para>Set calibration offset (ESP32-C6 supported) </para>
+<para>Set calibration offset (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -845,7 +845,7 @@
           <declname>offset_celsius</declname>
         </param>
         <briefdescription>
-<para>Get calibration offset (ESP32-C6 supported) </para>
+<para>Get calibration offset (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -873,7 +873,7 @@
         <qualifiedname>EspTemperature::ResetCalibration</qualifiedname>
         <reimplements refid="classBaseTemperature_1a2be35c2e9f2cd233d77353591bfc3f53">ResetCalibration</reimplements>
         <briefdescription>
-<para>Reset calibration to default (ESP32-C6 supported) </para>
+<para>Reset calibration to default (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="return"><para>Error code (TEMP_SUCCESS on success) </para>
@@ -892,7 +892,7 @@
         <qualifiedname>EspTemperature::EnterSleepMode</qualifiedname>
         <reimplements refid="classBaseTemperature_1abbef25249b2e935e8954a150519b2342">EnterSleepMode</reimplements>
         <briefdescription>
-<para>Enter low power mode (ESP32-C6 supported) </para>
+<para>Enter low power mode (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="return"><para>Error code (TEMP_SUCCESS on success) </para>
@@ -911,7 +911,7 @@
         <qualifiedname>EspTemperature::ExitSleepMode</qualifiedname>
         <reimplements refid="classBaseTemperature_1a52a0318d160c45fdee55b15d7148856c">ExitSleepMode</reimplements>
         <briefdescription>
-<para>Exit low power mode (ESP32-C6 supported) </para>
+<para>Exit low power mode (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="return"><para>Error code (TEMP_SUCCESS on success) </para>
@@ -930,7 +930,7 @@
         <qualifiedname>EspTemperature::IsSleeping</qualifiedname>
         <reimplements refid="classBaseTemperature_1a65f6deb4af75c89ae44723015731d195">IsSleeping</reimplements>
         <briefdescription>
-<para>Check if sensor is in sleep mode (ESP32-C6 supported) </para>
+<para>Check if sensor is in sleep mode (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="return"><para>true if in sleep mode, false otherwise </para>
@@ -949,7 +949,7 @@
         <qualifiedname>EspTemperature::SelfTest</qualifiedname>
         <reimplements refid="classBaseTemperature_1a0b23a97aea3d8455e458577c7ff937e3">SelfTest</reimplements>
         <briefdescription>
-<para>Perform sensor self-test (ESP32-C6 supported) </para>
+<para>Perform sensor self-test (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="return"><para>Error code (TEMP_SUCCESS on success) </para>
@@ -968,7 +968,7 @@
         <qualifiedname>EspTemperature::CheckHealth</qualifiedname>
         <reimplements refid="classBaseTemperature_1a201bfff0c78242bec04cadd6363d7b5d">CheckHealth</reimplements>
         <briefdescription>
-<para>Check sensor health status (ESP32-C6 supported) </para>
+<para>Check sensor health status (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="return"><para>Error code (TEMP_SUCCESS if healthy) </para>
@@ -991,7 +991,7 @@
           <declname>statistics</declname>
         </param>
         <briefdescription>
-<para>Get operation statistics (ESP32-C6 supported) </para>
+<para>Get operation statistics (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -1023,7 +1023,7 @@
           <declname>diagnostics</declname>
         </param>
         <briefdescription>
-<para>Get diagnostic information (ESP32-C6 supported) </para>
+<para>Get diagnostic information (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -1051,7 +1051,7 @@
         <qualifiedname>EspTemperature::ResetStatistics</qualifiedname>
         <reimplements refid="classBaseTemperature_1a149ff046e0cb000bf0172dce28bc17be">ResetStatistics</reimplements>
         <briefdescription>
-<para>Reset operation statistics (ESP32-C6 supported) </para>
+<para>Reset operation statistics (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="return"><para>Error code (TEMP_SUCCESS on success) </para>
@@ -1070,7 +1070,7 @@
         <qualifiedname>EspTemperature::ResetDiagnostics</qualifiedname>
         <reimplements refid="classBaseTemperature_1a21a976418e428078d9ec76521a6ac17b">ResetDiagnostics</reimplements>
         <briefdescription>
-<para>Reset diagnostic information (ESP32-C6 supported) </para>
+<para>Reset diagnostic information (ESP32 supported) </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="return"><para>Error code (TEMP_SUCCESS on success) </para>
@@ -1842,10 +1842,10 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>ESP32-C6 internal temperature sensor implementation. </para>
+<para>ESP32 internal temperature sensor implementation. </para>
     </briefdescription>
     <detaileddescription>
-<para>This class provides a complete implementation of the <ref refid="classBaseTemperature" kindref="compound">BaseTemperature</ref> interface specifically for the ESP32-C6 internal temperature sensor. It leverages the ESP-IDF temperature sensor driver to provide accurate temperature measurements with advanced features like threshold monitoring and continuous sampling.</para>
+<para>This class provides a complete implementation of the <ref refid="classBaseTemperature" kindref="compound">BaseTemperature</ref> interface specifically for the ESP32 internal temperature sensor. It leverages the ESP-IDF temperature sensor driver to provide accurate temperature measurements with advanced features like threshold monitoring and continuous sampling.</para>
 <para>Key features:<itemizedlist>
 <listitem><para>Multiple measurement ranges with different accuracy levels</para>
 </listitem><listitem><para>Hardware-based threshold monitoring with interrupts</para>

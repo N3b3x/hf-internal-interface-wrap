@@ -1,5 +1,5 @@
 <map id="inc/mcu/esp32/EspSpi.h" name="inc/mcu/esp32/EspSpi.h">
-<area shape="rect" id="Node000001" title="Advanced MCU&#45;integrated SPI controller implementation with ESP32C6/ESP&#45;IDF v5.5+ features." alt="" coords="2536,5,2752,36"/>
+<area shape="rect" id="Node000001" title="Advanced MCU&#45;integrated SPI controller implementation with ESP32/ESP&#45;IDF v5.5+ features." alt="" coords="2536,5,2752,36"/>
 <area shape="rect" id="Node000002" href="$BaseSpi_8h.html" title="Abstract base class for SPI device implementations in the HardFOC system." alt="" coords="411,320,515,351"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2536,26,2147,34,1613,56,1337,74,1081,98,862,128,772,146,698,165,633,194,573,234,523,276,487,312,483,308,520,272,570,230,630,190,696,160,771,140,861,123,1080,92,1337,69,1613,51,2147,29,2536,21"/>
 <area shape="rect" id="Node000007" href="$PlatformMutex_8h.html" title="Cross&#45;platform mutex and synchronization primitives with pluggable backend." alt="" coords="3441,320,3596,351"/>

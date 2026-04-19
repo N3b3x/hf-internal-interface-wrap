@@ -113,12 +113,12 @@
       </node>
     </incdepgraph>
     <briefdescription>
-<para>ESP32-C6 internal temperature sensor implementation for the HardFOC system. </para>
+<para>ESP32 internal temperature sensor implementation for the HardFOC system. </para>
     </briefdescription>
     <detaileddescription>
-<para>This file contains the complete implementation of the ESP32-C6 temperature sensor driver that extends the <ref refid="classBaseTemperature" kindref="compound">BaseTemperature</ref> abstract class. It provides comprehensive support for all ESP32-C6 temperature sensor features including multiple measurement ranges, threshold monitoring, continuous monitoring, calibration, and power management.</para>
+<para>This file contains the complete implementation of the ESP32 temperature sensor driver that extends the <ref refid="classBaseTemperature" kindref="compound">BaseTemperature</ref> abstract class. It provides comprehensive support for all ESP32 temperature sensor features including multiple measurement ranges, threshold monitoring, continuous monitoring, calibration, and power management.</para>
 <para>Key features implemented:<itemizedlist>
-<listitem><para>ESP32-C6 internal temperature sensor using ESP-IDF v5.x APIs</para>
+<listitem><para>ESP32 internal temperature sensor using ESP-IDF v5.x APIs</para>
 </listitem><listitem><para>Multiple predefined measurement ranges with different accuracy levels</para>
 </listitem><listitem><para>Hardware threshold monitoring with interrupt callbacks</para>
 </listitem><listitem><para>Continuous monitoring using ESP32 timers</para>
@@ -135,7 +135,7 @@
 </simplesect>
 <simplesect kind="copyright"><para>HardFOC</para>
 </simplesect>
-<simplesect kind="note"><para>ESP32-C6 specific implementation using ESP-IDF v5.x </para>
+<simplesect kind="note"><para>ESP32 specific implementation using ESP-IDF v5.x </para>
 </simplesect>
 <simplesect kind="note"><para>Thread-safe design suitable for multi-threaded applications </para>
 </simplesect>
@@ -160,7 +160,7 @@
 <codeline lineno="42"><highlight class="normal">temperature_sensor_handle_t<sp/><ref refid="classEspTemperature_1acc45986a38969e94e206b1531eedcbac" kindref="member">EspTemperature::s_shared_handle_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//--------------------------------------</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>ESP32-C6<sp/>Temperature<sp/>Range<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>ESP32<sp/>Temperature<sp/>Range<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//--------------------------------------</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structesp__temp__range__info__t" kindref="compound">esp_temp_range_info_t</ref><sp/><ref refid="classEspTemperature_1aa829f22f1d02247e2da26709702812ae" kindref="member">EspTemperature::RANGE_INFO</ref>[]<sp/>=<sp/>{</highlight></codeline>
@@ -250,7 +250,7 @@
 <codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="137"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="138"><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="classEspTemperature_1a0e3aba6824d5d671a2298f402d2b397c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>ESP32-C6<sp/>temperature<sp/>sensor...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="classEspTemperature_1a0e3aba6824d5d671a2298f402d2b397c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>ESP32<sp/>temperature<sp/>sensor...&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"></highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>or<sp/>adopt<sp/>shared<sp/>temperature<sp/>sensor</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="142"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>min_temp,<sp/>max_temp,<sp/>accuracy;</highlight></codeline>
@@ -298,7 +298,7 @@
 <codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspTemperature_1a9b93362b1986eeae60402f91f9afc715" kindref="member">diagnostics_</ref>.<ref refid="structhf__temp__diagnostics__t_1a744b9f72ba155602c86667c63d9a329b" kindref="member">threshold_monitoring_enabled</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="185"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="186"><highlight class="normal"></highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="classEspTemperature_1a0e3aba6824d5d671a2298f402d2b397c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32-C6<sp/>temperature<sp/>sensor<sp/>initialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="classEspTemperature_1a0e3aba6824d5d671a2298f402d2b397c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>temperature<sp/>sensor<sp/>initialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="188"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="classEspTemperature_1a0e3aba6824d5d671a2298f402d2b397c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Range:<sp/>%.0f°C<sp/>to<sp/>%.0f°C,<sp/>Accuracy:<sp/>±%.1f°C&quot;</highlight><highlight class="normal">,<sp/>min_temp,<sp/>max_temp,<sp/>accuracy);</highlight></codeline>
 <codeline lineno="189"><highlight class="normal"></highlight></codeline>
 <codeline lineno="190"><highlight class="normal"><sp/><sp/><ref refid="classEspTemperature_1ad5980d76ca4268f56feea2f18d4f1af6" kindref="member">UpdateStatistics</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/><ref refid="classEspTemperature_1a5c68489b897534abaa14c39314b094ed" kindref="member">GetCurrentTimeUs</ref>()<sp/>-<sp/>start_time);</highlight></codeline>
@@ -317,7 +317,7 @@
 <codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="205"><highlight class="normal"></highlight></codeline>
-<codeline lineno="206"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="classEspTemperature_1a0e3aba6824d5d671a2298f402d2b397c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Deinitializing<sp/>ESP32-C6<sp/>temperature<sp/>sensor...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="classEspTemperature_1a0e3aba6824d5d671a2298f402d2b397c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Deinitializing<sp/>ESP32<sp/>temperature<sp/>sensor...&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="207"><highlight class="normal"></highlight></codeline>
 <codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>continuous<sp/>monitoring<sp/>if<sp/>active</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="209"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspTemperature_1ae8aab5a3d2118ef3061ec62c63fc0103" kindref="member">esp_state_</ref>.<ref refid="structesp__temp__state__t_1a2a7e449e9494d084491b6a02682a407c" kindref="member">continuous_monitoring_active</ref>)<sp/>{</highlight></codeline>
@@ -392,10 +392,10 @@
 <codeline lineno="278"><highlight class="normal"><sp/><sp/><ref refid="classEspTemperature_1a8fe2e9d176f71696e4fb12afbcd25bc8" kindref="member">monitoring_user_data_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="279"><highlight class="normal"></highlight></codeline>
 <codeline lineno="280"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(success)<sp/>{</highlight></codeline>
-<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="classEspTemperature_1a0e3aba6824d5d671a2298f402d2b397c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32-C6<sp/>temperature<sp/>sensor<sp/>deinitialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="classEspTemperature_1a0e3aba6824d5d671a2298f402d2b397c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>temperature<sp/>sensor<sp/>deinitialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspTemperature_1a149603f54dfa682cefceae26805a77e2" kindref="member">SetLastError</ref>(<ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20aa9f97b2af246741135f6475e1c8f36b7" kindref="member">hf_temp_err_t::TEMP_SUCCESS</ref>);</highlight></codeline>
 <codeline lineno="283"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="classEspTemperature_1a0e3aba6824d5d671a2298f402d2b397c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32-C6<sp/>temperature<sp/>sensor<sp/>deinitialization<sp/>completed<sp/>with<sp/>errors&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="classEspTemperature_1a0e3aba6824d5d671a2298f402d2b397c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>temperature<sp/>sensor<sp/>deinitialization<sp/>completed<sp/>with<sp/>errors&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspTemperature_1a149603f54dfa682cefceae26805a77e2" kindref="member">SetLastError</ref>(<ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20a45c5f714c0d9068aa9be0955b60be332" kindref="member">hf_temp_err_t::TEMP_ERR_FAILURE</ref>);</highlight></codeline>
 <codeline lineno="286"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="287"><highlight class="normal"></highlight></codeline>
@@ -428,7 +428,7 @@
 <codeline lineno="314"><highlight class="normal"></highlight></codeline>
 <codeline lineno="315"><highlight class="normal"><sp/><sp/>current_state_<sp/>=<sp/><ref refid="BaseTemperature_8h_1aee8dd042d1f1740b2a23650bbe6efe12a00fda7bc134524890bbc071922e18ce1" kindref="member">HF_TEMP_STATE_READING</ref>;</highlight></codeline>
 <codeline lineno="316"><highlight class="normal"></highlight></codeline>
-<codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>raw<sp/>temperature<sp/>from<sp/>ESP32-C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>raw<sp/>temperature<sp/>from<sp/>ESP32</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="318"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>raw_temp;</highlight></codeline>
 <codeline lineno="319"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>esp_err<sp/>=<sp/>temperature_sensor_get_celsius(esp_state_.handle,<sp/>&amp;raw_temp);</highlight></codeline>
 <codeline lineno="320"><highlight class="normal"></highlight></codeline>
@@ -512,7 +512,7 @@
 <codeline lineno="398"><highlight class="normal"><sp/><sp/>info-&gt;response_time_ms<sp/>=<sp/><ref refid="EspTemperature_8h_1a78f98591000d516673583e4ebf4e6e03" kindref="member">ESP_TEMP_DEFAULT_RESPONSE_TIME_MS</ref>;</highlight></codeline>
 <codeline lineno="399"><highlight class="normal"><sp/><sp/>info-&gt;capabilities<sp/>=<sp/>GetCapabilities();</highlight></codeline>
 <codeline lineno="400"><highlight class="normal"><sp/><sp/>info-&gt;manufacturer<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Espressif&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="401"><highlight class="normal"><sp/><sp/>info-&gt;model<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ESP32-C6<sp/>Internal<sp/>Temperature<sp/>Sensor&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/>info-&gt;model<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>Internal<sp/>Temperature<sp/>Sensor&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="402"><highlight class="normal"><sp/><sp/>info-&gt;version<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ESP-IDF<sp/>v5.x&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="403"><highlight class="normal"></highlight></codeline>
 <codeline lineno="404"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20aa9f97b2af246741135f6475e1c8f36b7" kindref="member">hf_temp_err_t::TEMP_SUCCESS</ref>;</highlight></codeline>
@@ -525,7 +525,7 @@
 <codeline lineno="411"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="412"><highlight class="normal"></highlight></codeline>
 <codeline lineno="413"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="414"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ADVANCED<sp/>FEATURES<sp/>(SUPPORTED<sp/>BY<sp/>ESP32-C6)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="414"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ADVANCED<sp/>FEATURES<sp/>(SUPPORTED<sp/>BY<sp/>ESP32)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="415"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="416"><highlight class="normal"></highlight></codeline>
 <codeline lineno="417"><highlight class="normal"><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classEspTemperature_1a92b30bf532e07d1f1927d4fccf5322ba" kindref="member">EspTemperature::SetRange</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>min_celsius,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>max_celsius)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -981,7 +981,7 @@
 <codeline lineno="867"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="868"><highlight class="normal"></highlight></codeline>
 <codeline lineno="869"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="870"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>SPECIFIC<sp/>METHODS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="870"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>SPECIFIC<sp/>METHODS</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="871"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="872"><highlight class="normal"></highlight></codeline>
 <codeline lineno="873"><highlight class="normal"><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classEspTemperature_1a2aa6d6cdd0f7d91c86ce759706d9f712" kindref="member">EspTemperature::InitializeEsp32</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structesp__temp__config__t" kindref="compound">esp_temp_config_t</ref>&amp;<sp/>esp_config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>

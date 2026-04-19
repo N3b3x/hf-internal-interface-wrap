@@ -199,7 +199,7 @@
           <name>HF_I2C_CLK_SRC_DEFAULT</name>
           <initializer>= I2C_CLK_SRC_DEFAULT</initializer>
           <briefdescription>
-<para>Default clock source (APB for ESP32-C6) </para>
+<para>Default clock source (APB for ESP32) </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -217,7 +217,7 @@
           <name>HF_I2C_CLK_SRC_RC_FAST</name>
           <initializer>= I2C_CLK_SRC_RC_FAST</initializer>
           <briefdescription>
-<para>RC_FAST clock (ESP32-C6 SOC_MOD_CLK_RC_FAST) </para>
+<para>RC_FAST clock (ESP32 SOC_MOD_CLK_RC_FAST) </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>

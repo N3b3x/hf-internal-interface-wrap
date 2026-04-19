@@ -310,7 +310,7 @@
 </parameterlist>
 <simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise</para>
 </simplesect>
-<simplesect kind="note"><para>For ESP32C6, only BLE mode is supported </para>
+<simplesect kind="note"><para>For ESP32, only BLE mode is supported </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -1794,8 +1794,8 @@
     </briefdescription>
     <detaileddescription>
 <para>This class provides ESP32-specific Bluetooth functionality with conditional compilation for different ESP32 variants:<itemizedlist>
-<listitem><para>ESP32C6: BLE-only using NimBLE (optimized)</para>
-</listitem><listitem><para>ESP32/ESP32S3: Full Bluetooth with Classic + BLE</para>
+<listitem><para>ESP32: BLE-only using NimBLE (optimized)</para>
+</listitem><listitem><para>ESP32/ESP32: Full Bluetooth with Classic + BLE</para>
 </listitem><listitem><para>ESP32C3/H2: BLE-only using Bluedroid</para>
 </listitem><listitem><para>ESP32S2: No Bluetooth support </para>
 </listitem></itemizedlist>

@@ -4,7 +4,7 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="4384,35,3673,39,3185,47,2675,60,2191,81,1975,94,1785,109,1626,128,1504,149,1460,160,1428,172,1408,185,1402,197,1402,278,1400,405,1395,405,1397,278,1397,196,1404,181,1425,167,1458,155,1503,143,1625,122,1784,104,1975,89,2191,75,2675,55,3185,42,3673,34,4384,29"/>
 <area shape="rect" id="Node000003" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="2254,497,2417,528"/>
 <area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="4384,35,3760,37,2879,46,2437,55,2044,68,1739,85,1631,95,1560,107,1511,121,1475,138,1395,185,1206,296,1091,369,1051,399,1031,420,1025,435,1031,447,1047,455,1081,462,1194,474,1540,492,1933,503,2240,508,2240,513,1933,508,1540,498,1194,479,1080,467,1045,460,1027,451,1020,435,1026,417,1048,395,1088,365,1203,291,1393,180,1472,133,1509,116,1559,101,1631,90,1739,79,2044,62,2437,50,2879,41,3760,31,4384,29"/>
-<area shape="rect" id="Node000007" href="$EspSpi_8h.html" title="Advanced MCU&#45;integrated SPI controller implementation with ESP32C6/ESP&#45;IDF v5.5+ features." alt="" coords="4229,104,4417,135"/>
+<area shape="rect" id="Node000007" href="$EspSpi_8h.html" title="Advanced MCU&#45;integrated SPI controller implementation with ESP32/ESP&#45;IDF v5.5+ features." alt="" coords="4229,104,4417,135"/>
 <area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="4457,59,4367,101,4365,96,4454,54"/>
 <area shape="rect" id="Node000023" title=" " alt="" coords="4605,419,4676,449"/>
 <area shape="poly" id="edge104_Node000001_Node000023" title=" " alt="" coords="4547,54,4579,79,4610,113,4634,152,4641,174,4643,197,4643,278,4643,405,4638,405,4638,278,4638,197,4636,175,4629,154,4606,116,4575,83,4544,58"/>
@@ -155,7 +155,7 @@
 <area shape="poly" id="edge110_Node000040_Node000043" title=" " alt="" coords="779,216,561,261,560,256,778,211"/>
 <area shape="rect" id="Node000044" title=" " alt="" coords="585,261,721,292"/>
 <area shape="poly" id="edge111_Node000040_Node000044" title=" " alt="" coords="811,216,702,259,700,254,809,211"/>
-<area shape="rect" id="Node000045" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5...." alt="" coords="745,261,947,292"/>
+<area shape="rect" id="Node000045" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32/ESP&#45;IDF v5...." alt="" coords="745,261,947,292"/>
 <area shape="poly" id="edge113_Node000040_Node000045" title=" " alt="" coords="849,214,849,248,843,248,843,214"/>
 <area shape="poly" id="edge117_Node000045_Node000019" title=" " alt="" coords="947,282,1079,289,1521,307,1864,316,2207,324,2649,337,2887,347,2887,352,2649,343,2207,329,1864,321,1520,312,1079,295,947,287"/>
 <area shape="poly" id="edge116_Node000045_Node000020" title=" " alt="" coords="871,290,1066,409,1063,414,868,295"/>

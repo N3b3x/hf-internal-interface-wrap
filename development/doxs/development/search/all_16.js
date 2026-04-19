@@ -16,13 +16,14 @@ var searchData=
   ['operator_7c_13',['operator|',['../BaseLogger_8h.html#a4b5114db4a88ed1eb860b1d1db858d14',1,'BaseLogger.h']]],
   ['operator_7e_14',['operator~',['../BaseLogger_8h.html#ac5c9c4359cc4dec9db039cdec56bd52e',1,'BaseLogger.h']]],
   ['option_15',['XTAL_CLK (40MHz) - Power-efficient option',['../EspTypes__PWM_8h.html#autotoc_md11',1,'']]],
-  ['output_5fdestination_16',['output_destination',['../structhf__logger__config__t.html#aea701908932be510a4b1e64e43528909',1,'hf_logger_config_t']]],
-  ['output_5finvert_17',['output_invert',['../structhf__pwm__channel__config__t.html#ad61ccb65c601b8310da94658089b633a',1,'hf_pwm_channel_config_t']]],
-  ['output_5fmode_5f_18',['output_mode_',['../classBaseGpio.html#a009b41614328663508a6dfccdd1bfa8e',1,'BaseGpio::output_mode_'],['../classStmGpio.html#a4dbeaa835a1c40e656ddcbdb40cccc15',1,'StmGpio::output_mode_']]],
-  ['output_5fsection_5findicator_19',['output_section_indicator',['../TestFramework_8h.html#a0b263a245b65a247ab95a28992b8cc4c',1,'TestFramework.h']]],
-  ['outputs_3a_20',['PERFORMANCE TESTING AND EXPECTED OUTPUTS:',['../DigitalOutputGuardComprehensiveTest_8cpp.html#autotoc_md19',1,'']]],
-  ['outputstring_21',['OutputString',['../classStmLogger.html#aad07a8fb34502403b23fd347390a1c08',1,'StmLogger']]],
-  ['overrun_5ferror_5fcount_22',['overrun_error_count',['../structhf__uart__statistics__t.html#af9c3575d495cdfe73cc37e67012674ea',1,'hf_uart_statistics_t']]],
-  ['overview_20strong_23',['🎯 &lt;strong&gt;Overview&lt;/strong&gt;',['../index.html#autotoc_md26',1,'']]],
-  ['overview_3a_24',['LEDC Peripheral Overview:',['../EspTypes__PWM_8h.html#autotoc_md7',1,'']]]
+  ['other_20esp32_20variants_3a_16',['Other ESP32 Variants:',['../classEspPwm.html#autotoc_md3',1,'']]],
+  ['output_5fdestination_17',['output_destination',['../structhf__logger__config__t.html#aea701908932be510a4b1e64e43528909',1,'hf_logger_config_t']]],
+  ['output_5finvert_18',['output_invert',['../structhf__pwm__channel__config__t.html#ad61ccb65c601b8310da94658089b633a',1,'hf_pwm_channel_config_t']]],
+  ['output_5fmode_5f_19',['output_mode_',['../classBaseGpio.html#a009b41614328663508a6dfccdd1bfa8e',1,'BaseGpio::output_mode_'],['../classStmGpio.html#a4dbeaa835a1c40e656ddcbdb40cccc15',1,'StmGpio::output_mode_']]],
+  ['output_5fsection_5findicator_20',['output_section_indicator',['../TestFramework_8h.html#a0b263a245b65a247ab95a28992b8cc4c',1,'TestFramework.h']]],
+  ['outputs_3a_21',['PERFORMANCE TESTING AND EXPECTED OUTPUTS:',['../DigitalOutputGuardComprehensiveTest_8cpp.html#autotoc_md19',1,'']]],
+  ['outputstring_22',['OutputString',['../classStmLogger.html#aad07a8fb34502403b23fd347390a1c08',1,'StmLogger']]],
+  ['overrun_5ferror_5fcount_23',['overrun_error_count',['../structhf__uart__statistics__t.html#af9c3575d495cdfe73cc37e67012674ea',1,'hf_uart_statistics_t']]],
+  ['overview_20strong_24',['🎯 &lt;strong&gt;Overview&lt;/strong&gt;',['../index.html#autotoc_md26',1,'']]],
+  ['overview_3a_25',['LEDC Peripheral Overview:',['../EspTypes__PWM_8h.html#autotoc_md7',1,'']]]
 ];

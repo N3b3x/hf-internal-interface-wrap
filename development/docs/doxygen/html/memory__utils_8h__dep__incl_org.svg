@@ -76,7 +76,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="EspSpi_8cpp.html" target="_top" xlink:title="Implementation of MCU&#45;integrated SPI controller for ESP32C6 with ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000005"><a xlink:href="EspSpi_8cpp.html" target="_top" xlink:title="Implementation of MCU&#45;integrated SPI controller for ESP32 with ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="810,-30.5 633,-30.5 633,-7.5 810,-7.5 810,-30.5"/>
 <text text-anchor="middle" x="721.5" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspSpi.cpp</text>
 </a>

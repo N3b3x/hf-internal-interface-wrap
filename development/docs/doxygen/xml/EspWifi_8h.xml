@@ -203,7 +203,7 @@
 <codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_netif.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_smartconfig.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_wifi.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>WPS<sp/>not<sp/>available<sp/>on<sp/>ESP32-C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>WPS<sp/>not<sp/>available<sp/>on<sp/>ESP32</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#include<sp/>&quot;esp_wps.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;lwip/err.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;lwip/sys.h&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -257,7 +257,7 @@
 <codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Smart<sp/>config<sp/>and<sp/>provisioning</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="99" refid="structEspWifiAdvancedConfig_1ac492f389202e623ebe5fafb50765c9d9" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structEspWifiAdvancedConfig_1ac492f389202e623ebe5fafb50765c9d9" kindref="member">enable_smartconfig</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="100" refid="structEspWifiAdvancedConfig_1a504040340e8d1ba248281c3d952a26b8" refkind="member"><highlight class="normal"><sp/><sp/>smartconfig_type_t<sp/><ref refid="structEspWifiAdvancedConfig_1a504040340e8d1ba248281c3d952a26b8" kindref="member">smartconfig_type</ref>;<sp/></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>WPS<sp/>not<sp/>available<sp/>on<sp/>ESP32-C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>WPS<sp/>not<sp/>available<sp/>on<sp/>ESP32</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>bool<sp/>enable_wps;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**&lt;<sp/>Enable<sp/>WPS<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>wps_type_t<sp/>wps_type;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**&lt;<sp/>WPS<sp/>type<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="104"><highlight class="normal">};</highlight></codeline>
@@ -338,7 +338,7 @@
 <codeline lineno="260"><highlight class="normal"></highlight></codeline>
 <codeline lineno="265" refid="classEspWifi_1a385c3e3f99d1fb65cae8e194ccdd0dba" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1a385c3e3f99d1fb65cae8e194ccdd0dba" kindref="member">StopSmartConfig</ref>();</highlight></codeline>
 <codeline lineno="266"><highlight class="normal"></highlight></codeline>
-<codeline lineno="267"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>WPS<sp/>not<sp/>available<sp/>on<sp/>ESP32-C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>WPS<sp/>not<sp/>available<sp/>on<sp/>ESP32</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="268"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>/**</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="269"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>*<sp/>@brief<sp/>Start<sp/>WPS<sp/>provisioning</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="270"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>*<sp/>@param<sp/>type<sp/>WPS<sp/>type</highlight><highlight class="normal"></highlight></codeline>

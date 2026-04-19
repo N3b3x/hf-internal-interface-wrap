@@ -362,17 +362,17 @@
     <innerclass refid="classEspPio" prot="public">EspPio</innerclass>
     <innerclass refid="structEspPio_1_1ChannelState" prot="private">EspPio::ChannelState</innerclass>
     <briefdescription>
-<para>ESP32C6 RMT-based Programmable IO Channel implementation with ESP-IDF v5.5+ features. </para>
+<para>ESP32 RMT-based Programmable IO Channel implementation with ESP-IDF v5.5+ features. </para>
     </briefdescription>
     <detaileddescription>
-<para>This header provides a comprehensive PIO implementation for ESP32C6 microcontrollers using the advanced RMT (Remote Control Transceiver) peripheral with full ESP-IDF v5.5+ support. The RMT peripheral provides precise timing control, hardware buffering, DMA support, and advanced features ideal for high-performance PIO operations.<itemizedlist>
+<para>This header provides a comprehensive PIO implementation for ESP32 microcontrollers using the advanced RMT (Remote Control Transceiver) peripheral with full ESP-IDF v5.5+ support. The RMT peripheral provides precise timing control, hardware buffering, DMA support, and advanced features ideal for high-performance PIO operations.<itemizedlist>
 <listitem><para>The implementation supports:</para>
 </listitem><listitem><para>High-precision timing control (nanosecond resolution)</para>
 </listitem><listitem><para>Hardware symbol encoding/decoding with DMA</para>
 </listitem><listitem><para>Custom protocols, IR communication, and generic digital signaling</para>
 </listitem><listitem><para>Interrupt-driven operation with minimal CPU overhead</para>
 </listitem><listitem><para>Advanced carrier modulation and configurable idle levels</para>
-</listitem><listitem><para>ESP32C6-specific optimizations and ESP-IDF v5.5+ features</para>
+</listitem><listitem><para>ESP32-specific optimizations and ESP-IDF v5.5+ features</para>
 </listitem><listitem><para>True lazy initialization for optimal resource usage</para>
 </listitem><listitem><para>Thread-safe operation with comprehensive error handling</para>
 </listitem></itemizedlist>
@@ -387,7 +387,7 @@
 </simplesect>
 <simplesect kind="note"><para>Features include up to 8 RMT channels, nanosecond-level timing precision, hardware symbol encoding/decoding, interrupt-driven operation, support for IR, custom protocols, configurable idle levels, and carrier modulation. </para>
 </simplesect>
-<simplesect kind="note"><para>Requires ESP32C6 with ESP-IDF v5.5+ for full advanced feature support. </para>
+<simplesect kind="note"><para>Requires ESP32 with ESP-IDF v5.5+ for full advanced feature support. </para>
 </simplesect>
 </para>
     </detaileddescription>
@@ -584,9 +584,9 @@
 <codeline lineno="374" refid="classEspPio_1ac4e5b7482b20d6852d1e8ab45984d853" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="classEspPio_1ac4e5b7482b20d6852d1e8ab45984d853" kindref="member">MAX_CHANNELS</ref><sp/>=<sp/><ref refid="EspTypes__PIO_8h_1affbcbc9b8c7595fc42442350149f1df8" kindref="member">HF_RMT_MAX_CHANNELS</ref>;<sp/></highlight><highlight class="comment">//<sp/>Use<sp/>centralized<sp/>constant</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="375" refid="classEspPio_1a03675432b6a1a0d67ba0a87d8782d854" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classEspPio_1a03675432b6a1a0d67ba0a87d8782d854" kindref="member">MAX_SYMBOLS_PER_TRANSMISSION</ref><sp/>=<sp/>256;</highlight></codeline>
 <codeline lineno="376" refid="classEspPio_1a98997f966da26af47b3c6259dbaeb07b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="classEspPio_1a98997f966da26af47b3c6259dbaeb07b" kindref="member">DEFAULT_RESOLUTION_NS</ref><sp/>=<sp/>1000;<sp/></highlight><highlight class="comment">//<sp/>1<sp/>microsecond</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="377"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>specific<sp/>clock<sp/>frequency<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="377"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>specific<sp/>clock<sp/>frequency<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="378"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(CONFIG_IDF_TARGET_ESP32C6)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="379"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="classEspPio_1a56edcc56d779c721e32fe3e0deca9c3d" kindref="member">RMT_CLK_SRC_FREQ</ref><sp/>=<sp/>80000000;<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>APB<sp/>clock<sp/>(80<sp/>MHz)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="classEspPio_1a56edcc56d779c721e32fe3e0deca9c3d" kindref="member">RMT_CLK_SRC_FREQ</ref><sp/>=<sp/>80000000;<sp/></highlight><highlight class="comment">//<sp/>ESP32<sp/>APB<sp/>clock<sp/>(80<sp/>MHz)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="380"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="381" refid="classEspPio_1a56edcc56d779c721e32fe3e0deca9c3d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="classEspPio_1a56edcc56d779c721e32fe3e0deca9c3d" kindref="member">RMT_CLK_SRC_FREQ</ref><sp/>=<sp/>80000000;<sp/></highlight><highlight class="comment">//<sp/>80<sp/>MHz<sp/>APB<sp/>clock</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="382"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>

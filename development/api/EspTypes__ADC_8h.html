@@ -235,6 +235,8 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a1ae5f3a2cdf4694d1e5241bd993af956" id="r_a1ae5f3a2cdf4694d1e5241bd993af956"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ae5f3a2cdf4694d1e5241bd993af956">HF_ADC_CFG_MAX_CHANNELS</a> = 10</td></tr>
+<tr class="separator:a1ae5f3a2cdf4694d1e5241bd993af956"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a001d3833197b85f64477deac14db1ee2" id="r_a001d3833197b85f64477deac14db1ee2"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a001d3833197b85f64477deac14db1ee2">HF_ESP32_ADC_DATA_BYTES_PER_CONV</a></td></tr>
 <tr class="memdesc:a001d3833197b85f64477deac14db1ee2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Example of ISR-safe ADC callback implementation.  <br /></td></tr>
 <tr class="separator:a001d3833197b85f64477deac14db1ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -268,7 +270,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line"> bool (*)(<span class="keyword">const</span> <a class="code hl_struct" href="structhf__adc__continuous__data__t.html">hf_adc_continuous_data_t</a>* data,</div>
 <div class="line">                                              <span class="keywordtype">void</span>* user_data)</div>
-<div class="ttc" id="astructhf__adc__continuous__data__t_html"><div class="ttname"><a href="structhf__adc__continuous__data__t.html">hf_adc_continuous_data_t</a></div><div class="ttdoc">ADC continuous data structure.</div><div class="ttdef"><b>Definition</b> EspTypes_ADC.h:176</div></div>
+<div class="ttc" id="astructhf__adc__continuous__data__t_html"><div class="ttname"><a href="structhf__adc__continuous__data__t.html">hf_adc_continuous_data_t</a></div><div class="ttdoc">ADC continuous data structure.</div><div class="ttdef"><b>Definition</b> EspTypes_ADC.h:185</div></div>
 </div><!-- fragment -->
 <p>ADC continuous mode data callback function. </p>
 <dl class="section warning"><dt>Warning</dt><dd>This callback is executed in ISR context and must be ISR-safe:<ul>
@@ -827,6 +829,28 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a1ae5f3a2cdf4694d1e5241bd993af956" name="a1ae5f3a2cdf4694d1e5241bd993af956"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ae5f3a2cdf4694d1e5241bd993af956">&#9670;&#160;</a></span>HF_ADC_CFG_MAX_CHANNELS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint8_t HF_ADC_CFG_MAX_CHANNELS = 10</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a001d3833197b85f64477deac14db1ee2" name="a001d3833197b85f64477deac14db1ee2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a001d3833197b85f64477deac14db1ee2">&#9670;&#160;</a></span>HF_ESP32_ADC_DATA_BYTES_PER_CONV</h2>
 
@@ -870,9 +894,9 @@ Variables</h2></td></tr>
 <div class="line">    <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Continue receiving callbacks</span></div>
 <div class="line">}</div>
 <div class="ttc" id="aAdcComprehensiveTest_8cpp_html_a02251c6ef152433a2ac243fa5b36b051"><div class="ttname"><a href="AdcComprehensiveTest_8cpp.html#a02251c6ef152433a2ac243fa5b36b051">adc_data_queue</a></div><div class="ttdeci">static QueueHandle_t adc_data_queue</div><div class="ttdef"><b>Definition</b> AdcComprehensiveTest.cpp:78</div></div>
-<div class="ttc" id="astructhf__adc__continuous__data__t_html_a43cb986a8558ee76d4cbbefec9379fc2"><div class="ttname"><a href="structhf__adc__continuous__data__t.html#a43cb986a8558ee76d4cbbefec9379fc2">hf_adc_continuous_data_t::timestamp_us</a></div><div class="ttdeci">uint64_t timestamp_us</div><div class="ttdoc">Timestamp in microseconds.</div><div class="ttdef"><b>Definition</b> EspTypes_ADC.h:180</div></div>
-<div class="ttc" id="astructhf__adc__continuous__data__t_html_a9ea7c24e238c3ed502c066385706a655"><div class="ttname"><a href="structhf__adc__continuous__data__t.html#a9ea7c24e238c3ed502c066385706a655">hf_adc_continuous_data_t::size</a></div><div class="ttdeci">uint32_t size</div><div class="ttdoc">Data size in bytes.</div><div class="ttdef"><b>Definition</b> EspTypes_ADC.h:178</div></div>
-<div class="ttc" id="astructhf__adc__continuous__data__t_html_af50bdeaa56dc69692872434a78ed2c4d"><div class="ttname"><a href="structhf__adc__continuous__data__t.html#af50bdeaa56dc69692872434a78ed2c4d">hf_adc_continuous_data_t::conversion_count</a></div><div class="ttdeci">uint32_t conversion_count</div><div class="ttdoc">Number of conversions.</div><div class="ttdef"><b>Definition</b> EspTypes_ADC.h:179</div></div>
+<div class="ttc" id="astructhf__adc__continuous__data__t_html_a43cb986a8558ee76d4cbbefec9379fc2"><div class="ttname"><a href="structhf__adc__continuous__data__t.html#a43cb986a8558ee76d4cbbefec9379fc2">hf_adc_continuous_data_t::timestamp_us</a></div><div class="ttdeci">uint64_t timestamp_us</div><div class="ttdoc">Timestamp in microseconds.</div><div class="ttdef"><b>Definition</b> EspTypes_ADC.h:189</div></div>
+<div class="ttc" id="astructhf__adc__continuous__data__t_html_a9ea7c24e238c3ed502c066385706a655"><div class="ttname"><a href="structhf__adc__continuous__data__t.html#a9ea7c24e238c3ed502c066385706a655">hf_adc_continuous_data_t::size</a></div><div class="ttdeci">uint32_t size</div><div class="ttdoc">Data size in bytes.</div><div class="ttdef"><b>Definition</b> EspTypes_ADC.h:187</div></div>
+<div class="ttc" id="astructhf__adc__continuous__data__t_html_af50bdeaa56dc69692872434a78ed2c4d"><div class="ttname"><a href="structhf__adc__continuous__data__t.html#af50bdeaa56dc69692872434a78ed2c4d">hf_adc_continuous_data_t::conversion_count</a></div><div class="ttdeci">uint32_t conversion_count</div><div class="ttdoc">Number of conversions.</div><div class="ttdef"><b>Definition</b> EspTypes_ADC.h:188</div></div>
 </div><!-- fragment --><p>ESP32 ADC continuous mode constants Bytes per conversion result from ESP-IDF </p>
 
 </div>

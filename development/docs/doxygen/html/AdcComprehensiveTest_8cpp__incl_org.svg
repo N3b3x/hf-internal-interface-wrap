@@ -454,7 +454,7 @@
 <!-- Node21 -->
 <g id="Node000021" class="node">
 <title>Node21</title>
-<g id="a_Node000021"><a xlink:href="EspGpio_8h.html" target="_top" xlink:title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5....">
+<g id="a_Node000021"><a xlink:href="EspGpio_8h.html" target="_top" xlink:title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32/ESP&#45;IDF v5....">
 <polygon fill="white" stroke="#666666" points="1015.3,-274 864.3,-274 864.3,-251 1015.3,-251 1015.3,-274"/>
 <text text-anchor="middle" x="939.8" y="-258.8" font-family="Arial" font-size="14.00">mcu/esp32/EspGpio.h</text>
 </a>

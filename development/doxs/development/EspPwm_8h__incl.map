@@ -1,5 +1,5 @@
 <map id="inc/mcu/esp32/EspPwm.h" name="inc/mcu/esp32/EspPwm.h">
-<area shape="rect" id="Node000001" title="ESP32C6 LEDC (PWM) controller implementation for the HardFOC system." alt="" coords="625,5,855,36"/>
+<area shape="rect" id="Node000001" title="ESP32 LEDC (PWM) controller implementation for the HardFOC system." alt="" coords="625,5,855,36"/>
 <area shape="rect" id="Node000002" href="$BasePwm_8h.html" title="Abstract base class for PWM implementations in the HardFOC system." alt="" coords="21,241,139,272"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="625,31,466,50,378,65,293,87,199,112,162,131,122,164,101,196,89,229,84,227,96,193,118,161,159,126,197,107,291,81,377,60,465,45,624,26"/>
 <area shape="rect" id="Node000007" href="$PlatformMutex_8h.html" title="Cross&#45;platform mutex and synchronization primitives with pluggable backend." alt="" coords="752,241,907,272"/>

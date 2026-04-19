@@ -103,7 +103,7 @@ var sectionId = 'dynsection-0';
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
-<g id="a_Node000007"><a xlink:href="EspSpi_8h.html" target="_top" xlink:title="Advanced MCU&#45;integrated SPI controller implementation with ESP32C6/ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000007"><a xlink:href="EspSpi_8h.html" target="_top" xlink:title="Advanced MCU&#45;integrated SPI controller implementation with ESP32/ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="3309,-377 3168,-377 3168,-354 3309,-354 3309,-377"/>
 <text text-anchor="middle" x="3238.5" y="-361.8" font-family="Arial" font-size="14.00">mcu/esp32/EspSpi.h</text>
 </a>
@@ -1462,7 +1462,7 @@ var sectionId = 'dynsection-0';
 <!-- Node45 -->
 <g id="Node000045" class="node">
 <title>Node45</title>
-<g id="a_Node000045"><a xlink:href="EspGpio_8h.html" target="_top" xlink:title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5....">
+<g id="a_Node000045"><a xlink:href="EspGpio_8h.html" target="_top" xlink:title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32/ESP&#45;IDF v5....">
 <polygon fill="white" stroke="#666666" points="706,-259 555,-259 555,-236 706,-236 706,-259"/>
 <text text-anchor="middle" x="630.5" y="-243.8" font-family="Arial" font-size="14.00">mcu/esp32/EspGpio.h</text>
 </a>

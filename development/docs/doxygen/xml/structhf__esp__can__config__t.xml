@@ -116,7 +116,7 @@
         <name>controller_id</name>
         <qualifiedname>hf_esp_can_config_t::controller_id</qualifiedname>
         <briefdescription>
-<para>Controller ID (0 for ESP32-C6) </para>
+<para>Controller ID (0 for ESP32) </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>

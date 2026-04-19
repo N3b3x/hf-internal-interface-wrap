@@ -108,10 +108,10 @@
       </node>
     </incdepgraph>
     <briefdescription>
-<para>Production-quality ESP32C6 GPIO implementation with ESP-IDF v5.5+ advanced features. </para>
+<para>Production-quality ESP32 GPIO implementation with ESP-IDF v5.5+ advanced features. </para>
     </briefdescription>
     <detaileddescription>
-<para>This file contains a world-class implementation of MCU-specific GPIO for the <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> class with comprehensive ESP32C6/ESP-IDF v5.5+ feature support. Features include dynamic mode switching, advanced glitch filtering, RTC GPIO, power management, sleep configuration, wake-up support, interrupt handling, and comprehensive diagnostics for industrial-grade applications.</para>
+<para>This file contains a world-class implementation of MCU-specific GPIO for the <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> class with comprehensive ESP32/ESP-IDF v5.5+ feature support. Features include dynamic mode switching, advanced glitch filtering, RTC GPIO, power management, sleep configuration, wake-up support, interrupt handling, and comprehensive diagnostics for industrial-grade applications.</para>
 <para><simplesect kind="author"><para>Nebiyu Tadesse </para>
 </simplesect>
 <simplesect kind="date"><para>2025 </para>
@@ -137,7 +137,7 @@
 <codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>specific<sp/>includes<sp/>with<sp/>ESP-IDF<sp/>v5.5+<sp/>features</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>specific<sp/>includes<sp/>with<sp/>ESP-IDF<sp/>v5.5+<sp/>features</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;driver/gpio.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;driver/gpio_filter.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;driver/rtc_io.h&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -175,7 +175,7 @@
 <codeline lineno="67"><highlight class="normal">std::atomic&lt;hf_u32_t&gt;<sp/>g_total_gpio_interrupts{0};</highlight></codeline>
 <codeline lineno="68"><highlight class="normal">std::atomic&lt;hf_u32_t&gt;<sp/>g_active_gpio_count{0};</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GPIO<sp/>pin<sp/>capabilities<sp/>lookup<sp/>table<sp/>for<sp/>ESP32C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GPIO<sp/>pin<sp/>capabilities<sp/>lookup<sp/>table<sp/>for<sp/>ESP32</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>hf_gpio_pin_capabilities_t<sp/>GPIO_PIN_CAPABILITIES[HF_MCU_GPIO_PIN_COUNT]<sp/>=<sp/>{</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO0-GPIO7:<sp/>ADC<sp/>and<sp/>RTC<sp/>capable</highlight><highlight class="normal"></highlight></codeline>
@@ -322,7 +322,7 @@
 <codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="215"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="216"><highlight class="normal"></highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>GPIO%d<sp/>with<sp/>advanced<sp/>ESP32C6<sp/>features&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classBaseGpio_1ae1bd179f793ec92b56b56bf6ea386546" kindref="member">pin_</ref>));</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>GPIO%d<sp/>with<sp/>advanced<sp/>ESP32<sp/>features&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classBaseGpio_1ae1bd179f793ec92b56b56bf6ea386546" kindref="member">pin_</ref>));</highlight></codeline>
 <codeline lineno="218"><highlight class="normal"></highlight></codeline>
 <codeline lineno="219"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>GPIO<sp/>using<sp/>ESP-IDF<sp/>v5.5+<sp/>advanced<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="220"><highlight class="normal"><sp/><sp/>gpio_config_t<sp/>io_conf<sp/>=<sp/>{};</highlight></codeline>
@@ -461,7 +461,7 @@
 <codeline lineno="353"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>desc_buffer[128];</highlight></codeline>
 <codeline lineno="354"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="355"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>caps<sp/>=<sp/>GPIO_PIN_CAPABILITIES[<ref refid="classBaseGpio_1ae1bd179f793ec92b56b56bf6ea386546" kindref="member">pin_</ref>];</highlight></codeline>
-<codeline lineno="356"><highlight class="normal"><sp/><sp/>snprintf(desc_buffer,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(desc_buffer),<sp/></highlight><highlight class="stringliteral">&quot;ESP32C6<sp/>GPIO%d<sp/>(ADC:%s,<sp/>RTC:%s,<sp/>Strapping:%s)&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/>snprintf(desc_buffer,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(desc_buffer),<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>GPIO%d<sp/>(ADC:%s,<sp/>RTC:%s,<sp/>Strapping:%s)&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classBaseGpio_1ae1bd179f793ec92b56b56bf6ea386546" kindref="member">pin_</ref>),<sp/>caps.supports_adc<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;Yes&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;No&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>caps.supports_rtc<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;Yes&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;No&quot;</highlight><highlight class="normal">,<sp/>caps.is_strapping_pin<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;Yes&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;No&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="359"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
@@ -475,7 +475,7 @@
 <codeline lineno="367"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="368"><highlight class="normal"></highlight></codeline>
 <codeline lineno="369"><highlight class="normal"><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1af0b68c0d1b3fda915803ba602ddab7fe" kindref="member">EspGpio::SupportsInterrupts</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="370"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref>;<sp/></highlight><highlight class="comment">//<sp/>All<sp/>ESP32C6<sp/>GPIOs<sp/>support<sp/>interrupts</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref>;<sp/></highlight><highlight class="comment">//<sp/>All<sp/>ESP32<sp/>GPIOs<sp/>support<sp/>interrupts</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="371"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="372"><highlight class="normal"></highlight></codeline>
 <codeline lineno="373"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
@@ -882,7 +882,7 @@
 <codeline lineno="774"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="775"><highlight class="normal"></highlight></codeline>
 <codeline lineno="776"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="777"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ADVANCED<sp/>ESP32C6<sp/>FEATURES<sp/>IMPLEMENTATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="777"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ADVANCED<sp/>ESP32<sp/>FEATURES<sp/>IMPLEMENTATION</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="778"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="779"><highlight class="normal"></highlight></codeline>
 <codeline lineno="780"><highlight class="normal"><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a68e7e6cf53c58d706a7ae00e321f1e3d" kindref="member">EspGpio::SetDriveCapability</ref>(hf_gpio_drive_cap_t<sp/>capability)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -1504,7 +1504,7 @@
 <codeline lineno="1396"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1397"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="1398"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1399"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Generic<sp/>capabilities<sp/>for<sp/>non-ESP32C6<sp/>platforms</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1399"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Generic<sp/>capabilities<sp/>for<sp/>other<sp/>ESP32<sp/>variants</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1400"><highlight class="normal"><sp/><sp/>capabilities.pin_number<sp/>=<sp/>pin_;</highlight></codeline>
 <codeline lineno="1401"><highlight class="normal"><sp/><sp/>capabilities.supports_input<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1402"><highlight class="normal"><sp/><sp/>capabilities.supports_output<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>

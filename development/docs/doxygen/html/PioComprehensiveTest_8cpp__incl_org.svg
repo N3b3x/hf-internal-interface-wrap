@@ -39,7 +39,7 @@
 <!-- Node12 -->
 <g id="Node000012" class="node">
 <title>Node12</title>
-<g id="a_Node000012"><a xlink:href="EspGpio_8h.html" target="_top" xlink:title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5....">
+<g id="a_Node000012"><a xlink:href="EspGpio_8h.html" target="_top" xlink:title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32/ESP&#45;IDF v5....">
 <polygon fill="white" stroke="#666666" points="1251,-259 1100,-259 1100,-236 1251,-236 1251,-259"/>
 <text text-anchor="middle" x="1175.5" y="-243.8" font-family="Arial" font-size="14.00">mcu/esp32/EspGpio.h</text>
 </a>
@@ -75,7 +75,7 @@
 <!-- Node23 -->
 <g id="Node000023" class="node">
 <title>Node23</title>
-<g id="a_Node000023"><a xlink:href="EspPio_8h.html" target="_top" xlink:title="ESP32C6 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000023"><a xlink:href="EspPio_8h.html" target="_top" xlink:title="ESP32 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="2423,-377 2282,-377 2282,-354 2423,-354 2423,-377"/>
 <text text-anchor="middle" x="2352.5" y="-361.8" font-family="Arial" font-size="14.00">mcu/esp32/EspPio.h</text>
 </a>

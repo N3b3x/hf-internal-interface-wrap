@@ -893,7 +893,7 @@ Pin glitch filter removes pulses shorter than 2 IO_MUX clock cycles. This is a s
           <defval>nullptr</defval>
         </param>
         <briefdescription>
-<para>Configure advanced glitch filter (pin/flex) for ESP32C6. </para>
+<para>Configure advanced glitch filter (pin/flex) for ESP32. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -932,7 +932,7 @@ Pin glitch filter removes pulses shorter than 2 IO_MUX clock cycles. This is a s
           <declname>sleep_config</declname>
         </param>
         <briefdescription>
-<para>Configure sleep mode for ESP32C6 GPIO. </para>
+<para>Configure sleep mode for ESP32 GPIO. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -1567,7 +1567,7 @@ Platform-specific validation using centralized constants. </para>
 </parameterlist>
 <simplesect kind="return"><para>true if pin supports RTC GPIO (deep sleep, analog functions)</para>
 </simplesect>
-ESP32C6: GPIO0-7 support RTC functionality. </para>
+ESP32: GPIO0-7 support RTC functionality. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1598,7 +1598,7 @@ ESP32C6: GPIO0-7 support RTC functionality. </para>
 </parameterlist>
 <simplesect kind="return"><para>true if pin is a strapping pin</para>
 </simplesect>
-ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
+ESP32 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1784,7 +1784,7 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Advanced MCU-specific implementation of unified <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> with ESP32C6/ESP-IDF v5.5+ features. </para>
+<para>Advanced MCU-specific implementation of unified <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> with ESP32/ESP-IDF v5.5+ features. </para>
     </briefdescription>
     <detaileddescription>
 <para>This class provides a comprehensive implementation of <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> for MCU-based GPIO pins with support for both basic and advanced features including:</para>
@@ -1796,7 +1796,7 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
 </listitem><listitem><para>Thread-safe state management</para>
 </listitem></itemizedlist>
 </para>
-<para><bold>Advanced Features (ESP32C6/ESP-IDF v5.5+):</bold><itemizedlist>
+<para><bold>Advanced Features (ESP32/ESP-IDF v5.5+):</bold><itemizedlist>
 <listitem><para>Glitch filtering (pin and flexible filters)</para>
 </listitem><listitem><para>RTC GPIO support for ultra-low power operations</para>
 </listitem><listitem><para>Sleep configuration and state retention</para>
@@ -1808,7 +1808,7 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
 </para>
 <para><simplesect kind="note"><para>This class is designed to be platform-agnostic within the MCU domain. Platform-specific details are handled through conditional compilation. </para>
 </simplesect>
-<simplesect kind="note"><para>Advanced features require ESP32C6 with ESP-IDF v5.5+ for full functionality. </para>
+<simplesect kind="note"><para>Advanced features require ESP32 with ESP-IDF v5.5+ for full functionality. </para>
 </simplesect>
 </para>
     </detaileddescription>

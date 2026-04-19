@@ -1,13 +1,13 @@
 <map id="EspTemperature" name="EspTemperature">
-<area shape="rect" id="Node000001" title="ESP32&#45;C6 internal temperature sensor implementation." alt="" coords="499,257,653,288"/>
+<area shape="rect" id="Node000001" title="ESP32 internal temperature sensor implementation." alt="" coords="499,257,653,288"/>
 <area shape="rect" id="Node000002" href="$classBaseTemperature.html" title="Abstract base class for all temperature sensor implementations." alt="" coords="63,38,228,69"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,31,258,14,331,4,369,3,406,8,443,18,476,35,503,58,524,86,541,117,554,149,570,211,576,256,571,257,565,212,549,151,536,119,520,89,499,62,473,40,441,23,405,13,368,9,331,9,259,19,199,36"/>
 <area shape="poly" id="edge8_Node000001_Node000002" title=" " alt="" coords="205,71,310,100,357,106,396,104,433,107,453,114,476,126,511,155,538,191,558,227,571,255,566,258,553,229,534,194,507,159,473,130,451,119,432,113,395,110,357,111,309,106,203,76"/>
 <area shape="rect" id="Node000003" href="$classPlatformMutexImpl.html" title=" " alt="" coords="5,127,285,178"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="300,168,401,184,476,203,522,228,558,255,555,259,519,232,474,208,400,190,299,173"/>
-<area shape="rect" id="Node000004" href="$structesp__temp__state__t.html" title="ESP32&#45;C6 specific temperature sensor state." alt="" coords="62,202,229,233"/>
+<area shape="rect" id="Node000004" href="$structesp__temp__state__t.html" title="ESP32 specific temperature sensor state." alt="" coords="62,202,229,233"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="243,221,354,231,475,247,513,254,512,260,474,252,354,237,242,226"/>
-<area shape="rect" id="Node000005" href="$structesp__temp__config__t.html" title="ESP32&#45;C6 specific temperature sensor configuration." alt="" coords="58,257,233,288"/>
+<area shape="rect" id="Node000005" href="$structesp__temp__config__t.html" title="ESP32 specific temperature sensor configuration." alt="" coords="58,257,233,288"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="246,270,498,270,498,275,246,275"/>
 <area shape="rect" id="Node000006" href="$structhf__temp__config__t.html" title="Temperature sensor configuration structure." alt="" coords="65,312,226,342"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="240,320,352,311,474,295,520,285,521,290,475,300,353,316,240,325"/>

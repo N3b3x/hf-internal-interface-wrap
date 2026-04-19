@@ -409,7 +409,7 @@
 </simplesect>
 <simplesect kind="note"><para>This implementation is designed for all ESP32 variants using ESP-IDF v5.5+ </para>
 </simplesect>
-<simplesect kind="note"><para>Supports ESP32-C6, ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C2, ESP32-H2 </para>
+<simplesect kind="note"><para>Supports all ESP32 family variants </para>
 </simplesect>
 <simplesect kind="note"><para>Each <ref refid="classEspUart" kindref="compound">EspUart</ref> instance represents a single UART port </para>
 </simplesect>

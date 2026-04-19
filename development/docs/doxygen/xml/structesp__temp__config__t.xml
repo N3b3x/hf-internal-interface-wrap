@@ -141,7 +141,7 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>ESP32-C6 specific temperature sensor configuration. </para>
+<para>ESP32 specific temperature sensor configuration. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>

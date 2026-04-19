@@ -99,7 +99,7 @@ $(function(){initNavTree('EspBluetooth_8cpp.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>ESP32 Bluetooth implementation using NimBLE for BLE-only support (ESP32C6)  
+<p>ESP32 Bluetooth implementation using NimBLE for BLE support.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="EspBluetooth_8h_source.html">EspBluetooth.h</a>&quot;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
@@ -118,13 +118,13 @@ Variables</h2></td></tr>
 <tr class="separator:a5a85b9c772bbeb480b209a3e6ea92b4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>ESP32 Bluetooth implementation using NimBLE for BLE-only support (ESP32C6) </p>
-<p>This file contains the ESP32-specific implementation of the Bluetooth interface using NimBLE stack for ESP32C6 BLE-only support on ESP-IDF v5.5.</p>
+<div class="textblock"><p>ESP32 Bluetooth implementation using NimBLE for BLE support. </p>
+<p>This file contains the ESP32-specific implementation of the Bluetooth interface using NimBLE stack for ESP32 BLE support on ESP-IDF v5.5.</p>
 <p>Implementation details:</p><ul>
-<li>ESP32C6: Optimized NimBLE BLE-only implementation</li>
-<li>ESP32/ESP32S3: Full Bluetooth Classic + BLE support</li>
-<li>ESP32C3/H2: BLE-only using Bluedroid</li>
-<li>ESP32S2: Stub implementation (no Bluetooth support)</li>
+<li>ESP32: NimBLE BLE implementation with variant-specific capability detection</li>
+<li>Full Bluetooth Classic + BLE support on capable variants</li>
+<li>BLE-only using Bluedroid on limited variants</li>
+<li>Stub implementation for variants without Bluetooth support</li>
 </ul>
 <dl class="section author"><dt>Author</dt><dd>HardFOC Team </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>

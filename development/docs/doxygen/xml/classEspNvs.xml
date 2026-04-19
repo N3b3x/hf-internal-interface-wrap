@@ -754,7 +754,7 @@
 <para>Convert MCU-specific error code to HardFOC NVS error. </para>
         </briefdescription>
         <detaileddescription>
-<para>Provides comprehensive mapping from ESP32-C6 NVS error codes to unified HardFOC error enumeration, including all encryption and advanced feature error conditions. <parameterlist kind="param"><parameteritem>
+<para>Provides comprehensive mapping from ESP32 NVS error codes to unified HardFOC error enumeration, including all encryption and advanced feature error conditions. <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>mcu_error</parametername>
 </parameternamelist>
@@ -838,7 +838,7 @@
 <para>Production-ready MCU-integrated non-volatile storage implementation. </para>
     </briefdescription>
     <detaileddescription>
-<para>This class provides comprehensive non-volatile storage using the microcontroller&apos;s built-in storage mechanisms with enterprise-grade features. On ESP32-C6, it leverages the modern ESP-IDF v5.5+ NVS library with advanced security, performance optimizations, and comprehensive error handling. The implementation provides the unified <ref refid="classBaseNvs" kindref="compound">BaseNvs</ref> API while exposing platform-specific advanced features.</para>
+<para>This class provides comprehensive non-volatile storage using the microcontroller&apos;s built-in storage mechanisms with enterprise-grade features. On ESP32, it leverages the modern ESP-IDF v5.5+ NVS library with advanced security, performance optimizations, and comprehensive error handling. The implementation provides the unified <ref refid="classBaseNvs" kindref="compound">BaseNvs</ref> API while exposing platform-specific advanced features.</para>
 <para>Core Features:<itemizedlist>
 <listitem><para>Key-value storage using MCU&apos;s integrated NVS with namespace isolation</para>
 </listitem><listitem><para>Multiple data type support (uint32_t, string, blob) with type safety</para>
@@ -848,11 +848,11 @@
 </listitem><listitem><para>Thread-safe operations with optional mutex protection</para>
 </listitem></itemizedlist>
 </para>
-<para>ESP32-C6 Advanced Features:<itemizedlist>
+<para>ESP32 Advanced Features:<itemizedlist>
 <listitem><para>HMAC-based encryption for secure storage without flash encryption</para>
 </listitem><listitem><para>XTS encryption with eFuse-based key management</para>
 </listitem><listitem><para>Handle-based modern ESP-IDF v5.5+ API with improved performance</para>
-</listitem><listitem><para>Comprehensive error mapping for all ESP32-C6 NVS error conditions</para>
+</listitem><listitem><para>Comprehensive error mapping for all ESP32 NVS error conditions</para>
 </listitem><listitem><para>Support for encrypted and non-encrypted partitions</para>
 </listitem><listitem><para>Advanced partition management and configuration options</para>
 </listitem></itemizedlist>
@@ -866,7 +866,7 @@
 </listitem></itemizedlist>
 </para>
 <para>Security Features:<itemizedlist>
-<listitem><para>Hardware-backed encryption using ESP32-C6 HMAC peripheral</para>
+<listitem><para>Hardware-backed encryption using ESP32 HMAC peripheral</para>
 </listitem><listitem><para>Tamper-resistant key storage in eFuse blocks</para>
 </listitem><listitem><para>Data integrity validation and corruption detection</para>
 </listitem><listitem><para>Secure key generation and management</para>
@@ -875,7 +875,7 @@
 </para>
 <para><simplesect kind="note"><para>This implementation requires sufficient flash storage on the MCU. </para>
 </simplesect>
-<simplesect kind="note"><para>ESP32-C6 encryption features require proper eFuse configuration. </para>
+<simplesect kind="note"><para>ESP32 encryption features require proper eFuse configuration. </para>
 </simplesect>
 <simplesect kind="note"><para>Thread safety is optional and controlled by HF_THREAD_SAFE define. </para>
 </simplesect>

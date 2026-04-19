@@ -199,10 +199,10 @@
 <para>ESP32 CAN (TWAI) implementation for the HardFOC system - ESP-IDF v5.5 Compatible. </para>
     </briefdescription>
     <detaileddescription>
-<para>This file contains the ESP32 CAN (TWAI) implementation that extends the <ref refid="classBaseCan" kindref="compound">BaseCan</ref> abstract class. It provides a clean, minimal, and robust CAN interface using the modern ESP-IDF v5.5+ handle-based TWAI node API with comprehensive testing support for ESP32-C6 with external SN65 transceiver.</para>
+<para>This file contains the ESP32 CAN (TWAI) implementation that extends the <ref refid="classBaseCan" kindref="compound">BaseCan</ref> abstract class. It provides a clean, minimal, and robust CAN interface using the modern ESP-IDF v5.5+ handle-based TWAI node API with comprehensive testing support for ESP32 with external SN65 transceiver.</para>
 <para>Key Features:<itemizedlist>
 <listitem><para>ESP-IDF v5.5+ handle-based TWAI node API</para>
-</listitem><listitem><para>ESP32-C6 compatible TWAI controller support</para>
+</listitem><listitem><para>ESP32 compatible TWAI controller support</para>
 </listitem><listitem><para>Event-driven callback-based message reception</para>
 </listitem><listitem><para>Advanced acceptance filtering (single/dual mask modes)</para>
 </listitem><listitem><para>Comprehensive error detection and bus recovery</para>

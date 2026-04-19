@@ -1,6 +1,6 @@
 <map id="src/mcu/esp32/EspSpi.cpp" name="src/mcu/esp32/EspSpi.cpp">
-<area shape="rect" id="Node000001" title="Implementation of MCU&#45;integrated SPI controller for ESP32C6 with ESP&#45;IDF v5.5+ features." alt="" coords="3781,5,4017,36"/>
-<area shape="rect" id="Node000002" href="$EspSpi_8h.html" title="Advanced MCU&#45;integrated SPI controller implementation with ESP32C6/ESP&#45;IDF v5.5+ features." alt="" coords="2490,84,2585,115"/>
+<area shape="rect" id="Node000001" title="Implementation of MCU&#45;integrated SPI controller for ESP32 with ESP&#45;IDF v5.5+ features." alt="" coords="3781,5,4017,36"/>
+<area shape="rect" id="Node000002" href="$EspSpi_8h.html" title="Advanced MCU&#45;integrated SPI controller implementation with ESP32/ESP&#45;IDF v5.5+ features." alt="" coords="2490,84,2585,115"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="3781,31,2599,97,2599,92,3780,26"/>
 <area shape="rect" id="Node000035" title=" " alt="" coords="3432,477,3507,508"/>
 <area shape="poly" id="edge102_Node000001_Node000035" title=" " alt="" coords="3789,39,3695,58,3657,71,3633,86,3616,106,3609,126,3608,177,3608,337,3605,387,3598,408,3582,431,3554,457,3521,476,3518,471,3550,453,3578,428,3593,405,3600,386,3603,337,3603,177,3604,125,3612,104,3629,82,3655,66,3694,53,3788,33"/>

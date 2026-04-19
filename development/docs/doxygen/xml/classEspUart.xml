@@ -2181,7 +2181,7 @@
 </listitem><listitem><para>Multi-variant support: Works across all ESP32 variants (C6, Classic, S2, S3, C3, C2, H2)</para>
 </listitem></itemizedlist>
 </para>
-<para>Usage Example (Single UART Port): <programlisting><codeline><highlight class="comment">//<sp/>For<sp/>ESP32-C6<sp/>(3<sp/>ports)</highlight><highlight class="normal"></highlight></codeline>
+<para>Usage Example (Single UART Port): <programlisting><codeline><highlight class="comment">//<sp/>For<sp/>ESP32<sp/>(3<sp/>ports)</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><ref refid="classEspUart" kindref="compound">EspUart</ref><sp/>uart0({.port_number<sp/>=<sp/>0,<sp/>.baud_rate<sp/>=<sp/>115200,<sp/>.tx_pin<sp/>=<sp/>21,<sp/>.rx_pin<sp/>=<sp/>20});</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>For<sp/>ESP32-C3<sp/>(2<sp/>ports)</highlight><highlight class="normal"></highlight></codeline>

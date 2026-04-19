@@ -2133,11 +2133,11 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>ESP32C6 RMT-based Programmable IO Channel implementation with advanced ESP-IDF v5.5+ features. </para>
+<para>ESP32 RMT-based Programmable IO Channel implementation with advanced ESP-IDF v5.5+ features. </para>
     </briefdescription>
     <detaileddescription>
-<para>This class implements the <ref refid="classBasePio" kindref="compound">BasePio</ref> interface using the ESP32C6&apos;s advanced RMT peripheral with full ESP-IDF v5.5+ feature support. The RMT peripheral is specifically designed for generating and receiving infrared remote control signals, but it&apos;s versatile enough to handle many types of precisely-timed digital protocols with hardware acceleration.</para>
-<para><bold>Key ESP32C6 RMT features utilized:</bold><itemizedlist>
+<para>This class implements the <ref refid="classBasePio" kindref="compound">BasePio</ref> interface using the ESP32&apos;s advanced RMT peripheral with full ESP-IDF v5.5+ feature support. The RMT peripheral is specifically designed for generating and receiving infrared remote control signals, but it&apos;s versatile enough to handle many types of precisely-timed digital protocols with hardware acceleration.</para>
+<para><bold>Key ESP32 RMT features utilized:</bold><itemizedlist>
 <listitem><para>Hardware symbol encoding with configurable timing and DMA support</para>
 </listitem><listitem><para>Built-in carrier generation for IR protocols with precise frequency control</para>
 </listitem><listitem><para>Configurable idle levels and end markers with hardware validation</para>

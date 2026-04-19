@@ -226,10 +226,10 @@
     </invincdepgraph>
     <innerclass refid="classEspGpio" prot="public">EspGpio</innerclass>
     <briefdescription>
-<para>Advanced MCU-specific implementation of the unified <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> class with ESP32C6/ESP-IDF v5.5+ features. </para>
+<para>Advanced MCU-specific implementation of the unified <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> class with ESP32/ESP-IDF v5.5+ features. </para>
     </briefdescription>
     <detaileddescription>
-<para>This file provides concrete implementations of the unified <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> class for microcontroller-based GPIO pins with support for both basic and advanced features. It supports dynamic mode switching, pull resistor configuration, various output drive modes, and advanced ESP32C6-specific features like glitch filtering, power management, and RTC GPIO. The implementation includes interrupt handling, debouncing, and hardware-accelerated operations.</para>
+<para>This file provides concrete implementations of the unified <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> class for microcontroller-based GPIO pins with support for both basic and advanced features. It supports dynamic mode switching, pull resistor configuration, various output drive modes, and advanced ESP32-specific features like glitch filtering, power management, and RTC GPIO. The implementation includes interrupt handling, debouncing, and hardware-accelerated operations.</para>
 <para><simplesect kind="author"><para>Nebiyu Tadesse </para>
 </simplesect>
 <simplesect kind="date"><para>2025 </para>
@@ -351,7 +351,7 @@
 <codeline lineno="289"><highlight class="normal"></highlight></codeline>
 <codeline lineno="290"><highlight class="normal">public:</highlight></codeline>
 <codeline lineno="291"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="292"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ADVANCED<sp/>GPIO<sp/>FEATURES<sp/>(ESP32C6/ESP-IDF<sp/>v5.5+)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ADVANCED<sp/>GPIO<sp/>FEATURES<sp/>(ESP32/ESP-IDF<sp/>v5.5+)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="293"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="294"><highlight class="normal"></highlight></codeline>
 <codeline lineno="299" refid="classEspGpio_1a39144774b89ee9403b4a75bbd828950f" refkind="member"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/>hf_gpio_drive_cap_t<sp/><ref refid="classEspGpio_1a39144774b89ee9403b4a75bbd828950f" kindref="member">GetDriveCapability</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
@@ -389,7 +389,7 @@
 <codeline lineno="411" refid="classEspGpio_1a47b05205db6a3d993875a9ab993ee2c6" refkind="member"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a47b05205db6a3d993875a9ab993ee2c6" kindref="member">IsHeld</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
 <codeline lineno="412"><highlight class="normal"></highlight></codeline>
 <codeline lineno="413"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="414"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>STATIC<sp/>UTILITY<sp/>METHODS<sp/>FOR<sp/>ESP32C6<sp/>PIN<sp/>VALIDATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>STATIC<sp/>UTILITY<sp/>METHODS<sp/>FOR<sp/>ESP32<sp/>PIN<sp/>VALIDATION</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="415"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="416"><highlight class="normal"></highlight></codeline>
 <codeline lineno="424" refid="classEspGpio_1a08bdc6128b25384532662d93d2049ec2" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a08bdc6128b25384532662d93d2049ec2" kindref="member">GetPinCapabilities</ref>(hf_gpio_pin_capabilities_t&amp;<sp/>capabilities)<sp/>const<sp/>noexcept;</highlight></codeline>

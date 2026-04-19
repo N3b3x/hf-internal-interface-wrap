@@ -66,7 +66,7 @@ var sectionId = 'dynsection-1';
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="EspBluetooth_8h.html" target="_top" xlink:title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32C6)">
+<g id="a_Node000002"><a xlink:href="EspBluetooth_8h.html" target="_top" xlink:title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32)">
 <polygon fill="white" stroke="#666666" points="448.5,-97 248.5,-97 248.5,-74 448.5,-74 448.5,-97"/>
 <text text-anchor="middle" x="348.5" y="-81.8" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspBluetooth.h</text>
 </a>
@@ -138,7 +138,7 @@ var sectionId = 'dynsection-1';
 <!-- Node14 -->
 <g id="Node000014" class="node">
 <title>Node14</title>
-<g id="a_Node000014"><a xlink:href="EspNvs_8h.html" target="_top" xlink:title="World&#45;class ESP32&#45;C6 NVS storage implementation with ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000014"><a xlink:href="EspNvs_8h.html" target="_top" xlink:title="World&#45;class ESP32 NVS storage implementation with ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="2103.5,-97 1937.5,-97 1937.5,-74 2103.5,-74 2103.5,-97"/>
 <text text-anchor="middle" x="2020.5" y="-81.8" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspNvs.h</text>
 </a>
@@ -156,7 +156,7 @@ var sectionId = 'dynsection-1';
 <!-- Node17 -->
 <g id="Node000017" class="node">
 <title>Node17</title>
-<g id="a_Node000017"><a xlink:href="EspPio_8h.html" target="_top" xlink:title="ESP32C6 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000017"><a xlink:href="EspPio_8h.html" target="_top" xlink:title="ESP32 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="2401.5,-97 2239.5,-97 2239.5,-74 2401.5,-74 2401.5,-97"/>
 <text text-anchor="middle" x="2320.5" y="-81.8" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspPio.h</text>
 </a>
@@ -174,7 +174,7 @@ var sectionId = 'dynsection-1';
 <!-- Node20 -->
 <g id="Node000020" class="node">
 <title>Node20</title>
-<g id="a_Node000020"><a xlink:href="EspPwm_8h.html" target="_top" xlink:title="ESP32C6 LEDC (PWM) controller implementation for the HardFOC system.">
+<g id="a_Node000020"><a xlink:href="EspPwm_8h.html" target="_top" xlink:title="ESP32 LEDC (PWM) controller implementation for the HardFOC system.">
 <polygon fill="white" stroke="#666666" points="2712,-97 2539,-97 2539,-74 2712,-74 2712,-97"/>
 <text text-anchor="middle" x="2625.5" y="-81.8" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspPwm.h</text>
 </a>
@@ -192,7 +192,7 @@ var sectionId = 'dynsection-1';
 <!-- Node23 -->
 <g id="Node000023" class="node">
 <title>Node23</title>
-<g id="a_Node000023"><a xlink:href="EspSpi_8h.html" target="_top" xlink:title="Advanced MCU&#45;integrated SPI controller implementation with ESP32C6/ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000023"><a xlink:href="EspSpi_8h.html" target="_top" xlink:title="Advanced MCU&#45;integrated SPI controller implementation with ESP32/ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="3122.5,-97 2960.5,-97 2960.5,-74 3122.5,-74 3122.5,-97"/>
 <text text-anchor="middle" x="3041.5" y="-81.8" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspSpi.h</text>
 </a>
@@ -210,7 +210,7 @@ var sectionId = 'dynsection-1';
 <!-- Node26 -->
 <g id="Node000026" class="node">
 <title>Node26</title>
-<g id="a_Node000026"><a xlink:href="EspTemperature_8h.html" target="_top" xlink:title="ESP32&#45;C6 internal temperature sensor implementation for the HardFOC system.">
+<g id="a_Node000026"><a xlink:href="EspTemperature_8h.html" target="_top" xlink:title="ESP32 internal temperature sensor implementation for the HardFOC system.">
 <polygon fill="white" stroke="#666666" points="3577,-97 3358,-97 3358,-74 3577,-74 3577,-97"/>
 <text text-anchor="middle" x="3467.5" y="-81.8" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspTemperature.h</text>
 </a>
@@ -283,7 +283,7 @@ var sectionId = 'dynsection-1';
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="EspBluetooth_8cpp.html" target="_top" xlink:title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32C6)">
+<g id="a_Node000004"><a xlink:href="EspBluetooth_8cpp.html" target="_top" xlink:title="ESP32 Bluetooth implementation using NimBLE for BLE support.">
 <polygon fill="white" stroke="#666666" points="456,-30.5 241,-30.5 241,-7.5 456,-7.5 456,-30.5"/>
 <text text-anchor="middle" x="348.5" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspBluetooth.cpp</text>
 </a>
@@ -431,7 +431,7 @@ var sectionId = 'dynsection-1';
 <!-- Node16 -->
 <g id="Node000016" class="node">
 <title>Node16</title>
-<g id="a_Node000016"><a xlink:href="EspNvs_8cpp.html" target="_top" xlink:title="World&#45;class ESP32&#45;C6 NVS implementation with ESP&#45;IDF v5.5+ advanced features.">
+<g id="a_Node000016"><a xlink:href="EspNvs_8cpp.html" target="_top" xlink:title="World&#45;class ESP32 NVS implementation with ESP&#45;IDF v5.5+ advanced features.">
 <polygon fill="white" stroke="#666666" points="2111,-30.5 1930,-30.5 1930,-7.5 2111,-7.5 2111,-30.5"/>
 <text text-anchor="middle" x="2020.5" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspNvs.cpp</text>
 </a>
@@ -468,7 +468,7 @@ var sectionId = 'dynsection-1';
 <!-- Node19 -->
 <g id="Node000019" class="node">
 <title>Node19</title>
-<g id="a_Node000019"><a xlink:href="EspPio_8cpp.html" target="_top" xlink:title="ESP32C6 RMT&#45;based Programmable IO Channel implementation.">
+<g id="a_Node000019"><a xlink:href="EspPio_8cpp.html" target="_top" xlink:title="ESP32 RMT&#45;based Programmable IO Channel implementation.">
 <polygon fill="white" stroke="#666666" points="2509,-30.5 2332,-30.5 2332,-7.5 2509,-7.5 2509,-30.5"/>
 <text text-anchor="middle" x="2420.5" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspPio.cpp</text>
 </a>
@@ -542,7 +542,7 @@ var sectionId = 'dynsection-1';
 <!-- Node25 -->
 <g id="Node000025" class="node">
 <title>Node25</title>
-<g id="a_Node000025"><a xlink:href="EspSpi_8cpp.html" target="_top" xlink:title="Implementation of MCU&#45;integrated SPI controller for ESP32C6 with ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000025"><a xlink:href="EspSpi_8cpp.html" target="_top" xlink:title="Implementation of MCU&#45;integrated SPI controller for ESP32 with ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="3329,-30.5 3152,-30.5 3152,-7.5 3329,-7.5 3329,-30.5"/>
 <text text-anchor="middle" x="3240.5" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspSpi.cpp</text>
 </a>
@@ -579,7 +579,7 @@ var sectionId = 'dynsection-1';
 <!-- Node28 -->
 <g id="Node000028" class="node">
 <title>Node28</title>
-<g id="a_Node000028"><a xlink:href="EspTemperature_8cpp.html" target="_top" xlink:title="ESP32&#45;C6 internal temperature sensor implementation for the HardFOC system.">
+<g id="a_Node000028"><a xlink:href="EspTemperature_8cpp.html" target="_top" xlink:title="ESP32 internal temperature sensor implementation for the HardFOC system.">
 <polygon fill="white" stroke="#666666" points="3840.5,-30.5 3606.5,-30.5 3606.5,-7.5 3840.5,-7.5 3840.5,-30.5"/>
 <text text-anchor="middle" x="3723.5" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspTemperature.cpp</text>
 </a>

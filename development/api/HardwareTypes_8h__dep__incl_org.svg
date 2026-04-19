@@ -132,7 +132,7 @@
 <!-- Node35 -->
 <g id="Node000035" class="node">
 <title>Node35</title>
-<g id="a_Node000035"><a xlink:href="EspBluetooth_8h.html" target="_top" xlink:title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32C6)">
+<g id="a_Node000035"><a xlink:href="EspBluetooth_8h.html" target="_top" xlink:title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32)">
 <polygon fill="#fff0f0" stroke="red" points="3458.82,-193.5 3258.82,-193.5 3258.82,-170.5 3458.82,-170.5 3458.82,-193.5"/>
 <text text-anchor="middle" x="3358.82" y="-178.3" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspBluetooth.h</text>
 </a>

@@ -1565,10 +1565,10 @@
 <para>ESP32 CAN (TWAI) implementation using ESP-IDF v5.5+ node-based API. </para>
     </briefdescription>
     <detaileddescription>
-<para>This class provides clean, comprehensive CAN communication using the ESP32&apos;s TWAI (Two-Wire Automotive Interface) controllers with modern ESP-IDF v5.5+ node-based APIs. The implementation supports ESP32-C6 and external SN65 CAN transceivers.</para>
+<para>This class provides clean, comprehensive CAN communication using the ESP32&apos;s TWAI (Two-Wire Automotive Interface) controllers with modern ESP-IDF v5.5+ node-based APIs. The implementation supports ESP32 and external SN65 CAN transceivers.</para>
 <para>Key Features:<itemizedlist>
 <listitem><para>ESP-IDF v5.5+ handle-based TWAI node API</para>
-</listitem><listitem><para>ESP32-C6 compatible TWAI controller support</para>
+</listitem><listitem><para>ESP32 compatible TWAI controller support</para>
 </listitem><listitem><para>Event-driven callback-based message reception</para>
 </listitem><listitem><para>Advanced acceptance filtering (single/dual mask modes)</para>
 </listitem><listitem><para>Comprehensive error detection and bus recovery</para>

@@ -1,5 +1,5 @@
 <map id="inc/mcu/esp32/EspPio.h" name="inc/mcu/esp32/EspPio.h">
-<area shape="rect" id="Node000001" title="ESP32C6 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features." alt="" coords="3115,5,3331,36"/>
+<area shape="rect" id="Node000001" title="ESP32 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features." alt="" coords="3115,5,3331,36"/>
 <area shape="rect" id="Node000002" href="$BasePio_8h.html" title="Abstract base class for Programmable IO Channel implementations in the HardFOC system." alt="" coords="488,320,592,351"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="3114,25,2834,28,2437,37,1978,56,1741,69,1510,87,1344,102,1216,117,925,165,870,173,822,175,740,178,702,182,664,193,625,213,582,243,569,257,560,273,548,307,543,306,555,271,565,254,578,239,622,208,662,188,701,177,739,172,822,170,870,167,924,160,1215,111,1344,96,1509,81,1741,64,1977,50,2437,32,2834,23,3114,20"/>
 <area shape="rect" id="Node000007" href="$EspTypes_8h.html" title="Consolidated MCU&#45;specific type definitions for hardware abstraction (hf_* types)." alt="" coords="1522,84,1638,115"/>

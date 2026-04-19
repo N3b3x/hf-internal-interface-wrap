@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="World&#45;class ESP32&#45;C6 NVS implementation with ESP&#45;IDF v5.5+ advanced features.">
+<g id="a_Node000001"><a xlink:title="World&#45;class ESP32 NVS implementation with ESP&#45;IDF v5.5+ advanced features.">
 <polygon fill="#999999" stroke="#666666" points="466.43,-318 285.43,-318 285.43,-295 466.43,-295 466.43,-318"/>
 <text text-anchor="middle" x="375.93" y="-302.8" font-family="Arial" font-size="14.00">src/mcu/esp32/EspNvs.cpp</text>
 </a>
@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="EspNvs_8h.html" target="_top" xlink:title="World&#45;class ESP32&#45;C6 NVS storage implementation with ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000002"><a xlink:href="EspNvs_8h.html" target="_top" xlink:title="World&#45;class ESP32 NVS storage implementation with ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="342.93,-259 268.93,-259 268.93,-236 342.93,-236 342.93,-259"/>
 <text text-anchor="middle" x="305.93" y="-243.8" font-family="Arial" font-size="14.00">EspNvs.h</text>
 </a>

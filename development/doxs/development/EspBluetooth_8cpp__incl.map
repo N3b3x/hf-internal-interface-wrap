@@ -1,6 +1,6 @@
 <map id="src/mcu/esp32/EspBluetooth.cpp" name="src/mcu/esp32/EspBluetooth.cpp">
-<area shape="rect" id="Node000001" title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32C6)" alt="" coords="754,5,1041,36"/>
-<area shape="rect" id="Node000002" href="$EspBluetooth_8h.html" title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32C6)" alt="" coords="569,84,713,115"/>
+<area shape="rect" id="Node000001" title="ESP32 Bluetooth implementation using NimBLE for BLE support." alt="" coords="754,5,1041,36"/>
+<area shape="rect" id="Node000002" href="$EspBluetooth_8h.html" title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32)" alt="" coords="569,84,713,115"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="851,39,702,83,701,78,849,34"/>
 <area shape="rect" id="Node000017" title=" " alt="" coords="738,84,835,115"/>
 <area shape="poly" id="edge21_Node000001_Node000017" title=" " alt="" coords="878,38,820,78,817,74,875,34"/>

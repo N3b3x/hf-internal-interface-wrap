@@ -139,15 +139,15 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>ESP32 Bluetooth implementation using NimBLE for BLE-only support (ESP32C6) </para>
+<para>ESP32 Bluetooth implementation using NimBLE for BLE support. </para>
     </briefdescription>
     <detaileddescription>
-<para>This file contains the ESP32-specific implementation of the Bluetooth interface using NimBLE stack for ESP32C6 BLE-only support on ESP-IDF v5.5.</para>
+<para>This file contains the ESP32-specific implementation of the Bluetooth interface using NimBLE stack for ESP32 BLE support on ESP-IDF v5.5.</para>
 <para>Implementation details:<itemizedlist>
-<listitem><para>ESP32C6: Optimized NimBLE BLE-only implementation</para>
-</listitem><listitem><para>ESP32/ESP32S3: Full Bluetooth Classic + BLE support</para>
-</listitem><listitem><para>ESP32C3/H2: BLE-only using Bluedroid</para>
-</listitem><listitem><para>ESP32S2: Stub implementation (no Bluetooth support)</para>
+<listitem><para>ESP32: NimBLE BLE implementation with variant-specific capability detection</para>
+</listitem><listitem><para>Full Bluetooth Classic + BLE support on capable variants</para>
+</listitem><listitem><para>BLE-only using Bluedroid on limited variants</para>
+</listitem><listitem><para>Stub implementation for variants without Bluetooth support</para>
 </listitem></itemizedlist>
 </para>
 <para><simplesect kind="author"><para>HardFOC Team </para>
@@ -177,8 +177,8 @@
 <codeline lineno="34"><highlight class="normal"><ref refid="classEspBluetooth" kindref="compound">EspBluetooth</ref>*<sp/>EspBluetooth::s_instance<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NimBLE<sp/>specific<sp/>constants</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>DEVICE_NAME[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ESP32C6-HardFOC&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/>DEFAULT_MTU<sp/>=<sp/>247;<sp/></highlight><highlight class="comment">//<sp/>ESP32C6<sp/>supports<sp/>up<sp/>to<sp/>247<sp/>bytes<sp/>MTU</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>DEVICE_NAME[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ESP32-HardFOC&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/>DEFAULT_MTU<sp/>=<sp/>247;<sp/></highlight><highlight class="comment">//<sp/>ESP32<sp/>supports<sp/>up<sp/>to<sp/>247<sp/>bytes<sp/>MTU</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>DEFAULT_SCAN_DURATION_MS<sp/>=<sp/>10000;</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>DEFAULT_CONN_TIMEOUT_MS<sp/>=<sp/>30000;</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
@@ -210,7 +210,7 @@
 <codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>BLE<sp/>configuration<sp/>defaults</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/>m_ble_config.device_name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ESP32C6-HardFOC&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>m_ble_config.device_name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ESP32-HardFOC&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/>m_ble_config.advertising<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/>m_ble_config.scannable<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/>m_ble_config.connectable<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
@@ -245,10 +245,10 @@
 <codeline lineno="102"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"></highlight></codeline>
 <codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HAS_NIMBLE_SUPPORT<sp/>&amp;&amp;<sp/>NIMBLE_HEADERS_AVAILABLE</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP32C6<sp/>supports<sp/>only<sp/>BLE<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP32<sp/>supports<sp/>only<sp/>BLE<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>!=<sp/><ref refid="group__bluetooth_1gga6625c9f718627e0ecc95952f757a445ba0f798dc93d69a080a82aaeca55cd90b1" kindref="member">hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE</ref><sp/>&amp;&amp;</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mode<sp/>!=<sp/><ref refid="group__bluetooth_1gga6625c9f718627e0ecc95952f757a445ba74a92e04a478dcb1d18b2497ee5333a2" kindref="member">hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32C6<sp/>only<sp/>supports<sp/>BLE<sp/>mode&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;This<sp/>ESP32<sp/>variant<sp/>only<sp/>supports<sp/>BLE<sp/>mode&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca2ab398d6410c0edd6505433d264548fc" kindref="member">hf_bluetooth_err_t::BLUETOOTH_ERR_INVALID_PARAM</ref>;</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"></highlight></codeline>
@@ -437,10 +437,10 @@
 <codeline lineno="294"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformMutexLockGuard</ref><sp/>lock(m_state_mutex);</highlight></codeline>
 <codeline lineno="295"><highlight class="normal"></highlight></codeline>
 <codeline lineno="296"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HAS_NIMBLE_SUPPORT<sp/>&amp;&amp;<sp/>NIMBLE_HEADERS_AVAILABLE</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="297"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP32C6<sp/>only<sp/>supports<sp/>BLE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP32<sp/>only<sp/>supports<sp/>BLE</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="298"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>!=<sp/><ref refid="group__bluetooth_1gga6625c9f718627e0ecc95952f757a445ba0f798dc93d69a080a82aaeca55cd90b1" kindref="member">hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE</ref><sp/>&amp;&amp;</highlight></codeline>
 <codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mode<sp/>!=<sp/><ref refid="group__bluetooth_1gga6625c9f718627e0ecc95952f757a445ba74a92e04a478dcb1d18b2497ee5333a2" kindref="member">hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32C6<sp/>only<sp/>supports<sp/>BLE<sp/>mode&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;This<sp/>ESP32<sp/>variant<sp/>only<sp/>supports<sp/>BLE<sp/>mode&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca42500fa140a6462b39b67bb76bdec5f6" kindref="member">hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED</ref>;</highlight></codeline>
 <codeline lineno="302"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="303"><highlight class="normal"><sp/><sp/>m_mode<sp/>=<sp/><ref refid="group__bluetooth_1gga6625c9f718627e0ecc95952f757a445ba0f798dc93d69a080a82aaeca55cd90b1" kindref="member">hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE</ref>;</highlight></codeline>
@@ -461,7 +461,7 @@
 <codeline lineno="318"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HAS_NIMBLE_SUPPORT<sp/>&amp;&amp;<sp/>NIMBLE_HEADERS_AVAILABLE</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="319"><highlight class="normal"></highlight></codeline>
 <codeline lineno="320"><highlight class="normal"><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/>EspBluetooth::InitializeNimBLE()<sp/>{</highlight></codeline>
-<codeline lineno="321"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>NimBLE<sp/>for<sp/>ESP32C6&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>NimBLE<sp/>for<sp/>ESP32&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="322"><highlight class="normal"></highlight></codeline>
 <codeline lineno="323"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>NimBLE<sp/>port</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="324"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>nimble_port_init();</highlight></codeline>
@@ -1098,17 +1098,17 @@
 <codeline lineno="955"><highlight class="normal"></highlight><highlight class="comment">//<sp/>==========<sp/>Classic<sp/>Bluetooth<sp/>Methods<sp/>(stub<sp/>implementations)<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="956"><highlight class="normal"></highlight></codeline>
 <codeline lineno="957"><highlight class="normal"><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classEspBluetooth_1aff74b61fc7cc7ec7da326cadbc2774d7" kindref="member">EspBluetooth::ConfigureClassic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__classic__config__t" kindref="compound">hf_bluetooth_classic_config_t</ref>&amp;<sp/>config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="958"><highlight class="normal"><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ConfigureClassic<sp/>not<sp/>supported<sp/>on<sp/>ESP32C6&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="958"><highlight class="normal"><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ConfigureClassic<sp/>not<sp/>supported<sp/>on<sp/>this<sp/>ESP32<sp/>variant&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="959"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca42500fa140a6462b39b67bb76bdec5f6" kindref="member">hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED</ref>;</highlight></codeline>
 <codeline lineno="960"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="961"><highlight class="normal"></highlight></codeline>
 <codeline lineno="962"><highlight class="normal"><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classEspBluetooth_1ad7672c3765524c2f179cd7b127ab708f" kindref="member">EspBluetooth::SetDiscoverable</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>discoverable,<sp/>uint32_t<sp/>timeout_ms)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="963"><highlight class="normal"><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;SetDiscoverable<sp/>not<sp/>supported<sp/>on<sp/>ESP32C6&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="963"><highlight class="normal"><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;SetDiscoverable<sp/>not<sp/>supported<sp/>on<sp/>this<sp/>ESP32<sp/>variant&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="964"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca42500fa140a6462b39b67bb76bdec5f6" kindref="member">hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED</ref>;</highlight></codeline>
 <codeline lineno="965"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="966"><highlight class="normal"></highlight></codeline>
 <codeline lineno="967"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspBluetooth_1a37a10b193de4105734f148a7d8cd9c26" kindref="member">EspBluetooth::IsDiscoverable</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="968"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>ESP32C6<sp/>doesn&apos;t<sp/>support<sp/>Classic<sp/>Bluetooth</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="968"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>This<sp/>ESP32<sp/>variant<sp/>doesn&apos;t<sp/>support<sp/>Classic<sp/>Bluetooth</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="969"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="970"><highlight class="normal"></highlight></codeline>
 <codeline lineno="971"><highlight class="normal"><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classEspBluetooth_1a29df037a2e0bb46a29bde4a4ed589e89" kindref="member">EspBluetooth::ConfigureBle</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__ble__config__t" kindref="compound">hf_bluetooth_ble_config_t</ref>&amp;<sp/>config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -1130,7 +1130,7 @@
 <codeline lineno="987"><highlight class="normal"><sp/><sp/>info<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;ESP-IDF<sp/>Version:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>IDF_VER<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="988"><highlight class="normal"></highlight></codeline>
 <codeline lineno="989"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HAS_NIMBLE_SUPPORT<sp/>&amp;&amp;<sp/>NIMBLE_HEADERS_AVAILABLE</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="990"><highlight class="normal"><sp/><sp/>info<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Stack:<sp/>NimBLE<sp/>(ESP32C6<sp/>optimized)\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="990"><highlight class="normal"><sp/><sp/>info<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Stack:<sp/>NimBLE<sp/>(ESP32<sp/>optimized)\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="991"><highlight class="normal"><sp/><sp/>info<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Features:<sp/>BLE-only\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="992"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>HAS_BLUEDROID_SUPPORT<sp/>&amp;&amp;<sp/>defined(CONFIG_BT_ENABLED)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="993"><highlight class="normal"><sp/><sp/>info<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Stack:<sp/>Bluedroid\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
@@ -1222,9 +1222,9 @@
 <codeline lineno="1079"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1080"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Stub<sp/>implementations<sp/>for<sp/>platforms<sp/>without<sp/>Bluetooth<sp/>support<sp/>(ESP32S2)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1081"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Note:<sp/>This<sp/>section<sp/>is<sp/>only<sp/>compiled<sp/>when<sp/>HAS_BLE_SUPPORT<sp/>is<sp/>not<sp/>defined<sp/>(ESP32S2)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1082"><highlight class="normal"></highlight><highlight class="comment">//<sp/>For<sp/>ESP32-C6,<sp/>HAS_BLE_SUPPORT<sp/>should<sp/>be<sp/>1,<sp/>so<sp/>this<sp/>code<sp/>should<sp/>not<sp/>be<sp/>reached.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1082"><highlight class="normal"></highlight><highlight class="comment">//<sp/>For<sp/>ESP32,<sp/>HAS_BLE_SUPPORT<sp/>should<sp/>be<sp/>1,<sp/>so<sp/>this<sp/>code<sp/>should<sp/>not<sp/>be<sp/>reached.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1083"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1084"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;ESP32-C6<sp/>should<sp/>have<sp/>BLE<sp/>support<sp/>enabled.<sp/>Check<sp/>conditional<sp/>compilation.&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1084"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;ESP32<sp/>should<sp/>have<sp/>BLE<sp/>support<sp/>enabled.<sp/>Check<sp/>conditional<sp/>compilation.&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1085"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1086"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>HAS_BLE_SUPPORT</highlight></codeline>
     </programlisting>

@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classEspPio.html" target="_top" xlink:title="ESP32C6 RMT&#45;based Programmable IO Channel implementation with advanced ESP&#45;IDF v5....">
+<g id="a_Node000002"><a xlink:href="classEspPio.html" target="_top" xlink:title="ESP32 RMT&#45;based Programmable IO Channel implementation with advanced ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="63,-23 4,-23 4,0 63,0 63,-23"/>
 <text text-anchor="middle" x="33.5" y="-7.8" font-family="Arial" font-size="14.00">EspPio</text>
 </a>

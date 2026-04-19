@@ -105,7 +105,7 @@ $(function(){initNavTree('classEspTemperature.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>ESP32-C6 internal temperature sensor implementation.  
+<p>ESP32 internal temperature sensor implementation.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="EspTemperature_8h_source.html">EspTemperature.h</a>&gt;</code></p>
@@ -138,76 +138,76 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5d4b044be19bc62da664d76b1b6207b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup.  <br /></td></tr>
 <tr class="separator:a5d4b044be19bc62da664d76b1b6207b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31ccbc056a1b393a230ab8a2614bba2f" id="r_a31ccbc056a1b393a230ab8a2614bba2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31ccbc056a1b393a230ab8a2614bba2f">GetSensorInfo</a> (<a class="el" href="structhf__temp__sensor__info__t.html">hf_temp_sensor_info_t</a> *info) const noexcept override</td></tr>
-<tr class="memdesc:a31ccbc056a1b393a230ab8a2614bba2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get ESP32-C6 temperature sensor information.  <br /></td></tr>
+<tr class="memdesc:a31ccbc056a1b393a230ab8a2614bba2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get ESP32 temperature sensor information.  <br /></td></tr>
 <tr class="separator:a31ccbc056a1b393a230ab8a2614bba2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af42132c1ba77f8392eb6e7a5b055e7e2" id="r_af42132c1ba77f8392eb6e7a5b055e7e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af42132c1ba77f8392eb6e7a5b055e7e2">GetCapabilities</a> () const noexcept override</td></tr>
-<tr class="memdesc:af42132c1ba77f8392eb6e7a5b055e7e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get ESP32-C6 temperature sensor capabilities.  <br /></td></tr>
+<tr class="memdesc:af42132c1ba77f8392eb6e7a5b055e7e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get ESP32 temperature sensor capabilities.  <br /></td></tr>
 <tr class="separator:af42132c1ba77f8392eb6e7a5b055e7e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92b30bf532e07d1f1927d4fccf5322ba" id="r_a92b30bf532e07d1f1927d4fccf5322ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92b30bf532e07d1f1927d4fccf5322ba">SetRange</a> (float min_celsius, float max_celsius) noexcept override</td></tr>
-<tr class="memdesc:a92b30bf532e07d1f1927d4fccf5322ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set temperature measurement range (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:a92b30bf532e07d1f1927d4fccf5322ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set temperature measurement range (ESP32 supported)  <br /></td></tr>
 <tr class="separator:a92b30bf532e07d1f1927d4fccf5322ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5763ab0b92fff25c5854bcfb04a8ba9f" id="r_a5763ab0b92fff25c5854bcfb04a8ba9f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5763ab0b92fff25c5854bcfb04a8ba9f">GetRange</a> (float *min_celsius, float *max_celsius) const noexcept override</td></tr>
-<tr class="memdesc:a5763ab0b92fff25c5854bcfb04a8ba9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get temperature measurement range (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:a5763ab0b92fff25c5854bcfb04a8ba9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get temperature measurement range (ESP32 supported)  <br /></td></tr>
 <tr class="separator:a5763ab0b92fff25c5854bcfb04a8ba9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1bfe0b1ceeb20ea8eb5010ef09f832d" id="r_ae1bfe0b1ceeb20ea8eb5010ef09f832d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1bfe0b1ceeb20ea8eb5010ef09f832d">GetResolution</a> (float *resolution_celsius) const noexcept override</td></tr>
-<tr class="memdesc:ae1bfe0b1ceeb20ea8eb5010ef09f832d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get measurement resolution (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:ae1bfe0b1ceeb20ea8eb5010ef09f832d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get measurement resolution (ESP32 supported)  <br /></td></tr>
 <tr class="separator:ae1bfe0b1ceeb20ea8eb5010ef09f832d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaeda9f32dfc75e5ca2ab15142d0c9998" id="r_aaeda9f32dfc75e5ca2ab15142d0c9998"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaeda9f32dfc75e5ca2ab15142d0c9998">SetThresholds</a> (float low_threshold_celsius, float high_threshold_celsius) noexcept override</td></tr>
-<tr class="memdesc:aaeda9f32dfc75e5ca2ab15142d0c9998"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set temperature thresholds (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:aaeda9f32dfc75e5ca2ab15142d0c9998"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set temperature thresholds (ESP32 supported)  <br /></td></tr>
 <tr class="separator:aaeda9f32dfc75e5ca2ab15142d0c9998"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae122e823c11b55550cb91af01e26461e" id="r_ae122e823c11b55550cb91af01e26461e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae122e823c11b55550cb91af01e26461e">GetThresholds</a> (float *low_threshold_celsius, float *high_threshold_celsius) const noexcept override</td></tr>
-<tr class="memdesc:ae122e823c11b55550cb91af01e26461e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get temperature thresholds (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:ae122e823c11b55550cb91af01e26461e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get temperature thresholds (ESP32 supported)  <br /></td></tr>
 <tr class="separator:ae122e823c11b55550cb91af01e26461e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b34d89cb1cc7b03100674bea303ab5a" id="r_a1b34d89cb1cc7b03100674bea303ab5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b34d89cb1cc7b03100674bea303ab5a">EnableThresholdMonitoring</a> (<a class="el" href="BaseTemperature_8h.html#aeee4f575e7ed653aeea21a73e9ed893c">hf_temp_threshold_callback_t</a> callback, void *user_data) noexcept override</td></tr>
-<tr class="memdesc:a1b34d89cb1cc7b03100674bea303ab5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable threshold monitoring (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:a1b34d89cb1cc7b03100674bea303ab5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable threshold monitoring (ESP32 supported)  <br /></td></tr>
 <tr class="separator:a1b34d89cb1cc7b03100674bea303ab5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e1ee5a920aa4caaa151d036b79db369" id="r_a4e1ee5a920aa4caaa151d036b79db369"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e1ee5a920aa4caaa151d036b79db369">DisableThresholdMonitoring</a> () noexcept override</td></tr>
-<tr class="memdesc:a4e1ee5a920aa4caaa151d036b79db369"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable threshold monitoring (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:a4e1ee5a920aa4caaa151d036b79db369"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable threshold monitoring (ESP32 supported)  <br /></td></tr>
 <tr class="separator:a4e1ee5a920aa4caaa151d036b79db369"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc1ea9c3a109b70bd67e4f285594e474" id="r_acc1ea9c3a109b70bd67e4f285594e474"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc1ea9c3a109b70bd67e4f285594e474">StartContinuousMonitoring</a> (<a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> sample_rate_hz, <a class="el" href="BaseTemperature_8h.html#ad737845bbb5b213ca89ccac3902fd112">hf_temp_reading_callback_t</a> callback, void *user_data) noexcept override</td></tr>
-<tr class="memdesc:acc1ea9c3a109b70bd67e4f285594e474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start continuous temperature monitoring (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:acc1ea9c3a109b70bd67e4f285594e474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start continuous temperature monitoring (ESP32 supported)  <br /></td></tr>
 <tr class="separator:acc1ea9c3a109b70bd67e4f285594e474"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa34b741f4daf7a52dc832e65dc58e34f" id="r_aa34b741f4daf7a52dc832e65dc58e34f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa34b741f4daf7a52dc832e65dc58e34f">StopContinuousMonitoring</a> () noexcept override</td></tr>
-<tr class="memdesc:aa34b741f4daf7a52dc832e65dc58e34f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop continuous temperature monitoring (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:aa34b741f4daf7a52dc832e65dc58e34f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop continuous temperature monitoring (ESP32 supported)  <br /></td></tr>
 <tr class="separator:aa34b741f4daf7a52dc832e65dc58e34f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd650022450dbbcbba8fed4085386da3" id="r_abd650022450dbbcbba8fed4085386da3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd650022450dbbcbba8fed4085386da3">IsMonitoringActive</a> () const noexcept override</td></tr>
-<tr class="memdesc:abd650022450dbbcbba8fed4085386da3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if continuous monitoring is active (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:abd650022450dbbcbba8fed4085386da3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if continuous monitoring is active (ESP32 supported)  <br /></td></tr>
 <tr class="separator:abd650022450dbbcbba8fed4085386da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2665b30cb4301b8fccb577f74e4fa7fc" id="r_a2665b30cb4301b8fccb577f74e4fa7fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2665b30cb4301b8fccb577f74e4fa7fc">SetCalibrationOffset</a> (float offset_celsius) noexcept override</td></tr>
-<tr class="memdesc:a2665b30cb4301b8fccb577f74e4fa7fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set calibration offset (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:a2665b30cb4301b8fccb577f74e4fa7fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set calibration offset (ESP32 supported)  <br /></td></tr>
 <tr class="separator:a2665b30cb4301b8fccb577f74e4fa7fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6ee47301f32825678e5838b453bd1f1" id="r_ad6ee47301f32825678e5838b453bd1f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6ee47301f32825678e5838b453bd1f1">GetCalibrationOffset</a> (float *offset_celsius) const noexcept override</td></tr>
-<tr class="memdesc:ad6ee47301f32825678e5838b453bd1f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get calibration offset (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:ad6ee47301f32825678e5838b453bd1f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get calibration offset (ESP32 supported)  <br /></td></tr>
 <tr class="separator:ad6ee47301f32825678e5838b453bd1f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a413c8ed18407669f80b88625990619d9" id="r_a413c8ed18407669f80b88625990619d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a413c8ed18407669f80b88625990619d9">ResetCalibration</a> () noexcept override</td></tr>
-<tr class="memdesc:a413c8ed18407669f80b88625990619d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset calibration to default (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:a413c8ed18407669f80b88625990619d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset calibration to default (ESP32 supported)  <br /></td></tr>
 <tr class="separator:a413c8ed18407669f80b88625990619d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f5edd743061fbb9b4e0929f9126a04b" id="r_a9f5edd743061fbb9b4e0929f9126a04b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f5edd743061fbb9b4e0929f9126a04b">EnterSleepMode</a> () noexcept override</td></tr>
-<tr class="memdesc:a9f5edd743061fbb9b4e0929f9126a04b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enter low power mode (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:a9f5edd743061fbb9b4e0929f9126a04b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enter low power mode (ESP32 supported)  <br /></td></tr>
 <tr class="separator:a9f5edd743061fbb9b4e0929f9126a04b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a638b5bddaec8dc5693739fc238ad6d4d" id="r_a638b5bddaec8dc5693739fc238ad6d4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a638b5bddaec8dc5693739fc238ad6d4d">ExitSleepMode</a> () noexcept override</td></tr>
-<tr class="memdesc:a638b5bddaec8dc5693739fc238ad6d4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exit low power mode (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:a638b5bddaec8dc5693739fc238ad6d4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exit low power mode (ESP32 supported)  <br /></td></tr>
 <tr class="separator:a638b5bddaec8dc5693739fc238ad6d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6c685911fa0fe6bb38e1d2d8299ad2d" id="r_ac6c685911fa0fe6bb38e1d2d8299ad2d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6c685911fa0fe6bb38e1d2d8299ad2d">IsSleeping</a> () const noexcept override</td></tr>
-<tr class="memdesc:ac6c685911fa0fe6bb38e1d2d8299ad2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if sensor is in sleep mode (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:ac6c685911fa0fe6bb38e1d2d8299ad2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if sensor is in sleep mode (ESP32 supported)  <br /></td></tr>
 <tr class="separator:ac6c685911fa0fe6bb38e1d2d8299ad2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed9e41b1f3d2c357d6ecd28728e49aa2" id="r_aed9e41b1f3d2c357d6ecd28728e49aa2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed9e41b1f3d2c357d6ecd28728e49aa2">SelfTest</a> () noexcept override</td></tr>
-<tr class="memdesc:aed9e41b1f3d2c357d6ecd28728e49aa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform sensor self-test (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:aed9e41b1f3d2c357d6ecd28728e49aa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform sensor self-test (ESP32 supported)  <br /></td></tr>
 <tr class="separator:aed9e41b1f3d2c357d6ecd28728e49aa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0715fa9a6cd6888fa147ee67b428f193" id="r_a0715fa9a6cd6888fa147ee67b428f193"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0715fa9a6cd6888fa147ee67b428f193">CheckHealth</a> () noexcept override</td></tr>
-<tr class="memdesc:a0715fa9a6cd6888fa147ee67b428f193"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check sensor health status (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:a0715fa9a6cd6888fa147ee67b428f193"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check sensor health status (ESP32 supported)  <br /></td></tr>
 <tr class="separator:a0715fa9a6cd6888fa147ee67b428f193"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af467995c9463449686b77f02be223fa9" id="r_af467995c9463449686b77f02be223fa9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af467995c9463449686b77f02be223fa9">GetStatistics</a> (<a class="el" href="structhf__temp__statistics__t.html">hf_temp_statistics_t</a> &amp;statistics) noexcept override</td></tr>
-<tr class="memdesc:af467995c9463449686b77f02be223fa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get operation statistics (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:af467995c9463449686b77f02be223fa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get operation statistics (ESP32 supported)  <br /></td></tr>
 <tr class="separator:af467995c9463449686b77f02be223fa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af91cca81090fa226453fc793f5305ec6" id="r_af91cca81090fa226453fc793f5305ec6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af91cca81090fa226453fc793f5305ec6">GetDiagnostics</a> (<a class="el" href="structhf__temp__diagnostics__t.html">hf_temp_diagnostics_t</a> &amp;diagnostics) noexcept override</td></tr>
-<tr class="memdesc:af91cca81090fa226453fc793f5305ec6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get diagnostic information (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:af91cca81090fa226453fc793f5305ec6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get diagnostic information (ESP32 supported)  <br /></td></tr>
 <tr class="separator:af91cca81090fa226453fc793f5305ec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac22266bb32b95ed3587ce5fd6efc6c94" id="r_ac22266bb32b95ed3587ce5fd6efc6c94"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac22266bb32b95ed3587ce5fd6efc6c94">ResetStatistics</a> () noexcept override</td></tr>
-<tr class="memdesc:ac22266bb32b95ed3587ce5fd6efc6c94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset operation statistics (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:ac22266bb32b95ed3587ce5fd6efc6c94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset operation statistics (ESP32 supported)  <br /></td></tr>
 <tr class="separator:ac22266bb32b95ed3587ce5fd6efc6c94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab81713abcd8583a401154ccc7617cb4e" id="r_ab81713abcd8583a401154ccc7617cb4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab81713abcd8583a401154ccc7617cb4e">ResetDiagnostics</a> () noexcept override</td></tr>
-<tr class="memdesc:ab81713abcd8583a401154ccc7617cb4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset diagnostic information (ESP32-C6 supported)  <br /></td></tr>
+<tr class="memdesc:ab81713abcd8583a401154ccc7617cb4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset diagnostic information (ESP32 supported)  <br /></td></tr>
 <tr class="separator:ab81713abcd8583a401154ccc7617cb4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2aa6d6cdd0f7d91c86ce759706d9f712" id="r_a2aa6d6cdd0f7d91c86ce759706d9f712"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2aa6d6cdd0f7d91c86ce759706d9f712">InitializeEsp32</a> (const <a class="el" href="structesp__temp__config__t.html">esp_temp_config_t</a> &amp;esp_config) noexcept</td></tr>
 <tr class="memdesc:a2aa6d6cdd0f7d91c86ce759706d9f712"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize with ESP32-specific configuration.  <br /></td></tr>
@@ -415,8 +415,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a65964a104b3cb9b9c737819810f0a20b inherit pro_attribs_classBaseTemperature"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>ESP32-C6 internal temperature sensor implementation. </p>
-<p>This class provides a complete implementation of the <a class="el" href="classBaseTemperature.html" title="Abstract base class for all temperature sensor implementations.">BaseTemperature</a> interface specifically for the ESP32-C6 internal temperature sensor. It leverages the ESP-IDF temperature sensor driver to provide accurate temperature measurements with advanced features like threshold monitoring and continuous sampling.</p>
+<div class="textblock"><p>ESP32 internal temperature sensor implementation. </p>
+<p>This class provides a complete implementation of the <a class="el" href="classBaseTemperature.html" title="Abstract base class for all temperature sensor implementations.">BaseTemperature</a> interface specifically for the ESP32 internal temperature sensor. It leverages the ESP-IDF temperature sensor driver to provide accurate temperature measurements with advanced features like threshold monitoring and continuous sampling.</p>
 <p>Key features:</p><ul>
 <li>Multiple measurement ranges with different accuracy levels</li>
 <li>Hardware-based threshold monitoring with interrupts</li>
@@ -571,7 +571,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Check sensor health status (ESP32-C6 supported) </p>
+<p>Check sensor health status (ESP32 supported) </p>
 <dl class="section return"><dt>Returns</dt><dd>Error code (TEMP_SUCCESS if healthy) </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classBaseTemperature.html#a201bfff0c78242bec04cadd6363d7b5d">BaseTemperature</a>.</p>
@@ -726,7 +726,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Disable threshold monitoring (ESP32-C6 supported) </p>
+<p>Disable threshold monitoring (ESP32 supported) </p>
 <dl class="section return"><dt>Returns</dt><dd>Error code (TEMP_SUCCESS on success) </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classBaseTemperature.html#ad0326eb2b71271b06e2eccffe79561cd">BaseTemperature</a>.</p>
@@ -760,7 +760,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Enable threshold monitoring (ESP32-C6 supported) </p>
+<p>Enable threshold monitoring (ESP32 supported) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">callback</td><td>Callback function for threshold events </td></tr>
@@ -797,7 +797,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Enter low power mode (ESP32-C6 supported) </p>
+<p>Enter low power mode (ESP32 supported) </p>
 <dl class="section return"><dt>Returns</dt><dd>Error code (TEMP_SUCCESS on success) </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classBaseTemperature.html#abbef25249b2e935e8954a150519b2342">BaseTemperature</a>.</p>
@@ -827,7 +827,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Exit low power mode (ESP32-C6 supported) </p>
+<p>Exit low power mode (ESP32 supported) </p>
 <dl class="section return"><dt>Returns</dt><dd>Error code (TEMP_SUCCESS on success) </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classBaseTemperature.html#a52a0318d160c45fdee55b15d7148856c">BaseTemperature</a>.</p>
@@ -896,7 +896,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Get calibration offset (ESP32-C6 supported) </p>
+<p>Get calibration offset (ESP32 supported) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">offset_celsius</td><td>Pointer to store calibration offset </td></tr>
@@ -932,7 +932,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Get ESP32-C6 temperature sensor capabilities. </p>
+<p>Get ESP32 temperature sensor capabilities. </p>
 <dl class="section return"><dt>Returns</dt><dd>Capabilities flags (hf_temp_capabilities_t) </dd></dl>
 
 <p>Implements <a class="el" href="classBaseTemperature.html#a765c86c7680b43f7d075b9f392188611">BaseTemperature</a>.</p>
@@ -990,7 +990,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Get diagnostic information (ESP32-C6 supported) </p>
+<p>Get diagnostic information (ESP32 supported) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">diagnostics</td><td>Reference to diagnostics structure to fill </td></tr>
@@ -1086,7 +1086,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Get temperature measurement range (ESP32-C6 supported) </p>
+<p>Get temperature measurement range (ESP32 supported) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">min_celsius</td><td>Pointer to store minimum temperature </td></tr>
@@ -1224,7 +1224,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Get measurement resolution (ESP32-C6 supported) </p>
+<p>Get measurement resolution (ESP32 supported) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">resolution_celsius</td><td>Pointer to store resolution </td></tr>
@@ -1260,7 +1260,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Get ESP32-C6 temperature sensor information. </p>
+<p>Get ESP32 temperature sensor information. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">info</td><td>Pointer to store sensor information </td></tr>
@@ -1296,7 +1296,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Get operation statistics (ESP32-C6 supported) </p>
+<p>Get operation statistics (ESP32 supported) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">statistics</td><td>Reference to statistics structure to fill </td></tr>
@@ -1336,7 +1336,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Get temperature thresholds (ESP32-C6 supported) </p>
+<p>Get temperature thresholds (ESP32 supported) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">low_threshold_celsius</td><td>Pointer to store low threshold </td></tr>
@@ -1437,7 +1437,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Check if continuous monitoring is active (ESP32-C6 supported) </p>
+<p>Check if continuous monitoring is active (ESP32 supported) </p>
 <dl class="section return"><dt>Returns</dt><dd>true if monitoring is active, false otherwise </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classBaseTemperature.html#ab965dfed096914ca4a8e733b17bc978e">BaseTemperature</a>.</p>
@@ -1467,7 +1467,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Check if sensor is in sleep mode (ESP32-C6 supported) </p>
+<p>Check if sensor is in sleep mode (ESP32 supported) </p>
 <dl class="section return"><dt>Returns</dt><dd>true if in sleep mode, false otherwise </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classBaseTemperature.html#a65f6deb4af75c89ae44723015731d195">BaseTemperature</a>.</p>
@@ -1500,7 +1500,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 <p>Timer callback for continuous monitoring. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">arg</td><td>Pointer to <a class="el" href="classEspTemperature.html" title="ESP32-C6 internal temperature sensor implementation.">EspTemperature</a> instance </td></tr>
+    <tr><td class="paramname">arg</td><td>Pointer to <a class="el" href="classEspTemperature.html" title="ESP32 internal temperature sensor implementation.">EspTemperature</a> instance </td></tr>
   </table>
   </dd>
 </dl>
@@ -1627,7 +1627,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Reset calibration to default (ESP32-C6 supported) </p>
+<p>Reset calibration to default (ESP32 supported) </p>
 <dl class="section return"><dt>Returns</dt><dd>Error code (TEMP_SUCCESS on success) </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classBaseTemperature.html#a2be35c2e9f2cd233d77353591bfc3f53">BaseTemperature</a>.</p>
@@ -1657,7 +1657,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Reset diagnostic information (ESP32-C6 supported) </p>
+<p>Reset diagnostic information (ESP32 supported) </p>
 <dl class="section return"><dt>Returns</dt><dd>Error code (TEMP_SUCCESS on success) </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classBaseTemperature.html#a21a976418e428078d9ec76521a6ac17b">BaseTemperature</a>.</p>
@@ -1687,7 +1687,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Reset operation statistics (ESP32-C6 supported) </p>
+<p>Reset operation statistics (ESP32 supported) </p>
 <dl class="section return"><dt>Returns</dt><dd>Error code (TEMP_SUCCESS on success) </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classBaseTemperature.html#a149ff046e0cb000bf0172dce28bc17be">BaseTemperature</a>.</p>
@@ -1717,7 +1717,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Perform sensor self-test (ESP32-C6 supported) </p>
+<p>Perform sensor self-test (ESP32 supported) </p>
 <dl class="section return"><dt>Returns</dt><dd>Error code (TEMP_SUCCESS on success) </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classBaseTemperature.html#a0b23a97aea3d8455e458577c7ff937e3">BaseTemperature</a>.</p>
@@ -1747,7 +1747,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Set calibration offset (ESP32-C6 supported) </p>
+<p>Set calibration offset (ESP32 supported) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">offset_celsius</td><td>Calibration offset in Celsius </td></tr>
@@ -1922,7 +1922,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Set temperature measurement range (ESP32-C6 supported) </p>
+<p>Set temperature measurement range (ESP32 supported) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">min_celsius</td><td>Minimum temperature in Celsius </td></tr>
@@ -1963,7 +1963,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Set temperature thresholds (ESP32-C6 supported) </p>
+<p>Set temperature thresholds (ESP32 supported) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">low_threshold_celsius</td><td>Low temperature threshold </td></tr>
@@ -2043,7 +2043,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Start continuous temperature monitoring (ESP32-C6 supported) </p>
+<p>Start continuous temperature monitoring (ESP32 supported) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sample_rate_hz</td><td>Sampling rate in Hz </td></tr>
@@ -2081,7 +2081,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 </table>
 </div><div class="memdoc">
 
-<p>Stop continuous temperature monitoring (ESP32-C6 supported) </p>
+<p>Stop continuous temperature monitoring (ESP32 supported) </p>
 <dl class="section return"><dt>Returns</dt><dd>Error code (TEMP_SUCCESS on success) </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classBaseTemperature.html#a30f3527c16c76f65e2deb4a89412e231">BaseTemperature</a>.</p>
@@ -2500,8 +2500,8 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 <div class="ttc" id="aEspTemperature_8h_html_ac20464eaa276aa198cb03d0fc5a6e679acaf07c226aca123069036f900789a53d"><div class="ttname"><a href="EspTemperature_8h.html#ac20464eaa276aa198cb03d0fc5a6e679acaf07c226aca123069036f900789a53d">ESP_TEMP_RANGE_50_125</a></div><div class="ttdeci">@ ESP_TEMP_RANGE_50_125</div><div class="ttdoc">50°C to 125°C, ±3°C accuracy (extreme high temperature)</div><div class="ttdef"><b>Definition</b> EspTemperature.h:70</div></div>
 </div><!-- fragment -->
 <p>Range information table. </p>
-<p>ESP32-C6 temperature sensor range information table.</p>
-<p>Based on ESP32-C6 hardware specifications and ESP-IDF documentation </p>
+<p>ESP32 temperature sensor range information table.</p>
+<p>Based on ESP32 hardware specifications and ESP-IDF documentation </p>
 
 </div>
 </div>

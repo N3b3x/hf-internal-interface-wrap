@@ -4,7 +4,7 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,57,149,90,150,131,158,174,178,212,216,252,260,286,306,312,348,332,346,337,304,317,257,290,212,256,173,215,153,175,145,132,144,90,147,56"/>
 <area shape="rect" id="Node000010" title=" " alt="" coords="171,419,241,449"/>
 <area shape="poly" id="edge47_Node000001_Node000010" title=" " alt="" coords="137,58,119,85,100,119,86,157,81,197,81,278,83,299,90,319,112,355,142,385,172,409,169,413,139,389,108,358,85,321,78,300,75,278,75,196,81,156,96,116,114,82,133,55"/>
-<area shape="rect" id="Node000011" href="$EspBluetooth_8h.html" title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32C6)" alt="" coords="509,261,748,292"/>
+<area shape="rect" id="Node000011" href="$EspBluetooth_8h.html" title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32)" alt="" coords="509,261,748,292"/>
 <area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="156,56,158,91,165,134,181,176,193,195,208,211,227,224,255,235,327,251,411,262,496,269,495,274,411,267,326,256,253,240,225,229,204,215,188,198,176,179,160,135,152,92,151,56"/>
 <area shape="rect" id="Node000017" href="$TestFramework_8h.html" title="Shared testing framework for ESP32&#45;C6 comprehensive test suites." alt="" coords="751,104,912,135"/>
 <area shape="poly" id="edge22_Node000001_Node000017" title=" " alt="" coords="303,48,737,103,737,109,303,54"/>
@@ -51,7 +51,7 @@
 <area shape="poly" id="edge27_Node000017_Node000021" title=" " alt="" coords="834,135,834,169,829,169,829,135"/>
 <area shape="rect" id="Node000022" title=" " alt="" coords="937,183,1073,213"/>
 <area shape="poly" id="edge28_Node000017_Node000022" title=" " alt="" coords="865,132,961,175,959,180,862,137"/>
-<area shape="rect" id="Node000023" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5...." alt="" coords="1340,183,1541,213"/>
+<area shape="rect" id="Node000023" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32/ESP&#45;IDF v5...." alt="" coords="1340,183,1541,213"/>
 <area shape="poly" id="edge30_Node000017_Node000023" title=" " alt="" coords="913,128,1327,180,1326,185,912,133"/>
 <area shape="rect" id="Node000024" title=" " alt="" coords="1576,261,1697,292"/>
 <area shape="poly" id="edge31_Node000023_Node000024" title=" " alt="" coords="1478,211,1589,254,1587,259,1476,216"/>

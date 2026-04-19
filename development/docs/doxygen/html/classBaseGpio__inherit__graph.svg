@@ -30,7 +30,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classEspGpio.html" target="_top" xlink:title="Advanced MCU&#45;specific implementation of unified BaseGpio with ESP32C6/ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000002"><a xlink:href="classEspGpio.html" target="_top" xlink:title="Advanced MCU&#45;specific implementation of unified BaseGpio with ESP32/ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="69,-23 0,-23 0,0 69,0 69,-23"/>
 <text text-anchor="middle" x="34.5" y="-7.8" font-family="Arial" font-size="14.00">EspGpio</text>
 </a>

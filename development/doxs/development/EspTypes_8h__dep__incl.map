@@ -4,9 +4,9 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1245,45,500,120,499,115,1245,40"/>
 <area shape="rect" id="Node000005" href="$EspPeriodicTimer_8h.html" title="MCU&#45;integrated periodic timer implementation." alt="" coords="827,104,1067,155"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1246,59,1047,107,1046,101,1245,54"/>
-<area shape="rect" id="Node000008" href="$EspPio_8h.html" title="ESP32C6 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features." alt="" coords="1239,114,1455,145"/>
+<area shape="rect" id="Node000008" href="$EspPio_8h.html" title="ESP32 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features." alt="" coords="1239,114,1455,145"/>
 <area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1349,70,1349,114,1344,114,1344,70"/>
-<area shape="rect" id="Node000011" href="$EspSpi_8h.html" title="Advanced MCU&#45;integrated SPI controller implementation with ESP32C6/ESP&#45;IDF v5.5+ features." alt="" coords="1637,114,1853,145"/>
+<area shape="rect" id="Node000011" href="$EspSpi_8h.html" title="Advanced MCU&#45;integrated SPI controller implementation with ESP32/ESP&#45;IDF v5.5+ features." alt="" coords="1637,114,1853,145"/>
 <area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1449,54,1687,111,1686,116,1448,59"/>
 <area shape="rect" id="Node000014" href="$EspUart_8h.html" title="ESP32 UART implementation for the HardFOC system." alt="" coords="2168,114,2392,145"/>
 <area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="1449,40,2168,114,2168,119,1448,45"/>
@@ -20,11 +20,11 @@
 <area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="949,169,949,202,944,202,944,169"/>
 <area shape="rect" id="Node000009" href="$PioComprehensiveTest_8cpp.html" title="Comprehensive PIO testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 with RMT peripheral (noexcept)" alt="" coords="1091,203,1338,253"/>
 <area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1318,155,1250,205,1246,200,1314,151"/>
-<area shape="rect" id="Node000010" href="$EspPio_8cpp.html" title="ESP32C6 RMT&#45;based Programmable IO Channel implementation." alt="" coords="1362,213,1598,243"/>
+<area shape="rect" id="Node000010" href="$EspPio_8cpp.html" title="ESP32 RMT&#45;based Programmable IO Channel implementation." alt="" coords="1362,213,1598,243"/>
 <area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="1379,151,1462,210,1459,215,1376,155"/>
 <area shape="rect" id="Node000012" href="$SpiComprehensiveTest_8cpp.html" title="Comprehensive SPI testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="1622,203,1869,253"/>
 <area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="1748,159,1748,202,1743,202,1743,159"/>
-<area shape="rect" id="Node000013" href="$EspSpi_8cpp.html" title="Implementation of MCU&#45;integrated SPI controller for ESP32C6 with ESP&#45;IDF v5.5+ features." alt="" coords="1893,213,2129,243"/>
+<area shape="rect" id="Node000013" href="$EspSpi_8cpp.html" title="Implementation of MCU&#45;integrated SPI controller for ESP32 with ESP&#45;IDF v5.5+ features." alt="" coords="1893,213,2129,243"/>
 <area shape="poly" id="edge12_Node000011_Node000013" title=" " alt="" coords="1798,147,1973,210,1971,215,1797,152"/>
 <area shape="rect" id="Node000015" href="$UartComprehensiveTest_8cpp.html" title="Comprehensive UART testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="2153,203,2407,253"/>
 <area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="2283,159,2283,202,2277,202,2277,159"/>

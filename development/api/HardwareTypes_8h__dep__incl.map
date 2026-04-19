@@ -12,7 +12,7 @@
 <area shape="poly" id="edge81_Node000001_Node000021" title=" " alt="" coords="2089,24,1600,25,957,32,648,40,384,51,193,66,135,76,105,86,73,115,46,147,25,180,13,214,8,248,13,283,27,317,52,350,71,358,111,367,243,381,426,393,642,402,1090,415,1430,420,1430,426,1090,420,642,407,426,398,242,386,110,372,70,364,49,354,22,320,7,284,3,248,7,213,21,177,41,144,69,112,102,82,133,71,193,61,383,45,647,34,957,27,1600,20,2089,19"/>
 <area shape="rect" id="Node000034" href="$BaseBluetooth_8h.html" title="Unified Bluetooth base class for all Bluetooth implementations." alt="" coords="4200,94,4426,125"/>
 <area shape="poly" id="edge25_Node000001_Node000034" title=" " alt="" coords="2351,21,2748,27,3277,38,3802,56,4020,68,4185,81,4249,91,4249,97,4185,87,4019,73,3801,61,3277,44,2748,32,2351,26"/>
-<area shape="rect" id="Node000035" href="$EspBluetooth_8h.html" title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32C6)" alt="" coords="4350,193,4617,223"/>
+<area shape="rect" id="Node000035" href="$EspBluetooth_8h.html" title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32)" alt="" coords="4350,193,4617,223"/>
 <area shape="poly" id="edge80_Node000001_Node000035" title=" " alt="" coords="2351,19,2861,20,3537,27,3863,35,4142,46,4344,61,4407,71,4440,82,4462,106,4476,137,4483,167,4486,192,4481,193,4478,168,4471,139,4458,109,4437,86,4405,76,4343,66,4141,51,3863,40,3536,32,2861,25,2351,24"/>
 <area shape="rect" id="Node000037" href="$BaseCan_8h.html" title="Abstract base class for CAN bus implementations in the HardFOC system." alt="" coords="1723,94,1906,125"/>
 <area shape="poly" id="edge29_Node000001_Node000037" title=" " alt="" coords="2136,41,1919,87,1875,97,1874,91,1918,81,2135,36"/>

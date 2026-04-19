@@ -141,7 +141,7 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae8e7d6e7f4ca605d4d4a361dc7806fd0" id="r_ae8e7d6e7f4ca605d4d4a361dc7806fd0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8e7d6e7f4ca605d4d4a361dc7806fd0">EspPwm</a> (const <a class="el" href="structhf__pwm__unit__config__t.html">hf_pwm_unit_config_t</a> &amp;config=<a class="el" href="structhf__pwm__unit__config__t.html">hf_pwm_unit_config_t</a>{}) noexcept</td></tr>
-<tr class="memdesc:ae8e7d6e7f4ca605d4d4a361dc7806fd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for ESP32C6 PWM controller.  <br /></td></tr>
+<tr class="memdesc:ae8e7d6e7f4ca605d4d4a361dc7806fd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for ESP32 PWM controller.  <br /></td></tr>
 <tr class="separator:ae8e7d6e7f4ca605d4d4a361dc7806fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaac5ce3f95ae8c5fb96312ad9a779ce6" id="r_aaac5ce3f95ae8c5fb96312ad9a779ce6"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaac5ce3f95ae8c5fb96312ad9a779ce6">~EspPwm</a> () noexcept override</td></tr>
 <tr class="memdesc:aaac5ce3f95ae8c5fb96312ad9a779ce6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor - ensures clean shutdown.  <br /></td></tr>
@@ -552,10 +552,10 @@ ESP32-S2/S3:</h3>
 <li><b>Special Features:</b> Unified speed mode, improved power efficiency</li>
 </ul>
 <h3><a class="anchor" id="autotoc_md3"></a>
-ESP32-C3/C6/H2:</h3>
+Other ESP32 Variants:</h3>
 <ul>
-<li><b>Channels:</b> 6 channels (ESP32-C6), 6 channels (ESP32-C3), 4 channels (ESP32-H2)</li>
-<li><b>Timers:</b> 4 timers (C3/C6), 2 timers (H2)</li>
+<li><b>Channels:</b> Up to 6 channels depending on variant</li>
+<li><b>Timers:</b> Up to 4 timers depending on variant</li>
 <li><b>Clock Sources:</b> APB_CLK (80MHz), REF_TICK (1MHz), XTAL_CLK</li>
 <li><b>Resolution:</b> Up to 14-bit resolution</li>
 <li><b>Special Features:</b> Compact design, optimized for IoT applications</li>
@@ -616,7 +616,7 @@ Key Design Features:</h2>
 </table>
 </div><div class="memdoc">
 
-<p>Constructor for ESP32C6 PWM controller. </p>
+<p>Constructor for ESP32 PWM controller. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">config</td><td>PWM unit configuration </td></tr>
@@ -2747,9 +2747,9 @@ Key Design Features:</h2>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>PWM_SUCCESS on success, error code on failure</dd></dl>
-<p>Registers a per-channel callback function that is triggered when a hardware fade operation completes on the specified channel. This uses the native ESP32-C6 LEDC fade completion interrupt mechanism.</p>
+<p>Registers a per-channel callback function that is triggered when a hardware fade operation completes on the specified channel. This uses the native ESP32 LEDC fade completion interrupt mechanism.</p>
 <p><b>Fade Completion Detection:</b></p><ul>
-<li><b>LEDC Hardware Interrupt:</b> Native ESP32-C6 fade completion interrupt</li>
+<li><b>LEDC Hardware Interrupt:</b> Native ESP32 fade completion interrupt</li>
 <li><b>Per-Channel Granularity:</b> Each channel can have its own fade callback</li>
 <li><b>Automatic Registration:</b> Uses <code>ledc_cb_register()</code> for proper ESP-IDF integration</li>
 </ul>

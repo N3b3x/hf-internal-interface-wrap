@@ -411,7 +411,7 @@
     </briefdescription>
     <detaileddescription>
 <para>This header consolidates all MCU-specific types and constants by including the specialized peripheral headers. This maintains backward compatibility while providing a cleaner, modular organization.</para>
-<para>ESP32C6/ESP-IDF v5.5+ Features Supported:<itemizedlist>
+<para>ESP32/ESP-IDF v5.5+ Features Supported:<itemizedlist>
 <listitem><para>Dual TWAI/CAN controllers with v2 API support</para>
 </listitem><listitem><para>GPIO hardware glitch filters (pin + 8 flexible filters)</para>
 </listitem><listitem><para>RTC GPIO with sleep retention and wake-up sources</para>

@@ -794,7 +794,7 @@
 <codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspWifi_1acf463caaf71fcae20d22a391a0e66250" kindref="member">m_smartconfig_active</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="373"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="374"><highlight class="normal"></highlight></codeline>
-<codeline lineno="375"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>WPS<sp/>not<sp/>available<sp/>on<sp/>ESP32-C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>WPS<sp/>not<sp/>available<sp/>on<sp/>ESP32</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="376"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>(m_wps_active)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="377"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>esp_wifi_wps_disable();</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="378"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>m_wps_active<sp/>=<sp/>false;</highlight><highlight class="normal"></highlight></codeline>

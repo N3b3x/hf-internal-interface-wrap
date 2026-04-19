@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="ESP32 GPIO type definitions for hardware abstraction." alt="" coords="2605,5,2783,56"/>
 <area shape="rect" id="Node000002" href="$GpioComprehensiveTest_8cpp.html" title="Comprehensive GPIO testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="340,410,600,461"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2592,53,1161,304,886,350,612,403,567,413,566,407,611,397,885,345,1160,299,2591,47"/>
-<area shape="rect" id="Node000003" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5...." alt="" coords="2353,213,2582,243"/>
+<area shape="rect" id="Node000003" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32/ESP&#45;IDF v5...." alt="" coords="2353,213,2582,243"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="2657,67,2485,215,2482,211,2654,63"/>
 <area shape="rect" id="Node000021" href="$EspTypes_8h.html" title="Consolidated MCU&#45;specific type definitions for hardware abstraction (hf_* types)." alt="" coords="3809,203,3985,253"/>
 <area shape="poly" id="edge27_Node000001_Node000021" title=" " alt="" coords="2797,46,3809,210,3808,215,2796,51"/>
@@ -21,7 +21,7 @@
 <area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="2470,257,2470,301,2465,301,2465,257"/>
 <area shape="rect" id="Node000018" href="$UartComprehensiveTest_8cpp.html" title="Comprehensive UART testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="3588,410,3843,461"/>
 <area shape="poly" id="edge25_Node000003_Node000018" title=" " alt="" coords="2504,248,2580,299,2607,328,2619,339,2636,350,2676,363,2723,373,2835,386,2964,391,3101,392,3369,388,3485,390,3577,397,3629,407,3628,413,3576,403,3485,395,3369,393,3101,397,2964,397,2835,391,2723,378,2675,368,2634,354,2615,344,2603,331,2576,303,2501,253"/>
-<area shape="rect" id="Node000020" href="$EspGpio_8cpp.html" title="Production&#45;quality ESP32C6 GPIO implementation with ESP&#45;IDF v5.5+ advanced features." alt="" coords="2045,311,2295,342"/>
+<area shape="rect" id="Node000020" href="$EspGpio_8cpp.html" title="Production&#45;quality ESP32 GPIO implementation with ESP&#45;IDF v5.5+ advanced features." alt="" coords="2045,311,2295,342"/>
 <area shape="poly" id="edge26_Node000003_Node000020" title=" " alt="" coords="2411,250,2214,314,2213,309,2410,245"/>
 <area shape="poly" id="edge14_Node000008_Node000002" title=" " alt="" coords="2355,349,2306,355,2048,372,1830,376,1637,373,1457,366,1278,361,1086,363,868,375,612,403,558,413,557,407,611,397,868,369,1086,357,1278,356,1457,361,1637,367,1830,371,2048,366,2306,349,2354,344"/>
 <area shape="poly" id="edge13_Node000008_Node000004" title=" " alt="" coords="2355,349,2306,355,2005,374,1750,380,1525,377,1316,370,1106,364,882,364,628,375,328,403,317,404,316,399,327,397,627,370,882,359,1106,359,1316,365,1525,372,1750,375,2005,369,2306,349,2354,344"/>
@@ -53,9 +53,9 @@
 <area shape="poly" id="edge28_Node000021_Node000022" title=" " alt="" coords="3999,236,4231,261,4505,299,4560,309,4559,314,4504,304,4230,267,3998,242"/>
 <area shape="rect" id="Node000024" href="$EspPeriodicTimer_8h.html" title="MCU&#45;integrated periodic timer implementation." alt="" coords="3525,301,3765,352"/>
 <area shape="poly" id="edge31_Node000021_Node000024" title=" " alt="" coords="3821,261,3709,304,3707,299,3819,256"/>
-<area shape="rect" id="Node000026" href="$EspPio_8h.html" title="ESP32C6 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features." alt="" coords="3789,311,4005,342"/>
+<area shape="rect" id="Node000026" href="$EspPio_8h.html" title="ESP32 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features." alt="" coords="3789,311,4005,342"/>
 <area shape="poly" id="edge34_Node000021_Node000026" title=" " alt="" coords="3899,267,3899,311,3894,311,3894,267"/>
-<area shape="rect" id="Node000028" href="$EspSpi_8h.html" title="Advanced MCU&#45;integrated SPI controller implementation with ESP32C6/ESP&#45;IDF v5.5+ features." alt="" coords="4277,311,4493,342"/>
+<area shape="rect" id="Node000028" href="$EspSpi_8h.html" title="Advanced MCU&#45;integrated SPI controller implementation with ESP32/ESP&#45;IDF v5.5+ features." alt="" coords="4277,311,4493,342"/>
 <area shape="poly" id="edge37_Node000021_Node000028" title=" " alt="" coords="3999,246,4265,299,4315,309,4314,314,4264,304,3998,252"/>
 <area shape="rect" id="Node000030" href="$EspUart_8h.html" title="ESP32 UART implementation for the HardFOC system." alt="" coords="4029,311,4253,342"/>
 <area shape="poly" id="edge40_Node000021_Node000030" title=" " alt="" coords="3972,256,4106,309,4104,314,3970,261"/>
@@ -66,16 +66,16 @@
 <area shape="rect" id="Node000025" href="$EspPeriodicTimer_8cpp.html" title="Implementation of MCU&#45;integrated periodic timer." alt="" coords="4679,410,4920,461"/>
 <area shape="poly" id="edge33_Node000024_Node000025" title=" " alt="" coords="3778,349,3914,362,4029,367,4225,368,4420,371,4533,380,4666,397,4716,407,4715,413,4666,403,4533,385,4419,377,4225,373,4029,373,3913,367,3778,355"/>
 <area shape="poly" id="edge35_Node000026_Node000006" title=" " alt="" coords="3920,351,3971,408,3967,412,3916,354"/>
-<area shape="rect" id="Node000027" href="$EspPio_8cpp.html" title="ESP32C6 RMT&#45;based Programmable IO Channel implementation." alt="" coords="4944,420,5180,451"/>
+<area shape="rect" id="Node000027" href="$EspPio_8cpp.html" title="ESP32 RMT&#45;based Programmable IO Channel implementation." alt="" coords="4944,420,5180,451"/>
 <area shape="poly" id="edge36_Node000026_Node000027" title=" " alt="" coords="3972,342,4017,349,4156,363,4274,369,4475,369,4573,368,4677,370,4795,379,4933,397,5018,417,5017,423,4932,403,4794,385,4676,376,4572,373,4475,374,4274,375,4155,369,4016,355,3971,347"/>
 <area shape="poly" id="edge38_Node000028_Node000015" title=" " alt="" coords="4359,353,4291,412,4287,408,4356,349"/>
-<area shape="rect" id="Node000029" href="$EspSpi_8cpp.html" title="Implementation of MCU&#45;integrated SPI controller for ESP32C6 with ESP&#45;IDF v5.5+ features." alt="" coords="5472,420,5708,451"/>
+<area shape="rect" id="Node000029" href="$EspSpi_8cpp.html" title="Implementation of MCU&#45;integrated SPI controller for ESP32 with ESP&#45;IDF v5.5+ features." alt="" coords="5472,420,5708,451"/>
 <area shape="poly" id="edge39_Node000028_Node000029" title=" " alt="" coords="4460,342,4506,349,4651,364,4774,370,4984,368,5085,367,5194,370,5317,379,5461,397,5546,417,5545,422,5460,403,5316,384,5194,375,5085,373,4984,374,4774,375,4651,369,4506,355,4459,347"/>
 <area shape="poly" id="edge41_Node000030_Node000018" title=" " alt="" coords="4072,348,3813,412,3811,407,4070,343"/>
 <area shape="rect" id="Node000031" href="$EspUart_8cpp.html" title="Implementation of ESP32 UART controller for the HardFOC system." alt="" coords="5204,420,5448,451"/>
 <area shape="poly" id="edge42_Node000030_Node000031" title=" " alt="" coords="4218,342,4265,349,4406,363,4525,369,4729,369,4828,368,4933,371,5053,380,5193,397,5281,417,5280,423,5192,403,5052,385,4933,376,4828,373,4729,374,4525,375,4405,369,4264,355,4217,347"/>
 <area shape="poly" id="edge47_Node000032_Node000021" title=" " alt="" coords="2897,137,3809,216,3808,222,2896,142"/>
-<area shape="rect" id="Node000033" href="$EspPwm_8h.html" title="ESP32C6 LEDC (PWM) controller implementation for the HardFOC system." alt="" coords="2679,213,2909,243"/>
+<area shape="rect" id="Node000033" href="$EspPwm_8h.html" title="ESP32 LEDC (PWM) controller implementation for the HardFOC system." alt="" coords="2679,213,2909,243"/>
 <area shape="poly" id="edge44_Node000032_Node000033" title=" " alt="" coords="2797,169,2797,213,2791,213,2791,169"/>
 <area shape="poly" id="edge45_Node000033_Node000007" title=" " alt="" coords="2675,248,2482,277,2402,291,2358,304,2343,315,2334,329,2324,343,2307,354,2269,365,2211,374,2047,386,1838,392,1606,394,1163,395,997,397,898,403,845,413,844,407,898,397,997,392,1163,390,1606,389,1838,386,2047,380,2210,368,2268,360,2305,350,2320,339,2329,326,2339,312,2355,299,2401,286,2481,271,2674,243"/>
 <area shape="rect" id="Node000034" href="$EspPwm_8cpp.html" title="Implementation of ESP32 family LEDC (PWM) controller for the HardFOC system." alt="" coords="2742,311,2993,342"/>

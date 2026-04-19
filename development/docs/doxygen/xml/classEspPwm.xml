@@ -361,7 +361,7 @@
           <defval><ref refid="structhf__pwm__unit__config__t" kindref="compound">hf_pwm_unit_config_t</ref>{}</defval>
         </param>
         <briefdescription>
-<para>Constructor for ESP32C6 PWM controller. </para>
+<para>Constructor for ESP32 PWM controller. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -1645,9 +1645,9 @@ Each channel maintains its own error state for detailed error tracking. Useful f
 </parameterlist>
 <simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure</para>
 </simplesect>
-Registers a per-channel callback function that is triggered when a hardware fade operation completes on the specified channel. This uses the native ESP32-C6 LEDC fade completion interrupt mechanism.</para>
+Registers a per-channel callback function that is triggered when a hardware fade operation completes on the specified channel. This uses the native ESP32 LEDC fade completion interrupt mechanism.</para>
 <para><bold>Fade Completion Detection:</bold><itemizedlist>
-<listitem><para><bold>LEDC Hardware Interrupt:</bold> Native ESP32-C6 fade completion interrupt</para>
+<listitem><para><bold>LEDC Hardware Interrupt:</bold> Native ESP32 fade completion interrupt</para>
 </listitem><listitem><para><bold>Per-Channel Granularity:</bold> Each channel can have its own fade callback</para>
 </listitem><listitem><para><bold>Automatic Registration:</bold> Uses <computeroutput>ledc_cb_register()</computeroutput> for proper ESP-IDF integration</para>
 </listitem></itemizedlist>
@@ -3460,9 +3460,9 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
 </para>
 </sect3>
 <sect3 id="classEspPwm_1autotoc_md3">
-<title>ESP32-C3/C6/H2:</title><para><itemizedlist>
-<listitem><para><bold>Channels:</bold> 6 channels (ESP32-C6), 6 channels (ESP32-C3), 4 channels (ESP32-H2)</para>
-</listitem><listitem><para><bold>Timers:</bold> 4 timers (C3/C6), 2 timers (H2)</para>
+<title>Other ESP32 Variants:</title><para><itemizedlist>
+<listitem><para><bold>Channels:</bold> Up to 6 channels depending on variant</para>
+</listitem><listitem><para><bold>Timers:</bold> Up to 4 timers depending on variant</para>
 </listitem><listitem><para><bold>Clock Sources:</bold> APB_CLK (80MHz), REF_TICK (1MHz), XTAL_CLK</para>
 </listitem><listitem><para><bold>Resolution:</bold> Up to 14-bit resolution</para>
 </listitem><listitem><para><bold>Special Features:</bold> Compact design, optimized for IoT applications</para>

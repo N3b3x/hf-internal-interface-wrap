@@ -2,11 +2,11 @@
 <area shape="rect" id="Node000001" title="Comprehensive PIO testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 with RMT peripheral (noexcept)" alt="" coords="3019,5,3265,56"/>
 <area shape="rect" id="Node000002" href="$TestFramework_8h.html" title="Shared testing framework for ESP32&#45;C6 comprehensive test suites." alt="" coords="551,183,712,213"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="3018,43,2024,107,726,193,725,188,2023,101,3018,37"/>
-<area shape="rect" id="Node000012" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5...." alt="" coords="1472,261,1673,292"/>
+<area shape="rect" id="Node000012" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32/ESP&#45;IDF v5...." alt="" coords="1472,261,1673,292"/>
 <area shape="poly" id="edge32_Node000001_Node000012" title=" " alt="" coords="3019,54,1677,262,1676,257,3018,49"/>
 <area shape="rect" id="Node000022" href="$BasePio_8h.html" title="Abstract base class for Programmable IO Channel implementations in the HardFOC system." alt="" coords="3415,419,3563,449"/>
 <area shape="poly" id="edge28_Node000001_Node000022" title=" " alt="" coords="3266,38,3499,60,3766,93,3887,114,3985,138,4023,151,4052,165,4071,180,4078,196,4078,278,4076,298,4071,314,4051,338,4022,356,3986,373,3929,397,3879,411,3833,417,3789,418,3695,415,3640,416,3577,421,3576,416,3640,411,3695,410,3789,413,3833,412,3878,406,3928,392,3984,368,4019,351,4048,334,4066,312,4071,297,4073,278,4073,197,4067,183,4050,170,4021,156,3984,143,3885,120,3765,99,3499,65,3265,44"/>
-<area shape="rect" id="Node000023" href="$EspPio_8h.html" title="ESP32C6 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features." alt="" coords="3048,104,3236,135"/>
+<area shape="rect" id="Node000023" href="$EspPio_8h.html" title="ESP32 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features." alt="" coords="3048,104,3236,135"/>
 <area shape="poly" id="edge33_Node000001_Node000023" title=" " alt="" coords="3145,56,3145,90,3139,90,3139,56"/>
 <area shape="rect" id="Node000035" href="$EspTypes__PIO_8h.html" title="ESP32 PIO/RMT type definitions for hardware abstraction." alt="" coords="3096,340,3255,371"/>
 <area shape="poly" id="edge113_Node000001_Node000035" title=" " alt="" coords="3191,54,3225,76,3260,105,3292,140,3314,182,3318,206,3315,229,3305,252,3290,272,3253,308,3214,335,3211,331,3250,304,3286,269,3300,249,3309,228,3313,206,3309,184,3287,143,3257,109,3222,80,3188,58"/>

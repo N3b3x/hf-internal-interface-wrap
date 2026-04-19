@@ -919,7 +919,7 @@
 <codeline lineno="446"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="447"><highlight class="normal"></highlight></codeline>
 <codeline lineno="448"><highlight class="normal"><sp/><sp/>uart_hw_flowcontrol_t<sp/>flow_ctrl<sp/>=<sp/>enable<sp/>?<sp/>UART_HW_FLOWCTRL_CTS_RTS<sp/>:<sp/>UART_HW_FLOWCTRL_DISABLE;</highlight></codeline>
-<codeline lineno="449"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>UART<sp/>FIFO<sp/>is<sp/>only<sp/>128<sp/>bytes,<sp/>use<sp/>a<sp/>reasonable<sp/>threshold</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="449"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP32<sp/>UART<sp/>FIFO<sp/>is<sp/>only<sp/>128<sp/>bytes,<sp/>use<sp/>a<sp/>reasonable<sp/>threshold</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="450"><highlight class="normal"><sp/><sp/>uint8_t<sp/>threshold<sp/>=<sp/>enable<sp/>?<sp/>64<sp/>:<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>50%<sp/>of<sp/>FIFO<sp/>size<sp/>when<sp/>enabled</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="451"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>result<sp/>=<sp/>uart_set_hw_flow_ctrl(uart_port_,<sp/>flow_ctrl,<sp/>threshold);</highlight></codeline>
 <codeline lineno="452"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>==<sp/>ESP_OK)<sp/>{</highlight></codeline>
@@ -966,7 +966,7 @@
 <codeline lineno="493"><highlight class="normal"></highlight></codeline>
 <codeline lineno="494"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="495"><highlight class="normal"></highlight></codeline>
-<codeline lineno="496"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Try<sp/>multiple<sp/>approaches<sp/>for<sp/>sending<sp/>break<sp/>signal<sp/>on<sp/>ESP32-C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="496"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Try<sp/>multiple<sp/>approaches<sp/>for<sp/>sending<sp/>break<sp/>signal<sp/>on<sp/>ESP32</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="497"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>result<sp/>=<sp/>ESP_ERR_NOT_SUPPORTED;</highlight></codeline>
 <codeline lineno="498"><highlight class="normal"></highlight></codeline>
 <codeline lineno="499"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Approach<sp/>1:<sp/>Try<sp/>uart_write_bytes_with_break<sp/>(ESP-IDF<sp/>v5.5<sp/>standard)</highlight><highlight class="normal"></highlight></codeline>
@@ -980,7 +980,7 @@
 <codeline lineno="507"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="508"><highlight class="normal"></highlight></codeline>
 <codeline lineno="509"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Approach<sp/>2:<sp/>If<sp/>uart_write_bytes_with_break<sp/>fails,<sp/>try<sp/>manual<sp/>break<sp/>via<sp/>GPIO<sp/>control</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="510"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>a<sp/>fallback<sp/>for<sp/>ESP32-C6<sp/>which<sp/>may<sp/>have<sp/>issues<sp/>with<sp/>the<sp/>standard<sp/>break<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="510"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>a<sp/>fallback<sp/>for<sp/>ESP32<sp/>which<sp/>may<sp/>have<sp/>issues<sp/>with<sp/>the<sp/>standard<sp/>break<sp/>function</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="511"><highlight class="normal"><sp/><sp/>ESP_LOGW(<ref refid="EspUart_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;uart_write_bytes_with_break<sp/>failed<sp/>(%s),<sp/>trying<sp/>manual<sp/>break<sp/>via<sp/>GPIO&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="512"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>esp_err_to_name(result));</highlight></codeline>
 <codeline lineno="513"><highlight class="normal"></highlight></codeline>
@@ -1006,7 +1006,7 @@
 <codeline lineno="533"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port_config_.cts_pin);</highlight></codeline>
 <codeline lineno="534"><highlight class="normal"></highlight></codeline>
 <codeline lineno="535"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>statistics_.break_count++;</highlight></codeline>
-<codeline lineno="536"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspUart_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Break<sp/>condition<sp/>sent<sp/>via<sp/>manual<sp/>GPIO<sp/>control<sp/>for<sp/>%lu<sp/>ms<sp/>(ESP32-C6<sp/>fallback)&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="536"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspUart_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Break<sp/>condition<sp/>sent<sp/>via<sp/>manual<sp/>GPIO<sp/>control<sp/>for<sp/>%lu<sp/>ms<sp/>(ESP32<sp/>fallback)&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="537"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>duration_ms);</highlight></codeline>
 <codeline lineno="538"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6ab1d931babc3d80897766d05cd169cbe4" kindref="member">hf_uart_err_t::UART_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="539"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -1018,7 +1018,7 @@
 <codeline lineno="545"><highlight class="normal"></highlight></codeline>
 <codeline lineno="546"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Approach<sp/>3:<sp/>If<sp/>all<sp/>else<sp/>fails,<sp/>log<sp/>the<sp/>issue<sp/>and<sp/>return<sp/>appropriate<sp/>error</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="547"><highlight class="normal"><sp/><sp/>ESP_LOGE(<ref refid="EspUart_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,</highlight></codeline>
-<codeline lineno="548"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;All<sp/>break<sp/>signal<sp/>methods<sp/>failed<sp/>on<sp/>ESP32-C6.<sp/>This<sp/>is<sp/>a<sp/>known<sp/>hardware<sp/>limitation.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="548"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;All<sp/>break<sp/>signal<sp/>methods<sp/>failed<sp/>on<sp/>ESP32.<sp/>This<sp/>is<sp/>a<sp/>known<sp/>hardware<sp/>limitation.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="549"><highlight class="normal"><sp/><sp/>ESP_LOGE(<ref refid="EspUart_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Break<sp/>signal<sp/>functionality<sp/>may<sp/>not<sp/>be<sp/>fully<sp/>supported<sp/>on<sp/>this<sp/>MCU<sp/>variant.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="550"><highlight class="normal"></highlight></codeline>
 <codeline lineno="551"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>a<sp/>specific<sp/>error<sp/>code<sp/>for<sp/>unsupported<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
@@ -1750,7 +1750,7 @@
 <codeline lineno="1277"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1278"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="EspUart_8cpp_1a9816d4c5bf01908b7066dcf57c442bea" kindref="member">GetDefaultUartPins</ref>(<ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref><sp/>port_number,<sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref>&amp;<sp/>tx_pin,<sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref>&amp;<sp/>rx_pin,</highlight></codeline>
 <codeline lineno="1279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref>&amp;<sp/>rts_pin,<sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref>&amp;<sp/>cts_pin)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="1280"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>Pin<sp/>Mappings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1280"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>Pin<sp/>Mappings<sp/>(variant-specific)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1281"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(HF_MCU_ESP32C6)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1282"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(port_number)<sp/>{</highlight></codeline>
 <codeline lineno="1283"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:</highlight></codeline>
@@ -1825,7 +1825,7 @@
 <codeline lineno="1352"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1353"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1354"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1355"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-S3<sp/>Pin<sp/>Mappings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1355"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>Pin<sp/>Mappings<sp/>(variant-specific)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1356"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_MCU_ESP32S3)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1357"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(port_number)<sp/>{</highlight></codeline>
 <codeline lineno="1358"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:</highlight></codeline>

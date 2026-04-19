@@ -58,7 +58,7 @@
 </simplesect>
 <simplesect kind="note"><para>This implementation is designed for all ESP32 variants using ESP-IDF v5.5+ </para>
 </simplesect>
-<simplesect kind="note"><para>Supports ESP32-C6, ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C2, ESP32-H2 </para>
+<simplesect kind="note"><para>Supports all ESP32 family variants </para>
 </simplesect>
 <simplesect kind="note"><para>Each EspAdc instance represents a single ADC unit </para>
 </simplesect>
@@ -109,7 +109,7 @@
 <codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>VARIANT-SPECIFIC<sp/>ADC<sp/>CONFIGURATION</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(HF_MCU_ESP32C6)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_UNITS<sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_CHANNELS<sp/>7<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
@@ -166,7 +166,7 @@
 <codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_CONTINUOUS_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ULP_MODE<sp/>ADC_ULP_MODE_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
-<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-S3<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_MCU_ESP32S3)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="127"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_UNITS<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="128"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_CHANNELS<sp/>10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>

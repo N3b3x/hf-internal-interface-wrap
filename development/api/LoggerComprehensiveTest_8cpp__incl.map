@@ -24,7 +24,7 @@
 <area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="612,137,342,185,341,180,611,132"/>
 <area shape="rect" id="Node000009" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="484,419,647,449"/>
 <area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="610,131,489,150,437,165,418,174,405,185,386,210,379,234,382,261,393,291,418,330,451,363,488,390,523,410,520,415,485,394,448,367,414,333,388,293,377,262,374,234,381,207,401,181,415,170,435,160,488,145,610,125"/>
-<area shape="rect" id="Node000012" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5...." alt="" coords="415,183,617,213"/>
+<area shape="rect" id="Node000012" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32/ESP&#45;IDF v5...." alt="" coords="415,183,617,213"/>
 <area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="659,137,562,180,560,175,657,132"/>
 <area shape="rect" id="Node000010" title=" " alt="" coords="697,497,772,528"/>
 <area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="598,447,692,489,690,494,596,452"/>

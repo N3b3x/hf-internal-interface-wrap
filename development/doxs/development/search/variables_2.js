@@ -24,7 +24,7 @@ var searchData=
   ['canfd_5ftx_5fcount_21',['canfd_tx_count',['../structhf__can__status__t.html#a64979d86ac6c68aeafe1cb0f33729bf5',1,'hf_can_status_t']]],
   ['capabilities_22',['capabilities',['../structhf__temp__config__t.html#a3d841c72748305241ffed952dc702968',1,'hf_temp_config_t::capabilities'],['../structhf__temp__sensor__info__t.html#a5a274ebeb78313a516dcf4ac4231419d',1,'hf_temp_sensor_info_t::capabilities']]],
   ['channel_23',['channel',['../structhf__wifi__network__info__t.html#af78d42c4c2f82438155d9e55fc204810',1,'hf_wifi_network_info_t::channel'],['../structhf__wifi__station__config__t.html#ae92c8cdb70a56a99ad11d433c18925e6',1,'hf_wifi_station_config_t::channel'],['../structhf__wifi__ap__config__t.html#a5a8eb0c04a8f37049c48a1c003369907',1,'hf_wifi_ap_config_t::channel'],['../structhf__stm32__temp__sensor__config__t.html#aa27bb09db96a42bd880d396e5927daf2',1,'hf_stm32_temp_sensor_config_t::channel']]],
-  ['channel_5fconfigs_24',['channel_configs',['../structhf__adc__unit__config__t.html#a3ccf2392358d6dc82d361024cc932596',1,'hf_adc_unit_config_t']]],
+  ['channel_5fconfigs_24',['channel_configs',['../structhf__adc__unit__config__t.html#a296e84988431a889a3a64bc4ea30a2a0',1,'hf_adc_unit_config_t']]],
   ['channel_5fcount_25',['channel_count',['../structEspPwm_1_1TimerState.html#a16f7e95099ad216e9f93fc1a7525c0f3',1,'EspPwm::TimerState']]],
   ['channel_5fdisables_5fcount_26',['channel_disables_count',['../structhf__pwm__statistics__t.html#aaeb614849916a187a0c2c13bb97b657a',1,'hf_pwm_statistics_t']]],
   ['channel_5fenabled_5f_27',['channel_enabled_',['../classStmPwm.html#ad7bfc76e37cca9dabdac5aeba9cd1f62',1,'StmPwm']]],

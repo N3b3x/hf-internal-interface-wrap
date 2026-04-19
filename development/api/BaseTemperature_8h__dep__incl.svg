@@ -85,7 +85,7 @@ var sectionId = 'dynsection-1';
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="EspTemperature_8h.html" target="_top" xlink:title="ESP32&#45;C6 internal temperature sensor implementation for the HardFOC system.">
+<g id="a_Node000003"><a xlink:href="EspTemperature_8h.html" target="_top" xlink:title="ESP32 internal temperature sensor implementation for the HardFOC system.">
 <polygon fill="white" stroke="#666666" points="456.5,-97 237.5,-97 237.5,-74 456.5,-74 456.5,-97"/>
 <text text-anchor="middle" x="347" y="-81.8" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspTemperature.h</text>
 </a>
@@ -130,7 +130,7 @@ var sectionId = 'dynsection-1';
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="EspTemperature_8cpp.html" target="_top" xlink:title="ESP32&#45;C6 internal temperature sensor implementation for the HardFOC system.">
+<g id="a_Node000004"><a xlink:href="EspTemperature_8cpp.html" target="_top" xlink:title="ESP32 internal temperature sensor implementation for the HardFOC system.">
 <polygon fill="white" stroke="#666666" points="494,-30.5 260,-30.5 260,-7.5 494,-7.5 494,-30.5"/>
 <text text-anchor="middle" x="377" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspTemperature.cpp</text>
 </a>

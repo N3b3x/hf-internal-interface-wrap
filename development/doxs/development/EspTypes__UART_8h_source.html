@@ -126,7 +126,7 @@ $(function(){initNavTree('EspTypes__UART_8h_source.html',''); initResizable(); }
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">// ESP32 UART port limits</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#ifdef HF_MCU_ESP32C6</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">static</span> <span class="keyword">constexpr</span> uint8_t <a class="code hl_variable" href="EspTypes__UART_8h.html#aad80247a990a0cdd81fdb0390696763b">HF_ESP32_UART_MAX_PORTS</a> = 3; <span class="comment">// ESP32-C6 has 3 UART ports</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">static</span> <span class="keyword">constexpr</span> uint8_t <a class="code hl_variable" href="EspTypes__UART_8h.html#aad80247a990a0cdd81fdb0390696763b">HF_ESP32_UART_MAX_PORTS</a> = 3; <span class="comment">// ESP32 has 3 UART ports</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#elif defined(HF_MCU_ESP32) || defined(HF_MCU_ESP32S2) || defined(HF_MCU_ESP32S3)</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">static</span> <span class="keyword">constexpr</span> uint8_t <a class="code hl_variable" href="EspTypes__UART_8h.html#aad80247a990a0cdd81fdb0390696763b">HF_ESP32_UART_MAX_PORTS</a> = 3; <span class="comment">// ESP32 Classic/S2/S3 have 3 UART ports</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#elif defined(HF_MCU_ESP32C3) || defined(HF_MCU_ESP32C2) || defined(HF_MCU_ESP32H2)</span></div>
@@ -365,7 +365,7 @@ $(function(){initNavTree('EspTypes__UART_8h_source.html',''); initResizable(); }
 <div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span><span class="comment">// ESP32 UART PIN MAP DEFINITIONS</span></div>
 <div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span><span class="comment">//==============================================================================</span></div>
 <div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="comment">// ESP32-C6 UART Pin Mappings</span></div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="comment">// ESP32 UART Pin Mappings</span></div>
 <div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="preprocessor">#ifdef HF_MCU_ESP32C6</span></div>
 <div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span><span class="keyword">struct </span>hf_uart_pin_map_esp32c6_t {</div>
 <div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>  <span class="keyword">static</span> <span class="keyword">constexpr</span> <a class="code hl_typedef" href="HardwareTypes_8h.html#a60a0d0e5d76ed481be9bf64c307520f9">hf_pin_num_t</a> UART0_TX_PIN = 21;  <span class="comment">// GPIO21</span></div>
@@ -425,7 +425,7 @@ $(function(){initNavTree('EspTypes__UART_8h_source.html',''); initResizable(); }
 <div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>};</div>
 <div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span><span class="comment">// ESP32-S3 UART Pin Mappings</span></div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span><span class="comment">// ESP32 UART Pin Mappings</span></div>
 <div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span><span class="preprocessor">#ifdef HF_MCU_ESP32S3</span></div>
 <div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span><span class="keyword">struct </span>hf_uart_pin_map_esp32s3_t {</div>
 <div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>  <span class="keyword">static</span> <span class="keyword">constexpr</span> <a class="code hl_typedef" href="HardwareTypes_8h.html#a60a0d0e5d76ed481be9bf64c307520f9">hf_pin_num_t</a> UART0_TX_PIN = 43;  <span class="comment">// GPIO43</span></div>

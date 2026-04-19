@@ -361,11 +361,11 @@
     <innerclass refid="classEspSpiDevice" prot="public">EspSpiDevice</innerclass>
     <innerclass refid="classEspSpiBus" prot="public">EspSpiBus</innerclass>
     <briefdescription>
-<para>Advanced MCU-integrated SPI controller implementation with ESP32C6/ESP-IDF v5.5+ features. </para>
+<para>Advanced MCU-integrated SPI controller implementation with ESP32/ESP-IDF v5.5+ features. </para>
     </briefdescription>
     <detaileddescription>
-<para>This header provides a comprehensive SPI implementation that utilizes all the advanced features available in ESP-IDF v5.5+ for ESP32C6, including DMA acceleration, octal/quad modes, advanced timing control, multi-device management, power optimization, and comprehensive error handling. The implementation supports both master and slave modes with extensive configuration options for high-performance and low-power applications.</para>
-<para>Key ESP32C6/ESP-IDF v5.5+ Features Supported:<itemizedlist>
+<para>This header provides a comprehensive SPI implementation that utilizes all the advanced features available in ESP-IDF v5.5+ for ESP32, including DMA acceleration, octal/quad modes, advanced timing control, multi-device management, power optimization, and comprehensive error handling. The implementation supports both master and slave modes with extensive configuration options for high-performance and low-power applications.</para>
+<para>Key ESP32/ESP-IDF v5.5+ Features Supported:<itemizedlist>
 <listitem><para>High-speed SPI Master with DMA support (up to 80MHz)</para>
 </listitem><listitem><para>Multiple clock sources (APB, XTAL) for power optimization</para>
 </listitem><listitem><para>IOMUX optimization for high-frequency operations</para>
@@ -384,7 +384,7 @@
 </simplesect>
 <simplesect kind="note"><para>This implementation fully complies with ESP-IDF v5.5 SPI Master driver API </para>
 </simplesect>
-<simplesect kind="note"><para>Supports ESP32C6 hardware features including dual/quad/octal SPI modes </para>
+<simplesect kind="note"><para>Supports ESP32 hardware features including dual/quad/octal SPI modes </para>
 </simplesect>
 <simplesect kind="note"><para>Thread-safe operations using RTOS mutex protection </para>
 </simplesect>

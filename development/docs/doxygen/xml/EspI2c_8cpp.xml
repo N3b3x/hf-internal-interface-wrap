@@ -475,7 +475,7 @@
 </listitem><listitem><para>Automatic resource cleanup and lifecycle management</para>
 </listitem></itemizedlist>
 </para>
-<para>The implementation closely follows ESP-IDF v5.5 I2C Master driver documentation: <ulink url="https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32c6/api-reference/peripherals/i2c.html">https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32c6/api-reference/peripherals/i2c.html</ulink></para>
+<para>The implementation closely follows ESP-IDF v5.5 I2C Master driver documentation: <ulink url="https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32/api-reference/peripherals/i2c.html">https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32/api-reference/peripherals/i2c.html</ulink></para>
 <para><simplesect kind="author"><para>Nebiyu Tadesse </para>
 </simplesect>
 <simplesect kind="date"><para>2025 </para>
@@ -484,7 +484,7 @@
 </simplesect>
 <simplesect kind="note"><para>Fully compliant with ESP-IDF v5.5 I2C Master driver API </para>
 </simplesect>
-<simplesect kind="note"><para>Optimized for ESP32C6 hardware capabilities </para>
+<simplesect kind="note"><para>Optimized for ESP32 hardware capabilities </para>
 </simplesect>
 <simplesect kind="note"><para>Thread-safe for multi-device I2C bus management </para>
 </simplesect>
@@ -499,7 +499,7 @@
 <codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>additional<sp/>includes<sp/>for<sp/>ESP32C6<sp/>features</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>additional<sp/>includes<sp/>for<sp/>ESP32<sp/>features</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
@@ -622,7 +622,7 @@
 <codeline lineno="156"><highlight class="normal"></highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>master<sp/>bus<sp/>created<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"></highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>for<sp/>bus<sp/>to<sp/>be<sp/>fully<sp/>ready<sp/>(ESP32-C6<sp/>requirement)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>for<sp/>bus<sp/>to<sp/>be<sp/>fully<sp/>ready<sp/>(ESP32<sp/>requirement)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>ensures<sp/>the<sp/>I2C<sp/>peripheral<sp/>is<sp/>fully<sp/>initialized<sp/>before<sp/>any<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="161"><highlight class="normal"><sp/><sp/>err<sp/>=<sp/>i2c_master_bus_wait_all_done(<ref refid="classEspI2cBus_1a7f7964f5265bac35588a90ab8acb5d43" kindref="member">bus_handle_</ref>,<sp/>100);</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(err<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
@@ -1067,7 +1067,7 @@
 <codeline lineno="609"><highlight class="normal"><sp/><sp/>device_found<sp/>=<sp/>CustomFastProbe(device_addr,<sp/>actual_timeout);</highlight></codeline>
 <codeline lineno="610"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="611"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>ESP-IDF&apos;s<sp/>broken<sp/>probe<sp/>function<sp/>(for<sp/>comparison/testing)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="612"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ProbeDevice:<sp/>Using<sp/>ESP-IDF<sp/>PROBE<sp/>(known<sp/>to<sp/>be<sp/>broken<sp/>on<sp/>ESP32C6)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="612"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ProbeDevice:<sp/>Using<sp/>ESP-IDF<sp/>PROBE<sp/>(known<sp/>to<sp/>be<sp/>broken<sp/>on<sp/>some<sp/>ESP32<sp/>variants)&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="613"><highlight class="normal"></highlight></codeline>
 <codeline lineno="614"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>provided<sp/>timeout<sp/>or<sp/>default<sp/>to<sp/>1000ms<sp/>for<sp/>ESP-IDF<sp/>probe</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="615"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>esp_timeout<sp/>=<sp/>(timeout_ms<sp/>&gt;<sp/>0)<sp/>?<sp/>timeout_ms<sp/>:<sp/>1000;</highlight></codeline>
@@ -2300,7 +2300,7 @@
 <codeline lineno="1842"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>I2C_EVENT_DONE:</highlight></codeline>
 <codeline lineno="1843"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Transaction<sp/>completed<sp/>successfully</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1844"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9ad01e55dfdc0e04d20b9ad332589e9553" kindref="member">hf_i2c_err_t::I2C_SUCCESS</ref>;</highlight></codeline>
-<codeline lineno="1845"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>ESP32-C6,<sp/>we<sp/>need<sp/>to<sp/>determine<sp/>bytes<sp/>transferred<sp/>based<sp/>on<sp/>operation<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1845"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>ESP32,<sp/>we<sp/>need<sp/>to<sp/>determine<sp/>bytes<sp/>transferred<sp/>based<sp/>on<sp/>operation<sp/>type</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1846"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Since<sp/>ESP-IDF<sp/>doesn&apos;t<sp/>provide<sp/>this<sp/>in<sp/>event<sp/>data,<sp/>we&apos;ll<sp/>use<sp/>the<sp/>operation<sp/>tracking</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1847"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(device-&gt;<ref refid="classEspI2cDevice_1a9a656f88421734bec4f6f3ea165df07f" kindref="member">current_op_type_</ref><sp/>==<sp/><ref refid="EspTypes__I2C_8h_1a9cdf05180b96f551b50382e9a6344870a3481ba8295f2d1dd701ba1dd01bc2f19" kindref="member">hf_i2c_transaction_type_t::HF_I2C_TRANS_WRITE</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="1848"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bytes_transferred<sp/>=<sp/>device-&gt;<ref refid="classEspI2cDevice_1aba14908906e873f48c67a768eb2a0044" kindref="member">last_write_length_</ref>;</highlight></codeline>

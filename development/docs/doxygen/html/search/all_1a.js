@@ -313,7 +313,7 @@ var searchData=
   ['successfulreceptions_310',['successfulReceptions',['../structhf__pio__statistics__t.html#a7b7c2f6f80c5bc7edfce6a3b006b077c',1,'hf_pio_statistics_t']]],
   ['successfultransmissions_311',['successfulTransmissions',['../structhf__pio__statistics__t.html#a48aec35ad390701490568212b34ad63f',1,'hf_pio_statistics_t']]],
   ['suggest_5falternative_312',['SUGGEST_ALTERNATIVE',['../EspTypes__PWM_8h.html#afe53e31a856c24db0547fcf306e1b312a4d410384cd4aae825bad97f4d13cf7b5',1,'EspTypes_PWM.h']]],
-  ['supported_3a_313',['ESP32C6/ESP-IDF v5.5+ Features Supported:',['../EspI2c_8h.html#features',1,'']]],
+  ['supported_3a_313',['ESP32/ESP-IDF v5.5+ Features Supported:',['../EspI2c_8h.html#features',1,'']]],
   ['supports_5fatomic_5foperations_314',['supports_atomic_operations',['../structhf__nvs__capabilities__t.html#ab9b752d6daf7d3899375846747ebd2fe',1,'hf_nvs_capabilities_t']]],
   ['supports_5fbidirectional_315',['supports_bidirectional',['../structhf__pio__capabilities__t.html#a83087466152d0e4a945a6195bbc68ee1',1,'hf_pio_capabilities_t']]],
   ['supports_5fcarrier_316',['supports_carrier',['../structhf__pio__capabilities__t.html#a185070cf3cc658b5546e62696bb72826',1,'hf_pio_capabilities_t']]],

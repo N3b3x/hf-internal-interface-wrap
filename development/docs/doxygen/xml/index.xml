@@ -1705,7 +1705,7 @@
     <member refid="structhf__adc__unit__config__t_1a913ab26a613a66311a1ff5e98e45541d" kind="variable"><name>unit_id</name></member>
     <member refid="structhf__adc__unit__config__t_1a92dfc178e6e403b9345de8fd21457b2e" kind="variable"><name>mode</name></member>
     <member refid="structhf__adc__unit__config__t_1abfdb771d34ee7b7a22fca9ce7a2fc983" kind="variable"><name>bit_width</name></member>
-    <member refid="structhf__adc__unit__config__t_1a3ccf2392358d6dc82d361024cc932596" kind="variable"><name>channel_configs</name></member>
+    <member refid="structhf__adc__unit__config__t_1a296e84988431a889a3a64bc4ea30a2a0" kind="variable"><name>channel_configs</name></member>
     <member refid="structhf__adc__unit__config__t_1ad81dd7fad6a6dfc7924fbf20f0566837" kind="variable"><name>continuous_config</name></member>
     <member refid="structhf__adc__unit__config__t_1a0408122facaca850618d55a337663c04" kind="variable"><name>calibration_config</name></member>
     <member refid="structhf__adc__unit__config__t_1aff3b57dfa9de4ea758e596db7e1637b3" kind="function"><name>hf_adc_unit_config_t</name></member>
@@ -4876,6 +4876,7 @@
     <member refid="EspTypes__ADC_8h_1acb5a927e5861c1dc726aa5e27097764eae70e931d1521d99c7b1502fbf6d8274d" kind="enumvalue"><name>LOW_THRESH</name></member>
     <member refid="EspTypes__ADC_8h_1a0e2d23199837f1a7cf8ca9c555bcf367" kind="typedef"><name>hf_adc_continuous_callback_t</name></member>
     <member refid="EspTypes__ADC_8h_1afb37bea53ade46ebbac1eba5eb604cda" kind="typedef"><name>hf_adc_monitor_callback_t</name></member>
+    <member refid="EspTypes__ADC_8h_1a1ae5f3a2cdf4694d1e5241bd993af956" kind="variable"><name>HF_ADC_CFG_MAX_CHANNELS</name></member>
     <member refid="EspTypes__ADC_8h_1a001d3833197b85f64477deac14db1ee2" kind="variable"><name>HF_ESP32_ADC_DATA_BYTES_PER_CONV</name></member>
     <member refid="EspTypes__ADC_8h_1a8df3cafeba51df4d8ebe52e698b9a013" kind="variable"><name>HF_ESP32_ADC_MIN_FRAME_SIZE</name></member>
     <member refid="EspTypes__ADC_8h_1aba493558405c96bb021a15187a5e3b9a" kind="variable"><name>HF_ESP32_ADC_MAX_FRAME_SIZE</name></member>

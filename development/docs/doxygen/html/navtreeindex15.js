@@ -54,7 +54,7 @@ var NAVTREEINDEX15 =
 "structhf__adc__statistics__t.html#afe0836b56c003884263fca8506c44e7e":[3,0,45,2],
 "structhf__adc__unit__config__t.html":[3,0,46],
 "structhf__adc__unit__config__t.html#a0408122facaca850618d55a337663c04":[3,0,46,2],
-"structhf__adc__unit__config__t.html#a3ccf2392358d6dc82d361024cc932596":[3,0,46,3],
+"structhf__adc__unit__config__t.html#a296e84988431a889a3a64bc4ea30a2a0":[3,0,46,3],
 "structhf__adc__unit__config__t.html#a913ab26a613a66311a1ff5e98e45541d":[3,0,46,6],
 "structhf__adc__unit__config__t.html#a92dfc178e6e403b9345de8fd21457b2e":[3,0,46,5],
 "structhf__adc__unit__config__t.html#abfdb771d34ee7b7a22fca9ce7a2fc983":[3,0,46,1],

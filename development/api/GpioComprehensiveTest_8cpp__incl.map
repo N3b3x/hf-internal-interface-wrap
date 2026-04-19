@@ -10,7 +10,7 @@
 <area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="427,59,193,104,192,99,426,53"/>
 <area shape="rect" id="Node000010" href="$BaseGpio_8h.html" title="Unified GPIO base class for all digital GPIO implementations." alt="" coords="792,340,953,371"/>
 <area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="555,56,561,105,574,168,601,234,619,264,642,290,673,312,707,328,743,340,779,347,777,352,741,345,705,333,670,317,639,294,615,267,596,236,569,170,555,106,550,56"/>
-<area shape="rect" id="Node000015" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5...." alt="" coords="724,183,925,213"/>
+<area shape="rect" id="Node000015" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32/ESP&#45;IDF v5...." alt="" coords="724,183,925,213"/>
 <area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="593,54,791,173,788,178,590,59"/>
 <area shape="rect" id="Node000018" href="$EspTypes__GPIO_8h.html" title="ESP32 GPIO type definitions for hardware abstraction." alt="" coords="1110,261,1283,292"/>
 <area shape="poly" id="edge30_Node000001_Node000018" title=" " alt="" coords="682,33,1027,46,1455,72,1660,92,1836,116,1909,130,1968,145,2012,162,2039,181,2046,198,2039,215,2024,225,2000,234,1931,248,1837,259,1728,267,1495,275,1297,278,1297,273,1495,270,1728,261,1837,253,1930,243,1999,229,2021,220,2035,212,2041,198,2035,184,2009,167,1966,150,1907,135,1835,121,1659,97,1455,78,1026,51,681,38"/>

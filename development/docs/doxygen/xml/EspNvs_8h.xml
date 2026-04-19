@@ -113,13 +113,13 @@
     </invincdepgraph>
     <innerclass refid="classEspNvs" prot="public">EspNvs</innerclass>
     <briefdescription>
-<para>World-class ESP32-C6 NVS storage implementation with ESP-IDF v5.5+ features. </para>
+<para>World-class ESP32 NVS storage implementation with ESP-IDF v5.5+ features. </para>
     </briefdescription>
     <detaileddescription>
-<para>This header provides a production-ready NVS implementation for microcontrollers with built-in non-volatile storage capabilities. On ESP32-C6, this leverages the modern ESP-IDF v5.5+ NVS API with comprehensive security features, encryption support, performance optimizations, and robust error handling.</para>
+<para>This header provides a production-ready NVS implementation for microcontrollers with built-in non-volatile storage capabilities. On ESP32, this leverages the modern ESP-IDF v5.5+ NVS API with comprehensive security features, encryption support, performance optimizations, and robust error handling.</para>
 <para>Key Features:<itemizedlist>
 <listitem><para>Modern ESP-IDF v5.5+ NVS API with handle-based operations</para>
-</listitem><listitem><para>ESP32-C6 HMAC-based encryption support for secure storage</para>
+</listitem><listitem><para>ESP32 HMAC-based encryption support for secure storage</para>
 </listitem><listitem><para>Comprehensive error handling and mapping to HardFOC error codes</para>
 </listitem><listitem><para>Advanced NVS features: statistics, validation, performance monitoring</para>
 </listitem><listitem><para>Thread-safe operations with optional mutex protection</para>
@@ -129,7 +129,7 @@
 </listitem></itemizedlist>
 </para>
 <para>Security Features:<itemizedlist>
-<listitem><para>HMAC-based encryption scheme (ESP32-C6 specific)</para>
+<listitem><para>HMAC-based encryption scheme (ESP32 specific)</para>
 </listitem><listitem><para>XTS encryption for data protection</para>
 </listitem><listitem><para>Secure key generation and eFuse-based key storage</para>
 </listitem><listitem><para>Flash encryption compatibility</para>
@@ -150,7 +150,7 @@
 </simplesect>
 <simplesect kind="copyright"><para>HardFOC</para>
 </simplesect>
-<simplesect kind="note"><para>This implementation is specifically optimized for ESP32-C6 production environments. </para>
+<simplesect kind="note"><para>This implementation is specifically optimized for ESP32 production environments. </para>
 </simplesect>
 <simplesect kind="note"><para>Requires ESP-IDF v5.5 or later for full feature support. </para>
 </simplesect>
@@ -169,7 +169,7 @@
 <codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__NVS_8h" kindref="compound">utils/EspTypes_NVS.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>Centralized<sp/>ESP32<sp/>NVS<sp/>type<sp/>definitions</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>NVS<sp/>abstracted<sp/>types<sp/>for<sp/>portability</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>NVS<sp/>abstracted<sp/>types<sp/>for<sp/>portability</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
 <codeline lineno="105" refid="classEspNvs" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classEspNvs" kindref="compound">EspNvs</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classBaseNvs" kindref="compound">BaseNvs</ref><sp/>{</highlight></codeline>
 <codeline lineno="106"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>

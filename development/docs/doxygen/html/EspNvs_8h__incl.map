@@ -1,5 +1,5 @@
 <map id="inc/mcu/esp32/EspNvs.h" name="inc/mcu/esp32/EspNvs.h">
-<area shape="rect" id="Node000001" title="World&#45;class ESP32&#45;C6 NVS storage implementation with ESP&#45;IDF v5.5+ features." alt="" coords="65,5,286,36"/>
+<area shape="rect" id="Node000001" title="World&#45;class ESP32 NVS storage implementation with ESP&#45;IDF v5.5+ features." alt="" coords="65,5,286,36"/>
 <area shape="rect" id="Node000002" href="$BaseNvs_8h.html" title="Abstract base class for Non&#45;Volatile Storage implementations in the HardFOC system." alt="" coords="46,163,155,193"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,37,116,151,111,149,166,35"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="178,320,253,351"/>

@@ -252,10 +252,10 @@
         <name>clock_source</name>
         <qualifiedname>hf_spi_device_config_t::clock_source</qualifiedname>
         <briefdescription>
-<para>Clock source selection (0=default, ESP32C6 specific) </para>
+<para>Clock source selection (0=default, ESP32 specific) </para>
         </briefdescription>
         <detaileddescription>
-<para>Clock source selection for ESP32C6 (0=default, see spi_clock_source_t) </para>
+<para>Clock source selection for ESP32 (0=default, see spi_clock_source_t) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -268,7 +268,7 @@
         <name>sampling_point</name>
         <qualifiedname>hf_spi_device_config_t::sampling_point</qualifiedname>
         <briefdescription>
-<para>Sampling point for data (ESP32C6 specific) </para>
+<para>Sampling point for data (ESP32 specific) </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>

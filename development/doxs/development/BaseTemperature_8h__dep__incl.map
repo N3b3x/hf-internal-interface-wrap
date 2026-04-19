@@ -2,12 +2,12 @@
 <area shape="rect" id="Node000001" title="Abstract base class for temperature sensor implementations in the HardFOC system." alt="" coords="342,5,594,36"/>
 <area shape="rect" id="Node000002" href="$TemperatureComprehensiveTest_8cpp.html" title="Comprehensive Temperature sensor testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,163,328,213"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="411,43,361,62,311,86,249,125,197,164,194,160,246,121,308,82,359,57,410,38"/>
-<area shape="rect" id="Node000003" href="$EspTemperature_8h.html" title="ESP32&#45;C6 internal temperature sensor implementation for the HardFOC system." alt="" coords="322,84,614,115"/>
+<area shape="rect" id="Node000003" href="$EspTemperature_8h.html" title="ESP32 internal temperature sensor implementation for the HardFOC system." alt="" coords="322,84,614,115"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="471,50,471,84,465,84,465,50"/>
 <area shape="rect" id="Node000005" href="$StmTemperature_8h.html" title="STM32 Temperature sensor — reads the internal temp sensor via ADC or an external sensor via a user&#45;su..." alt="" coords="667,84,962,115"/>
 <area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="546,36,751,81,750,87,545,42"/>
 <area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="406,121,252,165,250,160,405,116"/>
-<area shape="rect" id="Node000004" href="$EspTemperature_8cpp.html" title="ESP32&#45;C6 internal temperature sensor implementation for the HardFOC system." alt="" coords="352,173,664,203"/>
+<area shape="rect" id="Node000004" href="$EspTemperature_8cpp.html" title="ESP32 internal temperature sensor implementation for the HardFOC system." alt="" coords="352,173,664,203"/>
 <area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="483,126,504,171,499,173,478,128"/>
 <area shape="rect" id="Node000006" href="$StmTemperature_8cpp.html" title="STM32 Temperature sensor implementation — ADC&#45;based with internal/external modes." alt="" coords="688,173,1003,203"/>
 <area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="827,127,843,171,838,173,822,129"/>
