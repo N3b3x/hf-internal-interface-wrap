@@ -143,7 +143,13 @@ int EspSpiBus::CreateDevice(const hf_spi_device_config_t& device_config) noexcep
     return -1;
   }
 
-  // Store in vector (C++ wrapper only)
+  // Initialize the ESP-IDF device immediately
+  if (!device->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize SPI device (CS=%d)", device_config.cs_pin);
+    return -1;
+  }
+
+  // Store in vector (device is now fully initialized)
   devices_.push_back(std::move(device));
   return static_cast<int>(devices_.size() - 1);
 }
