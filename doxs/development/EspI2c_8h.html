@@ -157,7 +157,7 @@ Functions</h2></td></tr>
 <div class="textblock"><p>Advanced ESP32-integrated I2C controller for ESP-IDF v5.5+ with proper bus-device architecture. </p>
 <p>This header provides a comprehensive I2C implementation that properly utilizes the ESP-IDF v5.5+ bus-device model, following the same pattern as the SPI implementation. The architecture separates bus management from device operations, providing clean abstraction and optimal resource management.</p>
 <h1><a class="anchor" id="features"></a>
-ESP32C6/ESP-IDF v5.5+ Features Supported:</h1>
+ESP32/ESP-IDF v5.5+ Features Supported:</h1>
 <ul>
 <li><b>Bus-Device Architecture</b>: Separate <a class="el" href="classEspI2cBus.html" title="Manages a single I2C bus. Handles bus initialization and device creation.">EspI2cBus</a> and <a class="el" href="classEspI2cDevice.html" title="Represents a single I2C device on a bus.">EspI2cDevice</a> classes</li>
 <li><b>Modern API</b>: Uses i2c_new_master_bus() and i2c_master_bus_add_device()</li>
@@ -174,7 +174,7 @@ Performance Characteristics:</h1>
 <ul>
 <li>Standard Mode: 100 kHz</li>
 <li>Fast Mode: 400 kHz</li>
-<li>Fast Mode Plus: 1 MHz (ESP32C6)</li>
+<li>Fast Mode Plus: 1 MHz (ESP32)</li>
 <li>7-bit and 10-bit addressing support</li>
 <li>Clock stretching with configurable timeout</li>
 <li>Hardware FIFO utilization</li>
@@ -184,7 +184,7 @@ Performance Characteristics:</h1>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>HardFOC </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>4.0.0 - Mode-aware architecture with DRY implementation</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>This implementation requires ESP-IDF v5.5+ and is optimized for ESP32C6. </dd>
+<dl class="section note"><dt>Note</dt><dd>This implementation requires ESP-IDF v5.5+ and is optimized for ESP32. </dd>
 <dd>
 Thread-safe operation is guaranteed for all public methods. </dd>
 <dd>

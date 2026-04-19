@@ -6,7 +6,7 @@
 <area shape="poly" id="edge45_Node000001_Node000020" title=" " alt="" coords="1806,54,1837,75,1865,102,1909,166,1933,222,1946,283,1959,360,1959,394,1952,426,1947,425,1954,394,1954,360,1941,284,1928,224,1904,169,1861,106,1834,79,1803,58"/>
 <area shape="rect" id="Node000022" href="$BaseTemperature_8h.html" title="Abstract base class for temperature sensor implementations in the HardFOC system." alt="" coords="891,360,1115,391"/>
 <area shape="poly" id="edge28_Node000001_Node000022" title=" " alt="" coords="1786,54,1825,91,1861,137,1873,162,1879,187,1877,212,1864,235,1843,255,1814,273,1740,303,1647,326,1542,344,1432,357,1322,366,1129,375,1129,370,1321,361,1431,352,1541,339,1646,321,1738,298,1812,268,1839,251,1860,232,1872,210,1874,188,1868,164,1856,140,1821,95,1783,58"/>
-<area shape="rect" id="Node000023" href="$EspTemperature_8h.html" title="ESP32&#45;C6 internal temperature sensor implementation for the HardFOC system." alt="" coords="1387,104,1651,135"/>
+<area shape="rect" id="Node000023" href="$EspTemperature_8h.html" title="ESP32 internal temperature sensor implementation for the HardFOC system." alt="" coords="1387,104,1651,135"/>
 <area shape="poly" id="edge32_Node000001_Node000023" title=" " alt="" coords="1689,59,1571,102,1569,97,1687,54"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="1259,193,1359,223"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="882,124,1051,143,1149,159,1247,180,1264,185,1262,190,1245,185,1148,164,1050,148,881,129"/>
@@ -22,7 +22,7 @@
 <area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="873,132,1087,180,1109,186,1107,191,1085,185,872,137"/>
 <area shape="rect" id="Node000009" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="617,439,779,469"/>
 <area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="779,137,754,157,734,184,720,215,710,248,699,315,696,377,698,425,693,425,691,377,694,314,705,246,715,213,729,181,751,153,776,133"/>
-<area shape="rect" id="Node000012" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5...." alt="" coords="101,193,303,223"/>
+<area shape="rect" id="Node000012" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32/ESP&#45;IDF v5...." alt="" coords="101,193,303,223"/>
 <area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="720,132,534,153,314,185,277,192,276,187,314,180,534,148,720,126"/>
 <area shape="rect" id="Node000010" title=" " alt="" coords="779,517,854,548"/>
 <area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="722,467,784,507,781,512,719,472"/>

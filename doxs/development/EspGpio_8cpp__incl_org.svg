@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Production&#45;quality ESP32C6 GPIO implementation with ESP&#45;IDF v5.5+ advanced features.">
+<g id="a_Node000001"><a xlink:title="Production&#45;quality ESP32 GPIO implementation with ESP&#45;IDF v5.5+ advanced features.">
 <polygon fill="#999999" stroke="#666666" points="699.5,-318 512.5,-318 512.5,-295 699.5,-295 699.5,-318"/>
 <text text-anchor="middle" x="606" y="-302.8" font-family="Arial" font-size="14.00">src/mcu/esp32/EspGpio.cpp</text>
 </a>
@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="EspGpio_8h.html" target="_top" xlink:title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5....">
+<g id="a_Node000002"><a xlink:href="EspGpio_8h.html" target="_top" xlink:title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32/ESP&#45;IDF v5....">
 <polygon fill="white" stroke="#666666" points="400,-259 320,-259 320,-236 400,-236 400,-259"/>
 <text text-anchor="middle" x="360" y="-243.8" font-family="Arial" font-size="14.00">EspGpio.h</text>
 </a>

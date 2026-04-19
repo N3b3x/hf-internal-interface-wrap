@@ -39,7 +39,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="EspNvs_8h.html" target="_top" xlink:title="World&#45;class ESP32&#45;C6 NVS storage implementation with ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000003"><a xlink:href="EspNvs_8h.html" target="_top" xlink:title="World&#45;class ESP32 NVS storage implementation with ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="288.5,-97 122.5,-97 122.5,-74 288.5,-74 288.5,-97"/>
 <text text-anchor="middle" x="205.5" y="-81.8" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspNvs.h</text>
 </a>
@@ -103,7 +103,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="EspNvs_8cpp.html" target="_top" xlink:title="World&#45;class ESP32&#45;C6 NVS implementation with ESP&#45;IDF v5.5+ advanced features.">
+<g id="a_Node000004"><a xlink:href="EspNvs_8cpp.html" target="_top" xlink:title="World&#45;class ESP32 NVS implementation with ESP&#45;IDF v5.5+ advanced features.">
 <polygon fill="white" stroke="#666666" points="388,-30.5 207,-30.5 207,-7.5 388,-7.5 388,-30.5"/>
 <text text-anchor="middle" x="297.5" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspNvs.cpp</text>
 </a>

@@ -14,7 +14,7 @@
 <area shape="poly" id="edge99_Node000001_Node000039" title=" " alt="" coords="4170,54,4328,98,4327,103,4169,59"/>
 <area shape="rect" id="Node000040" href="$TestFramework_8h.html" title="Shared testing framework for ESP32&#45;C6 comprehensive test suites." alt="" coords="847,183,1009,213"/>
 <area shape="poly" id="edge102_Node000001_Node000040" title=" " alt="" coords="3961,41,2819,98,1164,185,1023,194,1022,188,1164,180,2818,92,3961,35"/>
-<area shape="rect" id="Node000045" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5...." alt="" coords="67,261,269,292"/>
+<area shape="rect" id="Node000045" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32/ESP&#45;IDF v5...." alt="" coords="67,261,269,292"/>
 <area shape="poly" id="edge116_Node000001_Node000045" title=" " alt="" coords="3961,36,3462,44,2692,67,2245,86,1775,111,1300,144,835,185,524,223,267,262,267,257,523,218,834,180,1300,139,1775,106,2244,80,2692,61,3462,39,3961,30"/>
 <area shape="rect" id="Node000003" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="3133,497,3296,528"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="4065,368,4099,383,4129,403,4140,414,4146,426,4146,438,4138,451,4121,462,4094,472,4015,487,3909,498,3786,506,3526,514,3310,515,3310,509,3525,508,3786,501,3909,493,4015,482,4093,467,4119,457,4134,447,4140,437,4141,427,4135,417,4125,407,4096,388,4062,373"/>

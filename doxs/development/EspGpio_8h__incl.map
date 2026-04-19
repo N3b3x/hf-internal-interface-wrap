@@ -1,5 +1,5 @@
 <map id="inc/mcu/esp32/EspGpio.h" name="inc/mcu/esp32/EspGpio.h">
-<area shape="rect" id="Node000001" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5...." alt="" coords="175,5,405,36"/>
+<area shape="rect" id="Node000001" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32/ESP&#45;IDF v5...." alt="" coords="175,5,405,36"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,84,127,115"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="249,39,121,82,119,77,248,34"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="151,84,253,115"/>

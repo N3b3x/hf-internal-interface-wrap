@@ -29,7 +29,7 @@ var searchData=
   ['fdcantxheader_26',['FdCanTxHeader',['../structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader.html',1,'anonymous_namespace{StmCan.cpp}']]],
   ['fdformat_27',['FDFormat',['../structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader.html#a14a05a7038cc88fadd889192191f8316',1,'anonymous_namespace{StmCan.cpp}::FdCanTxHeader::FDFormat'],['../structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader.html#aa48dfe458981539c06c0a86e5485c7af',1,'anonymous_namespace{StmCan.cpp}::FdCanRxHeader::FDFormat']]],
   ['features_20strong_28',['&lt;strong&gt;Build System Features&lt;/strong&gt;',['../index.html#autotoc_md41',1,'']]],
-  ['features_20supported_3a_29',['ESP32C6/ESP-IDF v5.5+ Features Supported:',['../EspI2c_8h.html#features',1,'']]],
+  ['features_20supported_3a_29',['ESP32/ESP-IDF v5.5+ Features Supported:',['../EspI2c_8h.html#features',1,'']]],
   ['features_3a_30',['Features:',['../structhf__pwm__channel__config__t.html#autotoc_md14',1,'Advanced Features:'],['../classEspPwm.html#autotoc_md6',1,'Key Design Features:'],['../EspPwm_8cpp.html#autotoc_md16',1,'Key Implementation Features:']]],
   ['feedrxblock_31',['FeedRxBlock',['../classStmUart.html#a90b14b8a751d0c27a2dd1a8aefc1f7f6',1,'StmUart']]],
   ['feedrxbyte_32',['FeedRxByte',['../classStmUart.html#aa766367ec288d70b4ed09d1348befef4',1,'StmUart']]],

@@ -1,6 +1,6 @@
 <map id="src/mcu/esp32/EspPio.cpp" name="src/mcu/esp32/EspPio.cpp">
-<area shape="rect" id="Node000001" title="ESP32C6 RMT&#45;based Programmable IO Channel implementation." alt="" coords="2749,5,2985,36"/>
-<area shape="rect" id="Node000002" href="$EspPio_8h.html" title="ESP32C6 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features." alt="" coords="1494,84,1589,115"/>
+<area shape="rect" id="Node000001" title="ESP32 RMT&#45;based Programmable IO Channel implementation." alt="" coords="2749,5,2985,36"/>
+<area shape="rect" id="Node000002" href="$EspPio_8h.html" title="ESP32 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features." alt="" coords="1494,84,1589,115"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2749,31,1603,97,1602,92,2748,26"/>
 <area shape="rect" id="Node000024" href="$EspTypes__PIO_8h.html" title="ESP32 PIO/RMT type definitions for hardware abstraction." alt="" coords="1690,320,1849,351"/>
 <area shape="poly" id="edge97_Node000001_Node000024" title=" " alt="" coords="2818,39,1833,319,1831,314,2817,33"/>

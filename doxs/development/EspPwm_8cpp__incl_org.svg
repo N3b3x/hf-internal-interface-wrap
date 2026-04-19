@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="EspPwm_8h.html" target="_top" xlink:title="ESP32C6 LEDC (PWM) controller implementation for the HardFOC system.">
+<g id="a_Node000002"><a xlink:href="EspPwm_8h.html" target="_top" xlink:title="ESP32 LEDC (PWM) controller implementation for the HardFOC system.">
 <polygon fill="white" stroke="#666666" points="592.11,-318 510.11,-318 510.11,-295 592.11,-295 592.11,-318"/>
 <text text-anchor="middle" x="551.11" y="-302.8" font-family="Arial" font-size="14.00">EspPwm.h</text>
 </a>

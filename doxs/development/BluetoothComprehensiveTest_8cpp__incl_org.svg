@@ -57,7 +57,7 @@
 <!-- Node11 -->
 <g id="Node000011" class="node">
 <title>Node11</title>
-<g id="a_Node000011"><a xlink:href="EspBluetooth_8h.html" target="_top" xlink:title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32C6)">
+<g id="a_Node000011"><a xlink:href="EspBluetooth_8h.html" target="_top" xlink:title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32)">
 <polygon fill="white" stroke="#666666" points="557,-200 378,-200 378,-177 557,-177 557,-200"/>
 <text text-anchor="middle" x="467.5" y="-184.8" font-family="Arial" font-size="14.00">mcu/esp32/EspBluetooth.h</text>
 </a>
@@ -480,7 +480,7 @@
 <!-- Node23 -->
 <g id="Node000023" class="node">
 <title>Node23</title>
-<g id="a_Node000023"><a xlink:href="EspGpio_8h.html" target="_top" xlink:title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5....">
+<g id="a_Node000023"><a xlink:href="EspGpio_8h.html" target="_top" xlink:title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32/ESP&#45;IDF v5....">
 <polygon fill="white" stroke="#666666" points="1152,-259 1001,-259 1001,-236 1152,-236 1152,-259"/>
 <text text-anchor="middle" x="1076.5" y="-243.8" font-family="Arial" font-size="14.00">mcu/esp32/EspGpio.h</text>
 </a>

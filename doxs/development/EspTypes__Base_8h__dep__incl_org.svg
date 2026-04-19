@@ -341,7 +341,7 @@
 <!-- Node12 -->
 <g id="Node000012" class="node">
 <title>Node12</title>
-<g id="a_Node000012"><a xlink:href="EspPio_8h.html" target="_top" xlink:title="ESP32C6 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000012"><a xlink:href="EspPio_8h.html" target="_top" xlink:title="ESP32 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="3818.5,-119.5 3656.5,-119.5 3656.5,-96.5 3818.5,-96.5 3818.5,-119.5"/>
 <text text-anchor="middle" x="3737.5" y="-104.3" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspPio.h</text>
 </a>
@@ -359,7 +359,7 @@
 <!-- Node15 -->
 <g id="Node000015" class="node">
 <title>Node15</title>
-<g id="a_Node000015"><a xlink:href="EspSpi_8h.html" target="_top" xlink:title="Advanced MCU&#45;integrated SPI controller implementation with ESP32C6/ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000015"><a xlink:href="EspSpi_8h.html" target="_top" xlink:title="Advanced MCU&#45;integrated SPI controller implementation with ESP32/ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="3998.5,-119.5 3836.5,-119.5 3836.5,-96.5 3998.5,-96.5 3998.5,-119.5"/>
 <text text-anchor="middle" x="3917.5" y="-104.3" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspSpi.h</text>
 </a>
@@ -489,7 +489,7 @@
 <!-- Node14 -->
 <g id="Node000014" class="node">
 <title>Node14</title>
-<g id="a_Node000014"><a xlink:href="EspPio_8cpp.html" target="_top" xlink:title="ESP32C6 RMT&#45;based Programmable IO Channel implementation.">
+<g id="a_Node000014"><a xlink:href="EspPio_8cpp.html" target="_top" xlink:title="ESP32 RMT&#45;based Programmable IO Channel implementation.">
 <polygon fill="white" stroke="#666666" points="4274,-38 4097,-38 4097,-15 4274,-15 4274,-38"/>
 <text text-anchor="middle" x="4185.5" y="-22.8" font-family="Arial" font-size="14.00">src/mcu/esp32/EspPio.cpp</text>
 </a>
@@ -526,7 +526,7 @@
 <!-- Node17 -->
 <g id="Node000017" class="node">
 <title>Node17</title>
-<g id="a_Node000017"><a xlink:href="EspSpi_8cpp.html" target="_top" xlink:title="Implementation of MCU&#45;integrated SPI controller for ESP32C6 with ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000017"><a xlink:href="EspSpi_8cpp.html" target="_top" xlink:title="Implementation of MCU&#45;integrated SPI controller for ESP32 with ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="4469,-38 4292,-38 4292,-15 4469,-15 4469,-38"/>
 <text text-anchor="middle" x="4380.5" y="-22.8" font-family="Arial" font-size="14.00">src/mcu/esp32/EspSpi.cpp</text>
 </a>
@@ -701,7 +701,7 @@
 <!-- Node29 -->
 <g id="Node000029" class="node">
 <title>Node29</title>
-<g id="a_Node000029"><a xlink:href="EspGpio_8h.html" target="_top" xlink:title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5....">
+<g id="a_Node000029"><a xlink:href="EspGpio_8h.html" target="_top" xlink:title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32/ESP&#45;IDF v5....">
 <polygon fill="white" stroke="#666666" points="2176.5,-193.5 2004.5,-193.5 2004.5,-170.5 2176.5,-170.5 2176.5,-193.5"/>
 <text text-anchor="middle" x="2090.5" y="-178.3" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspGpio.h</text>
 </a>
@@ -822,7 +822,7 @@
 <!-- Node38 -->
 <g id="Node000038" class="node">
 <title>Node38</title>
-<g id="a_Node000038"><a xlink:href="EspGpio_8cpp.html" target="_top" xlink:title="Production&#45;quality ESP32C6 GPIO implementation with ESP&#45;IDF v5.5+ advanced features.">
+<g id="a_Node000038"><a xlink:href="EspGpio_8cpp.html" target="_top" xlink:title="Production&#45;quality ESP32 GPIO implementation with ESP&#45;IDF v5.5+ advanced features.">
 <polygon fill="white" stroke="#666666" points="1817,-119.5 1630,-119.5 1630,-96.5 1817,-96.5 1817,-119.5"/>
 <text text-anchor="middle" x="1723.5" y="-104.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspGpio.cpp</text>
 </a>
@@ -1043,7 +1043,7 @@
 <!-- Node40 -->
 <g id="Node000040" class="node">
 <title>Node40</title>
-<g id="a_Node000040"><a xlink:href="EspPwm_8h.html" target="_top" xlink:title="ESP32C6 LEDC (PWM) controller implementation for the HardFOC system.">
+<g id="a_Node000040"><a xlink:href="EspPwm_8h.html" target="_top" xlink:title="ESP32 LEDC (PWM) controller implementation for the HardFOC system.">
 <polygon fill="white" stroke="#666666" points="2489,-193.5 2316,-193.5 2316,-170.5 2489,-170.5 2489,-193.5"/>
 <text text-anchor="middle" x="2402.5" y="-178.3" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspPwm.h</text>
 </a>
@@ -1106,7 +1106,7 @@
 <!-- Node44 -->
 <g id="Node000044" class="node">
 <title>Node44</title>
-<g id="a_Node000044"><a xlink:href="EspNvs_8h.html" target="_top" xlink:title="World&#45;class ESP32&#45;C6 NVS storage implementation with ESP&#45;IDF v5.5+ features.">
+<g id="a_Node000044"><a xlink:href="EspNvs_8h.html" target="_top" xlink:title="World&#45;class ESP32 NVS storage implementation with ESP&#45;IDF v5.5+ features.">
 <polygon fill="white" stroke="#666666" points="1386.5,-267.5 1220.5,-267.5 1220.5,-244.5 1386.5,-244.5 1386.5,-267.5"/>
 <text text-anchor="middle" x="1303.5" y="-252.3" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspNvs.h</text>
 </a>
@@ -1133,7 +1133,7 @@
 <!-- Node45 -->
 <g id="Node000045" class="node">
 <title>Node45</title>
-<g id="a_Node000045"><a xlink:href="EspNvs_8cpp.html" target="_top" xlink:title="World&#45;class ESP32&#45;C6 NVS implementation with ESP&#45;IDF v5.5+ advanced features.">
+<g id="a_Node000045"><a xlink:href="EspNvs_8cpp.html" target="_top" xlink:title="World&#45;class ESP32 NVS implementation with ESP&#45;IDF v5.5+ advanced features.">
 <polygon fill="white" stroke="#666666" points="1394,-193.5 1213,-193.5 1213,-170.5 1394,-170.5 1394,-193.5"/>
 <text text-anchor="middle" x="1303.5" y="-178.3" font-family="Arial" font-size="14.00">src/mcu/esp32/EspNvs.cpp</text>
 </a>
