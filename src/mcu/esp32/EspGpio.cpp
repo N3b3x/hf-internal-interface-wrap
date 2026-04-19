@@ -337,7 +337,13 @@ bool EspGpio::IsPinAvailable() const noexcept {
   return pin_ >= 0 && pin_ <= HF_MCU_GPIO_MAX_PIN_NUMBER &&
          GPIO_PIN_CAPABILITIES[pin_].is_valid_gpio;
 #else
-  return pin_ >= 0 && pin_ < 32; // Generic validation
+  // For every other ESP32 variant fall back to the macro defined in
+  // EspTypes_GPIO.h, which uses the per-target HF_MCU_GPIO_MAX_PIN_NUMBER
+  // (49 for ESP32-S3, 49 for ESP32-S2, 40 for the original ESP32, etc.).
+  // The previous hard-coded `pin_ < 32` check denied access to GPIO32+
+  // on every variant, breaking every Flux V1 board pin in that range
+  // (e.g. MAX22200 CMD=GPIO39, FAULT=GPIO42, TRIGA/B=GPIO40/41).
+  return HF_GPIO_IS_VALID_GPIO(pin_);
 #endif
 }
 
