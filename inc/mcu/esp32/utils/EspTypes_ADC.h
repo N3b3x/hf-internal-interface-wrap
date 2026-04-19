@@ -31,6 +31,14 @@ extern "C" {
 }
 #endif
 
+#if defined(HF_MCU_ESP32S3)
+static constexpr uint8_t HF_ADC_CFG_MAX_CHANNELS = 10;
+#elif defined(HF_MCU_ESP32C6)
+static constexpr uint8_t HF_ADC_CFG_MAX_CHANNELS = 7;
+#else
+static constexpr uint8_t HF_ADC_CFG_MAX_CHANNELS = 10;
+#endif
+
 //==============================================================================
 // ESSENTIAL ADC TYPES (ESP32)
 //==============================================================================
@@ -162,7 +170,8 @@ struct hf_adc_unit_config_t {
   uint8_t unit_id;                                ///< ADC unit ID
   hf_adc_mode_t mode;                             ///< Operating mode
   hf_adc_bitwidth_t bit_width;                    ///< ADC bit width
-  hf_adc_channel_config_t channel_configs[7];     ///< Channel configurations (ESP32 has 7 channels)
+  hf_adc_channel_config_t
+      channel_configs[HF_ADC_CFG_MAX_CHANNELS];   ///< Channel configurations for active ESP32 target
   hf_adc_continuous_config_t continuous_config;   ///< Continuous mode configuration
   hf_adc_calibration_config_t calibration_config; ///< Calibration configuration
 
