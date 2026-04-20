@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580" role="img" aria-labelledby="t-iiw d-iiw">
+  <title id="t-iiw">hf-internal-interface-wrap - BaseInterface contracts + per-MCU implementations</title>
+  <desc id="d-iiw">Universal hardware abstraction layer: hardware-agnostic Base* contracts on top, MCU-specific Esp* / Stm32* implementations on the bottom. Same handler code runs on any MCU by pointing at a different platform implementation.</desc>
+  <defs>
+    <style type="text/css"><![CDATA[
+      .panel    { fill: #ffffff; }
+      .consumer { fill: #fef5e7; stroke: #c05621; stroke-width: 2; }
+      .base     { fill: #fff5f5; stroke: #c53030; stroke-width: 2; }
+      .base-cell{ fill: #ffffff; stroke: #e53e3e; stroke-width: 1.5; }
+      .esp      { fill: #ebf4ff; stroke: #2c5282; stroke-width: 2; }
+      .esp-cell { fill: #ffffff; stroke: #4299e1; stroke-width: 1.5; }
+      .stm      { fill: #f4f6f8; stroke: #4a5568; stroke-width: 2; stroke-dasharray: 5 3; }
+      .stm-cell { fill: #ffffff; stroke: #718096; stroke-width: 1.4; stroke-dasharray: 3 2; }
+      .arrow-dn { stroke: #2c5282; stroke-width: 2.5; fill: none; stroke-linecap: round; }
+      .arrow-impl { stroke: #c53030; stroke-width: 2; fill: none; stroke-linecap: round; }
+      .head     { font-family: system-ui, sans-serif; font-size: 16px; font-weight: 600; fill: #1a365d; text-anchor: middle; }
+      .layer-title { font-family: system-ui, sans-serif; font-size: 14px; font-weight: 700; text-anchor: start; }
+      .title    { font-family: system-ui, sans-serif; font-size: 12.5px; font-weight: 600; fill: #1a365d; text-anchor: middle; }
+      .titleL   { font-family: system-ui, sans-serif; font-size: 12.5px; font-weight: 600; fill: #1a365d; text-anchor: start; }
+      .small    { font-family: system-ui, sans-serif; font-size: 11px; fill: #4a5568; text-anchor: middle; }
+      .smallL   { font-family: system-ui, sans-serif; font-size: 11px; fill: #4a5568; text-anchor: start; }
+      .pin      { font-family: "DejaVu Sans Mono", Consolas, monospace; font-size: 11px; fill: #1a202c; text-anchor: middle; }
+      .pinL     { font-family: "DejaVu Sans Mono", Consolas, monospace; font-size: 11px; fill: #1a202c; text-anchor: start; }
+      .legend   { font-family: system-ui, sans-serif; font-size: 11px; fill: #4a5568; }
+      .badge    { font-family: system-ui, sans-serif; font-size: 10.5px; font-weight: 600; fill: #ffffff; text-anchor: middle; }
+    ]]></style>
+    <marker id="ar-d" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 z" fill="#2c5282"/>
+    </marker>
+    <marker id="ar-i" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 z" fill="#c53030"/>
+    </marker>
+  </defs>
+  <rect class="panel" width="960" height="580"/>
+
+  <text class="head" x="480" y="26">hf-internal-interface-wrap - portable BaseInterfaces + MCU implementations</text>
+  <text class="small" x="480" y="44">Universal hardware abstraction. Handlers consume the Base* contracts; platform layer wires in Esp* / Stm32* / Linux* concrete implementations.</text>
+
+  <!-- ======= Top: handler/driver consumers ======= -->
+  <rect class="consumer" x="80" y="62" width="800" height="56" rx="6"/>
+  <text class="title" x="480" y="84">Handlers (hf-core) and CRTP device drivers (hf-core-drivers/external)</text>
+  <text class="small" x="480" y="102">Hardware-agnostic code that holds references to the Base* contracts only - never touches a vendor SDK.</text>
+
+  <line class="arrow-dn" x1="280" y1="118" x2="280" y2="148" marker-end="url(#ar-d)"/>
+  <line class="arrow-dn" x1="680" y1="118" x2="680" y2="148" marker-end="url(#ar-d)"/>
+
+  <!-- ======= Middle: BaseInterface contracts band ======= -->
+  <rect class="base" x="40" y="148" width="880" height="180" rx="6"/>
+  <text class="layer-title" x="56" y="170" fill="#c53030">Base interfaces  (pure-virtual contracts, hardware-agnostic)</text>
+  <rect fill="#c53030" x="730" y="156" width="180" height="18" rx="9"/>
+  <text class="badge" x="820" y="169">hf-internal-interface-wrap</text>
+  <text class="smallL" x="56" y="186">Each Base* class defines the API a handler / chip driver needs (Read, Write, ConfigurePin, etc.). No vendor SDK references in the headers.</text>
+
+  <!-- 8 base interface cells in 2 rows -->
+  <g>
+    <rect class="base-cell" x="60"  y="200" width="140" height="50" rx="4"/>
+    <text class="title" x="130" y="220">BaseI2c</text>
+    <text class="small" x="130" y="238">addr / read / write / xfer</text>
+
+    <rect class="base-cell" x="220" y="200" width="140" height="50" rx="4"/>
+    <text class="title" x="290" y="220">BaseSpi</text>
+    <text class="small" x="290" y="238">cs / clock / xfer-block</text>
+
+    <rect class="base-cell" x="380" y="200" width="140" height="50" rx="4"/>
+    <text class="title" x="450" y="220">BaseGpio</text>
+    <text class="small" x="450" y="238">read / write / direction / ISR</text>
+
+    <rect class="base-cell" x="540" y="200" width="140" height="50" rx="4"/>
+    <text class="title" x="610" y="220">BaseAdc</text>
+    <text class="small" x="610" y="238">channel / sample / atten</text>
+
+    <rect class="base-cell" x="700" y="200" width="200" height="50" rx="4"/>
+    <text class="title" x="800" y="220">BaseUart</text>
+    <text class="small" x="800" y="238">baud / write / read / RS-485 mode</text>
+  </g>
+  <g>
+    <rect class="base-cell" x="60"  y="262" width="140" height="50" rx="4"/>
+    <text class="title" x="130" y="282">BaseTemperature</text>
+    <text class="small" x="130" y="300">degC / kelvin / status</text>
+
+    <rect class="base-cell" x="220" y="262" width="140" height="50" rx="4"/>
+    <text class="title" x="290" y="282">BaseEncoder</text>
+    <text class="small" x="290" y="300">angle / velocity / index</text>
+
+    <rect class="base-cell" x="380" y="262" width="140" height="50" rx="4"/>
+    <text class="title" x="450" y="282">BaseImu</text>
+    <text class="small" x="450" y="300">accel / gyro / quat / events</text>
+
+    <rect class="base-cell" x="540" y="262" width="140" height="50" rx="4"/>
+    <text class="title" x="610" y="282">BasePwm</text>
+    <text class="small" x="610" y="300">duty / freq / phase / channels</text>
+
+    <rect class="base-cell" x="700" y="262" width="200" height="50" rx="4"/>
+    <text class="title" x="800" y="282">BaseCan / BaseLogger / ...</text>
+    <text class="small" x="800" y="300">application-level facades</text>
+  </g>
+
+  <!-- "implements" arrows from Base down to platform impl -->
+  <line class="arrow-impl" x1="130" y1="328" x2="130" y2="358" marker-end="url(#ar-i)"/>
+  <line class="arrow-impl" x1="290" y1="328" x2="290" y2="358" marker-end="url(#ar-i)"/>
+  <line class="arrow-impl" x1="450" y1="328" x2="450" y2="358" marker-end="url(#ar-i)"/>
+  <line class="arrow-impl" x1="610" y1="328" x2="610" y2="358" marker-end="url(#ar-i)"/>
+  <text class="smallL" x="334" y="346" fill="#c53030">implements</text>
+
+  <!-- ======= Bottom: platform implementations split ======= -->
+  <!-- ESP-IDF (today) -->
+  <rect class="esp" x="40" y="358" width="540" height="160" rx="6"/>
+  <text class="layer-title" x="56" y="380" fill="#2c5282">Esp* implementations  (ESP-IDF, today)</text>
+  <text class="smallL" x="56" y="396">Concrete vendor-SDK realisations of every Base* contract. The board HAL constructs these and hands references to handlers.</text>
+
+  <g>
+    <rect class="esp-cell" x="60"  y="408" width="120" height="40" rx="4"/>
+    <text class="title" x="120" y="426">EspI2cBus / Device</text>
+    <text class="small" x="120" y="442">i2c_master_bus_t</text>
+
+    <rect class="esp-cell" x="190" y="408" width="120" height="40" rx="4"/>
+    <text class="title" x="250" y="426">EspSpiBus / Device</text>
+    <text class="small" x="250" y="442">spi_device_handle_t</text>
+
+    <rect class="esp-cell" x="320" y="408" width="120" height="40" rx="4"/>
+    <text class="title" x="380" y="426">EspGpio</text>
+    <text class="small" x="380" y="442">gpio_config + ISR</text>
+
+    <rect class="esp-cell" x="450" y="408" width="120" height="40" rx="4"/>
+    <text class="title" x="510" y="426">EspAdc</text>
+    <text class="small" x="510" y="442">adc_oneshot / conti</text>
+
+    <rect class="esp-cell" x="60"  y="458" width="120" height="40" rx="4"/>
+    <text class="title" x="120" y="476">EspUart</text>
+    <text class="small" x="120" y="492">uart_driver + RS485</text>
+
+    <rect class="esp-cell" x="190" y="458" width="120" height="40" rx="4"/>
+    <text class="title" x="250" y="476">EspPwm (LEDC)</text>
+    <text class="small" x="250" y="492">ledc_set_duty</text>
+
+    <rect class="esp-cell" x="320" y="458" width="120" height="40" rx="4"/>
+    <text class="title" x="380" y="476">EspCan (TWAI)</text>
+    <text class="small" x="380" y="492">twai_driver</text>
+
+    <rect class="esp-cell" x="450" y="458" width="120" height="40" rx="4"/>
+    <text class="title" x="510" y="476">EspTemperature</text>
+    <text class="small" x="510" y="492">on-chip + NTC adapter</text>
+  </g>
+
+  <!-- Future MCU column (placeholder) -->
+  <rect class="stm" x="600" y="358" width="320" height="160" rx="6"/>
+  <text class="layer-title" x="616" y="380" fill="#4a5568">Future MCUs  (room to grow)</text>
+  <text class="smallL" x="616" y="396">Same Base* contracts; new concrete implementations.</text>
+  <g>
+    <rect class="stm-cell" x="616" y="408" width="140" height="40" rx="4"/>
+    <text class="title" x="686" y="426" fill="#4a5568">Stm32* (HAL/LL)</text>
+    <text class="small" x="686" y="442">future</text>
+
+    <rect class="stm-cell" x="766" y="408" width="140" height="40" rx="4"/>
+    <text class="title" x="836" y="426" fill="#4a5568">Linux* (ioctl)</text>
+    <text class="small" x="836" y="442">future</text>
+
+    <rect class="stm-cell" x="616" y="458" width="290" height="40" rx="4"/>
+    <text class="title" x="761" y="476" fill="#4a5568">Mock* (unit tests, host build)</text>
+    <text class="small" x="761" y="492">in-memory bus capture for verification</text>
+  </g>
+
+  <!-- Bottom legend in its own row -->
+  <g transform="translate(40, 540)">
+    <text class="layer-title" x="0" y="0" fill="#1a365d">Legend</text>
+    <rect class="consumer" x="80"  y="-12" width="14" height="14"/>
+    <text class="legend" x="100" y="-1">consumer (handler / driver)</text>
+    <rect class="base" x="270" y="-12" width="14" height="14"/>
+    <text class="legend" x="290" y="-1">Base interface contract</text>
+    <rect class="esp" x="450" y="-12" width="14" height="14"/>
+    <text class="legend" x="470" y="-1">ESP-IDF implementation (today)</text>
+    <rect class="stm" x="660" y="-12" width="14" height="14"/>
+    <text class="legend" x="680" y="-1">future MCU implementation</text>
+    <line class="arrow-impl" x1="850" y1="-5" x2="874" y2="-5" marker-end="url(#ar-i)"/>
+    <text class="legend" x="882" y="-1">implements</text>
+  </g>
+</svg>
