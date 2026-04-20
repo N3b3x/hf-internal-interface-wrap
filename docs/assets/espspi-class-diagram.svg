@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 440" width="700" height="440" role="img" aria-labelledby="t-espspi d-espspi">
+  <title id="t-espspi">EspSpi class hierarchy &#8212; Bus, Device, and BaseSpi</title>
+  <desc id="d-espspi">UML class diagram showing the EspSpiBus &#8594; EspSpiDevice &#8594; BaseSpi hierarchy with manages and implements relationships.</desc>
+  <defs>
+    <style type="text/css"><![CDATA[
+      .panel    { fill: #ffffff; }
+      .class-box{ fill: #ebf4ff; stroke: #2c5282; stroke-width: 2; }
+      .abstract { fill: #fff5f5; stroke: #c53030; stroke-width: 2; }
+      .method   { fill: #f4f6f8; stroke: #1a365d; stroke-width: 1; }
+      .wire     { stroke: #2c5282; stroke-width: 2; fill: none; stroke-linecap: round; }
+      .wire-impl{ stroke: #c53030; stroke-width: 2; fill: none; stroke-linecap: round; stroke-dasharray: 6 3; }
+      .head     { font-family: system-ui, sans-serif; font-size: 16px; font-weight: 600; fill: #1a365d; text-anchor: middle; }
+      .title    { font-family: system-ui, sans-serif; font-size: 13px; font-weight: 600; fill: #1a365d; text-anchor: middle; }
+      .small    { font-family: system-ui, sans-serif; font-size: 10px; fill: #4a5568; text-anchor: start; }
+      .mono     { font-family: "DejaVu Sans Mono", Consolas, monospace; font-size: 10px; fill: #1a202c; text-anchor: start; }
+      .label    { font-family: system-ui, sans-serif; font-size: 11px; font-weight: 600; fill: #2c5282; text-anchor: middle; }
+      .legend   { font-family: system-ui, sans-serif; font-size: 11px; fill: #4a5568; }
+    ]]></style>
+    <marker id="ar-solid" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 z" fill="#2c5282"/>
+    </marker>
+    <marker id="ar-open" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8" fill="none" stroke="#c53030" stroke-width="1.5"/>
+    </marker>
+  </defs>
+  <rect class="panel" width="700" height="440"/>
+
+  <text class="head" x="240" y="24">EspSpi class hierarchy</text>
+
+  <!-- ===== EspSpiBus ===== -->
+  <rect class="class-box" x="100" y="40" width="280" height="110" rx="5"/>
+  <text class="title" x="240" y="60">EspSpiBus</text>
+  <line class="wire" x1="100" y1="68" x2="380" y2="68"/>
+  <rect class="method" x="108" y="74" width="264" height="68" rx="3"/>
+  <text class="mono" x="116" y="88">+ Initialize() : bool</text>
+  <text class="mono" x="116" y="100">+ Deinitialize() : bool</text>
+  <text class="mono" x="116" y="112">+ CreateDevice(config) : int</text>
+  <text class="mono" x="116" y="124">+ RemoveDevice(id) : bool</text>
+  <text class="mono" x="116" y="136">+ GetDevice(id) : BaseSpi*</text>
+
+  <!-- Arrow: EspSpiBus -> EspSpiDevice -->
+  <line class="wire" x1="240" y1="150" x2="240" y2="180" marker-end="url(#ar-solid)"/>
+  <text class="label" x="310" y="170">manages (1:N)</text>
+
+  <!-- ===== EspSpiDevice ===== -->
+  <rect class="class-box" x="100" y="185" width="280" height="108" rx="5"/>
+  <text class="title" x="240" y="205">EspSpiDevice</text>
+  <line class="wire" x1="100" y1="213" x2="380" y2="213"/>
+  <rect class="method" x="108" y="219" width="264" height="66" rx="3"/>
+  <text class="mono" x="116" y="233">+ Initialize() : bool</text>
+  <text class="mono" x="116" y="245">+ Deinitialize() : bool</text>
+  <text class="mono" x="116" y="257">+ Transfer(tx, rx, len, ms) : hf_spi_err_t</text>
+  <text class="mono" x="116" y="269">+ Transmit(data, len, ms) : hf_spi_err_t</text>
+  <text class="mono" x="116" y="281">+ Receive(data, len, ms) : hf_spi_err_t</text>
+
+  <!-- Arrow: EspSpiDevice -> BaseSpi (dashed = implements) -->
+  <line class="wire-impl" x1="240" y1="293" x2="240" y2="323" marker-end="url(#ar-open)"/>
+  <text class="label" x="306" y="313" fill="#c53030">implements</text>
+
+  <!-- ===== BaseSpi (abstract) ===== -->
+  <rect class="abstract" x="100" y="328" width="280" height="90" rx="5"/>
+  <text class="title" x="240" y="348" font-style="italic">BaseSpi (abstract)</text>
+  <line x1="100" y1="356" x2="380" y2="356" stroke="#c53030" stroke-width="1.5"/>
+  <rect class="method" x="108" y="362" width="264" height="48" rx="3"/>
+  <text class="mono" x="116" y="376">+ Initialize() : bool</text>
+  <text class="mono" x="116" y="388">+ Deinitialize() : bool</text>
+  <text class="mono" x="116" y="400">+ Transfer() : hf_spi_err_t</text>
+
+  <!-- ===== Design notes (right column) ===== -->
+  <g transform="translate(420, 60)">
+    <text class="small" x="0" y="0" font-weight="600" fill="#1a365d">Design notes</text>
+    <line x1="0" y1="6" x2="240" y2="6" stroke="#e2e8f0" stroke-width="1"/>
+    <circle cx="8" cy="22" r="3" fill="#2c5282"/>
+    <text class="small" x="18" y="26">Bus owns devices</text>
+    <circle cx="8" cy="42" r="3" fill="#2c5282"/>
+    <text class="small" x="18" y="46">Devices managed via RAII</text>
+    <circle cx="8" cy="62" r="3" fill="#2c5282"/>
+    <text class="small" x="18" y="66">Thread-safe (RTOS mutex)</text>
+    <circle cx="8" cy="82" r="3" fill="#2c5282"/>
+    <text class="small" x="18" y="86">CreateDevice() &#8594; Initialize() lifecycle</text>
+    <circle cx="8" cy="102" r="3" fill="#2c5282"/>
+    <text class="small" x="18" y="106">ESP-IDF v5.5+ SPI Master driver</text>
+  </g>
+
+  <!-- ===== Legend ===== -->
+  <g transform="translate(420, 390)">
+    <text class="small" x="0" y="0" font-weight="600" fill="#1a365d">Legend</text>
+    <rect class="class-box" x="0" y="8" width="12" height="12" rx="2"/>
+    <text class="legend" x="18" y="18">Concrete class</text>
+    <rect class="abstract" x="120" y="8" width="12" height="12" rx="2"/>
+    <text class="legend" x="138" y="18">Abstract class</text>
+    <line class="wire" x1="0" y1="34" x2="20" y2="34" marker-end="url(#ar-solid)"/>
+    <text class="legend" x="26" y="38">association</text>
+    <line class="wire-impl" x1="120" y1="34" x2="140" y2="34" marker-end="url(#ar-open)"/>
+    <text class="legend" x="148" y="38">implements</text>
+  </g>
+</svg>

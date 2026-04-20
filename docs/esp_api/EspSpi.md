@@ -63,6 +63,8 @@ IOMUX optimization, multi-device management, and comprehensive error handling.
 
 The EspSpi library follows a two-tier architecture:
 
+![EspSpi class diagram](../assets/espspi-class-diagram.svg)
+
 ```text
 ┌─────────────────────────────────────────────────────────────────┐
 │                        EspSpiBus                                │
