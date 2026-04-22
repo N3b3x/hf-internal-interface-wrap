@@ -13,6 +13,7 @@ var searchData=
   ['basespi_2eh_10',['BaseSpi.h',['../BaseSpi_8h.html',1,'']]],
   ['basetemperature_2eh_11',['BaseTemperature.h',['../BaseTemperature_8h.html',1,'']]],
   ['baseuart_2eh_12',['BaseUart.h',['../BaseUart_8h.html',1,'']]],
-  ['basewifi_2eh_13',['BaseWifi.h',['../BaseWifi_8h.html',1,'']]],
-  ['bluetoothcomprehensivetest_2ecpp_14',['BluetoothComprehensiveTest.cpp',['../BluetoothComprehensiveTest_8cpp.html',1,'']]]
+  ['baseusbserialjtag_2eh_13',['BaseUsbSerialJtag.h',['../BaseUsbSerialJtag_8h.html',1,'']]],
+  ['basewifi_2eh_14',['BaseWifi.h',['../BaseWifi_8h.html',1,'']]],
+  ['bluetoothcomprehensivetest_2ecpp_15',['BluetoothComprehensiveTest.cpp',['../BluetoothComprehensiveTest_8cpp.html',1,'']]]
 ];

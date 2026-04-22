@@ -11,9 +11,9 @@
 <!-- Node0 -->
 <g id="Node000000" class="node">
 <title>Node0</title>
-<g id="a_Node000000"><a xlink:href="structhf__pwm__channel__status__t.html" target="_top" xlink:title="PWM channel status information.">
+<g id="a_Node000000"><a xlink:href="structhf__pwm__channel__config__t.html" target="_top" xlink:title="ESP32 PWM channel configuration with comprehensive LEDC feature support.">
 <polygon fill="white" stroke="#666666" points="174,-23 0,-23 0,0 174,0 174,-23"/>
-<text text-anchor="middle" x="87" y="-7.8" font-family="Arial" font-size="14.00">hf_pwm_channel_status_t</text>
+<text text-anchor="middle" x="87" y="-7.8" font-family="Arial" font-size="14.00">hf_pwm_channel_config_t</text>
 </a>
 </g>
 </g>

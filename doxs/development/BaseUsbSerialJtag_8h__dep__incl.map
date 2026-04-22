@@ -1,0 +1,7 @@
+<map id="inc/base/BaseUsbSerialJtag.h" name="inc/base/BaseUsbSerialJtag.h">
+<area shape="rect" id="Node000001" title="Abstract base class for USB Serial/JTAG controller &quot;console&#45;style&quot; serial transports in the HardFOC s..." alt="" coords="5,5,268,36"/>
+<area shape="rect" id="Node000002" href="$EspUsbSerialJtag_8h.html" title="ESP32&#45;S3 / &#45;C3 / &#45;C6 USB Serial/JTAG console wrapper." alt="" coords="10,84,263,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,50,139,84,134,84,134,50"/>
+<area shape="rect" id="Node000003" href="$EspUsbSerialJtag_8cpp.html" title="ESP32&#45;family USB Serial/JTAG console wrapper implementation." alt="" coords="9,183,264,233"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="139,149,139,182,134,182,134,149"/>
+</map>

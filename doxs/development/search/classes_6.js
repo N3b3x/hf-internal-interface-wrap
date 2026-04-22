@@ -101,11 +101,12 @@ var searchData=
   ['hf_5fuart_5frs485_5fconfig_5ft_98',['hf_uart_rs485_config_t',['../structhf__uart__rs485__config__t.html',1,'']]],
   ['hf_5fuart_5fstatistics_5ft_99',['hf_uart_statistics_t',['../structhf__uart__statistics__t.html',1,'']]],
   ['hf_5fuart_5fwakeup_5fconfig_5ft_100',['hf_uart_wakeup_config_t',['../structhf__uart__wakeup__config__t.html',1,'']]],
-  ['hf_5fwifi_5fap_5fconfig_5ft_101',['hf_wifi_ap_config_t',['../structhf__wifi__ap__config__t.html',1,'']]],
-  ['hf_5fwifi_5fip_5finfo_5ft_102',['hf_wifi_ip_info_t',['../structhf__wifi__ip__info__t.html',1,'']]],
-  ['hf_5fwifi_5fnetwork_5finfo_5ft_103',['hf_wifi_network_info_t',['../structhf__wifi__network__info__t.html',1,'']]],
-  ['hf_5fwifi_5fstation_5fconfig_5ft_104',['hf_wifi_station_config_t',['../structhf__wifi__station__config__t.html',1,'']]],
-  ['hfespwificalibration_105',['HfEspWifiCalibration',['../structHfEspWifiCalibration.html',1,'']]],
-  ['hfespwifiperformanceconfig_106',['HfEspWifiPerformanceConfig',['../structHfEspWifiPerformanceConfig.html',1,'']]],
-  ['hfespwifistats_107',['HfEspWifiStats',['../structHfEspWifiStats.html',1,'']]]
+  ['hf_5fusb_5fserial_5fjtag_5fconfig_5ft_101',['hf_usb_serial_jtag_config_t',['../structhf__usb__serial__jtag__config__t.html',1,'']]],
+  ['hf_5fwifi_5fap_5fconfig_5ft_102',['hf_wifi_ap_config_t',['../structhf__wifi__ap__config__t.html',1,'']]],
+  ['hf_5fwifi_5fip_5finfo_5ft_103',['hf_wifi_ip_info_t',['../structhf__wifi__ip__info__t.html',1,'']]],
+  ['hf_5fwifi_5fnetwork_5finfo_5ft_104',['hf_wifi_network_info_t',['../structhf__wifi__network__info__t.html',1,'']]],
+  ['hf_5fwifi_5fstation_5fconfig_5ft_105',['hf_wifi_station_config_t',['../structhf__wifi__station__config__t.html',1,'']]],
+  ['hfespwificalibration_106',['HfEspWifiCalibration',['../structHfEspWifiCalibration.html',1,'']]],
+  ['hfespwifiperformanceconfig_107',['HfEspWifiPerformanceConfig',['../structHfEspWifiPerformanceConfig.html',1,'']]],
+  ['hfespwifistats_108',['HfEspWifiStats',['../structHfEspWifiStats.html',1,'']]]
 ];

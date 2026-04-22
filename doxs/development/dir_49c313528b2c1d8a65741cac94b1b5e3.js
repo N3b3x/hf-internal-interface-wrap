@@ -13,5 +13,6 @@ var dir_49c313528b2c1d8a65741cac94b1b5e3 =
     [ "EspSpi.cpp", "EspSpi_8cpp.html", "EspSpi_8cpp" ],
     [ "EspTemperature.cpp", "EspTemperature_8cpp.html", null ],
     [ "EspUart.cpp", "EspUart_8cpp.html", "EspUart_8cpp" ],
+    [ "EspUsbSerialJtag.cpp", "EspUsbSerialJtag_8cpp.html", "EspUsbSerialJtag_8cpp" ],
     [ "EspWifi.cpp", "EspWifi_8cpp.html", "EspWifi_8cpp" ]
 ];

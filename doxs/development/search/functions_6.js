@@ -13,7 +13,7 @@ var searchData=
   ['flush_5fuart_5fbuffers_10',['flush_uart_buffers',['../UartComprehensiveTest_8cpp.html#a60939a4607d6135ab5e07ed81eaeccbe',1,'UartComprehensiveTest.cpp']]],
   ['flushrx_11',['FlushRx',['../classBaseUart.html#a2361728845801eb4356bdaa560ba0315',1,'BaseUart::FlushRx()'],['../classEspUart.html#a0d4beb1af47d1581fd753a0ade58378b',1,'EspUart::FlushRx()'],['../classStmUart.html#a47da8433981b0a524efb84c552448664',1,'StmUart::FlushRx()']]],
   ['flushtoflash_12',['FlushToFlash',['../classStmNvs.html#af0b253a0dd2df51a284a60e1a1e27b15',1,'StmNvs']]],
-  ['flushtx_13',['FlushTx',['../classBaseUart.html#a97a3d02d570669c9c463b99916fdef2c',1,'BaseUart::FlushTx()'],['../classEspUart.html#ae9d2e920c127672adf65cc4a7f0b58b5',1,'EspUart::FlushTx()'],['../classStmUart.html#a3e5819d45bd83956259d6c962bdc4166',1,'StmUart::FlushTx()']]],
+  ['flushtx_13',['FlushTx',['../classBaseUart.html#a97a3d02d570669c9c463b99916fdef2c',1,'BaseUart::FlushTx()'],['../classBaseUsbSerialJtag.html#a701543e786d06bb1f00559860b896c38',1,'BaseUsbSerialJtag::FlushTx()'],['../classEspUart.html#ae9d2e920c127672adf65cc4a7f0b58b5',1,'EspUart::FlushTx()'],['../classEspUsbSerialJtag.html#a07f159132d025c50c09fce1137631bb9',1,'EspUsbSerialJtag::FlushTx()'],['../classStmUart.html#a3e5819d45bd83956259d6c962bdc4166',1,'StmUart::FlushTx()']]],
   ['forcetimerassignment_14',['ForceTimerAssignment',['../classEspPwm.html#a38358269d437372bb72805e76fc151ed',1,'EspPwm']]],
   ['formatandoutput_15',['FormatAndOutput',['../classStmLogger.html#a6f50475b905482fe6b74c83605baff18',1,'StmLogger']]],
   ['fromstring_16',['FromString',['../structhf__bluetooth__address__t.html#a7c179cb878a03ff95c9b82f7354a8ea9',1,'hf_bluetooth_address_t']]]
