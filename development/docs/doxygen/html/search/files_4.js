@@ -39,6 +39,8 @@ var searchData=
   ['esptypes_5fwifi_2eh_36',['EspTypes_WiFi.h',['../EspTypes__WiFi_8h.html',1,'']]],
   ['espuart_2ecpp_37',['EspUart.cpp',['../EspUart_8cpp.html',1,'']]],
   ['espuart_2eh_38',['EspUart.h',['../EspUart_8h.html',1,'']]],
-  ['espwifi_2ecpp_39',['EspWifi.cpp',['../EspWifi_8cpp.html',1,'']]],
-  ['espwifi_2eh_40',['EspWifi.h',['../EspWifi_8h.html',1,'']]]
+  ['espusbserialjtag_2ecpp_39',['EspUsbSerialJtag.cpp',['../EspUsbSerialJtag_8cpp.html',1,'']]],
+  ['espusbserialjtag_2eh_40',['EspUsbSerialJtag.h',['../EspUsbSerialJtag_8h.html',1,'']]],
+  ['espwifi_2ecpp_41',['EspWifi.cpp',['../EspWifi_8cpp.html',1,'']]],
+  ['espwifi_2eh_42',['EspWifi.h',['../EspWifi_8h.html',1,'']]]
 ];

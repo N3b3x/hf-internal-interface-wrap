@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="BaseUsbSerialJtag_8h" kind="file" language="C++">
+    <compoundname>BaseUsbSerialJtag.h</compoundname>
+    <includes refid="BaseUart_8h" local="yes">BaseUart.h</includes>
+    <includes local="no">cstdarg</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">cstring</includes>
+    <includedby refid="EspUsbSerialJtag_8h" local="yes">inc/mcu/esp32/EspUsbSerialJtag.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>BaseUart.h</label>
+        <link refid="BaseUart_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/base/BaseUsbSerialJtag.h</label>
+        <link refid="BaseUsbSerialJtag_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>cstdarg</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="6">
+        <label>cstring</label>
+      </node>
+      <node id="5">
+        <label>limits</label>
+      </node>
+      <node id="7">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/base/BaseUsbSerialJtag.h</label>
+        <link refid="BaseUsbSerialJtag_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>inc/mcu/esp32/EspUsbSerialJtag.h</label>
+        <link refid="EspUsbSerialJtag_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/mcu/esp32/EspUsbSerialJtag.cpp</label>
+        <link refid="EspUsbSerialJtag_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhf__usb__serial__jtag__config__t" prot="public">hf_usb_serial_jtag_config_t</innerclass>
+    <innerclass refid="classBaseUsbSerialJtag" prot="public">BaseUsbSerialJtag</innerclass>
+    <briefdescription>
+<para>Abstract base class for USB Serial/JTAG controller &quot;console-style&quot; serial transports in the HardFOC system. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Some MCUs (notably the ESP32-S3 / ESP32-C3 / ESP32-C6 family) ship a built-in <bold>USB Serial/JTAG controller</bold>: a fixed-function silicon block that, via the native USB jack, presents a CDC-ACM virtual serial port AND a JTAG endpoint over a single cable. From the host PC it appears as <computeroutput>/dev/ttyACM*</computeroutput>, <computeroutput>COM*</computeroutput>, or <computeroutput>/dev/cu.usbmodem*</computeroutput> and supports:<itemizedlist>
+<listitem><para>Bidirectional serial console (logs out + REPL/CLI in)</para>
+</listitem><listitem><para><computeroutput>idf.py flash</computeroutput> (auto download-mode via DTR/RTS)</para>
+</listitem><listitem><para>Concurrent OpenOCD JTAG debugging</para>
+</listitem></itemizedlist>
+</para>
+<para>It is <bold>not</bold> a UART:<itemizedlist>
+<listitem><para>No baud rate, no parity, no stop bits, no pin assignment.</para>
+</listitem><listitem><para>No RS-485, no flow control, no break detection.</para>
+</listitem><listitem><para>The block is hard-wired to the chip&apos;s USB D+/D- pads (ESP32-S3: GPIO19/20).</para>
+</listitem></itemizedlist>
+</para>
+<para>Forcing this peripheral into the <computeroutput><ref refid="classBaseUart" kindref="compound">BaseUart</ref></computeroutput> contract would mean implementing 80% of that API as <computeroutput>UART_ERR_UNSUPPORTED_OPERATION</computeroutput> no-ops. Instead, this file defines a peer abstraction with the <bold>same <computeroutput>hf_uart_err_t</computeroutput> error vocabulary</bold> so application code (consoles, simple text protocols) can swap between <computeroutput>BaseUart*</computeroutput> and <computeroutput>BaseUsbSerialJtag*</computeroutput> backends with minimal glue.</para>
+<para><simplesect kind="par"><title>Consumer pattern</title><para><programlisting><codeline><highlight class="normal"><ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref>*<sp/>serial<sp/>=<sp/>comms.AcquireUsbSerialJtag();<sp/><sp/></highlight><highlight class="comment">//<sp/>lazy<sp/>install</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(serial<sp/>&amp;&amp;<sp/>serial-&gt;<ref refid="classBaseUsbSerialJtag_1a8814f384acbc04aa1905b65ab9f57748" kindref="member">EnsureInitialized</ref>())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>serial-&gt;<ref refid="classBaseUsbSerialJtag_1ab349b7ec042286de690014e5f2bc55cc" kindref="member">WriteLine</ref>(</highlight><highlight class="stringliteral">&quot;hello<sp/>USB-VCP&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint8_t<sp/>b{};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(serial-&gt;<ref refid="classBaseUsbSerialJtag_1afa50ad4387c87a4d511b329197b8e5c8" kindref="member">Read</ref>(&amp;b,<sp/>1,<sp/>50)<sp/>==<sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6ab1d931babc3d80897766d05cd169cbe4" kindref="member">hf_uart_err_t::UART_SUCCESS</ref>)<sp/>{<sp/>...<sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+</simplesect>
+<simplesect kind="author"><para>HardFOC </para>
+</simplesect>
+<simplesect kind="date"><para>2026 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC</para>
+</simplesect>
+<simplesect kind="note"><para>Header-only abstract base, parallel to <computeroutput><ref refid="classBaseUart" kindref="compound">BaseUart</ref></computeroutput> / <computeroutput><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref></computeroutput> / etc. </para>
+</simplesect>
+<simplesect kind="note"><para>Implementations are typically singletons because the underlying USB Serial/JTAG controller exposes a single host-facing endpoint pair. </para>
+</simplesect>
+<simplesect kind="note"><para>Reuses <computeroutput>hf_uart_err_t</computeroutput> (declared in <computeroutput><ref refid="BaseUart_8h" kindref="compound">BaseUart.h</ref></computeroutput>) for return codes so upper layers don&apos;t need a third error enum. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseUart_8h" kindref="compound">BaseUart.h</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>hf_uart_err_t<sp/>+<sp/>hf_uart_statistics_t/diagnostics_t<sp/>reuse</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdarg&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>USB<sp/>Serial/JTAG<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="structhf__usb__serial__jtag__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__usb__serial__jtag__config__t" kindref="compound">hf_usb_serial_jtag_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="71" refid="structhf__usb__serial__jtag__config__t_1aef938dd579d6605877945005f12ce280" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__usb__serial__jtag__config__t_1aef938dd579d6605877945005f12ce280" kindref="member">tx_buffer_size</ref>{256};</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="structhf__usb__serial__jtag__config__t_1adc822ae8246bc11b825ad30c181a463d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__usb__serial__jtag__config__t_1adc822ae8246bc11b825ad30c181a463d" kindref="member">rx_buffer_size</ref>{256};</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="structhf__usb__serial__jtag__config__t_1a1026281ace351fa7d41c8f4abe0b83cc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__usb__serial__jtag__config__t_1a1026281ace351fa7d41c8f4abe0b83cc" kindref="member">non_blocking_when_disconnected</ref>{</highlight><highlight class="keyword">true</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Abstract<sp/>base<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="classBaseUsbSerialJtag" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="101" refid="classBaseUsbSerialJtag_1a00c812eeea5002af6875dc9ad55ccc32" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classBaseUsbSerialJtag_1a00c812eeea5002af6875dc9ad55ccc32" kindref="member">~BaseUsbSerialJtag</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="classBaseUsbSerialJtag_1aa22dd09a002dff8ac9d9c288092ad12f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref>(const<sp/><ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="104" refid="classBaseUsbSerialJtag_1ac3bd2c1ac6b2b1d28d739f6bb04105e1" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref>&amp;<sp/>operator=(const<sp/><ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref>&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="105" refid="classBaseUsbSerialJtag_1a8b535b2e0fc54d696cbd1435df432c2e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref>(<ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="106" refid="classBaseUsbSerialJtag_1aa597d6d0b61f4ceae7fd15e48fe9be31" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref>&amp;<sp/>operator=(<ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//----------------------------------------------------------------------//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Lazy<sp/>lifecycle<sp/>(matches<sp/>BaseUart<sp/>pattern)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//----------------------------------------------------------------------//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="classBaseUsbSerialJtag_1a8814f384acbc04aa1905b65ab9f57748" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseUsbSerialJtag_1a8814f384acbc04aa1905b65ab9f57748" kindref="member">EnsureInitialized</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBaseUsbSerialJtag_1a68aebb3ea8df33f1ca8db923f4509a10" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBaseUsbSerialJtag_1a68aebb3ea8df33f1ca8db923f4509a10" kindref="member">initialized_</ref><sp/>=<sp/><ref refid="classBaseUsbSerialJtag_1a27cd5ec0867b047622014ec220cfc50e" kindref="member">Initialize</ref>();</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBaseUsbSerialJtag_1a68aebb3ea8df33f1ca8db923f4509a10" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="classBaseUsbSerialJtag_1af5ed28132861beec33242bd9f534bbd3" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseUsbSerialJtag_1af5ed28132861beec33242bd9f534bbd3" kindref="member">EnsureDeinitialized</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBaseUsbSerialJtag_1a68aebb3ea8df33f1ca8db923f4509a10" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBaseUsbSerialJtag_1a68aebb3ea8df33f1ca8db923f4509a10" kindref="member">initialized_</ref><sp/>=<sp/>!<ref refid="classBaseUsbSerialJtag_1a378c11ef4540c02dbd9a0f8549767d36" kindref="member">Deinitialize</ref>();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!<ref refid="classBaseUsbSerialJtag_1a68aebb3ea8df33f1ca8db923f4509a10" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="classBaseUsbSerialJtag_1ac6fc039269661a1b43597b28ee8f8c1a" refkind="member"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseUsbSerialJtag_1ac6fc039269661a1b43597b28ee8f8c1a" kindref="member">IsInitialized</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBaseUsbSerialJtag_1a68aebb3ea8df33f1ca8db923f4509a10" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//----------------------------------------------------------------------//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Pure<sp/>virtual<sp/>contract</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//----------------------------------------------------------------------//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="classBaseUsbSerialJtag_1a27cd5ec0867b047622014ec220cfc50e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseUsbSerialJtag_1a27cd5ec0867b047622014ec220cfc50e" kindref="member">Initialize</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="classBaseUsbSerialJtag_1a378c11ef4540c02dbd9a0f8549767d36" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseUsbSerialJtag_1a378c11ef4540c02dbd9a0f8549767d36" kindref="member">Deinitialize</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152" refid="classBaseUsbSerialJtag_1a44b3bf5fe39a230149387021f542760e" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref><sp/><ref refid="classBaseUsbSerialJtag_1a44b3bf5fe39a230149387021f542760e" kindref="member">Write</ref>(const<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/>data,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>length,</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>0)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="classBaseUsbSerialJtag_1afa50ad4387c87a4d511b329197b8e5c8" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref><sp/><ref refid="classBaseUsbSerialJtag_1afa50ad4387c87a4d511b329197b8e5c8" kindref="member">Read</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/>data,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>length,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>*<sp/>out_read_count<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170" refid="classBaseUsbSerialJtag_1a701543e786d06bb1f00559860b896c38" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref><sp/><ref refid="classBaseUsbSerialJtag_1a701543e786d06bb1f00559860b896c38" kindref="member">FlushTx</ref>(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>0)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="classBaseUsbSerialJtag_1a2741539cff92b018a59a6e26a17e555a" refkind="member"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/>virtual<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseUsbSerialJtag_1a2741539cff92b018a59a6e26a17e555a" kindref="member">IsHostConnected</ref>()<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//----------------------------------------------------------------------//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Convenience<sp/>helpers<sp/>(non-virtual)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//----------------------------------------------------------------------//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181" refid="classBaseUsbSerialJtag_1a3f63ecbcf0c86d48a18b34e0140b7ec0" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref><sp/><ref refid="classBaseUsbSerialJtag_1a3f63ecbcf0c86d48a18b34e0140b7ec0" kindref="member">WriteString</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>s,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>0)<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!s)<sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6a43202c1a494f45caa5f3070b22de7de4" kindref="member">hf_uart_err_t::UART_ERR_NULL_POINTER</ref>;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBaseUsbSerialJtag_1a44b3bf5fe39a230149387021f542760e" kindref="member">Write</ref>(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(s),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(std::strlen(s)),</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>timeout_ms);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="classBaseUsbSerialJtag_1ab349b7ec042286de690014e5f2bc55cc" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref><sp/><ref refid="classBaseUsbSerialJtag_1ab349b7ec042286de690014e5f2bc55cc" kindref="member">WriteLine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>s,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>0)<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>e<sp/>=<sp/><ref refid="classBaseUsbSerialJtag_1a3f63ecbcf0c86d48a18b34e0140b7ec0" kindref="member">WriteString</ref>(s,<sp/>timeout_ms);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(e<sp/>!=<sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6ab1d931babc3d80897766d05cd169cbe4" kindref="member">hf_uart_err_t::UART_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>e;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>crlf[2]<sp/>=<sp/>{</highlight><highlight class="charliteral">&apos;\r&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBaseUsbSerialJtag_1a44b3bf5fe39a230149387021f542760e" kindref="member">Write</ref>(crlf,<sp/>2,<sp/>timeout_ms);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200" refid="classBaseUsbSerialJtag_1a1e952bff148cb89bb947760b20c1ec0b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref><sp/><ref refid="classBaseUsbSerialJtag_1a1e952bff148cb89bb947760b20c1ec0b" kindref="member">ReadByte</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>&amp;<sp/>out,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>0)<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBaseUsbSerialJtag_1afa50ad4387c87a4d511b329197b8e5c8" kindref="member">Read</ref>(&amp;out,<sp/>1,<sp/>timeout_ms);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//----------------------------------------------------------------------//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Optional<sp/>telemetry</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//----------------------------------------------------------------------//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209" refid="classBaseUsbSerialJtag_1a908d87960565ddb2c69c7e3d62d4451b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__statistics__t" kindref="compound">hf_uart_statistics_t</ref><sp/><ref refid="classBaseUsbSerialJtag_1a908d87960565ddb2c69c7e3d62d4451b" kindref="member">GetStatistics</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__statistics__t" kindref="compound">hf_uart_statistics_t</ref>{};</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214" refid="classBaseUsbSerialJtag_1a24232b2e14e968356b71c54cf55b662d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__diagnostics__t" kindref="compound">hf_uart_diagnostics_t</ref><sp/><ref refid="classBaseUsbSerialJtag_1a24232b2e14e968356b71c54cf55b662d" kindref="member">GetDiagnostics</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__uart__diagnostics__t" kindref="compound">hf_uart_diagnostics_t</ref><sp/>d{};</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>d.<ref refid="structhf__uart__diagnostics__t_1a47ed89b1c6a36336692a0b514bfa1492" kindref="member">is_initialized</ref><sp/>=<sp/><ref refid="classBaseUsbSerialJtag_1a68aebb3ea8df33f1ca8db923f4509a10" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>d;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="221" refid="classBaseUsbSerialJtag_1a46c59b6e497c12fdf45161b361c931a1" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classBaseUsbSerialJtag_1a46c59b6e497c12fdf45161b361c931a1" kindref="member">BaseUsbSerialJtag</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__usb__serial__jtag__config__t" kindref="compound">hf_usb_serial_jtag_config_t</ref>&amp;<sp/>cfg)<sp/>noexcept<sp/>:<sp/><ref refid="classBaseUsbSerialJtag_1ab42f1f16f4d4f7837efd66b589f4c825" kindref="member">config_</ref>(cfg)<sp/>{}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224" refid="classBaseUsbSerialJtag_1ab42f1f16f4d4f7837efd66b589f4c825" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__usb__serial__jtag__config__t" kindref="compound">hf_usb_serial_jtag_config_t</ref><sp/><ref refid="classBaseUsbSerialJtag_1ab42f1f16f4d4f7837efd66b589f4c825" kindref="member">config_</ref>{};</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227" refid="classBaseUsbSerialJtag_1a68aebb3ea8df33f1ca8db923f4509a10" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseUsbSerialJtag_1a68aebb3ea8df33f1ca8db923f4509a10" kindref="member">initialized_</ref>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="228"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/base/BaseUsbSerialJtag.h"/>
+  </compounddef>
+</doxygen>

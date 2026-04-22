@@ -1,0 +1,9 @@
+<map id="EspUsbSerialJtag" name="EspUsbSerialJtag">
+<area shape="rect" id="Node000001" title=" " alt="" coords="158,223,323,253"/>
+<area shape="rect" id="Node000002" href="$classBaseUsbSerialJtag.html" title="Abstract base class for built&#45;in USB Serial/JTAG controller wrappers." alt="" coords="5,124,180,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,160,220,220,217,225,124,164"/>
+<area shape="rect" id="Node000003" href="$structhf__usb__serial__jtag__config__t.html" title="Configuration for a USB Serial/JTAG controller instance." alt="" coords="9,5,177,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,70,95,124,90,124,90,70"/>
+<area shape="rect" id="Node000004" href="$structhf__uart__statistics__t.html" title="UART operation statistics." alt="" coords="204,124,376,155"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="279,168,250,224,246,221,274,166"/>
+</map>

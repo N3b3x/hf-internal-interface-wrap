@@ -44,7 +44,7 @@ var searchData=
   ['rx_5fbuf_5f_41',['rx_buf_',['../classStmUart.html#a77b98d1b43bc3f69cc0572e0b76eb2d5',1,'StmUart']]],
   ['rx_5fbuf_5fsize_5f_42',['rx_buf_size_',['../classStmUart.html#a8bc5b71464fd8843f523849a175f7426',1,'StmUart']]],
   ['rx_5fbuffer_43',['rx_buffer',['../structEspPio_1_1ChannelState.html#a6201b425584214725e2f6c81cff9a25c',1,'EspPio::ChannelState']]],
-  ['rx_5fbuffer_5fsize_44',['rx_buffer_size',['../structEspPio_1_1ChannelState.html#ab8ea931d6508b8dd0e8728b82dcb4697',1,'EspPio::ChannelState::rx_buffer_size'],['../structhf__uart__config__t.html#ab4cfd06f761353a95f61a017ce34e58b',1,'hf_uart_config_t::rx_buffer_size'],['../structhf__stm32__uart__config__t.html#a5467d3534c61b15e785ad440d146e368',1,'hf_stm32_uart_config_t::rx_buffer_size']]],
+  ['rx_5fbuffer_5fsize_44',['rx_buffer_size',['../structhf__usb__serial__jtag__config__t.html#adc822ae8246bc11b825ad30c181a463d',1,'hf_usb_serial_jtag_config_t::rx_buffer_size'],['../structEspPio_1_1ChannelState.html#ab8ea931d6508b8dd0e8728b82dcb4697',1,'EspPio::ChannelState::rx_buffer_size'],['../structhf__uart__config__t.html#ab4cfd06f761353a95f61a017ce34e58b',1,'hf_uart_config_t::rx_buffer_size'],['../structhf__stm32__uart__config__t.html#a5467d3534c61b15e785ad440d146e368',1,'hf_stm32_uart_config_t::rx_buffer_size']]],
   ['rx_5fbuffer_5fusage_45',['rx_buffer_usage',['../structhf__uart__diagnostics__t.html#a0a9377bd1aa609f2fd438b5c630c2d46',1,'hf_uart_diagnostics_t']]],
   ['rx_5fbyte_5fcount_46',['rx_byte_count',['../structhf__uart__statistics__t.html#a43088b127b9a4919abcbb35d0cc9b8ad',1,'hf_uart_statistics_t']]],
   ['rx_5fbytes_47',['rx_bytes',['../structHfEspWifiStats.html#a8992f599c6de40d6604439be30d5adc3',1,'HfEspWifiStats']]],

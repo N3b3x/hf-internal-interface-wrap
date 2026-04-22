@@ -11,10 +11,10 @@
 <!-- Node0 -->
 <g id="Node000000" class="node">
 <title>Node0</title>
-<g id="a_Node000000"><a xlink:href="classPlatformSharedLock.html" target="_top" xlink:title="RAII shared (reader) lock guard for any shared mutex.">
+<g id="a_Node000000"><a xlink:href="classPlatformMutexImpl.html" target="_top" xlink:title="Recursive mutex templated on a backend policy.">
 <polygon fill="white" stroke="#666666" points="140,-38 0,-38 0,0 140,0 140,-38"/>
-<text text-anchor="start" x="8" y="-22.8" font-family="Arial" font-size="14.00">PlatformSharedLock</text>
-<text text-anchor="middle" x="70" y="-7.8" font-family="Arial" font-size="14.00">&lt; SharedMutex &gt;</text>
+<text text-anchor="start" x="8" y="-22.8" font-family="Arial" font-size="14.00">PlatformMutexImpl&lt;</text>
+<text text-anchor="middle" x="70" y="-7.8" font-family="Arial" font-size="14.00"> Backend &gt;</text>
 </a>
 </g>
 </g>

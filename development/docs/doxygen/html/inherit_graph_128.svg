@@ -11,9 +11,9 @@
 <!-- Node0 -->
 <g id="Node000000" class="node">
 <title>Node0</title>
-<g id="a_Node000000"><a xlink:href="structhf__uart__config__t.html" target="_top" xlink:title="ESP32 UART port configuration.">
+<g id="a_Node000000"><a xlink:href="structhf__timer__stats__t.html" target="_top" xlink:title="Timer statistics structure.">
 <polygon fill="white" stroke="#666666" points="113,-23 0,-23 0,0 113,0 113,-23"/>
-<text text-anchor="middle" x="56.5" y="-7.8" font-family="Arial" font-size="14.00">hf_uart_config_t</text>
+<text text-anchor="middle" x="56.5" y="-7.8" font-family="Arial" font-size="14.00">hf_timer_stats_t</text>
 </a>
 </g>
 </g>

@@ -16,6 +16,7 @@
     <innerfile refid="EspSpi_8h">EspSpi.h</innerfile>
     <innerfile refid="EspTemperature_8h">EspTemperature.h</innerfile>
     <innerfile refid="EspUart_8h">EspUart.h</innerfile>
+    <innerfile refid="EspUsbSerialJtag_8h">EspUsbSerialJtag.h</innerfile>
     <innerfile refid="EspWifi_8h">EspWifi.h</innerfile>
     <briefdescription>
     </briefdescription>

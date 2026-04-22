@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="EspUsbSerialJtag_8h" kind="file" language="C++">
+    <compoundname>EspUsbSerialJtag.h</compoundname>
+    <includes refid="BaseUsbSerialJtag_8h" local="yes">BaseUsbSerialJtag.h</includes>
+    <includes refid="McuSelect_8h" local="yes">McuSelect.h</includes>
+    <includes local="no">cstdint</includes>
+    <includedby refid="EspUsbSerialJtag_8cpp" local="yes">src/mcu/esp32/EspUsbSerialJtag.cpp</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>BaseUart.h</label>
+        <link refid="BaseUart_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>BaseUsbSerialJtag.h</label>
+        <link refid="BaseUsbSerialJtag_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/EspUsbSerialJtag.h</label>
+        <link refid="EspUsbSerialJtag_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="9">
+        <label>cstdarg</label>
+      </node>
+      <node id="5">
+        <label>cstdint</label>
+      </node>
+      <node id="7">
+        <label>cstring</label>
+      </node>
+      <node id="6">
+        <label>limits</label>
+      </node>
+      <node id="8">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/mcu/esp32/EspUsbSerialJtag.h</label>
+        <link refid="EspUsbSerialJtag_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/mcu/esp32/EspUsbSerialJtag.cpp</label>
+        <link refid="EspUsbSerialJtag_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classEspUsbSerialJtag" prot="public">EspUsbSerialJtag</innerclass>
+    <briefdescription>
+<para>ESP32-S3 / -C3 / -C6 USB Serial/JTAG console wrapper. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Concrete implementation of <computeroutput><ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref></computeroutput> for Espressif chips that embed the <bold>USB Serial/JTAG controller</bold> (see ESP-IDF <computeroutput>components/esp_driver_usb_serial_jtag/</computeroutput>). Internally calls <computeroutput>usb_serial_jtag_driver_install()</computeroutput> once and forwards reads/writes to <computeroutput>usb_serial_jtag_read_bytes()</computeroutput> / <computeroutput>usb_serial_jtag_write_bytes()</computeroutput>.</para>
+<para><simplesect kind="par"><title>Why a wrapper?</title><para>Application code in <computeroutput>main/</computeroutput> MUST NOT include <computeroutput>driver/usb_serial_jtag.h</computeroutput> directly — that would leak <computeroutput>esp_err_t</computeroutput>, <computeroutput>TickType_t</computeroutput>, and FreeRTOS into MCU-agnostic layers. By owning the driver behind <computeroutput><ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref></computeroutput>, upper layers stay portable to alternate transports (host-side mock, future USB-CDC OTG implementation, etc.).</para>
+</simplesect>
+<simplesect kind="par"><title>Coexistence with the IDF console</title><para>If <computeroutput>CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG=y</computeroutput>, the IDF console driver is already installed before <computeroutput>app_main</computeroutput> runs and <computeroutput>usb_serial_jtag_is_driver_installed()</computeroutput> returns true. <computeroutput>Initialize()</computeroutput> detects this and treats the controller as already-good without calling <computeroutput>usb_serial_jtag_driver_install()</computeroutput> a second time (which would return <computeroutput>ESP_ERR_INVALID_STATE</computeroutput>). In that mode, the IDF <computeroutput>printf</computeroutput> / <computeroutput>ESP_LOG</computeroutput> infrastructure shares the controller with this wrapper; both paths push to the same TX ring without conflict.</para>
+</simplesect>
+<simplesect kind="par"><title>Thread safety</title><para>The Espressif driver supports concurrent reader and writer tasks. This wrapper holds no internal state beyond <computeroutput>initialized_</computeroutput> after <computeroutput>Initialize()</computeroutput>, so multiple writer tasks may call <computeroutput>Write()</computeroutput> concurrently. If you call <computeroutput>Read()</computeroutput> from more than one task, hold an external mutex.</para>
+</simplesect>
+<simplesect kind="par"><title>Singleton helper</title><para>Most boards only ever need one instance (the controller is a single silicon block). Use <computeroutput><ref refid="classEspUsbSerialJtag_1a60ddfcf0685c26824d48464efc83853a" kindref="member">EspUsbSerialJtag::Default()</ref></computeroutput> to grab a process-wide shared instance configured with the supplied <computeroutput>config</computeroutput> on first call.</para>
+</simplesect>
+<simplesect kind="author"><para>HardFOC </para>
+</simplesect>
+<simplesect kind="date"><para>2026 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseUsbSerialJtag_8h" kindref="compound">BaseUsbSerialJtag.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="McuSelect_8h" kindref="compound">McuSelect.h</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>brings<sp/>esp32<sp/>toolchain<sp/>knobs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classEspUsbSerialJtag" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classEspUsbSerialJtag" kindref="compound">EspUsbSerialJtag</ref><sp/>final<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classEspUsbSerialJtag_1a7b1b45b14debc62965b28a0d42b70fe5" kindref="member">EspUsbSerialJtag</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__usb__serial__jtag__config__t" kindref="compound">hf_usb_serial_jtag_config_t</ref>&amp;<sp/>cfg)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><ref refid="classEspUsbSerialJtag_1a7b1b45b14debc62965b28a0d42b70fe5" kindref="member">EspUsbSerialJtag</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><ref refid="classEspUsbSerialJtag_1a91f9859d1927fd809c96014e30d7e568" kindref="member">~EspUsbSerialJtag</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//-----<sp/>BaseUsbSerialJtag<sp/>contract<sp/>--------------------------------------//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspUsbSerialJtag_1a993d365789c7d39ddeca2da2840013cc" kindref="member">Initialize</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspUsbSerialJtag_1a42580698847a472bc223bd8671fcc7b8" kindref="member">Deinitialize</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref><sp/><ref refid="classEspUsbSerialJtag_1a8fe75308c29ca648939293c6f3c3f44b" kindref="member">Write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/>data,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>length,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>0)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref><sp/><ref refid="classEspUsbSerialJtag_1afa26ea24dc486fe0d3f10fd41931db00" kindref="member">Read</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/>data,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>length,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>*<sp/>out_read_count<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref><sp/><ref refid="classEspUsbSerialJtag_1a07f159132d025c50c09fce1137631bb9" kindref="member">FlushTx</ref>(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>0)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspUsbSerialJtag_1aa15d83597196465ecc53b41c20d71b9b" kindref="member">IsHostConnected</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//-----<sp/>Telemetry<sp/>-------------------------------------------------------//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="classEspUsbSerialJtag_1ac8bbde2af90adca81263748a9f960b1d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__uart__statistics__t" kindref="compound">hf_uart_statistics_t</ref><sp/><ref refid="classEspUsbSerialJtag_1ac8bbde2af90adca81263748a9f960b1d" kindref="member">GetStatistics</ref>()<sp/>const<sp/>noexcept</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspUsbSerialJtag_1a7de03576b073f975af0aca1b20ac83fb" kindref="member">statistics_</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classEspUsbSerialJtag" kindref="compound">EspUsbSerialJtag</ref>&amp;<sp/><ref refid="classEspUsbSerialJtag_1a60ddfcf0685c26824d48464efc83853a" kindref="member">Default</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__usb__serial__jtag__config__t" kindref="compound">hf_usb_serial_jtag_config_t</ref>&amp;<sp/>cfg<sp/>=<sp/>{})<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="91" refid="classEspUsbSerialJtag_1a51f00d391dba736a6231f26f89551631" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspUsbSerialJtag_1a51f00d391dba736a6231f26f89551631" kindref="member">owns_driver_</ref>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classEspUsbSerialJtag_1a7de03576b073f975af0aca1b20ac83fb" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__uart__statistics__t" kindref="compound">hf_uart_statistics_t</ref><sp/><ref refid="classEspUsbSerialJtag_1a7de03576b073f975af0aca1b20ac83fb" kindref="member">statistics_</ref>{};</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/esp32/EspUsbSerialJtag.h"/>
+  </compounddef>
+</doxygen>

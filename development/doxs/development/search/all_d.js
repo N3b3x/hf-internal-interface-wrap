@@ -74,7 +74,7 @@ var searchData=
   ['flush_5fuart_5fbuffers_71',['flush_uart_buffers',['../UartComprehensiveTest_8cpp.html#a60939a4607d6135ab5e07ed81eaeccbe',1,'UartComprehensiveTest.cpp']]],
   ['flushrx_72',['FlushRx',['../classBaseUart.html#a2361728845801eb4356bdaa560ba0315',1,'BaseUart::FlushRx()'],['../classEspUart.html#a0d4beb1af47d1581fd753a0ade58378b',1,'EspUart::FlushRx()'],['../classStmUart.html#a47da8433981b0a524efb84c552448664',1,'StmUart::FlushRx()']]],
   ['flushtoflash_73',['FlushToFlash',['../classStmNvs.html#af0b253a0dd2df51a284a60e1a1e27b15',1,'StmNvs']]],
-  ['flushtx_74',['FlushTx',['../classBaseUart.html#a97a3d02d570669c9c463b99916fdef2c',1,'BaseUart::FlushTx()'],['../classEspUart.html#ae9d2e920c127672adf65cc4a7f0b58b5',1,'EspUart::FlushTx()'],['../classStmUart.html#a3e5819d45bd83956259d6c962bdc4166',1,'StmUart::FlushTx()']]],
+  ['flushtx_74',['FlushTx',['../classBaseUart.html#a97a3d02d570669c9c463b99916fdef2c',1,'BaseUart::FlushTx()'],['../classBaseUsbSerialJtag.html#a701543e786d06bb1f00559860b896c38',1,'BaseUsbSerialJtag::FlushTx()'],['../classEspUart.html#ae9d2e920c127672adf65cc4a7f0b58b5',1,'EspUart::FlushTx()'],['../classEspUsbSerialJtag.html#a07f159132d025c50c09fce1137631bb9',1,'EspUsbSerialJtag::FlushTx()'],['../classStmUart.html#a3e5819d45bd83956259d6c962bdc4166',1,'StmUart::FlushTx()']]],
   ['for_20most_20applications_75',['APB_CLK (80MHz) - Recommended for most applications',['../EspTypes__PWM_8h.html#autotoc_md10',1,'']]],
   ['for_20multi_20mcu_20development_76',['🎯 Universal Hardware Interface for Multi-MCU Development',['../index.html#autotoc_md25',1,'']]],
   ['force_5feviction_77',['FORCE_EVICTION',['../EspTypes__PWM_8h.html#ac87a4c9f233c95c6036c956aa21fdf72a426a3594d7497ed09e36a62c3b1cc5d7',1,'EspTypes_PWM.h']]],

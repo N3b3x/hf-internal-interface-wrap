@@ -1,0 +1,25 @@
+<map id="inc/mcu/esp32/EspUsbSerialJtag.h" name="inc/mcu/esp32/EspUsbSerialJtag.h">
+<area shape="rect" id="Node000001" title="ESP32&#45;S3 / &#45;C3 / &#45;C6 USB Serial/JTAG console wrapper." alt="" coords="521,5,775,56"/>
+<area shape="rect" id="Node000002" href="$BaseUsbSerialJtag_8h.html" title="Abstract base class for USB Serial/JTAG controller &quot;console&#45;style&quot; serial transports in the HardFOC s..." alt="" coords="395,104,586,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="605,59,530,100,527,95,602,54"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="311,340,385,371"/>
+<area shape="poly" id="edge13_Node000001_Node000005" title=" " alt="" coords="654,56,655,89,653,131,644,174,625,215,603,242,577,266,517,304,455,330,400,346,398,341,453,325,514,299,573,262,599,239,620,212,639,173,647,130,650,89,648,56"/>
+<area shape="rect" id="Node000010" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="685,104,808,135"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="678,54,722,93,718,97,674,58"/>
+<area shape="rect" id="Node000003" href="$BaseUart_8h.html" title="Abstract base class for UART driver implementations in the HardFOC system." alt="" coords="243,183,355,213"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="456,137,348,180,346,175,454,132"/>
+<area shape="poly" id="edge10_Node000002_Node000005" title=" " alt="" coords="495,135,497,166,496,207,487,252,468,293,453,309,436,323,400,342,398,337,434,318,450,306,463,291,482,250,491,207,492,166,490,135"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="379,261,453,292"/>
+<area shape="poly" id="edge11_Node000002_Node000007" title=" " alt="" coords="486,136,431,250,426,248,481,134"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="529,183,610,213"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="507,133,547,171,543,175,504,137"/>
+<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="5,261,168,292"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="260,216,139,259,138,254,258,211"/>
+<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="277,216,257,231,239,250,229,270,229,280,233,291,246,307,262,320,298,338,296,343,259,324,242,310,228,293,224,281,224,269,234,247,253,227,274,211"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="322,211,384,251,381,256,319,216"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="243,261,355,292"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="301,214,301,248,296,248,296,214"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="136,290,298,337,296,342,134,295"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="55,340,119,371"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="89,292,89,326,84,326,84,292"/>
+</map>

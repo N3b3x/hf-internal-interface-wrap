@@ -13,6 +13,7 @@ var dir_af527b166bd0aeb318c4d06f73919cfb =
     [ "BaseSpi.h", "BaseSpi_8h.html", "BaseSpi_8h" ],
     [ "BaseTemperature.h", "BaseTemperature_8h.html", "BaseTemperature_8h" ],
     [ "BaseUart.h", "BaseUart_8h.html", "BaseUart_8h" ],
+    [ "BaseUsbSerialJtag.h", "BaseUsbSerialJtag_8h.html", "BaseUsbSerialJtag_8h" ],
     [ "BaseWifi.h", "BaseWifi_8h.html", "BaseWifi_8h" ],
     [ "HardwareTypes.h", "HardwareTypes_8h.html", "HardwareTypes_8h" ]
 ];

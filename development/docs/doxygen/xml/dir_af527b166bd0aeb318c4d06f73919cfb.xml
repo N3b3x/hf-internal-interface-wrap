@@ -15,6 +15,7 @@
     <innerfile refid="BaseSpi_8h">BaseSpi.h</innerfile>
     <innerfile refid="BaseTemperature_8h">BaseTemperature.h</innerfile>
     <innerfile refid="BaseUart_8h">BaseUart.h</innerfile>
+    <innerfile refid="BaseUsbSerialJtag_8h">BaseUsbSerialJtag.h</innerfile>
     <innerfile refid="BaseWifi_8h">BaseWifi.h</innerfile>
     <innerfile refid="HardwareTypes_8h">HardwareTypes.h</innerfile>
     <briefdescription>

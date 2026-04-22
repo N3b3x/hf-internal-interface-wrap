@@ -1,0 +1,410 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classEspUsbSerialJtag" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>EspUsbSerialJtag</compoundname>
+    <basecompoundref refid="classBaseUsbSerialJtag" prot="public" virt="non-virtual">BaseUsbSerialJtag</basecompoundref>
+    <includes refid="EspUsbSerialJtag_8h" local="no">EspUsbSerialJtag.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classEspUsbSerialJtag_1a51f00d391dba736a6231f26f89551631" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspUsbSerialJtag::owns_driver_</definition>
+        <argsstring></argsstring>
+        <name>owns_driver_</name>
+        <qualifiedname>EspUsbSerialJtag::owns_driver_</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True when this wrapper called <computeroutput>usb_serial_jtag_driver_install()</computeroutput> itself (vs. discovering an already-installed IDF console driver). Controls whether <computeroutput><ref refid="classEspUsbSerialJtag_1a42580698847a472bc223bd8671fcc7b8" kindref="member">Deinitialize()</ref></computeroutput> calls <computeroutput>usb_serial_jtag_driver_uninstall()</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUsbSerialJtag.h" line="91" column="8" bodyfile="inc/mcu/esp32/EspUsbSerialJtag.h" bodystart="91" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUsbSerialJtag_1a7de03576b073f975af0aca1b20ac83fb" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__uart__statistics__t" kindref="compound">hf_uart_statistics_t</ref></type>
+        <definition>hf_uart_statistics_t EspUsbSerialJtag::statistics_</definition>
+        <argsstring></argsstring>
+        <name>statistics_</name>
+        <qualifiedname>EspUsbSerialJtag::statistics_</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUsbSerialJtag.h" line="93" column="24" bodyfile="inc/mcu/esp32/EspUsbSerialJtag.h" bodystart="93" bodyend="93"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classEspUsbSerialJtag_1ab2fa9e4c327e908445894cd5279d7056" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspUsbSerialJtag::EspUsbSerialJtag</definition>
+        <argsstring>(const hf_usb_serial_jtag_config_t &amp;cfg) noexcept</argsstring>
+        <name>EspUsbSerialJtag</name>
+        <qualifiedname>EspUsbSerialJtag::EspUsbSerialJtag</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__usb__serial__jtag__config__t" kindref="compound">hf_usb_serial_jtag_config_t</ref> &amp;</type>
+          <declname>cfg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Construct with explicit configuration (driver is NOT installed yet — call <computeroutput><ref refid="classBaseUsbSerialJtag_1a8814f384acbc04aa1905b65ab9f57748" kindref="member">EnsureInitialized()</ref></computeroutput> or <computeroutput><ref refid="classEspUsbSerialJtag_1a993d365789c7d39ddeca2da2840013cc" kindref="member">Initialize()</ref></computeroutput> to install). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUsbSerialJtag.h" line="56" column="12" bodyfile="src/mcu/esp32/EspUsbSerialJtag.cpp" bodystart="53" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUsbSerialJtag_1a7b1b45b14debc62965b28a0d42b70fe5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspUsbSerialJtag::EspUsbSerialJtag</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EspUsbSerialJtag</name>
+        <qualifiedname>EspUsbSerialJtag::EspUsbSerialJtag</qualifiedname>
+        <briefdescription>
+<para>Construct with library defaults (256-byte TX/RX rings). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUsbSerialJtag.h" line="59" column="3" bodyfile="src/mcu/esp32/EspUsbSerialJtag.cpp" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUsbSerialJtag_1a91f9859d1927fd809c96014e30d7e568" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspUsbSerialJtag::~EspUsbSerialJtag</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>~EspUsbSerialJtag</name>
+        <qualifiedname>EspUsbSerialJtag::~EspUsbSerialJtag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUsbSerialJtag.h" line="61" column="3" bodyfile="src/mcu/esp32/EspUsbSerialJtag.cpp" bodystart="60" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUsbSerialJtag_1a993d365789c7d39ddeca2da2840013cc" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool EspUsbSerialJtag::Initialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>EspUsbSerialJtag::Initialize</qualifiedname>
+        <reimplements refid="classBaseUsbSerialJtag_1a27cd5ec0867b047622014ec220cfc50e">Initialize</reimplements>
+        <briefdescription>
+<para>Install the platform driver according to <computeroutput>config_</computeroutput>. Returns true on success. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUsbSerialJtag.h" line="64" column="17" bodyfile="src/mcu/esp32/EspUsbSerialJtag.cpp" bodystart="71" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUsbSerialJtag_1a42580698847a472bc223bd8671fcc7b8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool EspUsbSerialJtag::Deinitialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>EspUsbSerialJtag::Deinitialize</qualifiedname>
+        <reimplements refid="classBaseUsbSerialJtag_1a378c11ef4540c02dbd9a0f8549767d36">Deinitialize</reimplements>
+        <briefdescription>
+<para>Tear down the platform driver. Returns true on success. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUsbSerialJtag.h" line="65" column="17" bodyfile="src/mcu/esp32/EspUsbSerialJtag.cpp" bodystart="111" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUsbSerialJtag_1a8fe75308c29ca648939293c6f3c3f44b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUsbSerialJtag::Write</definition>
+        <argsstring>(const hf_u8_t *data, hf_u32_t length, hf_u32_t timeout_ms=0) noexcept override</argsstring>
+        <name>Write</name>
+        <qualifiedname>EspUsbSerialJtag::Write</qualifiedname>
+        <reimplements refid="classBaseUsbSerialJtag_1a44b3bf5fe39a230149387021f542760e">Write</reimplements>
+        <param>
+          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Push <computeroutput>length</computeroutput> bytes to the host PC. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to source buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to push. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait if the TX ring buffer is full (0 = use the driver&apos;s default). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>UART_SUCCESS</computeroutput> if all bytes were accepted into the TX ring, <computeroutput>UART_ERR_TIMEOUT</computeroutput> if only some were accepted, or one of the configuration / not-initialised errors otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUsbSerialJtag.h" line="66" column="17" bodyfile="src/mcu/esp32/EspUsbSerialJtag.cpp" bodystart="134" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUsbSerialJtag_1afa26ea24dc486fe0d3f10fd41931db00" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUsbSerialJtag::Read</definition>
+        <argsstring>(hf_u8_t *data, hf_u32_t length, hf_u32_t timeout_ms=0, hf_u32_t *out_read_count=nullptr) noexcept override</argsstring>
+        <name>Read</name>
+        <qualifiedname>EspUsbSerialJtag::Read</qualifiedname>
+        <reimplements refid="classBaseUsbSerialJtag_1afa50ad4387c87a4d511b329197b8e5c8">Read</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> *</type>
+          <declname>out_read_count</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Pull up to <computeroutput>length</computeroutput> bytes from the host PC. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Destination buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Capacity of destination buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait for the first byte (0 = poll, no wait). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">out_read_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional: number of bytes actually read. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>UART_SUCCESS</computeroutput> when at least one byte was read, <computeroutput>UART_ERR_TIMEOUT</computeroutput> when no byte arrived in time, or another error code on failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUsbSerialJtag.h" line="67" column="17" bodyfile="src/mcu/esp32/EspUsbSerialJtag.cpp" bodystart="162" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUsbSerialJtag_1a07f159132d025c50c09fce1137631bb9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUsbSerialJtag::FlushTx</definition>
+        <argsstring>(hf_u32_t timeout_ms=0) noexcept override</argsstring>
+        <name>FlushTx</name>
+        <qualifiedname>EspUsbSerialJtag::FlushTx</qualifiedname>
+        <reimplements refid="classBaseUsbSerialJtag_1a701543e786d06bb1f00559860b896c38">FlushTx</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Block until the TX ring is fully drained to the host (or <computeroutput>timeout_ms</computeroutput>). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUsbSerialJtag.h" line="69" column="17" bodyfile="src/mcu/esp32/EspUsbSerialJtag.cpp" bodystart="193" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUsbSerialJtag_1aa15d83597196465ecc53b41c20d71b9b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool EspUsbSerialJtag::IsHostConnected</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>IsHostConnected</name>
+        <qualifiedname>EspUsbSerialJtag::IsHostConnected</qualifiedname>
+        <reimplements refid="classBaseUsbSerialJtag_1a2741539cff92b018a59a6e26a17e555a">IsHostConnected</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True iff the host PC is currently enumerating / receiving SOF packets. Returns false when only powered (e.g. plugged into a power bank). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUsbSerialJtag.h" line="70" column="9" bodyfile="src/mcu/esp32/EspUsbSerialJtag.cpp" bodystart="204" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUsbSerialJtag_1ac8bbde2af90adca81263748a9f960b1d" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="structhf__uart__statistics__t" kindref="compound">hf_uart_statistics_t</ref></type>
+        <definition>hf_uart_statistics_t EspUsbSerialJtag::GetStatistics</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>EspUsbSerialJtag::GetStatistics</qualifiedname>
+        <reimplements refid="classBaseUsbSerialJtag_1a908d87960565ddb2c69c7e3d62d4451b">GetStatistics</reimplements>
+        <briefdescription>
+<para>Snapshot byte counters (default: zeroed). Implementations may override. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUsbSerialJtag.h" line="73" column="24" bodyfile="inc/mcu/esp32/EspUsbSerialJtag.h" bodystart="73" bodyend="75"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classEspUsbSerialJtag_1a60ddfcf0685c26824d48464efc83853a" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classEspUsbSerialJtag" kindref="compound">EspUsbSerialJtag</ref> &amp;</type>
+        <definition>EspUsbSerialJtag &amp; EspUsbSerialJtag::Default</definition>
+        <argsstring>(const hf_usb_serial_jtag_config_t &amp;cfg={}) noexcept</argsstring>
+        <name>Default</name>
+        <qualifiedname>EspUsbSerialJtag::Default</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__usb__serial__jtag__config__t" kindref="compound">hf_usb_serial_jtag_config_t</ref> &amp;</type>
+          <declname>cfg</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Get-or-create a process-wide shared instance. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The first call configures the singleton with <computeroutput>cfg</computeroutput>. Subsequent calls ignore <computeroutput>cfg</computeroutput> and return the same instance. This matches the underlying hardware: the USB Serial/JTAG block is global. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cfg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Configuration applied on first call only. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Reference to the shared instance. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUsbSerialJtag.h" line="85" column="27" bodyfile="src/mcu/esp32/EspUsbSerialJtag.cpp" bodystart="215" bodyend="219"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BaseUsbSerialJtag</label>
+        <link refid="classBaseUsbSerialJtag"/>
+      </node>
+      <node id="1">
+        <label>EspUsbSerialJtag</label>
+        <link refid="classEspUsbSerialJtag"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BaseUsbSerialJtag</label>
+        <link refid="classBaseUsbSerialJtag"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>config_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>EspUsbSerialJtag</label>
+        <link refid="classEspUsbSerialJtag"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>hf_uart_statistics_t</label>
+        <link refid="structhf__uart__statistics__t"/>
+      </node>
+      <node id="3">
+        <label>hf_usb_serial_jtag_config_t</label>
+        <link refid="structhf__usb__serial__jtag__config__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/esp32/EspUsbSerialJtag.h" line="52" column="1" bodyfile="inc/mcu/esp32/EspUsbSerialJtag.h" bodystart="52" bodyend="94"/>
+    <listofallmembers>
+      <member refid="classBaseUsbSerialJtag_1aa22dd09a002dff8ac9d9c288092ad12f" prot="public" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>BaseUsbSerialJtag</name></member>
+      <member refid="classBaseUsbSerialJtag_1a8b535b2e0fc54d696cbd1435df432c2e" prot="public" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>BaseUsbSerialJtag</name></member>
+      <member refid="classBaseUsbSerialJtag_1a46c59b6e497c12fdf45161b361c931a1" prot="protected" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>BaseUsbSerialJtag</name></member>
+      <member refid="classBaseUsbSerialJtag_1ab42f1f16f4d4f7837efd66b589f4c825" prot="protected" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>config_</name></member>
+      <member refid="classEspUsbSerialJtag_1a60ddfcf0685c26824d48464efc83853a" prot="public" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>Default</name></member>
+      <member refid="classEspUsbSerialJtag_1a42580698847a472bc223bd8671fcc7b8" prot="public" virt="virtual"><scope>EspUsbSerialJtag</scope><name>Deinitialize</name></member>
+      <member refid="classBaseUsbSerialJtag_1af5ed28132861beec33242bd9f534bbd3" prot="public" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBaseUsbSerialJtag_1a8814f384acbc04aa1905b65ab9f57748" prot="public" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>EnsureInitialized</name></member>
+      <member refid="classEspUsbSerialJtag_1ab2fa9e4c327e908445894cd5279d7056" prot="public" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>EspUsbSerialJtag</name></member>
+      <member refid="classEspUsbSerialJtag_1a7b1b45b14debc62965b28a0d42b70fe5" prot="public" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>EspUsbSerialJtag</name></member>
+      <member refid="classEspUsbSerialJtag_1a07f159132d025c50c09fce1137631bb9" prot="public" virt="virtual"><scope>EspUsbSerialJtag</scope><name>FlushTx</name></member>
+      <member refid="classBaseUsbSerialJtag_1a24232b2e14e968356b71c54cf55b662d" prot="public" virt="virtual"><scope>EspUsbSerialJtag</scope><name>GetDiagnostics</name></member>
+      <member refid="classEspUsbSerialJtag_1ac8bbde2af90adca81263748a9f960b1d" prot="public" virt="virtual"><scope>EspUsbSerialJtag</scope><name>GetStatistics</name></member>
+      <member refid="classEspUsbSerialJtag_1a993d365789c7d39ddeca2da2840013cc" prot="public" virt="virtual"><scope>EspUsbSerialJtag</scope><name>Initialize</name></member>
+      <member refid="classBaseUsbSerialJtag_1a68aebb3ea8df33f1ca8db923f4509a10" prot="protected" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>initialized_</name></member>
+      <member refid="classEspUsbSerialJtag_1aa15d83597196465ecc53b41c20d71b9b" prot="public" virt="virtual"><scope>EspUsbSerialJtag</scope><name>IsHostConnected</name></member>
+      <member refid="classBaseUsbSerialJtag_1ac6fc039269661a1b43597b28ee8f8c1a" prot="public" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>IsInitialized</name></member>
+      <member refid="classBaseUsbSerialJtag_1ac3bd2c1ac6b2b1d28d739f6bb04105e1" prot="public" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>operator=</name></member>
+      <member refid="classBaseUsbSerialJtag_1aa597d6d0b61f4ceae7fd15e48fe9be31" prot="public" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>operator=</name></member>
+      <member refid="classEspUsbSerialJtag_1a51f00d391dba736a6231f26f89551631" prot="private" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>owns_driver_</name></member>
+      <member refid="classEspUsbSerialJtag_1afa26ea24dc486fe0d3f10fd41931db00" prot="public" virt="virtual"><scope>EspUsbSerialJtag</scope><name>Read</name></member>
+      <member refid="classBaseUsbSerialJtag_1a1e952bff148cb89bb947760b20c1ec0b" prot="public" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>ReadByte</name></member>
+      <member refid="classEspUsbSerialJtag_1a7de03576b073f975af0aca1b20ac83fb" prot="private" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>statistics_</name></member>
+      <member refid="classEspUsbSerialJtag_1a8fe75308c29ca648939293c6f3c3f44b" prot="public" virt="virtual"><scope>EspUsbSerialJtag</scope><name>Write</name></member>
+      <member refid="classBaseUsbSerialJtag_1ab349b7ec042286de690014e5f2bc55cc" prot="public" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>WriteLine</name></member>
+      <member refid="classBaseUsbSerialJtag_1a3f63ecbcf0c86d48a18b34e0140b7ec0" prot="public" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>WriteString</name></member>
+      <member refid="classBaseUsbSerialJtag_1a00c812eeea5002af6875dc9ad55ccc32" prot="public" virt="virtual"><scope>EspUsbSerialJtag</scope><name>~BaseUsbSerialJtag</name></member>
+      <member refid="classEspUsbSerialJtag_1a91f9859d1927fd809c96014e30d7e568" prot="public" virt="non-virtual"><scope>EspUsbSerialJtag</scope><name>~EspUsbSerialJtag</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

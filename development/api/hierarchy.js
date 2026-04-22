@@ -50,6 +50,9 @@ var hierarchy =
       [ "EspUart", "classEspUart.html", null ],
       [ "StmUart", "classStmUart.html", null ]
     ] ],
+    [ "BaseUsbSerialJtag", "classBaseUsbSerialJtag.html", [
+      [ "EspUsbSerialJtag", "classEspUsbSerialJtag.html", null ]
+    ] ],
     [ "BaseWifi", "classBaseWifi.html", [
       [ "EspWifi", "classEspWifi.html", null ]
     ] ],
@@ -173,6 +176,7 @@ var hierarchy =
     [ "hf_uart_rs485_config_t", "structhf__uart__rs485__config__t.html", null ],
     [ "hf_uart_statistics_t", "structhf__uart__statistics__t.html", null ],
     [ "hf_uart_wakeup_config_t", "structhf__uart__wakeup__config__t.html", null ],
+    [ "hf_usb_serial_jtag_config_t", "structhf__usb__serial__jtag__config__t.html", null ],
     [ "hf_wifi_ap_config_t", "structhf__wifi__ap__config__t.html", null ],
     [ "hf_wifi_ip_info_t", "structhf__wifi__ip__info__t.html", null ],
     [ "hf_wifi_network_info_t", "structhf__wifi__network__info__t.html", null ],

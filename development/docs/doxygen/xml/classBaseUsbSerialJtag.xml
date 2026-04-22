@@ -1,0 +1,548 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classBaseUsbSerialJtag" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>BaseUsbSerialJtag</compoundname>
+    <derivedcompoundref refid="classEspUsbSerialJtag" prot="public" virt="non-virtual">EspUsbSerialJtag</derivedcompoundref>
+    <includes refid="BaseUsbSerialJtag_8h" local="no">BaseUsbSerialJtag.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classBaseUsbSerialJtag_1ab42f1f16f4d4f7837efd66b589f4c825" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__usb__serial__jtag__config__t" kindref="compound">hf_usb_serial_jtag_config_t</ref></type>
+        <definition>hf_usb_serial_jtag_config_t BaseUsbSerialJtag::config_</definition>
+        <argsstring></argsstring>
+        <name>config_</name>
+        <qualifiedname>BaseUsbSerialJtag::config_</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+<para>Subclasses may consult / mutate the buffered config before <ref refid="classBaseUsbSerialJtag_1a27cd5ec0867b047622014ec220cfc50e" kindref="member">Initialize()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="224" column="31" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="224" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseUsbSerialJtag_1a68aebb3ea8df33f1ca8db923f4509a10" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool BaseUsbSerialJtag::initialized_</definition>
+        <argsstring></argsstring>
+        <name>initialized_</name>
+        <qualifiedname>BaseUsbSerialJtag::initialized_</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+<para>Lifecycle latch maintained by <computeroutput><ref refid="classBaseUsbSerialJtag_1a8814f384acbc04aa1905b65ab9f57748" kindref="member">EnsureInitialized()</ref></computeroutput> / <computeroutput><ref refid="classBaseUsbSerialJtag_1af5ed28132861beec33242bd9f534bbd3" kindref="member">EnsureDeinitialized()</ref></computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="227" column="8" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="227" bodyend="227"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1a00c812eeea5002af6875dc9ad55ccc32" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>virtual BaseUsbSerialJtag::~BaseUsbSerialJtag</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~BaseUsbSerialJtag</name>
+        <qualifiedname>BaseUsbSerialJtag::~BaseUsbSerialJtag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="101" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1aa22dd09a002dff8ac9d9c288092ad12f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseUsbSerialJtag::BaseUsbSerialJtag</definition>
+        <argsstring>(const BaseUsbSerialJtag &amp;)=delete</argsstring>
+        <name>BaseUsbSerialJtag</name>
+        <qualifiedname>BaseUsbSerialJtag::BaseUsbSerialJtag</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="103" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1ac3bd2c1ac6b2b1d28d739f6bb04105e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref> &amp;</type>
+        <definition>BaseUsbSerialJtag &amp; BaseUsbSerialJtag::operator=</definition>
+        <argsstring>(const BaseUsbSerialJtag &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BaseUsbSerialJtag::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="104" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1a8b535b2e0fc54d696cbd1435df432c2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseUsbSerialJtag::BaseUsbSerialJtag</definition>
+        <argsstring>(BaseUsbSerialJtag &amp;&amp;)=delete</argsstring>
+        <name>BaseUsbSerialJtag</name>
+        <qualifiedname>BaseUsbSerialJtag::BaseUsbSerialJtag</qualifiedname>
+        <param>
+          <type><ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="105" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1aa597d6d0b61f4ceae7fd15e48fe9be31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref> &amp;</type>
+        <definition>BaseUsbSerialJtag &amp; BaseUsbSerialJtag::operator=</definition>
+        <argsstring>(BaseUsbSerialJtag &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BaseUsbSerialJtag::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="106" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1a8814f384acbc04aa1905b65ab9f57748" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseUsbSerialJtag::EnsureInitialized</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EnsureInitialized</name>
+        <qualifiedname>BaseUsbSerialJtag::EnsureInitialized</qualifiedname>
+        <briefdescription>
+<para>Install the underlying driver if not already installed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="113" column="8" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="113" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1af5ed28132861beec33242bd9f534bbd3" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseUsbSerialJtag::EnsureDeinitialized</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EnsureDeinitialized</name>
+        <qualifiedname>BaseUsbSerialJtag::EnsureDeinitialized</qualifiedname>
+        <briefdescription>
+<para>Uninstall the underlying driver if previously installed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="121" column="8" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="121" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1ac6fc039269661a1b43597b28ee8f8c1a" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseUsbSerialJtag::IsInitialized</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsInitialized</name>
+        <qualifiedname>BaseUsbSerialJtag::IsInitialized</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="128" column="9" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="128" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1a27cd5ec0867b047622014ec220cfc50e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseUsbSerialJtag::Initialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>BaseUsbSerialJtag::Initialize</qualifiedname>
+        <reimplementedby refid="classEspUsbSerialJtag_1a993d365789c7d39ddeca2da2840013cc">Initialize</reimplementedby>
+        <briefdescription>
+<para>Install the platform driver according to <computeroutput>config_</computeroutput>. Returns true on success. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="137" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1a378c11ef4540c02dbd9a0f8549767d36" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseUsbSerialJtag::Deinitialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>BaseUsbSerialJtag::Deinitialize</qualifiedname>
+        <reimplementedby refid="classEspUsbSerialJtag_1a42580698847a472bc223bd8671fcc7b8">Deinitialize</reimplementedby>
+        <briefdescription>
+<para>Tear down the platform driver. Returns true on success. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="140" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1a44b3bf5fe39a230149387021f542760e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>virtual hf_uart_err_t BaseUsbSerialJtag::Write</definition>
+        <argsstring>(const hf_u8_t *data, hf_u32_t length, hf_u32_t timeout_ms=0) noexcept=0</argsstring>
+        <name>Write</name>
+        <qualifiedname>BaseUsbSerialJtag::Write</qualifiedname>
+        <reimplementedby refid="classEspUsbSerialJtag_1a8fe75308c29ca648939293c6f3c3f44b">Write</reimplementedby>
+        <param>
+          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Push <computeroutput>length</computeroutput> bytes to the host PC. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to source buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to push. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait if the TX ring buffer is full (0 = use the driver&apos;s default). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>UART_SUCCESS</computeroutput> if all bytes were accepted into the TX ring, <computeroutput>UART_ERR_TIMEOUT</computeroutput> if only some were accepted, or one of the configuration / not-initialised errors otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="152" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1afa50ad4387c87a4d511b329197b8e5c8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>virtual hf_uart_err_t BaseUsbSerialJtag::Read</definition>
+        <argsstring>(hf_u8_t *data, hf_u32_t length, hf_u32_t timeout_ms=0, hf_u32_t *out_read_count=nullptr) noexcept=0</argsstring>
+        <name>Read</name>
+        <qualifiedname>BaseUsbSerialJtag::Read</qualifiedname>
+        <reimplementedby refid="classEspUsbSerialJtag_1afa26ea24dc486fe0d3f10fd41931db00">Read</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> *</type>
+          <declname>out_read_count</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Pull up to <computeroutput>length</computeroutput> bytes from the host PC. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Destination buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Capacity of destination buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait for the first byte (0 = poll, no wait). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">out_read_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional: number of bytes actually read. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>UART_SUCCESS</computeroutput> when at least one byte was read, <computeroutput>UART_ERR_TIMEOUT</computeroutput> when no byte arrived in time, or another error code on failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="166" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1a701543e786d06bb1f00559860b896c38" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>virtual hf_uart_err_t BaseUsbSerialJtag::FlushTx</definition>
+        <argsstring>(hf_u32_t timeout_ms=0) noexcept=0</argsstring>
+        <name>FlushTx</name>
+        <qualifiedname>BaseUsbSerialJtag::FlushTx</qualifiedname>
+        <reimplementedby refid="classEspUsbSerialJtag_1a07f159132d025c50c09fce1137631bb9">FlushTx</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Block until the TX ring is fully drained to the host (or <computeroutput>timeout_ms</computeroutput>). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="170" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1a2741539cff92b018a59a6e26a17e555a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseUsbSerialJtag::IsHostConnected</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>IsHostConnected</name>
+        <qualifiedname>BaseUsbSerialJtag::IsHostConnected</qualifiedname>
+        <reimplementedby refid="classEspUsbSerialJtag_1aa15d83597196465ecc53b41c20d71b9b">IsHostConnected</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True iff the host PC is currently enumerating / receiving SOF packets. Returns false when only powered (e.g. plugged into a power bank). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="174" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1a3f63ecbcf0c86d48a18b34e0140b7ec0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t BaseUsbSerialJtag::WriteString</definition>
+        <argsstring>(const char *s, hf_u32_t timeout_ms=0) noexcept</argsstring>
+        <name>WriteString</name>
+        <qualifiedname>BaseUsbSerialJtag::WriteString</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Write a NUL-terminated string (no automatic newline). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="181" column="17" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="181" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1ab349b7ec042286de690014e5f2bc55cc" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t BaseUsbSerialJtag::WriteLine</definition>
+        <argsstring>(const char *s, hf_u32_t timeout_ms=0) noexcept</argsstring>
+        <name>WriteLine</name>
+        <qualifiedname>BaseUsbSerialJtag::WriteLine</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Write a NUL-terminated string then &quot;\r\n&quot;. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="190" column="17" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="190" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1a1e952bff148cb89bb947760b20c1ec0b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t BaseUsbSerialJtag::ReadByte</definition>
+        <argsstring>(hf_u8_t &amp;out, hf_u32_t timeout_ms=0) noexcept</argsstring>
+        <name>ReadByte</name>
+        <qualifiedname>BaseUsbSerialJtag::ReadByte</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Read exactly one byte. Returns <computeroutput>UART_ERR_TIMEOUT</computeroutput> when nothing arrives. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="200" column="17" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="200" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1a908d87960565ddb2c69c7e3d62d4451b" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="structhf__uart__statistics__t" kindref="compound">hf_uart_statistics_t</ref></type>
+        <definition>virtual hf_uart_statistics_t BaseUsbSerialJtag::GetStatistics</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>BaseUsbSerialJtag::GetStatistics</qualifiedname>
+        <reimplementedby refid="classEspUsbSerialJtag_1ac8bbde2af90adca81263748a9f960b1d">GetStatistics</reimplementedby>
+        <briefdescription>
+<para>Snapshot byte counters (default: zeroed). Implementations may override. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="209" column="32" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="209" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1a24232b2e14e968356b71c54cf55b662d" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="structhf__uart__diagnostics__t" kindref="compound">hf_uart_diagnostics_t</ref></type>
+        <definition>virtual hf_uart_diagnostics_t BaseUsbSerialJtag::GetDiagnostics</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>BaseUsbSerialJtag::GetDiagnostics</qualifiedname>
+        <briefdescription>
+<para>Snapshot diagnostic state (default: minimally populated). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="214" column="33" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="214" bodyend="218"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classBaseUsbSerialJtag_1a46c59b6e497c12fdf45161b361c931a1" prot="protected" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>BaseUsbSerialJtag::BaseUsbSerialJtag</definition>
+        <argsstring>(const hf_usb_serial_jtag_config_t &amp;cfg) noexcept</argsstring>
+        <name>BaseUsbSerialJtag</name>
+        <qualifiedname>BaseUsbSerialJtag::BaseUsbSerialJtag</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__usb__serial__jtag__config__t" kindref="compound">hf_usb_serial_jtag_config_t</ref> &amp;</type>
+          <declname>cfg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="221" column="12" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="221" bodyend="221"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract base class for built-in USB Serial/JTAG controller wrappers. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Mirrors the lazy-initialise / Read / Write / Flush shape of <computeroutput><ref refid="classBaseUart" kindref="compound">BaseUart</ref></computeroutput> so a <computeroutput>ConsoleSerialTransport</computeroutput> can hold either a <computeroutput>BaseUart*</computeroutput> or a <computeroutput>BaseUsbSerialJtag*</computeroutput> behind a tiny adapter.</para>
+<para><simplesect kind="note"><para>Not inherently thread-safe. The underlying ESP-IDF driver is safe for concurrent reader/writer callers, but if you wrap it with stateful helpers (e.g. printf) protect them with a mutex. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>BaseUsbSerialJtag</label>
+        <link refid="classBaseUsbSerialJtag"/>
+      </node>
+      <node id="2">
+        <label>EspUsbSerialJtag</label>
+        <link refid="classEspUsbSerialJtag"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>BaseUsbSerialJtag</label>
+        <link refid="classBaseUsbSerialJtag"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>config_</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hf_usb_serial_jtag_config_t</label>
+        <link refid="structhf__usb__serial__jtag__config__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/base/BaseUsbSerialJtag.h" line="99" column="1" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="99" bodyend="228"/>
+    <listofallmembers>
+      <member refid="classBaseUsbSerialJtag_1aa22dd09a002dff8ac9d9c288092ad12f" prot="public" virt="non-virtual"><scope>BaseUsbSerialJtag</scope><name>BaseUsbSerialJtag</name></member>
+      <member refid="classBaseUsbSerialJtag_1a8b535b2e0fc54d696cbd1435df432c2e" prot="public" virt="non-virtual"><scope>BaseUsbSerialJtag</scope><name>BaseUsbSerialJtag</name></member>
+      <member refid="classBaseUsbSerialJtag_1a46c59b6e497c12fdf45161b361c931a1" prot="protected" virt="non-virtual"><scope>BaseUsbSerialJtag</scope><name>BaseUsbSerialJtag</name></member>
+      <member refid="classBaseUsbSerialJtag_1ab42f1f16f4d4f7837efd66b589f4c825" prot="protected" virt="non-virtual"><scope>BaseUsbSerialJtag</scope><name>config_</name></member>
+      <member refid="classBaseUsbSerialJtag_1a378c11ef4540c02dbd9a0f8549767d36" prot="public" virt="pure-virtual"><scope>BaseUsbSerialJtag</scope><name>Deinitialize</name></member>
+      <member refid="classBaseUsbSerialJtag_1af5ed28132861beec33242bd9f534bbd3" prot="public" virt="non-virtual"><scope>BaseUsbSerialJtag</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBaseUsbSerialJtag_1a8814f384acbc04aa1905b65ab9f57748" prot="public" virt="non-virtual"><scope>BaseUsbSerialJtag</scope><name>EnsureInitialized</name></member>
+      <member refid="classBaseUsbSerialJtag_1a701543e786d06bb1f00559860b896c38" prot="public" virt="pure-virtual"><scope>BaseUsbSerialJtag</scope><name>FlushTx</name></member>
+      <member refid="classBaseUsbSerialJtag_1a24232b2e14e968356b71c54cf55b662d" prot="public" virt="virtual"><scope>BaseUsbSerialJtag</scope><name>GetDiagnostics</name></member>
+      <member refid="classBaseUsbSerialJtag_1a908d87960565ddb2c69c7e3d62d4451b" prot="public" virt="virtual"><scope>BaseUsbSerialJtag</scope><name>GetStatistics</name></member>
+      <member refid="classBaseUsbSerialJtag_1a27cd5ec0867b047622014ec220cfc50e" prot="public" virt="pure-virtual"><scope>BaseUsbSerialJtag</scope><name>Initialize</name></member>
+      <member refid="classBaseUsbSerialJtag_1a68aebb3ea8df33f1ca8db923f4509a10" prot="protected" virt="non-virtual"><scope>BaseUsbSerialJtag</scope><name>initialized_</name></member>
+      <member refid="classBaseUsbSerialJtag_1a2741539cff92b018a59a6e26a17e555a" prot="public" virt="pure-virtual"><scope>BaseUsbSerialJtag</scope><name>IsHostConnected</name></member>
+      <member refid="classBaseUsbSerialJtag_1ac6fc039269661a1b43597b28ee8f8c1a" prot="public" virt="non-virtual"><scope>BaseUsbSerialJtag</scope><name>IsInitialized</name></member>
+      <member refid="classBaseUsbSerialJtag_1ac3bd2c1ac6b2b1d28d739f6bb04105e1" prot="public" virt="non-virtual"><scope>BaseUsbSerialJtag</scope><name>operator=</name></member>
+      <member refid="classBaseUsbSerialJtag_1aa597d6d0b61f4ceae7fd15e48fe9be31" prot="public" virt="non-virtual"><scope>BaseUsbSerialJtag</scope><name>operator=</name></member>
+      <member refid="classBaseUsbSerialJtag_1afa50ad4387c87a4d511b329197b8e5c8" prot="public" virt="pure-virtual"><scope>BaseUsbSerialJtag</scope><name>Read</name></member>
+      <member refid="classBaseUsbSerialJtag_1a1e952bff148cb89bb947760b20c1ec0b" prot="public" virt="non-virtual"><scope>BaseUsbSerialJtag</scope><name>ReadByte</name></member>
+      <member refid="classBaseUsbSerialJtag_1a44b3bf5fe39a230149387021f542760e" prot="public" virt="pure-virtual"><scope>BaseUsbSerialJtag</scope><name>Write</name></member>
+      <member refid="classBaseUsbSerialJtag_1ab349b7ec042286de690014e5f2bc55cc" prot="public" virt="non-virtual"><scope>BaseUsbSerialJtag</scope><name>WriteLine</name></member>
+      <member refid="classBaseUsbSerialJtag_1a3f63ecbcf0c86d48a18b34e0140b7ec0" prot="public" virt="non-virtual"><scope>BaseUsbSerialJtag</scope><name>WriteString</name></member>
+      <member refid="classBaseUsbSerialJtag_1a00c812eeea5002af6875dc9ad55ccc32" prot="public" virt="virtual"><scope>BaseUsbSerialJtag</scope><name>~BaseUsbSerialJtag</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

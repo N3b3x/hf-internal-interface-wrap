@@ -16,6 +16,7 @@ var searchData=
   ['espspidevice_13',['EspSpiDevice',['../classEspSpiDevice.html',1,'']]],
   ['esptemperature_14',['EspTemperature',['../classEspTemperature.html',1,'']]],
   ['espuart_15',['EspUart',['../classEspUart.html',1,'']]],
-  ['espwifi_16',['EspWifi',['../classEspWifi.html',1,'']]],
-  ['espwifiadvancedconfig_17',['EspWifiAdvancedConfig',['../structEspWifiAdvancedConfig.html',1,'']]]
+  ['espusbserialjtag_16',['EspUsbSerialJtag',['../classEspUsbSerialJtag.html',1,'']]],
+  ['espwifi_17',['EspWifi',['../classEspWifi.html',1,'']]],
+  ['espwifiadvancedconfig_18',['EspWifiAdvancedConfig',['../structEspWifiAdvancedConfig.html',1,'']]]
 ];

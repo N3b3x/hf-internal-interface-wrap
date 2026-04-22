@@ -8,5 +8,6 @@ var searchData=
   ['monitoring_5fcallback_5',['monitoring_callback',['../TemperatureComprehensiveTest_8cpp.html#a64981704d5cf479bfdc3cf0d30503f76',1,'TemperatureComprehensiveTest.cpp']]],
   ['monitoringtimercallback_6',['MonitoringTimerCallback',['../classEspTemperature.html#abe6ae1ced0d8c565b722b416cb64e9ae',1,'EspTemperature']]],
   ['mstoticks_7',['MsToTicks',['../classPlatformTime.html#a8cff669a89cba4fa58a44687ec3ce4d4',1,'PlatformTime']]],
-  ['mstoticks_8',['msToTicks',['../structNullMutexBackend.html#a49290ba91fee448733d3b184c58b586c',1,'NullMutexBackend']]]
+  ['mstoticks_8',['msToTicks',['../structNullMutexBackend.html#a49290ba91fee448733d3b184c58b586c',1,'NullMutexBackend']]],
+  ['mstoticks_9',['MsToTicks',['../namespaceanonymous__namespace_02EspUsbSerialJtag_8cpp_03.html#ae9f75b1971ab0c326d59cdcc0d786b29',1,'anonymous_namespace{EspUsbSerialJtag.cpp}']]]
 ];

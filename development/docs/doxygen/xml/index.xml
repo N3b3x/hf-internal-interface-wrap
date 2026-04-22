@@ -522,6 +522,30 @@
     <member refid="classBaseUart_1a68ce0319cba173ccdf90812fd7ad8ee5" kind="function"><name>GetDiagnostics</name></member>
     <member refid="classBaseUart_1af78039653dc8c846d3f90dc48f50b33d" kind="function"><name>BaseUart</name></member>
   </compound>
+  <compound refid="classBaseUsbSerialJtag" kind="class"><name>BaseUsbSerialJtag</name>
+    <member refid="classBaseUsbSerialJtag_1ab42f1f16f4d4f7837efd66b589f4c825" kind="variable"><name>config_</name></member>
+    <member refid="classBaseUsbSerialJtag_1a68aebb3ea8df33f1ca8db923f4509a10" kind="variable"><name>initialized_</name></member>
+    <member refid="classBaseUsbSerialJtag_1a00c812eeea5002af6875dc9ad55ccc32" kind="function"><name>~BaseUsbSerialJtag</name></member>
+    <member refid="classBaseUsbSerialJtag_1aa22dd09a002dff8ac9d9c288092ad12f" kind="function"><name>BaseUsbSerialJtag</name></member>
+    <member refid="classBaseUsbSerialJtag_1ac3bd2c1ac6b2b1d28d739f6bb04105e1" kind="function"><name>operator=</name></member>
+    <member refid="classBaseUsbSerialJtag_1a8b535b2e0fc54d696cbd1435df432c2e" kind="function"><name>BaseUsbSerialJtag</name></member>
+    <member refid="classBaseUsbSerialJtag_1aa597d6d0b61f4ceae7fd15e48fe9be31" kind="function"><name>operator=</name></member>
+    <member refid="classBaseUsbSerialJtag_1a8814f384acbc04aa1905b65ab9f57748" kind="function"><name>EnsureInitialized</name></member>
+    <member refid="classBaseUsbSerialJtag_1af5ed28132861beec33242bd9f534bbd3" kind="function"><name>EnsureDeinitialized</name></member>
+    <member refid="classBaseUsbSerialJtag_1ac6fc039269661a1b43597b28ee8f8c1a" kind="function"><name>IsInitialized</name></member>
+    <member refid="classBaseUsbSerialJtag_1a27cd5ec0867b047622014ec220cfc50e" kind="function"><name>Initialize</name></member>
+    <member refid="classBaseUsbSerialJtag_1a378c11ef4540c02dbd9a0f8549767d36" kind="function"><name>Deinitialize</name></member>
+    <member refid="classBaseUsbSerialJtag_1a44b3bf5fe39a230149387021f542760e" kind="function"><name>Write</name></member>
+    <member refid="classBaseUsbSerialJtag_1afa50ad4387c87a4d511b329197b8e5c8" kind="function"><name>Read</name></member>
+    <member refid="classBaseUsbSerialJtag_1a701543e786d06bb1f00559860b896c38" kind="function"><name>FlushTx</name></member>
+    <member refid="classBaseUsbSerialJtag_1a2741539cff92b018a59a6e26a17e555a" kind="function"><name>IsHostConnected</name></member>
+    <member refid="classBaseUsbSerialJtag_1a3f63ecbcf0c86d48a18b34e0140b7ec0" kind="function"><name>WriteString</name></member>
+    <member refid="classBaseUsbSerialJtag_1ab349b7ec042286de690014e5f2bc55cc" kind="function"><name>WriteLine</name></member>
+    <member refid="classBaseUsbSerialJtag_1a1e952bff148cb89bb947760b20c1ec0b" kind="function"><name>ReadByte</name></member>
+    <member refid="classBaseUsbSerialJtag_1a908d87960565ddb2c69c7e3d62d4451b" kind="function"><name>GetStatistics</name></member>
+    <member refid="classBaseUsbSerialJtag_1a24232b2e14e968356b71c54cf55b662d" kind="function"><name>GetDiagnostics</name></member>
+    <member refid="classBaseUsbSerialJtag_1a46c59b6e497c12fdf45161b361c931a1" kind="function"><name>BaseUsbSerialJtag</name></member>
+  </compound>
   <compound refid="classBaseWifi" kind="class"><name>BaseWifi</name>
     <member refid="classBaseWifi_1a3ece5610228558420ddb84fe1045619d" kind="function"><name>~BaseWifi</name></member>
     <member refid="classBaseWifi_1a7dcbf03e298b35c171d94dd753167603" kind="function"><name>Initialize</name></member>
@@ -1469,6 +1493,21 @@
     <member refid="classEspUart_1a7e5c7137cc708d66db15e3a5dcffac7a" kind="function"><name>UpdateDiagnostics</name></member>
     <member refid="classEspUart_1adf012fed8c99c93c19dde0cbb821709c" kind="function"><name>GetTimeoutMs</name></member>
     <member refid="classEspUart_1a1eacc6fc2880d22e444a29a48de2d628" kind="function"><name>InternalPrintf</name></member>
+  </compound>
+  <compound refid="classEspUsbSerialJtag" kind="class"><name>EspUsbSerialJtag</name>
+    <member refid="classEspUsbSerialJtag_1a51f00d391dba736a6231f26f89551631" kind="variable"><name>owns_driver_</name></member>
+    <member refid="classEspUsbSerialJtag_1a7de03576b073f975af0aca1b20ac83fb" kind="variable"><name>statistics_</name></member>
+    <member refid="classEspUsbSerialJtag_1ab2fa9e4c327e908445894cd5279d7056" kind="function"><name>EspUsbSerialJtag</name></member>
+    <member refid="classEspUsbSerialJtag_1a7b1b45b14debc62965b28a0d42b70fe5" kind="function"><name>EspUsbSerialJtag</name></member>
+    <member refid="classEspUsbSerialJtag_1a91f9859d1927fd809c96014e30d7e568" kind="function"><name>~EspUsbSerialJtag</name></member>
+    <member refid="classEspUsbSerialJtag_1a993d365789c7d39ddeca2da2840013cc" kind="function"><name>Initialize</name></member>
+    <member refid="classEspUsbSerialJtag_1a42580698847a472bc223bd8671fcc7b8" kind="function"><name>Deinitialize</name></member>
+    <member refid="classEspUsbSerialJtag_1a8fe75308c29ca648939293c6f3c3f44b" kind="function"><name>Write</name></member>
+    <member refid="classEspUsbSerialJtag_1afa26ea24dc486fe0d3f10fd41931db00" kind="function"><name>Read</name></member>
+    <member refid="classEspUsbSerialJtag_1a07f159132d025c50c09fce1137631bb9" kind="function"><name>FlushTx</name></member>
+    <member refid="classEspUsbSerialJtag_1aa15d83597196465ecc53b41c20d71b9b" kind="function"><name>IsHostConnected</name></member>
+    <member refid="classEspUsbSerialJtag_1ac8bbde2af90adca81263748a9f960b1d" kind="function"><name>GetStatistics</name></member>
+    <member refid="classEspUsbSerialJtag_1a60ddfcf0685c26824d48464efc83853a" kind="function"><name>Default</name></member>
   </compound>
   <compound refid="classEspWifi" kind="class"><name>EspWifi</name>
     <member refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kind="variable"><name>m_mutex</name></member>
@@ -2707,6 +2746,11 @@
     <member refid="structhf__uart__wakeup__config__t_1a4ac464ca640984d471f17defcf1a1784" kind="variable"><name>use_ref_tick</name></member>
     <member refid="structhf__uart__wakeup__config__t_1aed7fc6d646fd59649eedc406b8e6169b" kind="function"><name>hf_uart_wakeup_config_t</name></member>
   </compound>
+  <compound refid="structhf__usb__serial__jtag__config__t" kind="struct"><name>hf_usb_serial_jtag_config_t</name>
+    <member refid="structhf__usb__serial__jtag__config__t_1aef938dd579d6605877945005f12ce280" kind="variable"><name>tx_buffer_size</name></member>
+    <member refid="structhf__usb__serial__jtag__config__t_1adc822ae8246bc11b825ad30c181a463d" kind="variable"><name>rx_buffer_size</name></member>
+    <member refid="structhf__usb__serial__jtag__config__t_1a1026281ace351fa7d41c8f4abe0b83cc" kind="variable"><name>non_blocking_when_disconnected</name></member>
+  </compound>
   <compound refid="structhf__wifi__ap__config__t" kind="struct"><name>hf_wifi_ap_config_t</name>
     <member refid="structhf__wifi__ap__config__t_1a0b0565f4d761b1e192fd0b96c041808d" kind="variable"><name>ssid</name></member>
     <member refid="structhf__wifi__ap__config__t_1a398bcfee6f1c4e993c3e74ad4b2347e1" kind="variable"><name>password</name></member>
@@ -3245,6 +3289,9 @@
     <member refid="structEspPwm_1_1ValidationResult_1ab8910eb820419fc2c601d283a3d98a46" kind="variable"><name>required_clock_hz</name></member>
     <member refid="structEspPwm_1_1ValidationResult_1a46a6889b96ddfd7dee0739f92fe5211d" kind="variable"><name>available_clock_hz</name></member>
     <member refid="structEspPwm_1_1ValidationResult_1a48ea061e23889d58c2a5a0978bfaed89" kind="function"><name>ValidationResult</name></member>
+  </compound>
+  <compound refid="namespaceanonymous__namespace_02EspUsbSerialJtag_8cpp_03" kind="namespace"><name>anonymous_namespace{EspUsbSerialJtag.cpp}</name>
+    <member refid="namespaceanonymous__namespace_02EspUsbSerialJtag_8cpp_03_1ae9f75b1971ab0c326d59cdcc0d786b29" kind="function"><name>MsToTicks</name></member>
   </compound>
   <compound refid="namespaceanonymous__namespace_02StmCan_8cpp_03" kind="namespace"><name>anonymous_namespace{StmCan.cpp}</name>
     <member refid="namespaceanonymous__namespace_02StmCan_8cpp_03_1aba2c1ce526196a638d1a1dce049425d4" kind="variable"><name>kCanRxFifo0</name></member>
@@ -4702,6 +4749,8 @@
     <member refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6a36f407d18d14bf7ed32186028a5a7834" kind="enumvalue"><name>UART_ERR_UNKNOWN</name></member>
     <member refid="BaseUart_8h_1af8c6bbea05bb05ef1002071d6af168ad" kind="function"><name>HfUartErrToString</name></member>
   </compound>
+  <compound refid="BaseUsbSerialJtag_8h" kind="file"><name>BaseUsbSerialJtag.h</name>
+  </compound>
   <compound refid="BaseWifi_8h" kind="file"><name>BaseWifi.h</name>
     <member refid="group__wifi_1ga9f9e568d94077f9a13b02c0a2a9a07b1" kind="define"><name>HF_WIFI_ERR_LIST</name></member>
     <member refid="group__wifi_1gafbf3f04fa35349e183adb88ae6d03874" kind="define"><name>X</name></member>
@@ -4844,6 +4893,8 @@
     <member refid="EspTemperature_8h_1acf7521a526f974ab3bdd42de4d70aad5" kind="typedef"><name>esp_temp_monitoring_callback_t</name></member>
   </compound>
   <compound refid="EspUart_8h" kind="file"><name>EspUart.h</name>
+  </compound>
+  <compound refid="EspUsbSerialJtag_8h" kind="file"><name>EspUsbSerialJtag.h</name>
   </compound>
   <compound refid="EspWifi_8h" kind="file"><name>EspWifi.h</name>
   </compound>
@@ -5354,6 +5405,9 @@
     <member refid="EspUart_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kind="variable"><name>TAG</name></member>
     <member refid="EspUart_8cpp_1aa5d0ac16b4ae57052dc9e3cf13f638ef" kind="function"><name>IsValidUartPort</name></member>
     <member refid="EspUart_8cpp_1a9816d4c5bf01908b7066dcf57c442bea" kind="function"><name>GetDefaultUartPins</name></member>
+  </compound>
+  <compound refid="EspUsbSerialJtag_8cpp" kind="file"><name>EspUsbSerialJtag.cpp</name>
+    <member refid="EspUsbSerialJtag_8cpp_1ae7d9c64644585526560e9e6824fd84dc" kind="variable"><name>TAG</name></member>
   </compound>
   <compound refid="EspWifi_8cpp" kind="file"><name>EspWifi.cpp</name>
     <member refid="EspWifi_8cpp_1ad552e7688532cbbecd3967538ced06ac" kind="define"><name>WIFI_CONNECTED_BIT</name></member>

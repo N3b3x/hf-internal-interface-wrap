@@ -11,9 +11,9 @@
 <!-- Node0 -->
 <g id="Node000000" class="node">
 <title>Node0</title>
-<g id="a_Node000000"><a xlink:href="structhf__stm32__can__config__t.html" target="_top" xlink:title="CAN configuration for STM32.">
+<g id="a_Node000000"><a xlink:href="structhf__stm32__adc__config__t.html" target="_top" xlink:title="ADC configuration for STM32.">
 <polygon fill="white" stroke="#666666" points="157,-23 0,-23 0,0 157,0 157,-23"/>
-<text text-anchor="middle" x="78.5" y="-7.8" font-family="Arial" font-size="14.00">hf_stm32_can_config_t</text>
+<text text-anchor="middle" x="78.5" y="-7.8" font-family="Arial" font-size="14.00">hf_stm32_adc_config_t</text>
 </a>
 </g>
 </g>

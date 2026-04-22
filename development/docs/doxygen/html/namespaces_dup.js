@@ -1,5 +1,8 @@
 var namespaces_dup =
 [
+    [ "anonymous_namespace{EspUsbSerialJtag.cpp}", "namespaceanonymous__namespace_02EspUsbSerialJtag_8cpp_03.html", [
+      [ "MsToTicks", "namespaceanonymous__namespace_02EspUsbSerialJtag_8cpp_03.html#ae9f75b1971ab0c326d59cdcc0d786b29", null ]
+    ] ],
     [ "anonymous_namespace{StmCan.cpp}", "namespaceanonymous__namespace_02StmCan_8cpp_03.html", "namespaceanonymous__namespace_02StmCan_8cpp_03" ],
     [ "anonymous_namespace{StmGpio.cpp}", "namespaceanonymous__namespace_02StmGpio_8cpp_03.html", [
       [ "kGpioModeInput", "namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a039bf1f6c2fe443fd023cab9064b2ac7", null ],

@@ -66,24 +66,25 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AdcComprehensiveTest_8cpp.html",
-"EspWifi_8cpp.html#ab8f831b960ae2fd5dcb77cb871abdb79",
-"PwmComprehensiveTest_8cpp.html#a53bd3b7c698049eee1ab5ec7bb6f6dff",
-"StmTypes_8h.html#a61d8ada18ba35572dbf8fedc4d96501f",
-"WifiComprehensiveTest_8cpp.html#a647c761ce290d76365072d1c066418ec",
-"classBaseLogger.html#a5c4e83d89a9039e336dfb9f13d2be9a5",
-"classBaseUart.html#a9c42866eb7d966a138755e5b71c725cf",
-"classEspGpio.html#a9661ef14697ca21f3a580add2f3a4623",
-"classEspPio.html#adcdcad3a021a42f84cc978c5ac8b81aa",
-"classEspUart.html#a41b46b421647bc6181d207651590375f",
-"classStmCan.html#a65c6cd41415b35e10cdd85b78bfc66ec",
-"classStmSpiDevice.html#afd55e6d85cfe8e0020665c7039576ebe",
-"group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a71db6ff144b9f71fa28145c8cbaa9777",
-"namespaceanonymous__namespace_02StmGpio_8cpp_03.html#ab4ddb049348a4b0ee3ea6e477290aa00",
-"structEspWifiAdvancedConfig.html#a3c0742f820dc69240755884b768916eb",
-"structhf__adc__continuous__config__t.html",
-"structhf__esp__can__tx__info__t.html#a9adf7b89eb91027779ad3837efc71695",
-"structhf__pio__channel__status__t.html#a11aa619417eaaf4a277ff070bbbdaff2",
-"structhf__stm32__temp__sensor__config__t.html#a2c32d9830af682cafea7532370bb8eb9"
+"EspWifi_8cpp.html#a7f3c6f317b84936b69f55a14df8f21d9",
+"PwmComprehensiveTest_8cpp.html#a3fe506307d4787f60c81114b2665e6e7",
+"StmTypes_8h.html#a4b5614e96ae81ced775d3861471e9660",
+"WifiComprehensiveTest_8cpp.html#a3fe506307d4787f60c81114b2665e6e7",
+"classBaseLogger.html#a4075d445b4199e72e9a0c09ba438c076",
+"classBaseUart.html#a68ce0319cba173ccdf90812fd7ad8ee5",
+"classEspGpio.html#a385ff46f95432183be7cd52d4a69fde4",
+"classEspPio.html#a68923d078ceecd71f7e2f77e8c5bc947",
+"classEspTemperature.html#af91cca81090fa226453fc793f5305ec6",
+"classPlatformSharedMutexImpl.html#aed22877700be075a928abe6b6d9c8f54",
+"classStmPwm.html#a99e0b7151be12ebcb541611ab0983a74",
+"group__bluetooth.html#gaa2d24c13652ad267d8e7fc00df0a884a",
+"index.html#autotoc_md36",
+"structEspPwm_1_1ChannelState.html#a99945d94a37ce581c6209a09015b9f03",
+"structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader.html#ac0d3fd9c5c95bfd1b2763a1f6b7b13c3",
+"structhf__esp__can__config__t.html#a3fc23f7e02de25e15735f902fb8d9612",
+"structhf__nvs__partition__config__t.html#ae38ecb16cd130fb144836b3c73f42eb4",
+"structhf__spi__statistics__t.html#a254206b449ef304a67006771fea8eca9",
+"structhf__uart__wakeup__config__t.html#a4ac464ca640984d471f17defcf1a1784"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -14,5 +14,6 @@ var dir_426f378bcfb40d7530258730abe85710 =
     [ "EspSpi.h", "EspSpi_8h.html", "EspSpi_8h" ],
     [ "EspTemperature.h", "EspTemperature_8h.html", "EspTemperature_8h" ],
     [ "EspUart.h", "EspUart_8h.html", "EspUart_8h" ],
+    [ "EspUsbSerialJtag.h", "EspUsbSerialJtag_8h.html", "EspUsbSerialJtag_8h" ],
     [ "EspWifi.h", "EspWifi_8h.html", "EspWifi_8h" ]
 ];

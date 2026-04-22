@@ -11,9 +11,9 @@
 <!-- Node0 -->
 <g id="Node000000" class="node">
 <title>Node0</title>
-<g id="a_Node000000"><a xlink:href="structhf__logger__config__t.html" target="_top" xlink:title="Logger configuration structure.">
+<g id="a_Node000000"><a xlink:href="structhf__log__message__t.html" target="_top" xlink:title="Log message structure.">
 <polygon fill="white" stroke="#666666" points="128,-23 0,-23 0,0 128,0 128,-23"/>
-<text text-anchor="middle" x="64" y="-7.8" font-family="Arial" font-size="14.00">hf_logger_config_t</text>
+<text text-anchor="middle" x="64" y="-7.8" font-family="Arial" font-size="14.00">hf_log_message_t</text>
 </a>
 </g>
 </g>

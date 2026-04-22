@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__usb__serial__jtag__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_usb_serial_jtag_config_t</compoundname>
+    <includes refid="BaseUsbSerialJtag_8h" local="no">BaseUsbSerialJtag.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__usb__serial__jtag__config__t_1aef938dd579d6605877945005f12ce280" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_usb_serial_jtag_config_t::tx_buffer_size</definition>
+        <argsstring></argsstring>
+        <name>tx_buffer_size</name>
+        <qualifiedname>hf_usb_serial_jtag_config_t::tx_buffer_size</qualifiedname>
+        <initializer>{256}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bytes for the driver&apos;s internal TX ring buffer (must be &gt; 0). Larger values absorb log bursts when the host PC is slow to drain. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="71" column="12" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="71" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__usb__serial__jtag__config__t_1adc822ae8246bc11b825ad30c181a463d" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_usb_serial_jtag_config_t::rx_buffer_size</definition>
+        <argsstring></argsstring>
+        <name>rx_buffer_size</name>
+        <qualifiedname>hf_usb_serial_jtag_config_t::rx_buffer_size</qualifiedname>
+        <initializer>{256}</initializer>
+        <briefdescription>
+<para>Bytes for the driver&apos;s internal RX ring buffer (must be &gt; 0). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="74" column="12" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__usb__serial__jtag__config__t_1a1026281ace351fa7d41c8f4abe0b83cc" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_usb_serial_jtag_config_t::non_blocking_when_disconnected</definition>
+        <argsstring></argsstring>
+        <name>non_blocking_when_disconnected</name>
+        <qualifiedname>hf_usb_serial_jtag_config_t::non_blocking_when_disconnected</qualifiedname>
+        <initializer>{true}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>When true, calls to <computeroutput>Read()</computeroutput> will not block longer than <computeroutput>timeout_ms</computeroutput> even if the host is not connected. When false the implementation may busy-poll connection state. Default true matches typical console use. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUsbSerialJtag.h" line="79" column="8" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="79" bodyend="79"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Configuration for a USB Serial/JTAG controller instance. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Intentionally minimal: the controller has no electrical knobs. Only the host-side ring-buffer sizes matter, plus a couple of policy bits. </para>
+    </detaileddescription>
+    <location file="inc/base/BaseUsbSerialJtag.h" line="68" column="1" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="68" bodyend="80"/>
+    <listofallmembers>
+      <member refid="structhf__usb__serial__jtag__config__t_1a1026281ace351fa7d41c8f4abe0b83cc" prot="public" virt="non-virtual"><scope>hf_usb_serial_jtag_config_t</scope><name>non_blocking_when_disconnected</name></member>
+      <member refid="structhf__usb__serial__jtag__config__t_1adc822ae8246bc11b825ad30c181a463d" prot="public" virt="non-virtual"><scope>hf_usb_serial_jtag_config_t</scope><name>rx_buffer_size</name></member>
+      <member refid="structhf__usb__serial__jtag__config__t_1aef938dd579d6605877945005f12ce280" prot="public" virt="non-virtual"><scope>hf_usb_serial_jtag_config_t</scope><name>tx_buffer_size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespaceanonymous__namespace_02EspUsbSerialJtag_8cpp_03" kind="namespace" language="C++">
+    <compoundname>anonymous_namespace{EspUsbSerialJtag.cpp}</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceanonymous__namespace_02EspUsbSerialJtag_8cpp_03_1ae9f75b1971ab0c326d59cdcc0d786b29" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>TickType_t</type>
+        <definition>TickType_t anonymous_namespace{EspUsbSerialJtag.cpp}::MsToTicks</definition>
+        <argsstring>(hf_u32_t ms) noexcept</argsstring>
+        <name>MsToTicks</name>
+        <qualifiedname>anonymous_namespace{EspUsbSerialJtag.cpp}::MsToTicks</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>ms</declname>
+        </param>
+        <briefdescription>
+<para>Convert milliseconds to FreeRTOS ticks, rounding 0 ms straight to 0. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/esp32/EspUsbSerialJtag.cpp" line="37" column="19" bodyfile="src/mcu/esp32/EspUsbSerialJtag.cpp" bodystart="37" bodyend="45"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/esp32/EspUsbSerialJtag.cpp" line="34" column="1"/>
+  </compounddef>
+</doxygen>
