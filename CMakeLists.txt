@@ -59,6 +59,13 @@ set(DRIVER_REQUIRES
     esp_driver_i2c
 )
 
+# `esp_driver_usb_serial_jtag` exists on targets with the built-in USB
+# Serial/JTAG controller (ESP32-S3 / -C3 / -C6 / -H2 / -P4). When present,
+# expose it so EspUsbSerialJtag.cpp can `#include <driver/usb_serial_jtag.h>`.
+if(EXISTS "$ENV{IDF_PATH}/components/esp_driver_usb_serial_jtag")
+    list(APPEND DRIVER_REQUIRES esp_driver_usb_serial_jtag)
+endif()
+
 set(DRIVER_PRIV_REQUIRES
     esp_netif
     esp_event
