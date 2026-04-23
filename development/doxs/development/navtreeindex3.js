@@ -245,9 +245,9 @@ var NAVTREEINDEX3 =
 "UartComprehensiveTest_8cpp.html#aebb05f3a64662192f3f8433454914b53":[4,0,0,0,0,15,1],
 "UartComprehensiveTest_8cpp.html#af6e3f351682e543379bc94e13ffbed96":[4,0,0,0,0,15,24],
 "UartComprehensiveTest_8cpp.html#afdc0b960eadfff575ebbed04ee6e8558":[4,0,0,0,0,15,13],
-"WifiComprehensiveTest_8cpp.html":[4,0,0,0,0,16],
-"WifiComprehensiveTest_8cpp.html#a1498811388d24a45a53db97cc52c94e4":[4,0,0,0,0,16,16],
-"WifiComprehensiveTest_8cpp.html#a18cd2ffbdfcfd99fca0f271bedde476b":[4,0,0,0,0,16,17],
-"WifiComprehensiveTest_8cpp.html#a1fee3940bfd5358e0e2cbedacafbcde8":[4,0,0,0,0,16,5],
-"WifiComprehensiveTest_8cpp.html#a362ae025a7b83c898995613ee8fbddc7":[4,0,0,0,0,16,18]
+"UsbSerialJtagComprehensiveTest_8cpp.html":[4,0,0,0,0,16],
+"UsbSerialJtagComprehensiveTest_8cpp.html#a05b02029eca6d3be52edf960179196ee":[4,0,0,0,0,16,24],
+"UsbSerialJtagComprehensiveTest_8cpp.html#a0d8f20236d0c5d8f9430408fe20c8e17":[4,0,0,0,0,16,22],
+"UsbSerialJtagComprehensiveTest_8cpp.html#a134c5f77a75dfeef3d9b4809f05c72ce":[4,0,0,0,0,16,7],
+"UsbSerialJtagComprehensiveTest_8cpp.html#a1e04670c744f4deed0f91ee0315a0ecc":[4,0,0,0,0,16,17]
 };

@@ -3342,6 +3342,10 @@
     <member refid="namespaceanonymous__namespace_02StmUart_8cpp_03_1ab2a4d5fbf0156cc690a4ac7ed0757a95" kind="variable"><name>kDefaultTimeoutMs</name></member>
     <member refid="namespaceanonymous__namespace_02StmUart_8cpp_03_1a370188345c76a4506f6731ba8e1fbf27" kind="variable"><name>kPrintfBufSize</name></member>
   </compound>
+  <compound refid="namespaceanonymous__namespace_02UsbSerialJtagComprehensiveTest_8cpp_03" kind="namespace"><name>anonymous_namespace{UsbSerialJtagComprehensiveTest.cpp}</name>
+    <member refid="namespaceanonymous__namespace_02UsbSerialJtagComprehensiveTest_8cpp_03_1a1ed70e441e6ad6036e44805a149ca710" kind="function"><name>drain_rx</name></member>
+    <member refid="namespaceanonymous__namespace_02UsbSerialJtagComprehensiveTest_8cpp_03_1a747c8d0621fd78ef9136989cecf5924a" kind="function"><name>acquire</name></member>
+  </compound>
   <compound refid="namespacehf" kind="namespace"><name>hf</name>
   </compound>
   <compound refid="namespacehf_1_1stm32" kind="namespace"><name>hf::stm32</name>
@@ -4096,6 +4100,32 @@
     <member refid="UartComprehensiveTest_8cpp_1aebb05f3a64662192f3f8433454914b53" kind="function"><name>create_test_config</name></member>
     <member refid="UartComprehensiveTest_8cpp_1a6411f8d28a673c12d3103dea3c4845ec" kind="function"><name>verify_uart_state</name></member>
     <member refid="UartComprehensiveTest_8cpp_1a630544a7f0a2cc40d8a7fefab7e2fe70" kind="function"><name>app_main</name></member>
+  </compound>
+  <compound refid="UsbSerialJtagComprehensiveTest_8cpp" kind="file"><name>UsbSerialJtagComprehensiveTest.cpp</name>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kind="variable"><name>TAG</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1aaff89257c54366921eebb8ec1348b1fd" kind="variable"><name>g_test_results</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1a3fe506307d4787f60c81114b2665e6e7" kind="variable"><name>ENABLE_CORE_TESTS</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1a0d8f20236d0c5d8f9430408fe20c8e17" kind="variable"><name>ENABLE_IO_TESTS</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1a62788acba0dc9e1edc000cd2b1be8911" kind="variable"><name>ENABLE_DIAG_TESTS</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1ac9980ee02b5f22eb42bb23a63fed7d60" kind="variable"><name>ENABLE_ERROR_TESTS</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1a9d1b5b9acb6ac863266e56123b08378b" kind="variable"><name>ENABLE_INTERACTIVE_TESTS</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1a1e04670c744f4deed0f91ee0315a0ecc" kind="variable"><name>ENABLE_CLEANUP_TESTS</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1a05b02029eca6d3be52edf960179196ee" kind="variable"><name>HOST_ECHO_TIMEOUT_MS</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1ad4f92f8b3362551e6410bf2d74017f05" kind="function"><name>test_usj_construction</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1a52b45246f56f9ba13648b09bc5407f7b" kind="function"><name>test_usj_lazy_initialize</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1a287f765bd91eabda4457d76fc07d57c8" kind="function"><name>test_usj_idf_share_path</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1a5b18fbab406896bec8690adcb996c89e" kind="function"><name>test_usj_write_basic</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1a68d897ba14669094d4fbbffb1939f0f6" kind="function"><name>test_usj_write_string_and_line</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1aa10b7e42667dd643f8c059756f0be7d6" kind="function"><name>test_usj_read_timeout_when_idle</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1a52a033d89c1fb641b57f7cd3efa32aed" kind="function"><name>test_usj_flush_tx</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1ae164b9422d50e1fa6a59744e29d3993d" kind="function"><name>test_usj_host_connected_query</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1a8f8b0abe359200862f0f691ad0b51665" kind="function"><name>test_usj_statistics_increment</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1a6be8751c8933fbe2cfa403751f073d4e" kind="function"><name>test_usj_null_pointer_guards</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1a85f61aac827ea4ebe4a494e161a8e901" kind="function"><name>test_usj_zero_length_is_success</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1ad3d9606c54e9a28db404875c17e0a5b6" kind="function"><name>test_usj_not_initialized_returns_error</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1a134c5f77a75dfeef3d9b4809f05c72ce" kind="function"><name>test_usj_interactive_echo</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1ae591da91536dbdf9a7f0c393d65f219e" kind="function"><name>test_usj_safe_deinitialize</name></member>
+    <member refid="UsbSerialJtagComprehensiveTest_8cpp_1a630544a7f0a2cc40d8a7fefab7e2fe70" kind="function"><name>app_main</name></member>
   </compound>
   <compound refid="WifiComprehensiveTest_8cpp" kind="file"><name>WifiComprehensiveTest.cpp</name>
     <member refid="WifiComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kind="variable"><name>TAG</name></member>

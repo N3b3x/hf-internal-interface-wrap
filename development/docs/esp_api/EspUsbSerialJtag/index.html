@@ -1,0 +1,1113 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li:not(:nth-child(15)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > ul > li:nth-child(15) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > ul > li:nth-child(15) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(15) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/hf-internal-interface-wrap/development/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-internal-interface-wrap/development/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>🔌 EspUsbSerialJtag | HardFOC Interface Wrapper - development</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="🔌 EspUsbSerialJtag" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="ESP32-family wrapper for the built-in USB Serial/JTAG controller (CDC-ACM virtual COM port over native USB)" />
+<meta property="og:description" content="ESP32-family wrapper for the built-in USB Serial/JTAG controller (CDC-ACM virtual COM port over native USB)" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/esp_api/EspUsbSerialJtag/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/esp_api/EspUsbSerialJtag/" />
+<meta property="og:site_name" content="HardFOC Interface Wrapper - development" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="🔌 EspUsbSerialJtag" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"ESP32-family wrapper for the built-in USB Serial/JTAG controller (CDC-ACM virtual COM port over native USB)","headline":"🔌 EspUsbSerialJtag","url":"https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/esp_api/EspUsbSerialJtag/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Custom head content for hf-internal-interface-wrap documentation -->
+<link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/custom.css">
+<script src="/hf-internal-interface-wrap/development/assets/js/custom.js" defer></script>
+
+<!-- Version selector for multi-version documentation -->
+<!-- Version Selector Component for Multi-Version Documentation -->
+<div class="version-selector">
+  <div class="version-dropdown">
+    <label for="version-select" class="version-label">
+      <span class="version-icon">📚</span>
+      Version:
+    </label>
+    <select id="version-select" class="version-select" onchange="switchVersion(this.value)">
+      <option value="latest" data-url="/hf-internal-interface-wrap/">Development (main)</option>
+      <option value="v2.1.0" data-url="/hf-internal-interface-wrap/v2.1.0/">v2.1.0 (Latest Stable)</option>
+      <option value="v2.0.3" data-url="/hf-internal-interface-wrap/v2.0.3/">v2.0.3 (Previous Stable)</option>
+      <option value="v2.1.0-rc1" data-url="/hf-internal-interface-wrap/v2.1.0-rc1/">v2.1.0-rc1 (Release Candidate)</option>
+      <option value="v1.0.0" data-url="/hf-internal-interface-wrap/v1.0.0/">v1.0.0 (Legacy)</option>
+    </select>
+  </div>
+  
+  <div class="version-info">
+    <span class="current-version" id="current-version">Latest (main)</span>
+    <span class="version-badge" id="version-badge">dev</span>
+  </div>
+</div>
+
+<script>
+// Version switching logic
+function switchVersion(version) {
+  const select = document.getElementById('version-select');
+  const selectedOption = select.options[select.selectedIndex];
+  const targetUrl = selectedOption.getAttribute('data-url');
+  
+  if (targetUrl) {
+    // Update current page URL to new version
+    const currentPath = window.location.pathname;
+    const baseUrl = window.location.origin;
+    
+    // Extract the path after the version prefix
+    let newPath = currentPath;
+    if (currentPath.includes('/hf-internal-interface-wrap/')) {
+      const pathParts = currentPath.split('/hf-internal-interface-wrap/');
+      if (pathParts.length > 1) {
+        newPath = pathParts[1];
+      }
+    }
+    
+    // Construct new URL
+    const newUrl = baseUrl + targetUrl + newPath;
+    window.location.href = newUrl;
+  }
+}
+
+// Set current version based on URL
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const versionSelect = document.getElementById('version-select');
+  const currentVersionSpan = document.getElementById('current-version');
+  const versionBadge = document.getElementById('version-badge');
+  
+  // Determine current version from URL
+  let currentVersion = 'latest';
+  let versionType = 'dev';
+  
+  if (currentPath.includes('/stable/')) {
+    currentVersion = 'stable';
+    versionType = 'stable';
+  } else if (currentPath.includes('/v1.0.0/')) {
+    currentVersion = 'v1.0.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.9.0/')) {
+    currentVersion = 'v0.9.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.8.0/')) {
+    currentVersion = 'v0.8.0';
+    versionType = 'release';
+  }
+  
+  // Update UI
+  versionSelect.value = currentVersion;
+  currentVersionSpan.textContent = currentVersion === 'latest' ? 'Latest (main)' : 
+                                  currentVersion === 'stable' ? 'Stable (latest release)' : 
+                                  currentVersion;
+  
+  // Update badge
+  versionBadge.textContent = versionType;
+  versionBadge.className = 'version-badge ' + versionType;
+});
+</script>
+
+<style>
+.version-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.version-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.version-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-icon {
+  font-size: 1rem;
+}
+
+.version-select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--body-bg);
+  color: var(--body-text-color);
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.version-select:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.version-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.current-version {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.version-badge.dev {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+@media (max-width: 768px) {
+  .version-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .version-info {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+</style>
+
+
+<!-- Version information display -->
+<!-- Version Information Display Component -->
+<div class="version-info-display">
+  <div class="version-details">
+    <span class="version-label">Version:</span>
+    <span class="version-value">1.0.0-dev</span>
+    <span class="version-badge version-development">development</span>
+  </div>
+  
+  <div class="version-meta">
+    <span class="branch-info">
+      <span class="branch-icon">🌿</span>
+      <span class="branch-name">main</span>
+    </span>
+    
+    <span class="build-info">
+      <span class="build-icon">🔨</span>
+      <span class="build-date">2026-04-23</span>
+    </span>
+  </div>
+</div>
+
+<style>
+.version-info-display {
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.version-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.version-label {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-value {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: var(--link-color);
+  background: var(--code-bg);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.version-badge.development {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.version-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.branch-info,
+.build-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--body-text-color);
+  font-size: 0.85rem;
+}
+
+.branch-icon,
+.build-icon {
+  font-size: 0.9rem;
+}
+
+.branch-name {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+.build-date {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .version-info-display {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .version-details,
+  .version-meta {
+    justify-content: center;
+  }
+  
+  .version-meta {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <header class="side-bar">
+  <div class="site-header">
+    <a href="/hf-internal-interface-wrap/development/" class="site-title lh-tight">
+  HardFOC Interface Wrapper - development
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="🔧 HardFOC Internal Interface Layer submenu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/" class="nav-list-link">🔧 HardFOC Internal Interface Layer</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="📚 Documentation submenu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/" class="nav-list-link">📚 Documentation</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="🛠️ Utilities submenu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/utils/" class="nav-list-link">🛠️ Utilities</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/DigitalOutputGuard/" class="nav-list-link">🛡️ DigitalOutputGuard</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/AsciiArtGenerator/" class="nav-list-link">🎨 AsciiArtGenerator</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="📋 API Reference submenu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/api/" class="nav-list-link">📋 API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseGpio/" class="nav-list-link">🔌 BaseGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseAdc/" class="nav-list-link">📊 BaseAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePwm/" class="nav-list-link">🎛️ BasePwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseI2c/" class="nav-list-link">🔗 BaseI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseSpi/" class="nav-list-link">🔄 BaseSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseUart/" class="nav-list-link">📡 BaseUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseCan/" class="nav-list-link">🚌 BaseCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseWifi/" class="nav-list-link">📶 BaseWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseBluetooth/" class="nav-list-link">📲 BaseBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseNvs/" class="nav-list-link">💾 BaseNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseLogger/" class="nav-list-link">📝 BaseLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePeriodicTimer/" class="nav-list-link">⏰ BasePeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePio/" class="nav-list-link">🎛️ BasePio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseTemperature/" class="nav-list-link">🌡️ BaseTemperature</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseUsbSerialJtag/" class="nav-list-link">🔌 BaseUsbSerialJtag</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/HardwareTypes/" class="nav-list-link">🔧 HardwareTypes</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="🔧 ESP32 Implementations submenu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/esp_api/" class="nav-list-link">🔧 ESP32 Implementations</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspGpio/" class="nav-list-link">🔌 EspGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspAdc/" class="nav-list-link">📊 EspAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPwm/" class="nav-list-link">🎛️ EspPwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspI2c/" class="nav-list-link">🔗 EspI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspSpi/" class="nav-list-link">🔄 EspSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspUart/" class="nav-list-link">📡 EspUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspCan/" class="nav-list-link">🚌 EspCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspWifi/" class="nav-list-link">📶 EspWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspBluetooth/" class="nav-list-link">📲 EspBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspNvs/" class="nav-list-link">💾 EspNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspLogger/" class="nav-list-link">📝 EspLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPeriodicTimer/" class="nav-list-link">⏰ EspPeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPio/" class="nav-list-link">🎛️ EspPio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspTemperature/" class="nav-list-link">🌡️ EspTemperature</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspUsbSerialJtag/" class="nav-list-link">🔌 EspUsbSerialJtag</a></li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="🚀 ESP32 Examples submenu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/" class="nav-list-link">🚀 ESP32 Examples</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="🧪 Test Documentation submenu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/" class="nav-list-link">🧪 Test Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/gpio_test/" class="nav-list-link">🧪 GPIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/adc_test/" class="nav-list-link">🧪 ADC Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pwm_test/" class="nav-list-link">🧪 PWM Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pio_test/" class="nav-list-link">🧪 PIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/uart_test/" class="nav-list-link">🧪 UART Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/spi_test/" class="nav-list-link">🧪 SPI Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/i2c_test/" class="nav-list-link">🧪 I2C Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/can_test/" class="nav-list-link">🧪 CAN Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/wifi_test/" class="nav-list-link">🧪 WiFi Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/nvs_test/" class="nav-list-link">🧪 NVS Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/temperature_test/" class="nav-list-link">🧪 Temperature Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/logger_test/" class="nav-list-link">🧪 Logger Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/ascii_art_test/" class="nav-list-link">🧪 ASCII Art Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/dog_test/" class="nav-list-link">🧪 DOG Test</a></li></ul></li></ul></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/features/" class="nav-list-link">🚀 Features</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/doxygen-extensions.html" class="nav-list-link">📖 Doxygen Extensions</a></li></ul>
+  
+</nav>
+
+
+<div class="d-md-block d-none site-footer">
+  
+  
+    <footer class="site-nav-footer">
+  <div class="nav-footer-links">
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="nav-footer-link" aria-label="GitHub Repository">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="nav-footer-link" aria-label="Report Issues">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Issues
+    </a>
+  </div>
+</footer>
+
+  
+  </div>
+</header>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search workflows, examples, and guides..." autocomplete="off">
+    <label for="search-input" class="search-label">
+      <span class="sr-only">Search workflows, examples, and guides...</span>
+      <svg viewBox="0 0 24 24" class="search-icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+    </label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-internal-interface-wrap/development/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/">🔧 HardFOC Internal Interface Layer</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/">📚 Documentation</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/">🔧 ESP32 Implementations</a></li>
+    <li class="breadcrumb-nav-list-item"><span>🔌 EspUsbSerialJtag</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="-espusbserialjtag-api-reference">
+  
+  
+    <a href="#-espusbserialjtag-api-reference" class="anchor-heading" aria-labelledby="-espusbserialjtag-api-reference"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔌 EspUsbSerialJtag API Reference
+  
+  
+</h1>
+    
+<h2 id="overview">
+  
+  
+    <a href="#overview" class="anchor-heading" aria-labelledby="overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Overview
+  
+  
+</h2>
+    
+
+<p><code class="language-plaintext highlighter-rouge">EspUsbSerialJtag</code> is the ESP32-family implementation of
+<a href="/hf-internal-interface-wrap/development/docs/api/BaseUsbSerialJtag/"><code class="language-plaintext highlighter-rouge">BaseUsbSerialJtag</code></a>. It wraps the ESP-IDF
+<code class="language-plaintext highlighter-rouge">esp_driver_usb_serial_jtag</code> component (<code class="language-plaintext highlighter-rouge">driver/usb_serial_jtag.h</code>) so that
+application code can use the chip’s built-in USB Serial/JTAG controller
+without leaking ESP-IDF / FreeRTOS types into MCU-agnostic layers.</p>
+<h3 id="supported-targets">
+  
+  
+    <a href="#supported-targets" class="anchor-heading" aria-labelledby="supported-targets"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Supported targets
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Chip</th>
+      <th>USB pads (TX/RX, fixed)</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ESP32-S3</td>
+      <td>GPIO19 (D−) / GPIO20 (D+)</td>
+      <td>Most common HardFOC target.</td>
+    </tr>
+    <tr>
+      <td>ESP32-C3</td>
+      <td>GPIO18 / GPIO19</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>ESP32-C6</td>
+      <td>GPIO12 / GPIO13</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>ESP32-H2</td>
+      <td>GPIO26 / GPIO27</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>ESP32-P4</td>
+      <td>GPIO24 / GPIO25</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>ESP32 / S2</td>
+      <td>—</td>
+      <td><strong>No</strong> USB Serial/JTAG controller; use a UART bridge instead.</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>The pads are part of the chip’s silicon USB block — they cannot be remapped.</p>
+<h3 id="features">
+  
+  
+    <a href="#features" class="anchor-heading" aria-labelledby="features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Features
+  
+  
+</h3>
+    
+
+<ul>
+  <li>One-call install via <code class="language-plaintext highlighter-rouge">EnsureInitialized()</code> (lazy lifecycle).</li>
+  <li>Auto-detect of an already-installed IDF console driver
+(<code class="language-plaintext highlighter-rouge">CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG=y</code>) — shares the install instead of
+failing with <code class="language-plaintext highlighter-rouge">ESP_ERR_INVALID_STATE</code>.</li>
+  <li>Process-wide singleton via <code class="language-plaintext highlighter-rouge">Default()</code> so multiple subsystems can use the
+same controller without coordination.</li>
+  <li>Per-instance <code class="language-plaintext highlighter-rouge">hf_uart_statistics_t</code> byte counters.</li>
+  <li>Cleanly tears down only its own driver install (never an IDF-installed one).</li>
+</ul><hr />
+<h2 id="header-file">
+  
+  
+    <a href="#header-file" class="anchor-heading" aria-labelledby="header-file"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Header File
+  
+  
+</h2>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"mcu/esp32/EspUsbSerialJtag.h"</span><span class="cp">
+</span></pre></td></tr></tbody></table></div></code></pre></div></div>
+
+<p>The wrapper relies on the
+<a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-reference/peripherals/usb_serial_jtag.html"><code class="language-plaintext highlighter-rouge">esp_driver_usb_serial_jtag</code></a>
+ESP-IDF component. Make sure your component CMakeLists lists it under
+<code class="language-plaintext highlighter-rouge">PRIV_REQUIRES</code> (or <code class="language-plaintext highlighter-rouge">REQUIRES</code> if the header is exposed).</p><hr />
+<h2 id="class-definition">
+  
+  
+    <a href="#class-definition" class="anchor-heading" aria-labelledby="class-definition"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Class Definition
+  
+  
+</h2>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">EspUsbSerialJtag</span> <span class="k">final</span> <span class="o">:</span> <span class="k">public</span> <span class="n">BaseUsbSerialJtag</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="k">explicit</span> <span class="n">EspUsbSerialJtag</span><span class="p">(</span><span class="k">const</span> <span class="n">hf_usb_serial_jtag_config_t</span><span class="o">&amp;</span> <span class="n">cfg</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="n">EspUsbSerialJtag</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="o">~</span><span class="n">EspUsbSerialJtag</span><span class="p">()</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+
+    <span class="kt">bool</span>          <span class="n">Initialize</span><span class="p">()</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="kt">bool</span>          <span class="n">Deinitialize</span><span class="p">()</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_uart_err_t</span> <span class="n">Write</span><span class="p">(</span><span class="k">const</span> <span class="n">hf_u8_t</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="n">hf_u32_t</span> <span class="n">length</span><span class="p">,</span> <span class="n">hf_u32_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_uart_err_t</span> <span class="n">Read</span><span class="p">(</span><span class="n">hf_u8_t</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="n">hf_u32_t</span> <span class="n">length</span><span class="p">,</span> <span class="n">hf_u32_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                       <span class="n">hf_u32_t</span><span class="o">*</span> <span class="n">out_read_count</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">)</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_uart_err_t</span> <span class="n">FlushTx</span><span class="p">(</span><span class="n">hf_u32_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="kt">bool</span>          <span class="n">IsHostConnected</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+
+    <span class="n">hf_uart_statistics_t</span> <span class="n">GetStatistics</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+
+    <span class="k">static</span> <span class="n">EspUsbSerialJtag</span><span class="o">&amp;</span> <span class="n">Default</span><span class="p">(</span><span class="k">const</span> <span class="n">hf_usb_serial_jtag_config_t</span><span class="o">&amp;</span> <span class="n">cfg</span> <span class="o">=</span> <span class="p">{})</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="construction">
+  
+  
+    <a href="#construction" class="anchor-heading" aria-labelledby="construction"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Construction
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Constructor</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EspUsbSerialJtag()</code></td>
+      <td>Library defaults (256-byte TX/RX rings).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EspUsbSerialJtag(cfg)</code></td>
+      <td>Custom buffer sizes via <code class="language-plaintext highlighter-rouge">hf_usb_serial_jtag_config_t</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EspUsbSerialJtag::Default(cfg)</code></td>
+      <td>Magic-static singleton; <code class="language-plaintext highlighter-rouge">cfg</code> applied <strong>only</strong> on the first call.</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>The constructors do <strong>not</strong> install the driver — call <code class="language-plaintext highlighter-rouge">EnsureInitialized()</code>
+or <code class="language-plaintext highlighter-rouge">Initialize()</code> to do so. This matches <code class="language-plaintext highlighter-rouge">BaseUart</code> / <code class="language-plaintext highlighter-rouge">EspUart</code>.</p>
+<h3 id="coexistence-with-the-idf-console">
+  
+  
+    <a href="#coexistence-with-the-idf-console" class="anchor-heading" aria-labelledby="coexistence-with-the-idf-console"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Coexistence with the IDF console
+  
+  
+</h3>
+    
+
+<p>When <code class="language-plaintext highlighter-rouge">CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG=y</code> is set in <code class="language-plaintext highlighter-rouge">sdkconfig</code>, ESP-IDF
+brings up the controller before <code class="language-plaintext highlighter-rouge">app_main()</code> runs and pipes <code class="language-plaintext highlighter-rouge">printf</code> /
+<code class="language-plaintext highlighter-rouge">ESP_LOG*</code> through it. <code class="language-plaintext highlighter-rouge">Initialize()</code> detects this via
+<code class="language-plaintext highlighter-rouge">usb_serial_jtag_is_driver_installed()</code>, latches <code class="language-plaintext highlighter-rouge">owns_driver_ = false</code>, and
+returns success without calling <code class="language-plaintext highlighter-rouge">usb_serial_jtag_driver_install()</code> a second
+time. Both paths (IDF console + this wrapper) then share the same TX ring;
+writes interleave at byte granularity but are never lost.</p>
+
+<p>When <code class="language-plaintext highlighter-rouge">Deinitialize()</code> is later invoked on a wrapper that does <strong>not</strong> own
+the driver, only the local lifecycle latch is cleared — the underlying
+driver is left running for the IDF console.</p><hr />
+<h2 id="usage-examples">
+  
+  
+    <a href="#usage-examples" class="anchor-heading" aria-labelledby="usage-examples"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Usage Examples
+  
+  
+</h2>
+    
+<h3 id="quick-console-echo">
+  
+  
+    <a href="#quick-console-echo" class="anchor-heading" aria-labelledby="quick-console-echo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Quick console echo
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"mcu/esp32/EspUsbSerialJtag.h"</span><span class="cp">
+</span>
+<span class="k">extern</span> <span class="s">"C"</span> <span class="kt">void</span> <span class="nf">app_main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">auto</span><span class="o">&amp;</span> <span class="n">serial</span> <span class="o">=</span> <span class="n">EspUsbSerialJtag</span><span class="o">::</span><span class="n">Default</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">serial</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">serial</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"EspUsbSerialJtag: ready (type to echo)"</span><span class="p">);</span>
+
+    <span class="kt">uint8_t</span> <span class="n">b</span><span class="p">{};</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">serial</span><span class="p">.</span><span class="n">ReadByte</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="cm">/*timeout_ms=*/</span><span class="mi">100</span><span class="p">)</span> <span class="o">==</span> <span class="n">hf_uart_err_t</span><span class="o">::</span><span class="n">UART_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">serial</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="bursty-logging-with-flushtx">
+  
+  
+    <a href="#bursty-logging-with-flushtx" class="anchor-heading" aria-labelledby="bursty-logging-with-flushtx"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Bursty logging with FlushTx
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="k">auto</span><span class="o">&amp;</span> <span class="n">serial</span> <span class="o">=</span> <span class="n">EspUsbSerialJtag</span><span class="o">::</span><span class="n">Default</span><span class="p">();</span>
+<span class="n">serial</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">line</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">snprintf</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">line</span><span class="p">),</span> <span class="s">"tick %d</span><span class="se">\r\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">serial</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">hf_u8_t</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">line</span><span class="p">),</span> <span class="n">n</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Make sure all 32 lines are out before we power down.</span>
+<span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">serial</span><span class="p">.</span><span class="n">FlushTx</span><span class="p">(</span><span class="cm">/*timeout_ms=*/</span><span class="mi">200</span><span class="p">);</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="custom-buffer-sizes">
+  
+  
+    <a href="#custom-buffer-sizes" class="anchor-heading" aria-labelledby="custom-buffer-sizes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Custom buffer sizes
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="n">hf_usb_serial_jtag_config_t</span> <span class="n">cfg</span><span class="p">{};</span>
+<span class="n">cfg</span><span class="p">.</span><span class="n">tx_buffer_size</span> <span class="o">=</span> <span class="mi">4096</span><span class="p">;</span>   <span class="c1">// larger TX ring for verbose log bursts</span>
+<span class="n">cfg</span><span class="p">.</span><span class="n">rx_buffer_size</span> <span class="o">=</span> <span class="mi">256</span><span class="p">;</span>
+
+<span class="n">EspUsbSerialJtag</span> <span class="n">serial</span><span class="p">{</span><span class="n">cfg</span><span class="p">};</span>
+<span class="n">serial</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+
+<blockquote>
+  <p>Use either a custom local instance <strong>or</strong> <code class="language-plaintext highlighter-rouge">Default()</code> consistently —
+mixing the two means the singleton’s first-call config wins for everyone
+using <code class="language-plaintext highlighter-rouge">Default()</code>.</p>
+</blockquote>
+<h3 id="skip-noisy-output-when-no-host-is-enumerated">
+  
+  
+    <a href="#skip-noisy-output-when-no-host-is-enumerated" class="anchor-heading" aria-labelledby="skip-noisy-output-when-no-host-is-enumerated"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Skip noisy output when no host is enumerated
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="k">auto</span><span class="o">&amp;</span> <span class="n">serial</span> <span class="o">=</span> <span class="n">EspUsbSerialJtag</span><span class="o">::</span><span class="n">Default</span><span class="p">();</span>
+<span class="n">serial</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">serial</span><span class="p">.</span><span class="n">IsHostConnected</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">serial</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"verbose status..."</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="cmake-integration">
+  
+  
+    <a href="#cmake-integration" class="anchor-heading" aria-labelledby="cmake-integration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> CMake Integration
+  
+  
+</h2>
+    
+
+<p>If the parent project consumes this wrapper through <code class="language-plaintext highlighter-rouge">hf-core</code>, the relevant
+flag is <code class="language-plaintext highlighter-rouge">HF_CORE_ENABLE_USB_SERIAL_JTAG</code> (default OFF). Turning it ON:</p>
+
+<ul>
+  <li>Compiles <code class="language-plaintext highlighter-rouge">src/mcu/esp32/EspUsbSerialJtag.cpp</code> into the component.</li>
+  <li>Adds <code class="language-plaintext highlighter-rouge">esp_driver_usb_serial_jtag</code> to the IDF requires list.</li>
+  <li>Defines <code class="language-plaintext highlighter-rouge">HARDFOC_USB_SERIAL_JTAG_SUPPORT=1</code> for downstream code.</li>
+</ul>
+
+<p>If you depend on the wrap repo directly (e.g. as a standalone IDF
+component), simply make sure your component CMakeLists requires
+<code class="language-plaintext highlighter-rouge">esp_driver_usb_serial_jtag</code>:</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="nf">idf_component_register</span><span class="p">(</span>
+    SRCS <span class="s2">"</span><span class="si">${</span><span class="nv">SOURCES</span><span class="si">}</span><span class="s2">"</span>
+    INCLUDE_DIRS <span class="s2">"</span><span class="si">${</span><span class="nv">INC_DIRS</span><span class="si">}</span><span class="s2">"</span>
+    REQUIRES driver esp_timer freertos esp_driver_usb_serial_jtag
+<span class="p">)</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="thread-safety">
+  
+  
+    <a href="#thread-safety" class="anchor-heading" aria-labelledby="thread-safety"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Thread Safety
+  
+  
+</h2>
+    
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>API</th>
+      <th>Multiple callers safe?</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Write</code> / <code class="language-plaintext highlighter-rouge">WriteString</code> / <code class="language-plaintext highlighter-rouge">WriteLine</code></td>
+      <td>✅ Yes</td>
+      <td>The ESP-IDF driver serializes ring access internally.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Read</code> / <code class="language-plaintext highlighter-rouge">ReadByte</code></td>
+      <td>⚠️ Single reader recommended</td>
+      <td>Multiple readers compete for bytes; wrap with a mutex if order matters.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FlushTx</code></td>
+      <td>✅ Yes</td>
+      <td>Safe to call from any task; blocks until the ring is drained.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IsHostConnected</code></td>
+      <td>✅ Yes</td>
+      <td>Cheap, lock-free.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Initialize</code> / <code class="language-plaintext highlighter-rouge">Deinitialize</code></td>
+      <td>⚠️ Once</td>
+      <td>Call from a single owner (typically the HAL bring-up).</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">EnsureInitialized()</code> / <code class="language-plaintext highlighter-rouge">EnsureDeinitialized()</code> helpers are idempotent
+but not internally locked — call them from a single bring-up task.</p><hr />
+<h2 id="related-documents">
+  
+  
+    <a href="#related-documents" class="anchor-heading" aria-labelledby="related-documents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Related Documents
+  
+  
+</h2>
+    
+
+<ul>
+  <li><a href="/hf-internal-interface-wrap/development/docs/api/BaseUsbSerialJtag/"><code class="language-plaintext highlighter-rouge">BaseUsbSerialJtag</code></a> — abstract interface and rationale.</li>
+  <li><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspUart/"><code class="language-plaintext highlighter-rouge">EspUart</code></a> — classic UART implementation when you need baud / parity / pin control.</li>
+  <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-guides/usb-serial-jtag-console.html">USB Serial/JTAG Console (ESP-IDF)</a></li>
+  <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-reference/peripherals/usb_serial_jtag.html"><code class="language-plaintext highlighter-rouge">usb_serial_jtag</code> driver API (ESP-IDF)</a></li>
+  <li>Example app: <a href="/hf-internal-interface-wrap/development/examples/esp32/main/UsbSerialJtagComprehensiveTest.cpp"><code class="language-plaintext highlighter-rouge">UsbSerialJtagComprehensiveTest.cpp</code></a>
+(<code class="language-plaintext highlighter-rouge">./scripts/build_app.sh usb_serial_jtag_test Release</code>).</li>
+</ul>
+
+          
+
+          
+            
+          
+        </main>
+        
+<hr>
+<footer>
+  
+
+  <footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p><a href="https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE">GPL v3 License</a> • <a href="https://github.com/n3b3x/hf-internal-interface-wrap">View on GitHub</a></p>
+  </div>
+</footer>
+
+
+  <div class="d-md-none mt-4 fs-2">
+    
+    
+      <footer class="site-nav-footer">
+  <div class="nav-footer-links">
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="nav-footer-link" aria-label="GitHub Repository">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="nav-footer-link" aria-label="Report Issues">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Issues
+    </a>
+  </div>
+</footer>
+
+    
+  </div>
+</footer>
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

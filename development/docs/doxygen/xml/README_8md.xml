@@ -91,6 +91,7 @@
 <codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BaseAdc.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Analog-to-digital<sp/>conversion</highlight></codeline>
 <codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BasePwm.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Pulse<sp/>width<sp/>modulation</highlight></codeline>
 <codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BaseUart.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Serial<sp/>communication</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BaseUsbSerialJtag.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Built-in<sp/>USB<sp/>Serial/JTAG<sp/>controller<sp/>(CDC-ACM<sp/>+<sp/>JTAG)</highlight></codeline>
 <codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BaseI2c.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>I2C<sp/>bus<sp/>operations</highlight></codeline>
 <codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BaseSpi.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>SPI<sp/>bus<sp/>operations</highlight></codeline>
 <codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BaseCan.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>CAN<sp/>bus<sp/>communication</highlight></codeline>
@@ -187,6 +188,8 @@
 <codeline><highlight class="normal">|<sp/>**BaseSpi**<sp/>|<sp/>High-speed<sp/>data<sp/>|<sp/>Full/half<sp/>duplex,<sp/>DMA,<sp/>chip<sp/>select<sp/>management<sp/>|</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">|<sp/>**BaseCan**<sp/>|<sp/>Automotive/industrial<sp/>|<sp/>Message<sp/>filtering,<sp/>error<sp/>handling,<sp/>bus<sp/>monitoring<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**BaseUsbSerialJtag**<sp/>|<sp/>Native-USB<sp/>console<sp/>|<sp/>CDC-ACM<sp/>virtual<sp/>COM<sp/>port<sp/>+<sp/>JTAG<sp/>over<sp/>a<sp/>single<sp/>cable,<sp/>IDF-console<sp/>coexistence<sp/>|</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">###<sp/>**Wireless<sp/>Connectivity**</highlight></codeline>
 <codeline></codeline>

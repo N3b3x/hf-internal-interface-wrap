@@ -56,6 +56,7 @@
 <para>| <bold><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref></bold> | Sensor communication | Master/slave, clock stretching, error recovery |</para>
 <para>| <bold><ref refid="classBaseSpi" kindref="compound">BaseSpi</ref></bold> | High-speed data | Full/half duplex, DMA, chip select management |</para>
 <para>| <bold><ref refid="classBaseCan" kindref="compound">BaseCan</ref></bold> | Automotive/industrial | Message filtering, error handling, bus monitoring |</para>
+<para>| <bold><ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref></bold> | Native-USB console | CDC-ACM virtual COM port + JTAG over a single cable, IDF-console coexistence |</para>
 </sect2>
 <sect2 id="index_1autotoc_md32">
 <title><bold>Wireless Connectivity</bold></title><para>| <bold>Interface</bold> | <bold>Purpose</bold> | <bold>Key Features</bold> |</para>

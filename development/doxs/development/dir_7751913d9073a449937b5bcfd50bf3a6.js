@@ -16,5 +16,6 @@ var dir_7751913d9073a449937b5bcfd50bf3a6 =
     [ "TestFramework.h", "TestFramework_8h.html", "TestFramework_8h" ],
     [ "TimerComprehensiveTest.cpp", "TimerComprehensiveTest_8cpp.html", "TimerComprehensiveTest_8cpp" ],
     [ "UartComprehensiveTest.cpp", "UartComprehensiveTest_8cpp.html", "UartComprehensiveTest_8cpp" ],
+    [ "UsbSerialJtagComprehensiveTest.cpp", "UsbSerialJtagComprehensiveTest_8cpp.html", "UsbSerialJtagComprehensiveTest_8cpp" ],
     [ "WifiComprehensiveTest.cpp", "WifiComprehensiveTest_8cpp.html", "WifiComprehensiveTest_8cpp" ]
 ];

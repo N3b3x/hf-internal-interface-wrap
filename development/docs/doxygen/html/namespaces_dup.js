@@ -50,6 +50,10 @@ var namespaces_dup =
       [ "kDefaultTimeoutMs", "namespaceanonymous__namespace_02StmUart_8cpp_03.html#ab2a4d5fbf0156cc690a4ac7ed0757a95", null ],
       [ "kPrintfBufSize", "namespaceanonymous__namespace_02StmUart_8cpp_03.html#a370188345c76a4506f6731ba8e1fbf27", null ]
     ] ],
+    [ "anonymous_namespace{UsbSerialJtagComprehensiveTest.cpp}", "namespaceanonymous__namespace_02UsbSerialJtagComprehensiveTest_8cpp_03.html", [
+      [ "acquire", "namespaceanonymous__namespace_02UsbSerialJtagComprehensiveTest_8cpp_03.html#a747c8d0621fd78ef9136989cecf5924a", null ],
+      [ "drain_rx", "namespaceanonymous__namespace_02UsbSerialJtagComprehensiveTest_8cpp_03.html#a1ed70e441e6ad6036e44805a149ca710", null ]
+    ] ],
     [ "hf", "namespacehf.html", "namespacehf" ],
     [ "TestPins", "namespaceTestPins.html", [
       [ "ANALOG_PIN", "namespaceTestPins.html#acd766bf1c5e4fc8112f25080761602a3", null ],

@@ -18,6 +18,7 @@
     <innerfile refid="TestFramework_8h">TestFramework.h</innerfile>
     <innerfile refid="TimerComprehensiveTest_8cpp">TimerComprehensiveTest.cpp</innerfile>
     <innerfile refid="UartComprehensiveTest_8cpp">UartComprehensiveTest.cpp</innerfile>
+    <innerfile refid="UsbSerialJtagComprehensiveTest_8cpp">UsbSerialJtagComprehensiveTest.cpp</innerfile>
     <innerfile refid="WifiComprehensiveTest_8cpp">WifiComprehensiveTest.cpp</innerfile>
     <briefdescription>
     </briefdescription>

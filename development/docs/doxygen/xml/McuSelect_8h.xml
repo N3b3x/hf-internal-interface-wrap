@@ -23,11 +23,11 @@
         <label>examples/esp32/main/AdcComprehensiveTest.cpp</label>
         <link refid="AdcComprehensiveTest_8cpp"/>
       </node>
-      <node id="38">
+      <node id="39">
         <label>examples/esp32/main/AsciiArtComprehensiveTest.cpp</label>
         <link refid="AsciiArtComprehensiveTest_8cpp"/>
       </node>
-      <node id="39">
+      <node id="40">
         <label>examples/esp32/main/BluetoothComprehensiveTest.cpp</label>
         <link refid="BluetoothComprehensiveTest_8cpp"/>
       </node>
@@ -35,79 +35,81 @@
         <label>examples/esp32/main/CanComprehensiveTest.cpp</label>
         <link refid="CanComprehensiveTest_8cpp"/>
       </node>
-      <node id="35">
+      <node id="36">
         <label>examples/esp32/main/DigitalOutputGuardComprehensiveTest.cpp</label>
         <link refid="DigitalOutputGuardComprehensiveTest_8cpp"/>
       </node>
-      <node id="33">
+      <node id="34">
         <label>examples/esp32/main/GpioComprehensiveTest.cpp</label>
         <link refid="GpioComprehensiveTest_8cpp"/>
       </node>
-      <node id="15">
+      <node id="16">
         <label>examples/esp32/main/I2cComprehensiveTest.cpp</label>
         <link refid="I2cComprehensiveTest_8cpp"/>
       </node>
-      <node id="40">
+      <node id="41">
         <label>examples/esp32/main/LoggerComprehensiveTest.cpp</label>
         <link refid="LoggerComprehensiveTest_8cpp"/>
       </node>
-      <node id="41">
+      <node id="42">
         <label>examples/esp32/main/NvsComprehensiveTest.cpp</label>
         <link refid="NvsComprehensiveTest_8cpp"/>
       </node>
-      <node id="21">
+      <node id="22">
         <label>examples/esp32/main/PioComprehensiveTest.cpp</label>
         <link refid="PioComprehensiveTest_8cpp"/>
       </node>
-      <node id="36">
+      <node id="37">
         <label>examples/esp32/main/PwmComprehensiveTest.cpp</label>
         <link refid="PwmComprehensiveTest_8cpp"/>
       </node>
-      <node id="24">
+      <node id="25">
         <label>examples/esp32/main/SpiComprehensiveTest.cpp</label>
         <link refid="SpiComprehensiveTest_8cpp"/>
       </node>
-      <node id="42">
+      <node id="43">
         <label>examples/esp32/main/TemperatureComprehensiveTest.cpp</label>
         <link refid="TemperatureComprehensiveTest_8cpp"/>
       </node>
-      <node id="37">
+      <node id="38">
         <label>examples/esp32/main/TestFramework.h</label>
         <link refid="TestFramework_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
         <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="40" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="19">
         <label>examples/esp32/main/TimerComprehensiveTest.cpp</label>
         <link refid="TimerComprehensiveTest_8cpp"/>
       </node>
@@ -115,7 +117,11 @@
         <label>examples/esp32/main/UartComprehensiveTest.cpp</label>
         <link refid="UartComprehensiveTest_8cpp"/>
       </node>
-      <node id="29">
+      <node id="12">
+        <label>examples/esp32/main/UsbSerialJtagComprehensiveTest.cpp</label>
+        <link refid="UsbSerialJtagComprehensiveTest_8cpp"/>
+      </node>
+      <node id="30">
         <label>examples/esp32/main/WifiComprehensiveTest.cpp</label>
         <link refid="WifiComprehensiveTest_8cpp"/>
       </node>
@@ -135,72 +141,72 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="35">
         <label>inc/mcu/esp32/EspGpio.h</label>
         <link refid="EspGpio_8h"/>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="43" relation="include">
-        </childnode>
-      </node>
-      <node id="14">
-        <label>inc/mcu/esp32/EspI2c.h</label>
-        <link refid="EspI2c_8h"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-      </node>
-      <node id="49">
-        <label>inc/mcu/esp32/EspNvs.h</label>
-        <link refid="EspNvs_8h"/>
-        <childnode refid="41" relation="include">
-        </childnode>
-        <childnode refid="50" relation="include">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
-        <link refid="EspPeriodicTimer_8h"/>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>inc/mcu/esp32/EspPio.h</label>
-        <link refid="EspPio_8h"/>
-        <childnode refid="21" relation="include">
-        </childnode>
         <childnode refid="22" relation="include">
         </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
       </node>
-      <node id="45">
+      <node id="15">
+        <label>inc/mcu/esp32/EspI2c.h</label>
+        <link refid="EspI2c_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>inc/mcu/esp32/EspNvs.h</label>
+        <link refid="EspNvs_8h"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
+        <link refid="EspPeriodicTimer_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>inc/mcu/esp32/EspPio.h</label>
+        <link refid="EspPio_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
         <label>inc/mcu/esp32/EspPwm.h</label>
         <link refid="EspPwm_8h"/>
-        <childnode refid="36" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
       </node>
-      <node id="23">
+      <node id="24">
         <label>inc/mcu/esp32/EspSpi.h</label>
         <link refid="EspSpi_8h"/>
-        <childnode refid="24" relation="include">
-        </childnode>
         <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -216,59 +222,59 @@
         <link refid="EspUsbSerialJtag_8h"/>
         <childnode refid="12" relation="include">
         </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
       </node>
-      <node id="28">
+      <node id="29">
         <label>inc/mcu/esp32/EspWifi.h</label>
         <link refid="EspWifi_8h"/>
-        <childnode refid="29" relation="include">
-        </childnode>
         <childnode refid="30" relation="include">
         </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
       </node>
-      <node id="13">
+      <node id="14">
         <label>inc/mcu/esp32/utils/EspTypes.h</label>
         <link refid="EspTypes_8h"/>
-        <childnode refid="14" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="27">
         <label>inc/mcu/esp32/utils/EspTypes_ADC.h</label>
         <link refid="EspTypes__ADC_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="27">
+      <node id="28">
         <label>inc/mcu/esp32/utils/EspTypes_Base.h</label>
         <link refid="EspTypes__Base_8h"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
@@ -276,82 +282,84 @@
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
       </node>
-      <node id="31">
+      <node id="32">
         <label>inc/mcu/esp32/utils/EspTypes_CAN.h</label>
         <link refid="EspTypes__CAN_8h"/>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="33">
         <label>inc/mcu/esp32/utils/EspTypes_GPIO.h</label>
         <link refid="EspTypes__GPIO_8h"/>
-        <childnode refid="33" relation="include">
-        </childnode>
         <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-      </node>
-      <node id="47">
-        <label>inc/mcu/esp32/utils/EspTypes_I2C.h</label>
-        <link refid="EspTypes__I2C_8h"/>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
       </node>
       <node id="48">
+        <label>inc/mcu/esp32/utils/EspTypes_I2C.h</label>
+        <link refid="EspTypes__I2C_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
         <label>inc/mcu/esp32/utils/EspTypes_NVS.h</label>
         <link refid="EspTypes__NVS_8h"/>
-        <childnode refid="49" relation="include">
-        </childnode>
-      </node>
-      <node id="51">
-        <label>inc/mcu/esp32/utils/EspTypes_PIO.h</label>
-        <link refid="EspTypes__PIO_8h"/>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-      </node>
-      <node id="44">
-        <label>inc/mcu/esp32/utils/EspTypes_PWM.h</label>
-        <link refid="EspTypes__PWM_8h"/>
-        <childnode refid="45" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
       </node>
       <node id="52">
-        <label>inc/mcu/esp32/utils/EspTypes_SPI.h</label>
-        <link refid="EspTypes__SPI_8h"/>
-        <childnode refid="24" relation="include">
+        <label>inc/mcu/esp32/utils/EspTypes_PIO.h</label>
+        <link refid="EspTypes__PIO_8h"/>
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>inc/mcu/esp32/utils/EspTypes_PWM.h</label>
+        <link refid="EspTypes__PWM_8h"/>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="53">
-        <label>inc/mcu/esp32/utils/EspTypes_Timer.h</label>
-        <link refid="EspTypes__Timer_8h"/>
-        <childnode refid="13" relation="include">
+        <label>inc/mcu/esp32/utils/EspTypes_SPI.h</label>
+        <link refid="EspTypes__SPI_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="54">
+        <label>inc/mcu/esp32/utils/EspTypes_Timer.h</label>
+        <link refid="EspTypes__Timer_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
         <label>inc/mcu/esp32/utils/EspTypes_UART.h</label>
         <link refid="EspTypes__UART_8h"/>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="55">
+      <node id="56">
         <label>inc/mcu/esp32/utils/EspTypes_WiFi.h</label>
         <link refid="EspTypes__WiFi_8h"/>
       </node>
@@ -366,29 +374,29 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
         <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -399,31 +407,31 @@
         <label>src/mcu/esp32/EspCan.cpp</label>
         <link refid="EspCan_8cpp"/>
       </node>
-      <node id="43">
+      <node id="44">
         <label>src/mcu/esp32/EspGpio.cpp</label>
         <link refid="EspGpio_8cpp"/>
       </node>
-      <node id="16">
+      <node id="17">
         <label>src/mcu/esp32/EspI2c.cpp</label>
         <link refid="EspI2c_8cpp"/>
       </node>
-      <node id="50">
+      <node id="51">
         <label>src/mcu/esp32/EspNvs.cpp</label>
         <link refid="EspNvs_8cpp"/>
       </node>
-      <node id="19">
+      <node id="20">
         <label>src/mcu/esp32/EspPeriodicTimer.cpp</label>
         <link refid="EspPeriodicTimer_8cpp"/>
       </node>
-      <node id="22">
+      <node id="23">
         <label>src/mcu/esp32/EspPio.cpp</label>
         <link refid="EspPio_8cpp"/>
       </node>
-      <node id="46">
+      <node id="47">
         <label>src/mcu/esp32/EspPwm.cpp</label>
         <link refid="EspPwm_8cpp"/>
       </node>
-      <node id="25">
+      <node id="26">
         <label>src/mcu/esp32/EspSpi.cpp</label>
         <link refid="EspSpi_8cpp"/>
       </node>
@@ -431,11 +439,11 @@
         <label>src/mcu/esp32/EspUart.cpp</label>
         <link refid="EspUart_8cpp"/>
       </node>
-      <node id="12">
+      <node id="13">
         <label>src/mcu/esp32/EspUsbSerialJtag.cpp</label>
         <link refid="EspUsbSerialJtag_8cpp"/>
       </node>
-      <node id="30">
+      <node id="31">
         <label>src/mcu/esp32/EspWifi.cpp</label>
         <link refid="EspWifi_8cpp"/>
       </node>

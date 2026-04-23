@@ -1,5 +1,7 @@
 <map id="inc/mcu/esp32/EspUsbSerialJtag.h" name="inc/mcu/esp32/EspUsbSerialJtag.h">
-<area shape="rect" id="Node000001" title="ESP32&#45;S3 / &#45;C3 / &#45;C6 USB Serial/JTAG console wrapper." alt="" coords="6,5,259,56"/>
-<area shape="rect" id="Node000002" href="$EspUsbSerialJtag_8cpp.html" title="ESP32&#45;family USB Serial/JTAG console wrapper implementation." alt="" coords="5,104,260,155"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,70,135,103,130,103,130,70"/>
+<area shape="rect" id="Node000001" title="ESP32&#45;S3 / &#45;C3 / &#45;C6 USB Serial/JTAG console wrapper." alt="" coords="155,5,408,56"/>
+<area shape="rect" id="Node000002" href="$UsbSerialJtagComprehensiveTest_8cpp.html" title="Comprehensive test suite for the EspUsbSerialJtag wrapper (noexcept)." alt="" coords="5,104,272,175"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="240,66,186,106,183,102,237,62"/>
+<area shape="rect" id="Node000003" href="$EspUsbSerialJtag_8cpp.html" title="ESP32&#45;family USB Serial/JTAG console wrapper implementation." alt="" coords="297,114,551,165"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="326,62,393,112,390,116,323,66"/>
 </map>

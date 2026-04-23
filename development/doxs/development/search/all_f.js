@@ -798,10 +798,11 @@ var searchData=
   ['high_5fthreshold_5fcount_795',['high_threshold_count',['../AdcComprehensiveTest_8cpp.html#a715ed0e967431154affbe24248d15c90',1,'AdcComprehensiveTest.cpp']]],
   ['hold_5fenabled_5f_796',['hold_enabled_',['../classEspGpio.html#a06e1241c8517cb66e98d0054590b943a',1,'EspGpio']]],
   ['host_797',['host',['../structhf__spi__bus__config__t.html#ad5ae43f8e8ed48d17667740103caf5cf',1,'hf_spi_bus_config_t']]],
-  ['hpoint_798',['hpoint',['../structhf__pwm__channel__config__t.html#aa34ec457627357c1c82ab1696ef2786e',1,'hf_pwm_channel_config_t']]],
-  ['ht20_799',['HT20',['../EspTypes__WiFi_8h.html#aa49f22e39379eb7029ef0ddaea96e1c2a24f04967c622932f7e0d14c6c6116bb9',1,'EspTypes_WiFi.h']]],
-  ['ht40_800',['HT40',['../EspTypes__WiFi_8h.html#aa49f22e39379eb7029ef0ddaea96e1c2a18214d959d3c1935a310518ca9c63899',1,'EspTypes_WiFi.h']]],
-  ['htim_801',['htim',['../structStmPeriodicTimer_1_1DispatchEntry.html#ab95a7578987409752bfd1d3ce218c669',1,'StmPeriodicTimer::DispatchEntry']]],
-  ['htim_5f_802',['htim_',['../classStmPeriodicTimer.html#a85098575d3142eb754cc9e9c423afd02',1,'StmPeriodicTimer::htim_'],['../classStmPwm.html#afc2206a7a40642308b6b6828ccc4633d',1,'StmPwm::htim_']]],
-  ['huart_5f_803',['huart_',['../classStmUart.html#a7cd9e2634a0aa45a7bfd088129eb36fb',1,'StmUart']]]
+  ['host_5fecho_5ftimeout_5fms_798',['HOST_ECHO_TIMEOUT_MS',['../UsbSerialJtagComprehensiveTest_8cpp.html#a05b02029eca6d3be52edf960179196ee',1,'UsbSerialJtagComprehensiveTest.cpp']]],
+  ['hpoint_799',['hpoint',['../structhf__pwm__channel__config__t.html#aa34ec457627357c1c82ab1696ef2786e',1,'hf_pwm_channel_config_t']]],
+  ['ht20_800',['HT20',['../EspTypes__WiFi_8h.html#aa49f22e39379eb7029ef0ddaea96e1c2a24f04967c622932f7e0d14c6c6116bb9',1,'EspTypes_WiFi.h']]],
+  ['ht40_801',['HT40',['../EspTypes__WiFi_8h.html#aa49f22e39379eb7029ef0ddaea96e1c2a18214d959d3c1935a310518ca9c63899',1,'EspTypes_WiFi.h']]],
+  ['htim_802',['htim',['../structStmPeriodicTimer_1_1DispatchEntry.html#ab95a7578987409752bfd1d3ce218c669',1,'StmPeriodicTimer::DispatchEntry']]],
+  ['htim_5f_803',['htim_',['../classStmPeriodicTimer.html#a85098575d3142eb754cc9e9c423afd02',1,'StmPeriodicTimer::htim_'],['../classStmPwm.html#afc2206a7a40642308b6b6828ccc4633d',1,'StmPwm::htim_']]],
+  ['huart_5f_804',['huart_',['../classStmUart.html#a7cd9e2634a0aa45a7bfd088129eb36fb',1,'StmUart']]]
 ];
