@@ -82,6 +82,7 @@ led->SetHigh();
 │   ├── BaseAdc.h                       # Analog-to-digital conversion
 │   ├── BasePwm.h                       # Pulse width modulation
 │   ├── BaseUart.h                      # Serial communication
+│   ├── BaseUsbSerialJtag.h             # Built-in USB Serial/JTAG controller (CDC-ACM + JTAG)
 │   ├── BaseI2c.h                       # I2C bus operations
 │   ├── BaseSpi.h                       # SPI bus operations
 │   ├── BaseCan.h                       # CAN bus communication
@@ -178,6 +179,8 @@ public:
 | **BaseSpi** | High-speed data | Full/half duplex, DMA, chip select management |
 
 | **BaseCan** | Automotive/industrial | Message filtering, error handling, bus monitoring |
+
+| **BaseUsbSerialJtag** | Native-USB console | CDC-ACM virtual COM port + JTAG over a single cable, IDF-console coexistence |
 
 ### **Wireless Connectivity**
 

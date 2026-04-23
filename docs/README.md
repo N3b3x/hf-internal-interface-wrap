@@ -344,6 +344,8 @@ Our comprehensive documentation is organized into logical sections for easy navi
 
 | [**`BaseUart`**](api/BaseUart.md) | Async I/O, flow control, configurable parameters | Debug output, external communication | ✅ Complete |
 
+| [**`BaseUsbSerialJtag`**](api/BaseUsbSerialJtag.md) | Built-in USB CDC-ACM virtual COM port + JTAG over a single native cable, IDF-console coexistence | Operator console, log/REPL on dev kits | ✅ Complete |
+
 | [**`BaseCan`**](api/BaseCan.md) | Standard/Extended frames, filtering, error handling | Industrial networking, multi-device coordination | ✅ Complete |
 
 ### 🌐 **Wireless Interfaces (MCU-Agnostic)**
@@ -387,6 +389,8 @@ Our comprehensive documentation is organized into logical sections for easy navi
 | **ESP32 Family** | [**`EspSpi`**](esp_api/EspSpi.md) | BaseSpi | Full-duplex, DMA support | ✅ Complete | ✅ Complete |
 
 | **ESP32 Family** | [**`EspUart`**](esp_api/EspUart.md) | BaseUart | Hardware flow control | ✅ Complete | ✅ Complete |
+
+| **ESP32 Family** | [**`EspUsbSerialJtag`**](esp_api/EspUsbSerialJtag.md) | BaseUsbSerialJtag | Built-in USB Serial/JTAG controller, IDF-console coexistence (S3/C3/C6/H2/P4) | ✅ Complete | ✅ Complete |
 
 | **ESP32 Family** | [**`EspCan`**](esp_api/EspCan.md) | BaseCan | TWAI controller, SN65 transceiver | ✅ Complete | ✅ Complete |
 

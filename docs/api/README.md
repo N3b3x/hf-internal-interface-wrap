@@ -122,6 +122,8 @@ The HardFOC Interface provides abstract base classes for all major hardware peri
 
 | **BaseUart** | Serial Communication | Flow control, buffering, printf support | Debug output, GPS |
 
+| **BaseUsbSerialJtag** | Native-USB Console | CDC-ACM virtual COM port + JTAG over one cable | Operator console, log/REPL on dev kits |
+
 | **BaseCan** | CAN Bus Communication | Message filtering, error handling | Motor control, vehicle |
 
 | **BaseWifi** | WiFi Communication | Station/AP modes, security | IoT connectivity |
@@ -154,6 +156,8 @@ ESP32-C6 specific implementations with optimized features:
 | **[EspSpi](../esp_api/EspSpi.md)** | BaseSpi | Full-duplex, DMA support | ✅ Complete |
 
 | **EspUart** | BaseUart | Hardware flow control | 📝 In Progress |
+
+| **[EspUsbSerialJtag](../esp_api/EspUsbSerialJtag.md)** | BaseUsbSerialJtag | Built-in USB Serial/JTAG controller, IDF-console coexistence | ✅ Complete |
 
 | **EspCan** | BaseCan | TWAI controller | 📝 In Progress |
 
@@ -382,6 +386,8 @@ Comprehensive test suites for validating hardware interface implementations:
 | **[BaseSpi](BaseSpi.md)** | SPI Bus Communication | ✅ Complete |
 
 | **[BaseUart](BaseUart.md)** | Serial Communication | ✅ Complete |
+
+| **[BaseUsbSerialJtag](BaseUsbSerialJtag.md)** | Native-USB Console (CDC-ACM + JTAG) | ✅ Complete |
 
 | **[BaseCan](BaseCan.md)** | CAN Bus Communication | ✅ Complete |
 

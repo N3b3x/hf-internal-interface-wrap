@@ -105,6 +105,9 @@ These implementations offer performance, power efficiency, and feature support.
 
 | **[EspUart](EspUart.md)** | BaseUart | Hardware flow control, DMA | ✅ Complete | ✅ Ready |
 
+<!-- markdownlint-disable-next-line MD013 -->
+| **[EspUsbSerialJtag](EspUsbSerialJtag.md)** | BaseUsbSerialJtag | Built-in USB Serial/JTAG (CDC-ACM + JTAG over native USB), IDF-console coexistence | ✅ Complete | ✅ Ready |
+
 | **[EspNvs](EspNvs.md)** | BaseNvs | Encryption, wear leveling | ✅ Complete | ✅ Ready |
 
 <!-- markdownlint-disable-next-line MD013 -->
@@ -438,6 +441,7 @@ These implementations offer performance, power efficiency, and feature support.
 - **[EspPwm](EspPwm.md)** - PWM implementation details
 - **[EspI2c](EspI2c.md)** - I2C implementation details
 - **[EspUart](EspUart.md)** - UART implementation details
+- **[EspUsbSerialJtag](EspUsbSerialJtag.md)** - Built-in USB Serial/JTAG controller (CDC-ACM + JTAG)
 - **[EspNvs](EspNvs.md)** - NVS implementation details
 - **[EspPeriodicTimer](EspPeriodicTimer.md)** - Timer implementation details
 - **[EspTemperature](EspTemperature.md)** - Temperature sensor implementation details

@@ -52,6 +52,15 @@ apps:
     ci_enabled: true
     featured: false
 
+  usb_serial_jtag_test:
+    description: "Built-in USB Serial/JTAG controller (CDC-ACM + JTAG over native USB) comprehensive testing"
+    source_file: "UsbSerialJtagComprehensiveTest.cpp"
+    category: "peripheral"
+    idf_versions: ["release/v5.5"]
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: true
+
   spi_test:
     description: "SPI peripheral comprehensive testing"
     source_file: "SpiComprehensiveTest.cpp"

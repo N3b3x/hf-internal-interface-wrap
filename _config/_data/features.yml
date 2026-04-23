@@ -49,6 +49,17 @@ core_peripherals:
       - text: "Async I/O"
         type: "primary"
 
+  - title: "USB Serial/JTAG Console"
+    description: "Built-in CDC-ACM virtual COM port + JTAG over a single native USB cable on ESP32-S3/C3/C6/H2/P4 — flash, log, REPL, and debug without an external bridge"
+    icon: "fas fa-usb"
+    badges:
+      - text: "Native USB"
+        type: "success"
+      - text: "JTAG + CDC"
+        type: "info"
+      - text: "IDF Coexistence"
+        type: "primary"
+
 communication_buses:
   - title: "I2C Master/Slave"
     description: "Two-wire communication protocol for sensor integration with clock stretching and error recovery"
