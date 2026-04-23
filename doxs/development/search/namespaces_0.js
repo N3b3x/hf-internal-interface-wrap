@@ -7,5 +7,6 @@ var searchData=
   ['anonymous_5fnamespace_7bstmnvs_2ecpp_7d_4',['anonymous_namespace{StmNvs.cpp}',['../namespaceanonymous__namespace_02StmNvs_8cpp_03.html',1,'']]],
   ['anonymous_5fnamespace_7bstmperiodictimer_2ecpp_7d_5',['anonymous_namespace{StmPeriodicTimer.cpp}',['../namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03.html',1,'']]],
   ['anonymous_5fnamespace_7bstmpwm_2ecpp_7d_6',['anonymous_namespace{StmPwm.cpp}',['../namespaceanonymous__namespace_02StmPwm_8cpp_03.html',1,'']]],
-  ['anonymous_5fnamespace_7bstmuart_2ecpp_7d_7',['anonymous_namespace{StmUart.cpp}',['../namespaceanonymous__namespace_02StmUart_8cpp_03.html',1,'']]]
+  ['anonymous_5fnamespace_7bstmuart_2ecpp_7d_7',['anonymous_namespace{StmUart.cpp}',['../namespaceanonymous__namespace_02StmUart_8cpp_03.html',1,'']]],
+  ['anonymous_5fnamespace_7busbserialjtagcomprehensivetest_2ecpp_7d_8',['anonymous_namespace{UsbSerialJtagComprehensiveTest.cpp}',['../namespaceanonymous__namespace_02UsbSerialJtagComprehensiveTest_8cpp_03.html',1,'']]]
 ];
