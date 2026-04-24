@@ -21,9 +21,9 @@
 
 #include "EspBluetooth.h"
 #include <algorithm>
+#include <cstdlib>
 #include <cstring>
-#include <iomanip>
-#include <sstream>
+#include <string>
 
 #if HAS_BLE_SUPPORT
 
@@ -981,27 +981,30 @@ hf_bluetooth_err_t EspBluetooth::GetPairedDevices(
 }
 
 std::string EspBluetooth::GetImplementationInfo() const {
-  std::ostringstream info;
-  info << "ESP32 Bluetooth Implementation\n";
-  info << "Target: " << CONFIG_IDF_TARGET << "\n";
-  info << "ESP-IDF Version: " << IDF_VER << "\n";
+  std::string info;
+  info += "ESP32 Bluetooth Implementation\n";
+  info += "Target: ";
+  info += CONFIG_IDF_TARGET;
+  info += "\nESP-IDF Version: ";
+  info += IDF_VER;
+  info += "\n";
 
 #if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
-  info << "Stack: NimBLE (ESP32 optimized)\n";
-  info << "Features: BLE-only\n";
+  info += "Stack: NimBLE (ESP32 optimized)\n";
+  info += "Features: BLE-only\n";
 #elif HAS_BLUEDROID_SUPPORT && defined(CONFIG_BT_ENABLED)
-  info << "Stack: Bluedroid\n";
+  info += "Stack: Bluedroid\n";
 #if HAS_CLASSIC_BLUETOOTH
-  info << "Features: Classic BT + BLE\n";
+  info += "Features: Classic BT + BLE\n";
 #else
-  info << "Features: BLE-only\n";
+  info += "Features: BLE-only\n";
 #endif
 #else
-  info << "Stack: None (not supported)\n";
-  info << "Features: None\n";
+  info += "Stack: None (not supported)\n";
+  info += "Features: None\n";
 #endif
 
-  return info.str();
+  return info;
 }
 
 uint32_t EspBluetooth::GetSupportedFeatures() const {
@@ -1049,29 +1052,42 @@ hf_bluetooth_err_t EspBluetooth::ValidateAddress(const hf_bluetooth_address_t& a
 }
 
 std::string EspBluetooth::AddressToString(const hf_bluetooth_address_t& address) const {
-  std::ostringstream oss;
-  oss << std::hex << std::setfill('0') << std::uppercase;
+  static constexpr char kHex[] = "0123456789ABCDEF";
+  std::string out;
+  out.reserve(17);
   for (int i = 0; i < 6; i++) {
-    if (i > 0)
-      oss << ":";
-    oss << std::setw(2) << static_cast<int>(address.addr[i]);
+    if (i > 0) {
+      out += ':';
+    }
+    const uint8_t b = address.addr[i];
+    out += kHex[(b >> 4U) & 0xFU];
+    out += kHex[b & 0xFU];
   }
-  return oss.str();
+  return out;
 }
 
 hf_bluetooth_address_t EspBluetooth::StringToAddress(const std::string& address_str) const {
-  hf_bluetooth_address_t address;
-  memset(&address, 0, sizeof(address));
-
-  std::istringstream iss(address_str);
-  std::string token;
-  int i = 0;
-
-  while (std::getline(iss, token, ':') && i < 6) {
-    address.addr[i] = static_cast<uint8_t>(std::stoul(token, nullptr, 16));
-    i++;
+  hf_bluetooth_address_t address{};
+  std::size_t start = 0;
+  for (int i = 0; i < 6; ++i) {
+    const std::size_t colon = address_str.find(':', start);
+    const bool last = (colon == std::string::npos);
+    const std::string token =
+        last ? address_str.substr(start) : address_str.substr(start, colon - start);
+    if (token.empty()) {
+      break;
+    }
+    char* end_ptr = nullptr;
+    const unsigned long v = std::strtoul(token.c_str(), &end_ptr, 16);
+    if (end_ptr == token.c_str() || v > 255UL) {
+      break;
+    }
+    address.addr[static_cast<std::size_t>(i)] = static_cast<uint8_t>(v);
+    if (last) {
+      break;
+    }
+    start = colon + 1U;
   }
-
   return address;
 }
 
