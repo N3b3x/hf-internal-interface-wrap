@@ -268,4 +268,4 @@ serial.WriteLine("host is here");
 - [`EspUsbSerialJtag`](../esp_api/EspUsbSerialJtag.md) — concrete ESP32-family
   implementation.
 - ESP-IDF: [USB Serial/JTAG Console](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-guides/usb-serial-jtag-console.html)
-- ESP-IDF: [`usb_serial_jtag` driver API](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-reference/peripherals/usb_serial_jtag.html)
+- ESP-IDF: [`usb_serial_jtag` driver header](https://github.com/espressif/esp-idf/blob/master/components/esp_driver_usb_serial_jtag/include/driver/usb_serial_jtag.h)

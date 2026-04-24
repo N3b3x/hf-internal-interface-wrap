@@ -50,7 +50,7 @@ The pads are part of the chip's silicon USB block — they cannot be remapped.
 ```
 
 The wrapper relies on the
-[`esp_driver_usb_serial_jtag`](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-reference/peripherals/usb_serial_jtag.html)
+[`esp_driver_usb_serial_jtag`](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-guides/usb-serial-jtag-console.html)
 ESP-IDF component. Make sure your component CMakeLists lists it under
 `PRIV_REQUIRES` (or `REQUIRES` if the header is exposed).
 
@@ -217,6 +217,6 @@ but not internally locked — call them from a single bring-up task.
 - [`BaseUsbSerialJtag`](../api/BaseUsbSerialJtag.md) — abstract interface and rationale.
 - [`EspUart`](EspUart.md) — classic UART implementation when you need baud / parity / pin control.
 - [USB Serial/JTAG Console (ESP-IDF)](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-guides/usb-serial-jtag-console.html)
-- [`usb_serial_jtag` driver API (ESP-IDF)](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-reference/peripherals/usb_serial_jtag.html)
+- [`usb_serial_jtag` driver header (ESP-IDF)](https://github.com/espressif/esp-idf/blob/master/components/esp_driver_usb_serial_jtag/include/driver/usb_serial_jtag.h)
 - Example app: [`UsbSerialJtagComprehensiveTest.cpp`](../../examples/esp32/main/UsbSerialJtagComprehensiveTest.cpp)
   (`./scripts/build_app.sh usb_serial_jtag_test Release`).

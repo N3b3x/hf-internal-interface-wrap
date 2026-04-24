@@ -31,7 +31,14 @@
 #include <string>
 
 #ifdef HF_MCU_FAMILY_ESP32
+#ifdef __cplusplus
+extern "C" {
+#endif
 #include "driver/ledc.h" // For ESP-IDF LEDC callback types
+#include <esp_attr.h>   // IRAM_ATTR for static ISR/callback members
+#ifdef __cplusplus
+}
+#endif
 #endif
 
 /**
