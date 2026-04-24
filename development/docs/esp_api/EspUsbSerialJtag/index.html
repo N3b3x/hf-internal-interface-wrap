@@ -714,7 +714,7 @@ same controller without coordination.</li>
 </span></pre></td></tr></tbody></table></div></code></pre></div></div>
 
 <p>The wrapper relies on the
-<a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-reference/peripherals/usb_serial_jtag.html"><code class="language-plaintext highlighter-rouge">esp_driver_usb_serial_jtag</code></a>
+<a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-guides/usb-serial-jtag-console.html"><code class="language-plaintext highlighter-rouge">esp_driver_usb_serial_jtag</code></a>
 ESP-IDF component. Make sure your component CMakeLists lists it under
 <code class="language-plaintext highlighter-rouge">PRIV_REQUIRES</code> (or <code class="language-plaintext highlighter-rouge">REQUIRES</code> if the header is exposed).</p><hr />
 <h2 id="class-definition">
@@ -1045,7 +1045,7 @@ but not internally locked — call them from a single bring-up task.</p><hr />
   <li><a href="/hf-internal-interface-wrap/development/docs/api/BaseUsbSerialJtag/"><code class="language-plaintext highlighter-rouge">BaseUsbSerialJtag</code></a> — abstract interface and rationale.</li>
   <li><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspUart/"><code class="language-plaintext highlighter-rouge">EspUart</code></a> — classic UART implementation when you need baud / parity / pin control.</li>
   <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-guides/usb-serial-jtag-console.html">USB Serial/JTAG Console (ESP-IDF)</a></li>
-  <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-reference/peripherals/usb_serial_jtag.html"><code class="language-plaintext highlighter-rouge">usb_serial_jtag</code> driver API (ESP-IDF)</a></li>
+  <li><a href="https://github.com/espressif/esp-idf/blob/master/components/esp_driver_usb_serial_jtag/include/driver/usb_serial_jtag.h"><code class="language-plaintext highlighter-rouge">usb_serial_jtag</code> driver header (ESP-IDF)</a></li>
   <li>Example app: <a href="/hf-internal-interface-wrap/development/examples/esp32/main/UsbSerialJtagComprehensiveTest.cpp"><code class="language-plaintext highlighter-rouge">UsbSerialJtagComprehensiveTest.cpp</code></a>
 (<code class="language-plaintext highlighter-rouge">./scripts/build_app.sh usb_serial_jtag_test Release</code>).</li>
 </ul>

@@ -3144,7 +3144,7 @@
   },"449": {
     "doc": "🔌 BaseUsbSerialJtag",
     "title": "🔗 See Also",
-    "content": ". | BaseUart — peer abstraction for classic UART controllers. | EspUsbSerialJtag — concrete ESP32-family implementation. | ESP-IDF: USB Serial/JTAG Console | ESP-IDF: usb_serial_jtag driver API | . ",
+    "content": ". | BaseUart — peer abstraction for classic UART controllers. | EspUsbSerialJtag — concrete ESP32-family implementation. | ESP-IDF: USB Serial/JTAG Console | ESP-IDF: usb_serial_jtag driver header | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/BaseUsbSerialJtag/#-see-also",
     
     "relUrl": "/docs/api/BaseUsbSerialJtag/#-see-also"
@@ -5874,7 +5874,7 @@
   },"839": {
     "doc": "🔌 EspUsbSerialJtag",
     "title": "Related Documents",
-    "content": ". | BaseUsbSerialJtag — abstract interface and rationale. | EspUart — classic UART implementation when you need baud / parity / pin control. | USB Serial/JTAG Console (ESP-IDF) | usb_serial_jtag driver API (ESP-IDF) | Example app: UsbSerialJtagComprehensiveTest.cpp (./scripts/build_app.sh usb_serial_jtag_test Release). | . ",
+    "content": ". | BaseUsbSerialJtag — abstract interface and rationale. | EspUart — classic UART implementation when you need baud / parity / pin control. | USB Serial/JTAG Console (ESP-IDF) | usb_serial_jtag driver header (ESP-IDF) | Example app: UsbSerialJtagComprehensiveTest.cpp (./scripts/build_app.sh usb_serial_jtag_test Release). | . ",
     "url": "/hf-internal-interface-wrap/development/docs/esp_api/EspUsbSerialJtag/#related-documents",
     
     "relUrl": "/docs/esp_api/EspUsbSerialJtag/#related-documents"
