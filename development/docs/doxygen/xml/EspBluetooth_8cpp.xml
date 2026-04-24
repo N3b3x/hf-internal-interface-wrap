@@ -4,9 +4,9 @@
     <compoundname>EspBluetooth.cpp</compoundname>
     <includes refid="EspBluetooth_8h" local="yes">EspBluetooth.h</includes>
     <includes local="no">algorithm</includes>
+    <includes local="no">cstdlib</includes>
     <includes local="no">cstring</includes>
-    <includes local="no">iomanip</includes>
-    <includes local="no">sstream</includes>
+    <includes local="no">string</includes>
     <incdepgraph>
       <node id="3">
         <label>BaseBluetooth.h</label>
@@ -73,7 +73,7 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="17">
@@ -89,6 +89,9 @@
         <label>cstdint</label>
       </node>
       <node id="18">
+        <label>cstdlib</label>
+      </node>
+      <node id="19">
         <label>cstring</label>
       </node>
       <node id="12">
@@ -96,9 +99,6 @@
       </node>
       <node id="8">
         <label>functional</label>
-      </node>
-      <node id="19">
-        <label>iomanip</label>
       </node>
       <node id="6">
         <label>limits</label>
@@ -108,9 +108,6 @@
       </node>
       <node id="13">
         <label>nvs_flash.h</label>
-      </node>
-      <node id="20">
-        <label>sstream</label>
       </node>
       <node id="9">
         <label>string</label>
@@ -164,9 +161,9 @@
 <codeline lineno="1"></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspBluetooth_8h" kindref="compound">EspBluetooth.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iomanip&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HAS_BLE_SUPPORT</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
@@ -1124,109 +1121,125 @@
 <codeline lineno="981"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="982"><highlight class="normal"></highlight></codeline>
 <codeline lineno="983"><highlight class="normal">std::string<sp/><ref refid="classEspBluetooth_1aea62727908de168c5694694596b3bc04" kindref="member">EspBluetooth::GetImplementationInfo</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="984"><highlight class="normal"><sp/><sp/>std::ostringstream<sp/>info;</highlight></codeline>
-<codeline lineno="985"><highlight class="normal"><sp/><sp/>info<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>Bluetooth<sp/>Implementation\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="986"><highlight class="normal"><sp/><sp/>info<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Target:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>CONFIG_IDF_TARGET<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="987"><highlight class="normal"><sp/><sp/>info<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;ESP-IDF<sp/>Version:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>IDF_VER<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="988"><highlight class="normal"></highlight></codeline>
-<codeline lineno="989"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HAS_NIMBLE_SUPPORT<sp/>&amp;&amp;<sp/>NIMBLE_HEADERS_AVAILABLE</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="990"><highlight class="normal"><sp/><sp/>info<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Stack:<sp/>NimBLE<sp/>(ESP32<sp/>optimized)\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="991"><highlight class="normal"><sp/><sp/>info<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Features:<sp/>BLE-only\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="992"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>HAS_BLUEDROID_SUPPORT<sp/>&amp;&amp;<sp/>defined(CONFIG_BT_ENABLED)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="993"><highlight class="normal"><sp/><sp/>info<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Stack:<sp/>Bluedroid\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="994"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HAS_CLASSIC_BLUETOOTH</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="995"><highlight class="normal"><sp/><sp/>info<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Features:<sp/>Classic<sp/>BT<sp/>+<sp/>BLE\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="996"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="997"><highlight class="normal"><sp/><sp/>info<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Features:<sp/>BLE-only\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="998"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="984"><highlight class="normal"><sp/><sp/>std::string<sp/>info;</highlight></codeline>
+<codeline lineno="985"><highlight class="normal"><sp/><sp/>info<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>Bluetooth<sp/>Implementation\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="986"><highlight class="normal"><sp/><sp/>info<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Target:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="987"><highlight class="normal"><sp/><sp/>info<sp/>+=<sp/>CONFIG_IDF_TARGET;</highlight></codeline>
+<codeline lineno="988"><highlight class="normal"><sp/><sp/>info<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;\nESP-IDF<sp/>Version:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="989"><highlight class="normal"><sp/><sp/>info<sp/>+=<sp/>IDF_VER;</highlight></codeline>
+<codeline lineno="990"><highlight class="normal"><sp/><sp/>info<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="991"><highlight class="normal"></highlight></codeline>
+<codeline lineno="992"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HAS_NIMBLE_SUPPORT<sp/>&amp;&amp;<sp/>NIMBLE_HEADERS_AVAILABLE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="993"><highlight class="normal"><sp/><sp/>info<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Stack:<sp/>NimBLE<sp/>(ESP32<sp/>optimized)\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="994"><highlight class="normal"><sp/><sp/>info<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Features:<sp/>BLE-only\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="995"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>HAS_BLUEDROID_SUPPORT<sp/>&amp;&amp;<sp/>defined(CONFIG_BT_ENABLED)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="996"><highlight class="normal"><sp/><sp/>info<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Stack:<sp/>Bluedroid\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="997"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HAS_CLASSIC_BLUETOOTH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="998"><highlight class="normal"><sp/><sp/>info<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Features:<sp/>Classic<sp/>BT<sp/>+<sp/>BLE\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="999"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1000"><highlight class="normal"><sp/><sp/>info<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Stack:<sp/>None<sp/>(not<sp/>supported)\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="1001"><highlight class="normal"><sp/><sp/>info<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Features:<sp/>None\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="1002"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1003"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1004"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>info.str();</highlight></codeline>
-<codeline lineno="1005"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1000"><highlight class="normal"><sp/><sp/>info<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Features:<sp/>BLE-only\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1001"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1002"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1003"><highlight class="normal"><sp/><sp/>info<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Stack:<sp/>None<sp/>(not<sp/>supported)\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1004"><highlight class="normal"><sp/><sp/>info<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Features:<sp/>None\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1005"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1006"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1007"><highlight class="normal">uint32_t<sp/><ref refid="classEspBluetooth_1a25a1cdbecb847dbd24b65d83642bd90a" kindref="member">EspBluetooth::GetSupportedFeatures</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="1008"><highlight class="normal"><sp/><sp/>uint32_t<sp/>features<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="1007"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>info;</highlight></codeline>
+<codeline lineno="1008"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1009"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1010"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HAS_BLE_SUPPORT</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1011"><highlight class="normal"><sp/><sp/>features<sp/>|=<sp/>0x01;<sp/></highlight><highlight class="comment">//<sp/>BLE<sp/>support</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1012"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1013"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HAS_CLASSIC_BLUETOOTH</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1014"><highlight class="normal"><sp/><sp/>features<sp/>|=<sp/>0x02;<sp/></highlight><highlight class="comment">//<sp/>Classic<sp/>BT<sp/>support</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1010"><highlight class="normal">uint32_t<sp/><ref refid="classEspBluetooth_1a25a1cdbecb847dbd24b65d83642bd90a" kindref="member">EspBluetooth::GetSupportedFeatures</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1011"><highlight class="normal"><sp/><sp/>uint32_t<sp/>features<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="1012"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1013"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HAS_BLE_SUPPORT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1014"><highlight class="normal"><sp/><sp/>features<sp/>|=<sp/>0x01;<sp/></highlight><highlight class="comment">//<sp/>BLE<sp/>support</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1015"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1016"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HAS_A2DP_SUPPORT</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1017"><highlight class="normal"><sp/><sp/>features<sp/>|=<sp/>0x04;<sp/></highlight><highlight class="comment">//<sp/>A2DP<sp/>support</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1016"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HAS_CLASSIC_BLUETOOTH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1017"><highlight class="normal"><sp/><sp/>features<sp/>|=<sp/>0x02;<sp/></highlight><highlight class="comment">//<sp/>Classic<sp/>BT<sp/>support</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1018"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1019"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HAS_SPP_SUPPORT</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1020"><highlight class="normal"><sp/><sp/>features<sp/>|=<sp/>0x08;<sp/></highlight><highlight class="comment">//<sp/>SPP<sp/>support</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1019"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HAS_A2DP_SUPPORT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1020"><highlight class="normal"><sp/><sp/>features<sp/>|=<sp/>0x04;<sp/></highlight><highlight class="comment">//<sp/>A2DP<sp/>support</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1021"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1022"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1023"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>features;</highlight></codeline>
-<codeline lineno="1024"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1022"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HAS_SPP_SUPPORT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1023"><highlight class="normal"><sp/><sp/>features<sp/>|=<sp/>0x08;<sp/></highlight><highlight class="comment">//<sp/>SPP<sp/>support</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1024"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1025"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1026"><highlight class="normal"></highlight><highlight class="comment">//<sp/>==========<sp/>Internal<sp/>Utility<sp/>Methods<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1027"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1028"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspBluetooth_1aba97116a09dbb885c55d3f503fe34433" kindref="member">EspBluetooth::TriggerEvent</ref>(<ref refid="group__bluetooth_1gaf4d7f320ef7ffa2ef26966adc8facb67" kindref="member">hf_bluetooth_event_t</ref><sp/>event,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>data)<sp/>{</highlight></codeline>
-<codeline lineno="1029"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspBluetooth_1ad4d33070fdef22cd6f12e3e49ebce4b2" kindref="member">m_event_callback</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="1030"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspBluetooth_1ad4d33070fdef22cd6f12e3e49ebce4b2" kindref="member">m_event_callback</ref>(event,<sp/><ref refid="classEspBluetooth_1a7143aa7604d8fb3d70d2ce725fb888b9" kindref="member">m_callback_context</ref>);</highlight></codeline>
-<codeline lineno="1031"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="1032"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="1033"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1034"><highlight class="normal"><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classEspBluetooth_1aa0686079fd72561fd9110e586c146649" kindref="member">EspBluetooth::ValidateAddress</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="1035"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>for<sp/>null<sp/>address</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1036"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>all_zero<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="1037"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>6;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="1038"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(address.<ref refid="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" kindref="member">addr</ref>[i]<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="1039"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>all_zero<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="1040"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="1041"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="1042"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="1043"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1044"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(all_zero)<sp/>{</highlight></codeline>
-<codeline lineno="1045"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca48fe02293943503fcc25e1aec40c8b18" kindref="member">hf_bluetooth_err_t::BLUETOOTH_ERR_INVALID_ADDRESS</ref>;</highlight></codeline>
-<codeline lineno="1046"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="1047"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1048"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref>;</highlight></codeline>
-<codeline lineno="1049"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1026"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>features;</highlight></codeline>
+<codeline lineno="1027"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1028"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1029"><highlight class="normal"></highlight><highlight class="comment">//<sp/>==========<sp/>Internal<sp/>Utility<sp/>Methods<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1030"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1031"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspBluetooth_1aba97116a09dbb885c55d3f503fe34433" kindref="member">EspBluetooth::TriggerEvent</ref>(<ref refid="group__bluetooth_1gaf4d7f320ef7ffa2ef26966adc8facb67" kindref="member">hf_bluetooth_event_t</ref><sp/>event,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>data)<sp/>{</highlight></codeline>
+<codeline lineno="1032"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspBluetooth_1ad4d33070fdef22cd6f12e3e49ebce4b2" kindref="member">m_event_callback</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="1033"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspBluetooth_1ad4d33070fdef22cd6f12e3e49ebce4b2" kindref="member">m_event_callback</ref>(event,<sp/><ref refid="classEspBluetooth_1a7143aa7604d8fb3d70d2ce725fb888b9" kindref="member">m_callback_context</ref>);</highlight></codeline>
+<codeline lineno="1034"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="1035"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1036"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1037"><highlight class="normal"><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classEspBluetooth_1aa0686079fd72561fd9110e586c146649" kindref="member">EspBluetooth::ValidateAddress</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1038"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>for<sp/>null<sp/>address</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1039"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>all_zero<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1040"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>6;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="1041"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(address.<ref refid="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" kindref="member">addr</ref>[i]<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="1042"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>all_zero<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1043"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1044"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="1045"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="1046"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1047"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(all_zero)<sp/>{</highlight></codeline>
+<codeline lineno="1048"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca48fe02293943503fcc25e1aec40c8b18" kindref="member">hf_bluetooth_err_t::BLUETOOTH_ERR_INVALID_ADDRESS</ref>;</highlight></codeline>
+<codeline lineno="1049"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1050"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1051"><highlight class="normal">std::string<sp/><ref refid="classEspBluetooth_1ac6ca2eab7f75aeb09e6a227dca39195b" kindref="member">EspBluetooth::AddressToString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="1052"><highlight class="normal"><sp/><sp/>std::ostringstream<sp/>oss;</highlight></codeline>
-<codeline lineno="1053"><highlight class="normal"><sp/><sp/>oss<sp/>&lt;&lt;<sp/>std::hex<sp/>&lt;&lt;<sp/>std::setfill(</highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">)<sp/>&lt;&lt;<sp/>std::uppercase;</highlight></codeline>
-<codeline lineno="1054"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>6;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="1055"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>&gt;<sp/>0)</highlight></codeline>
-<codeline lineno="1056"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>oss<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="1057"><highlight class="normal"><sp/><sp/><sp/><sp/>oss<sp/>&lt;&lt;<sp/>std::setw(2)<sp/>&lt;&lt;<sp/>static_cast&lt;int&gt;(address.<ref refid="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" kindref="member">addr</ref>[i]);</highlight></codeline>
-<codeline lineno="1058"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="1059"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>oss.str();</highlight></codeline>
-<codeline lineno="1060"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="1061"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1062"><highlight class="normal"><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref><sp/><ref refid="classEspBluetooth_1acb38ae9cbc07b03d365fdd11a9cd1180" kindref="member">EspBluetooth::StringToAddress</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>address_str)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="1063"><highlight class="normal"><sp/><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref><sp/>address;</highlight></codeline>
-<codeline lineno="1064"><highlight class="normal"><sp/><sp/>memset(&amp;address,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(address));</highlight></codeline>
-<codeline lineno="1065"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1066"><highlight class="normal"><sp/><sp/>std::istringstream<sp/>iss(address_str);</highlight></codeline>
-<codeline lineno="1067"><highlight class="normal"><sp/><sp/>std::string<sp/>token;</highlight></codeline>
-<codeline lineno="1068"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="1069"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1070"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(std::getline(iss,<sp/>token,<sp/></highlight><highlight class="charliteral">&apos;:&apos;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>i<sp/>&lt;<sp/>6)<sp/>{</highlight></codeline>
-<codeline lineno="1071"><highlight class="normal"><sp/><sp/><sp/><sp/>address.<ref refid="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" kindref="member">addr</ref>[i]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint8_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(std::stoul(token,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>16));</highlight></codeline>
-<codeline lineno="1072"><highlight class="normal"><sp/><sp/><sp/><sp/>i++;</highlight></codeline>
-<codeline lineno="1073"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="1074"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1075"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>address;</highlight></codeline>
-<codeline lineno="1076"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="1077"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1078"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/></highlight><highlight class="comment">//<sp/>!HAS_BLE_SUPPORT</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1079"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1080"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Stub<sp/>implementations<sp/>for<sp/>platforms<sp/>without<sp/>Bluetooth<sp/>support<sp/>(ESP32S2)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1081"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Note:<sp/>This<sp/>section<sp/>is<sp/>only<sp/>compiled<sp/>when<sp/>HAS_BLE_SUPPORT<sp/>is<sp/>not<sp/>defined<sp/>(ESP32S2)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1082"><highlight class="normal"></highlight><highlight class="comment">//<sp/>For<sp/>ESP32,<sp/>HAS_BLE_SUPPORT<sp/>should<sp/>be<sp/>1,<sp/>so<sp/>this<sp/>code<sp/>should<sp/>not<sp/>be<sp/>reached.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1083"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1084"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;ESP32<sp/>should<sp/>have<sp/>BLE<sp/>support<sp/>enabled.<sp/>Check<sp/>conditional<sp/>compilation.&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1085"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1086"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>HAS_BLE_SUPPORT</highlight></codeline>
+<codeline lineno="1051"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="1052"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1053"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1054"><highlight class="normal">std::string<sp/><ref refid="classEspBluetooth_1ac6ca2eab7f75aeb09e6a227dca39195b" kindref="member">EspBluetooth::AddressToString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1055"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>kHex[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;0123456789ABCDEF&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1056"><highlight class="normal"><sp/><sp/>std::string<sp/>out;</highlight></codeline>
+<codeline lineno="1057"><highlight class="normal"><sp/><sp/>out.reserve(17);</highlight></codeline>
+<codeline lineno="1058"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>6;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="1059"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="1060"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>out<sp/>+=<sp/></highlight><highlight class="charliteral">&apos;:&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1061"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="1062"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>b<sp/>=<sp/>address.<ref refid="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" kindref="member">addr</ref>[i];</highlight></codeline>
+<codeline lineno="1063"><highlight class="normal"><sp/><sp/><sp/><sp/>out<sp/>+=<sp/>kHex[(b<sp/>&gt;&gt;<sp/>4U)<sp/>&amp;<sp/>0xFU];</highlight></codeline>
+<codeline lineno="1064"><highlight class="normal"><sp/><sp/><sp/><sp/>out<sp/>+=<sp/>kHex[b<sp/>&amp;<sp/>0xFU];</highlight></codeline>
+<codeline lineno="1065"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="1066"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>out;</highlight></codeline>
+<codeline lineno="1067"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1068"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1069"><highlight class="normal"><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref><sp/><ref refid="classEspBluetooth_1acb38ae9cbc07b03d365fdd11a9cd1180" kindref="member">EspBluetooth::StringToAddress</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>address_str)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1070"><highlight class="normal"><sp/><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref><sp/>address{};</highlight></codeline>
+<codeline lineno="1071"><highlight class="normal"><sp/><sp/>std::size_t<sp/>start<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="1072"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>6;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="1073"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::size_t<sp/>colon<sp/>=<sp/>address_str.find(</highlight><highlight class="charliteral">&apos;:&apos;</highlight><highlight class="normal">,<sp/>start);</highlight></codeline>
+<codeline lineno="1074"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>last<sp/>=<sp/>(colon<sp/>==<sp/>std::string::npos);</highlight></codeline>
+<codeline lineno="1075"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>token<sp/>=</highlight></codeline>
+<codeline lineno="1076"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>last<sp/>?<sp/>address_str.substr(start)<sp/>:<sp/>address_str.substr(start,<sp/>colon<sp/>-<sp/>start);</highlight></codeline>
+<codeline lineno="1077"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(token.empty())<sp/>{</highlight></codeline>
+<codeline lineno="1078"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1079"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="1080"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>end_ptr<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1081"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>v<sp/>=<sp/>std::strtoul(token.c_str(),<sp/>&amp;end_ptr,<sp/>16);</highlight></codeline>
+<codeline lineno="1082"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(end_ptr<sp/>==<sp/>token.c_str()<sp/>||<sp/>v<sp/>&gt;<sp/>255UL)<sp/>{</highlight></codeline>
+<codeline lineno="1083"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1084"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="1085"><highlight class="normal"><sp/><sp/><sp/><sp/>address.<ref refid="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" kindref="member">addr</ref>[</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(i)]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint8_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(v);</highlight></codeline>
+<codeline lineno="1086"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(last)<sp/>{</highlight></codeline>
+<codeline lineno="1087"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1088"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="1089"><highlight class="normal"><sp/><sp/><sp/><sp/>start<sp/>=<sp/>colon<sp/>+<sp/>1U;</highlight></codeline>
+<codeline lineno="1090"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="1091"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>address;</highlight></codeline>
+<codeline lineno="1092"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1093"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1094"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/></highlight><highlight class="comment">//<sp/>!HAS_BLE_SUPPORT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1095"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1096"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Stub<sp/>implementations<sp/>for<sp/>platforms<sp/>without<sp/>Bluetooth<sp/>support<sp/>(ESP32S2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1097"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Note:<sp/>This<sp/>section<sp/>is<sp/>only<sp/>compiled<sp/>when<sp/>HAS_BLE_SUPPORT<sp/>is<sp/>not<sp/>defined<sp/>(ESP32S2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1098"><highlight class="normal"></highlight><highlight class="comment">//<sp/>For<sp/>ESP32,<sp/>HAS_BLE_SUPPORT<sp/>should<sp/>be<sp/>1,<sp/>so<sp/>this<sp/>code<sp/>should<sp/>not<sp/>be<sp/>reached.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1099"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1100"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;ESP32<sp/>should<sp/>have<sp/>BLE<sp/>support<sp/>enabled.<sp/>Check<sp/>conditional<sp/>compilation.&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1102"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>HAS_BLE_SUPPORT</highlight></codeline>
     </programlisting>
     <location file="src/mcu/esp32/EspBluetooth.cpp"/>
   </compounddef>

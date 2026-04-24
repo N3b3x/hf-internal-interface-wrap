@@ -196,7 +196,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="246" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1028" bodyend="1032"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="246" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1031" bodyend="1035"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1aa0686079fd72561fd9110e586c146649" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
@@ -214,7 +214,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="247" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1034" bodyend="1049"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="247" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1037" bodyend="1052"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1ac6ca2eab7f75aeb09e6a227dca39195b" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -232,7 +232,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="248" column="15" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1051" bodyend="1060"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="248" column="15" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1054" bodyend="1067"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1acb38ae9cbc07b03d365fdd11a9cd1180" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref></type>
@@ -250,7 +250,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="249" column="26" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1062" bodyend="1076"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="249" column="26" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1069" bodyend="1092"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -1768,7 +1768,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="635" column="15" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="983" bodyend="1005"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="635" column="15" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="983" bodyend="1008"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1a25a1cdbecb847dbd24b65d83642bd90a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -1786,7 +1786,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="641" column="12" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1007" bodyend="1024"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="641" column="12" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1010" bodyend="1027"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/AsciiArtGenerator.h" line="66" column="3" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="111" bodyend="113"/>
+        <location file="inc/utils/AsciiArtGenerator.h" line="66" column="3" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="109" bodyend="111"/>
       </memberdef>
       <memberdef kind="function" id="classAsciiArtGenerator_1aeab9a32548c2fefbda9c345c402b99c4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/AsciiArtGenerator.h" line="78" column="15" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="119" bodyend="147"/>
+        <location file="inc/utils/AsciiArtGenerator.h" line="78" column="15" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="117" bodyend="145"/>
       </memberdef>
       <memberdef kind="function" id="classAsciiArtGenerator_1a8c964526be3777137b7178e0c5899256" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -121,7 +121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/AsciiArtGenerator.h" line="85" column="8" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="149" bodyend="154"/>
+        <location file="inc/utils/AsciiArtGenerator.h" line="85" column="8" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="147" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="classAsciiArtGenerator_1a8c389f7e432f659b2f0e188f69ec7474" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -150,7 +150,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/AsciiArtGenerator.h" line="91" column="8" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="156" bodyend="158"/>
+        <location file="inc/utils/AsciiArtGenerator.h" line="91" column="8" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="154" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="classAsciiArtGenerator_1a3c7febff5e83919dc6088971d1be2dc9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -165,7 +165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/AsciiArtGenerator.h" line="96" column="8" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="160" bodyend="162"/>
+        <location file="inc/utils/AsciiArtGenerator.h" line="96" column="8" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="158" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="classAsciiArtGenerator_1a623a5ea7b217aa2d20fbfc85b4fd0b61" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -196,7 +196,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/AsciiArtGenerator.h" line="103" column="8" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="164" bodyend="167"/>
+        <location file="inc/utils/AsciiArtGenerator.h" line="103" column="8" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="162" bodyend="165"/>
       </memberdef>
       <memberdef kind="function" id="classAsciiArtGenerator_1ab42dc9fb7f379e7ba51431295a207258" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>std::string</type>
@@ -214,7 +214,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/AsciiArtGenerator.h" line="109" column="15" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="169" bodyend="178"/>
+        <location file="inc/utils/AsciiArtGenerator.h" line="109" column="15" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="167" bodyend="176"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -247,7 +247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/AsciiArtGenerator.h" line="127" column="15" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="184" bodyend="205"/>
+        <location file="inc/utils/AsciiArtGenerator.h" line="127" column="15" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="182" bodyend="203"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
