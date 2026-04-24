@@ -45,10 +45,10 @@ professional embedded development. This page showcases the key capabilities orga
 
 Ready to explore these features? Check out our:
 
-- [📚 API Documentation](/api/) - Complete reference for all interfaces
-- [🚀 Quick Start Guide](/quick-start/) - Get up and running in minutes
-- [💡 Examples](/examples/) - Real-world usage patterns
-- [🔧 Building Guide](/building/) - Compile and deploy your projects
+- [📚 API Documentation](https://n3b3x.github.io/hf-internal-interface-wrap/api/) - Complete reference for all interfaces
+- [🚀 Quick Start Guide](https://n3b3x.github.io/hf-internal-interface-wrap/quick-start/) - Get up and running in minutes
+- [💡 Examples](https://n3b3x.github.io/hf-internal-interface-wrap/examples/) - Real-world usage patterns
+- [🔧 Building Guide](https://n3b3x.github.io/hf-internal-interface-wrap/building/) - Compile and deploy your projects
 
 {% include alert.html type="info" title="Need Help?" 
 content="Our comprehensive documentation includes step-by-step tutorials, API references, and 
