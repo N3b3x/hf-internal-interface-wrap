@@ -57,7 +57,7 @@ static constexpr hf_u32_t DEFAULT_TIMEOUT_MS = 1000;
  * @param[out] channel Resulting ADC channel
  * @return ESP_OK on success, error code on failure
  */
-static esp_err_t GpioToAdcChannel(int gpio_num, adc_unit_t unit_id, adc_channel_t* channel) {
+[[maybe_unused]] static esp_err_t GpioToAdcChannel(int gpio_num, adc_unit_t unit_id, adc_channel_t* channel) {
   return adc_continuous_io_to_channel(gpio_num, &unit_id, channel);
 }
 
@@ -74,7 +74,7 @@ static esp_err_t GpioToAdcChannel(int gpio_num, adc_unit_t unit_id, adc_channel_
  * @param[out] gpio_num Resulting GPIO number
  * @return ESP_OK on success, error code on failure
  */
-static esp_err_t AdcChannelToGpio(adc_unit_t unit_id, adc_channel_t channel, int* gpio_num) {
+[[maybe_unused]] static esp_err_t AdcChannelToGpio(adc_unit_t unit_id, adc_channel_t channel, int* gpio_num) {
   return adc_continuous_channel_to_io(unit_id, channel, gpio_num);
 }
 
