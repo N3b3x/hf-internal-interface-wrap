@@ -5,6 +5,7 @@
     <innerdir refid="dir_af527b166bd0aeb318c4d06f73919cfb">inc/base</innerdir>
     <innerdir refid="dir_a8fcf44594a21eb2fd60c83cfa0bc114">inc/mcu</innerdir>
     <innerdir refid="dir_8f46c503ad4a32bd125d4189308369db">inc/utils</innerdir>
+    <innerfile refid="iiwrap__version_8h">iiwrap_version.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

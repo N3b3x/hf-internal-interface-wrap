@@ -4856,6 +4856,12 @@
     <member refid="HardwareTypes_8h_1a50184ef4582378754c08ef6682ec7121" kind="function"><name>IsValidHost</name></member>
     <member refid="HardwareTypes_8h_1aaa87ba0f6ecdb5eac7552f89d00b69fb" kind="function"><name>IsValidChannel</name></member>
   </compound>
+  <compound refid="iiwrap__version_8h" kind="file"><name>iiwrap_version.h</name>
+    <member refid="iiwrap__version_8h_1a7a0c55f889642556c604455be28a95d3" kind="define"><name>HF_IIWRAP_VERSION_MAJOR</name></member>
+    <member refid="iiwrap__version_8h_1a5f8bf0c0f90971033b18e2a842ab6dc4" kind="define"><name>HF_IIWRAP_VERSION_MINOR</name></member>
+    <member refid="iiwrap__version_8h_1a87fef7a80d0ca0fe3fc45ace1dd551f1" kind="define"><name>HF_IIWRAP_VERSION_PATCH</name></member>
+    <member refid="iiwrap__version_8h_1a82e2c1fc1bb70da0a40ad599cf70598a" kind="define"><name>HF_IIWRAP_VERSION_STRING</name></member>
+  </compound>
   <compound refid="EspAdc_8h" kind="file"><name>EspAdc.h</name>
   </compound>
   <compound refid="EspBluetooth_8h" kind="file"><name>EspBluetooth.h</name>

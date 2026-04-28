@@ -79,12 +79,12 @@ var NAVTREEINDEX =
 "classStmPeriodicTimer.html#ac2ac2c04e292f87e354611e8b1bd5b5a",
 "globals_vars_b.html",
 "group__wifi.html#ggaa433fd9116606cbe69d1feeb748f41f7a39e69301ced8ebe5a680fcd9815e7bd4",
-"structEspPio_1_1ChannelState.html#a5b7b44120ef8a37524444a723d61d87a",
-"structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader.html#a46b1078c679a944ad025f37dd5d2491f",
-"structhf__can__statistics__t.html#acb5e2a142071e386f62468ffb3be2a78",
-"structhf__nvs__capabilities__t.html#a96ddf04bb913e0967df0ba28c4371ad2",
-"structhf__spi__device__config__t.html#a4e2b6297c1a88eb94af71239c806d1b1",
-"structhf__uart__power__config__t.html#a6740faaace817d6ca3c1ff12b5f7c2e0"
+"structCallbackTestData.html#ac35e427a4fb61a5c98c24196f796e9f6",
+"structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader.html",
+"structhf__can__statistics__t.html#a818f6e7eb7f728a7f0bbf882496d1307",
+"structhf__nvs__capabilities__t.html",
+"structhf__spi__device__config__t.html#a14b1dd2e7f8dfd85c5c95207bdd0f5bd",
+"structhf__uart__pattern__config__t.html#af58c48f247662ec2b774be4749a0d01e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

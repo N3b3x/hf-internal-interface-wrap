@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="iiwrap__version_8h" kind="file" language="C++">
+    <compoundname>iiwrap_version.h</compoundname>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="iiwrap__version_8h_1a7a0c55f889642556c604455be28a95d3" prot="public" static="no">
+        <name>HF_IIWRAP_VERSION_MAJOR</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/iiwrap_version.h" line="11" column="9" bodyfile="inc/iiwrap_version.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="iiwrap__version_8h_1a5f8bf0c0f90971033b18e2a842ab6dc4" prot="public" static="no">
+        <name>HF_IIWRAP_VERSION_MINOR</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/iiwrap_version.h" line="12" column="9" bodyfile="inc/iiwrap_version.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="iiwrap__version_8h_1a87fef7a80d0ca0fe3fc45ace1dd551f1" prot="public" static="no">
+        <name>HF_IIWRAP_VERSION_PATCH</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/iiwrap_version.h" line="13" column="9" bodyfile="inc/iiwrap_version.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="iiwrap__version_8h_1a82e2c1fc1bb70da0a40ad599cf70598a" prot="public" static="no">
+        <name>HF_IIWRAP_VERSION_STRING</name>
+        <initializer>&quot;1.0.0&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/iiwrap_version.h" line="14" column="9" bodyfile="inc/iiwrap_version.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Version macros for the hf-internal-interface-wrap submodule. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Manually-curated semantic version. Bump on releases together with the matching git tag in this repo. Consumers (e.g. the parent app&apos;s version manifest) pick this up via __has_include of <computeroutput><ref refid="iiwrap__version_8h" kindref="compound">iiwrap_version.h</ref></computeroutput>. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="iiwrap__version_8h_1a7a0c55f889642556c604455be28a95d3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_IIWRAP_VERSION_MAJOR<sp/><sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="iiwrap__version_8h_1a5f8bf0c0f90971033b18e2a842ab6dc4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_IIWRAP_VERSION_MINOR<sp/><sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="iiwrap__version_8h_1a87fef7a80d0ca0fe3fc45ace1dd551f1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_IIWRAP_VERSION_PATCH<sp/><sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="iiwrap__version_8h_1a82e2c1fc1bb70da0a40ad599cf70598a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_IIWRAP_VERSION_STRING<sp/>&quot;1.0.0&quot;</highlight></codeline>
+    </programlisting>
+    <location file="inc/iiwrap_version.h"/>
+  </compounddef>
+</doxygen>

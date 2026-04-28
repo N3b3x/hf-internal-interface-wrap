@@ -1,5 +1,11 @@
 var NAVTREEINDEX16 =
 {
+"structhf__can__statistics__t.html#a818f6e7eb7f728a7f0bbf882496d1307":[3,0,60,15],
+"structhf__can__statistics__t.html#a89b6fd61e6c03625a7f9b0ff81139b83":[3,0,60,18],
+"structhf__can__statistics__t.html#a8c261516730e47d445d56df9049d697b":[3,0,60,8],
+"structhf__can__statistics__t.html#ab5915bd4f67b906dfc92d8a4e997fcf2":[3,0,60,0],
+"structhf__can__statistics__t.html#aba07602085a2ec81ecdd65f53c1ca96f":[3,0,60,17],
+"structhf__can__statistics__t.html#ac7c444ee891d0d34e547d540d6b3a81d":[3,0,60,11],
 "structhf__can__statistics__t.html#acb5e2a142071e386f62468ffb3be2a78":[3,0,60,9],
 "structhf__can__statistics__t.html#adabf2819712bc6d5cfaf74e893c8d449":[3,0,60,3],
 "structhf__can__status__t.html":[3,0,61],
@@ -126,8 +132,8 @@ var NAVTREEINDEX16 =
 "structhf__i2c__device__config__t.html#a4ee426df38bc74be5ef7124ad76313c4":[3,0,74,9],
 "structhf__i2c__device__config__t.html#a770633f438e5e923370732a6275189d5":[3,0,74,8],
 "structhf__i2c__device__config__t.html#a8ab82a6247382e45f57c1bb0ad703c55":[3,0,74,6],
-"structhf__i2c__device__config__t.html#ad714da0f23e5e76c16ff462ec4488b48":[3,0,74,0],
 "structhf__i2c__device__config__t.html#ad714da0f23e5e76c16ff462ec4488b48":[3,0,74,1],
+"structhf__i2c__device__config__t.html#ad714da0f23e5e76c16ff462ec4488b48":[3,0,74,0],
 "structhf__i2c__device__config__t.html#ad77fa8ec7a23b21a95cc54b49d9f646c":[3,0,74,10],
 "structhf__i2c__device__config__t.html#af0dd4533b154c2d15317027f93f9ddd8":[3,0,74,5],
 "structhf__i2c__diagnostics__t.html":[3,0,75],
@@ -243,11 +249,5 @@ var NAVTREEINDEX16 =
 "structhf__logger__statistics__t.html#a5c690ed89c197df02f384ada846c1ab9":[1,5,3,6],
 "structhf__logger__statistics__t.html#ac7719556e89e7244fd511e59ebdddf10":[1,5,3,2],
 "structhf__logger__statistics__t.html#ad0b98afd9aa45cc49049b6b11f08daaa":[1,5,3,9],
-"structhf__logger__statistics__t.html#ad6de2a70394493e108c51ea0e26b873b":[1,5,3,8],
-"structhf__nvs__capabilities__t.html":[3,0,85],
-"structhf__nvs__capabilities__t.html#a0db73ea48c19f9f62383d9ced6ef2e7e":[3,0,85,7],
-"structhf__nvs__capabilities__t.html#a30251edaa0f83ca63430cf61ce4f0ba3":[3,0,85,4],
-"structhf__nvs__capabilities__t.html#a35ad86193e5214b4cd0fd228ca79d508":[3,0,85,2],
-"structhf__nvs__capabilities__t.html#a56c576b20942aea101189f90471a1288":[3,0,85,10],
-"structhf__nvs__capabilities__t.html#a9141725a7918dc37664bcb87b19b447c":[3,0,85,9]
+"structhf__logger__statistics__t.html#ad6de2a70394493e108c51ea0e26b873b":[1,5,3,8]
 };
