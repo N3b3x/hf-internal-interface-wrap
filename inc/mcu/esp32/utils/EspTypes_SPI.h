@@ -235,7 +235,7 @@ struct hf_spi_device_config_t {
 #ifdef HF_MCU_ESP32C6
         sampling_point(static_cast<hf_spi_sampling_point_t>(SPI_SAMPLING_POINT_PHASE_0)){
 #else
-        sampling_point(static_cast<hf_spi_sampling_point_t>(SPI_SAMPLING_POINT_PHASE_1)) {
+        sampling_point(static_cast<hf_spi_sampling_point_t>(SPI_SAMPLING_POINT_PHASE_0)) {
 #endif
         }
 };
