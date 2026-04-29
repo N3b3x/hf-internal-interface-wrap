@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"classEspPeriodicTimer.html#aa957512d77db32431d6d56a2d488f351":[3,0,29,4],
+"classEspPeriodicTimer.html#ab7916bb8965569cba0e5f2da171b2b5d":[3,0,29,23],
 "classEspPeriodicTimer.html#ac352033e596e27719ede7c11ec860d40":[3,0,29,22],
 "classEspPeriodicTimer.html#ac8255b99f1786bd785effa818c3db876":[3,0,29,12],
 "classEspPeriodicTimer.html#ae5b399e734d0f7ff3006cab30e8a2550":[3,0,29,7],
@@ -247,7 +249,5 @@ var NAVTREEINDEX8 =
 "classEspTemperature.html#a92699d024919bf1f5f40cfc2a05c5465":[3,0,34,27],
 "classEspTemperature.html#a92b30bf532e07d1f1927d4fccf5322ba":[3,0,34,44],
 "classEspTemperature.html#a97fcaa3460eec5f22eafb70e6c243642":[3,0,34,41],
-"classEspTemperature.html#a9b93362b1986eeae60402f91f9afc715":[3,0,34,54],
-"classEspTemperature.html#a9b9b794154ed4bde92c25a416e01141d":[3,0,34,40],
-"classEspTemperature.html#a9c978f2304a7968e28d22be7a1749f88":[3,0,34,7]
+"classEspTemperature.html#a9b93362b1986eeae60402f91f9afc715":[3,0,34,54]
 };

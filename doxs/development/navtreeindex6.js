@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"classBaseTemperature.html#a55f58d0cccee590dd10e55c2668e7f0b":[1,11,2,12],
+"classBaseTemperature.html#a5c12d4ab74621f885e61c070ab854530":[1,11,2,32],
 "classBaseTemperature.html#a65964a104b3cb9b9c737819810f0a20b":[1,11,2,44],
 "classBaseTemperature.html#a65f6deb4af75c89ae44723015731d195":[1,11,2,25],
 "classBaseTemperature.html#a6657e59b1e8c59d68aabe08f276090fe":[1,11,2,45],
@@ -247,7 +249,5 @@ var NAVTREEINDEX6 =
 "classEspCan.html#ab663edd5afb99a7ca95a9dd206d9ce85":[3,0,24,21],
 "classEspCan.html#abead43013dd161753d56006157679fe0":[3,0,24,16],
 "classEspCan.html#acb5ae2ddfce72a30d1bd14b721f1faab":[3,0,24,49],
-"classEspCan.html#ad254073ec0b39870dcc3f8d29806ed3b":[3,0,24,0],
-"classEspCan.html#ad310be0cce73339268d83a1c3744a970":[3,0,24,47],
-"classEspCan.html#ad33472b071ef5f1ab76efbdb58f3c855":[3,0,24,28]
+"classEspCan.html#ad254073ec0b39870dcc3f8d29806ed3b":[3,0,24,0]
 };

@@ -1,5 +1,8 @@
 var NAVTREEINDEX16 =
 {
+"structhf__can__reception__info__t.html#ae1fbb6e6b8850678fc0d601bf80806c0":[3,0,59,4],
+"structhf__can__reception__info__t.html#ae46c2b74fdb0496b9fc0591d90735f14":[3,0,59,3],
+"structhf__can__statistics__t.html":[3,0,60],
 "structhf__can__statistics__t.html#a2c259e2b8a42178625a2bc9ee248c91c":[3,0,60,16],
 "structhf__can__statistics__t.html#a3e1c67e6d1ae31cf16f98310d9b092fa":[3,0,60,4],
 "structhf__can__statistics__t.html#a42a1a9acddb43243100e32cb91964040":[3,0,60,10],
@@ -143,8 +146,8 @@ var NAVTREEINDEX16 =
 "structhf__i2c__device__config__t.html#a4ee426df38bc74be5ef7124ad76313c4":[3,0,74,9],
 "structhf__i2c__device__config__t.html#a770633f438e5e923370732a6275189d5":[3,0,74,8],
 "structhf__i2c__device__config__t.html#a8ab82a6247382e45f57c1bb0ad703c55":[3,0,74,6],
-"structhf__i2c__device__config__t.html#ad714da0f23e5e76c16ff462ec4488b48":[3,0,74,0],
 "structhf__i2c__device__config__t.html#ad714da0f23e5e76c16ff462ec4488b48":[3,0,74,1],
+"structhf__i2c__device__config__t.html#ad714da0f23e5e76c16ff462ec4488b48":[3,0,74,0],
 "structhf__i2c__device__config__t.html#ad77fa8ec7a23b21a95cc54b49d9f646c":[3,0,74,10],
 "structhf__i2c__device__config__t.html#af0dd4533b154c2d15317027f93f9ddd8":[3,0,74,5],
 "structhf__i2c__diagnostics__t.html":[3,0,75],
@@ -246,8 +249,5 @@ var NAVTREEINDEX16 =
 "structhf__logger__diagnostics__t.html#a17536cd32ffdf2888069b9a5e4504838":[1,5,4,1],
 "structhf__logger__diagnostics__t.html#a29db39017ec60f3bbbd5c24249ab8d2c":[1,5,4,7],
 "structhf__logger__diagnostics__t.html#a50e7c87e64f37a2fbeb55a3bb4b3f9f4":[1,5,4,3],
-"structhf__logger__diagnostics__t.html#a6592e1cfc972ecb2fe31d399efcba081":[1,5,4,2],
-"structhf__logger__diagnostics__t.html#a91eb53511a5f01511f3fca72237ecce1":[1,5,4,8],
-"structhf__logger__diagnostics__t.html#aa136df42009e1c7afe40fe7de0e9ac3b":[1,5,4,6],
-"structhf__logger__diagnostics__t.html#aa15ff8088d73ff83e0840bdb251bec0b":[1,5,4,0]
+"structhf__logger__diagnostics__t.html#a6592e1cfc972ecb2fe31d399efcba081":[1,5,4,2]
 };

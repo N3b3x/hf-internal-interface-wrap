@@ -1,5 +1,8 @@
 var NAVTREEINDEX18 =
 {
+"structhf__spi__bus__config__t.html#a2447a1a31cf698aead3d668f59ffe162":[3,0,110,10],
+"structhf__spi__bus__config__t.html#a30a9804cc4b3799a4207e669243135ab":[3,0,110,13],
+"structhf__spi__bus__config__t.html#a427b68fc1d80cb6358ddcf2f48505805":[3,0,110,5],
 "structhf__spi__bus__config__t.html#a4bb24c90eae4bccd36ec92595fe70983":[3,0,110,6],
 "structhf__spi__bus__config__t.html#a56f13363406cc28437c24c8745d835ed":[3,0,110,9],
 "structhf__spi__bus__config__t.html#a6b4b995bf3583a1569714b655a4f46b7":[3,0,110,3],
@@ -23,8 +26,8 @@ var NAVTREEINDEX18 =
 "structhf__spi__device__config__t.html#a7f5737b1045c78fc5ed7d8f2b6c9c0cf":[3,0,111,16],
 "structhf__spi__device__config__t.html#aa9392a6919ee46e1e39d5d3606ce8828":[3,0,111,17],
 "structhf__spi__device__config__t.html#aad6fdd431b2279d736a773950b4d62d3":[3,0,111,21],
-"structhf__spi__device__config__t.html#ab71e2e6448dd897ca1bb7c26da09de4c":[3,0,111,0],
 "structhf__spi__device__config__t.html#ab71e2e6448dd897ca1bb7c26da09de4c":[3,0,111,1],
+"structhf__spi__device__config__t.html#ab71e2e6448dd897ca1bb7c26da09de4c":[3,0,111,0],
 "structhf__spi__device__config__t.html#ac245192b5300dbc44412bc94dfc8a952":[3,0,111,12],
 "structhf__spi__device__config__t.html#aea1017f02ac9424ddaeeb926cb87ed87":[3,0,111,3],
 "structhf__spi__device__config__t.html#aef5e3c25eff3b4ab346f894ec3c1556b":[3,0,111,18],
@@ -246,8 +249,5 @@ var NAVTREEINDEX18 =
 "structhf__uart__flow__config__t.html#ab862a5acbf908953ad21e52c58de0ba5":[3,0,133,2],
 "structhf__uart__flow__config__t.html#ac7e23050c2ef42391ccee0e4c6a09bce":[3,0,133,4],
 "structhf__uart__flow__config__t.html#ac804663a1b85286b2d36ce6a12c954bc":[3,0,133,6],
-"structhf__uart__flow__config__t.html#ae28a9b34c306c4d888135506e5947fef":[3,0,133,1],
-"structhf__uart__flow__config__t.html#ae417f407dde36d36f13474bd4b23439c":[3,0,133,0],
-"structhf__uart__irda__config__t.html":[3,0,134],
-"structhf__uart__irda__config__t.html#a17330d5b407ec971f1e5a0177c2927a5":[3,0,134,1]
+"structhf__uart__flow__config__t.html#ae28a9b34c306c4d888135506e5947fef":[3,0,133,1]
 };

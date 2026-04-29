@@ -102,57 +102,64 @@ $(function(){initNavTree('HfTime_8h_source.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <a href="HfTime_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#ifndef HF_TIME_H_</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#define HF_TIME_H_</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#if defined(ESP_PLATFORM) || defined(IDF_VER) || defined(__has_include)</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#  if defined(ESP_PLATFORM) || defined(IDF_VER) || __has_include(&quot;esp_timer.h&quot;)</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#    include &quot;esp_timer.h&quot;</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#    define HF_TIME_HAS_ESP_TIMER 1</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#  endif</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="namespacehf__time.html">   42</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehf__time.html">hf_time</a> {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="namespacehf__time.html#a1c69a403ddd857794c8eef1f09a059a0">   52</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacehf__time.html#a1c69a403ddd857794c8eef1f09a059a0">InitMonotonic</a>() noexcept {}</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="namespacehf__time.html#a6bbd69949f8405073c7a495676c65d08">   61</a></span><span class="keyword">inline</span> std::uint64_t <a class="code hl_function" href="namespacehf__time.html#a6bbd69949f8405073c7a495676c65d08">MonotonicUs</a>() noexcept {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#if HF_TIME_HAS_ESP_TIMER</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">// esp_timer_get_time returns int64_t but is documented to be</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">// non-negative once started. Cast is a safe widening to uint64_t</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment">// for the unsigned arithmetic typical at call sites.</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>std::uint64_t<span class="keyword">&gt;</span>(::esp_timer_get_time());</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">return</span> 0;  <span class="comment">// Portable fallback — replace per target as needed.</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>}</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &quot;<a class="code" href="McuSelect_8h.html">McuSelect.h</a>&quot;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#if defined(HF_TARGET_MCU_ESP32)   || defined(HF_TARGET_MCU_ESP32S2) || \</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">    defined(HF_TARGET_MCU_ESP32S3) || defined(HF_TARGET_MCU_ESP32C3) || \</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">    defined(HF_TARGET_MCU_ESP32C2) || defined(HF_TARGET_MCU_ESP32C6) || \</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">    defined(HF_TARGET_MCU_ESP32H2)</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#  include &quot;<a class="code" href="EspTime_8h.html">EspTime.h</a>&quot;</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>   <span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehf__time.html">hf_time</a> { using ::hf_time::esp32::MonotonicUs;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                       using ::hf_time::esp32::InitMonotonic; }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#elif defined(HF_TARGET_MCU_STM32F4) || defined(HF_TARGET_MCU_STM32H7)</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#  include &quot;Stm32Time.h&quot;</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>   <span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehf__time.html">hf_time</a> { using ::hf_time::stm32::MonotonicUs;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                       using ::hf_time::stm32::InitMonotonic; }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#elif defined(HF_TARGET_MCU_RP2040)</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#  include &quot;Rp2040Time.h&quot;</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>   <span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehf__time.html">hf_time</a> { using ::hf_time::rp2040::MonotonicUs;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                       using ::hf_time::rp2040::InitMonotonic; }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#elif defined(HF_TARGET_MCU_NONE)</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>   <span class="comment">// Software-only / unit-test build: monotonic clock is a stub. Tests</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>   <span class="comment">// that need a controllable clock should inject their own.</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>   <span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehf__time.html">hf_time</a> {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>       <span class="keyword">inline</span> std::uint64_t <a class="code hl_function" href="namespacehf__time_1_1esp32.html#a9f23f582ecf444b0bb6e3ef5e1305ebd">MonotonicUs</a>() noexcept { <span class="keywordflow">return</span> 0; }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>       <span class="keyword">inline</span> <span class="keywordtype">void</span>          <a class="code hl_function" href="namespacehf__time_1_1esp32.html#a228110b1dd468efe27187f462d662dff">InitMonotonic</a>() noexcept {}</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>   }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#  error &quot;HfTime: no implementation for this target — set HF_TARGET_MCU_* (see McuSelect.h)&quot;</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehf__time.html">hf_time</a> {</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="foldopen" id="foldopen00078" data-start="{" data-end="}">
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="namespacehf__time.html#ac7fa91057bdbd80cb6bfdad0f650f21d">   78</a></span><span class="keyword">inline</span> std::uint64_t <a class="code hl_function" href="namespacehf__time.html#ac7fa91057bdbd80cb6bfdad0f650f21d">MonotonicMs</a>() noexcept {</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordflow">return</span> MonotonicUs() / 1000ULL;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>}</div>
 </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="namespacehf__time.html#ac7fa91057bdbd80cb6bfdad0f650f21d">   79</a></span><span class="keyword">inline</span> std::uint64_t <a class="code hl_function" href="namespacehf__time.html#ac7fa91057bdbd80cb6bfdad0f650f21d">MonotonicMs</a>() noexcept {</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespacehf__time.html#a6bbd69949f8405073c7a495676c65d08">MonotonicUs</a>() / 1000ULL;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>}</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="}">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="namespacehf__time.html#aac104941aa853c491e65fae6e388b352">   83</a></span><span class="keyword">inline</span> std::uint64_t <a class="code hl_function" href="namespacehf__time.html#aac104941aa853c491e65fae6e388b352">ElapsedUs</a>(std::uint64_t t0) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordflow">return</span> MonotonicUs() - t0;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
 </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="foldopen" id="foldopen00084" data-start="{" data-end="}">
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="namespacehf__time.html#aac104941aa853c491e65fae6e388b352">   84</a></span><span class="keyword">inline</span> std::uint64_t <a class="code hl_function" href="namespacehf__time.html#aac104941aa853c491e65fae6e388b352">ElapsedUs</a>(std::uint64_t t0) <span class="keyword">noexcept</span> {</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespacehf__time.html#a6bbd69949f8405073c7a495676c65d08">MonotonicUs</a>() - t0;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
-</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>}  <span class="comment">// namespace hf_time</span></div>
-</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">#endif  </span><span class="comment">// HF_TIME_H_</span></div>
-<div class="ttc" id="anamespacehf__time_html"><div class="ttname"><a href="namespacehf__time.html">hf_time</a></div><div class="ttdef"><b>Definition</b> HfTime.h:42</div></div>
-<div class="ttc" id="anamespacehf__time_html_a1c69a403ddd857794c8eef1f09a059a0"><div class="ttname"><a href="namespacehf__time.html#a1c69a403ddd857794c8eef1f09a059a0">hf_time::InitMonotonic</a></div><div class="ttdeci">void InitMonotonic() noexcept</div><div class="ttdoc">Initialise the monotonic time source if the platform requires it.</div><div class="ttdef"><b>Definition</b> HfTime.h:52</div></div>
-<div class="ttc" id="anamespacehf__time_html_a6bbd69949f8405073c7a495676c65d08"><div class="ttname"><a href="namespacehf__time.html#a6bbd69949f8405073c7a495676c65d08">hf_time::MonotonicUs</a></div><div class="ttdeci">std::uint64_t MonotonicUs() noexcept</div><div class="ttdoc">Microseconds since boot from a hardware-backed monotonic counter.</div><div class="ttdef"><b>Definition</b> HfTime.h:61</div></div>
-<div class="ttc" id="anamespacehf__time_html_aac104941aa853c491e65fae6e388b352"><div class="ttname"><a href="namespacehf__time.html#aac104941aa853c491e65fae6e388b352">hf_time::ElapsedUs</a></div><div class="ttdeci">std::uint64_t ElapsedUs(std::uint64_t t0) noexcept</div><div class="ttdoc">Convenience: elapsed-since-t0 in microseconds.</div><div class="ttdef"><b>Definition</b> HfTime.h:84</div></div>
-<div class="ttc" id="anamespacehf__time_html_ac7fa91057bdbd80cb6bfdad0f650f21d"><div class="ttname"><a href="namespacehf__time.html#ac7fa91057bdbd80cb6bfdad0f650f21d">hf_time::MonotonicMs</a></div><div class="ttdeci">std::uint64_t MonotonicMs() noexcept</div><div class="ttdoc">Convenience milliseconds view of the same monotonic counter.</div><div class="ttdef"><b>Definition</b> HfTime.h:79</div></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>}  <span class="comment">// namespace hf_time</span></div>
+<div class="ttc" id="aEspTime_8h_html"><div class="ttname"><a href="EspTime_8h.html">EspTime.h</a></div><div class="ttdoc">ESP32-family implementation of the high-resolution monotonic time source consumed via HfTime....</div></div>
+<div class="ttc" id="aMcuSelect_8h_html"><div class="ttname"><a href="McuSelect_8h.html">McuSelect.h</a></div><div class="ttdoc">Centralized MCU platform selection and configuration header.</div></div>
+<div class="ttc" id="anamespacehf__time_1_1esp32_html_a228110b1dd468efe27187f462d662dff"><div class="ttname"><a href="namespacehf__time_1_1esp32.html#a228110b1dd468efe27187f462d662dff">hf_time::esp32::InitMonotonic</a></div><div class="ttdeci">void InitMonotonic() noexcept</div><div class="ttdoc">No-op on ESP-IDF: the high-resolution timer is started by the system bootstrap before app_main runs.</div><div class="ttdef"><b>Definition</b> EspTime.h:36</div></div>
+<div class="ttc" id="anamespacehf__time_1_1esp32_html_a9f23f582ecf444b0bb6e3ef5e1305ebd"><div class="ttname"><a href="namespacehf__time_1_1esp32.html#a9f23f582ecf444b0bb6e3ef5e1305ebd">hf_time::esp32::MonotonicUs</a></div><div class="ttdeci">std::uint64_t MonotonicUs() noexcept</div><div class="ttdoc">Microseconds since boot from the hardware-backed timer.</div><div class="ttdef"><b>Definition</b> EspTime.h:47</div></div>
+<div class="ttc" id="anamespacehf__time_html"><div class="ttname"><a href="namespacehf__time.html">hf_time</a></div><div class="ttdef"><b>Definition</b> EspTime.h:27</div></div>
+<div class="ttc" id="anamespacehf__time_html_aac104941aa853c491e65fae6e388b352"><div class="ttname"><a href="namespacehf__time.html#aac104941aa853c491e65fae6e388b352">hf_time::ElapsedUs</a></div><div class="ttdeci">std::uint64_t ElapsedUs(std::uint64_t t0) noexcept</div><div class="ttdoc">Convenience: elapsed-since-t0 in microseconds.</div><div class="ttdef"><b>Definition</b> HfTime.h:83</div></div>
+<div class="ttc" id="anamespacehf__time_html_ac7fa91057bdbd80cb6bfdad0f650f21d"><div class="ttname"><a href="namespacehf__time.html#ac7fa91057bdbd80cb6bfdad0f650f21d">hf_time::MonotonicMs</a></div><div class="ttdeci">std::uint64_t MonotonicMs() noexcept</div><div class="ttdoc">Convenience milliseconds view of the monotonic counter.</div><div class="ttdef"><b>Definition</b> HfTime.h:78</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

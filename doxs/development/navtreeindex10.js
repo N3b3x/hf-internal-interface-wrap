@@ -1,5 +1,7 @@
 var NAVTREEINDEX10 =
 {
+"classPlatformMutexImpl.html#ab6f6f54ccd9d1028106f641eb0332d15":[3,0,150,7],
+"classPlatformMutexImpl.html#ab7bcc976cca7cc689aac14c24d6d40b8":[3,0,150,9],
 "classPlatformMutexImpl.html#abee357e9f72250474b90a54486a77776":[3,0,150,17],
 "classPlatformMutexImpl.html#ac5c9c4a196c14c114a8022bf1a9777c8":[3,0,150,15],
 "classPlatformMutexImpl.html#ac9f85b0692b69251c30e6195f5ccce9f":[3,0,150,14],
@@ -247,7 +249,5 @@ var NAVTREEINDEX10 =
 "classStmPeriodicTimer.html#a719c4bddaa4c4b71077652d9c08473f9":[3,0,162,23],
 "classStmPeriodicTimer.html#a7245352f00a028fbf5ab7b20ddc8d149":[3,0,162,27],
 "classStmPeriodicTimer.html#a85098575d3142eb754cc9e9c423afd02":[3,0,162,24],
-"classStmPeriodicTimer.html#a8677962f1093250861c2be382ec6b01a":[3,0,162,8],
-"classStmPeriodicTimer.html#a909b5dc147e42ebbf6b1caa5c23f360e":[3,0,162,2],
-"classStmPeriodicTimer.html#a94d84c46b0fd48fd7ca73b683b178d25":[3,0,162,6]
+"classStmPeriodicTimer.html#a8677962f1093250861c2be382ec6b01a":[3,0,162,8]
 };

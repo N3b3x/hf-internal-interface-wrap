@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HF Interface Wrapper: inc/utils/HfTime.h File Reference</title>
+<title>HF Interface Wrapper: inc/mcu/esp32/EspTime.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -67,7 +67,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('HfTime_8h.html',''); initResizable(); });
+$(function(){initNavTree('EspTime_8h.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -96,56 +96,49 @@ $(function(){initNavTree('HfTime_8h.html',''); initResizable(); });
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">HfTime.h File Reference</div></div>
+  <div class="headertitle"><div class="title">EspTime.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>MCU-agnostic high-resolution monotonic time source.  
+<p>ESP32-family implementation of the high-resolution monotonic time source consumed via <code><a class="el" href="HfTime_8h.html" title="MCU-agnostic high-resolution monotonic time source.">HfTime.h</a></code>.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
-<code>#include &quot;<a class="el" href="McuSelect_8h_source.html">McuSelect.h</a>&quot;</code><br />
+<code>#include &quot;esp_timer.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for HfTime.h:</div>
+Include dependency graph for EspTime.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="HfTime_8h__incl.svg" width="232" height="120"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="EspTime_8h__incl.svg" width="244" height="120"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
-<p><a href="HfTime_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="EspTime_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacehf__time" id="r_namespacehf__time"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__time.html">hf_time</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacehf__time_1_1esp32" id="r_namespacehf__time_1_1esp32"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__time_1_1esp32.html">hf_time::esp32</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac7fa91057bdbd80cb6bfdad0f650f21d" id="r_ac7fa91057bdbd80cb6bfdad0f650f21d"><td class="memItemLeft" align="right" valign="top">std::uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__time.html#ac7fa91057bdbd80cb6bfdad0f650f21d">hf_time::MonotonicMs</a> () noexcept</td></tr>
-<tr class="memdesc:ac7fa91057bdbd80cb6bfdad0f650f21d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience milliseconds view of the monotonic counter.  <br /></td></tr>
-<tr class="separator:ac7fa91057bdbd80cb6bfdad0f650f21d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac104941aa853c491e65fae6e388b352" id="r_aac104941aa853c491e65fae6e388b352"><td class="memItemLeft" align="right" valign="top">std::uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__time.html#aac104941aa853c491e65fae6e388b352">hf_time::ElapsedUs</a> (std::uint64_t t0) noexcept</td></tr>
-<tr class="memdesc:aac104941aa853c491e65fae6e388b352"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience: elapsed-since-<code>t0</code> in microseconds.  <br /></td></tr>
-<tr class="separator:aac104941aa853c491e65fae6e388b352"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a228110b1dd468efe27187f462d662dff" id="r_a228110b1dd468efe27187f462d662dff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__time_1_1esp32.html#a228110b1dd468efe27187f462d662dff">hf_time::esp32::InitMonotonic</a> () noexcept</td></tr>
+<tr class="memdesc:a228110b1dd468efe27187f462d662dff"><td class="mdescLeft">&#160;</td><td class="mdescRight">No-op on ESP-IDF: the high-resolution timer is started by the system bootstrap before <code>app_main</code> runs.  <br /></td></tr>
+<tr class="separator:a228110b1dd468efe27187f462d662dff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f23f582ecf444b0bb6e3ef5e1305ebd" id="r_a9f23f582ecf444b0bb6e3ef5e1305ebd"><td class="memItemLeft" align="right" valign="top">std::uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__time_1_1esp32.html#a9f23f582ecf444b0bb6e3ef5e1305ebd">hf_time::esp32::MonotonicUs</a> () noexcept</td></tr>
+<tr class="memdesc:a9f23f582ecf444b0bb6e3ef5e1305ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Microseconds since boot from the hardware-backed timer.  <br /></td></tr>
+<tr class="separator:a9f23f582ecf444b0bb6e3ef5e1305ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>MCU-agnostic high-resolution monotonic time source. </p>
-<p>Public surface for higher layers (HAL handlers, middleware, application self-tests) that need a sub-millisecond timebase. The concrete implementation lives under <code>mcu/&lt;vendor&gt;/&lt;X&gt;Time.h</code> and is selected at compile time from <code><a class="el" href="McuSelect_8h.html" title="Centralized MCU platform selection and configuration header.">McuSelect.h</a></code>. Adding a new MCU is a one-folder change:</p>
-<ol type="1">
-<li>drop in <code>mcu/&lt;vendor&gt;/&lt;X&gt;Time.h</code> exposing <code>namespace <a class="el" href="namespacehf__time.html">hf_time</a>::&lt;vendor&gt; { void InitMonotonic(); uint64_t MonotonicUs(); }</code>,</li>
-<li>extend <code><a class="el" href="McuSelect_8h.html" title="Centralized MCU platform selection and configuration header.">McuSelect.h</a></code> if it doesn't already detect that target,</li>
-<li>add one <code>#elif</code> block here aliasing the new namespace into <code><a class="el" href="namespacehf__time.html">hf_time</a></code>.</li>
-</ol>
-<p>Why this is a static-policy header and not a virtual <code>BaseTime</code>:</p><ul>
-<li><code>MonotonicUs()</code> is a single hardware-counter read used inside tight sample loops; a vtable load + indirect call would measurably degrade self-test sampling at 50 Hz × N channels.</li>
-<li>There is no per-instance state to vary — the underlying counter is a process-wide resource. Virtual dispatch buys nothing.</li>
-<li>Header-only inlining keeps the call site to a single <code>call</code> instruction.</li>
-</ul>
-<p>Use virtual <code>Base*</code> bases (<code><a class="el" href="classBaseUart.html" title="Abstract base class for UART driver implementations.">BaseUart</a></code>, <code><a class="el" href="classBaseSpi.html" title="Abstract base class for SPI device implementations.">BaseSpi</a></code>, …) when the primitive owns state and dispatch happens once per logical operation; use static policy headers like this one for stateless hot-path primitives. </p>
+<div class="textblock"><p>ESP32-family implementation of the high-resolution monotonic time source consumed via <code><a class="el" href="HfTime_8h.html" title="MCU-agnostic high-resolution monotonic time source.">HfTime.h</a></code>. </p>
+<p>Backed by <code>esp_timer_get_time()</code>, a 64-bit µs counter driven by a dedicated hardware timer that ESP-IDF starts before <code>app_main</code>. The counter is monotonic for &gt;292 000 years so wrap is not a concern.</p>
+<p>Header-only inline implementation: every call lowers to a single <code>esp_timer_get_time</code> call with no extra frames so it is safe inside hot-path measurement loops (valve self-test sweeps, parallel-stress sampler, ramp settling detectors).</p>
+<p>Do not include this file directly from middleware/app code — go through <code><a class="el" href="HfTime_8h.html" title="MCU-agnostic high-resolution monotonic time source.">HfTime.h</a></code> so MCU dispatch stays in one place. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><a class="el" href="dir_8f46c503ad4a32bd125d4189308369db.html">utils</a></li><li class="navelem"><a class="el" href="HfTime_8h.html">HfTime.h</a></li>
+    <li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><a class="el" href="dir_a8fcf44594a21eb2fd60c83cfa0bc114.html">mcu</a></li><li class="navelem"><a class="el" href="dir_426f378bcfb40d7530258730abe85710.html">esp32</a></li><li class="navelem"><a class="el" href="EspTime_8h.html">EspTime.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>

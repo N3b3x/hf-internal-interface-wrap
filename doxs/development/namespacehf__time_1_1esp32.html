@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HF Interface Wrapper: hf_time Namespace Reference</title>
+<title>HF Interface Wrapper: hf_time::esp32 Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -67,7 +67,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('namespacehf__time.html',''); initResizable(); });
+$(function(){initNavTree('namespacehf__time_1_1esp32.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -94,29 +94,23 @@ $(function(){initNavTree('namespacehf__time.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">hf_time Namespace Reference</div></div>
+  <div class="headertitle"><div class="title">hf_time::esp32 Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:namespacehf__time_1_1esp32" id="r_namespacehf__time_1_1esp32"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__time_1_1esp32.html">esp32</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac7fa91057bdbd80cb6bfdad0f650f21d" id="r_ac7fa91057bdbd80cb6bfdad0f650f21d"><td class="memItemLeft" align="right" valign="top">std::uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7fa91057bdbd80cb6bfdad0f650f21d">MonotonicMs</a> () noexcept</td></tr>
-<tr class="memdesc:ac7fa91057bdbd80cb6bfdad0f650f21d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience milliseconds view of the monotonic counter.  <br /></td></tr>
-<tr class="separator:ac7fa91057bdbd80cb6bfdad0f650f21d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac104941aa853c491e65fae6e388b352" id="r_aac104941aa853c491e65fae6e388b352"><td class="memItemLeft" align="right" valign="top">std::uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac104941aa853c491e65fae6e388b352">ElapsedUs</a> (std::uint64_t t0) noexcept</td></tr>
-<tr class="memdesc:aac104941aa853c491e65fae6e388b352"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience: elapsed-since-<code>t0</code> in microseconds.  <br /></td></tr>
-<tr class="separator:aac104941aa853c491e65fae6e388b352"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a228110b1dd468efe27187f462d662dff" id="r_a228110b1dd468efe27187f462d662dff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a228110b1dd468efe27187f462d662dff">InitMonotonic</a> () noexcept</td></tr>
+<tr class="memdesc:a228110b1dd468efe27187f462d662dff"><td class="mdescLeft">&#160;</td><td class="mdescRight">No-op on ESP-IDF: the high-resolution timer is started by the system bootstrap before <code>app_main</code> runs.  <br /></td></tr>
+<tr class="separator:a228110b1dd468efe27187f462d662dff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f23f582ecf444b0bb6e3ef5e1305ebd" id="r_a9f23f582ecf444b0bb6e3ef5e1305ebd"><td class="memItemLeft" align="right" valign="top">std::uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f23f582ecf444b0bb6e3ef5e1305ebd">MonotonicUs</a> () noexcept</td></tr>
+<tr class="memdesc:a9f23f582ecf444b0bb6e3ef5e1305ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Microseconds since boot from the hardware-backed timer.  <br /></td></tr>
+<tr class="separator:a9f23f582ecf444b0bb6e3ef5e1305ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="aac104941aa853c491e65fae6e388b352" name="aac104941aa853c491e65fae6e388b352"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aac104941aa853c491e65fae6e388b352">&#9670;&#160;</a></span>ElapsedUs()</h2>
+<a id="a228110b1dd468efe27187f462d662dff" name="a228110b1dd468efe27187f462d662dff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a228110b1dd468efe27187f462d662dff">&#9670;&#160;</a></span>InitMonotonic()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -125,34 +119,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::uint64_t hf_time::ElapsedUs </td>
-          <td>(</td>
-          <td class="paramtype">std::uint64_t</td>          <td class="paramname"><span class="paramname"><em>t0</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Convenience: elapsed-since-<code>t0</code> in microseconds. </p>
-
-</div>
-</div>
-<a id="ac7fa91057bdbd80cb6bfdad0f650f21d" name="ac7fa91057bdbd80cb6bfdad0f650f21d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7fa91057bdbd80cb6bfdad0f650f21d">&#9670;&#160;</a></span>MonotonicMs()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::uint64_t hf_time::MonotonicMs </td>
+          <td class="memname">void hf_time::esp32::InitMonotonic </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -165,8 +132,37 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Convenience milliseconds view of the monotonic counter. </p>
-<p>Implemented in terms of <code>MonotonicUs()</code> so the underlying timebase stays consistent across <code>Us</code> and <code>Ms</code> queries. Resolution is still 1 µs internally; only the unit conversion differs. </p>
+<p>No-op on ESP-IDF: the high-resolution timer is started by the system bootstrap before <code>app_main</code> runs. </p>
+<p>Provided so callers writing portable init code can keep a single call site regardless of target. </p>
+
+</div>
+</div>
+<a id="a9f23f582ecf444b0bb6e3ef5e1305ebd" name="a9f23f582ecf444b0bb6e3ef5e1305ebd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f23f582ecf444b0bb6e3ef5e1305ebd">&#9670;&#160;</a></span>MonotonicUs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::uint64_t hf_time::esp32::MonotonicUs </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Microseconds since boot from the hardware-backed timer. </p>
+<p><code>esp_timer_get_time()</code> returns <code>int64_t</code> but is documented to be non-negative once started; widening to <code>uint64_t</code> matches the unsigned arithmetic used at call sites (deltas, comparisons).</p>
+<p>Safe from any task or ISR. </p>
 
 </div>
 </div>
@@ -175,7 +171,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespacehf__time.html">hf_time</a></li>
+    <li class="navelem"><a class="el" href="namespacehf__time.html">hf_time</a></li><li class="navelem"><a class="el" href="namespacehf__time_1_1esp32.html">esp32</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>

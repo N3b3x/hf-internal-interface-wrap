@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"UartComprehensiveTest_8cpp.html#aebb05f3a64662192f3f8433454914b53":[4,0,0,0,0,15,1],
+"UartComprehensiveTest_8cpp.html#af6e3f351682e543379bc94e13ffbed96":[4,0,0,0,0,15,24],
 "UartComprehensiveTest_8cpp.html#afdc0b960eadfff575ebbed04ee6e8558":[4,0,0,0,0,15,13],
 "UsbSerialJtagComprehensiveTest_8cpp.html":[4,0,0,0,0,16],
 "UsbSerialJtagComprehensiveTest_8cpp.html#a05b02029eca6d3be52edf960179196ee":[4,0,0,0,0,16,24],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "classBaseI2c.html#a0d8635db15272fc79947121fcec70850":[1,4,2,12],
 "classBaseI2c.html#a0ef4a4a50952a71b4c7be2f13660282d":[1,4,2,1],
 "classBaseI2c.html#a11d9d717f2176de6ceaa57b0f29bd2f9":[1,4,2,23],
-"classBaseI2c.html#a1cf1876ffa812b77cbd56d7e714df1e5":[1,4,2,17],
-"classBaseI2c.html#a211b5abbe37a9905cf74312799eca5d4":[1,4,2,10],
-"classBaseI2c.html#a2a96e596e8d83320c7f8d943119eef38":[1,4,2,5]
+"classBaseI2c.html#a1cf1876ffa812b77cbd56d7e714df1e5":[1,4,2,17]
 };
