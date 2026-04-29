@@ -1,5 +1,7 @@
 <map id="inc/utils/HfTime.h" name="inc/utils/HfTime.h">
-<area shape="rect" id="Node000001" title="MCU&#45;agnostic high&#45;resolution monotonic time source." alt="" coords="5,5,167,36"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="49,84,123,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,36,89,70,83,70,83,36"/>
+<area shape="rect" id="Node000001" title="MCU&#45;agnostic high&#45;resolution monotonic time source." alt="" coords="23,5,185,36"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,84,80,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,38,65,75,61,72,90,35"/>
+<area shape="rect" id="Node000003" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="104,84,227,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="118,35,147,72,143,75,113,38"/>
 </map>

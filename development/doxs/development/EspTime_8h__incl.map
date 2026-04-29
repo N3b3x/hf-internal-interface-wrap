@@ -1,0 +1,7 @@
+<map id="inc/mcu/esp32/EspTime.h" name="inc/mcu/esp32/EspTime.h">
+<area shape="rect" id="Node000001" title="ESP32&#45;family implementation of the high&#45;resolution monotonic time source consumed via HfTime...." alt="" coords="5,5,236,36"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="23,84,98,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,38,82,75,78,72,107,35"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="123,84,239,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="134,35,163,72,159,75,130,38"/>
+</map>

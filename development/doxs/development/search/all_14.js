@@ -139,7 +139,7 @@ var searchData=
   ['monitoring_5fuser_5fdata_5f_136',['monitoring_user_data_',['../classEspTemperature.html#a8fe2e9d176f71696e4fb12afbcd25bc8',1,'EspTemperature']]],
   ['monitoringtimercallback_137',['MonitoringTimerCallback',['../classEspTemperature.html#abe6ae1ced0d8c565b722b416cb64e9ae',1,'EspTemperature']]],
   ['monotonicms_138',['MonotonicMs',['../namespacehf__time.html#ac7fa91057bdbd80cb6bfdad0f650f21d',1,'hf_time']]],
-  ['monotonicus_139',['MonotonicUs',['../namespacehf__time.html#a6bbd69949f8405073c7a495676c65d08',1,'hf_time']]],
+  ['monotonicus_139',['MonotonicUs',['../namespacehf__time_1_1esp32.html#a9f23f582ecf444b0bb6e3ef5e1305ebd',1,'hf_time::esp32']]],
   ['mosi_5fpin_140',['mosi_pin',['../structhf__spi__bus__config__t.html#a56f13363406cc28437c24c8745d835ed',1,'hf_spi_bus_config_t']]],
   ['most_20applications_141',['APB_CLK (80MHz) - Recommended for most applications',['../EspTypes__PWM_8h.html#autotoc_md10',1,'']]],
   ['mstoticks_142',['MsToTicks',['../classPlatformTime.html#a8cff669a89cba4fa58a44687ec3ce4d4',1,'PlatformTime']]],

@@ -1,5 +1,7 @@
 var NAVTREEINDEX12 =
 {
+"globals_r.html":[4,1,0,14],
+"globals_s.html":[4,1,0,15],
 "globals_t.html":[4,1,0,16],
 "globals_type.html":[4,1,3],
 "globals_u.html":[4,1,0,17],
@@ -247,7 +249,5 @@ var NAVTREEINDEX12 =
 "group__wifi.html#gga45e751432d70ba4ee36c1369914ee419a0f3a9c87fae4616a67afc84a9b1286cc":[1,13,17,2],
 "group__wifi.html#gga45e751432d70ba4ee36c1369914ee419a415466d62e7e83707977ee4390e12b6c":[1,13,17,0],
 "group__wifi.html#gga45e751432d70ba4ee36c1369914ee419a6d4f483c71a137fd5472874834dd34ac":[1,13,17,4],
-"group__wifi.html#gga45e751432d70ba4ee36c1369914ee419a9bb99bb2f7635255855c767c4e921932":[1,13,17,1],
-"group__wifi.html#gga45e751432d70ba4ee36c1369914ee419aab8ba5c7092d767a80ef4b678c73e780":[1,13,17,3],
-"group__wifi.html#gga45e751432d70ba4ee36c1369914ee419ac784ed708d7c61296d6659a898e874a1":[1,13,17,5]
+"group__wifi.html#gga45e751432d70ba4ee36c1369914ee419a9bb99bb2f7635255855c767c4e921932":[1,13,17,1]
 };

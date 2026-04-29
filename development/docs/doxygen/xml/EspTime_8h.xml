@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="EspTime_8h" kind="file" language="C++">
+    <compoundname>EspTime.h</compoundname>
+    <includes local="no">cstdint</includes>
+    <includes local="yes">esp_timer.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/mcu/esp32/EspTime.h</label>
+        <link refid="EspTime_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cstdint</label>
+      </node>
+      <node id="3">
+        <label>esp_timer.h</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacehf__time">hf_time</innernamespace>
+    <innernamespace refid="namespacehf__time_1_1esp32">hf_time::esp32</innernamespace>
+    <briefdescription>
+<para>ESP32-family implementation of the high-resolution monotonic time source consumed via <computeroutput><ref refid="HfTime_8h" kindref="compound">HfTime.h</ref></computeroutput>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Backed by <computeroutput>esp_timer_get_time()</computeroutput>, a 64-bit µs counter driven by a dedicated hardware timer that ESP-IDF starts before <computeroutput>app_main</computeroutput>. The counter is monotonic for &gt;292 000 years so wrap is not a concern.</para>
+<para>Header-only inline implementation: every call lowers to a single <computeroutput>esp_timer_get_time</computeroutput> call with no extra frames so it is safe inside hot-path measurement loops (valve self-test sweeps, parallel-stress sampler, ramp settling detectors).</para>
+<para>Do not include this file directly from middleware/app code — go through <computeroutput><ref refid="HfTime_8h" kindref="compound">HfTime.h</ref></computeroutput> so MCU dispatch stays in one place. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_timer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="namespacehf__time" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacehf__time_1_1esp32" kindref="compound">hf_time::esp32</ref><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="namespacehf__time_1_1esp32_1a228110b1dd468efe27187f462d662dff" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacehf__time_1_1esp32_1a228110b1dd468efe27187f462d662dff" kindref="member">InitMonotonic</ref>()<sp/>noexcept<sp/>{}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="namespacehf__time_1_1esp32_1a9f23f582ecf444b0bb6e3ef5e1305ebd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::uint64_t<sp/><ref refid="namespacehf__time_1_1esp32_1a9f23f582ecf444b0bb6e3ef5e1305ebd" kindref="member">MonotonicUs</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::uint64_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(::esp_timer_get_time());</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hf_time::esp32</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/esp32/EspTime.h"/>
+  </compounddef>
+</doxygen>

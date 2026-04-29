@@ -13,7 +13,7 @@ var searchData=
   ['initializetimers_10',['InitializeTimers',['../classEspPwm.html#ae9e920ee5ebeced7fbe9dd8a80622605',1,'EspPwm']]],
   ['initiatebusrecovery_11',['InitiateBusRecovery',['../classEspCan.html#a5e051944e810526770cc8533ec28e7cf',1,'EspCan']]],
   ['initmesh_12',['InitMesh',['../classEspWifi.html#a1a9932ca927536ee20c8cea6074b1b8d',1,'EspWifi']]],
-  ['initmonotonic_13',['InitMonotonic',['../namespacehf__time.html#a1c69a403ddd857794c8eef1f09a059a0',1,'hf_time']]],
+  ['initmonotonic_13',['InitMonotonic',['../namespacehf__time_1_1esp32.html#a228110b1dd468efe27187f462d662dff',1,'hf_time::esp32']]],
   ['initnetif_14',['InitNetif',['../classEspWifi.html#af403775cb53f1bfebb26574310ed39ce',1,'EspWifi']]],
   ['installdriver_15',['InstallDriver',['../classEspUart.html#a42cee776787269a8b0ec70ddd83c0550',1,'EspUart']]],
   ['internalasynccallback_16',['InternalAsyncCallback',['../classEspI2cDevice.html#a8105d0d32799e9697a9b7db8579ad21d',1,'EspI2cDevice']]],

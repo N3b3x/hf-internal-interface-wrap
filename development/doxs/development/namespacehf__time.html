@@ -94,21 +94,21 @@ $(function(){initNavTree('namespacehf__time.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">hf_time Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacehf__time_1_1esp32" id="r_namespacehf__time_1_1esp32"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__time_1_1esp32.html">esp32</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1c69a403ddd857794c8eef1f09a059a0" id="r_a1c69a403ddd857794c8eef1f09a059a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c69a403ddd857794c8eef1f09a059a0">InitMonotonic</a> () noexcept</td></tr>
-<tr class="memdesc:a1c69a403ddd857794c8eef1f09a059a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise the monotonic time source if the platform requires it.  <br /></td></tr>
-<tr class="separator:a1c69a403ddd857794c8eef1f09a059a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bbd69949f8405073c7a495676c65d08" id="r_a6bbd69949f8405073c7a495676c65d08"><td class="memItemLeft" align="right" valign="top">std::uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bbd69949f8405073c7a495676c65d08">MonotonicUs</a> () noexcept</td></tr>
-<tr class="memdesc:a6bbd69949f8405073c7a495676c65d08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Microseconds since boot from a hardware-backed monotonic counter.  <br /></td></tr>
-<tr class="separator:a6bbd69949f8405073c7a495676c65d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7fa91057bdbd80cb6bfdad0f650f21d" id="r_ac7fa91057bdbd80cb6bfdad0f650f21d"><td class="memItemLeft" align="right" valign="top">std::uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7fa91057bdbd80cb6bfdad0f650f21d">MonotonicMs</a> () noexcept</td></tr>
-<tr class="memdesc:ac7fa91057bdbd80cb6bfdad0f650f21d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience milliseconds view of the same monotonic counter.  <br /></td></tr>
+<tr class="memdesc:ac7fa91057bdbd80cb6bfdad0f650f21d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience milliseconds view of the monotonic counter.  <br /></td></tr>
 <tr class="separator:ac7fa91057bdbd80cb6bfdad0f650f21d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac104941aa853c491e65fae6e388b352" id="r_aac104941aa853c491e65fae6e388b352"><td class="memItemLeft" align="right" valign="top">std::uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac104941aa853c491e65fae6e388b352">ElapsedUs</a> (std::uint64_t t0) noexcept</td></tr>
 <tr class="memdesc:aac104941aa853c491e65fae6e388b352"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience: elapsed-since-<code>t0</code> in microseconds.  <br /></td></tr>
@@ -142,34 +142,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1c69a403ddd857794c8eef1f09a059a0" name="a1c69a403ddd857794c8eef1f09a059a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c69a403ddd857794c8eef1f09a059a0">&#9670;&#160;</a></span>InitMonotonic()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void hf_time::InitMonotonic </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Initialise the monotonic time source if the platform requires it. </p>
-<p>On ESP-IDF the timer is started by the system bootstrap before app_main, so this is a no-op. Provided for portability so callers on bare-metal targets that need explicit init can keep a single call site. </p>
-
-</div>
-</div>
 <a id="ac7fa91057bdbd80cb6bfdad0f650f21d" name="ac7fa91057bdbd80cb6bfdad0f650f21d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac7fa91057bdbd80cb6bfdad0f650f21d">&#9670;&#160;</a></span>MonotonicMs()</h2>
 
@@ -193,36 +165,8 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Convenience milliseconds view of the same monotonic counter. </p>
-<p>Implemented in terms of <code><a class="el" href="#a6bbd69949f8405073c7a495676c65d08" title="Microseconds since boot from a hardware-backed monotonic counter.">MonotonicUs()</a></code> so the underlying timebase stays consistent across <code>Us</code> and <code>Ms</code> queries. Resolution is still 1 µs internally; only the unit conversion differs. </p>
-
-</div>
-</div>
-<a id="a6bbd69949f8405073c7a495676c65d08" name="a6bbd69949f8405073c7a495676c65d08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6bbd69949f8405073c7a495676c65d08">&#9670;&#160;</a></span>MonotonicUs()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::uint64_t hf_time::MonotonicUs </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Microseconds since boot from a hardware-backed monotonic counter. </p>
-<p>Guarantees: monotonically non-decreasing within the lifetime of the process (no wraparound for &gt;292 000 years on a 64-bit µs counter). Safe from any task / ISR. </p>
+<p>Convenience milliseconds view of the monotonic counter. </p>
+<p>Implemented in terms of <code>MonotonicUs()</code> so the underlying timebase stays consistent across <code>Us</code> and <code>Ms</code> queries. Resolution is still 1 µs internally; only the unit conversion differs. </p>
 
 </div>
 </div>

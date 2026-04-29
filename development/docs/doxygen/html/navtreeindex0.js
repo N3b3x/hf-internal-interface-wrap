@@ -221,6 +221,10 @@ var NAVTREEINDEX0 =
 "EspSpi_8h.html":[1,10,1],
 "EspTemperature_8cpp.html":[4,0,2,0,0,11],
 "EspTemperature_8h.html":[1,11,1],
+"EspTime_8h.html":[4,0,1,1,0,13],
+"EspTime_8h.html#a228110b1dd468efe27187f462d662dff":[4,0,1,1,0,13,0],
+"EspTime_8h.html#a9f23f582ecf444b0bb6e3ef5e1305ebd":[4,0,1,1,0,13,1],
+"EspTime_8h_source.html":[4,0,1,1,0,13],
 "EspTypes_8h.html":[1,15,0],
 "EspTypes__ADC_8h.html":[1,15,1],
 "EspTypes__Base_8h.html":[1,15,2],
@@ -245,9 +249,5 @@ var NAVTREEINDEX0 =
 "EspUsbSerialJtag_8h.html":[1,12,3],
 "EspWifi_8cpp.html":[4,0,2,0,0,14],
 "EspWifi_8cpp.html#a0e00309c182fea62ec226b907943d2b3":[4,0,2,0,0,14,12],
-"EspWifi_8cpp.html#a16511ece0c04075b7baf7d30882dd9c4":[4,0,2,0,0,14,13],
-"EspWifi_8cpp.html#a47889333d1e26b48be92f67707cf5b80":[4,0,2,0,0,14,6],
-"EspWifi_8cpp.html#a5a85b9c772bbeb480b209a3e6ea92b4c":[4,0,2,0,0,14,14],
-"EspWifi_8cpp.html#a6c567ec901346dbce28033cd4cc7d516":[4,0,2,0,0,14,8],
-"EspWifi_8cpp.html#a7d013b55e50dfbda0904f5f933b63ec4":[4,0,2,0,0,14,2]
+"EspWifi_8cpp.html#a16511ece0c04075b7baf7d30882dd9c4":[4,0,2,0,0,14,13]
 };

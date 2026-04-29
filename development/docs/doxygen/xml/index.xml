@@ -3467,10 +3467,12 @@
     <member refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kind="function"><name>make_unique_array_nothrow</name></member>
   </compound>
   <compound refid="namespacehf__time" kind="namespace"><name>hf_time</name>
-    <member refid="namespacehf__time_1a1c69a403ddd857794c8eef1f09a059a0" kind="function"><name>InitMonotonic</name></member>
-    <member refid="namespacehf__time_1a6bbd69949f8405073c7a495676c65d08" kind="function"><name>MonotonicUs</name></member>
     <member refid="namespacehf__time_1ac7fa91057bdbd80cb6bfdad0f650f21d" kind="function"><name>MonotonicMs</name></member>
     <member refid="namespacehf__time_1aac104941aa853c491e65fae6e388b352" kind="function"><name>ElapsedUs</name></member>
+  </compound>
+  <compound refid="namespacehf__time_1_1esp32" kind="namespace"><name>hf_time::esp32</name>
+    <member refid="namespacehf__time_1_1esp32_1a228110b1dd468efe27187f462d662dff" kind="function"><name>InitMonotonic</name></member>
+    <member refid="namespacehf__time_1_1esp32_1a9f23f582ecf444b0bb6e3ef5e1305ebd" kind="function"><name>MonotonicUs</name></member>
   </compound>
   <compound refid="namespaceTestPins" kind="namespace"><name>TestPins</name>
     <member refid="namespaceTestPins_1ab99fa9ccb0f0f9232b28082a3fc9995e" kind="variable"><name>LED_OUTPUT</name></member>
@@ -4933,6 +4935,8 @@
     <member refid="EspTemperature_8h_1ac20464eaa276aa198cb03d0fc5a6e679a655981e7a53bf6a8f57231b0db07a5e6" kind="enumvalue"><name>ESP_TEMP_RANGE_COUNT</name></member>
     <member refid="EspTemperature_8h_1a3c15ed66b8b2a3114dceb69bfbc0bd4b" kind="typedef"><name>esp_temp_threshold_callback_t</name></member>
     <member refid="EspTemperature_8h_1acf7521a526f974ab3bdd42de4d70aad5" kind="typedef"><name>esp_temp_monitoring_callback_t</name></member>
+  </compound>
+  <compound refid="EspTime_8h" kind="file"><name>EspTime.h</name>
   </compound>
   <compound refid="EspUart_8h" kind="file"><name>EspUart.h</name>
   </compound>

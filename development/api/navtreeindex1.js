@@ -1,5 +1,9 @@
 var NAVTREEINDEX1 =
 {
+"EspWifi_8cpp.html#a47889333d1e26b48be92f67707cf5b80":[4,0,2,0,0,14,6],
+"EspWifi_8cpp.html#a5a85b9c772bbeb480b209a3e6ea92b4c":[4,0,2,0,0,14,14],
+"EspWifi_8cpp.html#a6c567ec901346dbce28033cd4cc7d516":[4,0,2,0,0,14,8],
+"EspWifi_8cpp.html#a7d013b55e50dfbda0904f5f933b63ec4":[4,0,2,0,0,14,2],
 "EspWifi_8cpp.html#a7f3c6f317b84936b69f55a14df8f21d9":[4,0,2,0,0,14,10],
 "EspWifi_8cpp.html#a980b49f9f7c722ceeee829cad40f6c01":[4,0,2,0,0,14,0],
 "EspWifi_8cpp.html#aa86748e40eb0d5060d78da0f13081811":[4,0,2,0,0,14,7],
@@ -56,10 +60,8 @@ var NAVTREEINDEX1 =
 "GpioComprehensiveTest_8cpp.html#af3d3e1f1eafc8d93ad38bd25dbe222b0":[4,0,0,0,0,5,37],
 "HardwareTypes_8h.html":[1,14,0],
 "HfTime_8h.html":[4,0,1,2,2],
-"HfTime_8h.html#a1c69a403ddd857794c8eef1f09a059a0":[4,0,1,2,2,1],
-"HfTime_8h.html#a6bbd69949f8405073c7a495676c65d08":[4,0,1,2,2,3],
 "HfTime_8h.html#aac104941aa853c491e65fae6e388b352":[4,0,1,2,2,0],
-"HfTime_8h.html#ac7fa91057bdbd80cb6bfdad0f650f21d":[4,0,1,2,2,2],
+"HfTime_8h.html#ac7fa91057bdbd80cb6bfdad0f650f21d":[4,0,1,2,2,1],
 "HfTime_8h_source.html":[4,0,1,2,2],
 "I2cComprehensiveTest_8cpp.html":[4,0,0,0,0,6],
 "I2cComprehensiveTest_8cpp.html#a03ee0d40b01270f57b52625700b72f76":[4,0,0,0,0,6,33],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "PwmComprehensiveTest_8cpp.html#a02ccbe5f6ff3043080fad263164442e7":[4,0,0,0,0,10,36],
 "PwmComprehensiveTest_8cpp.html#a0388efdb95291842f5888945249ee804":[4,0,0,0,0,10,6],
 "PwmComprehensiveTest_8cpp.html#a0551324b7cb1ff7a6e773d33ae6ec63b":[4,0,0,0,0,10,10],
-"PwmComprehensiveTest_8cpp.html#a05671e7c3b2a396d167591bc71f6f3aa":[4,0,0,0,0,10,40],
-"PwmComprehensiveTest_8cpp.html#a08fef0b80847f218eb81531069b0ca89":[4,0,0,0,0,10,2],
-"PwmComprehensiveTest_8cpp.html#a11f709a7441945bedb2ad074efaf6a56":[4,0,0,0,0,10,14]
+"PwmComprehensiveTest_8cpp.html#a05671e7c3b2a396d167591bc71f6f3aa":[4,0,0,0,0,10,40]
 };
