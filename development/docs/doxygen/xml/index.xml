@@ -3466,6 +3466,12 @@
     <member refid="namespacehf_1_1utils_1a8cc6a65bb150aad69866ad9c665487b9" kind="function"><name>make_unique_nothrow</name></member>
     <member refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kind="function"><name>make_unique_array_nothrow</name></member>
   </compound>
+  <compound refid="namespacehf__time" kind="namespace"><name>hf_time</name>
+    <member refid="namespacehf__time_1a1c69a403ddd857794c8eef1f09a059a0" kind="function"><name>InitMonotonic</name></member>
+    <member refid="namespacehf__time_1a6bbd69949f8405073c7a495676c65d08" kind="function"><name>MonotonicUs</name></member>
+    <member refid="namespacehf__time_1ac7fa91057bdbd80cb6bfdad0f650f21d" kind="function"><name>MonotonicMs</name></member>
+    <member refid="namespacehf__time_1aac104941aa853c491e65fae6e388b352" kind="function"><name>ElapsedUs</name></member>
+  </compound>
   <compound refid="namespaceTestPins" kind="namespace"><name>TestPins</name>
     <member refid="namespaceTestPins_1ab99fa9ccb0f0f9232b28082a3fc9995e" kind="variable"><name>LED_OUTPUT</name></member>
     <member refid="namespaceTestPins_1a25974ca5427140853a9fa95b500fe2a4" kind="variable"><name>DIGITAL_OUT_1</name></member>
@@ -5390,6 +5396,8 @@
   <compound refid="AsciiArtGenerator_8h" kind="file"><name>AsciiArtGenerator.h</name>
   </compound>
   <compound refid="DigitalOutputGuard_8h" kind="file"><name>DigitalOutputGuard.h</name>
+  </compound>
+  <compound refid="HfTime_8h" kind="file"><name>HfTime.h</name>
   </compound>
   <compound refid="McuSelect_8h" kind="file"><name>McuSelect.h</name>
     <member refid="McuSelect_8h_1ab450ad4ee6d96c0a1f19723992004a41" kind="define"><name>HF_THREAD_SAFE</name></member>

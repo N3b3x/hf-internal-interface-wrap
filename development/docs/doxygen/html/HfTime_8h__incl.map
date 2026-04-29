@@ -1,0 +1,5 @@
+<map id="inc/utils/HfTime.h" name="inc/utils/HfTime.h">
+<area shape="rect" id="Node000001" title="MCU&#45;agnostic high&#45;resolution monotonic time source." alt="" coords="5,5,167,36"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="49,84,123,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,36,89,70,83,70,83,36"/>
+</map>

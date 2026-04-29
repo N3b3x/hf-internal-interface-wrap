@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespacehf__time" kind="namespace" language="C++">
+    <compoundname>hf_time</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacehf__time_1a1c69a403ddd857794c8eef1f09a059a0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void hf_time::InitMonotonic</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>InitMonotonic</name>
+        <qualifiedname>hf_time::InitMonotonic</qualifiedname>
+        <briefdescription>
+<para>Initialise the monotonic time source if the platform requires it. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>On ESP-IDF the timer is started by the system bootstrap before app_main, so this is a no-op. Provided for portability so callers on bare-metal targets that need explicit init can keep a single call site. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/HfTime.h" line="52" column="13" bodyfile="inc/utils/HfTime.h" bodystart="52" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehf__time_1a6bbd69949f8405073c7a495676c65d08" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::uint64_t</type>
+        <definition>std::uint64_t hf_time::MonotonicUs</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>MonotonicUs</name>
+        <qualifiedname>hf_time::MonotonicUs</qualifiedname>
+        <briefdescription>
+<para>Microseconds since boot from a hardware-backed monotonic counter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Guarantees: monotonically non-decreasing within the lifetime of the process (no wraparound for &gt;292 000 years on a 64-bit µs counter). Safe from any task / ISR. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/HfTime.h" line="61" column="22" bodyfile="inc/utils/HfTime.h" bodystart="61" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehf__time_1ac7fa91057bdbd80cb6bfdad0f650f21d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::uint64_t</type>
+        <definition>std::uint64_t hf_time::MonotonicMs</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>MonotonicMs</name>
+        <qualifiedname>hf_time::MonotonicMs</qualifiedname>
+        <briefdescription>
+<para>Convenience milliseconds view of the same monotonic counter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Implemented in terms of <computeroutput><ref refid="namespacehf__time_1a6bbd69949f8405073c7a495676c65d08" kindref="member">MonotonicUs()</ref></computeroutput> so the underlying timebase stays consistent across <computeroutput>Us</computeroutput> and <computeroutput>Ms</computeroutput> queries. Resolution is still 1 µs internally; only the unit conversion differs. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/HfTime.h" line="79" column="22" bodyfile="inc/utils/HfTime.h" bodystart="79" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehf__time_1aac104941aa853c491e65fae6e388b352" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::uint64_t</type>
+        <definition>std::uint64_t hf_time::ElapsedUs</definition>
+        <argsstring>(std::uint64_t t0) noexcept</argsstring>
+        <name>ElapsedUs</name>
+        <qualifiedname>hf_time::ElapsedUs</qualifiedname>
+        <param>
+          <type>std::uint64_t</type>
+          <declname>t0</declname>
+        </param>
+        <briefdescription>
+<para>Convenience: elapsed-since-<computeroutput>t0</computeroutput> in microseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/HfTime.h" line="84" column="22" bodyfile="inc/utils/HfTime.h" bodystart="84" bodyend="86"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/utils/HfTime.h" line="42" column="1"/>
+  </compounddef>
+</doxygen>

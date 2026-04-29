@@ -1,5 +1,11 @@
 var NAVTREEINDEX9 =
 {
+"classEspTemperature.html#a9f5edd743061fbb9b4e0929f9126a04b":[3,0,34,11],
+"classEspTemperature.html#aa34b741f4daf7a52dc832e65dc58e34f":[3,0,34,48],
+"classEspTemperature.html#aa829f22f1d02247e2da26709702812ae":[3,0,34,63],
+"classEspTemperature.html#aa99e89ae0cac5fcd19aac843a1bb6dde":[3,0,34,32],
+"classEspTemperature.html#aaeda9f32dfc75e5ca2ab15142d0c9998":[3,0,34,45],
+"classEspTemperature.html#ab81713abcd8583a401154ccc7617cb4e":[3,0,34,36],
 "classEspTemperature.html#abd650022450dbbcbba8fed4085386da3":[3,0,34,29],
 "classEspTemperature.html#abe6ae1ced0d8c565b722b416cb64e9ae":[3,0,34,31],
 "classEspTemperature.html#ac0b3dd90b074db26ee48e66748597faa":[3,0,34,5],
@@ -243,11 +249,5 @@ var NAVTREEINDEX9 =
 "classPlatformMutexImpl.html#aaf03f1b389e662d87b47290fe22fab19":[3,0,150,0],
 "classPlatformMutexImpl.html#ab42f0344edec9d7ea766c514e1e46c5b":[3,0,150,1],
 "classPlatformMutexImpl.html#ab6f6f54ccd9d1028106f641eb0332d15":[3,0,150,7],
-"classPlatformMutexImpl.html#ab7bcc976cca7cc689aac14c24d6d40b8":[3,0,150,9],
-"classPlatformMutexImpl.html#abee357e9f72250474b90a54486a77776":[3,0,150,17],
-"classPlatformMutexImpl.html#ac5c9c4a196c14c114a8022bf1a9777c8":[3,0,150,15],
-"classPlatformMutexImpl.html#ac9f85b0692b69251c30e6195f5ccce9f":[3,0,150,14],
-"classPlatformMutexImpl.html#ad3ad24812ed1dc86565ac3168ef044e4":[3,0,150,8],
-"classPlatformMutexImpl.html#aef4c34e1c15f9762fd18c3b27a71c34f":[3,0,150,12],
-"classPlatformSharedLock.html":[3,0,151]
+"classPlatformMutexImpl.html#ab7bcc976cca7cc689aac14c24d6d40b8":[3,0,150,9]
 };

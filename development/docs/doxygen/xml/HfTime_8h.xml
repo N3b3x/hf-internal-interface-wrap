@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="HfTime_8h" kind="file" language="C++">
+    <compoundname>HfTime.h</compoundname>
+    <includes local="no">cstdint</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/utils/HfTime.h</label>
+        <link refid="HfTime_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cstdint</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacehf__time">hf_time</innernamespace>
+    <briefdescription>
+<para>MCU-agnostic high-resolution monotonic time source. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Higher layers (HAL handlers, middleware, app self-tests) that need a sub-millisecond timebase — e.g. valve diagnostics measuring propagation delays, leak-check ramp timings, scope-style traces — MUST use this surface instead of reaching into the MCU SDK directly. Two reasons:</para>
+<para><orderedlist>
+<listitem><para>Layering. iiwrap is the one component allowed to know the MCU. Every layer above it ports for free when we change MCUs because they only see <computeroutput><ref refid="namespacehf__time_1a6bbd69949f8405073c7a495676c65d08" kindref="member">hf_time::MonotonicUs()</ref></computeroutput>.</para>
+</listitem><listitem><para>Precision. Tick-based helpers (e.g. <computeroutput>OsAbstraction</computeroutput> / <computeroutput>os_get_elapsed_time_msec</computeroutput>) are quantised at the FreeRTOS tick (typically 1 ms) and are unfit for diagnostics that need µs resolution.</para>
+</listitem></orderedlist>
+</para>
+<para>On ESP32 family targets this maps to <computeroutput>esp_timer_get_time()</computeroutput>, which returns a 64-bit microsecond counter backed by a hardware timer (ROLLOVER &gt;292 000 years — overflow not a practical concern). On other MCUs add a parallel <computeroutput>#elif</computeroutput> block here; the surface stays identical.</para>
+<para>Header-only inline implementation: no extra source registration is required, and the call lowers to a single ABI call with no extra frames so it is safe to use inside hot-path measurement loops. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HF_TIME_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_TIME_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ESP_PLATFORM)<sp/>||<sp/>defined(IDF_VER)<sp/>||<sp/>defined(__has_include)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>if<sp/>defined(ESP_PLATFORM)<sp/>||<sp/>defined(IDF_VER)<sp/>||<sp/>__has_include(&quot;esp_timer.h&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>include<sp/>&quot;esp_timer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>define<sp/>HF_TIME_HAS_ESP_TIMER<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="namespacehf__time" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacehf__time" kindref="compound">hf_time</ref><sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="namespacehf__time_1a1c69a403ddd857794c8eef1f09a059a0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacehf__time_1a1c69a403ddd857794c8eef1f09a059a0" kindref="member">InitMonotonic</ref>()<sp/>noexcept<sp/>{}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="namespacehf__time_1a6bbd69949f8405073c7a495676c65d08" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::uint64_t<sp/><ref refid="namespacehf__time_1a6bbd69949f8405073c7a495676c65d08" kindref="member">MonotonicUs</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>HF_TIME_HAS_ESP_TIMER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>esp_timer_get_time<sp/>returns<sp/>int64_t<sp/>but<sp/>is<sp/>documented<sp/>to<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>non-negative<sp/>once<sp/>started.<sp/>Cast<sp/>is<sp/>a<sp/>safe<sp/>widening<sp/>to<sp/>uint64_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>the<sp/>unsigned<sp/>arithmetic<sp/>typical<sp/>at<sp/>call<sp/>sites.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::uint64_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(::esp_timer_get_time());</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Portable<sp/>fallback<sp/>—<sp/>replace<sp/>per<sp/>target<sp/>as<sp/>needed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="namespacehf__time_1ac7fa91057bdbd80cb6bfdad0f650f21d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::uint64_t<sp/><ref refid="namespacehf__time_1ac7fa91057bdbd80cb6bfdad0f650f21d" kindref="member">MonotonicMs</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacehf__time_1a6bbd69949f8405073c7a495676c65d08" kindref="member">MonotonicUs</ref>()<sp/>/<sp/>1000ULL;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="namespacehf__time_1aac104941aa853c491e65fae6e388b352" refkind="member"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::uint64_t<sp/><ref refid="namespacehf__time_1aac104941aa853c491e65fae6e388b352" kindref="member">ElapsedUs</ref>(std::uint64_t<sp/>t0)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacehf__time_1a6bbd69949f8405073c7a495676c65d08" kindref="member">MonotonicUs</ref>()<sp/>-<sp/>t0;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hf_time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">//<sp/>HF_TIME_H_</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/utils/HfTime.h"/>
+  </compounddef>
+</doxygen>

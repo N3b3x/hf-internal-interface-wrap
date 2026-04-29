@@ -55,6 +55,12 @@ var NAVTREEINDEX1 =
 "GpioComprehensiveTest_8cpp.html#aec09e43d9ea5a6bac4f43259fd17a533":[4,0,0,0,0,5,20],
 "GpioComprehensiveTest_8cpp.html#af3d3e1f1eafc8d93ad38bd25dbe222b0":[4,0,0,0,0,5,37],
 "HardwareTypes_8h.html":[1,14,0],
+"HfTime_8h.html":[4,0,1,2,2],
+"HfTime_8h.html#a1c69a403ddd857794c8eef1f09a059a0":[4,0,1,2,2,1],
+"HfTime_8h.html#a6bbd69949f8405073c7a495676c65d08":[4,0,1,2,2,3],
+"HfTime_8h.html#aac104941aa853c491e65fae6e388b352":[4,0,1,2,2,0],
+"HfTime_8h.html#ac7fa91057bdbd80cb6bfdad0f650f21d":[4,0,1,2,2,2],
+"HfTime_8h_source.html":[4,0,1,2,2],
 "I2cComprehensiveTest_8cpp.html":[4,0,0,0,0,6],
 "I2cComprehensiveTest_8cpp.html#a03ee0d40b01270f57b52625700b72f76":[4,0,0,0,0,6,33],
 "I2cComprehensiveTest_8cpp.html#a0cd2107131d8f551f97e42eb9ea6891b":[4,0,0,0,0,6,34],
@@ -243,11 +249,5 @@ var NAVTREEINDEX1 =
 "PwmComprehensiveTest_8cpp.html#a0551324b7cb1ff7a6e773d33ae6ec63b":[4,0,0,0,0,10,10],
 "PwmComprehensiveTest_8cpp.html#a05671e7c3b2a396d167591bc71f6f3aa":[4,0,0,0,0,10,40],
 "PwmComprehensiveTest_8cpp.html#a08fef0b80847f218eb81531069b0ca89":[4,0,0,0,0,10,2],
-"PwmComprehensiveTest_8cpp.html#a11f709a7441945bedb2ad074efaf6a56":[4,0,0,0,0,10,14],
-"PwmComprehensiveTest_8cpp.html#a2208a634124362f28a999541273e19a7":[4,0,0,0,0,10,4],
-"PwmComprehensiveTest_8cpp.html#a25e8835f5e4b4c08802ab0904db6ec4d":[4,0,0,0,0,10,48],
-"PwmComprehensiveTest_8cpp.html#a294dc78c7a9fbc19a1fa82d4e098894a":[4,0,0,0,0,10,22],
-"PwmComprehensiveTest_8cpp.html#a2eb3a0fe3d5de0753e21fc501eb747b2":[4,0,0,0,0,10,9],
-"PwmComprehensiveTest_8cpp.html#a3324381fcc00abcf4d6b91b96eed3019":[4,0,0,0,0,10,35],
-"PwmComprehensiveTest_8cpp.html#a3b87425d773ae21581c79757b028a305":[4,0,0,0,0,10,41]
+"PwmComprehensiveTest_8cpp.html#a11f709a7441945bedb2ad074efaf6a56":[4,0,0,0,0,10,14]
 };

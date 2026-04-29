@@ -1,5 +1,16 @@
 var NAVTREEINDEX19 =
 {
+"structhf__uart__irda__config__t.html#a2e3ace6d1a0f3dd70638bee8aaae8b8f":[3,0,134,2],
+"structhf__uart__irda__config__t.html#a3dcfcc6d5e0ccc88d88af22818bec340":[3,0,134,4],
+"structhf__uart__irda__config__t.html#aa8cdfbead9d674f0525ba236c10848c4":[3,0,134,3],
+"structhf__uart__irda__config__t.html#ad6610bdb4244e2a4cb41582ce70cc97e":[3,0,134,0],
+"structhf__uart__pattern__config__t.html":[3,0,135],
+"structhf__uart__pattern__config__t.html#a0277bcf7ef024d676ad6eb6561bbe695":[3,0,135,5],
+"structhf__uart__pattern__config__t.html#a089460cd2464ef296b2e81cef0aed6e1":[3,0,135,6],
+"structhf__uart__pattern__config__t.html#a11842745ed8298d4d34c23d58f35e1f7":[3,0,135,1],
+"structhf__uart__pattern__config__t.html#a174f828af43ce0d50e9d550514d3b6ae":[3,0,135,2],
+"structhf__uart__pattern__config__t.html#a6dbe59d2d01916e4af80a9d0799afa36":[3,0,135,0],
+"structhf__uart__pattern__config__t.html#ab57dea918e79a141220ac6dc5a3d323c":[3,0,135,4],
 "structhf__uart__pattern__config__t.html#af58c48f247662ec2b774be4749a0d01e":[3,0,135,3],
 "structhf__uart__power__config__t.html":[3,0,136],
 "structhf__uart__power__config__t.html#a0cb50d5b0c2664f1c6e34778b2f1ef5b":[3,0,136,5],

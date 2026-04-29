@@ -55,6 +55,12 @@ var namespaces_dup =
       [ "drain_rx", "namespaceanonymous__namespace_02UsbSerialJtagComprehensiveTest_8cpp_03.html#a1ed70e441e6ad6036e44805a149ca710", null ]
     ] ],
     [ "hf", "namespacehf.html", "namespacehf" ],
+    [ "hf_time", "namespacehf__time.html", [
+      [ "ElapsedUs", "namespacehf__time.html#aac104941aa853c491e65fae6e388b352", null ],
+      [ "InitMonotonic", "namespacehf__time.html#a1c69a403ddd857794c8eef1f09a059a0", null ],
+      [ "MonotonicMs", "namespacehf__time.html#ac7fa91057bdbd80cb6bfdad0f650f21d", null ],
+      [ "MonotonicUs", "namespacehf__time.html#a6bbd69949f8405073c7a495676c65d08", null ]
+    ] ],
     [ "TestPins", "namespaceTestPins.html", [
       [ "ANALOG_PIN", "namespaceTestPins.html#acd766bf1c5e4fc8112f25080761602a3", null ],
       [ "DIGITAL_IN_1", "namespaceTestPins.html#ad82ecc0f9c97d68df391ffdeb5c0fca6", null ],
