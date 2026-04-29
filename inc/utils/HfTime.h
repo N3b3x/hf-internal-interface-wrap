@@ -2,75 +2,74 @@
  * @file HfTime.h
  * @brief MCU-agnostic high-resolution monotonic time source.
  *
- * Higher layers (HAL handlers, middleware, app self-tests) that need a
- * sub-millisecond timebase — e.g. valve diagnostics measuring
- * propagation delays, leak-check ramp timings, scope-style traces —
- * MUST use this surface instead of reaching into the MCU SDK
- * directly. Two reasons:
+ * Public surface for higher layers (HAL handlers, middleware,
+ * application self-tests) that need a sub-millisecond timebase. The
+ * concrete implementation lives under `mcu/<vendor>/<X>Time.h` and is
+ * selected at compile time from `McuSelect.h`. Adding a new MCU is a
+ * one-folder change:
  *
- *   1. Layering. iiwrap is the one component allowed to know the MCU.
- *      Every layer above it ports for free when we change MCUs because
- *      they only see `hf_time::MonotonicUs()`.
- *   2. Precision. Tick-based helpers (e.g. `OsAbstraction` /
- *      `os_get_elapsed_time_msec`) are quantised at the FreeRTOS tick
- *      (typically 1 ms) and are unfit for diagnostics that need µs
- *      resolution.
+ *   1. drop in `mcu/<vendor>/<X>Time.h` exposing
+ *      `namespace hf_time::<vendor> { void InitMonotonic();
+ *      uint64_t MonotonicUs(); }`,
+ *   2. extend `McuSelect.h` if it doesn't already detect that target,
+ *   3. add one `#elif` block here aliasing the new namespace into
+ *      `hf_time`.
  *
- * On ESP32 family targets this maps to `esp_timer_get_time()`, which
- * returns a 64-bit microsecond counter backed by a hardware timer
- * (ROLLOVER >292 000 years — overflow not a practical concern). On
- * other MCUs add a parallel `#elif` block here; the surface stays
- * identical.
+ * Why this is a static-policy header and not a virtual `BaseTime`:
+ *   - `MonotonicUs()` is a single hardware-counter read used inside
+ *     tight sample loops; a vtable load + indirect call would
+ *     measurably degrade self-test sampling at 50 Hz × N channels.
+ *   - There is no per-instance state to vary — the underlying counter
+ *     is a process-wide resource. Virtual dispatch buys nothing.
+ *   - Header-only inlining keeps the call site to a single `call`
+ *     instruction.
  *
- * Header-only inline implementation: no extra source registration is
- * required, and the call lowers to a single ABI call with no extra
- * frames so it is safe to use inside hot-path measurement loops.
+ * Use virtual `Base*` bases (`BaseUart`, `BaseSpi`, …) when the
+ * primitive owns state and dispatch happens once per logical
+ * operation; use static policy headers like this one for stateless
+ * hot-path primitives.
  */
 
-#ifndef HF_TIME_H_
-#define HF_TIME_H_
+#pragma once
 
 #include <cstdint>
 
-#if defined(ESP_PLATFORM) || defined(IDF_VER) || defined(__has_include)
-#  if defined(ESP_PLATFORM) || defined(IDF_VER) || __has_include("esp_timer.h")
-#    include "esp_timer.h"
-#    define HF_TIME_HAS_ESP_TIMER 1
-#  endif
+#include "McuSelect.h"
+
+#if defined(HF_TARGET_MCU_ESP32)   || defined(HF_TARGET_MCU_ESP32S2) || \
+    defined(HF_TARGET_MCU_ESP32S3) || defined(HF_TARGET_MCU_ESP32C3) || \
+    defined(HF_TARGET_MCU_ESP32C2) || defined(HF_TARGET_MCU_ESP32C6) || \
+    defined(HF_TARGET_MCU_ESP32H2)
+#  include "EspTime.h"
+   namespace hf_time { using ::hf_time::esp32::MonotonicUs;
+                       using ::hf_time::esp32::InitMonotonic; }
+
+#elif defined(HF_TARGET_MCU_STM32F4) || defined(HF_TARGET_MCU_STM32H7)
+#  include "Stm32Time.h"
+   namespace hf_time { using ::hf_time::stm32::MonotonicUs;
+                       using ::hf_time::stm32::InitMonotonic; }
+
+#elif defined(HF_TARGET_MCU_RP2040)
+#  include "Rp2040Time.h"
+   namespace hf_time { using ::hf_time::rp2040::MonotonicUs;
+                       using ::hf_time::rp2040::InitMonotonic; }
+
+#elif defined(HF_TARGET_MCU_NONE)
+   // Software-only / unit-test build: monotonic clock is a stub. Tests
+   // that need a controllable clock should inject their own.
+   namespace hf_time {
+       inline std::uint64_t MonotonicUs() noexcept { return 0; }
+       inline void          InitMonotonic() noexcept {}
+   }
+
+#else
+#  error "HfTime: no implementation for this target — set HF_TARGET_MCU_* (see McuSelect.h)"
 #endif
 
 namespace hf_time {
 
 /**
- * @brief Initialise the monotonic time source if the platform requires it.
- *
- * On ESP-IDF the timer is started by the system bootstrap before
- * app_main, so this is a no-op. Provided for portability so callers
- * on bare-metal targets that need explicit init can keep a single
- * call site.
- */
-inline void InitMonotonic() noexcept {}
-
-/**
- * @brief Microseconds since boot from a hardware-backed monotonic counter.
- *
- * Guarantees: monotonically non-decreasing within the lifetime of the
- * process (no wraparound for >292 000 years on a 64-bit µs counter).
- * Safe from any task / ISR.
- */
-inline std::uint64_t MonotonicUs() noexcept {
-#if HF_TIME_HAS_ESP_TIMER
-    // esp_timer_get_time returns int64_t but is documented to be
-    // non-negative once started. Cast is a safe widening to uint64_t
-    // for the unsigned arithmetic typical at call sites.
-    return static_cast<std::uint64_t>(::esp_timer_get_time());
-#else
-    return 0;  // Portable fallback — replace per target as needed.
-#endif
-}
-
-/**
- * @brief Convenience milliseconds view of the same monotonic counter.
+ * @brief Convenience milliseconds view of the monotonic counter.
  *
  * Implemented in terms of `MonotonicUs()` so the underlying timebase
  * stays consistent across `Us` and `Ms` queries. Resolution is still
@@ -86,5 +85,3 @@ inline std::uint64_t ElapsedUs(std::uint64_t t0) noexcept {
 }
 
 }  // namespace hf_time
-
-#endif  // HF_TIME_H_
