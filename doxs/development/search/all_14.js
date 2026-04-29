@@ -138,12 +138,14 @@ var searchData=
   ['monitoring_5ftimer_135',['monitoring_timer',['../structesp__temp__state__t.html#ad9f8009a7018aa3365717afffdd4839c',1,'esp_temp_state_t']]],
   ['monitoring_5fuser_5fdata_5f_136',['monitoring_user_data_',['../classEspTemperature.html#a8fe2e9d176f71696e4fb12afbcd25bc8',1,'EspTemperature']]],
   ['monitoringtimercallback_137',['MonitoringTimerCallback',['../classEspTemperature.html#abe6ae1ced0d8c565b722b416cb64e9ae',1,'EspTemperature']]],
-  ['mosi_5fpin_138',['mosi_pin',['../structhf__spi__bus__config__t.html#a56f13363406cc28437c24c8745d835ed',1,'hf_spi_bus_config_t']]],
-  ['most_20applications_139',['APB_CLK (80MHz) - Recommended for most applications',['../EspTypes__PWM_8h.html#autotoc_md10',1,'']]],
-  ['mstoticks_140',['MsToTicks',['../classPlatformTime.html#a8cff669a89cba4fa58a44687ec3ce4d4',1,'PlatformTime']]],
-  ['mstoticks_141',['msToTicks',['../structNullMutexBackend.html#a49290ba91fee448733d3b184c58b586c',1,'NullMutexBackend']]],
-  ['mstoticks_142',['MsToTicks',['../namespaceanonymous__namespace_02EspUsbSerialJtag_8cpp_03.html#ae9f75b1971ab0c326d59cdcc0d786b29',1,'anonymous_namespace{EspUsbSerialJtag.cpp}']]],
-  ['multi_20mcu_20development_143',['🎯 Universal Hardware Interface for Multi-MCU Development',['../index.html#autotoc_md25',1,'']]],
-  ['mutex_5f_144',['mutex_',['../classEspI2cDevice.html#a7ea3e8c3a34b51996caccceab08253d0',1,'EspI2cDevice::mutex_'],['../classEspI2cBus.html#a6e10f5c0e517f240a7838f43b914dbe6',1,'EspI2cBus::mutex_'],['../classEspNvs.html#a557fd9219b05531404ba663b340e8cfa',1,'EspNvs::mutex_'],['../classEspPwm.html#a44234a30be061859ee7bf6ffa2d9748b',1,'EspPwm::mutex_'],['../classEspSpiDevice.html#a22fd9577e6aaa1ec056206c12c58efe4',1,'EspSpiDevice::mutex_'],['../classEspSpiBus.html#a707ea256f7b4a767db203d5855bc6c07',1,'EspSpiBus::mutex_'],['../classEspTemperature.html#a6ffead68c2dd6cf1d96c59927c625545',1,'EspTemperature::mutex_'],['../classEspUart.html#a23f67c7d005df9d732c27a70cd190eb8',1,'EspUart::mutex_'],['../classPlatformUniqueLock.html#af63a258e9de4c30039dee48d3aeaac4b',1,'PlatformUniqueLock::mutex_'],['../classPlatformSharedLock.html#a196205586ec7624b45328670e47b6e4c',1,'PlatformSharedLock::mutex_']]],
-  ['mutexhandle_145',['MutexHandle',['../structNullMutexBackend.html#a626a22c11595822e794d8611a486811e',1,'NullMutexBackend']]]
+  ['monotonicms_138',['MonotonicMs',['../namespacehf__time.html#ac7fa91057bdbd80cb6bfdad0f650f21d',1,'hf_time']]],
+  ['monotonicus_139',['MonotonicUs',['../namespacehf__time.html#a6bbd69949f8405073c7a495676c65d08',1,'hf_time']]],
+  ['mosi_5fpin_140',['mosi_pin',['../structhf__spi__bus__config__t.html#a56f13363406cc28437c24c8745d835ed',1,'hf_spi_bus_config_t']]],
+  ['most_20applications_141',['APB_CLK (80MHz) - Recommended for most applications',['../EspTypes__PWM_8h.html#autotoc_md10',1,'']]],
+  ['mstoticks_142',['MsToTicks',['../classPlatformTime.html#a8cff669a89cba4fa58a44687ec3ce4d4',1,'PlatformTime']]],
+  ['mstoticks_143',['msToTicks',['../structNullMutexBackend.html#a49290ba91fee448733d3b184c58b586c',1,'NullMutexBackend']]],
+  ['mstoticks_144',['MsToTicks',['../namespaceanonymous__namespace_02EspUsbSerialJtag_8cpp_03.html#ae9f75b1971ab0c326d59cdcc0d786b29',1,'anonymous_namespace{EspUsbSerialJtag.cpp}']]],
+  ['multi_20mcu_20development_145',['🎯 Universal Hardware Interface for Multi-MCU Development',['../index.html#autotoc_md25',1,'']]],
+  ['mutex_5f_146',['mutex_',['../classEspI2cDevice.html#a7ea3e8c3a34b51996caccceab08253d0',1,'EspI2cDevice::mutex_'],['../classEspI2cBus.html#a6e10f5c0e517f240a7838f43b914dbe6',1,'EspI2cBus::mutex_'],['../classEspNvs.html#a557fd9219b05531404ba663b340e8cfa',1,'EspNvs::mutex_'],['../classEspPwm.html#a44234a30be061859ee7bf6ffa2d9748b',1,'EspPwm::mutex_'],['../classEspSpiDevice.html#a22fd9577e6aaa1ec056206c12c58efe4',1,'EspSpiDevice::mutex_'],['../classEspSpiBus.html#a707ea256f7b4a767db203d5855bc6c07',1,'EspSpiBus::mutex_'],['../classEspTemperature.html#a6ffead68c2dd6cf1d96c59927c625545',1,'EspTemperature::mutex_'],['../classEspUart.html#a23f67c7d005df9d732c27a70cd190eb8',1,'EspUart::mutex_'],['../classPlatformUniqueLock.html#af63a258e9de4c30039dee48d3aeaac4b',1,'PlatformUniqueLock::mutex_'],['../classPlatformSharedLock.html#a196205586ec7624b45328670e47b6e4c',1,'PlatformSharedLock::mutex_']]],
+  ['mutexhandle_147',['MutexHandle',['../structNullMutexBackend.html#a626a22c11595822e794d8611a486811e',1,'NullMutexBackend']]]
 ];
