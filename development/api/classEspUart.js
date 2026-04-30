@@ -81,9 +81,11 @@ var classEspUart =
     [ "operating_mode_", "classEspUart.html#af2370e22ff6ab5da54137adbcd91ad7d", null ],
     [ "port_config_", "classEspUart.html#a00c20e249bbd100eedbf4c0c54c3c42e", null ],
     [ "printf_buffer_", "classEspUart.html#a203c1f13b4888ba1f4ede0d5a5289a2d", null ],
+    [ "rx_mutex_", "classEspUart.html#a2f44ea291419d9719ac5e884106ded33", null ],
     [ "software_flow_enabled_", "classEspUart.html#a8919e3c9d6a7f2f4e0dc81915b77b491", null ],
     [ "statistics_", "classEspUart.html#a22e961a9c6a2396d310552e1ff23c60d", null ],
     [ "tx_in_progress_", "classEspUart.html#aba216cdada564969d39e4799eb2765eb", null ],
+    [ "tx_mutex_", "classEspUart.html#acc95d6d72790ed50fd2731256ba3c6b3", null ],
     [ "uart_port_", "classEspUart.html#a758a727337eac39b8d8b0d7b920dffff", null ],
     [ "wakeup_enabled_", "classEspUart.html#a4c04605b7e7105b001de8af91bf80880", null ]
 ];

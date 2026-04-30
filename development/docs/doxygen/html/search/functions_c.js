@@ -9,7 +9,6 @@ var searchData=
   ['monitoringtimercallback_6',['MonitoringTimerCallback',['../classEspTemperature.html#abe6ae1ced0d8c565b722b416cb64e9ae',1,'EspTemperature']]],
   ['monotonicms_7',['MonotonicMs',['../namespacehf__time.html#ac7fa91057bdbd80cb6bfdad0f650f21d',1,'hf_time']]],
   ['monotonicus_8',['MonotonicUs',['../namespacehf__time_1_1esp32.html#a9f23f582ecf444b0bb6e3ef5e1305ebd',1,'hf_time::esp32']]],
-  ['mstoticks_9',['MsToTicks',['../classPlatformTime.html#a8cff669a89cba4fa58a44687ec3ce4d4',1,'PlatformTime']]],
-  ['mstoticks_10',['msToTicks',['../structNullMutexBackend.html#a49290ba91fee448733d3b184c58b586c',1,'NullMutexBackend']]],
-  ['mstoticks_11',['MsToTicks',['../namespaceanonymous__namespace_02EspUsbSerialJtag_8cpp_03.html#ae9f75b1971ab0c326d59cdcc0d786b29',1,'anonymous_namespace{EspUsbSerialJtag.cpp}']]]
+  ['mstoticks_9',['msToTicks',['../structNullMutexBackend.html#a49290ba91fee448733d3b184c58b586c',1,'NullMutexBackend']]],
+  ['mstoticks_10',['MsToTicks',['../classPlatformTime.html#a8cff669a89cba4fa58a44687ec3ce4d4',1,'PlatformTime::MsToTicks()'],['../namespaceanonymous__namespace_02EspUsbSerialJtag_8cpp_03.html#ae9f75b1971ab0c326d59cdcc0d786b29',1,'anonymous_namespace{EspUsbSerialJtag.cpp}::MsToTicks()']]]
 ];

@@ -1,5 +1,7 @@
 var NAVTREEINDEX16 =
 {
+"structhf__can__reception__info__t.html#a3a5057318523511320dbbc1417557247":[3,0,59,1],
+"structhf__can__reception__info__t.html#ac1bd33853ea338c9163bd9e838d0859b":[3,0,59,0],
 "structhf__can__reception__info__t.html#ae1fbb6e6b8850678fc0d601bf80806c0":[3,0,59,4],
 "structhf__can__reception__info__t.html#ae46c2b74fdb0496b9fc0591d90735f14":[3,0,59,3],
 "structhf__can__statistics__t.html":[3,0,60],
@@ -247,7 +249,5 @@ var NAVTREEINDEX16 =
 "structhf__logger__diagnostics__t.html#a0128d1c2ca591315a3ce99dec9ae647b":[1,5,4,5],
 "structhf__logger__diagnostics__t.html#a05c5d1234a118c2ecfcf0a97d28bbefa":[1,5,4,4],
 "structhf__logger__diagnostics__t.html#a17536cd32ffdf2888069b9a5e4504838":[1,5,4,1],
-"structhf__logger__diagnostics__t.html#a29db39017ec60f3bbbd5c24249ab8d2c":[1,5,4,7],
-"structhf__logger__diagnostics__t.html#a50e7c87e64f37a2fbeb55a3bb4b3f9f4":[1,5,4,3],
-"structhf__logger__diagnostics__t.html#a6592e1cfc972ecb2fe31d399efcba081":[1,5,4,2]
+"structhf__logger__diagnostics__t.html#a29db39017ec60f3bbbd5c24249ab8d2c":[1,5,4,7]
 };

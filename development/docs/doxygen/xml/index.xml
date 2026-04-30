@@ -1415,6 +1415,8 @@
     <member refid="classEspUart_1a2cc0ffbcf5d94cc1be9640a0bb394eb6" kind="variable"><name>MAX_BUFFER_SIZE</name></member>
     <member refid="classEspUart_1a23b68168facceed1638156facf258ada" kind="variable"><name>DEFAULT_BUFFER_SIZE</name></member>
     <member refid="classEspUart_1a23f67c7d005df9d732c27a70cd190eb8" kind="variable"><name>mutex_</name></member>
+    <member refid="classEspUart_1acc95d6d72790ed50fd2731256ba3c6b3" kind="variable"><name>tx_mutex_</name></member>
+    <member refid="classEspUart_1a2f44ea291419d9719ac5e884106ded33" kind="variable"><name>rx_mutex_</name></member>
     <member refid="classEspUart_1a00c20e249bbd100eedbf4c0c54c3c42e" kind="variable"><name>port_config_</name></member>
     <member refid="classEspUart_1af13b21c3d90975c02a4f0197ffe2eaf3" kind="variable"><name>initialized_</name></member>
     <member refid="classEspUart_1a758a727337eac39b8d8b0d7b920dffff" kind="variable"><name>uart_port_</name></member>

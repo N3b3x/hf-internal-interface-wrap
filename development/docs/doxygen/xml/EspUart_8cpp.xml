@@ -622,7 +622,7 @@
 <codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6ab1d931babc3d80897766d05cd169cbe4" kindref="member">hf_uart_err_t::UART_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="150"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"></highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(tx_mutex_);</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"></highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>start_time_us<sp/>=<sp/>esp_timer_get_time();</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/>tx_in_progress_<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
@@ -675,7 +675,7 @@
 <codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6ab1d931babc3d80897766d05cd169cbe4" kindref="member">hf_uart_err_t::UART_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="203"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"></highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(rx_mutex_);</highlight></codeline>
 <codeline lineno="206"><highlight class="normal"></highlight></codeline>
 <codeline lineno="207"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>start_time_us<sp/>=<sp/>esp_timer_get_time();</highlight></codeline>
 <codeline lineno="208"><highlight class="normal"><sp/><sp/>diagnostics_.is_receiving<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
@@ -704,7 +704,7 @@
 <codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="232"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="233"><highlight class="normal"></highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(tx_mutex_);</highlight></codeline>
 <codeline lineno="235"><highlight class="normal"></highlight></codeline>
 <codeline lineno="236"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>uart_write_bytes(uart_port_,<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(&amp;</highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">),<sp/>1);</highlight></codeline>
 <codeline lineno="237"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>==<sp/>1)<sp/>{</highlight></codeline>
@@ -722,7 +722,7 @@
 <codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6a65bbecc33f7e8104164f8f84b29aee4c" kindref="member">hf_uart_err_t::UART_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="250"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="251"><highlight class="normal"></highlight></codeline>
-<codeline lineno="252"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspUart_1a23f67c7d005df9d732c27a70cd190eb8" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspUart_1acc95d6d72790ed50fd2731256ba3c6b3" kindref="member">tx_mutex_</ref>);</highlight></codeline>
 <codeline lineno="253"><highlight class="normal"></highlight></codeline>
 <codeline lineno="254"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>err<sp/>=<sp/>uart_flush(<ref refid="classEspUart_1a758a727337eac39b8d8b0d7b920dffff" kindref="member">uart_port_</ref>);</highlight></codeline>
 <codeline lineno="255"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(err<sp/>==<sp/>ESP_OK)<sp/>?<sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6ab1d931babc3d80897766d05cd169cbe4" kindref="member">hf_uart_err_t::UART_SUCCESS</ref><sp/>:<sp/><ref refid="classEspUart_1a55983273a666678ced3622dbb9bf0797" kindref="member">ConvertPlatformError</ref>(err);</highlight></codeline>
@@ -733,7 +733,7 @@
 <codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6a65bbecc33f7e8104164f8f84b29aee4c" kindref="member">hf_uart_err_t::UART_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="261"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="262"><highlight class="normal"></highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspUart_1a23f67c7d005df9d732c27a70cd190eb8" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspUart_1a2f44ea291419d9719ac5e884106ded33" kindref="member">rx_mutex_</ref>);</highlight></codeline>
 <codeline lineno="264"><highlight class="normal"></highlight></codeline>
 <codeline lineno="265"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>err<sp/>=<sp/>uart_flush_input(<ref refid="classEspUart_1a758a727337eac39b8d8b0d7b920dffff" kindref="member">uart_port_</ref>);</highlight></codeline>
 <codeline lineno="266"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(err<sp/>==<sp/>ESP_OK)<sp/>?<sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6ab1d931babc3d80897766d05cd169cbe4" kindref="member">hf_uart_err_t::UART_SUCCESS</ref><sp/>:<sp/><ref refid="classEspUart_1a55983273a666678ced3622dbb9bf0797" kindref="member">ConvertPlatformError</ref>(err);</highlight></codeline>
@@ -748,7 +748,7 @@
 <codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="276"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="277"><highlight class="normal"></highlight></codeline>
-<codeline lineno="278"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(tx_mutex_);</highlight></codeline>
 <codeline lineno="279"><highlight class="normal"></highlight></codeline>
 <codeline lineno="280"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout<sp/>=<sp/>GetTimeoutMs(timeout_ms);</highlight></codeline>
 <codeline lineno="281"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>result<sp/>=<sp/>uart_wait_tx_done(uart_port_,<sp/>pdMS_TO_TICKS(timeout));</highlight></codeline>
@@ -773,7 +773,7 @@
 <codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="301"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="302"><highlight class="normal"></highlight></codeline>
-<codeline lineno="303"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspUart_1a23f67c7d005df9d732c27a70cd190eb8" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspUart_1a2f44ea291419d9719ac5e884106ded33" kindref="member">rx_mutex_</ref>);</highlight></codeline>
 <codeline lineno="304"><highlight class="normal"></highlight></codeline>
 <codeline lineno="305"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffered_size<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="306"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>result<sp/>=<sp/>uart_get_buffered_data_len(<ref refid="classEspUart_1a758a727337eac39b8d8b0d7b920dffff" kindref="member">uart_port_</ref>,<sp/>&amp;buffered_size);</highlight></codeline>
@@ -790,7 +790,7 @@
 <codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="318"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="319"><highlight class="normal"></highlight></codeline>
-<codeline lineno="320"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspUart_1a23f67c7d005df9d732c27a70cd190eb8" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspUart_1acc95d6d72790ed50fd2731256ba3c6b3" kindref="member">tx_mutex_</ref>);</highlight></codeline>
 <codeline lineno="321"><highlight class="normal"></highlight></codeline>
 <codeline lineno="322"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>transmission<sp/>is<sp/>in<sp/>progress<sp/>using<sp/>internal<sp/>state</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="323"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspUart_1aba216cdada564969d39e4799eb2765eb" kindref="member">tx_in_progress_</ref>)<sp/>{</highlight></codeline>
@@ -830,7 +830,7 @@
 <codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="358"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="359"><highlight class="normal"></highlight></codeline>
-<codeline lineno="360"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(rx_mutex_);</highlight></codeline>
 <codeline lineno="361"><highlight class="normal"></highlight></codeline>
 <codeline lineno="362"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>bytes_read<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="363"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>start_time<sp/>=<sp/>esp_timer_get_time();</highlight></codeline>
@@ -964,7 +964,7 @@
 <codeline lineno="491"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6a10144f1da0dcb0aa99a47b176766ec60" kindref="member">hf_uart_err_t::UART_ERR_INVALID_PARAMETER</ref>;</highlight></codeline>
 <codeline lineno="492"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="493"><highlight class="normal"></highlight></codeline>
-<codeline lineno="494"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="494"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(tx_mutex_);</highlight></codeline>
 <codeline lineno="495"><highlight class="normal"></highlight></codeline>
 <codeline lineno="496"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Try<sp/>multiple<sp/>approaches<sp/>for<sp/>sending<sp/>break<sp/>signal<sp/>on<sp/>ESP32</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="497"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>result<sp/>=<sp/>ESP_ERR_NOT_SUPPORTED;</highlight></codeline>
@@ -1057,7 +1057,7 @@
 <codeline lineno="584"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="585"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="586"><highlight class="normal"></highlight></codeline>
-<codeline lineno="587"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="587"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(rx_mutex_);</highlight></codeline>
 <codeline lineno="588"><highlight class="normal"></highlight></codeline>
 <codeline lineno="589"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout<sp/>=<sp/>GetTimeoutMs(timeout_ms);</highlight></codeline>
 <codeline lineno="590"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>chars_read<sp/>=<sp/>0;</highlight></codeline>
@@ -1492,7 +1492,7 @@
 <codeline lineno="1019"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="1020"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1021"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1022"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1022"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(tx_mutex_);</highlight></codeline>
 <codeline lineno="1023"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>InternalPrintf(format,<sp/>args);</highlight></codeline>
 <codeline lineno="1024"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1025"><highlight class="normal"></highlight></codeline>
