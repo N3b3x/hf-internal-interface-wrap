@@ -587,7 +587,9 @@ private:
   // MEMBER VARIABLES
   //==============================================================================
 
-  mutable PlatformMutex mutex_;       ///< Thread safety mutex
+  mutable PlatformMutex mutex_;       ///< Config/lifecycle mutex
+  mutable PlatformMutex tx_mutex_;    ///< Serializes transmit-side operations
+  mutable PlatformMutex rx_mutex_;    ///< Serializes receive-side operations
   hf_uart_config_t port_config_;  ///< Port configuration
   std::atomic<bool> initialized_; ///< Initialization state (atomic for lazy init)
   uart_port_t uart_port_;         ///< Native UART port handle

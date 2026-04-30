@@ -149,7 +149,7 @@ hf_uart_err_t EspUart::Write(const hf_u8_t* data, hf_u16_t length, hf_u32_t time
     return hf_uart_err_t::UART_SUCCESS;
   }
 
-  PlatformUniqueLock<PlatformMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(tx_mutex_);
 
   hf_u64_t start_time_us = esp_timer_get_time();
   tx_in_progress_ = true;
@@ -202,7 +202,7 @@ hf_uart_err_t EspUart::Read(hf_u8_t* data, hf_u16_t length, hf_u32_t timeout_ms)
     return hf_uart_err_t::UART_SUCCESS;
   }
 
-  PlatformUniqueLock<PlatformMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(rx_mutex_);
 
   hf_u64_t start_time_us = esp_timer_get_time();
   diagnostics_.is_receiving = true;
@@ -231,7 +231,7 @@ bool EspUart::WriteByte(hf_u8_t byte) noexcept {
     return false;
   }
 
-  PlatformUniqueLock<PlatformMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(tx_mutex_);
 
   int result = uart_write_bytes(uart_port_, reinterpret_cast<const char*>(&byte), 1);
   if (result == 1) {
@@ -249,7 +249,7 @@ hf_uart_err_t EspUart::FlushTx() noexcept {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  PlatformUniqueLock<PlatformMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(tx_mutex_);
 
   esp_err_t err = uart_flush(uart_port_);
   return (err == ESP_OK) ? hf_uart_err_t::UART_SUCCESS : ConvertPlatformError(err);
@@ -260,7 +260,7 @@ hf_uart_err_t EspUart::FlushRx() noexcept {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  PlatformUniqueLock<PlatformMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(rx_mutex_);
 
   esp_err_t err = uart_flush_input(uart_port_);
   return (err == ESP_OK) ? hf_uart_err_t::UART_SUCCESS : ConvertPlatformError(err);
@@ -275,7 +275,7 @@ bool EspUart::WaitTransmitComplete(hf_u32_t timeout_ms) noexcept {
     return false;
   }
 
-  PlatformUniqueLock<PlatformMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(tx_mutex_);
 
   hf_u32_t timeout = GetTimeoutMs(timeout_ms);
   esp_err_t result = uart_wait_tx_done(uart_port_, pdMS_TO_TICKS(timeout));
@@ -300,7 +300,7 @@ hf_u16_t EspUart::BytesAvailable() noexcept {
     return 0;
   }
 
-  PlatformUniqueLock<PlatformMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(rx_mutex_);
 
   size_t buffered_size = 0;
   esp_err_t result = uart_get_buffered_data_len(uart_port_, &buffered_size);
@@ -317,7 +317,7 @@ bool EspUart::IsTxBusy() noexcept {
     return false;
   }
 
-  PlatformUniqueLock<PlatformMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(tx_mutex_);
 
   // Check if transmission is in progress using internal state
   if (tx_in_progress_) {
@@ -357,7 +357,7 @@ hf_u16_t EspUart::ReadUntil(hf_u8_t* data, hf_u16_t max_length, hf_u8_t terminat
     return 0;
   }
 
-  PlatformUniqueLock<PlatformMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(rx_mutex_);
 
   hf_u16_t bytes_read = 0;
   hf_u64_t start_time = esp_timer_get_time();
@@ -491,7 +491,7 @@ hf_uart_err_t EspUart::SendBreak(hf_u32_t duration_ms) noexcept {
     return hf_uart_err_t::UART_ERR_INVALID_PARAMETER;
   }
 
-  PlatformUniqueLock<PlatformMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(tx_mutex_);
 
   // Try multiple approaches for sending break signal on ESP32
   esp_err_t result = ESP_ERR_NOT_SUPPORTED;
@@ -584,7 +584,7 @@ hf_u16_t EspUart::ReadLine(char* buffer, hf_u16_t max_length, hf_u32_t timeout_m
     return 0;
   }
 
-  PlatformUniqueLock<PlatformMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(rx_mutex_);
 
   hf_u32_t timeout = GetTimeoutMs(timeout_ms);
   hf_u16_t chars_read = 0;
@@ -1019,7 +1019,7 @@ int EspUart::VPrintf(const char* format, va_list args) noexcept {
     return -1;
   }
 
-  PlatformUniqueLock<PlatformMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(tx_mutex_);
   return InternalPrintf(format, args);
 }
 
