@@ -1,5 +1,7 @@
 var NAVTREEINDEX17 =
 {
+"structhf__logger__diagnostics__t.html#a50e7c87e64f37a2fbeb55a3bb4b3f9f4":[1,5,4,3],
+"structhf__logger__diagnostics__t.html#a6592e1cfc972ecb2fe31d399efcba081":[1,5,4,2],
 "structhf__logger__diagnostics__t.html#a91eb53511a5f01511f3fca72237ecce1":[1,5,4,8],
 "structhf__logger__diagnostics__t.html#aa136df42009e1c7afe40fe7de0e9ac3b":[1,5,4,6],
 "structhf__logger__diagnostics__t.html#aa15ff8088d73ff83e0840bdb251bec0b":[1,5,4,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX17 =
 "structhf__rmt__transmit__config__t.html#abc3397d22ae6dae15c94dbb66c5d3fed":[3,0,109,4],
 "structhf__rmt__transmit__config__t.html#adebc7682a90a515f170a41ef77fe31c6":[3,0,109,2],
 "structhf__spi__bus__config__t.html":[3,0,110],
-"structhf__spi__bus__config__t.html#a04d96acbe1d41f33abb987ebebbc5b51":[3,0,110,0],
-"structhf__spi__bus__config__t.html#a04d96acbe1d41f33abb987ebebbc5b51":[3,0,110,1],
-"structhf__spi__bus__config__t.html#a1a89b70d19c0f6aa437a27ce9b4dd98b":[3,0,110,11]
+"structhf__spi__bus__config__t.html#a04d96acbe1d41f33abb987ebebbc5b51":[3,0,110,0]
 };

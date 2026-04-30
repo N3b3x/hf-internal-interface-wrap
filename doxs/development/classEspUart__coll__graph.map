@@ -8,8 +8,8 @@
 <area shape="rect" id="Node000004" href="$structhf__uart__diagnostics__t.html" title="UART diagnostic information." alt="" coords="5,97,199,127"/>
 <area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="213,119,352,128,597,137,785,141,785,146,597,142,352,133,213,124"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="212,104,328,96,443,86,443,91,328,101,213,109"/>
-<area shape="rect" id="Node000005" href="$classPlatformMutexImpl.html" title=" " alt="" coords="352,192,632,243"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="645,206,704,196,760,180,805,157,807,162,762,185,705,201,646,211"/>
-<area shape="rect" id="Node000006" href="$structhf__uart__config__t.html" title="ESP32 UART port configuration." alt="" coords="417,267,567,298"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="581,279,625,274,671,264,717,250,760,228,779,213,795,195,818,158,822,161,799,198,783,217,763,233,719,255,672,269,626,279,582,284"/>
+<area shape="rect" id="Node000005" href="$classPlatformMutexImpl.html" title=" " alt="" coords="352,199,632,249"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="646,243,705,238,733,231,760,220,779,208,795,192,817,158,822,161,799,195,782,212,763,225,735,236,706,243,646,248"/>
+<area shape="rect" id="Node000006" href="$structhf__uart__config__t.html" title="ESP32 UART port configuration." alt="" coords="417,274,567,305"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="581,301,625,302,672,298,718,287,760,267,785,244,803,214,815,184,822,159,827,160,820,186,807,216,789,247,763,272,720,292,673,303,626,307,581,306"/>
 </map>
