@@ -49,8 +49,9 @@ extern "C" {
 #endif
 
 // Configuration: Choose probe implementation
-// Set to 1 to use our fast custom probe, 0 to use ESP-IDF's broken probe
-#define USE_CUSTOM_FAST_PROBE 1
+// 0 = i2c_master_probe (address-only, no data phase) — safe for bus scans and mixed slaves.
+// 1 = CustomFastProbe (1-byte read) — can confuse devices that NACK bare reads or wedge the FSM.
+#define USE_CUSTOM_FAST_PROBE 0
 
 static const char* TAG = "EspI2c";
 
@@ -569,6 +570,9 @@ size_t EspI2cBus::ScanDevices(std::vector<hf_u16_t>& found_devices, hf_u16_t sta
 
   ESP_LOGI(TAG, "ScanDevices: Scan completed. Found %zu devices", found_devices.size());
 
+  // Long scans touch many addresses; release the controller in case a probe left edge state.
+  (void)ResetBus();
+
   // Update scan statistics
   diagnostics_.total_device_scans++;
   diagnostics_.devices_found_last_scan = static_cast<hf_u32_t>(found_devices.size());
@@ -608,16 +612,11 @@ bool EspI2cBus::ProbeDevice(hf_u16_t device_addr, hf_u32_t timeout_ms) noexcept 
   ESP_LOGI(TAG, "ProbeDevice: Using CUSTOM FAST PROBE (working implementation)");
   device_found = CustomFastProbe(device_addr, actual_timeout);
 #else
-  // Use ESP-IDF's broken probe function (for comparison/testing)
-  ESP_LOGI(TAG, "ProbeDevice: Using ESP-IDF PROBE (known to be broken on some ESP32 variants)");
-
-  // Use provided timeout or default to 1000ms for ESP-IDF probe
-  hf_u32_t esp_timeout = (timeout_ms > 0) ? timeout_ms : 1000;
-
-  esp_err_t err = i2c_master_probe(bus_handle_, device_addr, esp_timeout);
+  ESP_LOGI(TAG, "ProbeDevice: Using i2c_master_probe (no data phase)");
+  esp_err_t err = i2c_master_probe(bus_handle_, device_addr, actual_timeout);
   device_found = (err == ESP_OK);
 
-  ESP_LOGI(TAG, "ProbeDevice: ESP-IDF probe result: %s (err: %s)",
+  ESP_LOGI(TAG, "ProbeDevice: i2c_master_probe result: %s (err: %s)",
            device_found ? "FOUND" : "NOT FOUND", esp_err_to_name(err));
 #endif
 
