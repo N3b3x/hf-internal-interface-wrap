@@ -454,7 +454,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="149" column="12" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="61" bodyend="78" declfile="inc/mcu/esp32/EspI2c.h" declline="149" declcolumn="12"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="149" column="12" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="62" bodyend="79" declfile="inc/mcu/esp32/EspI2c.h" declline="149" declcolumn="12"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

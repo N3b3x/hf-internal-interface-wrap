@@ -1766,7 +1766,7 @@ bool test_i2c_basic_functionality() noexcept {
 bool test_i2c_probe_methods_comparison() noexcept {
 
   ESP_LOGI(TAG, "This test compares ESP-IDF probe vs Custom Fast Probe timing and reliability");
-  ESP_LOGI(TAG, "Set USE_CUSTOM_FAST_PROBE in EspI2c.cpp to switch between methods");
+  ESP_LOGI(TAG, "Probe mode is controlled by USE_CUSTOM_FAST_PROBE in EspI2c.cpp (default: IDF i2c_master_probe)");
 
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
   if (!test_bus) {
