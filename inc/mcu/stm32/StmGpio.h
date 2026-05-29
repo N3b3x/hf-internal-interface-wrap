@@ -17,7 +17,11 @@
 #include "BaseGpio.h"
 #include "StmTypes.h"
 
-struct GPIO_TypeDef;  // Forward — defined by stm32xxxx_hal_gpio.h
+// Forward-declare GPIO_TypeDef only when CMSIS / HAL has not already defined it
+// as a typedef (which is the case on every STM32 family).
+#ifndef GPIOA
+struct GPIO_TypeDef;
+#endif
 
 /**
  * @class StmGpio

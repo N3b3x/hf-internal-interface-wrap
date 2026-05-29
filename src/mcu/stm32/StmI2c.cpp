@@ -79,10 +79,11 @@ hf_i2c_err_t StmI2cDevice::Write(const hf_u8_t* data, hf_u16_t length,
 
     auto result = ConvertHalStatus(status);
     if (result == hf_i2c_err_t::I2C_SUCCESS) {
-        statistics_.total_writes++;
+        statistics_.total_transactions++;
+        statistics_.successful_transactions++;
         statistics_.bytes_written += length;
     } else {
-        statistics_.error_count++;
+        statistics_.failed_transactions++;
     }
     return result;
 }
@@ -101,10 +102,11 @@ hf_i2c_err_t StmI2cDevice::Read(hf_u8_t* data, hf_u16_t length,
 
     auto result = ConvertHalStatus(status);
     if (result == hf_i2c_err_t::I2C_SUCCESS) {
-        statistics_.total_reads++;
+        statistics_.total_transactions++;
+        statistics_.successful_transactions++;
         statistics_.bytes_read += length;
     } else {
-        statistics_.error_count++;
+        statistics_.failed_transactions++;
     }
     return result;
 }
@@ -131,12 +133,12 @@ hf_i2c_err_t StmI2cDevice::WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
 
         auto result = ConvertHalStatus(status);
         if (result == hf_i2c_err_t::I2C_SUCCESS) {
-            statistics_.total_reads++;
-            statistics_.total_writes++;
+            statistics_.total_transactions++;
+            statistics_.successful_transactions++;
             statistics_.bytes_read += rx_length;
             statistics_.bytes_written += tx_length;
         } else {
-            statistics_.error_count++;
+            statistics_.failed_transactions++;
         }
         return result;
     }
@@ -164,7 +166,7 @@ hf_i2c_err_t StmI2cDevice::ConvertHalStatus(hf_u32_t hal_status) noexcept {
         case hf::stm32::HalStatus::OK:      return hf_i2c_err_t::I2C_SUCCESS;
         case hf::stm32::HalStatus::BUSY:    return hf_i2c_err_t::I2C_ERR_BUS_BUSY;
         case hf::stm32::HalStatus::TIMEOUT: return hf_i2c_err_t::I2C_ERR_TIMEOUT;
-        default:                             return hf_i2c_err_t::I2C_ERR_WRITE_FAILED;
+        default:                             return hf_i2c_err_t::I2C_ERR_WRITE_FAILURE;
     }
 }
 

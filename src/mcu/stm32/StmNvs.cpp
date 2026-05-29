@@ -36,16 +36,12 @@ namespace {
 
 StmNvs::StmNvs(const char* namespace_name,
                const hf_stm32_nvs_config_t& flash_config) noexcept
-    : BaseNvs()
+    : BaseNvs(namespace_name)
     , flash_config_(flash_config)
     , entry_count_(0)
     , write_offset_(0)
 {
     std::memset(cache_, 0, sizeof(cache_));
-    if (namespace_name) {
-        strncpy(namespace_name_, namespace_name, sizeof(namespace_name_) - 1);
-        namespace_name_[sizeof(namespace_name_) - 1] = '\0';
-    }
 }
 
 StmNvs::~StmNvs() noexcept {
@@ -95,7 +91,7 @@ hf_nvs_err_t StmNvs::Deinitialize() noexcept {
 
 hf_nvs_err_t StmNvs::SetU32(const char* key, hf_u32_t value) noexcept {
     if (!EnsureInitialized()) return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-    if (!IsValidKey(key)) return hf_nvs_err_t::NVS_ERR_INVALID_KEY;
+    if (!IsValidKey(key)) return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
 
     int idx = AddOrUpdateCache(key, EntryType::U32, &value, sizeof(value));
     if (idx < 0) return hf_nvs_err_t::NVS_ERR_STORAGE_FULL;
@@ -106,12 +102,12 @@ hf_nvs_err_t StmNvs::SetU32(const char* key, hf_u32_t value) noexcept {
 
 hf_nvs_err_t StmNvs::GetU32(const char* key, hf_u32_t& value) noexcept {
     if (!EnsureInitialized()) return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-    if (!IsValidKey(key)) return hf_nvs_err_t::NVS_ERR_INVALID_KEY;
+    if (!IsValidKey(key)) return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
 
     int idx = FindCacheEntry(key);
     if (idx < 0 || cache_[idx].erased) return hf_nvs_err_t::NVS_ERR_KEY_NOT_FOUND;
-    if (cache_[idx].type != EntryType::U32) return hf_nvs_err_t::NVS_ERR_TYPE_MISMATCH;
-    if (cache_[idx].data_length != sizeof(hf_u32_t)) return hf_nvs_err_t::NVS_ERR_CORRUPTED_DATA;
+    if (cache_[idx].type != EntryType::U32) return hf_nvs_err_t::NVS_ERR_INVALID_DATA;
+    if (cache_[idx].data_length != sizeof(hf_u32_t)) return hf_nvs_err_t::NVS_ERR_CORRUPTED;
 
     std::memcpy(&value, cache_[idx].data, sizeof(hf_u32_t));
     statistics_.total_reads++;
@@ -120,10 +116,10 @@ hf_nvs_err_t StmNvs::GetU32(const char* key, hf_u32_t& value) noexcept {
 
 hf_nvs_err_t StmNvs::SetString(const char* key, const char* value) noexcept {
     if (!EnsureInitialized()) return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-    if (!IsValidKey(key) || !value) return hf_nvs_err_t::NVS_ERR_INVALID_KEY;
+    if (!IsValidKey(key) || !value) return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
 
     size_t len = std::strlen(value) + 1;  // Include null terminator
-    if (len > hf::stm32::kNvsMaxValueSize) return hf_nvs_err_t::NVS_ERR_VALUE_TOO_LONG;
+    if (len > hf::stm32::kNvsMaxValueSize) return hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE;
 
     int idx = AddOrUpdateCache(key, EntryType::STRING, value, len);
     if (idx < 0) return hf_nvs_err_t::NVS_ERR_STORAGE_FULL;
@@ -135,11 +131,11 @@ hf_nvs_err_t StmNvs::SetString(const char* key, const char* value) noexcept {
 hf_nvs_err_t StmNvs::GetString(const char* key, char* buffer, size_t buffer_size,
                                 size_t* actual_size) noexcept {
     if (!EnsureInitialized()) return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-    if (!IsValidKey(key) || !buffer) return hf_nvs_err_t::NVS_ERR_INVALID_KEY;
+    if (!IsValidKey(key) || !buffer) return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
 
     int idx = FindCacheEntry(key);
     if (idx < 0 || cache_[idx].erased) return hf_nvs_err_t::NVS_ERR_KEY_NOT_FOUND;
-    if (cache_[idx].type != EntryType::STRING) return hf_nvs_err_t::NVS_ERR_TYPE_MISMATCH;
+    if (cache_[idx].type != EntryType::STRING) return hf_nvs_err_t::NVS_ERR_INVALID_DATA;
 
     if (actual_size) *actual_size = cache_[idx].data_length;
 
@@ -154,8 +150,8 @@ hf_nvs_err_t StmNvs::GetString(const char* key, char* buffer, size_t buffer_size
 
 hf_nvs_err_t StmNvs::SetBlob(const char* key, const void* data, size_t data_size) noexcept {
     if (!EnsureInitialized()) return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-    if (!IsValidKey(key) || !data) return hf_nvs_err_t::NVS_ERR_INVALID_KEY;
-    if (data_size > sizeof(CacheEntry::data)) return hf_nvs_err_t::NVS_ERR_VALUE_TOO_LONG;
+    if (!IsValidKey(key) || !data) return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
+    if (data_size > sizeof(CacheEntry::data)) return hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE;
 
     int idx = AddOrUpdateCache(key, EntryType::BLOB, data, data_size);
     if (idx < 0) return hf_nvs_err_t::NVS_ERR_STORAGE_FULL;
@@ -167,11 +163,11 @@ hf_nvs_err_t StmNvs::SetBlob(const char* key, const void* data, size_t data_size
 hf_nvs_err_t StmNvs::GetBlob(const char* key, void* buffer, size_t buffer_size,
                               size_t* actual_size) noexcept {
     if (!EnsureInitialized()) return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-    if (!IsValidKey(key) || !buffer) return hf_nvs_err_t::NVS_ERR_INVALID_KEY;
+    if (!IsValidKey(key) || !buffer) return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
 
     int idx = FindCacheEntry(key);
     if (idx < 0 || cache_[idx].erased) return hf_nvs_err_t::NVS_ERR_KEY_NOT_FOUND;
-    if (cache_[idx].type != EntryType::BLOB) return hf_nvs_err_t::NVS_ERR_TYPE_MISMATCH;
+    if (cache_[idx].type != EntryType::BLOB) return hf_nvs_err_t::NVS_ERR_INVALID_DATA;
 
     if (actual_size) *actual_size = cache_[idx].data_length;
 
@@ -185,7 +181,7 @@ hf_nvs_err_t StmNvs::GetBlob(const char* key, void* buffer, size_t buffer_size,
 
 hf_nvs_err_t StmNvs::EraseKey(const char* key) noexcept {
     if (!EnsureInitialized()) return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-    if (!IsValidKey(key)) return hf_nvs_err_t::NVS_ERR_INVALID_KEY;
+    if (!IsValidKey(key)) return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
 
     int idx = FindCacheEntry(key);
     if (idx < 0) return hf_nvs_err_t::NVS_ERR_KEY_NOT_FOUND;
@@ -208,7 +204,7 @@ bool StmNvs::KeyExists(const char* key) noexcept {
 
 hf_nvs_err_t StmNvs::GetSize(const char* key, size_t& size) noexcept {
     if (!EnsureInitialized()) return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-    if (!IsValidKey(key)) return hf_nvs_err_t::NVS_ERR_INVALID_KEY;
+    if (!IsValidKey(key)) return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
 
     int idx = FindCacheEntry(key);
     if (idx < 0 || cache_[idx].erased) return hf_nvs_err_t::NVS_ERR_KEY_NOT_FOUND;
@@ -286,7 +282,7 @@ hf_nvs_err_t StmNvs::FlushToFlash() noexcept {
     // Unlock flash
     uint32_t status = HAL_FLASH_Unlock();
     if (!hf::stm32::IsHalOk(status)) {
-        return hf_nvs_err_t::NVS_ERR_WRITE_FAILED;
+        return hf_nvs_err_t::NVS_ERR_FAILURE;
     }
 
     // Write dirty entries to flash as word-aligned data

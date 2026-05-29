@@ -35,11 +35,11 @@ static inline void HF_ITM_SendChar(char ch) {
 namespace {
     const char* LevelToPrefix(hf_log_level_t level) {
         switch (level) {
-            case hf_log_level_t::HF_LOG_LEVEL_ERROR:   return "E";
-            case hf_log_level_t::HF_LOG_LEVEL_WARN:    return "W";
-            case hf_log_level_t::HF_LOG_LEVEL_INFO:    return "I";
-            case hf_log_level_t::HF_LOG_LEVEL_DEBUG:   return "D";
-            case hf_log_level_t::HF_LOG_LEVEL_VERBOSE: return "V";
+            case hf_log_level_t::LOG_LEVEL_ERROR:   return "E";
+            case hf_log_level_t::LOG_LEVEL_WARN:    return "W";
+            case hf_log_level_t::LOG_LEVEL_INFO:    return "I";
+            case hf_log_level_t::LOG_LEVEL_DEBUG:   return "D";
+            case hf_log_level_t::LOG_LEVEL_VERBOSE: return "V";
             default:                                    return "?";
         }
     }
@@ -53,7 +53,7 @@ StmLogger::StmLogger(UART_HandleTypeDef* uart_handle, Backend backend) noexcept
     : backend_(backend)
     , uart_handle_(uart_handle)
     , initialized_(false)
-    , global_level_(hf_log_level_t::HF_LOG_LEVEL_INFO)
+    , global_level_(hf_log_level_t::LOG_LEVEL_INFO)
     , statistics_{}
     , diagnostics_{}
     , last_error_(hf_logger_err_t::LOGGER_SUCCESS)
@@ -96,7 +96,7 @@ bool StmLogger::EnsureInitialized() noexcept {
     // Auto-init with default config if UART handle is available
     if (uart_handle_ || backend_ != Backend::UART_HAL) {
         hf_logger_config_t default_config{};
-        default_config.default_level = hf_log_level_t::HF_LOG_LEVEL_INFO;
+        default_config.default_level = hf_log_level_t::LOG_LEVEL_INFO;
         return Initialize(default_config) == hf_logger_err_t::LOGGER_SUCCESS;
     }
     return false;
@@ -127,7 +127,7 @@ bool StmLogger::IsLevelEnabled(hf_log_level_t level, const char* /*tag*/) const 
 hf_logger_err_t StmLogger::Error(const char* tag, const char* format, ...) noexcept {
     va_list args;
     va_start(args, format);
-    auto result = FormatAndOutput(hf_log_level_t::HF_LOG_LEVEL_ERROR, tag, format, args);
+    auto result = FormatAndOutput(hf_log_level_t::LOG_LEVEL_ERROR, tag, format, args);
     va_end(args);
     return result;
 }
@@ -135,7 +135,7 @@ hf_logger_err_t StmLogger::Error(const char* tag, const char* format, ...) noexc
 hf_logger_err_t StmLogger::Warn(const char* tag, const char* format, ...) noexcept {
     va_list args;
     va_start(args, format);
-    auto result = FormatAndOutput(hf_log_level_t::HF_LOG_LEVEL_WARN, tag, format, args);
+    auto result = FormatAndOutput(hf_log_level_t::LOG_LEVEL_WARN, tag, format, args);
     va_end(args);
     return result;
 }
@@ -143,7 +143,7 @@ hf_logger_err_t StmLogger::Warn(const char* tag, const char* format, ...) noexce
 hf_logger_err_t StmLogger::Info(const char* tag, const char* format, ...) noexcept {
     va_list args;
     va_start(args, format);
-    auto result = FormatAndOutput(hf_log_level_t::HF_LOG_LEVEL_INFO, tag, format, args);
+    auto result = FormatAndOutput(hf_log_level_t::LOG_LEVEL_INFO, tag, format, args);
     va_end(args);
     return result;
 }
@@ -151,7 +151,7 @@ hf_logger_err_t StmLogger::Info(const char* tag, const char* format, ...) noexce
 hf_logger_err_t StmLogger::Debug(const char* tag, const char* format, ...) noexcept {
     va_list args;
     va_start(args, format);
-    auto result = FormatAndOutput(hf_log_level_t::HF_LOG_LEVEL_DEBUG, tag, format, args);
+    auto result = FormatAndOutput(hf_log_level_t::LOG_LEVEL_DEBUG, tag, format, args);
     va_end(args);
     return result;
 }
@@ -159,7 +159,7 @@ hf_logger_err_t StmLogger::Debug(const char* tag, const char* format, ...) noexc
 hf_logger_err_t StmLogger::Verbose(const char* tag, const char* format, ...) noexcept {
     va_list args;
     va_start(args, format);
-    auto result = FormatAndOutput(hf_log_level_t::HF_LOG_LEVEL_VERBOSE, tag, format, args);
+    auto result = FormatAndOutput(hf_log_level_t::LOG_LEVEL_VERBOSE, tag, format, args);
     va_end(args);
     return result;
 }
@@ -265,7 +265,7 @@ hf_logger_err_t StmLogger::PrintStatistics(const char* tag, bool /*detailed*/) c
     int len = snprintf(buf, sizeof(buf), "[I] (%s) Stats: msgs=%u, errs=%u\r\n",
                        tag ? tag : "LOG",
                        static_cast<unsigned>(statistics_.total_messages),
-                       static_cast<unsigned>(statistics_.error_count));
+                       static_cast<unsigned>(statistics_.write_errors));
     if (len > 0) const_cast<StmLogger*>(this)->OutputString(buf, static_cast<hf_u32_t>(len));
     return hf_logger_err_t::LOGGER_SUCCESS;
 }

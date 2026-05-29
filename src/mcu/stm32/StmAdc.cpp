@@ -92,7 +92,7 @@ hf_adc_err_t StmAdc::ReadChannelV(hf_channel_id_t channel_id, float& channel_rea
         hf_u32_t count = 0;
         auto err = ReadRawCount(count);
         if (err != hf_adc_err_t::ADC_SUCCESS) {
-            statistics_.error_count++;
+            statistics_.failedConversions++;
             return err;
         }
         accumulator += count;
@@ -104,7 +104,8 @@ hf_adc_err_t StmAdc::ReadChannelV(hf_channel_id_t channel_id, float& channel_rea
     hf_u32_t avg_count = static_cast<hf_u32_t>(accumulator / numOfSamplesToAvg);
     channel_reading_v = CountToVoltage(avg_count);
 
-    statistics_.total_reads++;
+    statistics_.totalConversions++;
+    statistics_.successfulConversions++;
     return hf_adc_err_t::ADC_SUCCESS;
 }
 
@@ -120,7 +121,7 @@ hf_adc_err_t StmAdc::ReadChannelCount(hf_channel_id_t channel_id, hf_u32_t& chan
         hf_u32_t count = 0;
         auto err = ReadRawCount(count);
         if (err != hf_adc_err_t::ADC_SUCCESS) {
-            statistics_.error_count++;
+            statistics_.failedConversions++;
             return err;
         }
         accumulator += count;
@@ -131,7 +132,8 @@ hf_adc_err_t StmAdc::ReadChannelCount(hf_channel_id_t channel_id, hf_u32_t& chan
 
     channel_reading_count = static_cast<hf_u32_t>(accumulator / numOfSamplesToAvg);
 
-    statistics_.total_reads++;
+    statistics_.totalConversions++;
+    statistics_.successfulConversions++;
     return hf_adc_err_t::ADC_SUCCESS;
 }
 
@@ -199,6 +201,6 @@ hf_adc_err_t StmAdc::ConvertHalStatus(hf_u32_t hal_status) noexcept {
         case hf::stm32::HalStatus::OK:      return hf_adc_err_t::ADC_SUCCESS;
         case hf::stm32::HalStatus::BUSY:    return hf_adc_err_t::ADC_ERR_BUSY;
         case hf::stm32::HalStatus::TIMEOUT: return hf_adc_err_t::ADC_ERR_TIMEOUT;
-        default:                             return hf_adc_err_t::ADC_ERR_READ_FAILED;
+        default:                             return hf_adc_err_t::ADC_ERR_CHANNEL_READ_ERR;
     }
 }

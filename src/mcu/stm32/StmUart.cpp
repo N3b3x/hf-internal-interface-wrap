@@ -46,14 +46,11 @@ StmUart::StmUart(UART_HandleTypeDef* huart, hf_port_num_t port) noexcept
 }
 
 StmUart::StmUart(const hf_stm32_uart_config_t& config) noexcept
-    : BaseUart(config.port)
-    , huart_(config.huart)
-    , default_timeout_ms_(config.timeout_ms > 0 ? config.timeout_ms : kDefaultTimeoutMs)
-    , rx_buf_(nullptr)
-    , rx_buf_size_(0)
-    , rx_head_(0)
-    , rx_tail_(0)
+    : StmUart(config.hal_handle, 0)
 {
+    if (config.default_timeout_ms > 0) {
+        default_timeout_ms_ = config.default_timeout_ms;
+    }
 }
 
 StmUart::~StmUart() noexcept {

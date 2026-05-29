@@ -90,10 +90,12 @@ hf_spi_err_t StmSpiDevice::Transfer(const hf_u8_t* tx_data, hf_u8_t* rx_data,
 
     auto result = ConvertHalStatus(status);
     if (result == hf_spi_err_t::SPI_SUCCESS) {
-        statistics_.total_transfers++;
-        statistics_.bytes_transferred += length;
+        statistics_.total_transactions++;
+        statistics_.successful_transactions++;
+        statistics_.total_bytes_sent += length;
+        statistics_.total_bytes_received += length;
     } else {
-        statistics_.error_count++;
+        statistics_.failed_transactions++;
     }
     return result;
 }
@@ -126,7 +128,7 @@ hf_spi_err_t StmSpiDevice::ConvertHalStatus(hf_u32_t hal_status) noexcept {
     switch (status) {
         case hf::stm32::HalStatus::OK:      return hf_spi_err_t::SPI_SUCCESS;
         case hf::stm32::HalStatus::BUSY:    return hf_spi_err_t::SPI_ERR_BUS_BUSY;
-        case hf::stm32::HalStatus::TIMEOUT: return hf_spi_err_t::SPI_ERR_TIMEOUT;
+        case hf::stm32::HalStatus::TIMEOUT: return hf_spi_err_t::SPI_ERR_BUS_TIMEOUT;
         default:                             return hf_spi_err_t::SPI_ERR_TRANSFER_FAILED;
     }
 }

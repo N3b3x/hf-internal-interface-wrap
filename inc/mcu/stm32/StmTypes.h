@@ -48,20 +48,47 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 /// @cond INTERNAL
+// Forward-declare HAL handle types only when the corresponding HAL module header
+// has not been included yet (HAL enabled in stm32h7xx_hal_conf.h).
+#ifndef STM32H7xx_HAL_ADC_H
 struct ADC_HandleTypeDef;
+#endif
+#ifndef STM32H7xx_HAL_I2C_H
 struct I2C_HandleTypeDef;
+#endif
+#ifndef STM32H7xx_HAL_SPI_H
 struct SPI_HandleTypeDef;
+#endif
+#ifndef STM32H7xx_HAL_TIM_H
 struct TIM_HandleTypeDef;
+#endif
+#ifndef STM32H7xx_HAL_UART_H
 struct UART_HandleTypeDef;
-struct CAN_HandleTypeDef;       // CAN1/CAN2 (STM32F1/F2/F4)
-struct FDCAN_HandleTypeDef;     // FDCAN (STM32G4/H7/U5)
+#endif
+#ifndef STM32H7xx_HAL_CAN_H
+struct CAN_HandleTypeDef;
+#endif
+#ifndef STM32H7xx_HAL_FDCAN_H
+struct FDCAN_HandleTypeDef;
+#endif
+#ifndef STM32H7xx_HAL_DAC_H
 struct DAC_HandleTypeDef;
+#endif
+#ifndef STM32H7xx_HAL_DMA_H
 struct DMA_HandleTypeDef;
-struct GPIO_TypeDef;            // GPIOA, GPIOB, etc.
-
-// Flash/NVS-related — STM32 doesn't have a handle, just addresses
-// We wrap flash sector operations internally.
+#endif
+#ifndef GPIOA
+struct GPIO_TypeDef;
+#endif
 /// @endcond
+
+/// STM32 GPIO output drive strength (subset aligned with EspTypes_GPIO).
+enum class hf_gpio_drive_cap_t : hf_u8_t {
+    HF_GPIO_DRIVE_CAP_WEAK = 0,
+    HF_GPIO_DRIVE_CAP_MEDIUM = 1,
+    HF_GPIO_DRIVE_CAP_STRONG = 2,
+    HF_GPIO_DRIVE_CAP_STRONGEST = 3,
+};
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // STM32 PLATFORM CONSTANTS
