@@ -111,7 +111,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="530" column="8" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="530" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1a2cd94a74eda9b9736e0541f3fa963a3f" prot="private" static="no" mutable="no">
-        <type>hf_gpio_drive_cap_t</type>
+        <type><ref refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95e" kindref="member">hf_gpio_drive_cap_t</ref></type>
         <definition>hf_gpio_drive_cap_t EspGpio::drive_capability_</definition>
         <argsstring></argsstring>
         <name>drive_capability_</name>
@@ -325,9 +325,9 @@
           <defval><ref refid="group__gpio_1gga7d27555a7050f5d9d9006c96b841e335ae17c8cfbde2e4323ba15750747758875" kindref="member">hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING</ref></defval>
         </param>
         <param>
-          <type>hf_gpio_drive_cap_t</type>
+          <type><ref refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95e" kindref="member">hf_gpio_drive_cap_t</ref></type>
           <declname>drive_capability</declname>
-          <defval>hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM</defval>
+          <defval><ref refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95eaa17918132458975f33a21b703a313b00" kindref="member">hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM</ref></defval>
         </param>
         <briefdescription>
 <para>Constructor for <ref refid="classEspGpio" kindref="compound">EspGpio</ref> with full configuration including advanced features. </para>
@@ -780,7 +780,7 @@ Validates that the pin number is valid and not reserved for special functions li
         <location file="inc/mcu/esp32/EspGpio.h" line="219" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a39144774b89ee9403b4a75bbd828950f" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>hf_gpio_drive_cap_t</type>
+        <type><ref refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95e" kindref="member">hf_gpio_drive_cap_t</ref></type>
         <definition>hf_gpio_drive_cap_t EspGpio::GetDriveCapability</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetDriveCapability</name>
@@ -804,7 +804,7 @@ Validates that the pin number is valid and not reserved for special functions li
         <name>SetDriveCapability</name>
         <qualifiedname>EspGpio::SetDriveCapability</qualifiedname>
         <param>
-          <type>hf_gpio_drive_cap_t</type>
+          <type><ref refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95e" kindref="member">hf_gpio_drive_cap_t</ref></type>
           <declname>capability</declname>
         </param>
         <briefdescription>

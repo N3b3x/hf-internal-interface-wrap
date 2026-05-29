@@ -103,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="152" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="152" bodyend="155"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="179" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="179" bodyend="182"/>
       </memberdef>
       <memberdef kind="enum" id="namespacehf_1_1stm32_1aae908749bc986cae79f7b0240fa24fce" prot="public" static="no" strong="yes">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="513" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="513" bodyend="518"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="540" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="540" bodyend="545"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="var">
@@ -166,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="73" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="73" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="100" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1ab8c97cfad88030ad7366e434c7819b22" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -182,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="76" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="76" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="103" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="103" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a0cde792158aa07c54c0d614f7e992bef" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -198,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="79" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="79" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="106" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="106" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a4040cb7003a317cfc4d8b5525eb30497" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -214,7 +214,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="82" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="82" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="109" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1aa42bec7ddb30220d88fa0304343691bc" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -230,7 +230,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="85" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="85" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="112" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a265304a91ed4f5408d4ec2807611cf7a" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -245,7 +245,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="86" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="86" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="113" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a0792eb14ab6261a885c4455ab386a7fc" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr float</type>
@@ -261,7 +261,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="89" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="89" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="116" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1abffe183b24d396f7ef10aec446f43929" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -277,7 +277,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="92" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="92" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="119" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a588459662879d0a82c1762ac94180ca4" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -292,7 +292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="93" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="93" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="120" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a496127795d53e4e61e8e72c8a31d32a4" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -307,7 +307,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="94" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="94" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="121" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1ab7bd26aec9fe6736ebd453ca7b5977ce" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -322,7 +322,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="95" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="95" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="122" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a3ad4b34fb3d4390853867df00d4e894a" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -337,7 +337,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="96" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="96" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="123" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a6e7e47d4e505dfae17a5d38bb723fc14" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -353,7 +353,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="99" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="99" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="126" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="126" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1aca00f11a5aae6f65be61e78d5513f46f" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -368,7 +368,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="100" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="100" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="127" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="127" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a7c81d846d8f6bd541b452327ec982e42" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -383,7 +383,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="101" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="101" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="128" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="128" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1ae2f3f462177bc078449618515d13d179" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -399,7 +399,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="104" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="104" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="131" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a801ab2115dad5f9b9c4ee2adad8b885f" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -414,7 +414,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="105" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="105" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="132" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="132" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1ae15338bee1c54512e5a6387627a1a257" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -429,7 +429,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="106" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="106" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="133" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="133" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1abbf3eb95dde97a363eeb7b18aaa140af" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -445,7 +445,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="109" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="109" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="136" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="136" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1acc210413f51441d96a2139a8c364f02e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -460,7 +460,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="110" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="110" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="137" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="137" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1aca34be7567845f5a265ea8828e9e0209" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -475,7 +475,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="111" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="111" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="138" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="138" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a4b5614e96ae81ced775d3861471e9660" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -491,7 +491,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="114" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="114" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="141" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="141" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1acc1e8c15aa805d66cc43df0d5296c331" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -506,7 +506,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="115" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="115" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="142" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a884148c9c1481a59ee0d015b16544e10" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -521,7 +521,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="116" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="116" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="143" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1ae55f33ff75ca49a8499770cf3d5f00ac" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -536,7 +536,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="117" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="117" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="144" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a37814b961258050f1f5fd87ed3b0b7b4" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -552,7 +552,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="120" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="120" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="147" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="147" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1ac7523a05997b547b0504ef4bb1af3758" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -567,7 +567,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="121" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="121" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="148" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="148" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a2de26b6fc21ce6445b5880aa07c8dc62" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -582,7 +582,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="122" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="122" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="149" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="149" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a905b1a4375d157c96659237e3c7d0b6f" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr size_t</type>
@@ -598,7 +598,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="125" column="25" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="125" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="152" column="25" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="152" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1af32804f7a4b93277562b58b6a5afb7fe" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr size_t</type>
@@ -613,7 +613,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="126" column="25" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="126" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="153" column="25" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="153" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a702ee715fcc5e3015199113a863049ef" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr size_t</type>
@@ -628,7 +628,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="127" column="25" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="127" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="154" column="25" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1ac20fa1fa4a314c7fae9b20fc8a85b72b" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr float</type>
@@ -644,7 +644,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="130" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="130" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="157" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="157" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a0824d87087b3e050483f78fa3e623caf" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr float</type>
@@ -659,7 +659,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="131" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="131" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="158" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="158" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a8250ae9d7e4e88aed2dee7e2f7a0889e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr float</type>
@@ -674,7 +674,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="132" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="132" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="159" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="159" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a5e1bc34db84044fc0347de2e79f44000" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -690,7 +690,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="135" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="135" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="162" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="162" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1a8ed4dda53450f0286fccd4199217a568" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -705,7 +705,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="136" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="136" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="163" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="163" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -730,7 +730,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="158" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="158" bodyend="160"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="185" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="185" bodyend="187"/>
       </memberdef>
       <memberdef kind="function" id="namespacehf_1_1stm32_1a6d5e0f8265882f9315391a8326dfda78" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -749,7 +749,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="163" column="19" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="163" bodyend="165"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="190" column="19" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="190" bodyend="192"/>
       </memberdef>
       <memberdef kind="function" id="namespacehf_1_1stm32_1aa73df5bba78bee3035c30ed33183c612" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -768,7 +768,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="168" column="19" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="168" bodyend="170"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="195" column="19" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="195" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="namespacehf_1_1stm32_1ab540277931da12279892e8463c083a16" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -787,7 +787,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="173" column="20" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="173" bodyend="175"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="200" column="20" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="200" bodyend="202"/>
       </memberdef>
       <memberdef kind="function" id="namespacehf_1_1stm32_1aa44c1eabd5f8b4f6a76e841873432bc5" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>constexpr <ref refid="namespacehf_1_1stm32_1aae908749bc986cae79f7b0240fa24fce" kindref="member">HalStatus</ref></type>
@@ -806,7 +806,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="521" column="21" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="521" bodyend="529"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="548" column="21" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="548" bodyend="556"/>
       </memberdef>
       <memberdef kind="function" id="namespacehf_1_1stm32_1a61d8ada18ba35572dbf8fedc4d96501f" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -825,13 +825,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="532" column="16" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="532" bodyend="534"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="559" column="16" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="559" bodyend="561"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/mcu/stm32/StmTypes.h" line="70" column="1"/>
+    <location file="inc/mcu/stm32/StmTypes.h" line="97" column="1"/>
   </compounddef>
 </doxygen>

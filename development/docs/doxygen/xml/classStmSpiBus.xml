@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="88" column="14" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="138" bodyend="139"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="88" column="14" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="140" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1ae9b391925b8b34a47d17a91cdabb87cf" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -89,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="91" column="14" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="141" bodyend="142"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="91" column="14" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="143" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1a1b4658e1504d0caa95b0d13cc4d41335" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -103,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="93" column="5" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="144" bodyend="146"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="93" column="5" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="146" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1a949a4e26bc00b79272f4e1929aa06064" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -117,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="95" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="148" bodyend="153"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="95" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="150" bodyend="155"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1a22d15c21b574da4cf292b4574e485293" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -131,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="96" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="155" bodyend="155"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="96" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="157" bodyend="157"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1ad4cf41108043a7610f902cb45bcbc8e4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -145,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="97" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="157" bodyend="164"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="97" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="159" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1a781055ef0cd430c2cb5f12601882a683" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>int</type>
@@ -163,7 +163,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="99" column="9" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="166" bodyend="170"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="99" column="9" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="168" bodyend="172"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1ad1d6e101a95d6af9829a2b6a41a1fc81" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classBaseSpi" kindref="compound">BaseSpi</ref> *</type>
@@ -181,7 +181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="100" column="13" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="172" bodyend="176"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="100" column="13" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="174" bodyend="178"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1a313d95a200920d2f5abc67e94c359fca" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="classBaseSpi" kindref="compound">BaseSpi</ref> *</type>
@@ -199,7 +199,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="101" column="19" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="178" bodyend="182"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="101" column="19" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="180" bodyend="184"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1a81d08ab646705ea372874ca8c663367b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>std::size_t</type>
@@ -213,7 +213,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="102" column="17" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="184" bodyend="184"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="102" column="17" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="186" bodyend="186"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1ad8fc3bd4ef289384acf536b01700aa3c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -231,7 +231,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="103" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="186" bodyend="192"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="103" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="188" bodyend="194"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1a285df3f22b4b762454e5ca47af1ad31c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="structhf__spi__bus__config__t" kindref="compound">hf_spi_bus_config_t</ref> &amp;</type>
@@ -245,7 +245,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="104" column="31" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="194" bodyend="194"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="104" column="31" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="196" bodyend="196"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1aeabf2129d32b93d68715d4a1d20e3eee" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>SPI_HandleTypeDef *</type>
@@ -260,7 +260,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="107" column="23" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="196" bodyend="196"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="107" column="23" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="198" bodyend="198"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

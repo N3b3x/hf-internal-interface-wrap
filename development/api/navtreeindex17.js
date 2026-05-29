@@ -1,13 +1,5 @@
 var NAVTREEINDEX17 =
 {
-"structhf__logger__diagnostics__t.html#a50e7c87e64f37a2fbeb55a3bb4b3f9f4":[1,5,4,3],
-"structhf__logger__diagnostics__t.html#a6592e1cfc972ecb2fe31d399efcba081":[1,5,4,2],
-"structhf__logger__diagnostics__t.html#a91eb53511a5f01511f3fca72237ecce1":[1,5,4,8],
-"structhf__logger__diagnostics__t.html#aa136df42009e1c7afe40fe7de0e9ac3b":[1,5,4,6],
-"structhf__logger__diagnostics__t.html#aa15ff8088d73ff83e0840bdb251bec0b":[1,5,4,0],
-"structhf__logger__statistics__t.html":[1,5,3],
-"structhf__logger__statistics__t.html#a0a0e53d5cf43f4b48e7746885653401f":[1,5,3,3],
-"structhf__logger__statistics__t.html#a13db2ecce372067c4864b99ffc990d08":[1,5,3,7],
 "structhf__logger__statistics__t.html#a3287f0ec71c6bc082dd4baccc3617ef8":[1,5,3,1],
 "structhf__logger__statistics__t.html#a55bbd274f7b6705ed635217485370a78":[1,5,3,4],
 "structhf__logger__statistics__t.html#a5653355170f0031678b7110a1d7d8508":[1,5,3,5],
@@ -249,5 +241,13 @@ var NAVTREEINDEX17 =
 "structhf__rmt__transmit__config__t.html#abc3397d22ae6dae15c94dbb66c5d3fed":[3,0,109,4],
 "structhf__rmt__transmit__config__t.html#adebc7682a90a515f170a41ef77fe31c6":[3,0,109,2],
 "structhf__spi__bus__config__t.html":[3,0,110],
-"structhf__spi__bus__config__t.html#a04d96acbe1d41f33abb987ebebbc5b51":[3,0,110,0]
+"structhf__spi__bus__config__t.html#a04d96acbe1d41f33abb987ebebbc5b51":[3,0,110,0],
+"structhf__spi__bus__config__t.html#a04d96acbe1d41f33abb987ebebbc5b51":[3,0,110,1],
+"structhf__spi__bus__config__t.html#a1a89b70d19c0f6aa437a27ce9b4dd98b":[3,0,110,11],
+"structhf__spi__bus__config__t.html#a2447a1a31cf698aead3d668f59ffe162":[3,0,110,10],
+"structhf__spi__bus__config__t.html#a30a9804cc4b3799a4207e669243135ab":[3,0,110,13],
+"structhf__spi__bus__config__t.html#a427b68fc1d80cb6358ddcf2f48505805":[3,0,110,5],
+"structhf__spi__bus__config__t.html#a4bb24c90eae4bccd36ec92595fe70983":[3,0,110,6],
+"structhf__spi__bus__config__t.html#a56f13363406cc28437c24c8745d835ed":[3,0,110,9],
+"structhf__spi__bus__config__t.html#a6b4b995bf3583a1569714b655a4f46b7":[3,0,110,3]
 };

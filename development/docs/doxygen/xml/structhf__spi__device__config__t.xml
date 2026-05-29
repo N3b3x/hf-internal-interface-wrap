@@ -289,7 +289,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="307" column="25" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="307" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="334" column="25" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="334" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1a74b7447d47d3b9dfb732739e82e05b6c" prot="public" static="no" mutable="no">
         <type>GPIO_TypeDef *</type>
@@ -304,7 +304,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="308" column="18" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="308" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="335" column="18" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="335" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1a3da8a2c0078a8906e44588b02c5e7da5" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -319,7 +319,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="309" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="309" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="336" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="336" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1a49f0df49a1753c32b1a6cf4d1bf2c3d2" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -334,7 +334,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="310" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="310" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="337" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="337" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -364,7 +364,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="312" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="312" bodyend="314"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="339" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="339" bodyend="341"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

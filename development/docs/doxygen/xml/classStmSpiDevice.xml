@@ -186,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="56" column="18" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="58" bodyend="99"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="56" column="18" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="58" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiDevice_1a454179a24cf34d9925fb0f72d240280e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>const void *</type>
@@ -205,7 +205,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="59" column="16" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="101" bodyend="103"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="59" column="16" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="103" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiDevice_1a330f2558758a893af42d8efebef57f3f" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="structhf__spi__device__config__t" kindref="compound">hf_spi_device_config_t</ref> &amp;</type>
@@ -237,7 +237,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="66" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="105" bodyend="110"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="66" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="107" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiDevice_1a14982c1b1dac9337631b08722265baeb" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -252,7 +252,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="69" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="112" bodyend="116"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="69" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="114" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiDevice_1a101c3f09a77b3a50575d5c03f8223861" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -271,7 +271,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="72" column="14" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="118" bodyend="122"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="72" column="14" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="120" bodyend="124"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
@@ -292,7 +292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="75" column="25" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="124" bodyend="132"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="75" column="25" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="126" bodyend="134"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

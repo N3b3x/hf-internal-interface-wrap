@@ -216,12 +216,10 @@ var searchData=
   ['gpio_5fisr_5fhandler_5finstalled_5f_213',['gpio_isr_handler_installed_',['../classEspGpio.html#a85ed85c826744590f82101f07aacb69e',1,'EspGpio']]],
   ['gpio_5fisr_5floopback_5fcb_214',['gpio_isr_loopback_cb',['../GpioComprehensiveTest_8cpp.html#a5bc691ca822f61a5969e70fc92daa37d',1,'GpioComprehensiveTest.cpp']]],
   ['gpio_5fpin_215',['gpio_pin',['../structhf__pio__channel__config__t.html#a2e025f966c1f253c2047b1eeee4c9f01',1,'hf_pio_channel_config_t::gpio_pin'],['../structhf__pwm__channel__config__t.html#a79a176f4a93105a6cea52b834202573d',1,'hf_pwm_channel_config_t::gpio_pin']]],
-  ['gpio_5fpin_5freset_5fval_216',['GPIO_PIN_RESET_VAL',['../StmGpio_8cpp.html#a155de852a926b0df258bee5d61220ff7a0bedb42c23457b06ec77b958a4240f7a',1,'StmGpio.cpp']]],
-  ['gpio_5fpin_5fset_5fval_217',['GPIO_PIN_SET_VAL',['../StmGpio_8cpp.html#a155de852a926b0df258bee5d61220ff7a7d600d2d02182ec4f7afd3ff422b1e14',1,'StmGpio.cpp']]],
-  ['gpio_5fsuccess_218',['GPIO_SUCCESS',['../group__gpio.html#gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937',1,'BaseGpio.h']]],
-  ['gpiocomprehensivetest_2ecpp_219',['GpioComprehensiveTest.cpp',['../GpioComprehensiveTest_8cpp.html',1,'']]],
-  ['gpiohealthy_220',['gpioHealthy',['../structhf__gpio__diagnostics__t.html#a5c298feebbd6638ca9f64268e82d6e67',1,'hf_gpio_diagnostics_t']]],
-  ['gpioport_221',['GpioPort',['../namespacehf_1_1stm32.html#a81c3784e1ba0af2272a1cef215e5ee49',1,'hf::stm32']]],
-  ['gpiotoadcchannel_222',['GpioToAdcChannel',['../EspTypes__ADC_8h.html#a533cce13ca00ccf121b42a983444b202',1,'EspTypes_ADC.h']]],
-  ['ground_5ftolerance_5fmv_223',['GROUND_TOLERANCE_MV',['../AdcComprehensiveTest_8cpp.html#a95957d2dd1668840b166b73854056df6',1,'AdcComprehensiveTest.cpp']]]
+  ['gpio_5fsuccess_216',['GPIO_SUCCESS',['../group__gpio.html#gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937',1,'BaseGpio.h']]],
+  ['gpiocomprehensivetest_2ecpp_217',['GpioComprehensiveTest.cpp',['../GpioComprehensiveTest_8cpp.html',1,'']]],
+  ['gpiohealthy_218',['gpioHealthy',['../structhf__gpio__diagnostics__t.html#a5c298feebbd6638ca9f64268e82d6e67',1,'hf_gpio_diagnostics_t']]],
+  ['gpioport_219',['GpioPort',['../namespacehf_1_1stm32.html#a81c3784e1ba0af2272a1cef215e5ee49',1,'hf::stm32']]],
+  ['gpiotoadcchannel_220',['GpioToAdcChannel',['../EspTypes__ADC_8h.html#a533cce13ca00ccf121b42a983444b202',1,'EspTypes_ADC.h']]],
+  ['ground_5ftolerance_5fmv_221',['GROUND_TOLERANCE_MV',['../AdcComprehensiveTest_8cpp.html#a95957d2dd1668840b166b73854056df6',1,'AdcComprehensiveTest.cpp']]]
 ];

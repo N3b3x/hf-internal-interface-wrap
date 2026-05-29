@@ -30,6 +30,12 @@ var StmTypes_8h =
       [ "BUSY", "StmTypes_8h.html#aae908749bc986cae79f7b0240fa24fcea802706a9238e2928077f97736854bad4", null ],
       [ "TIMEOUT", "StmTypes_8h.html#aae908749bc986cae79f7b0240fa24fcea070a0fb40f6c308ab544b227660aadff", null ]
     ] ],
+    [ "hf_gpio_drive_cap_t", "StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95e", [
+      [ "HF_GPIO_DRIVE_CAP_WEAK", "StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95ea6e8cc0febfa6ac679fde1d9c66d57337", null ],
+      [ "HF_GPIO_DRIVE_CAP_MEDIUM", "StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95eaa17918132458975f33a21b703a313b00", null ],
+      [ "HF_GPIO_DRIVE_CAP_STRONG", "StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95eab972c8aa7c03cb32992fc3e9168efa1f", null ],
+      [ "HF_GPIO_DRIVE_CAP_STRONGEST", "StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95eade1fb233e62b1da7a89b6bad3b10f85e", null ]
+    ] ],
     [ "hf_stm32_adc_resolution_t", "StmTypes_8h.html#a827c04686b48b771092c229dad6ae4c6", [
       [ "BITS_6", "StmTypes_8h.html#a827c04686b48b771092c229dad6ae4c6abb2cdb0e9c1b017b6061a4d4c4c63725", null ],
       [ "BITS_8", "StmTypes_8h.html#a827c04686b48b771092c229dad6ae4c6a506328a07de044eef05ac29ed6b48a7e", null ],

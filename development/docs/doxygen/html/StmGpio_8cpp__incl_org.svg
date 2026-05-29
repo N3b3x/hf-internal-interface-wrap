@@ -11,9 +11,9 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="STM32 GPIO wrapper implementation — full STM32 HAL integration.">
-<polygon fill="#999999" stroke="#666666" points="260.46,-259 71.46,-259 71.46,-236 260.46,-236 260.46,-259"/>
-<text text-anchor="middle" x="165.96" y="-243.8" font-family="Arial" font-size="14.00">src/mcu/stm32/StmGpio.cpp</text>
+<g id="a_Node000001"><a xlink:title="STM32 GPIO wrapper — HAL&#45;backed BaseGpio implementation.">
+<polygon fill="#999999" stroke="#666666" points="217.46,-259 28.46,-259 28.46,-236 217.46,-236 217.46,-259"/>
+<text text-anchor="middle" x="122.96" y="-243.8" font-family="Arial" font-size="14.00">src/mcu/stm32/StmGpio.cpp</text>
 </a>
 </g>
 </g>
@@ -30,26 +30,8 @@
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node1&#45;&gt;Node2</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M157.87,-235.78C152.04,-228.06 144.03,-217.43 137.15,-208.31"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="139.83,-206.05 131.01,-200.17 134.24,-210.26 139.83,-206.05"/>
-</a>
-</g>
-</g>
-<!-- Node10 -->
-<g id="Node000010" class="node">
-<title>Node10</title>
-<g id="a_Node000010"><a xlink:title=" ">
-<polygon fill="#e0e0e0" stroke="#999999" points="237.96,-200 181.96,-200 181.96,-177 237.96,-177 237.96,-200"/>
-<text text-anchor="middle" x="209.96" y="-184.8" font-family="Arial" font-size="14.00">cstring</text>
-</a>
-</g>
-</g>
-<!-- Node1&#45;&gt;Node10 -->
-<g id="edge12_Node000001_Node000010" class="edge">
-<title>Node1&#45;&gt;Node10</title>
-<g id="a_edge12_Node000001_Node000010"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M174.23,-235.78C180.2,-228.06 188.4,-217.43 195.44,-208.31"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="198.38,-210.23 201.72,-200.17 192.84,-205.95 198.38,-210.23"/>
+<path fill="none" stroke="#63b8ff" d="M122.96,-235.78C122.96,-228.61 122.96,-218.95 122.96,-210.31"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="126.46,-210.17 122.96,-200.17 119.46,-210.17 126.46,-210.17"/>
 </a>
 </g>
 </g>

@@ -3302,9 +3302,6 @@
     <member refid="namespaceanonymous__namespace_02StmGpio_8cpp_03_1a039bf1f6c2fe443fd023cab9064b2ac7" kind="variable"><name>kGpioModeInput</name></member>
     <member refid="namespaceanonymous__namespace_02StmGpio_8cpp_03_1a596e0a38eeae496754ebed50e8130980" kind="variable"><name>kGpioModeOutputPP</name></member>
     <member refid="namespaceanonymous__namespace_02StmGpio_8cpp_03_1a639868af67a3cc03f09c5229e84cab6c" kind="variable"><name>kGpioModeOutputOD</name></member>
-    <member refid="namespaceanonymous__namespace_02StmGpio_8cpp_03_1ace39575c11102583e690ea3b5ae45703" kind="variable"><name>kGpioModeItRising</name></member>
-    <member refid="namespaceanonymous__namespace_02StmGpio_8cpp_03_1a42ad3d2dc5c068991ff999b776fbefd3" kind="variable"><name>kGpioModeItFalling</name></member>
-    <member refid="namespaceanonymous__namespace_02StmGpio_8cpp_03_1a75af5da77e5d4ec72a997c78ff210883" kind="variable"><name>kGpioModeItRisFall</name></member>
     <member refid="namespaceanonymous__namespace_02StmGpio_8cpp_03_1a9a0a73d5daaebb968f6a2e0efed7588c" kind="variable"><name>kGpioPullNone</name></member>
     <member refid="namespaceanonymous__namespace_02StmGpio_8cpp_03_1aef84364fe0a722b1a2fa98a723dbfbab" kind="variable"><name>kGpioPullUp</name></member>
     <member refid="namespaceanonymous__namespace_02StmGpio_8cpp_03_1ab4ddb049348a4b0ee3ea6e477290aa00" kind="variable"><name>kGpioPullDown</name></member>
@@ -5362,6 +5359,11 @@
     <member refid="StmTemperature_8h_1a3171edb2ca9f73177f41c30dec7b0460" kind="typedef"><name>hf_stm32_temp_convert_fn</name></member>
   </compound>
   <compound refid="StmTypes_8h" kind="file"><name>StmTypes.h</name>
+    <member refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95e" kind="enum"><name>hf_gpio_drive_cap_t</name></member>
+    <member refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95ea6e8cc0febfa6ac679fde1d9c66d57337" kind="enumvalue"><name>HF_GPIO_DRIVE_CAP_WEAK</name></member>
+    <member refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95eaa17918132458975f33a21b703a313b00" kind="enumvalue"><name>HF_GPIO_DRIVE_CAP_MEDIUM</name></member>
+    <member refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95eab972c8aa7c03cb32992fc3e9168efa1f" kind="enumvalue"><name>HF_GPIO_DRIVE_CAP_STRONG</name></member>
+    <member refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95eade1fb233e62b1da7a89b6bad3b10f85e" kind="enumvalue"><name>HF_GPIO_DRIVE_CAP_STRONGEST</name></member>
     <member refid="StmTypes_8h_1abb63264b5f2de7b6d830732e0c336657" kind="enum"><name>hf_stm32_i2c_addr_mode_t</name></member>
     <member refid="StmTypes_8h_1abb63264b5f2de7b6d830732e0c336657addc51db6e812e4d01dbad122111e2609" kind="enumvalue"><name>ADDR_7BIT</name></member>
     <member refid="StmTypes_8h_1abb63264b5f2de7b6d830732e0c336657a37a6de32cfa70151c87ede4c8ae1662b" kind="enumvalue"><name>ADDR_10BIT</name></member>
@@ -5503,16 +5505,9 @@
     <member refid="StmCan_8cpp_1af2c4f03d53e997a54e1fd5e80daa55c4" kind="function"><name>HAL_GetTick</name></member>
   </compound>
   <compound refid="StmGpio_8cpp" kind="file"><name>StmGpio.cpp</name>
-    <member refid="StmGpio_8cpp_1a155de852a926b0df258bee5d61220ff7" kind="enum"><name>HF_GPIO_PinState</name></member>
-    <member refid="StmGpio_8cpp_1a155de852a926b0df258bee5d61220ff7a0bedb42c23457b06ec77b958a4240f7a" kind="enumvalue"><name>GPIO_PIN_RESET_VAL</name></member>
-    <member refid="StmGpio_8cpp_1a155de852a926b0df258bee5d61220ff7a7d600d2d02182ec4f7afd3ff422b1e14" kind="enumvalue"><name>GPIO_PIN_SET_VAL</name></member>
     <member refid="StmGpio_8cpp_1a9f241c220c67a70e5cdc67b5cac648fb" kind="function"><name>HAL_GPIO_ReadPin</name></member>
     <member refid="StmGpio_8cpp_1aa8ddee65ae45981737ec31c1424022b5" kind="function"><name>HAL_GPIO_WritePin</name></member>
-    <member refid="StmGpio_8cpp_1af5e0c89f752de5cdedcc30db068133f6" kind="function"><name>HAL_GPIO_TogglePin</name></member>
     <member refid="StmGpio_8cpp_1a351bd3cea9f43656064a98016a3c9664" kind="function"><name>HAL_GPIO_Init</name></member>
-    <member refid="StmGpio_8cpp_1a0eefe6d6b0f0753c72c5c333677013d3" kind="function"><name>HAL_NVIC_EnableIRQ</name></member>
-    <member refid="StmGpio_8cpp_1aab415dab1142deed48fc75d1a2d8729d" kind="function"><name>HAL_NVIC_DisableIRQ</name></member>
-    <member refid="StmGpio_8cpp_1a3ac6af050976f1712d208b7d9ffd10b6" kind="function"><name>HAL_NVIC_SetPriority</name></member>
   </compound>
   <compound refid="StmI2c_8cpp" kind="file"><name>StmI2c.cpp</name>
     <member refid="StmI2c_8cpp_1a3d5459ec40e39a419a2e5f434e699a59" kind="function"><name>HAL_I2C_Master_Transmit</name></member>

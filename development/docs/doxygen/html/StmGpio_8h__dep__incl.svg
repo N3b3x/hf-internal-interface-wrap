@@ -30,7 +30,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="StmGpio_8cpp.html" target="_top" xlink:title="STM32 GPIO wrapper implementation — full STM32 HAL integration.">
+<g id="a_Node000002"><a xlink:href="StmGpio_8cpp.html" target="_top" xlink:title="STM32 GPIO wrapper — HAL&#45;backed BaseGpio implementation.">
 <polygon fill="white" stroke="#666666" points="189,-23 0,-23 0,0 189,0 189,-23"/>
 <text text-anchor="middle" x="94.5" y="-7.8" font-family="Arial" font-size="14.00">src/mcu/stm32/StmGpio.cpp</text>
 </a>

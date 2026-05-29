@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="480" column="23" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="480" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="507" column="23" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="507" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__stm32__timer__config__t_1aab61df643ca1d0de9376844335d85a9a" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="481" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="481" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="508" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="508" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__stm32__timer__config__t_1ae2f2e876fade1a71ef99dd0efb941a14" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="482" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="482" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="509" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="509" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="484" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="484" bodyend="485"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="511" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="511" bodyend="512"/>
       </memberdef>
       <memberdef kind="function" id="structhf__stm32__timer__config__t_1a9e769fb778b1634d13dd09aa4553d56d" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="487" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="487" bodyend="488"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="514" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="514" bodyend="515"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -89,7 +89,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/mcu/stm32/StmTypes.h" line="479" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="479" bodyend="489"/>
+    <location file="inc/mcu/stm32/StmTypes.h" line="506" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="506" bodyend="516"/>
     <listofallmembers>
       <member refid="structhf__stm32__timer__config__t_1a69fc4e3068fd5356d1bc56d8b5f9f2a5" prot="public" virt="non-virtual"><scope>hf_stm32_timer_config_t</scope><name>hal_handle</name></member>
       <member refid="structhf__stm32__timer__config__t_1ad899c38f4b36f5ff3c24711cbd32b67b" prot="public" virt="non-virtual"><scope>hf_stm32_timer_config_t</scope><name>hf_stm32_timer_config_t</name></member>

@@ -142,11 +142,11 @@ $(function(){initNavTree('EspTypes__GPIO_8h_source.html',''); initResizable(); }
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  HF_GPIO_INTR_HIGH_LEVEL = 5 </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>};</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keyword">enum class</span> hf_gpio_drive_cap_t : uint8_t {</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  HF_GPIO_DRIVE_CAP_WEAK = 0,     </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95e">hf_gpio_drive_cap_t</a> : uint8_t {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  <a class="code hl_enumvalue" href="StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95ea6e8cc0febfa6ac679fde1d9c66d57337">HF_GPIO_DRIVE_CAP_WEAK</a> = 0,     </div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  HF_GPIO_DRIVE_CAP_STRONGER = 1, </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  HF_GPIO_DRIVE_CAP_MEDIUM = 2,   </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  HF_GPIO_DRIVE_CAP_STRONGEST = 3 </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <a class="code hl_enumvalue" href="StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95eaa17918132458975f33a21b703a313b00">HF_GPIO_DRIVE_CAP_MEDIUM</a> = 2,   </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <a class="code hl_enumvalue" href="StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95eade1fb233e62b1da7a89b6bad3b10f85e">HF_GPIO_DRIVE_CAP_STRONGEST</a> = 3 </div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>};</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="keyword">enum class</span> hf_rtc_gpio_mode_t : uint8_t {</div>
@@ -178,7 +178,7 @@ $(function(){initNavTree('EspTypes__GPIO_8h_source.html',''); initResizable(); }
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="keyword">struct </span>hf_lp_io_config_t {</div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  hf_gpio_mode_t mode;                </div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>  hf_gpio_pull_t pull_mode;           </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  hf_gpio_drive_cap_t drive_strength; </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  <a class="code hl_enumeration" href="StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95e">hf_gpio_drive_cap_t</a> drive_strength; </div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  <span class="keywordtype">bool</span> input_enable;                  </div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  <span class="keywordtype">bool</span> output_enable;                 </div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <span class="keywordtype">bool</span> hold_enable;                   </div>
@@ -201,7 +201,7 @@ $(function(){initNavTree('EspTypes__GPIO_8h_source.html',''); initResizable(); }
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>  hf_gpio_mode_t sleep_mode;                </div>
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  hf_gpio_mode_t sleep_direction;           </div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  hf_gpio_pull_t sleep_pull_mode;           </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>  hf_gpio_drive_cap_t sleep_drive_strength; </div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>  <a class="code hl_enumeration" href="StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95e">hf_gpio_drive_cap_t</a> sleep_drive_strength; </div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  <span class="keywordtype">bool</span> sleep_output_enable;                 </div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>  <span class="keywordtype">bool</span> sleep_input_enable;                  </div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>  <span class="keywordtype">bool</span> hold_during_sleep;                   </div>
@@ -225,7 +225,7 @@ $(function(){initNavTree('EspTypes__GPIO_8h_source.html',''); initResizable(); }
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>  hf_gpio_mode_t mode;                             </div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>  hf_gpio_pull_t pull_mode;                        </div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>  hf_gpio_intr_type_t intr_type;                   </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>  hf_gpio_drive_cap_t drive_strength;              </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>  <a class="code hl_enumeration" href="StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95e">hf_gpio_drive_cap_t</a> drive_strength;              </div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>  hf_gpio_glitch_filter_type_t glitch_filter_type; </div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>  hf_gpio_flex_filter_config_t flex_filter_config; </div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>  hf_gpio_pin_filter_config_t pin_filter_config;   </div>
@@ -239,7 +239,7 @@ $(function(){initNavTree('EspTypes__GPIO_8h_source.html',''); initResizable(); }
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>  uint8_t pin_number;                       </div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>  hf_gpio_mode_t current_mode;              </div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>  hf_gpio_pull_t current_pull_mode;         </div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>  hf_gpio_drive_cap_t current_drive_cap;    </div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>  <a class="code hl_enumeration" href="StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95e">hf_gpio_drive_cap_t</a> current_drive_cap;    </div>
 <div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>  hf_gpio_intr_type_t interrupt_type;       </div>
 <div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>  <span class="keywordtype">bool</span> input_enabled;                       </div>
 <div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>  <span class="keywordtype">bool</span> output_enabled;                      </div>
@@ -412,7 +412,7 @@ $(function(){initNavTree('EspTypes__GPIO_8h_source.html',''); initResizable(); }
 <div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span> </div>
 <div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>hf_gpio_config_result_t hf_gpio_validate_config(<span class="keyword">const</span> hf_gpio_advanced_config_t* config);</div>
 <div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span> </div>
-<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>hf_gpio_drive_cap_t hf_gpio_get_optimal_drive_strength(uint32_t frequency_hz, uint8_t gpio_num);</div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span><a class="code hl_enumeration" href="StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95e">hf_gpio_drive_cap_t</a> hf_gpio_get_optimal_drive_strength(uint32_t frequency_hz, uint8_t gpio_num);</div>
 <div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span> </div>
 <div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span>uint32_t hf_gpio_calc_glitch_filter_window(uint32_t noise_duration_ns,</div>
 <div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>                                           uint8_t safety_margin_percent);</div>
@@ -505,6 +505,10 @@ $(function(){initNavTree('EspTypes__GPIO_8h_source.html',''); initResizable(); }
 <div class="ttc" id="aHardwareTypes_8h_html"><div class="ttname"><a href="HardwareTypes_8h.html">HardwareTypes.h</a></div><div class="ttdoc">Platform-agnostic hardware type definitions for the HardFOC system.</div></div>
 <div class="ttc" id="aHardwareTypes_8h_html_a60a0d0e5d76ed481be9bf64c307520f9"><div class="ttname"><a href="HardwareTypes_8h.html#a60a0d0e5d76ed481be9bf64c307520f9">hf_pin_num_t</a></div><div class="ttdeci">hf_i32_t hf_pin_num_t</div><div class="ttdoc">Platform-agnostic GPIO pin number type.</div><div class="ttdef"><b>Definition</b> HardwareTypes.h:99</div></div>
 <div class="ttc" id="aMcuSelect_8h_html"><div class="ttname"><a href="McuSelect_8h.html">McuSelect.h</a></div><div class="ttdoc">Centralized MCU platform selection and configuration header.</div></div>
+<div class="ttc" id="aStmTypes_8h_html_ae953cb6bbaf217ec4a1258d4bd59f95e"><div class="ttname"><a href="StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95e">hf_gpio_drive_cap_t</a></div><div class="ttdeci">hf_gpio_drive_cap_t</div><div class="ttdoc">STM32 GPIO output drive strength (subset aligned with EspTypes_GPIO).</div><div class="ttdef"><b>Definition</b> StmTypes.h:86</div></div>
+<div class="ttc" id="aStmTypes_8h_html_ae953cb6bbaf217ec4a1258d4bd59f95ea6e8cc0febfa6ac679fde1d9c66d57337"><div class="ttname"><a href="StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95ea6e8cc0febfa6ac679fde1d9c66d57337">hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_WEAK</a></div><div class="ttdeci">@ HF_GPIO_DRIVE_CAP_WEAK</div></div>
+<div class="ttc" id="aStmTypes_8h_html_ae953cb6bbaf217ec4a1258d4bd59f95eaa17918132458975f33a21b703a313b00"><div class="ttname"><a href="StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95eaa17918132458975f33a21b703a313b00">hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM</a></div><div class="ttdeci">@ HF_GPIO_DRIVE_CAP_MEDIUM</div></div>
+<div class="ttc" id="aStmTypes_8h_html_ae953cb6bbaf217ec4a1258d4bd59f95eade1fb233e62b1da7a89b6bad3b10f85e"><div class="ttname"><a href="StmTypes_8h.html#ae953cb6bbaf217ec4a1258d4bd59f95eade1fb233e62b1da7a89b6bad3b10f85e">hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGEST</a></div><div class="ttdeci">@ HF_GPIO_DRIVE_CAP_STRONGEST</div></div>
 <div class="ttc" id="agroup__gpio_html_gga2632aac2351807c35e790ec20bda305da60701f049c086b44b9b07455b31b32d4"><div class="ttname"><a href="group__gpio.html#gga2632aac2351807c35e790ec20bda305da60701f049c086b44b9b07455b31b32d4">hf_gpio_err_t::GPIO_ERR_TIMEOUT</a></div><div class="ttdeci">@ GPIO_ERR_TIMEOUT</div></div>
 <div class="ttc" id="agroup__gpio_html_gga2632aac2351807c35e790ec20bda305da88adf359e7e9360c9b7a03ca100ce46b"><div class="ttname"><a href="group__gpio.html#gga2632aac2351807c35e790ec20bda305da88adf359e7e9360c9b7a03ca100ce46b">hf_gpio_err_t::GPIO_ERR_INVALID_ARG</a></div><div class="ttdeci">@ GPIO_ERR_INVALID_ARG</div></div>
 <div class="ttc" id="agroup__gpio_html_gga2632aac2351807c35e790ec20bda305dad0dedbb315ad871e12c7da9e293a37dd"><div class="ttname"><a href="group__gpio.html#gga2632aac2351807c35e790ec20bda305dad0dedbb315ad871e12c7da9e293a37dd">hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED</a></div><div class="ttdeci">@ GPIO_ERR_NOT_SUPPORTED</div></div>

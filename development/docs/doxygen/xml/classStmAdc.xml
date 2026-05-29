@@ -246,7 +246,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmAdc.h" line="60" column="18" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="83" bodyend="109"/>
+        <location file="inc/mcu/stm32/StmAdc.h" line="60" column="18" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="83" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1a521d82bd23bd0e474acbf0fa7552ea84" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -316,7 +316,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmAdc.h" line="64" column="18" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="111" bodyend="136"/>
+        <location file="inc/mcu/stm32/StmAdc.h" line="64" column="18" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="112" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1ad29fe9f5de756d6ea75cf7f0f4898a03" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -398,7 +398,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmAdc.h" line="68" column="18" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="138" bodyend="149"/>
+        <location file="inc/mcu/stm32/StmAdc.h" line="68" column="18" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="140" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1a4a3ab5e2ba045538e61444c6bbb3e49a" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>ADC_HandleTypeDef *</type>
@@ -443,7 +443,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmAdc.h" line="81" column="13" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="155" bodyend="157"/>
+        <location file="inc/mcu/stm32/StmAdc.h" line="81" column="13" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="157" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1a7598441d585c4e275fa99da7724d6593" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -458,7 +458,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmAdc.h" line="84" column="14" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="159" bodyend="161"/>
+        <location file="inc/mcu/stm32/StmAdc.h" line="84" column="14" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="161" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1a6d5db74ebfc1eed67933bb9f2d297c12" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>float</type>
@@ -477,7 +477,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmAdc.h" line="87" column="11" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="163" bodyend="167"/>
+        <location file="inc/mcu/stm32/StmAdc.h" line="87" column="11" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="165" bodyend="169"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -498,7 +498,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmAdc.h" line="91" column="18" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="173" bodyend="194"/>
+        <location file="inc/mcu/stm32/StmAdc.h" line="91" column="18" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="175" bodyend="196"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
@@ -519,7 +519,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmAdc.h" line="94" column="25" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="196" bodyend="204"/>
+        <location file="inc/mcu/stm32/StmAdc.h" line="94" column="25" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="198" bodyend="206"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

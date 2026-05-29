@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmGpio.cpp" line="52" column="24" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="52" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmGpio.cpp" line="23" column="20" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="23" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmGpio_8cpp_03_1a596e0a38eeae496754ebed50e8130980" prot="public" static="no" constexpr="yes" mutable="no">
         <type>constexpr uint32_t</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmGpio.cpp" line="53" column="24" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="53" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmGpio.cpp" line="24" column="20" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmGpio_8cpp_03_1a639868af67a3cc03f09c5229e84cab6c" prot="public" static="no" constexpr="yes" mutable="no">
         <type>constexpr uint32_t</type>
@@ -46,52 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmGpio.cpp" line="54" column="24" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmGpio_8cpp_03_1ace39575c11102583e690ea3b5ae45703" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
-        <definition>constexpr uint32_t anonymous_namespace{StmGpio.cpp}::kGpioModeItRising</definition>
-        <argsstring></argsstring>
-        <name>kGpioModeItRising</name>
-        <qualifiedname>anonymous_namespace{StmGpio.cpp}::kGpioModeItRising</qualifiedname>
-        <initializer>= 0x10110000U</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/mcu/stm32/StmGpio.cpp" line="55" column="24" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmGpio_8cpp_03_1a42ad3d2dc5c068991ff999b776fbefd3" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
-        <definition>constexpr uint32_t anonymous_namespace{StmGpio.cpp}::kGpioModeItFalling</definition>
-        <argsstring></argsstring>
-        <name>kGpioModeItFalling</name>
-        <qualifiedname>anonymous_namespace{StmGpio.cpp}::kGpioModeItFalling</qualifiedname>
-        <initializer>= 0x10210000U</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/mcu/stm32/StmGpio.cpp" line="56" column="24" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmGpio_8cpp_03_1a75af5da77e5d4ec72a997c78ff210883" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
-        <definition>constexpr uint32_t anonymous_namespace{StmGpio.cpp}::kGpioModeItRisFall</definition>
-        <argsstring></argsstring>
-        <name>kGpioModeItRisFall</name>
-        <qualifiedname>anonymous_namespace{StmGpio.cpp}::kGpioModeItRisFall</qualifiedname>
-        <initializer>= 0x10310000U</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/mcu/stm32/StmGpio.cpp" line="57" column="24" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="57" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmGpio.cpp" line="25" column="20" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmGpio_8cpp_03_1a9a0a73d5daaebb968f6a2e0efed7588c" prot="public" static="no" constexpr="yes" mutable="no">
         <type>constexpr uint32_t</type>
@@ -106,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmGpio.cpp" line="59" column="24" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="59" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmGpio.cpp" line="27" column="20" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmGpio_8cpp_03_1aef84364fe0a722b1a2fa98a723dbfbab" prot="public" static="no" constexpr="yes" mutable="no">
         <type>constexpr uint32_t</type>
@@ -121,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmGpio.cpp" line="60" column="24" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="60" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmGpio.cpp" line="28" column="20" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmGpio_8cpp_03_1ab4ddb049348a4b0ee3ea6e477290aa00" prot="public" static="no" constexpr="yes" mutable="no">
         <type>constexpr uint32_t</type>
@@ -136,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmGpio.cpp" line="61" column="24" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="61" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmGpio.cpp" line="29" column="20" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmGpio_8cpp_03_1ad9a7afbe460c7832a8ee20986d8a516d" prot="public" static="no" constexpr="yes" mutable="no">
         <type>constexpr uint32_t</type>
@@ -151,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmGpio.cpp" line="63" column="24" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="63" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmGpio.cpp" line="31" column="20" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmGpio_8cpp_03_1a7ebb87bc0ef65c74b5179859e7581a82" prot="public" static="no" constexpr="yes" mutable="no">
         <type>constexpr uint32_t</type>
@@ -166,7 +121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmGpio.cpp" line="64" column="24" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="64" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmGpio.cpp" line="32" column="20" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmGpio_8cpp_03_1ae3a109a152e624d7e22bcb82e9ae8aa4" prot="public" static="no" constexpr="yes" mutable="no">
         <type>constexpr uint32_t</type>
@@ -181,7 +136,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmGpio.cpp" line="65" column="24" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="65" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmGpio.cpp" line="33" column="20" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmGpio_8cpp_03_1a79d0c8643c52418574fa734a1408ff63" prot="public" static="no" constexpr="yes" mutable="no">
         <type>constexpr uint32_t</type>
@@ -196,13 +151,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmGpio.cpp" line="66" column="24" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="66" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmGpio.cpp" line="34" column="20" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="34" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/mcu/stm32/StmGpio.cpp" line="51" column="1"/>
+    <location file="src/mcu/stm32/StmGpio.cpp" line="22" column="1"/>
   </compounddef>
 </doxygen>

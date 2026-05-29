@@ -208,7 +208,6 @@ var menudata={children:[
 {text:"s",url:"globals_enum.html#index_s"}]},
 {text:"Enumerator",url:"globals_eval.html",children:[
 {text:"e",url:"globals_eval.html#index_e"},
-{text:"g",url:"globals_eval.html#index_g"},
 {text:"h",url:"globals_eval.html#index_h"},
 {text:"t",url:"globals_eval.html#index_t"}]},
 {text:"Macros",url:"globals_defs.html",children:[

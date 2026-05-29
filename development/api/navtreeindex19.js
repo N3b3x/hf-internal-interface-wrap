@@ -1,13 +1,5 @@
 var NAVTREEINDEX19 =
 {
-"structhf__uart__flow__config__t.html#ac804663a1b85286b2d36ce6a12c954bc":[3,0,133,6],
-"structhf__uart__flow__config__t.html#ae28a9b34c306c4d888135506e5947fef":[3,0,133,1],
-"structhf__uart__flow__config__t.html#ae417f407dde36d36f13474bd4b23439c":[3,0,133,0],
-"structhf__uart__irda__config__t.html":[3,0,134],
-"structhf__uart__irda__config__t.html#a17330d5b407ec971f1e5a0177c2927a5":[3,0,134,1],
-"structhf__uart__irda__config__t.html#a2e3ace6d1a0f3dd70638bee8aaae8b8f":[3,0,134,2],
-"structhf__uart__irda__config__t.html#a3dcfcc6d5e0ccc88d88af22818bec340":[3,0,134,4],
-"structhf__uart__irda__config__t.html#aa8cdfbead9d674f0525ba236c10848c4":[3,0,134,3],
 "structhf__uart__irda__config__t.html#ad6610bdb4244e2a4cb41582ce70cc97e":[3,0,134,0],
 "structhf__uart__pattern__config__t.html":[3,0,135],
 "structhf__uart__pattern__config__t.html#a0277bcf7ef024d676ad6eb6561bbe695":[3,0,135,5],

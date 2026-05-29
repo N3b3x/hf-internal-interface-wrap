@@ -363,11 +363,11 @@
 <codeline lineno="67"><highlight class="normal"><sp/><sp/>HF_GPIO_INTR_HIGH_LEVEL<sp/>=<sp/>5<sp/></highlight></codeline>
 <codeline lineno="68"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/>hf_gpio_drive_cap_t<sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/>HF_GPIO_DRIVE_CAP_WEAK<sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95e" kindref="member">hf_gpio_drive_cap_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><ref refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95ea6e8cc0febfa6ac679fde1d9c66d57337" kindref="member">HF_GPIO_DRIVE_CAP_WEAK</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/>HF_GPIO_DRIVE_CAP_STRONGER<sp/>=<sp/>1,<sp/></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/>HF_GPIO_DRIVE_CAP_MEDIUM<sp/>=<sp/>2,<sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/>HF_GPIO_DRIVE_CAP_STRONGEST<sp/>=<sp/>3<sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95eaa17918132458975f33a21b703a313b00" kindref="member">HF_GPIO_DRIVE_CAP_MEDIUM</ref><sp/>=<sp/>2,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95eade1fb233e62b1da7a89b6bad3b10f85e" kindref="member">HF_GPIO_DRIVE_CAP_STRONGEST</ref><sp/>=<sp/>3<sp/></highlight></codeline>
 <codeline lineno="79"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/>hf_rtc_gpio_mode_t<sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
@@ -399,7 +399,7 @@
 <codeline lineno="123"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">hf_lp_io_config_t<sp/>{</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/>hf_gpio_mode_t<sp/>mode;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/>hf_gpio_pull_t<sp/>pull_mode;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/>hf_gpio_drive_cap_t<sp/>drive_strength;<sp/></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><ref refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95e" kindref="member">hf_gpio_drive_cap_t</ref><sp/>drive_strength;<sp/></highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>input_enable;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>output_enable;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>hold_enable;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
@@ -422,7 +422,7 @@
 <codeline lineno="158"><highlight class="normal"><sp/><sp/>hf_gpio_mode_t<sp/>sleep_mode;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="159"><highlight class="normal"><sp/><sp/>hf_gpio_mode_t<sp/>sleep_direction;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="160"><highlight class="normal"><sp/><sp/>hf_gpio_pull_t<sp/>sleep_pull_mode;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/>hf_gpio_drive_cap_t<sp/>sleep_drive_strength;<sp/></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><ref refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95e" kindref="member">hf_gpio_drive_cap_t</ref><sp/>sleep_drive_strength;<sp/></highlight></codeline>
 <codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>sleep_output_enable;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>sleep_input_enable;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>hold_during_sleep;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
@@ -446,7 +446,7 @@
 <codeline lineno="190"><highlight class="normal"><sp/><sp/>hf_gpio_mode_t<sp/>mode;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="191"><highlight class="normal"><sp/><sp/>hf_gpio_pull_t<sp/>pull_mode;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="192"><highlight class="normal"><sp/><sp/>hf_gpio_intr_type_t<sp/>intr_type;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/>hf_gpio_drive_cap_t<sp/>drive_strength;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><ref refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95e" kindref="member">hf_gpio_drive_cap_t</ref><sp/>drive_strength;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="194"><highlight class="normal"><sp/><sp/>hf_gpio_glitch_filter_type_t<sp/>glitch_filter_type;<sp/></highlight></codeline>
 <codeline lineno="195"><highlight class="normal"><sp/><sp/>hf_gpio_flex_filter_config_t<sp/>flex_filter_config;<sp/></highlight></codeline>
 <codeline lineno="196"><highlight class="normal"><sp/><sp/>hf_gpio_pin_filter_config_t<sp/>pin_filter_config;<sp/><sp/><sp/></highlight></codeline>
@@ -460,7 +460,7 @@
 <codeline lineno="208"><highlight class="normal"><sp/><sp/>uint8_t<sp/>pin_number;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="209"><highlight class="normal"><sp/><sp/>hf_gpio_mode_t<sp/>current_mode;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="210"><highlight class="normal"><sp/><sp/>hf_gpio_pull_t<sp/>current_pull_mode;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/>hf_gpio_drive_cap_t<sp/>current_drive_cap;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><ref refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95e" kindref="member">hf_gpio_drive_cap_t</ref><sp/>current_drive_cap;<sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="212"><highlight class="normal"><sp/><sp/>hf_gpio_intr_type_t<sp/>interrupt_type;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>input_enabled;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="214"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>output_enabled;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
@@ -633,7 +633,7 @@
 <codeline lineno="419"><highlight class="normal"></highlight></codeline>
 <codeline lineno="425"><highlight class="normal">hf_gpio_config_result_t<sp/>hf_gpio_validate_config(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>hf_gpio_advanced_config_t*<sp/>config);</highlight></codeline>
 <codeline lineno="426"><highlight class="normal"></highlight></codeline>
-<codeline lineno="433"><highlight class="normal">hf_gpio_drive_cap_t<sp/>hf_gpio_get_optimal_drive_strength(uint32_t<sp/>frequency_hz,<sp/>uint8_t<sp/>gpio_num);</highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><ref refid="StmTypes_8h_1ae953cb6bbaf217ec4a1258d4bd59f95e" kindref="member">hf_gpio_drive_cap_t</ref><sp/>hf_gpio_get_optimal_drive_strength(uint32_t<sp/>frequency_hz,<sp/>uint8_t<sp/>gpio_num);</highlight></codeline>
 <codeline lineno="434"><highlight class="normal"></highlight></codeline>
 <codeline lineno="441"><highlight class="normal">uint32_t<sp/>hf_gpio_calc_glitch_filter_window(uint32_t<sp/>noise_duration_ns,</highlight></codeline>
 <codeline lineno="442"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>safety_margin_percent);</highlight></codeline>

@@ -174,7 +174,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="55" column="14" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="37" bodyend="49"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="55" column="14" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="37" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1aec7905feea3b210ced450761f89d2862" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -188,7 +188,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="58" column="5" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="51" bodyend="53"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="58" column="5" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="47" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1aaf64aac4ece7c73b0815e28a749a1b0d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -207,7 +207,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="62" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="59" bodyend="80"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="62" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="55" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1aa3c53acfbe0d42730c0b17a218273131" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -226,7 +226,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="63" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="82" bodyend="90"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="63" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="78" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a972ac2246d561ede81b3855ea1832122" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -270,7 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="65" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="96" bodyend="105"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="65" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="92" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a24f68fe26b2344cbd2bf817095407a45" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -314,7 +314,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="66" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="107" bodyend="119"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="66" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="103" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a0b4bf4ceacb6f2011bc0a0713415fc70" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -358,7 +358,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="68" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="121" bodyend="133"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="68" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="117" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1ad2f72c91b0926ad9d6390fb1fb9172f9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -427,7 +427,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="69" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="135" bodyend="153"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="69" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="131" bodyend="149"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a4c90c0fadacf110413b37debf4effe0e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -483,7 +483,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="72" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="155" bodyend="165"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="72" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="151" bodyend="161"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a7692514b5c591e201d9e84ea7a9900b6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -552,7 +552,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="73" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="167" bodyend="184"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="73" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="163" bodyend="180"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a6c3d4484e78bf018fff0062902518e26" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -584,7 +584,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="76" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="186" bodyend="196"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="76" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="182" bodyend="192"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a4927951d09db18d392b6b6593809b0ac" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -603,7 +603,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="77" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="198" bodyend="201"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="77" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="194" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a8a8abfb797fa5369d790a1e74501ec26" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -635,7 +635,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="78" column="10" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="203" bodyend="207"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="78" column="10" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="199" bodyend="203"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1ac2993ecb7b30a7dda594c510d8f533b1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -679,7 +679,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="79" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="209" bodyend="218"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="79" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="205" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a8dae94d149b877cb11f42860f3506ada" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>const char *</type>
@@ -698,7 +698,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="81" column="16" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="220" bodyend="222"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="81" column="16" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="216" bodyend="218"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a65148f056f3bde8f09e618fd8d2a256e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>size_t</type>
@@ -717,7 +717,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="82" column="12" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="224" bodyend="226"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="82" column="12" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="220" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1a958e824edad543dbb63d1bff36a1c019" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>size_t</type>
@@ -736,7 +736,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="83" column="12" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="228" bodyend="230"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="83" column="12" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="224" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1aac8319f591df1a405288b78bcbad42f7" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="structhf__stm32__nvs__config__t" kindref="compound">hf_stm32_nvs_config_t</ref> &amp;</type>
@@ -781,7 +781,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="94" column="12" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="232" bodyend="234"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="94" column="12" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="228" bodyend="230"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -824,7 +824,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="124" column="9" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="240" bodyend="247"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="124" column="9" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="236" bodyend="243"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1af584c17c3ecef3252cf70f79139dab40" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>int</type>
@@ -855,7 +855,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="127" column="9" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="249" bodyend="268"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="127" column="9" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="245" bodyend="264"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1ae1e449321a8d845bf60c4e323072f3e1" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -874,7 +874,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="131" column="10" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="270" bodyend="274"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="131" column="10" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="266" bodyend="270"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1af0b253a0dd2df51a284a60e1a1e27b15" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -889,7 +889,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="134" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="276" bodyend="346"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="134" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="272" bodyend="342"/>
       </memberdef>
       <memberdef kind="function" id="classStmNvs_1ae6c999eca920d0590c0d544a923823d0" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -904,7 +904,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="137" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="348" bodyend="399"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="137" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="344" bodyend="395"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
@@ -929,7 +929,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="140" column="21" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="401" bodyend="412"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="140" column="21" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="397" bodyend="408"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

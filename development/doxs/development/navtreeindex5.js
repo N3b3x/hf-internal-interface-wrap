@@ -1,10 +1,5 @@
 var NAVTREEINDEX5 =
 {
-"classBaseI2c.html#a211b5abbe37a9905cf74312799eca5d4":[1,4,2,10],
-"classBaseI2c.html#a2a96e596e8d83320c7f8d943119eef38":[1,4,2,5],
-"classBaseI2c.html#a2caa8cbbbdda3f001603da5bc8bc5913":[1,4,2,30],
-"classBaseI2c.html#a35f3b7343c0e4ace25937060f39d44be":[1,4,2,6],
-"classBaseI2c.html#a53ffda673e3b0774c31da385b27a7c3f":[1,4,2,4],
 "classBaseI2c.html#a58da16ee4e2762bed7b2541491b3147b":[1,4,2,26],
 "classBaseI2c.html#a68bbbd82d13bbe905659d10648843a5e":[1,4,2,27],
 "classBaseI2c.html#a6c002a6a3a2ab1d9616fd8dad1f9c8e7":[1,4,2,9],
@@ -249,5 +244,10 @@ var NAVTREEINDEX5 =
 "classBaseTemperature.html#a4c7e87e941472fb7ac52f50da519d2ec":[1,11,2,27],
 "classBaseTemperature.html#a4d84a21b7f330d3bc80accbd9f26b1c7":[1,11,2,3],
 "classBaseTemperature.html#a52a0318d160c45fdee55b15d7148856c":[1,11,2,11],
-"classBaseTemperature.html#a5362eaf0cb2478a4e060d8dfca70f3c8":[1,11,2,16]
+"classBaseTemperature.html#a5362eaf0cb2478a4e060d8dfca70f3c8":[1,11,2,16],
+"classBaseTemperature.html#a55f58d0cccee590dd10e55c2668e7f0b":[1,11,2,12],
+"classBaseTemperature.html#a5c12d4ab74621f885e61c070ab854530":[1,11,2,32],
+"classBaseTemperature.html#a65964a104b3cb9b9c737819810f0a20b":[1,11,2,44],
+"classBaseTemperature.html#a65f6deb4af75c89ae44723015731d195":[1,11,2,25],
+"classBaseTemperature.html#a6657e59b1e8c59d68aabe08f276090fe":[1,11,2,45]
 };

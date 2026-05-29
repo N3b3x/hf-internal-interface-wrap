@@ -6,9 +6,6 @@ var namespaces_dup =
     [ "anonymous_namespace{StmCan.cpp}", "namespaceanonymous__namespace_02StmCan_8cpp_03.html", "namespaceanonymous__namespace_02StmCan_8cpp_03" ],
     [ "anonymous_namespace{StmGpio.cpp}", "namespaceanonymous__namespace_02StmGpio_8cpp_03.html", [
       [ "kGpioModeInput", "namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a039bf1f6c2fe443fd023cab9064b2ac7", null ],
-      [ "kGpioModeItFalling", "namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a42ad3d2dc5c068991ff999b776fbefd3", null ],
-      [ "kGpioModeItRisFall", "namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a75af5da77e5d4ec72a997c78ff210883", null ],
-      [ "kGpioModeItRising", "namespaceanonymous__namespace_02StmGpio_8cpp_03.html#ace39575c11102583e690ea3b5ae45703", null ],
       [ "kGpioModeOutputOD", "namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a639868af67a3cc03f09c5229e84cab6c", null ],
       [ "kGpioModeOutputPP", "namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a596e0a38eeae496754ebed50e8130980", null ],
       [ "kGpioPullDown", "namespaceanonymous__namespace_02StmGpio_8cpp_03.html#ab4ddb049348a4b0ee3ea6e477290aa00", null ],
