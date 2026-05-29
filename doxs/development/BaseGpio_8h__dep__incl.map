@@ -90,7 +90,7 @@
 <area shape="poly" id="edge49_Node000035_Node000007" title=" " alt="" coords="945,334,843,433,782,491,779,487,839,429,941,330"/>
 <area shape="rect" id="Node000036" href="$EspPwm_8cpp.html" title="Implementation of ESP32 family LEDC (PWM) controller for the HardFOC system." alt="" coords="578,390,829,421"/>
 <area shape="poly" id="edge50_Node000035_Node000036" title=" " alt="" coords="916,329,743,392,741,387,914,324"/>
-<area shape="rect" id="Node000038" href="$StmGpio_8cpp.html" title="STM32 GPIO wrapper implementation — full STM32 HAL integration." alt="" coords="1239,193,1491,223"/>
+<area shape="rect" id="Node000038" href="$StmGpio_8cpp.html" title="STM32 GPIO wrapper — HAL&#45;backed BaseGpio implementation." alt="" coords="1239,193,1491,223"/>
 <area shape="poly" id="edge53_Node000037_Node000038" title=" " alt="" coords="1364,138,1367,192,1361,193,1358,139"/>
 <area shape="poly" id="edge55_Node000039_Node000004" title=" " alt="" coords="546,138,547,193,545,268,534,350,525,392,511,432,498,457,481,480,476,477,493,454,506,430,519,390,529,350,540,267,542,193,540,138"/>
 <area shape="rect" id="Node000040" href="$DigitalOutputGuard_8cpp.html" title="Implementation of the DigitalOutputGuard class for unified DigitalGpio." alt="" coords="173,193,452,223"/>

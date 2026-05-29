@@ -1,13 +1,5 @@
 var NAVTREEINDEX18 =
 {
-"structhf__spi__bus__config__t.html#a04d96acbe1d41f33abb987ebebbc5b51":[3,0,110,1],
-"structhf__spi__bus__config__t.html#a1a89b70d19c0f6aa437a27ce9b4dd98b":[3,0,110,11],
-"structhf__spi__bus__config__t.html#a2447a1a31cf698aead3d668f59ffe162":[3,0,110,10],
-"structhf__spi__bus__config__t.html#a30a9804cc4b3799a4207e669243135ab":[3,0,110,13],
-"structhf__spi__bus__config__t.html#a427b68fc1d80cb6358ddcf2f48505805":[3,0,110,5],
-"structhf__spi__bus__config__t.html#a4bb24c90eae4bccd36ec92595fe70983":[3,0,110,6],
-"structhf__spi__bus__config__t.html#a56f13363406cc28437c24c8745d835ed":[3,0,110,9],
-"structhf__spi__bus__config__t.html#a6b4b995bf3583a1569714b655a4f46b7":[3,0,110,3],
 "structhf__spi__bus__config__t.html#a8a7763fbcd5664393719182461c82e9b":[3,0,110,4],
 "structhf__spi__bus__config__t.html#aab37725899b984d697d2c4e1b20012a7":[3,0,110,8],
 "structhf__spi__bus__config__t.html#ac41e2834d780abb61584372642693e0e":[3,0,110,12],
@@ -249,5 +241,13 @@ var NAVTREEINDEX18 =
 "structhf__uart__flow__config__t.html#a473eb6fb647091ebad60eb417d1e794d":[3,0,133,8],
 "structhf__uart__flow__config__t.html#a8b6d281f74d9f838090904f75efb4c88":[3,0,133,3],
 "structhf__uart__flow__config__t.html#ab862a5acbf908953ad21e52c58de0ba5":[3,0,133,2],
-"structhf__uart__flow__config__t.html#ac7e23050c2ef42391ccee0e4c6a09bce":[3,0,133,4]
+"structhf__uart__flow__config__t.html#ac7e23050c2ef42391ccee0e4c6a09bce":[3,0,133,4],
+"structhf__uart__flow__config__t.html#ac804663a1b85286b2d36ce6a12c954bc":[3,0,133,6],
+"structhf__uart__flow__config__t.html#ae28a9b34c306c4d888135506e5947fef":[3,0,133,1],
+"structhf__uart__flow__config__t.html#ae417f407dde36d36f13474bd4b23439c":[3,0,133,0],
+"structhf__uart__irda__config__t.html":[3,0,134],
+"structhf__uart__irda__config__t.html#a17330d5b407ec971f1e5a0177c2927a5":[3,0,134,1],
+"structhf__uart__irda__config__t.html#a2e3ace6d1a0f3dd70638bee8aaae8b8f":[3,0,134,2],
+"structhf__uart__irda__config__t.html#a3dcfcc6d5e0ccc88d88af22818bec340":[3,0,134,4],
+"structhf__uart__irda__config__t.html#aa8cdfbead9d674f0525ba236c10848c4":[3,0,134,3]
 };

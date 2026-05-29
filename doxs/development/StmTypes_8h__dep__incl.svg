@@ -301,7 +301,7 @@ var sectionId = 'dynsection-1';
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
-<g id="a_Node000007"><a xlink:href="StmGpio_8cpp.html" target="_top" xlink:title="STM32 GPIO wrapper implementation — full STM32 HAL integration.">
+<g id="a_Node000007"><a xlink:href="StmGpio_8cpp.html" target="_top" xlink:title="STM32 GPIO wrapper — HAL&#45;backed BaseGpio implementation.">
 <polygon fill="white" stroke="#666666" points="593,-30.5 404,-30.5 404,-7.5 593,-7.5 593,-30.5"/>
 <text text-anchor="middle" x="498.5" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/stm32/StmGpio.cpp</text>
 </a>
