@@ -6481,460 +6481,460 @@
     
     "relUrl": "/docs/utils/"
   },"926": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "🔧 ESP32-C6 Implementations",
-    "content": ". 🔧 ESP32-C6 specific implementations with ESP-IDF v5.5+ features . Hardware-optimized implementations leveraging ESP32-C6 features . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-esp32-c6-implementations",
-    
-    "relUrl": "/docs/esp_api/#-esp32-c6-implementations"
-  },"927": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "📚 Table of Contents",
-    "content": ". | 🎯 Overview | 🏗️ Architecture | 🔧 Implementation Status | 📋 Core Implementations | ⚡ ESP32-C6 Features | 📊 Performance Benchmarks | 🔍 Troubleshooting | . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-table-of-contents",
-    
-    "relUrl": "/docs/esp_api/#-table-of-contents"
-  },"928": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "🎯 Overview",
-    "content": "The ESP32-C6 implementations provide hardware-optimized versions of the HardFOC interface wrapper, leveraging the features of ESP32-C6 and ESP-IDF v5.5+. These implementations offer performance, power efficiency, and feature support. ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-overview",
-    
-    "relUrl": "/docs/esp_api/#-overview"
-  },"929": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "✨ Key Benefits",
-    "content": ". | ⚡ Hardware Acceleration - Leverages ESP32-C6 specific peripherals | 🔋 Power Optimization - Power management and sleep modes | 🌐 Modern Connectivity - WiFi 6, Bluetooth 5.0, and protocols | 🛡️ Security Features - Hardware encryption and secure boot support | 📊 Rich Diagnostics - Monitoring and debugging capabilities | . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-key-benefits",
-    
-    "relUrl": "/docs/esp_api/#-key-benefits"
-  },"930": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "🏗️ Architecture",
-    "content": " ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#%EF%B8%8F-architecture",
-    
-    "relUrl": "/docs/esp_api/#️-architecture"
-  },"931": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "ESP32-C6 Implementation Stack",
-    "content": "| 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 . | ┌─────────────────────────────────────────────────────────┐ │ HardFOC Application Layer │ ├─────────────────────────────────────────────────────────┤ │ ESP32-C6 Implementation Layer │ │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ │ │ │ EspGpio │ │ EspAdc │ │ EspPwm │ │ │ └─────────────┘ └─────────────┘ └─────────────┘ │ │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ │ │ │ EspSpi │ │ EspI2c │ │ EspUart │ │ │ └─────────────┘ └─────────────┘ └─────────────┘ │ │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ │ │ │ EspWifi │ │EspBluetooth │ │ EspCan │ │ │ └─────────────┘ └─────────────┘ └─────────────┘ │ ├─────────────────────────────────────────────────────────┤ │ ESP-IDF v5.5+ Driver Layer │ ├─────────────────────────────────────────────────────────┤ │ ESP32-C6 Hardware Layer │ └─────────────────────────────────────────────────────────┘ . | . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#esp32-c6-implementation-stack",
-    
-    "relUrl": "/docs/esp_api/#esp32-c6-implementation-stack"
-  },"932": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "Design Principles",
-    "content": ". | Hardware Optimization - Direct access to ESP32-C6 specific features | ESP-IDF Integration - Full compliance with latest ESP-IDF standards | Performance First - Optimized for real-time applications | Power Efficiency - Advanced power management and sleep modes | Security by Design - Built-in security features and encryption | . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#design-principles",
-    
-    "relUrl": "/docs/esp_api/#design-principles"
-  },"933": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "🔧 Implementation Status",
-    "content": " ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-implementation-status",
-    
-    "relUrl": "/docs/esp_api/#-implementation-status"
-  },"934": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "Complete Implementations ✅",
-    "content": "| Implementation | Base Class | ESP32-C6 Features | Documentation | Status | . |——————-|—————-|———————-|——————-|————| . | EspGpio | BaseGpio | Drive strength, slew rate, interrupts | ✅ Complete | ✅ Ready | . | EspSpi | BaseSpi | Full-duplex, DMA, IOMUX optimization | ✅ Complete | ✅ Ready | . | EspPio | BasePio | RMT peripheral, custom protocols | ✅ Complete | ✅ Ready | . | EspAdc | BaseAdc | One-shot, continuous, monitors | ✅ Complete | ✅ Ready | . | EspPwm | BasePwm | LEDC controller, fade effects | ✅ Complete | ✅ Ready | . | EspI2c | BaseI2c | Bus-device architecture, multi-master | ✅ Complete | ✅ Ready | . | EspUart | BaseUart | Hardware flow control, DMA | ✅ Complete | ✅ Ready | . | EspUsbSerialJtag | BaseUsbSerialJtag | Built-in USB Serial/JTAG (CDC-ACM + JTAG over native USB), IDF-console coexistence | ✅ Complete | ✅ Ready | . | EspNvs | BaseNvs | Encryption, wear leveling | ✅ Complete | ✅ Ready | . | EspPeriodicTimer | BasePeriodicTimer | High precision, microsecond resolution | ✅ Complete | ✅ Ready | . | EspTemperature | BaseTemperature | Internal sensor, threshold monitoring | ✅ Complete | ✅ Ready | . | EspLogger | BaseLogger | Multi-output, network, file logging | ✅ Complete | ✅ Ready | . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#complete-implementations-",
-    
-    "relUrl": "/docs/esp_api/#complete-implementations-"
-  },"935": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "In Progress 🚧",
-    "content": "| Implementation | Base Class | Current Status | Target Features | . |——————-|—————-|——————-|———————| . | EspCan | BaseCan | TWAI controller implementation | Standard/extended frames, error handling | . | EspWifi | BaseWifi | Station mode implementation | 802.11n, WPA3, mesh networking | . | EspBluetooth | BaseBluetooth | NimBLE stack integration | Classic BT, BLE, service discovery | . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#in-progress-",
-    
-    "relUrl": "/docs/esp_api/#in-progress-"
-  },"936": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "📋 Core Implementations",
-    "content": " ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-core-implementations",
-    
-    "relUrl": "/docs/esp_api/#-core-implementations"
-  },"937": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "🔌 EspGpio - Digital I/O Control",
-    "content": "Key Features: . | Dynamic pin direction configuration | Configurable drive strength and slew rate | Interrupt support with filtering | Pull-up/pull-down resistor control | . ESP32-C6 Optimizations: . | IOMUX pin routing for maximum performance | Advanced interrupt filtering and debouncing | Power-efficient sleep mode support | . 📖 Full Documentation . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-espgpio---digital-io-control",
-    
-    "relUrl": "/docs/esp_api/#-espgpio---digital-io-control"
-  },"938": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "🔄 EspSpi - Serial Peripheral Interface",
-    "content": "Key Features: . | Full-duplex communication | DMA acceleration support | Configurable SPI modes (0, 1, 2, 3) | Multi-device management | . ESP32-C6 Optimizations: . | IOMUX optimization for 80 MHz operation | Advanced DMA channel management | Multiple clock source options | . 📖 Full Documentation . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-espspi---serial-peripheral-interface",
-    
-    "relUrl": "/docs/esp_api/#-espspi---serial-peripheral-interface"
-  },"939": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "⚡ EspPio - Programmable I/O",
-    "content": "Key Features: . | Custom protocol implementation | Precise timing control | Symbol transmission | Encoder reading support | . ESP32-C6 Optimizations: . | RMT peripheral integration | Hardware timing generation | Low-power operation modes | . 📖 Full Documentation . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-esppio---programmable-io",
-    
-    "relUrl": "/docs/esp_api/#-esppio---programmable-io"
-  },"940": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "📡 EspBluetooth - Wireless Communication",
-    "content": "Key Features: . | Bluetooth Low Energy (BLE) | Classic Bluetooth support | NimBLE stack integration | Service discovery and pairing | . ESP32-C6 Optimizations: . | Bluetooth 5.0 compliance | Advanced power management | Secure pairing protocols | . 📖 Full Documentation . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-espbluetooth---wireless-communication",
-    
-    "relUrl": "/docs/esp_api/#-espbluetooth---wireless-communication"
-  },"941": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "📊 EspAdc - Analog-to-Digital Conversion",
-    "content": "Key Features: . | One-shot and continuous sampling modes | Hardware calibration for accurate measurements | Digital IIR filters for noise reduction | Threshold monitors with ISR callbacks | . ESP32-C6 Optimizations: . | 12-bit SAR ADC with DMA support | Real-time threshold monitoring | ESP-IDF v5.5+ TYPE2 data format support | . 📖 Full Documentation . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-espadc---analog-to-digital-conversion",
-    
-    "relUrl": "/docs/esp_api/#-espadc---analog-to-digital-conversion"
-  },"942": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "🎛️ EspPwm - Pulse Width Modulation",
-    "content": "Key Features: . | LEDC controller with up to 8 channels | Hardware fade effects and high resolution | Configurable frequency and duty cycle | Complementary outputs with deadtime | . ESP32-C6 Optimizations: . | Up to 20-bit resolution at low frequencies | Hardware-accelerated fade operations | Multiple timer groups for independent control | . 📖 Full Documentation . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#%EF%B8%8F-esppwm---pulse-width-modulation",
-    
-    "relUrl": "/docs/esp_api/#️-esppwm---pulse-width-modulation"
-  },"943": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "🔗 EspI2c - Inter-Integrated Circuit",
-    "content": "Key Features: . | Bus-device architecture with ESP-IDF v5.5+ | Multi-master support with clock stretching | Per-device configuration and management | Thread-safe operations | . ESP32-C6 Optimizations: . | Fast Mode Plus (1 MHz) support | Hardware FIFO utilization | Advanced error recovery mechanisms | . 📖 Full Documentation . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-espi2c---inter-integrated-circuit",
-    
-    "relUrl": "/docs/esp_api/#-espi2c---inter-integrated-circuit"
-  },"944": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "📡 EspUart - Universal Asynchronous Receiver-Transmitter",
-    "content": "Key Features: . | Hardware flow control (RTS/CTS) | DMA integration for high performance | Pattern detection and interrupt support | Multiple port support | . ESP32-C6 Optimizations: . | Advanced DMA channel management | Hardware pattern matching | Low-latency interrupt handling | . 📖 Full Documentation . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-espuart---universal-asynchronous-receiver-transmitter",
-    
-    "relUrl": "/docs/esp_api/#-espuart---universal-asynchronous-receiver-transmitter"
-  },"945": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "💾 EspNvs - Non-Volatile Storage",
-    "content": "Key Features: . | HMAC-based encryption support | Namespace isolation and management | Atomic operations and consistency guarantees | Wear leveling and flash optimization | . ESP32-C6 Optimizations: . | XTS encryption for data protection | Secure key generation and eFuse storage | Advanced statistics and monitoring | . 📖 Full Documentation . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-espnvs---non-volatile-storage",
-    
-    "relUrl": "/docs/esp_api/#-espnvs---non-volatile-storage"
-  },"946": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "⏱️ EspPeriodicTimer - High-Precision Timing",
-    "content": "Key Features: . | Microsecond-level precision timing | Multiple independent timers | Callback-based event notification | Power management integration | . ESP32-C6 Optimizations: . | Hardware timer peripheral utilization | Low-power operation modes | High-frequency timer support | . 📖 Full Documentation . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#%EF%B8%8F-espperiodictimer---high-precision-timing",
-    
-    "relUrl": "/docs/esp_api/#️-espperiodictimer---high-precision-timing"
-  },"947": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "🌡️ EspTemperature - Internal Temperature Sensor",
-    "content": "Key Features: . | Internal temperature sensor support | Multiple measurement ranges with different accuracy | Threshold monitoring with callbacks | Continuous monitoring capabilities | . ESP32-C6 Optimizations: . | Hardware calibration and offset compensation | Real-time threshold detection | Power-efficient sleep modes | . 📖 Full Documentation . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#%EF%B8%8F-esptemperature---internal-temperature-sensor",
-    
-    "relUrl": "/docs/esp_api/#️-esptemperature---internal-temperature-sensor"
-  },"948": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "📝 EspLogger - Advanced Logging System",
-    "content": "Key Features: . | ESP-IDF Log V1 and V2 integration | Multi-output support (console, file, network) | Performance monitoring and statistics | Tag-based logging with dynamic levels | . ESP32-C6 Optimizations: . | Native ESP-IDF performance | Memory-efficient logging | Real-time logging capabilities | . 📖 Full Documentation . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-esplogger---advanced-logging-system",
-    
-    "relUrl": "/docs/esp_api/#-esplogger---advanced-logging-system"
-  },"949": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "⚡ ESP32-C6 Features",
-    "content": " ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-esp32-c6-features",
-    
-    "relUrl": "/docs/esp_api/#-esp32-c6-features"
-  },"950": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "Hardware Capabilities",
-    "content": "| Feature | Specification | HardFOC Benefits | . |————-|——————-|———————-| . | CPU | RISC-V 32-bit, 160 MHz | High-performance motor control | . | Memory | 512 KB SRAM, 448 KB ROM | Rich application support | . | GPIO | 30 configurable pins | Flexible I/O configuration | . | ADC | 2 × 12-bit SAR ADCs | High-precision sensing | . | PWM | 8 × LEDC channels | Multi-motor control | . | SPI | 2 × SPI controllers | High-speed communication | . | I2C | 2 × I2C controllers | Sensor network support | . | UART | 2 × UART controllers | Debug and communication | . | CAN | 1 × TWAI controller | Industrial networking | . | WiFi | 802.11 b/g/n | IoT connectivity | . | Bluetooth | Bluetooth 5.0 | Wireless configuration | . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#hardware-capabilities",
-    
-    "relUrl": "/docs/esp_api/#hardware-capabilities"
-  },"951": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "Performance Characteristics",
-    "content": ". | GPIO Speed: Up to 80 MHz with IOMUX | SPI Speed: Up to 80 MHz with DMA | ADC Resolution: 12-bit with calibration | PWM Frequency: Up to 40 MHz | Interrupt Latency: &lt; 1 μs | . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#performance-characteristics",
-    
-    "relUrl": "/docs/esp_api/#performance-characteristics"
-  },"952": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "📊 Performance Benchmarks",
-    "content": " ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-performance-benchmarks",
-    
-    "relUrl": "/docs/esp_api/#-performance-benchmarks"
-  },"953": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "GPIO Performance",
-    "content": "| Operation | Performance | Notes | . |—————|—————–|———–| . | Pin Toggle | 40 MHz | Maximum theoretical speed | . | Interrupt Latency | &lt; 1 μs | Real-time capable | . | Direction Change | &lt; 100 ns | Dynamic configuration | . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#gpio-performance",
-    
-    "relUrl": "/docs/esp_api/#gpio-performance"
-  },"954": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "SPI Performance",
-    "content": "| Configuration | Speed | Notes | . |——————-|———–|———–| . | IOMUX + DMA | 80 MHz | Maximum performance | . | GPIO Matrix | 40 MHz | Flexible pin routing | . | Small Transfers | 20 MHz | Optimized for efficiency | . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#spi-performance",
-    
-    "relUrl": "/docs/esp_api/#spi-performance"
-  },"955": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "Power Consumption",
-    "content": "| Mode | Current | Use Case | . |———-|————-|————–| . | Active | 20-50 mA | Normal operation | . | Light Sleep | 0.8 mA | Sensor monitoring | . | Deep Sleep | 5 μA | Long-term storage | . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#power-consumption",
-    
-    "relUrl": "/docs/esp_api/#power-consumption"
-  },"956": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "🔍 Troubleshooting",
-    "content": " ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-troubleshooting",
-    
-    "relUrl": "/docs/esp_api/#-troubleshooting"
-  },"957": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "Common Issues",
-    "content": "GPIO Configuration Problems . | Issue: Pin not responding to commands | Solution: Check IOMUX configuration and pin assignment | Prevention: Use dedicated IOMUX pins for high-speed operations | . SPI Communication Failures . | Issue: Data corruption or timing issues | Solution: Verify clock configuration and DMA settings | Prevention: Use appropriate sample rates for logic analyzer | . Performance Issues . | Issue: Lower than expected speeds | Solution: Enable IOMUX and DMA where applicable | Prevention: Follow ESP32-C6 optimization guidelines | . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#common-issues",
-    
-    "relUrl": "/docs/esp_api/#common-issues"
-  },"958": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "Debugging Tools",
-    "content": ". | ESP-IDF Monitor - Real-time logging and debugging | Logic Analyzer - Signal analysis and timing verification | Performance Profiling - Built-in timing and statistics | Error Reporting - Comprehensive error codes and messages | . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#debugging-tools",
-    
-    "relUrl": "/docs/esp_api/#debugging-tools"
-  },"959": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "🔗 Navigation",
-    "content": " ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-navigation",
-    
-    "relUrl": "/docs/esp_api/#-navigation"
-  },"960": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "Documentation Structure",
-    "content": ". | 🏠 Main Documentation - Complete system overview | 📋 API Interfaces - Base classes and interfaces | 🛠️ Utility Classes - Advanced utility classes and helpers | 🧪 Test Suites - Testing and validation | . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#documentation-structure",
-    
-    "relUrl": "/docs/esp_api/#documentation-structure"
-  },"961": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "Related Documentation",
-    "content": ". | EspGpio - GPIO implementation details | EspSpi - SPI implementation details | EspPio - PIO implementation details | EspAdc - ADC implementation details | EspPwm - PWM implementation details | EspI2c - I2C implementation details | EspUart - UART implementation details | EspUsbSerialJtag - Built-in USB Serial/JTAG controller (CDC-ACM + JTAG) | EspNvs - NVS implementation details | EspPeriodicTimer - Timer implementation details | EspTemperature - Temperature sensor implementation details | EspLogger - Logging implementation details | EspBluetooth - Bluetooth implementation details | . 🔧 ESP32-C6 Implementations - HardFOC Systems . Leveraging ESP32-C6 hardware for performance and efficiency . ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#related-documentation",
-    
-    "relUrl": "/docs/esp_api/#related-documentation"
-  },"962": {
-    "doc": "🔧 ESP32 Implementations",
-    "title": "🔧 ESP32 Implementations",
-    "content": " ",
-    "url": "/hf-internal-interface-wrap/development/docs/esp_api/",
-    
-    "relUrl": "/docs/esp_api/"
-  },"963": {
     "doc": "📋 API Reference",
     "title": "🚀 HardFOC Interface Wrapper API Reference",
     "content": ". 🎯 Hardware Abstraction Layer for Embedded Systems . A platform-agnostic interface wrapper for hardware peripherals . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#-hardfoc-interface-wrapper-api-reference",
     
     "relUrl": "/docs/api/#-hardfoc-interface-wrapper-api-reference"
-  },"964": {
+  },"927": {
     "doc": "📋 API Reference",
     "title": "📚 Table of Contents",
     "content": ". | 🎯 Overview | 🏗️ Architecture | 📋 Base Classes | 🔧 ESP32 Implementations | 🎯 Type System | 📊 Getting Started | 🧪 Examples | 🧪 Testing | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#-table-of-contents",
     
     "relUrl": "/docs/api/#-table-of-contents"
-  },"965": {
+  },"928": {
     "doc": "📋 API Reference",
     "title": "🎯 Overview",
     "content": "The HardFOC Interface Wrapper provides a unified, platform-agnostic abstraction layer for embedded hardware peripherals. It enables developers to write portable, maintainable code that works across different microcontrollers and hardware platforms without modification. ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#-overview",
     
     "relUrl": "/docs/api/#-overview"
-  },"966": {
+  },"929": {
     "doc": "📋 API Reference",
     "title": "✨ Key Benefits",
     "content": ". | 🔄 Platform Portability - Write once, run anywhere | 🛡️ Type Safety - Strongly typed interfaces with error handling | ⚡ Performance Optimized - Minimal overhead with direct hardware access | 🔧 Extensible - Easy to add new hardware platforms and peripherals | 📊 Observable - Built-in statistics, diagnostics, and monitoring | 🧵 Thread Safe - Designed for multi-threaded applications | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#-key-benefits",
     
     "relUrl": "/docs/api/#-key-benefits"
-  },"967": {
+  },"930": {
     "doc": "📋 API Reference",
     "title": "🎯 Target Applications",
     "content": ". | Motor Control Systems - FOC, BLDC, stepper motor control | Sensor Networks - Multi-sensor data acquisition and processing | Communication Systems - CAN, UART, I2C, SPI protocols | Industrial Automation - PLC-like control systems | IoT Devices - Connected embedded systems | Robotics - Real-time control and sensing | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#-target-applications",
     
     "relUrl": "/docs/api/#-target-applications"
-  },"968": {
+  },"931": {
     "doc": "📋 API Reference",
     "title": "🏗️ Architecture",
     "content": " ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#%EF%B8%8F-architecture",
     
     "relUrl": "/docs/api/#️-architecture"
-  },"969": {
+  },"932": {
     "doc": "📋 API Reference",
     "title": "Design Philosophy",
     "content": "The HardFOC Interface follows a layered abstraction pattern: . | 1 2 3 4 5 6 7 8 9 . | ┌─────────────────────────────────────┐ │ Application Layer │ ├─────────────────────────────────────┤ │ Interface Wrapper │ ├─────────────────────────────────────┤ │ Platform Implementation │ ├─────────────────────────────────────┤ │ Hardware Layer │ └─────────────────────────────────────┘ . | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#design-philosophy",
     
     "relUrl": "/docs/api/#design-philosophy"
-  },"970": {
+  },"933": {
     "doc": "📋 API Reference",
     "title": "Core Components",
     "content": ". | Base Classes - Abstract interfaces defining the API contract | Platform Implementations - Concrete implementations for specific hardware | Utility Classes - Helper classes for common patterns | Type System - Platform-agnostic type definitions | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#core-components",
     
     "relUrl": "/docs/api/#core-components"
-  },"971": {
+  },"934": {
     "doc": "📋 API Reference",
     "title": "Error Handling Strategy",
     "content": ". | Comprehensive Error Codes - Detailed error enumeration for each peripheral | String Conversion - Human-readable error messages | Error Recovery - Recovery mechanisms where possible | Diagnostics - Runtime error tracking and statistics | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#error-handling-strategy",
     
     "relUrl": "/docs/api/#error-handling-strategy"
-  },"972": {
+  },"935": {
     "doc": "📋 API Reference",
     "title": "📋 Base Classes",
     "content": "The HardFOC Interface provides abstract base classes for all major hardware peripherals: . | Class | Purpose | Key Features | Typical Use Cases | . |——-|———|————–|——————-| . | BaseAdc | Analog-to-Digital Conversion | Multi-channel, calibration | Sensor reading | . | BaseGpio | Digital I/O Control | Dynamic direction, interrupts | Status LEDs, switches | . | BaseI2c | I2C Bus Communication | Device scanning, register access | EEPROM, sensors | . | BaseNvs | Non-Volatile Storage | Key-value storage, namespaces | Configuration storage | . | BasePeriodicTimer | High-Precision Timing | Microsecond resolution, callbacks | Control loops, sampling | . | BasePio | Programmable I/O | Precise timing, symbol transmission | WS2812 LEDs, IR | . | BasePwm | Pulse Width Modulation | Multi-channel, frequency control | Motor control, LED | . | BaseSpi | SPI Bus Communication | Full-duplex transfers, chip select | Flash memory, ADCs | . | BaseUart | Serial Communication | Flow control, buffering, printf support | Debug output, GPS | . | BaseUsbSerialJtag | Native-USB Console | CDC-ACM virtual COM port + JTAG over one cable | Operator console, log/REPL on dev kits | . | BaseCan | CAN Bus Communication | Message filtering, error handling | Motor control, vehicle | . | BaseWifi | WiFi Communication | Station/AP modes, security | IoT connectivity | . | BaseBluetooth | Bluetooth Communication | Classic &amp; BLE, pairing | Mobile apps, wireless | . | BaseTemperature | Temperature Sensing | Multi-sensor support, calibration | System monitoring | . | BaseLogger | System Logging | Multi-level logging, multiple outputs | Debugging, diagnostics | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#-base-classes",
     
     "relUrl": "/docs/api/#-base-classes"
-  },"973": {
+  },"936": {
     "doc": "📋 API Reference",
     "title": "🔧 ESP32 Implementations",
     "content": "ESP32-C6 specific implementations with optimized features: . | Implementation | Base Class | ESP32-C6 Features | Documentation | . |—————-|————|——————-|—————| . | EspGpio | BaseGpio | Drive strength, slew rate, interrupts | ✅ Complete | . | EspAdc | BaseAdc | 12-bit resolution, multiple units | ✅ Available | . | EspPwm | BasePwm | LEDC controller, fade effects | 📝 In Progress | . | EspI2c | BaseI2c | Clock stretching, multi-master | 📝 In Progress | . | EspSpi | BaseSpi | Full-duplex, DMA support | ✅ Complete | . | EspUart | BaseUart | Hardware flow control | 📝 In Progress | . | EspUsbSerialJtag | BaseUsbSerialJtag | Built-in USB Serial/JTAG controller, IDF-console coexistence | ✅ Complete | . | EspCan | BaseCan | TWAI controller | 📝 In Progress | . | EspWifi | BaseWifi | 802.11n, WPA3, mesh | 📝 In Progress | . | EspBluetooth | BaseBluetooth | Classic &amp; BLE support | 📝 In Progress | . | EspTemperature | BaseTemperature | Internal sensor, calibration | 📝 In Progress | . | EspLogger | BaseLogger | UART, network, file output | 📝 In Progress | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#-esp32-implementations",
     
     "relUrl": "/docs/api/#-esp32-implementations"
-  },"974": {
+  },"937": {
     "doc": "📋 API Reference",
     "title": "🎯 Type System",
     "content": "Platform-agnostic type definitions for consistent APIs: . | Documentation | Description | Status | . |—————|————-|——–| . | HardwareTypes | Core type definitions, validation functions | ✅ Complete | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#-type-system",
     
     "relUrl": "/docs/api/#-type-system"
-  },"975": {
+  },"938": {
     "doc": "📋 API Reference",
     "title": "Core Types",
     "content": "| 1 2 3 4 5 6 7 8 9 10 11 . | // Integer types using hf_u8_t = uint8_t; using hf_u16_t = uint16_t; using hf_u32_t = uint32_t; using hf_u64_t = uint64_t; // Hardware types using hf_pin_num_t = hf_i32_t; using hf_channel_id_t = hf_u32_t; using hf_frequency_hz_t = hf_u32_t; using hf_time_t = hf_u32_t; . | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#core-types",
     
     "relUrl": "/docs/api/#core-types"
-  },"976": {
+  },"939": {
     "doc": "📋 API Reference",
     "title": "📊 Getting Started",
     "content": " ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#-getting-started",
     
     "relUrl": "/docs/api/#-getting-started"
-  },"977": {
+  },"940": {
     "doc": "📋 API Reference",
     "title": "1. Include the Headers",
     "content": "| 1 2 3 4 5 6 7 . | // Base classes (abstract interfaces) #include \"inc/base/BaseAdc.h\" #include \"inc/base/BaseGpio.h\" // Platform implementations #include \"inc/mcu/esp32/EspAdc.h\" #include \"inc/mcu/esp32/EspGpio.h\" . | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#1-include-the-headers",
     
     "relUrl": "/docs/api/#1-include-the-headers"
-  },"978": {
+  },"941": {
     "doc": "📋 API Reference",
     "title": "2. Create Hardware Instances",
     "content": "| 1 2 3 . | // Use platform-specific implementations EspAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_11); EspGpio led_pin(2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT); . | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#2-create-hardware-instances",
     
     "relUrl": "/docs/api/#2-create-hardware-instances"
-  },"979": {
+  },"942": {
     "doc": "📋 API Reference",
     "title": "3. Initialize and Use",
     "content": "| 1 2 3 4 5 6 7 8 9 10 11 12 13 . | // Lazy initialization (automatic on first use) adc.EnsureInitialized(); led_pin.EnsureInitialized(); // Use the hardware float voltage; if (adc.ReadChannelV(0, voltage) == hf_adc_err_t::ADC_SUCCESS) { printf(\"Voltage: %.3f V\\n\", voltage); } if (voltage &gt; 3.0f) { led_pin.SetActive(); } . | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#3-initialize-and-use",
     
     "relUrl": "/docs/api/#3-initialize-and-use"
-  },"980": {
+  },"943": {
     "doc": "📋 API Reference",
     "title": "4. Error Handling",
     "content": "| 1 2 3 4 5 . | hf_adc_err_t result = adc.ReadChannelV(0, voltage); if (result != hf_adc_err_t::ADC_SUCCESS) { printf(\"ADC Error: %s\\n\", HfAdcErrToString(result)); // Handle error appropriately } . | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#4-error-handling",
     
     "relUrl": "/docs/api/#4-error-handling"
-  },"981": {
+  },"944": {
     "doc": "📋 API Reference",
     "title": "🧪 Examples",
     "content": " ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#-examples",
     
     "relUrl": "/docs/api/#-examples"
-  },"982": {
+  },"945": {
     "doc": "📋 API Reference",
     "title": "Motor Control System",
     "content": "| 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 . | #include \"inc/mcu/esp32/EspAdc.h\" #include \"inc/mcu/esp32/EspPwm.h\" #include \"inc/mcu/esp32/EspGpio.h\" class MotorController { private: EspAdc current_sensor*; EspPwm motor_driver*; EspGpio enable_pin*; public: MotorController() : current_sensor*(ADC_UNIT_1, ADC_ATTEN_DB_11) , motor_driver*() , enable_pin*(5, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {} bool Initialize() { current_sensor*.EnsureInitialized(); motor_driver*.EnsureInitialized(); enable_pin*.EnsureInitialized(); // Configure motor driver motor_driver*.EnableChannel(0); motor_driver*.SetFrequency(0, 20000); // 20kHz PWM return true; } void SetSpeed(float speed_percent) { motor_driver*.SetDutyCycle(0, speed_percent); } float GetCurrent() { float voltage; current_sensor*.ReadChannelV(0, voltage); return (voltage - 2.5f) / 0.1f; // Convert to current (A) } }; . | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#motor-control-system",
     
     "relUrl": "/docs/api/#motor-control-system"
-  },"983": {
+  },"946": {
     "doc": "📋 API Reference",
     "title": "Sensor Network",
     "content": "| 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 . | #include \"inc/mcu/esp32/EspI2c.h\" #include \"inc/mcu/esp32/EspAdc.h\" class SensorNetwork { private: EspI2c i2c_bus*; EspAdc analog_sensors*; public: bool ScanSensors() { hf_u8_t addresses[16]; hf_u8_t count = i2c_bus*.ScanBus(addresses, 16); printf(\"Found %u I2C devices:\\n\", count); for (hf_u8_t i = 0; i &lt; count; i++) { printf(\" Address: 0x%02X\\n\", addresses[i]); } return count &gt; 0; } float ReadTemperature() { // Read from I2C temperature sensor hf_u8_t data[2]; if (i2c_bus*.ReadRegisters(0x48, 0x00, data, 2)) { hf_u16_t raw = (data[0] &lt;&lt; 8) | data[1]; return (raw &gt;&gt; 4) * 0.0625f; // Convert to Celsius } return -999.0f; // Error value } float ReadPressure() { float voltage; analog_sensors*.ReadChannelV(1, voltage); return voltage * 100.0f; // Convert to PSI } }; . | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#sensor-network",
     
     "relUrl": "/docs/api/#sensor-network"
-  },"984": {
+  },"947": {
     "doc": "📋 API Reference",
     "title": "🧪 Testing",
     "content": "Comprehensive test suites for validating hardware interface implementations: . | 🧪 Test Suites - Testing and validation | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#-testing",
     
     "relUrl": "/docs/api/#-testing"
-  },"985": {
+  },"948": {
     "doc": "📋 API Reference",
     "title": "Test Features",
     "content": ". | Automated Testing - Comprehensive validation of all functionality | Performance Testing - Speed, DMA, and optimization validation | Error Handling - Edge case and failure mode testing | Hardware Validation - Real hardware signal verification | Pattern Testing - Data integrity and timing validation | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#test-features",
     
     "relUrl": "/docs/api/#test-features"
-  },"986": {
+  },"949": {
     "doc": "📋 API Reference",
     "title": "🔗 Navigation",
     "content": " ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#-navigation",
     
     "relUrl": "/docs/api/#-navigation"
-  },"987": {
+  },"950": {
     "doc": "📋 API Reference",
     "title": "Documentation Structure",
     "content": ". | 🏠 Main Documentation - Complete system overview | 🔧 ESP32 Implementations - Hardware-specific implementations | 🛠️ Utility Classes - Advanced utility classes and helpers | 🧪 Test Suites - Testing and validation | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#documentation-structure",
     
     "relUrl": "/docs/api/#documentation-structure"
-  },"988": {
+  },"951": {
     "doc": "📋 API Reference",
     "title": "Base Class Documentation",
     "content": "| Interface | Documentation | Status | . |—————|——————-|————| . | BaseAdc | Analog-to-Digital Conversion | ✅ Complete | . | BaseGpio | Digital I/O Control | ✅ Complete | . | BaseI2c | I2C Bus Communication | ✅ Complete | . | BaseNvs | Non-Volatile Storage | ✅ Complete | . | BasePeriodicTimer | High-Precision Timing | ✅ Complete | . | BasePio | Programmable I/O | ✅ Complete | . | BasePwm | Pulse Width Modulation | ✅ Complete | . | BaseSpi | SPI Bus Communication | ✅ Complete | . | BaseUart | Serial Communication | ✅ Complete | . | BaseUsbSerialJtag | Native-USB Console (CDC-ACM + JTAG) | ✅ Complete | . | BaseCan | CAN Bus Communication | ✅ Complete | . | BaseWifi | WiFi Communication | ✅ Complete | . | BaseBluetooth | Bluetooth Communication | ✅ Complete | . | BaseTemperature | Temperature Sensing | ✅ Complete | . | BaseLogger | Logging System | ✅ Complete | . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#base-class-documentation",
     
     "relUrl": "/docs/api/#base-class-documentation"
-  },"989": {
+  },"952": {
     "doc": "📋 API Reference",
     "title": "Related Resources",
     "content": ". | Hardware Types - Type definitions and validation | . 🚀 HardFOC Interface Wrapper . Part of the HardFOC Ecosystem . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#related-resources",
     
     "relUrl": "/docs/api/#related-resources"
-  },"990": {
+  },"953": {
     "doc": "📋 API Reference",
     "title": "📋 API Reference",
     "content": " ",
     "url": "/hf-internal-interface-wrap/development/docs/api/",
     
     "relUrl": "/docs/api/"
+  },"954": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "🔧 ESP32-C6 Implementations",
+    "content": ". 🔧 ESP32-C6 specific implementations with ESP-IDF v5.5+ features . Hardware-optimized implementations leveraging ESP32-C6 features . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-esp32-c6-implementations",
+    
+    "relUrl": "/docs/esp_api/#-esp32-c6-implementations"
+  },"955": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "📚 Table of Contents",
+    "content": ". | 🎯 Overview | 🏗️ Architecture | 🔧 Implementation Status | 📋 Core Implementations | ⚡ ESP32-C6 Features | 📊 Performance Benchmarks | 🔍 Troubleshooting | . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-table-of-contents",
+    
+    "relUrl": "/docs/esp_api/#-table-of-contents"
+  },"956": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "🎯 Overview",
+    "content": "The ESP32-C6 implementations provide hardware-optimized versions of the HardFOC interface wrapper, leveraging the features of ESP32-C6 and ESP-IDF v5.5+. These implementations offer performance, power efficiency, and feature support. ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-overview",
+    
+    "relUrl": "/docs/esp_api/#-overview"
+  },"957": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "✨ Key Benefits",
+    "content": ". | ⚡ Hardware Acceleration - Leverages ESP32-C6 specific peripherals | 🔋 Power Optimization - Power management and sleep modes | 🌐 Modern Connectivity - WiFi 6, Bluetooth 5.0, and protocols | 🛡️ Security Features - Hardware encryption and secure boot support | 📊 Rich Diagnostics - Monitoring and debugging capabilities | . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-key-benefits",
+    
+    "relUrl": "/docs/esp_api/#-key-benefits"
+  },"958": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "🏗️ Architecture",
+    "content": " ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#%EF%B8%8F-architecture",
+    
+    "relUrl": "/docs/esp_api/#️-architecture"
+  },"959": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "ESP32-C6 Implementation Stack",
+    "content": "| 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 . | ┌─────────────────────────────────────────────────────────┐ │ HardFOC Application Layer │ ├─────────────────────────────────────────────────────────┤ │ ESP32-C6 Implementation Layer │ │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ │ │ │ EspGpio │ │ EspAdc │ │ EspPwm │ │ │ └─────────────┘ └─────────────┘ └─────────────┘ │ │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ │ │ │ EspSpi │ │ EspI2c │ │ EspUart │ │ │ └─────────────┘ └─────────────┘ └─────────────┘ │ │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ │ │ │ EspWifi │ │EspBluetooth │ │ EspCan │ │ │ └─────────────┘ └─────────────┘ └─────────────┘ │ ├─────────────────────────────────────────────────────────┤ │ ESP-IDF v5.5+ Driver Layer │ ├─────────────────────────────────────────────────────────┤ │ ESP32-C6 Hardware Layer │ └─────────────────────────────────────────────────────────┘ . | . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#esp32-c6-implementation-stack",
+    
+    "relUrl": "/docs/esp_api/#esp32-c6-implementation-stack"
+  },"960": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "Design Principles",
+    "content": ". | Hardware Optimization - Direct access to ESP32-C6 specific features | ESP-IDF Integration - Full compliance with latest ESP-IDF standards | Performance First - Optimized for real-time applications | Power Efficiency - Advanced power management and sleep modes | Security by Design - Built-in security features and encryption | . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#design-principles",
+    
+    "relUrl": "/docs/esp_api/#design-principles"
+  },"961": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "🔧 Implementation Status",
+    "content": " ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-implementation-status",
+    
+    "relUrl": "/docs/esp_api/#-implementation-status"
+  },"962": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "Complete Implementations ✅",
+    "content": "| Implementation | Base Class | ESP32-C6 Features | Documentation | Status | . |——————-|—————-|———————-|——————-|————| . | EspGpio | BaseGpio | Drive strength, slew rate, interrupts | ✅ Complete | ✅ Ready | . | EspSpi | BaseSpi | Full-duplex, DMA, IOMUX optimization | ✅ Complete | ✅ Ready | . | EspPio | BasePio | RMT peripheral, custom protocols | ✅ Complete | ✅ Ready | . | EspAdc | BaseAdc | One-shot, continuous, monitors | ✅ Complete | ✅ Ready | . | EspPwm | BasePwm | LEDC controller, fade effects | ✅ Complete | ✅ Ready | . | EspI2c | BaseI2c | Bus-device architecture, multi-master | ✅ Complete | ✅ Ready | . | EspUart | BaseUart | Hardware flow control, DMA | ✅ Complete | ✅ Ready | . | EspUsbSerialJtag | BaseUsbSerialJtag | Built-in USB Serial/JTAG (CDC-ACM + JTAG over native USB), IDF-console coexistence | ✅ Complete | ✅ Ready | . | EspNvs | BaseNvs | Encryption, wear leveling | ✅ Complete | ✅ Ready | . | EspPeriodicTimer | BasePeriodicTimer | High precision, microsecond resolution | ✅ Complete | ✅ Ready | . | EspTemperature | BaseTemperature | Internal sensor, threshold monitoring | ✅ Complete | ✅ Ready | . | EspLogger | BaseLogger | Multi-output, network, file logging | ✅ Complete | ✅ Ready | . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#complete-implementations-",
+    
+    "relUrl": "/docs/esp_api/#complete-implementations-"
+  },"963": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "In Progress 🚧",
+    "content": "| Implementation | Base Class | Current Status | Target Features | . |——————-|—————-|——————-|———————| . | EspCan | BaseCan | TWAI controller implementation | Standard/extended frames, error handling | . | EspWifi | BaseWifi | Station mode implementation | 802.11n, WPA3, mesh networking | . | EspBluetooth | BaseBluetooth | NimBLE stack integration | Classic BT, BLE, service discovery | . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#in-progress-",
+    
+    "relUrl": "/docs/esp_api/#in-progress-"
+  },"964": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "📋 Core Implementations",
+    "content": " ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-core-implementations",
+    
+    "relUrl": "/docs/esp_api/#-core-implementations"
+  },"965": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "🔌 EspGpio - Digital I/O Control",
+    "content": "Key Features: . | Dynamic pin direction configuration | Configurable drive strength and slew rate | Interrupt support with filtering | Pull-up/pull-down resistor control | . ESP32-C6 Optimizations: . | IOMUX pin routing for maximum performance | Advanced interrupt filtering and debouncing | Power-efficient sleep mode support | . 📖 Full Documentation . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-espgpio---digital-io-control",
+    
+    "relUrl": "/docs/esp_api/#-espgpio---digital-io-control"
+  },"966": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "🔄 EspSpi - Serial Peripheral Interface",
+    "content": "Key Features: . | Full-duplex communication | DMA acceleration support | Configurable SPI modes (0, 1, 2, 3) | Multi-device management | . ESP32-C6 Optimizations: . | IOMUX optimization for 80 MHz operation | Advanced DMA channel management | Multiple clock source options | . 📖 Full Documentation . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-espspi---serial-peripheral-interface",
+    
+    "relUrl": "/docs/esp_api/#-espspi---serial-peripheral-interface"
+  },"967": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "⚡ EspPio - Programmable I/O",
+    "content": "Key Features: . | Custom protocol implementation | Precise timing control | Symbol transmission | Encoder reading support | . ESP32-C6 Optimizations: . | RMT peripheral integration | Hardware timing generation | Low-power operation modes | . 📖 Full Documentation . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-esppio---programmable-io",
+    
+    "relUrl": "/docs/esp_api/#-esppio---programmable-io"
+  },"968": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "📡 EspBluetooth - Wireless Communication",
+    "content": "Key Features: . | Bluetooth Low Energy (BLE) | Classic Bluetooth support | NimBLE stack integration | Service discovery and pairing | . ESP32-C6 Optimizations: . | Bluetooth 5.0 compliance | Advanced power management | Secure pairing protocols | . 📖 Full Documentation . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-espbluetooth---wireless-communication",
+    
+    "relUrl": "/docs/esp_api/#-espbluetooth---wireless-communication"
+  },"969": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "📊 EspAdc - Analog-to-Digital Conversion",
+    "content": "Key Features: . | One-shot and continuous sampling modes | Hardware calibration for accurate measurements | Digital IIR filters for noise reduction | Threshold monitors with ISR callbacks | . ESP32-C6 Optimizations: . | 12-bit SAR ADC with DMA support | Real-time threshold monitoring | ESP-IDF v5.5+ TYPE2 data format support | . 📖 Full Documentation . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-espadc---analog-to-digital-conversion",
+    
+    "relUrl": "/docs/esp_api/#-espadc---analog-to-digital-conversion"
+  },"970": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "🎛️ EspPwm - Pulse Width Modulation",
+    "content": "Key Features: . | LEDC controller with up to 8 channels | Hardware fade effects and high resolution | Configurable frequency and duty cycle | Complementary outputs with deadtime | . ESP32-C6 Optimizations: . | Up to 20-bit resolution at low frequencies | Hardware-accelerated fade operations | Multiple timer groups for independent control | . 📖 Full Documentation . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#%EF%B8%8F-esppwm---pulse-width-modulation",
+    
+    "relUrl": "/docs/esp_api/#️-esppwm---pulse-width-modulation"
+  },"971": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "🔗 EspI2c - Inter-Integrated Circuit",
+    "content": "Key Features: . | Bus-device architecture with ESP-IDF v5.5+ | Multi-master support with clock stretching | Per-device configuration and management | Thread-safe operations | . ESP32-C6 Optimizations: . | Fast Mode Plus (1 MHz) support | Hardware FIFO utilization | Advanced error recovery mechanisms | . 📖 Full Documentation . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-espi2c---inter-integrated-circuit",
+    
+    "relUrl": "/docs/esp_api/#-espi2c---inter-integrated-circuit"
+  },"972": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "📡 EspUart - Universal Asynchronous Receiver-Transmitter",
+    "content": "Key Features: . | Hardware flow control (RTS/CTS) | DMA integration for high performance | Pattern detection and interrupt support | Multiple port support | . ESP32-C6 Optimizations: . | Advanced DMA channel management | Hardware pattern matching | Low-latency interrupt handling | . 📖 Full Documentation . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-espuart---universal-asynchronous-receiver-transmitter",
+    
+    "relUrl": "/docs/esp_api/#-espuart---universal-asynchronous-receiver-transmitter"
+  },"973": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "💾 EspNvs - Non-Volatile Storage",
+    "content": "Key Features: . | HMAC-based encryption support | Namespace isolation and management | Atomic operations and consistency guarantees | Wear leveling and flash optimization | . ESP32-C6 Optimizations: . | XTS encryption for data protection | Secure key generation and eFuse storage | Advanced statistics and monitoring | . 📖 Full Documentation . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-espnvs---non-volatile-storage",
+    
+    "relUrl": "/docs/esp_api/#-espnvs---non-volatile-storage"
+  },"974": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "⏱️ EspPeriodicTimer - High-Precision Timing",
+    "content": "Key Features: . | Microsecond-level precision timing | Multiple independent timers | Callback-based event notification | Power management integration | . ESP32-C6 Optimizations: . | Hardware timer peripheral utilization | Low-power operation modes | High-frequency timer support | . 📖 Full Documentation . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#%EF%B8%8F-espperiodictimer---high-precision-timing",
+    
+    "relUrl": "/docs/esp_api/#️-espperiodictimer---high-precision-timing"
+  },"975": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "🌡️ EspTemperature - Internal Temperature Sensor",
+    "content": "Key Features: . | Internal temperature sensor support | Multiple measurement ranges with different accuracy | Threshold monitoring with callbacks | Continuous monitoring capabilities | . ESP32-C6 Optimizations: . | Hardware calibration and offset compensation | Real-time threshold detection | Power-efficient sleep modes | . 📖 Full Documentation . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#%EF%B8%8F-esptemperature---internal-temperature-sensor",
+    
+    "relUrl": "/docs/esp_api/#️-esptemperature---internal-temperature-sensor"
+  },"976": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "📝 EspLogger - Advanced Logging System",
+    "content": "Key Features: . | ESP-IDF Log V1 and V2 integration | Multi-output support (console, file, network) | Performance monitoring and statistics | Tag-based logging with dynamic levels | . ESP32-C6 Optimizations: . | Native ESP-IDF performance | Memory-efficient logging | Real-time logging capabilities | . 📖 Full Documentation . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-esplogger---advanced-logging-system",
+    
+    "relUrl": "/docs/esp_api/#-esplogger---advanced-logging-system"
+  },"977": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "⚡ ESP32-C6 Features",
+    "content": " ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-esp32-c6-features",
+    
+    "relUrl": "/docs/esp_api/#-esp32-c6-features"
+  },"978": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "Hardware Capabilities",
+    "content": "| Feature | Specification | HardFOC Benefits | . |————-|——————-|———————-| . | CPU | RISC-V 32-bit, 160 MHz | High-performance motor control | . | Memory | 512 KB SRAM, 448 KB ROM | Rich application support | . | GPIO | 30 configurable pins | Flexible I/O configuration | . | ADC | 2 × 12-bit SAR ADCs | High-precision sensing | . | PWM | 8 × LEDC channels | Multi-motor control | . | SPI | 2 × SPI controllers | High-speed communication | . | I2C | 2 × I2C controllers | Sensor network support | . | UART | 2 × UART controllers | Debug and communication | . | CAN | 1 × TWAI controller | Industrial networking | . | WiFi | 802.11 b/g/n | IoT connectivity | . | Bluetooth | Bluetooth 5.0 | Wireless configuration | . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#hardware-capabilities",
+    
+    "relUrl": "/docs/esp_api/#hardware-capabilities"
+  },"979": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "Performance Characteristics",
+    "content": ". | GPIO Speed: Up to 80 MHz with IOMUX | SPI Speed: Up to 80 MHz with DMA | ADC Resolution: 12-bit with calibration | PWM Frequency: Up to 40 MHz | Interrupt Latency: &lt; 1 μs | . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#performance-characteristics",
+    
+    "relUrl": "/docs/esp_api/#performance-characteristics"
+  },"980": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "📊 Performance Benchmarks",
+    "content": " ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-performance-benchmarks",
+    
+    "relUrl": "/docs/esp_api/#-performance-benchmarks"
+  },"981": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "GPIO Performance",
+    "content": "| Operation | Performance | Notes | . |—————|—————–|———–| . | Pin Toggle | 40 MHz | Maximum theoretical speed | . | Interrupt Latency | &lt; 1 μs | Real-time capable | . | Direction Change | &lt; 100 ns | Dynamic configuration | . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#gpio-performance",
+    
+    "relUrl": "/docs/esp_api/#gpio-performance"
+  },"982": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "SPI Performance",
+    "content": "| Configuration | Speed | Notes | . |——————-|———–|———–| . | IOMUX + DMA | 80 MHz | Maximum performance | . | GPIO Matrix | 40 MHz | Flexible pin routing | . | Small Transfers | 20 MHz | Optimized for efficiency | . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#spi-performance",
+    
+    "relUrl": "/docs/esp_api/#spi-performance"
+  },"983": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "Power Consumption",
+    "content": "| Mode | Current | Use Case | . |———-|————-|————–| . | Active | 20-50 mA | Normal operation | . | Light Sleep | 0.8 mA | Sensor monitoring | . | Deep Sleep | 5 μA | Long-term storage | . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#power-consumption",
+    
+    "relUrl": "/docs/esp_api/#power-consumption"
+  },"984": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "🔍 Troubleshooting",
+    "content": " ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-troubleshooting",
+    
+    "relUrl": "/docs/esp_api/#-troubleshooting"
+  },"985": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "Common Issues",
+    "content": "GPIO Configuration Problems . | Issue: Pin not responding to commands | Solution: Check IOMUX configuration and pin assignment | Prevention: Use dedicated IOMUX pins for high-speed operations | . SPI Communication Failures . | Issue: Data corruption or timing issues | Solution: Verify clock configuration and DMA settings | Prevention: Use appropriate sample rates for logic analyzer | . Performance Issues . | Issue: Lower than expected speeds | Solution: Enable IOMUX and DMA where applicable | Prevention: Follow ESP32-C6 optimization guidelines | . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#common-issues",
+    
+    "relUrl": "/docs/esp_api/#common-issues"
+  },"986": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "Debugging Tools",
+    "content": ". | ESP-IDF Monitor - Real-time logging and debugging | Logic Analyzer - Signal analysis and timing verification | Performance Profiling - Built-in timing and statistics | Error Reporting - Comprehensive error codes and messages | . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#debugging-tools",
+    
+    "relUrl": "/docs/esp_api/#debugging-tools"
+  },"987": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "🔗 Navigation",
+    "content": " ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#-navigation",
+    
+    "relUrl": "/docs/esp_api/#-navigation"
+  },"988": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "Documentation Structure",
+    "content": ". | 🏠 Main Documentation - Complete system overview | 📋 API Interfaces - Base classes and interfaces | 🛠️ Utility Classes - Advanced utility classes and helpers | 🧪 Test Suites - Testing and validation | . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#documentation-structure",
+    
+    "relUrl": "/docs/esp_api/#documentation-structure"
+  },"989": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "Related Documentation",
+    "content": ". | EspGpio - GPIO implementation details | EspSpi - SPI implementation details | EspPio - PIO implementation details | EspAdc - ADC implementation details | EspPwm - PWM implementation details | EspI2c - I2C implementation details | EspUart - UART implementation details | EspUsbSerialJtag - Built-in USB Serial/JTAG controller (CDC-ACM + JTAG) | EspNvs - NVS implementation details | EspPeriodicTimer - Timer implementation details | EspTemperature - Temperature sensor implementation details | EspLogger - Logging implementation details | EspBluetooth - Bluetooth implementation details | . 🔧 ESP32-C6 Implementations - HardFOC Systems . Leveraging ESP32-C6 hardware for performance and efficiency . ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/#related-documentation",
+    
+    "relUrl": "/docs/esp_api/#related-documentation"
+  },"990": {
+    "doc": "🔧 ESP32 Implementations",
+    "title": "🔧 ESP32 Implementations",
+    "content": " ",
+    "url": "/hf-internal-interface-wrap/development/docs/esp_api/",
+    
+    "relUrl": "/docs/esp_api/"
   },"991": {
     "doc": "📚 Documentation",
     "title": "🚀 HardFOC Internal Interface Wrapper",
