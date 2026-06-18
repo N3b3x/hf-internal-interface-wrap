@@ -48,36 +48,53 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 /// @cond INTERNAL
-// Forward-declare HAL handle types only when the corresponding HAL module header
-// has not been included yet (HAL enabled in stm32h7xx_hal_conf.h).
-#ifndef STM32H7xx_HAL_ADC_H
+#if defined(USE_HAL_DRIVER)
+// Real CubeMX HAL build: pull the full HAL up front. Forward declarations
+// CANNOT be used here — the HAL defines these names as typedefs of anonymous
+// structs (e.g. `typedef struct {...} GPIO_TypeDef;`), so a prior
+// `struct GPIO_TypeDef;` declaration is a hard conflict whichever side is
+// included first.
+#  include "stm32h7xx_hal.h"
+// Modules disabled in this core's stm32h7xx_hal_conf.h (e.g. SPI/UART/ADC on
+// the CM7 of an ADR-003 split) leave their handle types undefined. Declare
+// opaque stand-ins so the config structs below still parse; code that actually
+// drives those buses only compiles on the core that enables the module.
+#  ifndef HAL_ADC_MODULE_ENABLED
 struct ADC_HandleTypeDef;
-#endif
-#ifndef STM32H7xx_HAL_I2C_H
+#  endif
+#  ifndef HAL_I2C_MODULE_ENABLED
 struct I2C_HandleTypeDef;
-#endif
-#ifndef STM32H7xx_HAL_SPI_H
+#  endif
+#  ifndef HAL_SPI_MODULE_ENABLED
 struct SPI_HandleTypeDef;
-#endif
-#ifndef STM32H7xx_HAL_TIM_H
+#  endif
+#  ifndef HAL_TIM_MODULE_ENABLED
 struct TIM_HandleTypeDef;
-#endif
-#ifndef STM32H7xx_HAL_UART_H
+#  endif
+#  ifndef HAL_UART_MODULE_ENABLED
 struct UART_HandleTypeDef;
-#endif
-#ifndef STM32H7xx_HAL_CAN_H
+#  endif
+#  ifndef HAL_CAN_MODULE_ENABLED
 struct CAN_HandleTypeDef;
-#endif
-#ifndef STM32H7xx_HAL_FDCAN_H
+#  endif
+#  ifndef HAL_FDCAN_MODULE_ENABLED
 struct FDCAN_HandleTypeDef;
-#endif
-#ifndef STM32H7xx_HAL_DAC_H
+#  endif
+#  ifndef HAL_DAC_MODULE_ENABLED
 struct DAC_HandleTypeDef;
-#endif
-#ifndef STM32H7xx_HAL_DMA_H
+#  endif
+#else
+// HAL-less build (host tests / lint): forward-declare the handle types so
+// StmTypes.h stands alone.
+struct ADC_HandleTypeDef;
+struct I2C_HandleTypeDef;
+struct SPI_HandleTypeDef;
+struct TIM_HandleTypeDef;
+struct UART_HandleTypeDef;
+struct CAN_HandleTypeDef;
+struct FDCAN_HandleTypeDef;
+struct DAC_HandleTypeDef;
 struct DMA_HandleTypeDef;
-#endif
-#ifndef GPIOA
 struct GPIO_TypeDef;
 #endif
 /// @endcond

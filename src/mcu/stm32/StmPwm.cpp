@@ -8,18 +8,25 @@
  */
 
 #include "StmPwm.h"
+
+// Compile this wrapper only on cores whose CubeMX HAL config enables the
+// module (ADR-003: bus sovereignty is per-core). HAL-less builds keep the
+// manual prototypes below.
+#if !defined(USE_HAL_DRIVER) || defined(HAL_TIM_MODULE_ENABLED)
 #include <cstring>
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // STM32 HAL FORWARD DECLARATIONS
 // ═══════════════════════════════════════════════════════════════════════════════
 
+#if !defined(USE_HAL_DRIVER)
 extern "C" {
 extern uint32_t HAL_TIM_PWM_Start(TIM_HandleTypeDef* htim, uint32_t Channel);
 extern uint32_t HAL_TIM_PWM_Stop(TIM_HandleTypeDef* htim, uint32_t Channel);
 extern uint32_t HAL_TIMEx_PWMN_Start(TIM_HandleTypeDef* htim, uint32_t Channel);
 extern uint32_t HAL_TIMEx_PWMN_Stop(TIM_HandleTypeDef* htim, uint32_t Channel);
 }
+#endif
 
 // HAL TIM channel constants (TIM_CHANNEL_x)
 namespace {
@@ -318,3 +325,5 @@ void StmPwm::ReapplyDuties() noexcept {
         }
     }
 }
+
+#endif  // module enabled

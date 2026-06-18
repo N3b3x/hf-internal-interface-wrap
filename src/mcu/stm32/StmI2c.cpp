@@ -9,10 +9,16 @@
 
 #include "StmI2c.h"
 
+// Compile this wrapper only on cores whose CubeMX HAL config enables the
+// module (ADR-003: bus sovereignty is per-core). HAL-less builds keep the
+// manual prototypes below.
+#if !defined(USE_HAL_DRIVER) || defined(HAL_I2C_MODULE_ENABLED)
+
 // ═══════════════════════════════════════════════════════════════════════════════
 // STM32 HAL FORWARD DECLARATIONS
 // ═══════════════════════════════════════════════════════════════════════════════
 
+#if !defined(USE_HAL_DRIVER)
 extern "C" {
 extern uint32_t HAL_I2C_Master_Transmit(I2C_HandleTypeDef* hi2c, uint16_t DevAddress,
                                         uint8_t* pData, uint16_t Size, uint32_t Timeout);
@@ -27,6 +33,7 @@ extern uint32_t HAL_I2C_Mem_Read(I2C_HandleTypeDef* hi2c, uint16_t DevAddress,
 extern uint32_t HAL_I2C_IsDeviceReady(I2C_HandleTypeDef* hi2c, uint16_t DevAddress,
                                       uint32_t Trials, uint32_t Timeout);
 }
+#endif
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // StmI2cDevice
@@ -235,3 +242,5 @@ bool StmI2cBus::RemoveDevice(int device_index) noexcept {
 const hf_i2c_bus_config_t& StmI2cBus::GetConfig() const noexcept { return config_; }
 
 I2C_HandleTypeDef* StmI2cBus::GetHalHandle() const noexcept { return config_.hal_handle; }
+
+#endif  // module enabled

@@ -16,6 +16,9 @@
 // STM32 HAL FORWARD DECLARATIONS
 // ═══════════════════════════════════════════════════════════════════════════════
 
+// Real prototypes come from the HAL when the UART module is enabled; the
+// manual declarations exist only for HAL-less builds and must not conflict.
+#if !defined(HAL_UART_MODULE_ENABLED)
 extern "C" {
 extern uint32_t HAL_UART_Transmit(UART_HandleTypeDef* huart,
                                   const uint8_t* pData, uint16_t Size, uint32_t Timeout);
@@ -24,6 +27,7 @@ extern uint32_t HAL_UART_Receive(UART_HandleTypeDef* huart,
 extern uint32_t HAL_UART_Abort(UART_HandleTypeDef* huart);
 extern uint32_t HAL_GetTick(void);
 }
+#endif
 
 namespace {
     constexpr hf_u32_t kDefaultTimeoutMs = 1000;

@@ -15,12 +15,14 @@
 // STM32 HAL FORWARD DECLARATIONS (Flash operations)
 // ═══════════════════════════════════════════════════════════════════════════════
 
+#if !defined(USE_HAL_DRIVER)
 extern "C" {
 extern uint32_t HAL_FLASH_Unlock(void);
 extern uint32_t HAL_FLASH_Lock(void);
 extern uint32_t HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint64_t Data);
 extern uint32_t HAL_FLASHEx_Erase(void* pEraseInit, uint32_t* SectorError);
 }
+#endif
 
 // Flash program type constants
 namespace {
@@ -279,6 +281,13 @@ hf_nvs_err_t StmNvs::FlushToFlash() noexcept {
         return hf_nvs_err_t::NVS_SUCCESS;
     }
 
+#if defined(USE_HAL_DRIVER) && defined(STM32H747xx)
+    // STM32H7 programs internal flash in 256-bit flash words; the word-wise
+    // path below is F1/F4-era and would hard-fault. On this product the
+    // persistent NVS region lives in QSPI (memory_map.hpp __NVS_START), so
+    // internal-flash mode is intentionally rejected here.
+    return hf_nvs_err_t::NVS_ERR_FAILURE;
+#else
     // Unlock flash
     uint32_t status = HAL_FLASH_Unlock();
     if (!hf::stm32::IsHalOk(status)) {
@@ -339,6 +348,7 @@ hf_nvs_err_t StmNvs::FlushToFlash() noexcept {
     write_offset_ = address - flash_config_.flash_start_address;
     HAL_FLASH_Lock();
     return hf_nvs_err_t::NVS_SUCCESS;
+#endif
 }
 
 hf_nvs_err_t StmNvs::LoadFromFlash() noexcept {

@@ -15,11 +15,17 @@
 // STM32 HAL FORWARD DECLARATIONS
 // ═══════════════════════════════════════════════════════════════════════════════
 
+#if !defined(USE_HAL_DRIVER) || !defined(HAL_UART_MODULE_ENABLED)
 extern "C" {
 extern uint32_t HAL_UART_Transmit(UART_HandleTypeDef* huart, uint8_t* pData,
                                   uint16_t Size, uint32_t Timeout);
-extern uint32_t HAL_GetTick(void);
+}
+#endif
+#if !defined(USE_HAL_DRIVER)
+extern "C" uint32_t HAL_GetTick(void);
+#endif
 
+extern "C" {
 // ITM stimulus port for SWO output
 static inline void HF_ITM_SendChar(char ch) {
     // ITM stimulus port 0

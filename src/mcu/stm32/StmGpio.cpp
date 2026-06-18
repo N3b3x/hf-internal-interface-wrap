@@ -5,6 +5,11 @@
 
 #include "StmGpio.h"
 
+#if defined(USE_HAL_DRIVER)
+// Real HAL: prototypes and GPIO_InitTypeDef come from stm32h7xx_hal.h
+// (pulled in by StmTypes.h). Map the HF init struct onto the real one.
+using HF_GPIO_InitTypeDef = GPIO_InitTypeDef;
+#else
 extern "C" {
 extern uint32_t HAL_GPIO_ReadPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
 extern void     HAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, uint32_t PinState);
@@ -18,6 +23,7 @@ struct HF_GPIO_InitTypeDef {
 };
 extern void HAL_GPIO_Init(GPIO_TypeDef* GPIOx, HF_GPIO_InitTypeDef* GPIO_Init);
 }
+#endif
 
 namespace {
 constexpr uint32_t kGpioModeInput     = 0x00000000U;
@@ -108,14 +114,19 @@ hf_gpio_pull_mode_t StmGpio::GetPullModeImpl() const noexcept { return pull_mode
 
 hf_gpio_err_t StmGpio::SetPinLevelImpl(hf_gpio_level_t level) noexcept {
     if (!port_) return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
-  const uint32_t pin_state = (level == hf_gpio_level_t::HF_GPIO_LEVEL_HIGH) ? 1U : 0U;
+  const auto pin_state = (level == hf_gpio_level_t::HF_GPIO_LEVEL_HIGH)
+#if defined(USE_HAL_DRIVER)
+                             ? GPIO_PIN_SET : GPIO_PIN_RESET;
+#else
+                             ? 1U : 0U;
+#endif
     HAL_GPIO_WritePin(port_, hal_pin_mask_, pin_state);
     return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
 hf_gpio_err_t StmGpio::GetPinLevelImpl(hf_gpio_level_t& level) noexcept {
     if (!port_) return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
-  const uint32_t state = HAL_GPIO_ReadPin(port_, hal_pin_mask_);
+  const uint32_t state = static_cast<uint32_t>(HAL_GPIO_ReadPin(port_, hal_pin_mask_));
   level = (state != 0) ? hf_gpio_level_t::HF_GPIO_LEVEL_HIGH : hf_gpio_level_t::HF_GPIO_LEVEL_LOW;
     return hf_gpio_err_t::GPIO_SUCCESS;
 }

@@ -14,6 +14,7 @@
 // STM32 HAL FORWARD DECLARATIONS (bxCAN)
 // ═══════════════════════════════════════════════════════════════════════════════
 
+#if !defined(USE_HAL_DRIVER)
 extern "C" {
 // bxCAN
 extern uint32_t HAL_CAN_Start(CAN_HandleTypeDef* hcan);
@@ -47,6 +48,7 @@ extern uint32_t HAL_FDCAN_GetError(FDCAN_HandleTypeDef* hfdcan);
 
 extern uint32_t HAL_GetTick(void);
 }
+#endif
 
 // bxCAN FIFO constants
 namespace {

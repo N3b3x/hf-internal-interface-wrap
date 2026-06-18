@@ -13,6 +13,7 @@
 // STM32 HAL FORWARD DECLARATIONS
 // ═══════════════════════════════════════════════════════════════════════════════
 
+#if !defined(USE_HAL_DRIVER)
 extern "C" {
 extern uint32_t HAL_SPI_TransmitReceive(SPI_HandleTypeDef* hspi, uint8_t* pTxData,
                                         uint8_t* pRxData, uint16_t Size, uint32_t Timeout);
@@ -22,6 +23,7 @@ extern uint32_t HAL_SPI_Receive(SPI_HandleTypeDef* hspi, uint8_t* pData,
                                 uint16_t Size, uint32_t Timeout);
 extern void HAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, uint32_t PinState);
 }
+#endif
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // StmSpiDevice
@@ -107,14 +109,22 @@ const void* StmSpiDevice::GetDeviceConfig() const noexcept {
 void StmSpiDevice::AssertCS() noexcept {
     if (!config_.cs_port || config_.cs_pin == 0) return;
     // Active low: assert = drive LOW; Active high: assert = drive HIGH
-    uint32_t state = config_.cs_active_low ? 0U : 1U;
-    HAL_GPIO_WritePin(config_.cs_port, config_.cs_pin, state);
+#if defined(USE_HAL_DRIVER)
+    HAL_GPIO_WritePin(config_.cs_port, config_.cs_pin,
+                      config_.cs_active_low ? GPIO_PIN_RESET : GPIO_PIN_SET);
+#else
+    HAL_GPIO_WritePin(config_.cs_port, config_.cs_pin, config_.cs_active_low ? 0U : 1U);
+#endif
 }
 
 void StmSpiDevice::DeassertCS() noexcept {
     if (!config_.cs_port || config_.cs_pin == 0) return;
-    uint32_t state = config_.cs_active_low ? 1U : 0U;
-    HAL_GPIO_WritePin(config_.cs_port, config_.cs_pin, state);
+#if defined(USE_HAL_DRIVER)
+    HAL_GPIO_WritePin(config_.cs_port, config_.cs_pin,
+                      config_.cs_active_low ? GPIO_PIN_SET : GPIO_PIN_RESET);
+#else
+    HAL_GPIO_WritePin(config_.cs_port, config_.cs_pin, config_.cs_active_low ? 1U : 0U);
+#endif
 }
 
 hf_u32_t StmSpiDevice::GetEffectiveTimeout(hf_u32_t requested_ms) const noexcept {

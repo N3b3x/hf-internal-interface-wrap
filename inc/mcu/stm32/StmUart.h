@@ -15,7 +15,12 @@
 #include "BaseUart.h"
 #include "StmTypes.h"
 
-struct UART_HandleTypeDef;  // Forward declaration
+#if defined(USE_HAL_DRIVER)
+#include "stm32h7xx_hal_uart.h"
+#else
+struct __UART_HandleTypeDef;
+typedef struct __UART_HandleTypeDef UART_HandleTypeDef;
+#endif
 
 /**
  * @class StmUart
