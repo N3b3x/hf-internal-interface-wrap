@@ -116,7 +116,7 @@ var searchData=
   ['environment_20strong_113',['&lt;strong&gt;2. Setup Development Environment&lt;/strong&gt;',['../index.html#autotoc_md36',1,'']]],
   ['erased_114',['ERASED',['../classStmNvs.html#a0bcc4c0e9ca2496bf414508a23ae60dbad0a0eb3dc879369e4217cd440cb3c5da',1,'StmNvs']]],
   ['erased_115',['erased',['../structStmNvs_1_1CacheEntry.html#af9fc9fd75aafeeea2f5103ba9c1e59a4',1,'StmNvs::CacheEntry']]],
-  ['erasekey_116',['EraseKey',['../classBaseNvs.html#ac3a2738d1f6a3e488c08edaecf49af9d',1,'BaseNvs::EraseKey()'],['../classEspNvs.html#a980345dc9dc0d96627b6ed26581f7cf8',1,'EspNvs::EraseKey()'],['../classStmNvs.html#a6c3d4484e78bf018fff0062902518e26',1,'StmNvs::EraseKey()']]],
+  ['erasekey_116',['EraseKey',['../classBaseNvs.html#ac3a2738d1f6a3e488c08edaecf49af9d',1,'BaseNvs::EraseKey()'],['../classEspNvs.html#a980345dc9dc0d96627b6ed26581f7cf8',1,'EspNvs::EraseKey()'],['../classHostNvs.html#adaf0d0400a576ec69b4087267f0503af',1,'HostNvs::EraseKey()'],['../classStmNvs.html#a6c3d4484e78bf018fff0062902518e26',1,'StmNvs::EraseKey()']]],
   ['error_117',['error',['../structhf__temp__reading__t.html#acb320967db84b0d5469f14a5ea2eb000',1,'hf_temp_reading_t']]],
   ['error_118',['Error',['../classBaseLogger.html#a4075d445b4199e72e9a0c09ba438c076',1,'BaseLogger::Error()'],['../classStmLogger.html#a0175d15ffd5f584219e245ada94523e4',1,'StmLogger::Error()']]],
   ['error_119',['ERROR',['../namespacehf_1_1stm32.html#aae908749bc986cae79f7b0240fa24fceabb1ca97ec761fc37101737ba0aa2e7c5',1,'hf::stm32']]],

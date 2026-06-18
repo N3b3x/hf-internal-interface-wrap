@@ -158,7 +158,7 @@ var searchData=
   ['command_5fbits_155',['command_bits',['../structhf__spi__device__config__t.html#a6d75b53df639f8885a6221d68037ac1e',1,'hf_spi_device_config_t']]],
   ['command_5ftype_156',['command_type',['../structhf__i2c__custom__command__t.html#a4698f6963963e23ba7805ab1f4adb6c3',1,'hf_i2c_custom_command_t']]],
   ['commands_20strong_157',['&lt;strong&gt;Build Commands&lt;/strong&gt;',['../index.html#autotoc_md42',1,'']]],
-  ['commit_158',['Commit',['../classBaseNvs.html#a0921ba6eb0dda4285a5ea33ec1b80f11',1,'BaseNvs::Commit()'],['../classEspNvs.html#a2ac83396eb5f21034a028331c600ad9f',1,'EspNvs::Commit()'],['../classStmNvs.html#a4927951d09db18d392b6b6593809b0ac',1,'StmNvs::Commit()']]],
+  ['commit_158',['Commit',['../classBaseNvs.html#a0921ba6eb0dda4285a5ea33ec1b80f11',1,'BaseNvs::Commit()'],['../classEspNvs.html#a2ac83396eb5f21034a028331c600ad9f',1,'EspNvs::Commit()'],['../classHostNvs.html#a92e546c4543be3a13757aa5149bcb840',1,'HostNvs::Commit()'],['../classStmNvs.html#a4927951d09db18d392b6b6593809b0ac',1,'StmNvs::Commit()']]],
   ['communication_20buses_20strong_159',['&lt;strong&gt;Communication Buses&lt;/strong&gt;',['../index.html#autotoc_md31',1,'']]],
   ['communication_5fmode_160',['communication_mode',['../structEspUart_1_1UartState.html#a83a00c86d878439b42aaeaa288295f59',1,'EspUart::UartState']]],
   ['communication_5fmode_5f_161',['communication_mode_',['../classEspUart.html#a27bb89d203912b998a84e3c9f51b45e8',1,'EspUart']]],

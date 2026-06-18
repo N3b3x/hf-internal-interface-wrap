@@ -235,28 +235,30 @@
         </childnode>
         <childnode refid="68" relation="include">
         </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
       </node>
-      <node id="70">
+      <node id="72">
         <label>inc/base/BasePeriodicTimer.h</label>
         <link refid="BasePeriodicTimer_8h"/>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="71" relation="include">
+        <childnode refid="73" relation="include">
         </childnode>
       </node>
-      <node id="73">
+      <node id="75">
         <label>inc/base/BasePio.h</label>
         <link refid="BasePio_8h"/>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="76" relation="include">
         </childnode>
       </node>
-      <node id="75">
+      <node id="77">
         <label>inc/base/BasePwm.h</label>
         <link refid="BasePwm_8h"/>
         <childnode refid="14" relation="include">
@@ -265,59 +267,59 @@
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="76" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
       </node>
-      <node id="78">
+      <node id="80">
         <label>inc/base/BaseSpi.h</label>
         <link refid="BaseSpi_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="81" relation="include">
         </childnode>
-        <childnode refid="80" relation="include">
+        <childnode refid="82" relation="include">
         </childnode>
       </node>
-      <node id="82">
+      <node id="84">
         <label>inc/base/BaseTemperature.h</label>
         <link refid="BaseTemperature_8h"/>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="83" relation="include">
-        </childnode>
         <childnode refid="85" relation="include">
         </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
       </node>
-      <node id="87">
+      <node id="89">
         <label>inc/base/BaseUart.h</label>
         <link refid="BaseUart_8h"/>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="88" relation="include">
+        <childnode refid="90" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="91" relation="include">
+        <childnode refid="93" relation="include">
         </childnode>
-        <childnode refid="92" relation="include">
+        <childnode refid="94" relation="include">
         </childnode>
       </node>
-      <node id="88">
+      <node id="90">
         <label>inc/base/BaseUsbSerialJtag.h</label>
         <link refid="BaseUsbSerialJtag_8h"/>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="89" relation="include">
+        <childnode refid="91" relation="include">
         </childnode>
       </node>
-      <node id="94">
+      <node id="96">
         <label>inc/base/BaseWifi.h</label>
         <link refid="BaseWifi_8h"/>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="95" relation="include">
+        <childnode refid="97" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -341,19 +343,19 @@
         </childnode>
         <childnode refid="64" relation="include">
         </childnode>
-        <childnode refid="70" relation="include">
-        </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
         <childnode refid="75" relation="include">
         </childnode>
-        <childnode refid="78" relation="include">
+        <childnode refid="77" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="80" relation="include">
         </childnode>
-        <childnode refid="87" relation="include">
+        <childnode refid="84" relation="include">
         </childnode>
-        <childnode refid="94" relation="include">
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
@@ -361,7 +363,7 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="97" relation="include">
+        <childnode refid="99" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
@@ -371,17 +373,17 @@
         </childnode>
         <childnode refid="67" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="76" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
-        </childnode>
-        <childnode refid="98" relation="include">
-        </childnode>
-        <childnode refid="91" relation="include">
+        <childnode refid="81" relation="include">
         </childnode>
         <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
@@ -478,12 +480,12 @@
         <childnode refid="30" relation="include">
         </childnode>
       </node>
-      <node id="83">
+      <node id="85">
         <label>inc/mcu/esp32/EspTemperature.h</label>
         <link refid="EspTemperature_8h"/>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="84" relation="include">
+        <childnode refid="86" relation="include">
         </childnode>
       </node>
       <node id="31">
@@ -494,20 +496,20 @@
         <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="89">
+      <node id="91">
         <label>inc/mcu/esp32/EspUsbSerialJtag.h</label>
         <link refid="EspUsbSerialJtag_8h"/>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="90" relation="include">
+        <childnode refid="92" relation="include">
         </childnode>
       </node>
-      <node id="95">
+      <node id="97">
         <label>inc/mcu/esp32/EspWifi.h</label>
         <link refid="EspWifi_8h"/>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="96" relation="include">
+        <childnode refid="98" relation="include">
         </childnode>
       </node>
       <node id="22">
@@ -532,10 +534,10 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="97">
+      <node id="99">
         <label>inc/mcu/esp32/utils/EspTypes_Base.h</label>
         <link refid="EspTypes__Base_8h"/>
-        <childnode refid="95" relation="include">
+        <childnode refid="97" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -549,17 +551,17 @@
         </childnode>
         <childnode refid="67" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="76" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="81" relation="include">
         </childnode>
-        <childnode refid="98" relation="include">
+        <childnode refid="100" relation="include">
         </childnode>
-        <childnode refid="91" relation="include">
+        <childnode refid="93" relation="include">
         </childnode>
-        <childnode refid="99" relation="include">
+        <childnode refid="101" relation="include">
         </childnode>
       </node>
       <node id="41">
@@ -596,7 +598,7 @@
         <childnode refid="65" relation="include">
         </childnode>
       </node>
-      <node id="74">
+      <node id="76">
         <label>inc/mcu/esp32/utils/EspTypes_PIO.h</label>
         <link refid="EspTypes__PIO_8h"/>
         <childnode refid="13" relation="include">
@@ -614,7 +616,7 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="79">
+      <node id="81">
         <label>inc/mcu/esp32/utils/EspTypes_SPI.h</label>
         <link refid="EspTypes__SPI_8h"/>
         <childnode refid="2" relation="include">
@@ -622,13 +624,13 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="98">
+      <node id="100">
         <label>inc/mcu/esp32/utils/EspTypes_Timer.h</label>
         <link refid="EspTypes__Timer_8h"/>
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="91">
+      <node id="93">
         <label>inc/mcu/esp32/utils/EspTypes_UART.h</label>
         <link refid="EspTypes__UART_8h"/>
         <childnode refid="17" relation="include">
@@ -636,9 +638,15 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="99">
+      <node id="101">
         <label>inc/mcu/esp32/utils/EspTypes_WiFi.h</label>
         <link refid="EspTypes__WiFi_8h"/>
+      </node>
+      <node id="68">
+        <label>inc/mcu/host/HostNvs.h</label>
+        <link refid="HostNvs_8h"/>
+        <childnode refid="69" relation="include">
+        </childnode>
       </node>
       <node id="33">
         <label>inc/mcu/stm32/StmAdc.h</label>
@@ -670,37 +678,37 @@
         <childnode refid="63" relation="include">
         </childnode>
       </node>
-      <node id="68">
+      <node id="70">
         <label>inc/mcu/stm32/StmNvs.h</label>
         <link refid="StmNvs_8h"/>
-        <childnode refid="69" relation="include">
+        <childnode refid="71" relation="include">
         </childnode>
       </node>
-      <node id="71">
+      <node id="73">
         <label>inc/mcu/stm32/StmPeriodicTimer.h</label>
         <link refid="StmPeriodicTimer_8h"/>
-        <childnode refid="72" relation="include">
+        <childnode refid="74" relation="include">
         </childnode>
       </node>
-      <node id="76">
+      <node id="78">
         <label>inc/mcu/stm32/StmPwm.h</label>
         <link refid="StmPwm_8h"/>
-        <childnode refid="77" relation="include">
+        <childnode refid="79" relation="include">
         </childnode>
       </node>
-      <node id="80">
+      <node id="82">
         <label>inc/mcu/stm32/StmSpi.h</label>
         <link refid="StmSpi_8h"/>
-        <childnode refid="81" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
       </node>
-      <node id="85">
+      <node id="87">
         <label>inc/mcu/stm32/StmTemperature.h</label>
         <link refid="StmTemperature_8h"/>
-        <childnode refid="86" relation="include">
+        <childnode refid="88" relation="include">
         </childnode>
       </node>
-      <node id="100">
+      <node id="102">
         <label>inc/mcu/stm32/StmTypes.h</label>
         <link refid="StmTypes_8h"/>
         <childnode refid="33" relation="include">
@@ -713,23 +721,23 @@
         </childnode>
         <childnode refid="62" relation="include">
         </childnode>
-        <childnode refid="68" relation="include">
+        <childnode refid="70" relation="include">
         </childnode>
-        <childnode refid="71" relation="include">
+        <childnode refid="73" relation="include">
         </childnode>
-        <childnode refid="76" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
-        <childnode refid="80" relation="include">
+        <childnode refid="82" relation="include">
         </childnode>
-        <childnode refid="85" relation="include">
+        <childnode refid="87" relation="include">
         </childnode>
-        <childnode refid="92" relation="include">
+        <childnode refid="94" relation="include">
         </childnode>
       </node>
-      <node id="92">
+      <node id="94">
         <label>inc/mcu/stm32/StmUart.h</label>
         <link refid="StmUart_8h"/>
-        <childnode refid="93" relation="include">
+        <childnode refid="95" relation="include">
         </childnode>
       </node>
       <node id="53">
@@ -780,7 +788,7 @@
         <label>src/mcu/esp32/EspSpi.cpp</label>
         <link refid="EspSpi_8cpp"/>
       </node>
-      <node id="84">
+      <node id="86">
         <label>src/mcu/esp32/EspTemperature.cpp</label>
         <link refid="EspTemperature_8cpp"/>
       </node>
@@ -788,13 +796,17 @@
         <label>src/mcu/esp32/EspUart.cpp</label>
         <link refid="EspUart_8cpp"/>
       </node>
-      <node id="90">
+      <node id="92">
         <label>src/mcu/esp32/EspUsbSerialJtag.cpp</label>
         <link refid="EspUsbSerialJtag_8cpp"/>
       </node>
-      <node id="96">
+      <node id="98">
         <label>src/mcu/esp32/EspWifi.cpp</label>
         <link refid="EspWifi_8cpp"/>
+      </node>
+      <node id="69">
+        <label>src/mcu/host/HostNvs.cpp</label>
+        <link refid="HostNvs_8cpp"/>
       </node>
       <node id="34">
         <label>src/mcu/stm32/StmAdc.cpp</label>
@@ -816,27 +828,27 @@
         <label>src/mcu/stm32/StmLogger.cpp</label>
         <link refid="StmLogger_8cpp"/>
       </node>
-      <node id="69">
+      <node id="71">
         <label>src/mcu/stm32/StmNvs.cpp</label>
         <link refid="StmNvs_8cpp"/>
       </node>
-      <node id="72">
+      <node id="74">
         <label>src/mcu/stm32/StmPeriodicTimer.cpp</label>
         <link refid="StmPeriodicTimer_8cpp"/>
       </node>
-      <node id="77">
+      <node id="79">
         <label>src/mcu/stm32/StmPwm.cpp</label>
         <link refid="StmPwm_8cpp"/>
       </node>
-      <node id="81">
+      <node id="83">
         <label>src/mcu/stm32/StmSpi.cpp</label>
         <link refid="StmSpi_8cpp"/>
       </node>
-      <node id="86">
+      <node id="88">
         <label>src/mcu/stm32/StmTemperature.cpp</label>
         <link refid="StmTemperature_8cpp"/>
       </node>
-      <node id="93">
+      <node id="95">
         <label>src/mcu/stm32/StmUart.cpp</label>
         <link refid="StmUart_8cpp"/>
       </node>

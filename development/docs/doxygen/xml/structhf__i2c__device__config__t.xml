@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="292" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="292" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="309" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="309" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__device__config__t_1a3e60bd358abcd45af6009dd312ee5960" prot="public" static="no" mutable="no">
         <type><ref refid="StmTypes_8h_1abb63264b5f2de7b6d830732e0c336657" kindref="member">hf_stm32_i2c_addr_mode_t</ref></type>
@@ -123,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="293" column="30" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="293" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="310" column="30" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="310" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__device__config__t_1a4ee426df38bc74be5ef7124ad76313c4" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -138,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="294" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="294" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="311" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="311" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -169,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="297" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="297" bodyend="301"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="314" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="314" bodyend="318"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

@@ -2816,6 +2816,29 @@
     <member refid="structHfEspWifiStats_1a74acd38b83fcb08be0fdbf6c416e13e9" kind="variable"><name>noise_floor</name></member>
     <member refid="structHfEspWifiStats_1ab068e52ec8259f4a0b41ed15da8c9b37" kind="variable"><name>channel_utilization</name></member>
   </compound>
+  <compound refid="classHostNvs" kind="class"><name>HostNvs</name>
+    <member refid="classHostNvs_1afb926b9f0d12dd8a2974540c96d432c9" kind="variable"><name>name_</name></member>
+    <member refid="classHostNvs_1a892b5b9c6a8ff4a9319feab52caaf4c4" kind="variable"><name>blobs_</name></member>
+    <member refid="classHostNvs_1a4d37cd5b69a932b16fa18895d38b1737" kind="variable"><name>u32s_</name></member>
+    <member refid="classHostNvs_1a413475c7f1210961d4eb819ce3eb64a6" kind="variable"><name>strings_</name></member>
+    <member refid="classHostNvs_1a00f1ff13bd021e7febbf907d9adf17d9" kind="function"><name>HostNvs</name></member>
+    <member refid="classHostNvs_1af60bd94b7094348bef3cd4d412d285ea" kind="function"><name>~HostNvs</name></member>
+    <member refid="classHostNvs_1ae46f74cf67ef2a2e12fbf4b7d47fdac8" kind="function"><name>Initialize</name></member>
+    <member refid="classHostNvs_1a4cdc51c794ce858841da8e69bda1f31a" kind="function"><name>Deinitialize</name></member>
+    <member refid="classHostNvs_1ae75f1e40ad131bae06c71e9d3dfa2cd4" kind="function"><name>SetU32</name></member>
+    <member refid="classHostNvs_1a16ad53fbcd575c17a9b0cc7515d5b949" kind="function"><name>GetU32</name></member>
+    <member refid="classHostNvs_1a9ea7357973f446ea9c6238c6e4452154" kind="function"><name>SetString</name></member>
+    <member refid="classHostNvs_1ab43bd9eca066b435755d831108513b88" kind="function"><name>GetString</name></member>
+    <member refid="classHostNvs_1a915b051a05caae124b24a7352012be2f" kind="function"><name>SetBlob</name></member>
+    <member refid="classHostNvs_1a3a1200d1e4bac88962bbb0dfec6b5ac6" kind="function"><name>GetBlob</name></member>
+    <member refid="classHostNvs_1adaf0d0400a576ec69b4087267f0503af" kind="function"><name>EraseKey</name></member>
+    <member refid="classHostNvs_1a92e546c4543be3a13757aa5149bcb840" kind="function"><name>Commit</name></member>
+    <member refid="classHostNvs_1a66d0e8332d475659a17b6e2274a7c3ca" kind="function"><name>KeyExists</name></member>
+    <member refid="classHostNvs_1af9b10542628604f7a7444a9093168270" kind="function"><name>GetSize</name></member>
+    <member refid="classHostNvs_1a97a346f481173bdd388890c236f103e3" kind="function"><name>GetDescription</name></member>
+    <member refid="classHostNvs_1a50a377afbab2b17d3756ef48662a3408" kind="function"><name>GetMaxKeyLength</name></member>
+    <member refid="classHostNvs_1a425627b7e2e24fe8fae6893f398ed2f6" kind="function"><name>GetMaxValueSize</name></member>
+  </compound>
   <compound refid="structInterruptStatus" kind="struct"><name>InterruptStatus</name>
     <member refid="structInterruptStatus_1a26b3eebb18b5e2a7e45264b0cb216e4e" kind="variable"><name>is_enabled</name></member>
     <member refid="structInterruptStatus_1a9f18143aa438cbe4065bc7c923048887" kind="variable"><name>trigger_type</name></member>
@@ -5334,6 +5357,8 @@
     <member refid="EspTypes__WiFi_8h_1a6a2bd80e966cf778d2a8fe5f8e12a170" kind="variable"><name>HF_ESP_WIFI_TX_POWER_MIN</name></member>
     <member refid="EspTypes__WiFi_8h_1a3914da8b4bff8743369814d7acc91ce7" kind="variable"><name>HF_ESP_WIFI_TX_POWER_MAX</name></member>
   </compound>
+  <compound refid="HostNvs_8h" kind="file"><name>HostNvs.h</name>
+  </compound>
   <compound refid="StmAdc_8h" kind="file"><name>StmAdc.h</name>
   </compound>
   <compound refid="StmCan_8h" kind="file"><name>StmCan.h</name>
@@ -5400,6 +5425,7 @@
     <member refid="StmTypes_8h_1a827c04686b48b771092c229dad6ae4c6abb5d31439f5385837df1e6e250880da0" kind="enumvalue"><name>BITS_16</name></member>
   </compound>
   <compound refid="StmUart_8h" kind="file"><name>StmUart.h</name>
+    <member refid="StmUart_8h_1a5de4a49eb132735325e706f406c69d6e" kind="typedef"><name>UART_HandleTypeDef</name></member>
   </compound>
   <compound refid="AsciiArtGenerator_8h" kind="file"><name>AsciiArtGenerator.h</name>
   </compound>
@@ -5477,6 +5503,8 @@
     <member refid="EspWifi_8cpp_1a47889333d1e26b48be92f67707cf5b80" kind="function"><name>ConvertFromEspMode</name></member>
     <member refid="EspWifi_8cpp_1aa86748e40eb0d5060d78da0f13081811" kind="function"><name>ConvertToEspAuthMode</name></member>
     <member refid="EspWifi_8cpp_1aa8dcdfab319e0f859573f8204e47121a" kind="function"><name>ConvertFromEspAuthMode</name></member>
+  </compound>
+  <compound refid="HostNvs_8cpp" kind="file"><name>HostNvs.cpp</name>
   </compound>
   <compound refid="StmAdc_8cpp" kind="file"><name>StmAdc.cpp</name>
     <member refid="StmAdc_8cpp_1a82e42045534541edf017880343a9b600" kind="function"><name>HAL_ADC_Start</name></member>
@@ -5835,6 +5863,10 @@
   <compound refid="dir_49c313528b2c1d8a65741cac94b1b5e3" kind="dir"><name>src/mcu/esp32</name>
   </compound>
   <compound refid="dir_d28a4824dc47e487b107a5db32ef43c4" kind="dir"><name>examples</name>
+  </compound>
+  <compound refid="dir_0cd4d56d89402bcbba0e8cc7eafea435" kind="dir"><name>inc/mcu/host</name>
+  </compound>
+  <compound refid="dir_75d07078725870a0c52d5a6021abe04c" kind="dir"><name>src/mcu/host</name>
   </compound>
   <compound refid="dir_bfccd401955b95cf8c75461437045ac0" kind="dir"><name>inc</name>
   </compound>

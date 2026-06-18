@@ -1,0 +1,20 @@
+<map id="inc/mcu/host/HostNvs.h" name="inc/mcu/host/HostNvs.h">
+<area shape="rect" id="Node000001" title="In&#45;memory BaseNvs for host / unit&#45;test builds (hf&#45;internal&#45;interface&#45;wrap)." alt="" coords="221,5,433,36"/>
+<area shape="rect" id="Node000002" href="$BaseNvs_8h.html" title="Abstract base class for Non&#45;Volatile Storage implementations in the HardFOC system." alt="" coords="93,84,203,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="295,39,194,81,192,76,292,34"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="227,84,293,115"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="316,38,283,75,279,72,312,35"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="318,84,469,115"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="341,35,374,72,370,75,337,38"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="493,84,563,115"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="365,34,481,77,479,82,363,39"/>
+<area shape="rect" id="Node000003" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="67,163,229,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="151,115,151,149,145,149,145,115"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,241,80,272"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="114,117,83,136,57,164,46,196,43,228,38,227,40,194,52,161,80,132,112,113"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="253,163,365,193"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="179,112,268,154,266,159,177,117"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="130,196,75,235,72,231,127,191"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="116,241,180,272"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="151,194,151,228,145,228,145,194"/>
+</map>

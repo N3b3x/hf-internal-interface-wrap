@@ -8,6 +8,7 @@
     <includedby refid="NvsComprehensiveTest_8cpp" local="yes">examples/esp32/main/NvsComprehensiveTest.cpp</includedby>
     <includedby refid="EspNvs_8h" local="yes">inc/mcu/esp32/EspNvs.h</includedby>
     <includedby refid="EspTypes__NVS_8h" local="yes">inc/mcu/esp32/utils/EspTypes_NVS.h</includedby>
+    <includedby refid="HostNvs_8h" local="yes">inc/mcu/host/HostNvs.h</includedby>
     <includedby refid="StmNvs_8h" local="yes">inc/mcu/stm32/StmNvs.h</includedby>
     <incdepgraph>
       <node id="1">
@@ -54,6 +55,8 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
       </node>
       <node id="3">
         <label>inc/mcu/esp32/EspNvs.h</label>
@@ -70,9 +73,15 @@
         </childnode>
       </node>
       <node id="6">
+        <label>inc/mcu/host/HostNvs.h</label>
+        <link refid="HostNvs_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
         <label>inc/mcu/stm32/StmNvs.h</label>
         <link refid="StmNvs_8h"/>
-        <childnode refid="7" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -80,6 +89,10 @@
         <link refid="EspNvs_8cpp"/>
       </node>
       <node id="7">
+        <label>src/mcu/host/HostNvs.cpp</label>
+        <link refid="HostNvs_8cpp"/>
+      </node>
+      <node id="9">
         <label>src/mcu/stm32/StmNvs.cpp</label>
         <link refid="StmNvs_8cpp"/>
       </node>

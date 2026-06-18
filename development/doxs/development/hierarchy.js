@@ -25,6 +25,7 @@ var hierarchy =
     ] ],
     [ "BaseNvs", "classBaseNvs.html", [
       [ "EspNvs", "classEspNvs.html", null ],
+      [ "HostNvs", "classHostNvs.html", null ],
       [ "StmNvs", "classStmNvs.html", null ]
     ] ],
     [ "BasePeriodicTimer", "classBasePeriodicTimer.html", [

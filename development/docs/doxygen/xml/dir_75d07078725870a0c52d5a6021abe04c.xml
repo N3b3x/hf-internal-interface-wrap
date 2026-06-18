@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="dir_75d07078725870a0c52d5a6021abe04c" kind="dir">
+    <compoundname>src/mcu/host</compoundname>
+    <innerfile refid="HostNvs_8cpp">HostNvs.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/host/"/>
+  </compounddef>
+</doxygen>

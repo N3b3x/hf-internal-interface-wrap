@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="HostNvs_8cpp" kind="file" language="C++">
+    <compoundname>HostNvs.cpp</compoundname>
+    <includes refid="HostNvs_8h" local="yes">HostNvs.h</includes>
+    <includes local="no">cstring</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>BaseNvs.h</label>
+        <link refid="BaseNvs_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>HostNvs.h</label>
+        <link refid="HostNvs_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/mcu/host/HostNvs.cpp</label>
+        <link refid="HostNvs_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>cstdint</label>
+      </node>
+      <node id="11">
+        <label>cstring</label>
+      </node>
+      <node id="6">
+        <label>limits</label>
+      </node>
+      <node id="8">
+        <label>string</label>
+      </node>
+      <node id="7">
+        <label>string_view</label>
+      </node>
+      <node id="9">
+        <label>unordered_map</label>
+      </node>
+      <node id="10">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>In-memory NVS for host / unit-test builds. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="HostNvs_8h" kindref="compound">HostNvs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><ref refid="classHostNvs_1a00f1ff13bd021e7febbf907d9adf17d9" kindref="member">HostNvs::HostNvs</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name)<sp/>:<sp/><ref refid="classBaseNvs" kindref="compound">BaseNvs</ref>(name),<sp/>name_(name)<sp/>{}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1ae46f74cf67ef2a2e12fbf4b7d47fdac8" kindref="member">HostNvs::Initialize</ref>()<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1a4cdc51c794ce858841da8e69bda1f31a" kindref="member">HostNvs::Deinitialize</ref>()<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1a92e546c4543be3a13757aa5149bcb840" kindref="member">HostNvs::Commit</ref>()<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1a915b051a05caae124b24a7352012be2f" kindref="member">HostNvs::SetBlob</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>data_size)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!key<sp/>||<sp/>!data)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4ab5eeea814bdab12ef6b85c13febf76e8" kindref="member">hf_nvs_err_t::NVS_ERR_NULL_POINTER</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/>blobs_[key]<sp/>=<sp/>std::vector&lt;uint8_t&gt;(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">uint8_t*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data),</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">uint8_t*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data)<sp/>+<sp/>data_size);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1a3a1200d1e4bac88962bbb0dfec6b5ac6" kindref="member">HostNvs::GetBlob</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_size,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">*<sp/>actual_size)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>blobs_.find(key);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>==<sp/>blobs_.end())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a14c81b3c50e314d6f209bab4e37a4e77" kindref="member">hf_nvs_err_t::NVS_ERR_KEY_NOT_FOUND</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!buffer)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4ab5eeea814bdab12ef6b85c13febf76e8" kindref="member">hf_nvs_err_t::NVS_ERR_NULL_POINTER</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffer_size<sp/>&lt;<sp/>it-&gt;second.size())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a425a15ffde2218cc0115fc07c19770dc" kindref="member">hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>std::memcpy(buffer,<sp/>it-&gt;second.data(),<sp/>it-&gt;second.size());</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(actual_size)<sp/>*actual_size<sp/>=<sp/>it-&gt;second.size();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1ae75f1e40ad131bae06c71e9d3dfa2cd4" kindref="member">HostNvs::SetU32</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>value)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!key)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4ab5eeea814bdab12ef6b85c13febf76e8" kindref="member">hf_nvs_err_t::NVS_ERR_NULL_POINTER</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>u32s_[key]<sp/>=<sp/>value;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1a16ad53fbcd575c17a9b0cc7515d5b949" kindref="member">HostNvs::GetU32</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>&amp;<sp/>value)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>u32s_.find(key);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>==<sp/>u32s_.end())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a14c81b3c50e314d6f209bab4e37a4e77" kindref="member">hf_nvs_err_t::NVS_ERR_KEY_NOT_FOUND</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>value<sp/>=<sp/>it-&gt;second;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1a9ea7357973f446ea9c6238c6e4452154" kindref="member">HostNvs::SetString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>value)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!key<sp/>||<sp/>!value)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4ab5eeea814bdab12ef6b85c13febf76e8" kindref="member">hf_nvs_err_t::NVS_ERR_NULL_POINTER</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>strings_[key]<sp/>=<sp/>value;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1ab43bd9eca066b435755d831108513b88" kindref="member">HostNvs::GetString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_size,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">*<sp/>actual_size)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>strings_.find(key);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>==<sp/>strings_.end())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a14c81b3c50e314d6f209bab4e37a4e77" kindref="member">hf_nvs_err_t::NVS_ERR_KEY_NOT_FOUND</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!buffer)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4ab5eeea814bdab12ef6b85c13febf76e8" kindref="member">hf_nvs_err_t::NVS_ERR_NULL_POINTER</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffer_size<sp/>&lt;<sp/>it-&gt;second.size()<sp/>+<sp/>1)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a425a15ffde2218cc0115fc07c19770dc" kindref="member">hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>std::strncpy(buffer,<sp/>it-&gt;second.c_str(),<sp/>buffer_size);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(actual_size)<sp/>*actual_size<sp/>=<sp/>it-&gt;second.size();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1adaf0d0400a576ec69b4087267f0503af" kindref="member">HostNvs::EraseKey</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>blobs_.erase(key);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>u32s_.erase(key);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>strings_.erase(key);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classHostNvs_1a66d0e8332d475659a17b6e2274a7c3ca" kindref="member">HostNvs::KeyExists</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>blobs_.count(key)<sp/>||<sp/>u32s_.count(key)<sp/>||<sp/>strings_.count(key);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1af9b10542628604f7a7444a9093168270" kindref="member">HostNvs::GetSize</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">&amp;<sp/>size)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>blobs_.find(key);<sp/>it<sp/>!=<sp/>blobs_.end())<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>size<sp/>=<sp/>it-&gt;second.size();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>u32s_.find(key);<sp/>it<sp/>!=<sp/>u32s_.end())<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>size<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>strings_.find(key);<sp/>it<sp/>!=<sp/>strings_.end())<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>size<sp/>=<sp/>it-&gt;second.size();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a14c81b3c50e314d6f209bab4e37a4e77" kindref="member">hf_nvs_err_t::NVS_ERR_KEY_NOT_FOUND</ref>;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classHostNvs_1a97a346f481173bdd388890c236f103e3" kindref="member">HostNvs::GetDescription</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;hf<sp/>host<sp/>NVS<sp/>(in-memory)&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classHostNvs_1a50a377afbab2b17d3756ef48662a3408" kindref="member">HostNvs::GetMaxKeyLength</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>64;<sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classHostNvs_1a425627b7e2e24fe8fae6893f398ed2f6" kindref="member">HostNvs::GetMaxValueSize</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>4096;<sp/>}</highlight></codeline>
+    </programlisting>
+    <location file="src/mcu/host/HostNvs.cpp"/>
+  </compounddef>
+</doxygen>

@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="116" column="20" bodyfile="inc/mcu/stm32/StmGpio.h" bodystart="37" bodyend="37"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="116" column="20" bodyfile="inc/mcu/stm32/StmGpio.h" bodystart="43" bodyend="43"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -225,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="52" column="14" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="39" bodyend="53"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="52" column="14" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="45" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a7a409e87f85d07b6587079eeaf39c2ad" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -244,7 +244,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="66" column="14" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="55" bodyend="56"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="66" column="14" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="61" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1aa33b880ddbb4f6ab7c30507129c699b9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -277,7 +277,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="71" column="10" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="60" bodyend="64"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="71" column="10" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="66" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a08972988dbdb87d8449efbcbe544e95b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -296,7 +296,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="72" column="10" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="66" bodyend="68"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="72" column="10" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="72" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1ab4019f83455349f50b1a65280c0b282b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -315,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="73" column="13" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="70" bodyend="70"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="73" column="13" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="76" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a7c8c088887133a57c4c68884fe310e4b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>const char *</type>
@@ -334,7 +334,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="74" column="16" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="72" bodyend="72"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="74" column="16" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="78" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a7fb86a0903ac2402015aacf4b7d27160" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>GPIO_TypeDef *</type>
@@ -387,7 +387,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="87" column="17" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="74" bodyend="74"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="87" column="17" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="80" bodyend="80"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -421,7 +421,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="95" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="76" bodyend="81"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="95" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="82" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a351efa2429353dfbe32e0b4df7cfb311" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -455,7 +455,7 @@ Reads the actual direction configuration from hardware registers. Useful for fau
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="96" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="83" bodyend="86"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="96" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="89" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1aff454893b825f08f0e99e015698ba489" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -487,7 +487,7 @@ Reads the actual direction configuration from hardware registers. Useful for fau
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="97" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="88" bodyend="93"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="97" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="94" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a47cd403eff983464ee19daa3a6814cdf" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -521,7 +521,7 @@ Reads the actual output mode configuration from hardware registers. Useful for f
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="98" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="95" bodyend="98"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="98" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="101" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a7676c66a241eabd1d7e15fff38ece2fa" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -553,7 +553,7 @@ Reads the actual output mode configuration from hardware registers. Useful for f
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="99" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="100" bodyend="105"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="99" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="106" bodyend="111"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a34c2b35a33ae2764946619cd80d89e66" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref></type>
@@ -574,7 +574,7 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="100" column="25" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="107" bodyend="107"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="100" column="25" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="113" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a4e5f0c8b9977a69c648b59d6d9ac32e4" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -606,7 +606,7 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="101" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="109" bodyend="114"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="101" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="115" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a4a2b1e9a2202d89f8ede64702efecf77" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -638,7 +638,7 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="102" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="116" bodyend="121"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="102" column="19" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="127" bodyend="132"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -655,7 +655,7 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmGpio.h" line="113" column="10" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="123" bodyend="166"/>
+        <location file="inc/mcu/stm32/StmGpio.h" line="113" column="10" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="134" bodyend="177"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

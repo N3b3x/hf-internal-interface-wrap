@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="485" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="485" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="502" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="502" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__stm32__nvs__config__t_1a3de871eb070bcfa828cab72034f3c701" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="486" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="486" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="503" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="503" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__stm32__nvs__config__t_1a4cf78b03cb28adf43ef05c2ae71bc64a" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="487" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="487" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="504" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="504" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__stm32__nvs__config__t_1a551e57e274b83f2157728b3dd1edd7bc" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="488" column="13" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="488" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="505" column="13" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="505" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="490" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="490" bodyend="492"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="507" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="507" bodyend="509"/>
       </memberdef>
       <memberdef kind="function" id="structhf__stm32__nvs__config__t_1a5b792257e93f9170001efed8d0920fb8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="494" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="494" bodyend="498"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="511" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="511" bodyend="515"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -113,7 +113,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/mcu/stm32/StmTypes.h" line="484" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="484" bodyend="499"/>
+    <location file="inc/mcu/stm32/StmTypes.h" line="501" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="501" bodyend="516"/>
     <listofallmembers>
       <member refid="structhf__stm32__nvs__config__t_1a3de871eb070bcfa828cab72034f3c701" prot="public" virt="non-virtual"><scope>hf_stm32_nvs_config_t</scope><name>flash_size</name></member>
       <member refid="structhf__stm32__nvs__config__t_1a96cc701681fc626eac80d9f6377051f8" prot="public" virt="non-virtual"><scope>hf_stm32_nvs_config_t</scope><name>flash_start_address</name></member>

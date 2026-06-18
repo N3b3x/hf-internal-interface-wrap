@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmCan.cpp" line="107" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="107" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmCan.cpp" line="109" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader_1a46b1078c679a944ad025f37dd5d2491f" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmCan.cpp" line="108" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="108" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmCan.cpp" line="110" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="110" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader_1ab2ff2ecdb893b89b28a2ec350074b272" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmCan.cpp" line="109" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="109" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmCan.cpp" line="111" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader_1acf53f4da9226c72355160653b7ac4905" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmCan.cpp" line="110" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="110" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmCan.cpp" line="112" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader_1aff394946ee9ede778a31bbcca25d4128" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -71,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmCan.cpp" line="111" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="111" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmCan.cpp" line="113" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader_1aa9e1cd07b6c07fc13ad3a02f671fe357" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -85,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmCan.cpp" line="112" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="112" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmCan.cpp" line="114" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader_1aa48dfe458981539c06c0a86e5485c7af" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmCan.cpp" line="113" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="113" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmCan.cpp" line="115" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader_1a431026c7093c950fcac262507ad91fff" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -113,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmCan.cpp" line="114" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="114" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmCan.cpp" line="116" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader_1a33101d1100ca7f7fd736a87c9915c024" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -127,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmCan.cpp" line="115" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="115" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmCan.cpp" line="117" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader_1a8777e53b72c7fee77d5b4ece9b80040c" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -141,14 +141,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmCan.cpp" line="116" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="116" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmCan.cpp" line="118" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="118" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/mcu/stm32/StmCan.cpp" line="106" column="5" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="106" bodyend="117"/>
+    <location file="src/mcu/stm32/StmCan.cpp" line="108" column="5" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="108" bodyend="119"/>
     <listofallmembers>
       <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader_1aa9e1cd07b6c07fc13ad3a02f671fe357" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::FdCanRxHeader</scope><name>BitRateSwitch</name></member>
       <member refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanRxHeader_1acf53f4da9226c72355160653b7ac4905" prot="public" virt="non-virtual"><scope>anonymous_namespace{StmCan.cpp}::FdCanRxHeader</scope><name>DataLength</name></member>

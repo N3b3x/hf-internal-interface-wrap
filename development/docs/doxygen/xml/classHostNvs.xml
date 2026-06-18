@@ -1,0 +1,732 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classHostNvs" kind="class" language="C++" prot="public">
+    <compoundname>HostNvs</compoundname>
+    <basecompoundref refid="classBaseNvs" prot="public" virt="non-virtual">BaseNvs</basecompoundref>
+    <includes refid="HostNvs_8h" local="no">HostNvs.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classHostNvs_1afb926b9f0d12dd8a2974540c96d432c9" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* HostNvs::name_</definition>
+        <argsstring></argsstring>
+        <name>name_</name>
+        <qualifiedname>HostNvs::name_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="45" column="14" bodyfile="inc/mcu/host/HostNvs.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHostNvs_1a892b5b9c6a8ff4a9319feab52caaf4c4" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, std::vector&lt; uint8_t &gt; &gt;</type>
+        <definition>std::unordered_map&lt;std::string, std::vector&lt;uint8_t&gt; &gt; HostNvs::blobs_</definition>
+        <argsstring></argsstring>
+        <name>blobs_</name>
+        <qualifiedname>HostNvs::blobs_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="46" column="22" bodyfile="inc/mcu/host/HostNvs.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHostNvs_1a4d37cd5b69a932b16fa18895d38b1737" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
+        <definition>std::unordered_map&lt;std::string, hf_u32_t&gt; HostNvs::u32s_</definition>
+        <argsstring></argsstring>
+        <name>u32s_</name>
+        <qualifiedname>HostNvs::u32s_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="47" column="22" bodyfile="inc/mcu/host/HostNvs.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHostNvs_1a413475c7f1210961d4eb819ce3eb64a6" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, std::string &gt;</type>
+        <definition>std::unordered_map&lt;std::string, std::string&gt; HostNvs::strings_</definition>
+        <argsstring></argsstring>
+        <name>strings_</name>
+        <qualifiedname>HostNvs::strings_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="48" column="22" bodyfile="inc/mcu/host/HostNvs.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classHostNvs_1a00f1ff13bd021e7febbf907d9adf17d9" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>HostNvs::HostNvs</definition>
+        <argsstring>(const char *name)</argsstring>
+        <name>HostNvs</name>
+        <qualifiedname>HostNvs::HostNvs</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="22" column="12" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="10" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classHostNvs_1af60bd94b7094348bef3cd4d412d285ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>HostNvs::~HostNvs</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~HostNvs</name>
+        <qualifiedname>HostNvs::~HostNvs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="23" column="3"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classHostNvs_1ae46f74cf67ef2a2e12fbf4b7d47fdac8" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t HostNvs::Initialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>HostNvs::Initialize</qualifiedname>
+        <reimplements refid="classBaseNvs_1a407959e9e6c10a0e54f26dd9e92024c0">Initialize</reimplements>
+        <briefdescription>
+<para>Initialize the storage system and open the namespace. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="26" column="16" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="12" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classHostNvs_1a4cdc51c794ce858841da8e69bda1f31a" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t HostNvs::Deinitialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>HostNvs::Deinitialize</qualifiedname>
+        <reimplements refid="classBaseNvs_1a64733cd3edc601a03fb3c31e914eaa9e">Deinitialize</reimplements>
+        <briefdescription>
+<para>Deinitialize the storage system and close the namespace. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="27" column="16" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="13" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classHostNvs_1ae75f1e40ad131bae06c71e9d3dfa2cd4" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t HostNvs::SetU32</definition>
+        <argsstring>(const char *key, hf_u32_t value) noexcept override</argsstring>
+        <name>SetU32</name>
+        <qualifiedname>HostNvs::SetU32</qualifiedname>
+        <reimplements refid="classBaseNvs_1a8f2069d78e8f913e752ba4449255a86b">SetU32</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Store a 32-bit unsigned integer value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to store </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="28" column="16" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="34" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classHostNvs_1a16ad53fbcd575c17a9b0cc7515d5b949" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t HostNvs::GetU32</definition>
+        <argsstring>(const char *key, hf_u32_t &amp;value) noexcept override</argsstring>
+        <name>GetU32</name>
+        <qualifiedname>HostNvs::GetU32</qualifiedname>
+        <reimplements refid="classBaseNvs_1aa789f6917b5be890f288ce2fe470da11">GetU32</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Retrieve a 32-bit unsigned integer value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store the retrieved value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="29" column="16" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="40" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classHostNvs_1a9ea7357973f446ea9c6238c6e4452154" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t HostNvs::SetString</definition>
+        <argsstring>(const char *key, const char *value) noexcept override</argsstring>
+        <name>SetString</name>
+        <qualifiedname>HostNvs::SetString</qualifiedname>
+        <reimplements refid="classBaseNvs_1ae954b55a41d477e1190fbbe3ce0cc687">SetString</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Store a string value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>String value to store </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="30" column="16" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="47" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classHostNvs_1ab43bd9eca066b435755d831108513b88" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t HostNvs::GetString</definition>
+        <argsstring>(const char *key, char *buffer, size_t buffer_size, size_t *actual_size) noexcept override</argsstring>
+        <name>GetString</name>
+        <qualifiedname>HostNvs::GetString</qualifiedname>
+        <reimplements refid="classBaseNvs_1a8954da94247836ede0a895ddd245e634">GetString</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer_size</declname>
+        </param>
+        <param>
+          <type>size_t *</type>
+          <declname>actual_size</declname>
+        </param>
+        <briefdescription>
+<para>Retrieve a string value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store the retrieved string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of the buffer in bytes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>actual_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Actual size of the string (optional) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="31" column="16" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="53" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classHostNvs_1a915b051a05caae124b24a7352012be2f" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t HostNvs::SetBlob</definition>
+        <argsstring>(const char *key, const void *data, size_t data_size) noexcept override</argsstring>
+        <name>SetBlob</name>
+        <qualifiedname>HostNvs::SetBlob</qualifiedname>
+        <reimplements refid="classBaseNvs_1a22431b512d09cb8c0397cf15a8a73b19">SetBlob</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>data_size</declname>
+        </param>
+        <briefdescription>
+<para>Store binary data (blob). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to data to store </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of data in bytes </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="33" column="16" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="16" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classHostNvs_1a3a1200d1e4bac88962bbb0dfec6b5ac6" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t HostNvs::GetBlob</definition>
+        <argsstring>(const char *key, void *buffer, size_t buffer_size, size_t *actual_size) noexcept override</argsstring>
+        <name>GetBlob</name>
+        <qualifiedname>HostNvs::GetBlob</qualifiedname>
+        <reimplements refid="classBaseNvs_1ab699cfd03ee2f8c9d05a8d43d636011b">GetBlob</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer_size</declname>
+        </param>
+        <param>
+          <type>size_t *</type>
+          <declname>actual_size</declname>
+        </param>
+        <briefdescription>
+<para>Retrieve binary data (blob). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store the retrieved data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of the buffer in bytes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>actual_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Actual size of the data (optional) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="34" column="16" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="23" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classHostNvs_1adaf0d0400a576ec69b4087267f0503af" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t HostNvs::EraseKey</definition>
+        <argsstring>(const char *key) noexcept override</argsstring>
+        <name>EraseKey</name>
+        <qualifiedname>HostNvs::EraseKey</qualifiedname>
+        <reimplements refid="classBaseNvs_1ac3a2738d1f6a3e488c08edaecf49af9d">EraseKey</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Remove a key from storage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key to remove </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="36" column="16" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="64" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classHostNvs_1a92e546c4543be3a13757aa5149bcb840" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t HostNvs::Commit</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Commit</name>
+        <qualifiedname>HostNvs::Commit</qualifiedname>
+        <reimplements refid="classBaseNvs_1a0921ba6eb0dda4285a5ea33ec1b80f11">Commit</reimplements>
+        <briefdescription>
+<para>Commit any pending writes to non-volatile storage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="37" column="16" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="14" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classHostNvs_1a66d0e8332d475659a17b6e2274a7c3ca" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool HostNvs::KeyExists</definition>
+        <argsstring>(const char *key) noexcept override</argsstring>
+        <name>KeyExists</name>
+        <qualifiedname>HostNvs::KeyExists</qualifiedname>
+        <reimplements refid="classBaseNvs_1a911caf95d3c25047f044ca748164df39">KeyExists</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Check if a key exists in storage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if key exists, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="38" column="8" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="71" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classHostNvs_1af9b10542628604f7a7444a9093168270" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t HostNvs::GetSize</definition>
+        <argsstring>(const char *key, size_t &amp;size) noexcept override</argsstring>
+        <name>GetSize</name>
+        <qualifiedname>HostNvs::GetSize</qualifiedname>
+        <reimplements refid="classBaseNvs_1a79b44044be6cef3963fa8b9f18abcf30">GetSize</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>size_t &amp;</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Get the size of a stored value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store the size </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="39" column="16" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="75" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classHostNvs_1a97a346f481173bdd388890c236f103e3" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>const char * HostNvs::GetDescription</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>GetDescription</name>
+        <qualifiedname>HostNvs::GetDescription</qualifiedname>
+        <reimplements refid="classBaseNvs_1a66680f0959c3ba928b402f6a9fbb700a">GetDescription</reimplements>
+        <briefdescription>
+<para>Get description of this storage implementation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Description string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="40" column="14" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="91" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classHostNvs_1a50a377afbab2b17d3756ef48662a3408" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t HostNvs::GetMaxKeyLength</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>GetMaxKeyLength</name>
+        <qualifiedname>HostNvs::GetMaxKeyLength</qualifiedname>
+        <reimplements refid="classBaseNvs_1a63908cbbdadf9134e5350491a87d7652">GetMaxKeyLength</reimplements>
+        <briefdescription>
+<para>Get maximum key length supported. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Maximum key length in characters </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="41" column="10" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="92" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classHostNvs_1a425627b7e2e24fe8fae6893f398ed2f6" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t HostNvs::GetMaxValueSize</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>GetMaxValueSize</name>
+        <qualifiedname>HostNvs::GetMaxValueSize</qualifiedname>
+        <reimplements refid="classBaseNvs_1a00697824bdbb7c20b11a82b2837bc7bc">GetMaxValueSize</reimplements>
+        <briefdescription>
+<para>Get maximum value size supported. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Maximum value size in bytes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/host/HostNvs.h" line="42" column="10" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="93" bodyend="93"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Hash-map NVS namespace for host builds and deterministic tests. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BaseNvs</label>
+        <link refid="classBaseNvs"/>
+      </node>
+      <node id="1">
+        <label>HostNvs</label>
+        <link refid="classHostNvs"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BaseNvs</label>
+        <link refid="classBaseNvs"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>HostNvs</label>
+        <link refid="classHostNvs"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>hf_nvs_diagnostics_t</label>
+        <link refid="structhf__nvs__diagnostics__t"/>
+      </node>
+      <node id="3">
+        <label>hf_nvs_statistics_t</label>
+        <link refid="structhf__nvs__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/host/HostNvs.h" line="20" column="1" bodyfile="inc/mcu/host/HostNvs.h" bodystart="20" bodyend="49"/>
+    <listofallmembers>
+      <member refid="classBaseNvs_1abc92e07335f490e560ea1a1513ea63fc" prot="public" virt="non-virtual"><scope>HostNvs</scope><name>BaseNvs</name></member>
+      <member refid="classBaseNvs_1abfe625b5e099d438f744514728de9674" prot="protected" virt="non-virtual"><scope>HostNvs</scope><name>BaseNvs</name></member>
+      <member refid="classHostNvs_1a892b5b9c6a8ff4a9319feab52caaf4c4" prot="private" virt="non-virtual"><scope>HostNvs</scope><name>blobs_</name></member>
+      <member refid="classHostNvs_1a92e546c4543be3a13757aa5149bcb840" prot="protected" virt="virtual"><scope>HostNvs</scope><name>Commit</name></member>
+      <member refid="classHostNvs_1a4cdc51c794ce858841da8e69bda1f31a" prot="protected" virt="virtual"><scope>HostNvs</scope><name>Deinitialize</name></member>
+      <member refid="classBaseNvs_1a76a4a9aae7deb785a6773843cc08d366" prot="protected" virt="non-virtual"><scope>HostNvs</scope><name>diagnostics_</name></member>
+      <member refid="classBaseNvs_1a4d5a23def2dfdee04a1ada50f8c6e067" prot="public" virt="non-virtual"><scope>HostNvs</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBaseNvs_1a517d0d03678ff0dfdd57eff54dee9da2" prot="public" virt="non-virtual"><scope>HostNvs</scope><name>EnsureInitialized</name></member>
+      <member refid="classHostNvs_1adaf0d0400a576ec69b4087267f0503af" prot="protected" virt="virtual"><scope>HostNvs</scope><name>EraseKey</name></member>
+      <member refid="classHostNvs_1a3a1200d1e4bac88962bbb0dfec6b5ac6" prot="protected" virt="virtual"><scope>HostNvs</scope><name>GetBlob</name></member>
+      <member refid="classHostNvs_1a97a346f481173bdd388890c236f103e3" prot="protected" virt="virtual"><scope>HostNvs</scope><name>GetDescription</name></member>
+      <member refid="classBaseNvs_1a5fe8b85bd8c8c103d5e8ce9c5060b49c" prot="public" virt="virtual"><scope>HostNvs</scope><name>GetDiagnostics</name></member>
+      <member refid="classHostNvs_1a50a377afbab2b17d3756ef48662a3408" prot="protected" virt="virtual"><scope>HostNvs</scope><name>GetMaxKeyLength</name></member>
+      <member refid="classHostNvs_1a425627b7e2e24fe8fae6893f398ed2f6" prot="protected" virt="virtual"><scope>HostNvs</scope><name>GetMaxValueSize</name></member>
+      <member refid="classBaseNvs_1a6dc238eadbd792da526fcbeea4bf58d5" prot="public" virt="non-virtual"><scope>HostNvs</scope><name>GetNamespace</name></member>
+      <member refid="classHostNvs_1af9b10542628604f7a7444a9093168270" prot="protected" virt="virtual"><scope>HostNvs</scope><name>GetSize</name></member>
+      <member refid="classBaseNvs_1a2784f0924a79ef398f6c42227197d87d" prot="public" virt="virtual"><scope>HostNvs</scope><name>GetStatistics</name></member>
+      <member refid="classHostNvs_1ab43bd9eca066b435755d831108513b88" prot="protected" virt="virtual"><scope>HostNvs</scope><name>GetString</name></member>
+      <member refid="classHostNvs_1a16ad53fbcd575c17a9b0cc7515d5b949" prot="protected" virt="virtual"><scope>HostNvs</scope><name>GetU32</name></member>
+      <member refid="classHostNvs_1a00f1ff13bd021e7febbf907d9adf17d9" prot="public" virt="non-virtual"><scope>HostNvs</scope><name>HostNvs</name></member>
+      <member refid="classHostNvs_1ae46f74cf67ef2a2e12fbf4b7d47fdac8" prot="protected" virt="virtual"><scope>HostNvs</scope><name>Initialize</name></member>
+      <member refid="classBaseNvs_1a7a818a3463d3efe8d5eacd8b4d5b87a1" prot="protected" virt="non-virtual"><scope>HostNvs</scope><name>initialized_</name></member>
+      <member refid="classBaseNvs_1adaba0a72b0c06873b2b01713f1af3d9b" prot="public" virt="non-virtual"><scope>HostNvs</scope><name>IsInitialized</name></member>
+      <member refid="classHostNvs_1a66d0e8332d475659a17b6e2274a7c3ca" prot="protected" virt="virtual"><scope>HostNvs</scope><name>KeyExists</name></member>
+      <member refid="classHostNvs_1afb926b9f0d12dd8a2974540c96d432c9" prot="private" virt="non-virtual"><scope>HostNvs</scope><name>name_</name></member>
+      <member refid="classBaseNvs_1a68e50ee98bc144e5a7c99a27ed5a7314" prot="protected" virt="non-virtual"><scope>HostNvs</scope><name>namespace_name_</name></member>
+      <member refid="classBaseNvs_1aeda78da1a1db06a952e14e549eb7f07a" prot="public" virt="non-virtual"><scope>HostNvs</scope><name>operator=</name></member>
+      <member refid="classBaseNvs_1a00047694a8eda737718d4ad83c9feb9a" prot="public" virt="virtual"><scope>HostNvs</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBaseNvs_1a76eb147e5be050296e01d8cc80f08d2d" prot="public" virt="virtual"><scope>HostNvs</scope><name>ResetStatistics</name></member>
+      <member refid="classHostNvs_1a915b051a05caae124b24a7352012be2f" prot="protected" virt="virtual"><scope>HostNvs</scope><name>SetBlob</name></member>
+      <member refid="classBaseNvs_1a14236adcdcc3d0c2ff9e434bd0d75c5a" prot="protected" virt="non-virtual"><scope>HostNvs</scope><name>SetInitialized</name></member>
+      <member refid="classHostNvs_1a9ea7357973f446ea9c6238c6e4452154" prot="protected" virt="virtual"><scope>HostNvs</scope><name>SetString</name></member>
+      <member refid="classHostNvs_1ae75f1e40ad131bae06c71e9d3dfa2cd4" prot="protected" virt="virtual"><scope>HostNvs</scope><name>SetU32</name></member>
+      <member refid="classBaseNvs_1a124e82b91afcb3785858a4d56bc9f2f2" prot="protected" virt="non-virtual"><scope>HostNvs</scope><name>statistics_</name></member>
+      <member refid="classHostNvs_1a413475c7f1210961d4eb819ce3eb64a6" prot="private" virt="non-virtual"><scope>HostNvs</scope><name>strings_</name></member>
+      <member refid="classHostNvs_1a4d37cd5b69a932b16fa18895d38b1737" prot="private" virt="non-virtual"><scope>HostNvs</scope><name>u32s_</name></member>
+      <member refid="classBaseNvs_1a34a0f5777eaeabb861b0bef15c31a11b" prot="public" virt="virtual"><scope>HostNvs</scope><name>~BaseNvs</name></member>
+      <member refid="classHostNvs_1af60bd94b7094348bef3cd4d412d285ea" prot="public" virt="non-virtual"><scope>HostNvs</scope><name>~HostNvs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

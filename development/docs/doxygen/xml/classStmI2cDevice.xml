@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="49" column="5" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="35" bodyend="36"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="49" column="5" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="42" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1ae7a31f63df015bbc5044861df221fe3d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -71,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="50" column="5" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="38" bodyend="40"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="50" column="5" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="45" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1a5d069dc6f8e90fe5aaccdd603111a07d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -90,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="52" column="10" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="42" bodyend="60"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="52" column="10" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="49" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1ab3a261efe8437ab6a349af90829b86c5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -109,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="53" column="10" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="62" bodyend="65"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="53" column="10" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="69" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1a8a705c4068676dcca9a36054eddfe15c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -168,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="55" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="67" bodyend="89"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="55" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="74" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1a8cd7f86df640e25578aaaabe4ca194ec" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -227,7 +227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="57" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="91" bodyend="112"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="57" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="98" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1a785e780f32c9353a7aa5ad48784352df" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -310,7 +310,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="59" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="114" bodyend="151"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="59" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="121" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1aae434c3a1e5f13290326c0a862cebc37" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -329,7 +329,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="62" column="14" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="153" bodyend="155"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="62" column="14" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="160" bodyend="162"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1a540861718a8da891acf2df06e51c8b25" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref> &amp;</type>
@@ -380,7 +380,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="72" column="14" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="157" bodyend="161"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="72" column="14" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="164" bodyend="168"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
@@ -401,7 +401,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="75" column="25" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="163" bodyend="171"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="75" column="25" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="170" bodyend="178"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

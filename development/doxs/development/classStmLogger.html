@@ -129,7 +129,7 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1410859d8afce01c97f8ce70c20866ec" id="r_a1410859d8afce01c97f8ce70c20866ec"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1410859d8afce01c97f8ce70c20866ec">StmLogger</a> (UART_HandleTypeDef *uart_handle=nullptr, <a class="el" href="#a61646c2f7c850f826a73d37065982705">Backend</a> backend=<a class="el" href="#a61646c2f7c850f826a73d37065982705a2155abd1f12c94db11b3193b912bdddb">Backend::UART_HAL</a>) noexcept</td></tr>
+<tr class="memitem:a1410859d8afce01c97f8ce70c20866ec" id="r_a1410859d8afce01c97f8ce70c20866ec"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1410859d8afce01c97f8ce70c20866ec">StmLogger</a> (<a class="el" href="StmUart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *uart_handle=nullptr, <a class="el" href="#a61646c2f7c850f826a73d37065982705">Backend</a> backend=<a class="el" href="#a61646c2f7c850f826a73d37065982705a2155abd1f12c94db11b3193b912bdddb">Backend::UART_HAL</a>) noexcept</td></tr>
 <tr class="memdesc:a1410859d8afce01c97f8ce70c20866ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct with UART backend (most common)  <br /></td></tr>
 <tr class="separator:a1410859d8afce01c97f8ce70c20866ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad785842bb793da3d60a5489899742002" id="r_ad785842bb793da3d60a5489899742002"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad785842bb793da3d60a5489899742002">~StmLogger</a> () noexcept override</td></tr>
@@ -231,7 +231,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a13f778052d724f7ce83dade842d94002" id="r_a13f778052d724f7ce83dade842d94002"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a61646c2f7c850f826a73d37065982705">Backend</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13f778052d724f7ce83dade842d94002">backend_</a></td></tr>
 <tr class="memdesc:a13f778052d724f7ce83dade842d94002"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output backend.  <br /></td></tr>
 <tr class="separator:a13f778052d724f7ce83dade842d94002"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e48ff976993f72acf026b0bd40fc5fe" id="r_a9e48ff976993f72acf026b0bd40fc5fe"><td class="memItemLeft" align="right" valign="top">UART_HandleTypeDef *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e48ff976993f72acf026b0bd40fc5fe">uart_handle_</a></td></tr>
+<tr class="memitem:a9e48ff976993f72acf026b0bd40fc5fe" id="r_a9e48ff976993f72acf026b0bd40fc5fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="StmUart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e48ff976993f72acf026b0bd40fc5fe">uart_handle_</a></td></tr>
 <tr class="memdesc:a9e48ff976993f72acf026b0bd40fc5fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">UART HAL handle (for UART backend)  <br /></td></tr>
 <tr class="separator:a9e48ff976993f72acf026b0bd40fc5fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad636d2f9d50ecc3a69791f70406bf3a2" id="r_ad636d2f9d50ecc3a69791f70406bf3a2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad636d2f9d50ecc3a69791f70406bf3a2">initialized_</a></td></tr>
@@ -320,7 +320,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">StmLogger::StmLogger </td>
           <td>(</td>
-          <td class="paramtype">UART_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>uart_handle</em><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>, </span></td>
+          <td class="paramtype"><a class="el" href="StmUart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a> *</td>          <td class="paramname"><span class="paramname"><em>uart_handle</em><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1663,7 +1663,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">UART_HandleTypeDef* StmLogger::uart_handle_</td>
+          <td class="memname"><a class="el" href="StmUart_8h.html#a5de4a49eb132735325e706f406c69d6e">UART_HandleTypeDef</a>* StmLogger::uart_handle_</td>
         </tr>
       </table>
   </td>

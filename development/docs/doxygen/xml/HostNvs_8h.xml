@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="HostNvs_8h" kind="file" language="C++">
+    <compoundname>HostNvs.h</compoundname>
+    <includes refid="BaseNvs_8h" local="yes">BaseNvs.h</includes>
+    <includes local="no">string</includes>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="HostNvs_8cpp" local="yes">src/mcu/host/HostNvs.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>BaseNvs.h</label>
+        <link refid="BaseNvs_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/host/HostNvs.h</label>
+        <link refid="HostNvs_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>limits</label>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+      <node id="6">
+        <label>string_view</label>
+      </node>
+      <node id="8">
+        <label>unordered_map</label>
+      </node>
+      <node id="9">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/mcu/host/HostNvs.h</label>
+        <link refid="HostNvs_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/mcu/host/HostNvs.cpp</label>
+        <link refid="HostNvs_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classHostNvs" prot="public">HostNvs</innerclass>
+    <briefdescription>
+<para>In-memory <computeroutput><ref refid="classBaseNvs" kindref="compound">BaseNvs</ref></computeroutput> for host / unit-test builds (hf-internal-interface-wrap). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Follows the same layout as <computeroutput><ref refid="classEspNvs" kindref="compound">EspNvs</ref></computeroutput> and <computeroutput><ref refid="classStmNvs" kindref="compound">StmNvs</ref></computeroutput>: concrete <computeroutput><ref refid="classBaseNvs" kindref="compound">BaseNvs</ref></computeroutput> implementations live under hf-internal-interface-wrap, not product adapters. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseNvs_8h" kindref="compound">BaseNvs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classHostNvs" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classHostNvs" kindref="compound">HostNvs</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classBaseNvs" kindref="compound">BaseNvs</ref><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classHostNvs_1a00f1ff13bd021e7febbf907d9adf17d9" kindref="member">HostNvs</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name);</highlight></codeline>
+<codeline lineno="23" refid="classHostNvs_1af60bd94b7094348bef3cd4d412d285ea" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classHostNvs_1af60bd94b7094348bef3cd4d412d285ea" kindref="member">~HostNvs</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1ae46f74cf67ef2a2e12fbf4b7d47fdac8" kindref="member">Initialize</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1a4cdc51c794ce858841da8e69bda1f31a" kindref="member">Deinitialize</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1ae75f1e40ad131bae06c71e9d3dfa2cd4" kindref="member">SetU32</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>value)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1a16ad53fbcd575c17a9b0cc7515d5b949" kindref="member">GetU32</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>&amp;<sp/>value)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1a9ea7357973f446ea9c6238c6e4452154" kindref="member">SetString</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>value)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1ab43bd9eca066b435755d831108513b88" kindref="member">GetString</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_size,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">*<sp/>actual_size)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1a915b051a05caae124b24a7352012be2f" kindref="member">SetBlob</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/>const<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>data_size)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1a3a1200d1e4bac88962bbb0dfec6b5ac6" kindref="member">GetBlob</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_size,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">*<sp/>actual_size)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1adaf0d0400a576ec69b4087267f0503af" kindref="member">EraseKey</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1a92e546c4543be3a13757aa5149bcb840" kindref="member">Commit</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classHostNvs_1a66d0e8332d475659a17b6e2274a7c3ca" kindref="member">KeyExists</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classHostNvs_1af9b10542628604f7a7444a9093168270" kindref="member">GetSize</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">&amp;<sp/>size)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classHostNvs_1a97a346f481173bdd388890c236f103e3" kindref="member">GetDescription</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classHostNvs_1a50a377afbab2b17d3756ef48662a3408" kindref="member">GetMaxKeyLength</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classHostNvs_1a425627b7e2e24fe8fae6893f398ed2f6" kindref="member">GetMaxValueSize</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/>private:</highlight></codeline>
+<codeline lineno="45" refid="classHostNvs_1afb926b9f0d12dd8a2974540c96d432c9" refkind="member"><highlight class="normal"><sp/><sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classHostNvs_1afb926b9f0d12dd8a2974540c96d432c9" kindref="member">name_</ref>;</highlight></codeline>
+<codeline lineno="46" refid="classHostNvs_1a892b5b9c6a8ff4a9319feab52caaf4c4" refkind="member"><highlight class="normal"><sp/><sp/>std::unordered_map&lt;std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/>std::vector&lt;uint8_t&gt;&gt;<sp/><ref refid="classHostNvs_1a892b5b9c6a8ff4a9319feab52caaf4c4" kindref="member">blobs_</ref>;</highlight></codeline>
+<codeline lineno="47" refid="classHostNvs_1a4d37cd5b69a932b16fa18895d38b1737" refkind="member"><highlight class="normal"><sp/><sp/>std::unordered_map&lt;std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>&gt;<sp/><ref refid="classHostNvs_1a4d37cd5b69a932b16fa18895d38b1737" kindref="member">u32s_</ref>;</highlight></codeline>
+<codeline lineno="48" refid="classHostNvs_1a413475c7f1210961d4eb819ce3eb64a6" refkind="member"><highlight class="normal"><sp/><sp/>std::unordered_map&lt;std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&gt;<sp/><ref refid="classHostNvs_1a413475c7f1210961d4eb819ce3eb64a6" kindref="member">strings_</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/host/HostNvs.h"/>
+  </compounddef>
+</doxygen>

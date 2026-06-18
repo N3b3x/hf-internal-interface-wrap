@@ -108,5 +108,6 @@ var searchData=
   ['hf_5fwifi_5fstation_5fconfig_5ft_105',['hf_wifi_station_config_t',['../structhf__wifi__station__config__t.html',1,'']]],
   ['hfespwificalibration_106',['HfEspWifiCalibration',['../structHfEspWifiCalibration.html',1,'']]],
   ['hfespwifiperformanceconfig_107',['HfEspWifiPerformanceConfig',['../structHfEspWifiPerformanceConfig.html',1,'']]],
-  ['hfespwifistats_108',['HfEspWifiStats',['../structHfEspWifiStats.html',1,'']]]
+  ['hfespwifistats_108',['HfEspWifiStats',['../structHfEspWifiStats.html',1,'']]],
+  ['hostnvs_109',['HostNvs',['../classHostNvs.html',1,'']]]
 ];

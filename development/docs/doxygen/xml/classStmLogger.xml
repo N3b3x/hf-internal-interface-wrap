@@ -63,7 +63,7 @@
         <location file="inc/mcu/stm32/StmLogger.h" line="96" column="28" bodyfile="inc/mcu/stm32/StmLogger.h" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classStmLogger_1a9e48ff976993f72acf026b0bd40fc5fe" prot="private" static="no" mutable="no">
-        <type>UART_HandleTypeDef *</type>
+        <type><ref refid="StmUart_8h_1a5de4a49eb132735325e706f406c69d6e" kindref="member">UART_HandleTypeDef</ref> *</type>
         <definition>UART_HandleTypeDef* StmLogger::uart_handle_</definition>
         <argsstring></argsstring>
         <name>uart_handle_</name>
@@ -176,7 +176,7 @@
         <name>StmLogger</name>
         <qualifiedname>StmLogger::StmLogger</qualifiedname>
         <param>
-          <type>UART_HandleTypeDef *</type>
+          <type><ref refid="StmUart_8h_1a5de4a49eb132735325e706f406c69d6e" kindref="member">UART_HandleTypeDef</ref> *</type>
           <declname>uart_handle</declname>
           <defval>nullptr</defval>
         </param>
@@ -192,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="46" column="14" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="52" bodyend="62"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="46" column="14" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="58" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1ad785842bb793da3d60a5489899742002" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -206,7 +206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="49" column="5" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="64" bodyend="66"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="49" column="5" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="70" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a2db97b3064db0d5be33c1ab082d1803a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -238,7 +238,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="53" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="72" bodyend="85"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="53" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="78" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1ab810f2599398f77b28f55c6c84e3fcbe" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -257,7 +257,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="54" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="87" bodyend="90"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="54" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="93" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1ad63dccfd7f9aba556a3fef83bc2c2ac3" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -276,7 +276,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="55" column="10" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="92" bodyend="92"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="55" column="10" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="98" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a015a61a54d5f3e93af13ad2630b505ed" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -295,7 +295,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="56" column="10" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="94" bodyend="103"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="56" column="10" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="100" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1ae2602c3ebe878697f3b6b32b12ac1cf2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -339,7 +339,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="58" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="109" bodyend="112"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="58" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="115" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a12f37e364af6bdf1210ef1903f5f578a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -383,7 +383,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="59" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="114" bodyend="117"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="59" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="120" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a0175d15ffd5f584219e245ada94523e4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -438,7 +438,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="61" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="127" bodyend="133"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="61" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="133" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a335f9c0b5f3b6e5b334eac182fef091f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -493,7 +493,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="62" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="135" bodyend="141"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="62" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="141" bodyend="147"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a5d2369d89af47301c9acddacd9069bf1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -548,7 +548,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="63" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="143" bodyend="149"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="63" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="149" bodyend="155"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a66a47cf67fc5cf81813657d86b40436b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -603,7 +603,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="64" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="151" bodyend="157"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="64" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="157" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a84d53e2a0f13748eba3e7835b58ce7f4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -658,7 +658,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="65" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="159" bodyend="165"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="65" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="165" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1aae2ab97cb870518bd85bf98c0e5bf4de" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -725,7 +725,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="66" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="167" bodyend="174"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="66" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="173" bodyend="180"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a82f8b9ab036f242be008db739996db1d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -793,7 +793,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="68" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="176" bodyend="179"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="68" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="182" bodyend="185"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a291097b7c1fd5e638c9cd7d5e038a0c5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -896,7 +896,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="70" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="181" bodyend="219"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="70" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="187" bodyend="225"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a023f685044c18bf63081ec48a46dfdfe" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -915,7 +915,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="74" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="221" bodyend="224"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="74" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="227" bodyend="230"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1aed1e8557a3a37a78c169aa921acff3fc" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -960,7 +960,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="75" column="10" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="119" bodyend="121"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="75" column="10" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="125" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1ac6e0e9e8227e73d5a168736fc0feb21f" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -992,7 +992,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="77" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="230" bodyend="233"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="77" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="236" bodyend="239"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a1b90770ff5573663d9a73419236c2a9c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -1024,7 +1024,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="78" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="235" bodyend="238"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="78" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="241" bodyend="244"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1ac41e6fc6c54eb644f690619362f855e3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -1043,7 +1043,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="79" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="240" bodyend="243"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="79" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="246" bodyend="249"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a6590af32ba64f607d69e57659c60c647" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -1062,7 +1062,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="80" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="245" bodyend="248"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="80" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="251" bodyend="254"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a16a88780953992653e289b1f2b519d4c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -1081,7 +1081,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="81" column="10" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="250" bodyend="250"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="81" column="10" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="256" bodyend="256"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a05c26cee0e96ea6eeda411dd5decd4dc" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -1100,7 +1100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="82" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="252" bodyend="252"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="82" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="258" bodyend="258"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1abc19945e773ba5ff8c8b492e5f1d7d12" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -1144,7 +1144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="83" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="254" bodyend="260"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="83" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="260" bodyend="266"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1ac902564ee04c8e554825184b84a996a9" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -1190,7 +1190,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="84" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="262" bodyend="271"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="84" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="268" bodyend="277"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1acc6e0d3f238a00e169f591787f8bf435" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -1236,7 +1236,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="85" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="273" bodyend="275"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="85" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="279" bodyend="281"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1af1a868f33898057f7ee700e8fba9bed2" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -1282,7 +1282,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="86" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="277" bodyend="285"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="86" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="283" bodyend="291"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -1307,7 +1307,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="90" column="10" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="291" bodyend="314"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="90" column="10" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="297" bodyend="320"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a6f50475b905482fe6b74c83605baff18" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -1338,7 +1338,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmLogger.h" line="93" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="316" bodyend="351"/>
+        <location file="inc/mcu/stm32/StmLogger.h" line="93" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="322" bodyend="357"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

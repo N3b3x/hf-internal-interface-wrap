@@ -96,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="47" column="14" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="133" bodyend="139"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="47" column="14" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="135" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1a762d67c0c7ed8c58df3ca979d9fbaf4e" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -115,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="52" column="14" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="141" bodyend="147"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="52" column="14" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="143" bodyend="149"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1ad0787d139e1057b64763a26d4f9930fd" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -134,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="57" column="14" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="149" bodyend="159"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="57" column="14" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="151" bodyend="161"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1a96ad9e536bfe30d8e01ee9cb2e227445" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="59" column="5" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="161" bodyend="163"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="59" column="5" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="163" bodyend="165"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1a8eec0b0c2374a8ae97080feacd6bf5d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -201,7 +201,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="65" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="169" bodyend="185"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="65" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="171" bodyend="187"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1a1fe2f60deb481fd28b6bc43e8d96e5ac" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -220,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="66" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="187" bodyend="198"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="66" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="189" bodyend="200"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1a6df12c3fb34bb69834d1b90cf44f2007" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -265,7 +265,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="67" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="204" bodyend="213"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="67" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="206" bodyend="215"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1ae37b5e26c266f43ca1c4cdf297263bde" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -310,7 +310,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="69" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="215" bodyend="224"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="69" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="217" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1a8da6e2844530c162698ac763878943b4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -342,7 +342,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="71" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="351" bodyend="354"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="71" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="353" bodyend="356"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1add5ea4ac43276a1e45311eeafa565258" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -399,7 +399,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="72" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="356" bodyend="397"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="72" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="358" bodyend="399"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1a7edb045a9c9ae440dbd42367a4b992c9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -431,7 +431,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="74" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="399" bodyend="415"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="74" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="401" bodyend="417"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1a6f503620d924a2090cd818475c1006a8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -450,7 +450,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="75" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="417" bodyend="422"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="75" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="419" bodyend="424"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1a6c7d84e038dd0aa4bea3db1dc601c60e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -471,7 +471,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="78" column="10" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="424" bodyend="426"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="78" column="10" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="426" bodyend="428"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1abd9cf3a9bcc4a72d0011928d82ad39de" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="StmCan_8h_1ac5c3cfdfa012fd57fb28fa9cb4d7c2a7" kindref="member">StmCanVariant</ref></type>
@@ -504,7 +504,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="86" column="10" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="428" bodyend="433"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="86" column="10" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="430" bodyend="435"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -528,7 +528,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="96" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="228" bodyend="253"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="96" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="230" bodyend="255"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1ad03871a10e8ca3cc28d9d65645a1c888" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -550,7 +550,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="97" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="255" bodyend="283"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="97" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="257" bodyend="285"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1a36ff228e37fae748b5d3774eace802db" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -572,7 +572,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="98" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="287" bodyend="311"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="98" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="289" bodyend="313"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1aaa89cb1b8836328e3d513b4d7f10240f" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -594,7 +594,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="99" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="313" bodyend="345"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="99" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="315" bodyend="347"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

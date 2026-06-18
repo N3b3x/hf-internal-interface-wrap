@@ -33,7 +33,7 @@ var searchData=
   ['clearstatechangecallback_30',['ClearStateChangeCallback',['../classEspCan.html#a86db68ed58d7c1791683151cb9a49260',1,'EspCan']]],
   ['cleartxcompletecallback_31',['ClearTxCompleteCallback',['../classEspCan.html#a335b99de3bbf289de667f843ba83d31d',1,'EspCan']]],
   ['close_32',['Close',['../classBaseI2c.html#a53ffda673e3b0774c31da385b27a7c3f',1,'BaseI2c::Close()'],['../classBaseSpi.html#a88b3ba81405134a3566a01ca170bf8bb',1,'BaseSpi::Close()'],['../classBaseUart.html#aec851bc0079da79a3cbc617fafad7432',1,'BaseUart::Close()']]],
-  ['commit_33',['Commit',['../classBaseNvs.html#a0921ba6eb0dda4285a5ea33ec1b80f11',1,'BaseNvs::Commit()'],['../classEspNvs.html#a2ac83396eb5f21034a028331c600ad9f',1,'EspNvs::Commit()'],['../classStmNvs.html#a4927951d09db18d392b6b6593809b0ac',1,'StmNvs::Commit()']]],
+  ['commit_33',['Commit',['../classBaseNvs.html#a0921ba6eb0dda4285a5ea33ec1b80f11',1,'BaseNvs::Commit()'],['../classEspNvs.html#a2ac83396eb5f21034a028331c600ad9f',1,'EspNvs::Commit()'],['../classHostNvs.html#a92e546c4543be3a13757aa5149bcb840',1,'HostNvs::Commit()'],['../classStmNvs.html#a4927951d09db18d392b6b6593809b0ac',1,'StmNvs::Commit()']]],
   ['complementarypair_34',['ComplementaryPair',['../structEspPwm_1_1ComplementaryPair.html#ab5c2b9cc82d9057a6f6bff1e9bce5403',1,'EspPwm::ComplementaryPair']]],
   ['computecrc32_35',['ComputeCrc32',['../classStmNvs.html#ac99989172e7bf3631a4b4afa6635e3f0',1,'StmNvs']]],
   ['concurrent_5fguard_5ftask_36',['concurrent_guard_task',['../DigitalOutputGuardComprehensiveTest_8cpp.html#a3c4a8c54a6957030ea639b65d1c48654',1,'DigitalOutputGuardComprehensiveTest.cpp']]],

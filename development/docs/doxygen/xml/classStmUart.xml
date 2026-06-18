@@ -6,7 +6,7 @@
     <includes refid="StmUart_8h" local="no">StmUart.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classStmUart_1a7cd9e2634a0aa45a7bfd088129eb36fb" prot="private" static="no" mutable="no">
-        <type>UART_HandleTypeDef *</type>
+        <type><ref refid="StmUart_8h_1a5de4a49eb132735325e706f406c69d6e" kindref="member">UART_HandleTypeDef</ref> *</type>
         <definition>UART_HandleTypeDef* StmUart::huart_</definition>
         <argsstring></argsstring>
         <name>huart_</name>
@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="91" column="24" bodyfile="inc/mcu/stm32/StmUart.h" bodystart="91" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="96" column="24" bodyfile="inc/mcu/stm32/StmUart.h" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classStmUart_1aa6d4e57c2bd952dda9e66a77c6bec7af" prot="private" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="92" column="14" bodyfile="inc/mcu/stm32/StmUart.h" bodystart="92" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="97" column="14" bodyfile="inc/mcu/stm32/StmUart.h" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classStmUart_1a77b98d1b43bc3f69cc0572e0b76eb2d5" prot="private" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="95" column="13" bodyfile="inc/mcu/stm32/StmUart.h" bodystart="95" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="100" column="13" bodyfile="inc/mcu/stm32/StmUart.h" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classStmUart_1a8bc5b71464fd8843f523849a175f7426" prot="private" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="96" column="14" bodyfile="inc/mcu/stm32/StmUart.h" bodystart="96" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="101" column="14" bodyfile="inc/mcu/stm32/StmUart.h" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classStmUart_1a9b5bbbfe7540d3a1dcf78bf9b1f21080" prot="private" static="no" mutable="no">
         <type>volatile <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="97" column="23" bodyfile="inc/mcu/stm32/StmUart.h" bodystart="97" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="102" column="23" bodyfile="inc/mcu/stm32/StmUart.h" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classStmUart_1a91c0fd2572016f4c62d12b1af9ee0621" prot="private" static="no" mutable="no">
         <type>volatile <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -89,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="98" column="23" bodyfile="inc/mcu/stm32/StmUart.h" bodystart="98" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="103" column="23" bodyfile="inc/mcu/stm32/StmUart.h" bodystart="103" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -100,7 +100,7 @@
         <name>StmUart</name>
         <qualifiedname>StmUart::StmUart</qualifiedname>
         <param>
-          <type>UART_HandleTypeDef *</type>
+          <type><ref refid="StmUart_8h_1a5de4a49eb132735325e706f406c69d6e" kindref="member">UART_HandleTypeDef</ref> *</type>
           <declname>huart</declname>
         </param>
         <param>
@@ -133,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="39" column="14" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="37" bodyend="46"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="44" column="14" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="41" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classStmUart_1aada64a3393b7feb1a276406823f1b997" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -152,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="45" column="14" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="48" bodyend="54"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="50" column="14" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="52" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classStmUart_1a4612cea155333d996dc0c87ec8dfc1b7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -166,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="47" column="5" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="56" bodyend="58"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="52" column="5" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="60" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classStmUart_1a4d6e4b1b6165be28c65820777a7ddc23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -183,7 +183,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="50" column="5"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="55" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classStmUart_1a8701e51e03c114ba0667d3660fd9489f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classStmUart" kindref="compound">StmUart</ref> &amp;</type>
@@ -200,7 +200,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="51" column="13"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="56" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classStmUart_1a5e4f0b9f78a17aa78ffd3201939d572b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -219,7 +219,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="54" column="10" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="64" bodyend="76"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="59" column="10" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="68" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="classStmUart_1ac3ca3f85293ae307230bc410c682bacb" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -238,7 +238,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="55" column="10" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="78" bodyend="83"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="60" column="10" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="82" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="classStmUart_1a63cff3de4915c888201a3049c414edaa" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -295,7 +295,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="56" column="19" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="89" bodyend="110"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="61" column="19" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="93" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="classStmUart_1ab6310fcbecd383881fa2a72581aa52cd" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -352,7 +352,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="58" column="19" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="112" bodyend="147"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="63" column="19" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="116" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="classStmUart_1a61bac4ed9eaaf3741a34b8c14f7c9fae" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -371,7 +371,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="60" column="14" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="149" bodyend="155"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="65" column="14" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="153" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="classStmUart_1a3e5819d45bd83956259d6c962bdc4166" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -390,7 +390,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="61" column="19" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="157" bodyend="161"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="66" column="19" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="161" bodyend="165"/>
       </memberdef>
       <memberdef kind="function" id="classStmUart_1a47da8433981b0a524efb84c552448664" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -409,7 +409,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="62" column="19" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="163" bodyend="168"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="67" column="19" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="167" bodyend="172"/>
       </memberdef>
       <memberdef kind="function" id="classStmUart_1aa620e720b5121683357f9c7ddf5f8b8e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>int</type>
@@ -452,10 +452,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="63" column="9" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="170" bodyend="185"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="68" column="9" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="174" bodyend="189"/>
       </memberdef>
       <memberdef kind="function" id="classStmUart_1a970fd8011ffa7503f5813c74f099b3ba" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>UART_HandleTypeDef *</type>
+        <type><ref refid="StmUart_8h_1a5de4a49eb132735325e706f406c69d6e" kindref="member">UART_HandleTypeDef</ref> *</type>
         <definition>UART_HandleTypeDef * StmUart::GetHalHandle</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetHalHandle</name>
@@ -466,7 +466,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="66" column="24" bodyfile="inc/mcu/stm32/StmUart.h" bodystart="66" bodyend="66"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="71" column="24" bodyfile="inc/mcu/stm32/StmUart.h" bodystart="71" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="classStmUart_1a19b68294f317bd4cf7cb6d0cf526c004" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -507,7 +507,7 @@ When enabled, <ref refid="classStmUart_1ab6310fcbecd383881fa2a72581aa52cd" kindr
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="78" column="10" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="191" bodyend="196"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="83" column="10" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="195" bodyend="200"/>
       </memberdef>
       <memberdef kind="function" id="classStmUart_1aa766367ec288d70b4ed09d1348befef4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -526,7 +526,7 @@ When enabled, <ref refid="classStmUart_1ab6310fcbecd383881fa2a72581aa52cd" kindr
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="83" column="10" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="198" bodyend="208"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="88" column="10" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="202" bodyend="212"/>
       </memberdef>
       <memberdef kind="function" id="classStmUart_1a90b14b8a751d0c27a2dd1a8aefc1f7f6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -549,7 +549,7 @@ When enabled, <ref refid="classStmUart_1ab6310fcbecd383881fa2a72581aa52cd" kindr
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmUart.h" line="88" column="10" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="210" bodyend="214"/>
+        <location file="inc/mcu/stm32/StmUart.h" line="93" column="10" bodyfile="src/mcu/stm32/StmUart.cpp" bodystart="214" bodyend="218"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -603,7 +603,7 @@ When enabled, <ref refid="classStmUart_1ab6310fcbecd383881fa2a72581aa52cd" kindr
         <link refid="structhf__uart__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/stm32/StmUart.h" line="31" column="1" bodyfile="inc/mcu/stm32/StmUart.h" bodystart="31" bodyend="99"/>
+    <location file="inc/mcu/stm32/StmUart.h" line="36" column="1" bodyfile="inc/mcu/stm32/StmUart.h" bodystart="36" bodyend="104"/>
     <listofallmembers>
       <member refid="classBaseUart_1a5bd0243a3f6c1e242a5a867f6aebf928" prot="public" virt="non-virtual"><scope>StmUart</scope><name>BaseUart</name></member>
       <member refid="classBaseUart_1aefd61298d23c892de11fce7404c909e9" prot="public" virt="non-virtual"><scope>StmUart</scope><name>BaseUart</name></member>
