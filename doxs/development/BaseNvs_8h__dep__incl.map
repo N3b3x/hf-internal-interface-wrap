@@ -1,17 +1,21 @@
 <map id="inc/base/BaseNvs.h" name="inc/base/BaseNvs.h">
-<area shape="rect" id="Node000001" title="Abstract base class for Non&#45;Volatile Storage implementations in the HardFOC system." alt="" coords="157,5,338,36"/>
+<area shape="rect" id="Node000001" title="Abstract base class for Non&#45;Volatile Storage implementations in the HardFOC system." alt="" coords="221,5,402,36"/>
 <area shape="rect" id="Node000002" href="$NvsComprehensiveTest_8cpp.html" title="Comprehensive NVS (Non&#45;Volatile Storage) testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,261,257,312"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,48,202,85,177,133,159,183,139,262,134,260,154,182,172,131,197,83,224,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="261,44,229,62,201,86,172,129,153,177,142,224,136,262,131,261,136,223,148,176,168,126,197,82,226,58,258,39"/>
 <area shape="rect" id="Node000003" href="$EspNvs_8h.html" title="World&#45;class ESP32 NVS storage implementation with ESP&#45;IDF v5.5+ features." alt="" coords="169,183,390,213"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="230,48,213,85,207,110,212,134,232,160,257,180,253,185,228,164,208,136,202,110,207,83,225,46"/>
-<area shape="rect" id="Node000005" href="$EspTypes__NVS_8h.html" title="ESP32 NVS type definitions for hardware abstraction." alt="" coords="222,84,398,135"/>
-<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="268,46,294,82,290,85,264,49"/>
-<area shape="rect" id="Node000006" href="$StmNvs_8h.html" title="STM32 NVS (Non&#45;Volatile Storage) — flash&#45;based key&#45;value store." alt="" coords="423,94,647,125"/>
-<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="308,37,489,91,488,97,306,42"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="259,44,233,62,214,85,206,109,214,134,233,160,257,181,254,185,229,164,209,136,201,109,209,83,230,58,256,40"/>
+<area shape="rect" id="Node000005" href="$EspTypes__NVS_8h.html" title="ESP32 NVS type definitions for hardware abstraction." alt="" coords="223,84,399,135"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="314,50,314,84,309,84,309,50"/>
+<area shape="rect" id="Node000006" href="$HostNvs_8h.html" title="In&#45;memory BaseNvs for host / unit&#45;test builds (hf&#45;internal&#45;interface&#45;wrap)." alt="" coords="424,94,636,125"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="361,38,495,92,493,96,359,43"/>
+<area shape="rect" id="Node000008" href="$StmNvs_8h.html" title="STM32 NVS (Non&#45;Volatile Storage) — flash&#45;based key&#45;value store." alt="" coords="670,94,894,125"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="402,36,706,91,705,97,401,41"/>
 <area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="245,223,175,263,172,259,242,218"/>
 <area shape="rect" id="Node000004" href="$EspNvs_8cpp.html" title="World&#45;class ESP32 NVS implementation with ESP&#45;IDF v5.5+ advanced features." alt="" coords="281,271,523,302"/>
 <area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="312,219,383,269,380,273,309,223"/>
-<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="299,149,287,183,282,182,294,147"/>
-<area shape="rect" id="Node000007" href="$StmNvs_8cpp.html" title="STM32 NVS implementation — flash&#45;backed key&#45;value store." alt="" coords="415,183,659,213"/>
-<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="538,138,539,182,534,182,533,138"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="300,149,287,183,282,181,295,147"/>
+<area shape="rect" id="Node000007" href="$HostNvs_8cpp.html" title="In&#45;memory NVS for host / unit&#45;test builds." alt="" coords="414,183,646,213"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="533,138,533,182,527,182,527,138"/>
+<area shape="rect" id="Node000009" href="$StmNvs_8cpp.html" title="STM32 NVS implementation — flash&#45;backed key&#45;value store." alt="" coords="671,183,915,213"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="788,138,794,182,788,182,783,139"/>
 </map>

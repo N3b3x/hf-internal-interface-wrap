@@ -14,7 +14,7 @@ var searchData=
   ['key_20design_20features_3a_11',['Key Design Features:',['../classEspPwm.html#autotoc_md6',1,'']]],
   ['key_20implementation_20features_3a_12',['Key Implementation Features:',['../EspPwm_8cpp.html#autotoc_md16',1,'']]],
   ['key_5fprefix_13',['key_prefix',['../structhf__nvs__iterator__config__t.html#a8bc76d2487c20d73b26bd130e04878bc',1,'hf_nvs_iterator_config_t']]],
-  ['keyexists_14',['KeyExists',['../classBaseNvs.html#a911caf95d3c25047f044ca748164df39',1,'BaseNvs::KeyExists()'],['../classEspNvs.html#a709425e0f37afdeb516447e43d000974',1,'EspNvs::KeyExists()'],['../classStmNvs.html#a8a8abfb797fa5369d790a1e74501ec26',1,'StmNvs::KeyExists()']]],
+  ['keyexists_14',['KeyExists',['../classBaseNvs.html#a911caf95d3c25047f044ca748164df39',1,'BaseNvs::KeyExists()'],['../classEspNvs.html#a709425e0f37afdeb516447e43d000974',1,'EspNvs::KeyExists()'],['../classHostNvs.html#a66d0e8332d475659a17b6e2274a7c3ca',1,'HostNvs::KeyExists()'],['../classStmNvs.html#a8a8abfb797fa5369d790a1e74501ec26',1,'StmNvs::KeyExists()']]],
   ['kflashtypeprogrambyte_15',['kFlashTypeProgramByte',['../namespaceanonymous__namespace_02StmNvs_8cpp_03.html#ac7a9adc51e5ed1cdd49b551cc2217fad',1,'anonymous_namespace{StmNvs.cpp}']]],
   ['kflashtypeprogramdword_16',['kFlashTypeProgramDWord',['../namespaceanonymous__namespace_02StmNvs_8cpp_03.html#a213e29d94ccd46ce58da6c3d04482735',1,'anonymous_namespace{StmNvs.cpp}']]],
   ['kflashtypeprogramhalfword_17',['kFlashTypeProgramHalfWord',['../namespaceanonymous__namespace_02StmNvs_8cpp_03.html#ab52bb688b31f1a467cc33543577eb6c2',1,'anonymous_namespace{StmNvs.cpp}']]],

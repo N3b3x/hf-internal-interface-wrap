@@ -150,5 +150,6 @@ var searchData=
   ['hftemperrtostring_147',['HfTempErrToString',['../BaseTemperature_8h.html#a5c4c3ef28b07964288c304c042b13671',1,'BaseTemperature.h']]],
   ['hftimererrtostring_148',['HfTimerErrToString',['../BasePeriodicTimer_8h.html#a98f3bcaddfb845b86bca4bc52553d1bb',1,'BasePeriodicTimer.h']]],
   ['hfuarterrtostring_149',['HfUartErrToString',['../BaseUart_8h.html#af8c6bbea05bb05ef1002071d6af168ad',1,'BaseUart.h']]],
-  ['hfwifierrtostring_150',['HfWifiErrToString',['../group__wifi.html#gad6a1454d2409e5f92e89682f8a37676a',1,'BaseWifi.h']]]
+  ['hfwifierrtostring_150',['HfWifiErrToString',['../group__wifi.html#gad6a1454d2409e5f92e89682f8a37676a',1,'BaseWifi.h']]],
+  ['hostnvs_151',['HostNvs',['../classHostNvs.html#a00f1ff13bd021e7febbf907d9adf17d9',1,'HostNvs']]]
 ];

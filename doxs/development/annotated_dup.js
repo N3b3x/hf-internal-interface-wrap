@@ -155,6 +155,7 @@ var annotated_dup =
     [ "HfEspWifiCalibration", "structHfEspWifiCalibration.html", "structHfEspWifiCalibration" ],
     [ "HfEspWifiPerformanceConfig", "structHfEspWifiPerformanceConfig.html", "structHfEspWifiPerformanceConfig" ],
     [ "HfEspWifiStats", "structHfEspWifiStats.html", "structHfEspWifiStats" ],
+    [ "HostNvs", "classHostNvs.html", "classHostNvs" ],
     [ "InterruptStatus", "structInterruptStatus.html", "structInterruptStatus" ],
     [ "NullMutexBackend", "structNullMutexBackend.html", "structNullMutexBackend" ],
     [ "PlatformMutexImpl", "classPlatformMutexImpl.html", "classPlatformMutexImpl" ],
