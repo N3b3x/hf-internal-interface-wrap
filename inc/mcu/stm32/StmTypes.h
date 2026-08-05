@@ -347,8 +347,8 @@ struct hf_spi_bus_config_t {
 
 /// @brief SPI device configuration for STM32.
 struct hf_spi_device_config_t {
-    hf_u32_t clock_speed_hz;          ///< Clock speed (informational — set in CubeMX)
-    hf_stm32_spi_mode_t mode;         ///< SPI mode (informational — set in CubeMX)
+    hf_u32_t clock_speed_hz;          ///< Preferred clock (Hz); CubeMX sets bus baud — keep ≤ that
+    hf_stm32_spi_mode_t mode;         ///< CPOL/CPHA applied per-transfer by StmSpiBus
     GPIO_TypeDef* cs_port;             ///< CS GPIO port (e.g., GPIOA)
     hf_u16_t cs_pin;                   ///< CS GPIO pin mask (e.g., GPIO_PIN_4)
     bool cs_active_low;                ///< CS active low (default: true)

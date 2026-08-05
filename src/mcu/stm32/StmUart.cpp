@@ -74,6 +74,18 @@ bool StmUart::Initialize() noexcept {
     rx_head_ = 0;
     rx_tail_ = 0;
 
+#if defined(HAL_UART_MODULE_ENABLED) && defined(UART_RXFIFO_THRESHOLD_1_8)
+    // Keep blocking RX resilient to short scheduling stalls.  STM32H7 UARTs
+    // power up with FIFO mode disabled even when the peripheral owns a 16-byte
+    // FIFO; enabling the lowest threshold preserves byte-stream behaviour while
+    // providing overrun headroom to every StmUart consumer.
+    if (HAL_UARTEx_SetRxFifoThreshold(huart_, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK ||
+        HAL_UARTEx_SetTxFifoThreshold(huart_, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK ||
+        HAL_UARTEx_EnableFifoMode(huart_) != HAL_OK) {
+        return false;
+    }
+#endif
+
     initialized_ = true;
     statistics_.initialization_timestamp = static_cast<hf_u64_t>(HAL_GetTick()) * 1000ULL;
     return true;
@@ -118,11 +130,21 @@ hf_uart_err_t StmUart::Read(hf_u8_t* data, hf_u16_t length,
     if (!initialized_) return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
     if (!data || length == 0) return hf_uart_err_t::UART_ERR_INVALID_PARAMETER;
 
-    // If ring buffer is active, pull from there
+    // If ring buffer is active, pull from there (ISR-fed). Honor timeout_ms so
+    // TLS BIO polls can wait briefly for the next byte without busy-spinning
+    // the caller into a hard failure during crypto stalls.
     if (rx_buf_ && rx_buf_size_ > 0) {
-        hf_u16_t available = BytesAvailable();
-        if (available == 0) return hf_uart_err_t::UART_ERR_BUFFER_EMPTY;
+        const hf_u32_t tout = timeout_ms;
+        const uint32_t start = HAL_GetTick();
+        while (BytesAvailable() == 0) {
+            if (tout == 0U) return hf_uart_err_t::UART_ERR_BUFFER_EMPTY;
+            if ((HAL_GetTick() - start) >= tout) {
+                statistics_.timeout_count++;
+                return hf_uart_err_t::UART_ERR_TIMEOUT;
+            }
+        }
 
+        hf_u16_t available = BytesAvailable();
         hf_u16_t to_read = (length < available) ? length : available;
         for (hf_u16_t i = 0; i < to_read; ++i) {
             data[i] = rx_buf_[rx_tail_];
@@ -146,6 +168,20 @@ hf_uart_err_t StmUart::Read(hf_u8_t* data, hf_u16_t length,
         return hf_uart_err_t::UART_ERR_TIMEOUT;
     }
 
+#if defined(HAL_UART_MODULE_ENABLED) && defined(UART_CLEAR_OREF)
+    // HAL_UART_Receive may return HAL_ERROR with ORE/FE/NE latched.  Leaving
+    // those flags set wedges later blocking reads until reset, so clear only
+    // receive-side error flags and restore the HAL error state before returning
+    // the failure to the caller.  The failed transfer remains observable in
+    // rx_error_count/overrun_error_count; recovery never hides data loss.
+    if ((huart_->ErrorCode & HAL_UART_ERROR_ORE) != 0U) {
+        statistics_.overrun_error_count++;
+    }
+    __HAL_UART_CLEAR_FLAG(
+        huart_, UART_CLEAR_OREF | UART_CLEAR_FEF | UART_CLEAR_NEF | UART_CLEAR_PEF);
+    huart_->ErrorCode = HAL_UART_ERROR_NONE;
+#endif
+
     statistics_.rx_error_count++;
     return hf_uart_err_t::UART_ERR_RECEPTION_FAILED;
 }
@@ -168,6 +204,17 @@ hf_uart_err_t StmUart::FlushRx() noexcept {
     if (!initialized_) return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
     rx_head_ = 0;
     rx_tail_ = 0;
+#if defined(HAL_UART_MODULE_ENABLED)
+    /* Drop any bytes still sitting in the hardware FIFO so a fail-closed
+     * session teardown cannot leave attacker-controlled noise in front of the
+     * next ClientHello when the software ring is re-armed. */
+    __HAL_UART_CLEAR_FLAG(
+        huart_, UART_CLEAR_OREF | UART_CLEAR_FEF | UART_CLEAR_NEF | UART_CLEAR_PEF);
+    while (__HAL_UART_GET_FLAG(huart_, UART_FLAG_RXNE) != 0U) {
+        (void)huart_->Instance->RDR;
+    }
+    huart_->ErrorCode = HAL_UART_ERROR_NONE;
+#endif
     return hf_uart_err_t::UART_SUCCESS;
 }
 

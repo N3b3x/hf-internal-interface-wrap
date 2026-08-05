@@ -32,6 +32,7 @@
 #pragma once
 
 #include "BaseI2c.h"
+#include "PlatformMutex.h"
 #include "StmTypes.h"
 #include <vector>
 #include <memory>
@@ -61,6 +62,9 @@ public:
                            hf_u32_t timeout_ms = 0) noexcept override;
     hf_u16_t GetDeviceAddress() const noexcept override;
 
+    /// @brief Update the 7-bit slave address (e.g. after PCAL strap probe).
+    void SetDeviceAddress(hf_u16_t address_7bit) noexcept;
+
     /// @brief Get the device configuration
     const hf_i2c_device_config_t& GetConfig() const noexcept { return config_; }
 
@@ -83,6 +87,10 @@ private:
  *
  * One bus instance per I2C peripheral (I2C1, I2C2, etc.). Devices are
  * created via CreateDevice() and accessed via GetDevice().
+ *
+ * Transfers are serialized with @ref PlatformMutex (same contract as StmSpi).
+ * Direct HAL probes (IsDeviceReady) must take @ref LockBus or risk racing
+ * Mem_Read/Master_Transmit on the same handle.
  */
 class StmI2cBus {
 public:
@@ -116,8 +124,18 @@ public:
     /// @brief Get the STM32 HAL I2C handle
     I2C_HandleTypeDef* GetHalHandle() const noexcept;
 
+    /**
+     * @brief Exclusive bus lock for HAL transfer / probe (StmSpi parity).
+     * @return false on timeout / lock failure.
+     */
+    bool LockBus(hf_u32_t timeout_ms) noexcept;
+    void UnlockBus() noexcept;
+
 private:
+    friend class StmI2cDevice;
+
     hf_i2c_bus_config_t config_;
     bool initialized_{false};
+    mutable PlatformMutex bus_mutex_{};
     std::vector<std::unique_ptr<StmI2cDevice>> devices_;
 };

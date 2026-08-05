@@ -18,6 +18,8 @@
 // STM32 HAL FORWARD DECLARATIONS
 // ═══════════════════════════════════════════════════════════════════════════════
 
+// With the real CubeMX HAL present these come from stm32h7xx_hal_i2c.h and return
+// HAL_StatusTypeDef; re-declaring them as uint32_t is a conflicting declaration.
 #if !defined(USE_HAL_DRIVER)
 extern "C" {
 extern uint32_t HAL_I2C_Master_Transmit(I2C_HandleTypeDef* hi2c, uint16_t DevAddress,
@@ -49,19 +51,12 @@ StmI2cDevice::~StmI2cDevice() noexcept {
 bool StmI2cDevice::Initialize() noexcept {
     if (initialized_) return true;
     if (!parent_bus_ || !parent_bus_->IsInitialized()) return false;
+    if (!parent_bus_->GetHalHandle()) return false;
 
-    // Optionally probe the device to verify it's present
-    I2C_HandleTypeDef* hi2c = parent_bus_->GetHalHandle();
-    if (!hi2c) return false;
-
-    uint16_t addr_shifted = config_.device_address << 1;
-    uint32_t status = HAL_I2C_IsDeviceReady(hi2c, addr_shifted, 3,
-                                            GetEffectiveTimeout(0));
-    if (!hf::stm32::IsHalOk(status)) {
-        // Device not responding — still allow init (device may power up later)
-        // Don't fail init, just note it.
-    }
-
+    /* Do not call HAL_I2C_IsDeviceReady here. On STM32H7 it can leave the
+     * master with ISR.TXIS latched while State==READY, which breaks the next
+     * Mem_Read. Presence probes belong to the board/bindings layer (under
+     * LockBus), not as an init side effect. */
     initialized_ = true;
     return true;
 }
@@ -75,14 +70,30 @@ hf_i2c_err_t StmI2cDevice::Write(const hf_u8_t* data, hf_u16_t length,
                                   hf_u32_t timeout_ms) noexcept {
     if (!EnsureInitialized()) return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     if (!data || length == 0) return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
+    if (!parent_bus_) return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
+
+    hf_u32_t effective_timeout = GetEffectiveTimeout(timeout_ms);
+    if (!parent_bus_->LockBus(effective_timeout)) {
+        return hf_i2c_err_t::I2C_ERR_BUS_BUSY;
+    }
 
     I2C_HandleTypeDef* hi2c = parent_bus_->GetHalHandle();
     uint16_t addr_shifted = config_.device_address << 1;
-    hf_u32_t effective_timeout = GetEffectiveTimeout(timeout_ms);
+    uint32_t status;
 
-    uint32_t status = HAL_I2C_Master_Transmit(
-        hi2c, addr_shifted,
-        const_cast<uint8_t*>(data), length, effective_timeout);
+    /* Register write [reg, payload...] → Mem_Write (same engine as Mem_Read /
+     * WriteRead). Raw Master_Transmit is less reliable on STM32H7 at low
+     * clock for expander CONFIG/OUTPUT updates during pin bring-up. */
+    if (length >= 2U) {
+        status = HAL_I2C_Mem_Write(
+            hi2c, addr_shifted, data[0], I2C_MEMADD_SIZE_8BIT,
+            const_cast<uint8_t*>(data + 1),
+            static_cast<uint16_t>(length - 1U), effective_timeout);
+    } else {
+        status = HAL_I2C_Master_Transmit(
+            hi2c, addr_shifted, const_cast<uint8_t*>(data), length,
+            effective_timeout);
+    }
 
     auto result = ConvertHalStatus(status);
     if (result == hf_i2c_err_t::I2C_SUCCESS) {
@@ -91,7 +102,15 @@ hf_i2c_err_t StmI2cDevice::Write(const hf_u8_t* data, hf_u16_t length,
         statistics_.bytes_written += length;
     } else {
         statistics_.failed_transactions++;
+        if (hi2c->State != HAL_I2C_STATE_READY) {
+            hi2c->State = HAL_I2C_STATE_READY;
+            hi2c->Mode = HAL_I2C_MODE_NONE;
+            hi2c->Lock = HAL_UNLOCKED;
+        }
+        __HAL_I2C_CLEAR_FLAG(hi2c, I2C_FLAG_AF | I2C_FLAG_STOPF | I2C_FLAG_BERR |
+                                       I2C_FLAG_ARLO | I2C_FLAG_OVR);
     }
+    parent_bus_->UnlockBus();
     return result;
 }
 
@@ -99,10 +118,15 @@ hf_i2c_err_t StmI2cDevice::Read(hf_u8_t* data, hf_u16_t length,
                                  hf_u32_t timeout_ms) noexcept {
     if (!EnsureInitialized()) return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     if (!data || length == 0) return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
+    if (!parent_bus_) return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
+
+    hf_u32_t effective_timeout = GetEffectiveTimeout(timeout_ms);
+    if (!parent_bus_->LockBus(effective_timeout)) {
+        return hf_i2c_err_t::I2C_ERR_BUS_BUSY;
+    }
 
     I2C_HandleTypeDef* hi2c = parent_bus_->GetHalHandle();
     uint16_t addr_shifted = config_.device_address << 1;
-    hf_u32_t effective_timeout = GetEffectiveTimeout(timeout_ms);
 
     uint32_t status = HAL_I2C_Master_Receive(
         hi2c, addr_shifted, data, length, effective_timeout);
@@ -115,6 +139,7 @@ hf_i2c_err_t StmI2cDevice::Read(hf_u8_t* data, hf_u16_t length,
     } else {
         statistics_.failed_transactions++;
     }
+    parent_bus_->UnlockBus();
     return result;
 }
 
@@ -125,10 +150,16 @@ hf_i2c_err_t StmI2cDevice::WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
     if (!tx_data || tx_length == 0 || !rx_data || rx_length == 0) {
         return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
     }
+    if (!parent_bus_) return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
+
+    hf_u32_t effective_timeout = GetEffectiveTimeout(timeout_ms);
+    if (!parent_bus_->LockBus(effective_timeout)) {
+        return hf_i2c_err_t::I2C_ERR_BUS_BUSY;
+    }
 
     I2C_HandleTypeDef* hi2c = parent_bus_->GetHalHandle();
     uint16_t addr_shifted = config_.device_address << 1;
-    hf_u32_t effective_timeout = GetEffectiveTimeout(timeout_ms);
+    hf_i2c_err_t result;
 
     // If tx_length == 1, treat as register address read via HAL_I2C_Mem_Read
     // This is the common pattern: write register addr, then read data
@@ -138,7 +169,7 @@ hf_i2c_err_t StmI2cDevice::WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
             tx_data[0], 1,  // MemAddress, MemAddSize=1 byte
             rx_data, rx_length, effective_timeout);
 
-        auto result = ConvertHalStatus(status);
+        result = ConvertHalStatus(status);
         if (result == hf_i2c_err_t::I2C_SUCCESS) {
             statistics_.total_transactions++;
             statistics_.successful_transactions++;
@@ -146,19 +177,52 @@ hf_i2c_err_t StmI2cDevice::WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
             statistics_.bytes_written += tx_length;
         } else {
             statistics_.failed_transactions++;
+            /* STM32H7: a NACK/timeout can leave State!=READY while ISR flags
+             * stick — recover so the next Mem_Read (PCAL handler) can proceed. */
+            if (hi2c->State != HAL_I2C_STATE_READY) {
+                hi2c->State = HAL_I2C_STATE_READY;
+                hi2c->Mode = HAL_I2C_MODE_NONE;
+                hi2c->Lock = HAL_UNLOCKED;
+            }
+            __HAL_I2C_CLEAR_FLAG(hi2c, I2C_FLAG_AF | I2C_FLAG_STOPF | I2C_FLAG_BERR |
+                                           I2C_FLAG_ARLO | I2C_FLAG_OVR);
         }
+        parent_bus_->UnlockBus();
         return result;
     }
 
-    // For multi-byte writes followed by read: use separate transmit + receive
-    auto write_err = Write(tx_data, tx_length, timeout_ms);
-    if (write_err != hf_i2c_err_t::I2C_SUCCESS) return write_err;
-
-    return Read(rx_data, rx_length, timeout_ms);
+    // Multi-byte write-then-read under one bus lock (no STOP between if HAL
+    // supports it; here we use sequential Master_Transmit + Master_Receive).
+    uint32_t status = HAL_I2C_Master_Transmit(
+        hi2c, addr_shifted,
+        const_cast<uint8_t*>(tx_data), tx_length, effective_timeout);
+    result = ConvertHalStatus(status);
+    if (result != hf_i2c_err_t::I2C_SUCCESS) {
+        statistics_.failed_transactions++;
+        parent_bus_->UnlockBus();
+        return result;
+    }
+    status = HAL_I2C_Master_Receive(
+        hi2c, addr_shifted, rx_data, rx_length, effective_timeout);
+    result = ConvertHalStatus(status);
+    if (result == hf_i2c_err_t::I2C_SUCCESS) {
+        statistics_.total_transactions++;
+        statistics_.successful_transactions++;
+        statistics_.bytes_written += tx_length;
+        statistics_.bytes_read += rx_length;
+    } else {
+        statistics_.failed_transactions++;
+    }
+    parent_bus_->UnlockBus();
+    return result;
 }
 
 hf_u16_t StmI2cDevice::GetDeviceAddress() const noexcept {
     return config_.device_address;
+}
+
+void StmI2cDevice::SetDeviceAddress(hf_u16_t address_7bit) noexcept {
+    config_.device_address = address_7bit;
 }
 
 hf_u32_t StmI2cDevice::GetEffectiveTimeout(hf_u32_t requested_ms) const noexcept {
@@ -242,5 +306,13 @@ bool StmI2cBus::RemoveDevice(int device_index) noexcept {
 const hf_i2c_bus_config_t& StmI2cBus::GetConfig() const noexcept { return config_; }
 
 I2C_HandleTypeDef* StmI2cBus::GetHalHandle() const noexcept { return config_.hal_handle; }
+
+bool StmI2cBus::LockBus(hf_u32_t timeout_ms) noexcept {
+    return bus_mutex_.try_lock_for(timeout_ms > 0 ? timeout_ms : 1000U);
+}
+
+void StmI2cBus::UnlockBus() noexcept {
+    bus_mutex_.unlock();
+}
 
 #endif  // module enabled

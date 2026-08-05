@@ -66,6 +66,15 @@ hf_spi_err_t StmSpiDevice::Transfer(const hf_u8_t* tx_data, hf_u8_t* rx_data,
     if (!hspi) return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
 
     hf_u32_t effective_timeout = GetEffectiveTimeout(timeout_ms);
+    if (!parent_bus_->LockBus(effective_timeout)) {
+        return hf_spi_err_t::SPI_ERR_BUS_BUSY;
+    }
+
+    /* Per-device mode (MAX Mode0 / TLE Mode1 / TMC Mode3 on shared SPI2). */
+    if (!parent_bus_->ApplyDeviceMode(config_.mode)) {
+        parent_bus_->UnlockBus();
+        return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
+    }
 
     // Assert chip select
     AssertCS();
@@ -84,11 +93,13 @@ hf_spi_err_t StmSpiDevice::Transfer(const hf_u8_t* tx_data, hf_u8_t* rx_data,
         status = HAL_SPI_Receive(hspi, rx_data, length, effective_timeout);
     } else {
         DeassertCS();
+        parent_bus_->UnlockBus();
         return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
     }
 
     // Deassert chip select
     DeassertCS();
+    parent_bus_->UnlockBus();
 
     auto result = ConvertHalStatus(status);
     if (result == hf_spi_err_t::SPI_SUCCESS) {
@@ -206,3 +217,64 @@ bool StmSpiBus::RemoveDevice(int device_index) noexcept {
 const hf_spi_bus_config_t& StmSpiBus::GetConfig() const noexcept { return config_; }
 
 SPI_HandleTypeDef* StmSpiBus::GetHalHandle() const noexcept { return config_.hal_handle; }
+
+bool StmSpiBus::LockBus(hf_u32_t timeout_ms) noexcept {
+    return bus_mutex_.try_lock_for(timeout_ms > 0 ? timeout_ms : 1000U);
+}
+
+void StmSpiBus::UnlockBus() noexcept {
+    bus_mutex_.unlock();
+}
+
+bool StmSpiBus::ApplyDeviceMode(hf_stm32_spi_mode_t mode) noexcept {
+    SPI_HandleTypeDef* hspi = config_.hal_handle;
+    if (!hspi) return false;
+
+#if defined(USE_HAL_DRIVER)
+    uint32_t cpol = SPI_POLARITY_LOW;
+    uint32_t cpha = SPI_PHASE_1EDGE;
+    switch (mode) {
+        case hf_stm32_spi_mode_t::MODE_0:
+            cpol = SPI_POLARITY_LOW;
+            cpha = SPI_PHASE_1EDGE;
+            break;
+        case hf_stm32_spi_mode_t::MODE_1:
+            cpol = SPI_POLARITY_LOW;
+            cpha = SPI_PHASE_2EDGE;
+            break;
+        case hf_stm32_spi_mode_t::MODE_2:
+            cpol = SPI_POLARITY_HIGH;
+            cpha = SPI_PHASE_1EDGE;
+            break;
+        case hf_stm32_spi_mode_t::MODE_3:
+            cpol = SPI_POLARITY_HIGH;
+            cpha = SPI_PHASE_2EDGE;
+            break;
+        default:
+            return false;
+    }
+
+    /* Skip SPE toggle only when HW CFG2 already matches. Do not trust
+     * last_mode_ alone — PW_SPI_BENCH_WIRE_PROOF (and any peer) may poke
+     * CFG2 without updating this cache. */
+    if (mode_applied_ && last_mode_ == mode) {
+        const uint32_t cfg2 = READ_REG(hspi->Instance->CFG2);
+        if ((cfg2 & (SPI_CFG2_CPOL | SPI_CFG2_CPHA)) == (cpol | cpha)) {
+            return true;
+        }
+    }
+
+    /* CFG2 CPOL/CPHA may only change while SPE is cleared. */
+    CLEAR_BIT(hspi->Instance->CR1, SPI_CR1_SPE);
+    hspi->Init.CLKPolarity = cpol;
+    hspi->Init.CLKPhase = cpha;
+    MODIFY_REG(hspi->Instance->CFG2, SPI_CFG2_CPOL | SPI_CFG2_CPHA, cpol | cpha);
+    SET_BIT(hspi->Instance->CR1, SPI_CR1_SPE);
+#else
+    (void)hspi;
+#endif
+
+    last_mode_ = mode;
+    mode_applied_ = true;
+    return true;
+}
