@@ -9,6 +9,48 @@
 
 #include "StmSpi.h"
 
+#include <cstring>
+
+namespace {
+/* D1 AXI .bss staging for small transfers. Callers on CM4 may pass FMC SDRAM
+ * stack pointers; HAL_SPI_* byte FIFO access has the same ldrb class of hazard
+ * as I2C on this Portenta partition (see StmI2c / flying-wire bench notes). */
+constexpr hf_u16_t kSpiScratchBytes = 32;
+uint8_t g_spi_axi_tx[kSpiScratchBytes]{};
+uint8_t g_spi_axi_rx[kSpiScratchBytes]{};
+
+#if defined(USE_HAL_DRIVER) && defined(HAL_SPI_MODULE_ENABLED)
+/** Drop stale RX FIFO bytes / EOT flags before a soft-CS frame (I2C TXIS class). */
+void PrepareSpiXfer(SPI_HandleTypeDef* hspi) noexcept {
+    if (hspi == nullptr || hspi->Instance == nullptr) {
+        return;
+    }
+    while ((__HAL_SPI_GET_FLAG(hspi, SPI_FLAG_RXWNE) != RESET) ||
+           ((hspi->Instance->SR & SPI_SR_RXPLVL) != 0UL)) {
+        (void)*(__IO uint8_t*)&hspi->Instance->RXDR;
+    }
+    __HAL_SPI_CLEAR_EOTFLAG(hspi);
+    __HAL_SPI_CLEAR_TXTFFLAG(hspi);
+    if (hspi->State != HAL_SPI_STATE_READY) {
+        (void)HAL_SPI_Abort(hspi);
+    }
+}
+
+/**
+ * Soft-CS setup/hold: datasheet tCSS/tCSH ≥ 50 ns; ~1 µs (1–2 bit-times @
+ * 1–1.25 MHz). Longer pad-capture delays stay in opt-in wire-proof only.
+ */
+void CsSetupDelay() noexcept {
+    for (uint32_t spin = 40U; spin > 0U; --spin) {
+        __asm__ volatile("");
+    }
+}
+#else
+void PrepareSpiXfer(SPI_HandleTypeDef*) noexcept {}
+void CsSetupDelay() noexcept {}
+#endif
+}  // namespace
+
 // ═══════════════════════════════════════════════════════════════════════════════
 // STM32 HAL FORWARD DECLARATIONS
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -76,33 +118,48 @@ hf_spi_err_t StmSpiDevice::Transfer(const hf_u8_t* tx_data, hf_u8_t* rx_data,
         return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
     }
 
-    // Assert chip select
+    const hf_u8_t* tx_ptr = tx_data;
+    hf_u8_t* rx_ptr = rx_data;
+    if (length <= kSpiScratchBytes) {
+        if (tx_data != nullptr) {
+            std::memcpy(g_spi_axi_tx, tx_data, length);
+            tx_ptr = g_spi_axi_tx;
+        }
+        if (rx_data != nullptr) {
+            rx_ptr = g_spi_axi_rx;
+        }
+    }
+
+    PrepareSpiXfer(hspi);
     AssertCS();
+    CsSetupDelay();
 
     uint32_t status;
-
-    if (tx_data && rx_data) {
-        // Full duplex transfer
+    if (tx_ptr && rx_ptr) {
         status = HAL_SPI_TransmitReceive(
-            hspi, const_cast<uint8_t*>(tx_data), rx_data, length, effective_timeout);
-    } else if (tx_data) {
-        // Transmit only
-        status = HAL_SPI_Transmit(hspi, const_cast<uint8_t*>(tx_data), length, effective_timeout);
-    } else if (rx_data) {
-        // Receive only
-        status = HAL_SPI_Receive(hspi, rx_data, length, effective_timeout);
+            hspi, const_cast<uint8_t*>(tx_ptr), rx_ptr, length, effective_timeout);
+    } else if (tx_ptr) {
+        status = HAL_SPI_Transmit(hspi, const_cast<uint8_t*>(tx_ptr), length,
+                                  effective_timeout);
+    } else if (rx_ptr) {
+        status = HAL_SPI_Receive(hspi, rx_ptr, length, effective_timeout);
     } else {
         DeassertCS();
         parent_bus_->UnlockBus();
         return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
     }
 
-    // Deassert chip select
+    /* Hold CS briefly after last clock (TLE/MAX tCSH) before release. */
+    CsSetupDelay();
     DeassertCS();
     parent_bus_->UnlockBus();
 
     auto result = ConvertHalStatus(status);
     if (result == hf_spi_err_t::SPI_SUCCESS) {
+        if (rx_data != nullptr && rx_ptr == g_spi_axi_rx &&
+            length <= kSpiScratchBytes) {
+            std::memcpy(rx_data, g_spi_axi_rx, length);
+        }
         statistics_.total_transactions++;
         statistics_.successful_transactions++;
         statistics_.total_bytes_sent += length;
@@ -171,6 +228,17 @@ StmSpiBus::~StmSpiBus() noexcept {
 bool StmSpiBus::Initialize() noexcept {
     if (initialized_) return true;
     if (!config_.hal_handle) return false;
+#if defined(USE_HAL_DRIVER) && defined(HAL_SPI_MODULE_ENABLED)
+    /* Soft-CS buses (SPI2 actuators): disable HW NSS pulse so multi-byte
+     * frames under GPIO CS are one continuous Motorola word stream. */
+    SPI_HandleTypeDef* hspi = config_.hal_handle;
+    if (hspi != nullptr && hspi->Instance != nullptr) {
+        CLEAR_BIT(hspi->Instance->CR1, SPI_CR1_SPE);
+        CLEAR_BIT(hspi->Instance->CFG2, SPI_CFG2_SSOM);
+        hspi->Init.NSSPMode = SPI_NSS_PULSE_DISABLE;
+        SET_BIT(hspi->Instance->CR1, SPI_CR1_SPE);
+    }
+#endif
     initialized_ = true;
     return true;
 }

@@ -91,6 +91,18 @@ private:
  * Transfers are serialized with @ref PlatformMutex (same contract as StmSpi).
  * Direct HAL probes (IsDeviceReady) must take @ref LockBus or risk racing
  * Mem_Read/Master_Transmit on the same handle.
+ *
+ * @note Portenta CM4 flying-wire lessons (parity with @c StmSpi):
+ *       - Do **not** call @c HAL_I2C_IsDeviceReady from @c Initialize — on
+ *         STM32H7 it can latch ISR.TXIS while State==READY and poison the
+ *         next Mem_Read (command byte flushed into TXDR, never on the wire).
+ *       - Prefer @c Master_Transmit + @c Master_Receive (or WriteRead) over
+ *         Mem_Read when the slave pointer auto-increments (PCA/PCAL).
+ *       - FreeRTOS stacks/heaps live in FMC SDRAM — stage small RX/TX through
+ *         D1 AXI scratch before HAL calls (byte loads from SDRAM stacks are
+ *         unreliable on this FMC setup).
+ *       - Flush sticky TXIS/TXE before a new transfer (@c FlushTxdr).
+ *       Mid Carrier I2C0 = MCU I2C3 PH7/PH8 — see ADR-0021.
  */
 class StmI2cBus {
 public:

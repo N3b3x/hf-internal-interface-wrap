@@ -55,8 +55,9 @@ bool StmI2cDevice::Initialize() noexcept {
 
     /* Do not call HAL_I2C_IsDeviceReady here. On STM32H7 it can leave the
      * master with ISR.TXIS latched while State==READY, which breaks the next
-     * Mem_Read. Presence probes belong to the board/bindings layer (under
-     * LockBus), not as an init side effect. */
+     * Mem_Read: WaitOnTXIS returns immediately, the command byte is written
+     * into TXDR as a dummy flush and never reaches the wire — every subsequent
+     * "register read" returns INPUT_PORT (pointer stuck at 0). */
     initialized_ = true;
     return true;
 }
@@ -65,6 +66,89 @@ bool StmI2cDevice::Deinitialize() noexcept {
     initialized_ = false;
     return true;
 }
+
+namespace {
+
+/** Mirror of HAL private I2C_Flush_TXDR — clear sticky TXIS before a new xfer. */
+void FlushTxdr(I2C_HandleTypeDef* hi2c) noexcept {
+    if (hi2c == nullptr) {
+        return;
+    }
+    if (__HAL_I2C_GET_FLAG(hi2c, I2C_FLAG_TXIS) != RESET) {
+        hi2c->Instance->TXDR = 0x00U;
+    }
+    if (__HAL_I2C_GET_FLAG(hi2c, I2C_FLAG_TXE) == RESET) {
+        __HAL_I2C_CLEAR_FLAG(hi2c, I2C_FLAG_TXE);
+    }
+}
+
+/** Drop a stale RX byte so the next Mem_Read cannot splice a prior payload. */
+void FlushRxdr(I2C_HandleTypeDef* hi2c) noexcept {
+    if (hi2c == nullptr) {
+        return;
+    }
+    if (__HAL_I2C_GET_FLAG(hi2c, I2C_FLAG_RXNE) != RESET) {
+        (void)hi2c->Instance->RXDR;
+    }
+}
+
+/** Soft-recover STM32H7 I2C after NACK/timeout so the next xfer can proceed. */
+void RecoverI2cAfterError(I2C_HandleTypeDef* hi2c) noexcept {
+    if (hi2c == nullptr) {
+        return;
+    }
+    if (hi2c->State != HAL_I2C_STATE_READY) {
+        hi2c->State = HAL_I2C_STATE_READY;
+        hi2c->Mode = HAL_I2C_MODE_NONE;
+        hi2c->Lock = HAL_UNLOCKED;
+    }
+    __HAL_I2C_CLEAR_FLAG(hi2c, I2C_FLAG_AF | I2C_FLAG_STOPF | I2C_FLAG_BERR |
+                                   I2C_FLAG_ARLO | I2C_FLAG_OVR);
+    hi2c->ErrorCode = HAL_I2C_ERROR_NONE;
+    /* Drop stale transfer programming; do not PE-toggle on every NACK — that
+     * was observed to leave Mid I2C0 unresponsive after deliberate NACK probes. */
+    hi2c->Instance->CR2 &= ~(I2C_CR2_START | I2C_CR2_STOP | I2C_CR2_NBYTES |
+                             I2C_CR2_RELOAD | I2C_CR2_AUTOEND | I2C_CR2_RD_WRN |
+                             I2C_CR2_ADD10 | I2C_CR2_SADD | I2C_CR2_HEAD10R);
+    FlushTxdr(hi2c);
+    FlushRxdr(hi2c);
+    if (__HAL_I2C_GET_FLAG(hi2c, I2C_FLAG_BUSY) != RESET) {
+        CLEAR_BIT(hi2c->Instance->CR1, I2C_CR1_PE);
+        for (volatile int i = 0; i < 32; ++i) {
+        }
+        SET_BIT(hi2c->Instance->CR1, I2C_CR1_PE);
+        FlushTxdr(hi2c);
+        FlushRxdr(hi2c);
+    }
+}
+
+/** Prepare a READY master for a new blocking transfer. */
+void PrepareMasterXfer(I2C_HandleTypeDef* hi2c) noexcept {
+    if (hi2c == nullptr) {
+        return;
+    }
+    if (hi2c->State != HAL_I2C_STATE_READY) {
+        RecoverI2cAfterError(hi2c);
+    }
+    hi2c->ErrorCode = HAL_I2C_ERROR_NONE;
+    /* Drop stale NBYTES/AUTOEND — leftover NBYTES from a prior Master_Transmit
+     * made the next Mem_Read address-phase mis-count. */
+    hi2c->Instance->CR2 &= ~(I2C_CR2_NBYTES | I2C_CR2_RELOAD | I2C_CR2_AUTOEND |
+                             I2C_CR2_START | I2C_CR2_STOP | I2C_CR2_RD_WRN);
+    /* Match HAL I2C_Flush_TXDR: sticky TXIS while State==READY makes
+     * I2C_RequestMemoryRead's WaitOnTXIS return immediately and dump the
+     * command byte into TXDR without a real START — PCA pointer stays at
+     * INPUT_PORT and every bank read looks identical. */
+    FlushTxdr(hi2c);
+    FlushRxdr(hi2c);
+}
+
+bool HalXferOk(I2C_HandleTypeDef* hi2c, uint32_t status) noexcept {
+    return status == static_cast<uint32_t>(HAL_OK) &&
+           hi2c->ErrorCode == HAL_I2C_ERROR_NONE;
+}
+
+}  // namespace
 
 hf_i2c_err_t StmI2cDevice::Write(const hf_u8_t* data, hf_u16_t length,
                                   hf_u32_t timeout_ms) noexcept {
@@ -79,36 +163,24 @@ hf_i2c_err_t StmI2cDevice::Write(const hf_u8_t* data, hf_u16_t length,
 
     I2C_HandleTypeDef* hi2c = parent_bus_->GetHalHandle();
     uint16_t addr_shifted = config_.device_address << 1;
-    uint32_t status;
 
-    /* Register write [reg, payload...] → Mem_Write (same engine as Mem_Read /
-     * WriteRead). Raw Master_Transmit is less reliable on STM32H7 at low
-     * clock for expander CONFIG/OUTPUT updates during pin bring-up. */
-    if (length >= 2U) {
-        status = HAL_I2C_Mem_Write(
-            hi2c, addr_shifted, data[0], I2C_MEMADD_SIZE_8BIT,
-            const_cast<uint8_t*>(data + 1),
-            static_cast<uint16_t>(length - 1U), effective_timeout);
-    } else {
-        status = HAL_I2C_Master_Transmit(
-            hi2c, addr_shifted, const_cast<uint8_t*>(data), length,
-            effective_timeout);
-    }
+    /* PCA/TCA9555 register write = [cmd][data…]. Master_Transmit after TXIS
+     * flush; Mem_Write is equivalent but shares the sticky-TXIS footgun. */
+    PrepareMasterXfer(hi2c);
+    uint32_t status = HAL_I2C_Master_Transmit(
+        hi2c, addr_shifted, const_cast<uint8_t*>(data), length,
+        effective_timeout);
 
-    auto result = ConvertHalStatus(status);
+    hf_i2c_err_t result = HalXferOk(hi2c, status)
+                              ? hf_i2c_err_t::I2C_SUCCESS
+                              : ConvertHalStatus(status);
     if (result == hf_i2c_err_t::I2C_SUCCESS) {
         statistics_.total_transactions++;
         statistics_.successful_transactions++;
         statistics_.bytes_written += length;
     } else {
         statistics_.failed_transactions++;
-        if (hi2c->State != HAL_I2C_STATE_READY) {
-            hi2c->State = HAL_I2C_STATE_READY;
-            hi2c->Mode = HAL_I2C_MODE_NONE;
-            hi2c->Lock = HAL_UNLOCKED;
-        }
-        __HAL_I2C_CLEAR_FLAG(hi2c, I2C_FLAG_AF | I2C_FLAG_STOPF | I2C_FLAG_BERR |
-                                       I2C_FLAG_ARLO | I2C_FLAG_OVR);
+        RecoverI2cAfterError(hi2c);
     }
     parent_bus_->UnlockBus();
     return result;
@@ -128,16 +200,20 @@ hf_i2c_err_t StmI2cDevice::Read(hf_u8_t* data, hf_u16_t length,
     I2C_HandleTypeDef* hi2c = parent_bus_->GetHalHandle();
     uint16_t addr_shifted = config_.device_address << 1;
 
+    PrepareMasterXfer(hi2c);
     uint32_t status = HAL_I2C_Master_Receive(
         hi2c, addr_shifted, data, length, effective_timeout);
 
-    auto result = ConvertHalStatus(status);
+    hf_i2c_err_t result = HalXferOk(hi2c, status)
+                              ? hf_i2c_err_t::I2C_SUCCESS
+                              : ConvertHalStatus(status);
     if (result == hf_i2c_err_t::I2C_SUCCESS) {
         statistics_.total_transactions++;
         statistics_.successful_transactions++;
         statistics_.bytes_read += length;
     } else {
         statistics_.failed_transactions++;
+        RecoverI2cAfterError(hi2c);
     }
     parent_bus_->UnlockBus();
     return result;
@@ -161,57 +237,40 @@ hf_i2c_err_t StmI2cDevice::WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
     uint16_t addr_shifted = config_.device_address << 1;
     hf_i2c_err_t result;
 
-    // If tx_length == 1, treat as register address read via HAL_I2C_Mem_Read
-    // This is the common pattern: write register addr, then read data
-    if (tx_length == 1) {
-        uint32_t status = HAL_I2C_Mem_Read(
-            hi2c, addr_shifted,
-            tx_data[0], 1,  // MemAddress, MemAddSize=1 byte
-            rx_data, rx_length, effective_timeout);
+    /* Register / combined read: Master_Transmit(cmd…) + Master_Receive.
+     *
+     * Do NOT use HAL_I2C_Mem_Read on STM32H7 Mid-I2C0: sticky TXIS while
+     * State==READY makes I2C_RequestMemoryRead dump the command byte without
+     * a real START. Writes already used Master_Transmit successfully; the
+     * same framing for the command phase keeps PCA pointer updates reliable
+     * (observed: Mem_Read Port0 OK but Port1 stuck at INPUT_PORT_1). */
+    result = hf_i2c_err_t::I2C_ERR_READ_FAILURE;
+    for (int attempt = 0; attempt < 2; ++attempt) {
+        PrepareMasterXfer(hi2c);
+        uint32_t status = HAL_I2C_Master_Transmit(
+            hi2c, addr_shifted, const_cast<uint8_t*>(tx_data), tx_length,
+            effective_timeout);
+        if (!HalXferOk(hi2c, status)) {
+            statistics_.failed_transactions++;
+            RecoverI2cAfterError(hi2c);
+            result = ConvertHalStatus(status);
+            continue;
+        }
 
-        result = ConvertHalStatus(status);
-        if (result == hf_i2c_err_t::I2C_SUCCESS) {
+        PrepareMasterXfer(hi2c);
+        status = HAL_I2C_Master_Receive(hi2c, addr_shifted, rx_data, rx_length,
+                                        effective_timeout);
+        if (HalXferOk(hi2c, status)) {
             statistics_.total_transactions++;
             statistics_.successful_transactions++;
-            statistics_.bytes_read += rx_length;
             statistics_.bytes_written += tx_length;
-        } else {
-            statistics_.failed_transactions++;
-            /* STM32H7: a NACK/timeout can leave State!=READY while ISR flags
-             * stick — recover so the next Mem_Read (PCAL handler) can proceed. */
-            if (hi2c->State != HAL_I2C_STATE_READY) {
-                hi2c->State = HAL_I2C_STATE_READY;
-                hi2c->Mode = HAL_I2C_MODE_NONE;
-                hi2c->Lock = HAL_UNLOCKED;
-            }
-            __HAL_I2C_CLEAR_FLAG(hi2c, I2C_FLAG_AF | I2C_FLAG_STOPF | I2C_FLAG_BERR |
-                                           I2C_FLAG_ARLO | I2C_FLAG_OVR);
+            statistics_.bytes_read += rx_length;
+            result = hf_i2c_err_t::I2C_SUCCESS;
+            break;
         }
-        parent_bus_->UnlockBus();
-        return result;
-    }
-
-    // Multi-byte write-then-read under one bus lock (no STOP between if HAL
-    // supports it; here we use sequential Master_Transmit + Master_Receive).
-    uint32_t status = HAL_I2C_Master_Transmit(
-        hi2c, addr_shifted,
-        const_cast<uint8_t*>(tx_data), tx_length, effective_timeout);
-    result = ConvertHalStatus(status);
-    if (result != hf_i2c_err_t::I2C_SUCCESS) {
         statistics_.failed_transactions++;
-        parent_bus_->UnlockBus();
-        return result;
-    }
-    status = HAL_I2C_Master_Receive(
-        hi2c, addr_shifted, rx_data, rx_length, effective_timeout);
-    result = ConvertHalStatus(status);
-    if (result == hf_i2c_err_t::I2C_SUCCESS) {
-        statistics_.total_transactions++;
-        statistics_.successful_transactions++;
-        statistics_.bytes_written += tx_length;
-        statistics_.bytes_read += rx_length;
-    } else {
-        statistics_.failed_transactions++;
+        RecoverI2cAfterError(hi2c);
+        result = ConvertHalStatus(status);
     }
     parent_bus_->UnlockBus();
     return result;
