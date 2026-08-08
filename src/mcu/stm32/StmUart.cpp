@@ -165,6 +165,17 @@ hf_uart_err_t StmUart::Read(hf_u8_t* data, hf_u16_t length,
 
     if (status == 0x03U) { // HAL_TIMEOUT
         statistics_.timeout_count++;
+#if defined(HAL_UART_MODULE_ENABLED)
+        /* Timeout can leave the handle BUSY_RX — abort so the next TMCL /
+         * bootloader frame is not wedged (TMC9660 UART path). */
+        (void)HAL_UART_Abort(huart_);
+        __HAL_UART_CLEAR_FLAG(
+            huart_, UART_CLEAR_OREF | UART_CLEAR_FEF | UART_CLEAR_NEF | UART_CLEAR_PEF);
+        huart_->ErrorCode = HAL_UART_ERROR_NONE;
+        while (__HAL_UART_GET_FLAG(huart_, UART_FLAG_RXNE) != 0U) {
+            (void)huart_->Instance->RDR;
+        }
+#endif
         return hf_uart_err_t::UART_ERR_TIMEOUT;
     }
 
@@ -177,6 +188,7 @@ hf_uart_err_t StmUart::Read(hf_u8_t* data, hf_u16_t length,
     if ((huart_->ErrorCode & HAL_UART_ERROR_ORE) != 0U) {
         statistics_.overrun_error_count++;
     }
+    (void)HAL_UART_Abort(huart_);
     __HAL_UART_CLEAR_FLAG(
         huart_, UART_CLEAR_OREF | UART_CLEAR_FEF | UART_CLEAR_NEF | UART_CLEAR_PEF);
     huart_->ErrorCode = HAL_UART_ERROR_NONE;

@@ -256,6 +256,75 @@ public:
                                 hf_u32_t timeout_ms = 0) noexcept = 0;
 
   /**
+   * @brief Force soft-CS to the idle (deasserted) level without a transfer.
+   *
+   * Shared multi-slave buses call this on peer devices before a mode-sensitive
+   * identity burst so a stuck-low CS cannot contend on MISO. Default: no-op
+   * (hardware-NSS / single-slave backends).
+   */
+  virtual void IdleChipSelect() noexcept {}
+
+  /**
+   * @brief Assert soft-CS for @p ms milliseconds (Saleae / pad proof).
+   *
+   * Shared-bus implementations should take the bus lock, idle peer CS lines,
+   * hold this CS active, then release. Default: no-op.
+   */
+  virtual void HoldChipSelectMs(hf_u32_t /*ms*/) noexcept {}
+
+  /**
+   * @brief Select CPOL/CPHA mode for the next soft-CS transfer (0..3).
+   * @details Shared multi-slave buses apply this on the next @ref Transfer via
+   *          SPE rewrite. Default: unsupported.
+   */
+  virtual bool SetTransferMode(hf_u8_t /*mode_0_to_3*/) noexcept { return false; }
+
+  /**
+   * @brief Swap MOSI↔MISO AF on the next transfer (STM32 SPI CFG2 IOSWP).
+   * @details Flying-wire aid when SDI/SDO leads may be crossed. Default: unsupported.
+   *          Callers must restore @c false after a failed identity sweep so peers
+   *          (MAX Mode0) keep the normal pin map.
+   */
+  virtual bool SetIoSwap(bool /*enable*/) noexcept { return false; }
+
+  /**
+   * @brief Run @p frame_count soft-CS frames in one ownership window.
+   *
+   * Each frame asserts CS, transfers @p frame_length bytes, then deasserts CS.
+   * Optional @p inter_frame_gap_us is applied between frames (after CS release).
+   *
+   * Default implementation calls @ref Transfer sequentially (each call may
+   * take/release the bus lock). Shared multi-slave buses should override so a
+   * pipelined protocol (e.g. TLE92466ED command + dummy read) cannot be
+   * interleaved with another device's mode/CS cycle.
+   */
+  virtual hf_spi_err_t TransferChain(const hf_u8_t* const* tx_frames, hf_u8_t* const* rx_frames,
+                                     hf_u16_t frame_length, hf_u16_t frame_count,
+                                     hf_u32_t inter_frame_gap_us,
+                                     hf_u32_t timeout_ms = 0) noexcept {
+    if (frame_count == 0U || frame_length == 0U) {
+      return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
+    }
+    if (tx_frames == nullptr && rx_frames == nullptr) {
+      return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
+    }
+    for (hf_u16_t i = 0; i < frame_count; ++i) {
+      const hf_u8_t* tx = (tx_frames != nullptr) ? tx_frames[i] : nullptr;
+      hf_u8_t* rx = (rx_frames != nullptr) ? rx_frames[i] : nullptr;
+      const hf_spi_err_t err = Transfer(tx, rx, frame_length, timeout_ms);
+      if (err != hf_spi_err_t::SPI_SUCCESS) {
+        return err;
+      }
+      if (inter_frame_gap_us > 0U && (i + 1U) < frame_count) {
+        /* Portable busy-wait; STM32 override uses a tighter spin. */
+        for (volatile hf_u32_t spin = inter_frame_gap_us * 50U; spin > 0U; --spin) {
+        }
+      }
+    }
+    return hf_spi_err_t::SPI_SUCCESS;
+  }
+
+  /**
    * @brief Get the device configuration for this SPI device.
    * @return Device-specific configuration information
    */
