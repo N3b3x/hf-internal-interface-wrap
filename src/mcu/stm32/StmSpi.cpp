@@ -13,17 +13,16 @@
 #include <cstring>
 
 namespace {
-/* D1 AXI .bss staging for small transfers. Callers on CM4 may pass FMC SDRAM
- * stack pointers; HAL_SPI_* byte FIFO access has the same ldrb class of hazard
- * as I2C on this Portenta partition (see StmI2c / flying-wire bench notes). */
+/* Internal-SRAM staging for small transfers. Callers may pass buffers that
+ * live in external RAM or a task stack; HAL_SPI FIFO access must always use
+ * tightly-coupled / internal SRAM pointers on STM32H7-class maps. */
 constexpr hf_u16_t kSpiScratchBytes = 32;
 uint8_t g_spi_axi_tx[kSpiScratchBytes]{};
 uint8_t g_spi_axi_rx[kSpiScratchBytes]{};
 
 /**
- * Copy @p len bytes from @p src (may be CM4 FMC SDRAM stack) into AXI @p dst
- * using only aligned 32-bit loads. Plain memcpy/ldrb from FMC has returned
- * zeros here while the containing word was correct (ic_diag / Mid-I2C0 class).
+ * @brief Copy @p len bytes from @p src into internal-SRAM @p dst via aligned
+ *        32-bit loads (safe when @p src may be external RAM / task stack).
  */
 void CopyFromMaybeFmcToAxi(uint8_t* dst, const uint8_t* src, hf_u16_t len) noexcept {
     if (dst == nullptr || src == nullptr || len == 0U) {
@@ -40,8 +39,8 @@ void CopyFromMaybeFmcToAxi(uint8_t* dst, const uint8_t* src, hf_u16_t len) noexc
 }
 
 /**
- * Publish AXI @p src into @p dst (may be FMC SDRAM stack) via aligned
- * 32-bit read-modify-write — avoids STRB lanes that do not stick on this FMC.
+ * @brief Publish internal-SRAM @p src into @p dst via aligned 32-bit RMW
+ *        (safe when @p dst may be external RAM / task stack).
  */
 void CopyFromAxiToMaybeFmc(uint8_t* dst, const uint8_t* src, hf_u16_t len) noexcept {
     if (dst == nullptr || src == nullptr || len == 0U) {
@@ -61,8 +60,7 @@ void CopyFromAxiToMaybeFmc(uint8_t* dst, const uint8_t* src, hf_u16_t len) noexc
 #if defined(USE_HAL_DRIVER) && defined(HAL_SPI_MODULE_ENABLED)
 /**
  * Drain RX FIFO + clear EOT/TXTF. Call under the bus lock before each soft-CS
- * frame and again after a failed HAL transfer so Mode0/1/3 peers never see
- * stale bytes (same hazard class as Mid-I2C0 TXIS).
+ * frame and after a failed HAL transfer so Mode0/1/3 peers never see stale bytes.
  */
 void FlushSpiFifo(SPI_HandleTypeDef* hspi) noexcept {
     if (hspi == nullptr || hspi->Instance == nullptr) {
@@ -84,10 +82,10 @@ void FlushSpiFifo(SPI_HandleTypeDef* hspi) noexcept {
 }
 
 /**
- * Soft-CS setup/hold after GPIO assert/before deassert.
- * Datasheet tCSS/tCSH ≥ 50 ns. On CM4 (~240 MHz) ~240 empty spins ≈ 1 µs;
- * Mode1 (TLE) is edge-sensitive — under-settling after MAX Mode0 SPE toggle
- * produced garbage MISO with data=0 while MAX stayed healthy.
+ * Soft-CS setup/hold after GPIO assert / before deassert.
+ * Datasheet tCSS/tCSH ≥ 50 ns; ~240 empty spins ≈ 1 µs @ 240 MHz.
+ * Mode1 slaves are edge-sensitive after a peer SPE/CPOL rewrite — under-settling
+ * yields empty or bit-shifted MISO on the next CS window.
  */
 void CsEdgeSettle() noexcept {
     for (uint32_t spin = 240U; spin > 0U; --spin) {
@@ -252,12 +250,10 @@ hf_spi_err_t StmSpiDevice::TransferLocked(const hf_u8_t* tx_data, hf_u8_t* rx_da
         return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
     }
 
-    /* ── Shared-bus soft-CS contract (MAX Mode0 / TLE Mode1 / TMC Mode3) ──
-     * Wire-proof does IdleAll → ApplyMode → assert ONE CS. Match that here:
-     * SPE/CPOL must never change while any peer CS is low, or that slave sees
-     * phantom clocks (Saleae: “TLE CS low during polarity rewrite”).
-     * Every frame (including TransferChain dummies) re-runs this so TLE CS
-     * (PI0) visibly asserts each 32-bit window — do not skip AssertCS. */
+    /* Shared-bus soft-CS contract (mixed Mode0/1/3 peers on one SPI):
+     * IdleAll → ApplyMode → assert ONLY this CS. Never rewrite SPE/CPOL while
+     * any peer CS is low (that slave would see phantom clocks). Every frame
+     * (including TransferChain dummies) re-asserts so each CS window is visible. */
     DeassertCS();
     parent_bus_->IdleAllChipSelects();
 
@@ -265,9 +261,8 @@ hf_spi_err_t StmSpiDevice::TransferLocked(const hf_u8_t* tx_data, hf_u8_t* rx_da
         return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
     }
     /* SPE toggle can glitch SCK; wait with all CS high so Mode1 does not see a
-     * phantom edge (1-bit-early MISO → ICVID 0xC1xx reads as 0x82xx).
-     * Mode0/1 need a longer idle-LOW settle on flying-wire after a Mode3 peer
-     * left CPOL=1 on the net (Saleae: TLE CS low while SCK still high). */
+     * phantom edge (1-bit-early MISO). Mode0/1 need longer idle-LOW settle after
+     * a Mode3 peer left CPOL=1 on the shared SCK net. */
     const bool cpol0 = (config_.mode == hf_stm32_spi_mode_t::MODE_0 ||
                         config_.mode == hf_stm32_spi_mode_t::MODE_1);
     if (cpol0) {
@@ -386,8 +381,7 @@ hf_spi_err_t StmSpiDevice::TransferChain(const hf_u8_t* const* tx_frames,
     for (hf_u16_t i = 0; i < frame_count; ++i) {
         const hf_u8_t* tx = (tx_frames != nullptr) ? tx_frames[i] : nullptr;
         hf_u8_t* rx = (rx_frames != nullptr) ? rx_frames[i] : nullptr;
-        /* Full IdleAll → mode → AssertCS per frame so Saleae always sees
-         * TLE CS (PI0) low for each 32-bit window (command + dummy). */
+        /* Full IdleAll → mode → AssertCS per frame (command + dummy CS windows). */
         result = TransferLocked(tx, rx, frame_length, effective_timeout);
         if (result != hf_spi_err_t::SPI_SUCCESS) {
             break;
