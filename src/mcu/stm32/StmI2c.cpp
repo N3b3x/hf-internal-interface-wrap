@@ -106,7 +106,8 @@ void RecoverI2cAfterError(I2C_HandleTypeDef* hi2c) noexcept {
                                    I2C_FLAG_ARLO | I2C_FLAG_OVR);
     hi2c->ErrorCode = HAL_I2C_ERROR_NONE;
     /* Drop stale transfer programming; do not PE-toggle on every NACK — that
-     * was observed to leave Mid I2C0 unresponsive after deliberate NACK probes. */
+     * was observed to leave the I2C master unresponsive after deliberate NACK
+     * probes on busy expander buses. */
     hi2c->Instance->CR2 &= ~(I2C_CR2_START | I2C_CR2_STOP | I2C_CR2_NBYTES |
                              I2C_CR2_RELOAD | I2C_CR2_AUTOEND | I2C_CR2_RD_WRN |
                              I2C_CR2_ADD10 | I2C_CR2_SADD | I2C_CR2_HEAD10R);

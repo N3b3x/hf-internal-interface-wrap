@@ -119,7 +119,7 @@ public:
     /// @brief Force soft-CS idle-high (shared-bus peer park before Mode1 identity).
     void IdleChipSelect() noexcept override;
 
-    /// @brief Bus-locked Saleae-visible soft-CS hold (peers idle-high).
+    /// @brief Bus-locked soft-CS hold for pad proof (peers idle-high).
     void HoldChipSelectMs(hf_u32_t ms) noexcept override;
 
     /// @brief Set CPOL/CPHA for the next transfer (0=Mode0 … 3=Mode3).
@@ -165,7 +165,7 @@ private:
  *
  * @note Soft-CS multi-slave contract (this MCU binding):
  *       - Stage short payloads through D1 AXI when the caller buffer may sit
- *         in FMC SDRAM (byte-access hazard class shared with @c StmI2c).
+ *         in external FMC SDRAM (byte-access hazard class shared with @c StmI2c).
  *       - Flush RX FIFO + clear EOT/TXTF before each soft-CS frame (and after
  *         HAL errors so the next peer does not see stale bytes).
  *       - CS is SoftChipSelectGuard-scoped per frame; software GPIO already

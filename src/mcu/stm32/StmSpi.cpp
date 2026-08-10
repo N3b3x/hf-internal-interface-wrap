@@ -172,8 +172,8 @@ bool StmSpiDevice::Initialize() noexcept {
 
     /* Soft-CS must be a push-pull GPIO output. CubeMX MX_GPIO_Init usually
      * does this, but Transfer previously only WritePin'd — if the ball was
-     * still AF/input (or never claimed), Saleae saw CS stuck high forever
-     * while MAX on another pin still worked. Claim the pin here. */
+     * still AF/input (or never claimed), CS stayed high forever while peers
+     * on other pins still transferred. Claim the pin here. */
     if (config_.cs_port && config_.cs_pin != 0) {
 #if defined(USE_HAL_DRIVER)
         GPIO_InitTypeDef gpio = {0};
@@ -215,8 +215,8 @@ void StmSpiDevice::HoldChipSelectMs(hf_u32_t ms) noexcept {
     if (ms > 50U) {
         ms = 50U; /* keep Step() responsive */
     }
-    /* Bring-up retries hold the bus often — wait longer than a TLE Init burst
-     * so CDC `spi cs-pulse` actually asserts PI0/PC13/PD4 for Saleae/JTAG. */
+    /* Bring-up retries hold the bus often — wait longer than a typical Mode1
+     * Init burst so console `spi cs-pulse` can actually assert soft-CS. */
     StmSpiBusLock bus_lock(*parent_bus_, 5000U);
     if (!bus_lock.OwnsLock()) {
         return;
@@ -331,8 +331,8 @@ hf_spi_err_t StmSpiDevice::TransferLocked(const hf_u8_t* tx_data, hf_u8_t* rx_da
     }
 
     /* After Mode2/3 (CPOL=1) park the bus at Mode0 idle-LOW so the shared
-     * SCK rest level is correct for MAX/TLE. Leaving Mode3 SPE-on is what
-     * Saleae reported as "random" CPOL flips between bursts. */
+     * SCK rest level is correct for Mode0/Mode1 peers. Leaving Mode3 SPE-on
+     * looks like random CPOL flips between bursts on a logic analyzer. */
     if (config_.mode == hf_stm32_spi_mode_t::MODE_2 ||
         config_.mode == hf_stm32_spi_mode_t::MODE_3) {
         parent_bus_->IdleAllChipSelects();
@@ -530,7 +530,7 @@ namespace {
 #if defined(USE_HAL_DRIVER) && defined(HAL_SPI_MODULE_ENABLED)
 /**
  * Select @p pupd (01 = pull-up, 10 = pull-down) on one pin, let the internal
- * ~40 kΩ pull charge the flying-wire capacitance, then sample IDR.
+ * ~40 kΩ pull charge long-lead capacitance, then sample IDR.
  */
 bool SampleMisoWithPull(GPIO_TypeDef* port, uint32_t pos, uint32_t pupd) noexcept {
     MODIFY_REG(port->PUPDR, 0x3UL << (pos * 2U), pupd << (pos * 2U));
@@ -566,13 +566,13 @@ hf_u8_t StmSpiBus::ProbeMisoLine(void* miso_port, hf_u8_t miso_pin_pos,
     const uint32_t saved_pupdr = port->PUPDR & field;
 
     IdleAllChipSelects();
-    /* Probe must not assert TLE CS while the bus is still in Mode3 (CPOL=1)
-     * from a TMC SPI attempt — that is the Saleae "Enable low, Clock high"
-     * pattern and is not a real TLE frame. */
+    /* Probe must not assert a Mode1 peer CS while the bus is still in
+     * Mode3 (CPOL=1) from a prior transfer — that looks like "CS low, clock
+     * high" on a logic analyzer and is not a valid Mode1 frame. */
     (void)ApplyDeviceMode(hf_stm32_spi_mode_t::MODE_1, false);
     InterFrameGapUs(30U);
 
-    /* Only MODER moves — AFR/OSPEEDR keep the CubeMX SPI2_MISO setup so the
+    /* Only MODER moves — AFR/OSPEEDR keep the CubeMX SPI MISO setup so the
      * restore below re-arms the peripheral exactly as MspInit left it. */
     MODIFY_REG(port->MODER, field, 0UL);
 
@@ -670,8 +670,8 @@ bool StmSpiBus::ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap) noexcept
         return false;
     }
 
-    /* Drive idle level (Mode0/1 = LOW) before soft-CS — avoids Saleae seeing
-     * a float-high gap from the SPE toggle and labeling the burst CPOL=1. */
+    /* Drive idle level (Mode0/1 = LOW) before soft-CS — avoids a float-high
+     * gap from the SPE toggle that a logic analyzer labels as CPOL=1. */
     for (volatile uint32_t spin = 400U; spin > 0U; --spin) {
     }
 #else

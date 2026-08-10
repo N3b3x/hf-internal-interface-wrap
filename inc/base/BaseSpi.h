@@ -265,7 +265,7 @@ public:
   virtual void IdleChipSelect() noexcept {}
 
   /**
-   * @brief Assert soft-CS for @p ms milliseconds (Saleae / pad proof).
+   * @brief Assert soft-CS for @p ms milliseconds (logic-analyzer / pad proof).
    *
    * Shared-bus implementations should take the bus lock, idle peer CS lines,
    * hold this CS active, then release. Default: no-op.
@@ -281,9 +281,9 @@ public:
 
   /**
    * @brief Swap MOSI↔MISO AF on the next transfer (STM32 SPI CFG2 IOSWP).
-   * @details Flying-wire aid when SDI/SDO leads may be crossed. Default: unsupported.
-   *          Callers must restore @c false after a failed identity sweep so peers
-   *          (MAX Mode0) keep the normal pin map.
+   * @details Useful when SDI/SDO leads may be crossed on long wiring. Default:
+   *          unsupported. Callers must restore @c false after a failed identity
+   *          sweep so Mode0 peers keep the normal pin map.
    */
   virtual bool SetIoSwap(bool /*enable*/) noexcept { return false; }
 
