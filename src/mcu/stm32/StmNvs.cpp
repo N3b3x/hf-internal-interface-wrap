@@ -8,6 +8,8 @@
  */
 
 #include "StmNvs.h"
+#include "StmNvsBackend.h"
+
 #include <cstring>
 #include <cstdio>
 
@@ -24,13 +26,36 @@ extern uint32_t HAL_FLASHEx_Erase(void* pEraseInit, uint32_t* SectorError);
 }
 #endif
 
+/* Weak defaults — product links strong backends for external/QSPI NVS. */
+extern "C" __attribute__((weak)) int PwStmNvsBackendRead(uint32_t, void*, size_t) {
+  return -1;
+}
+extern "C" __attribute__((weak)) int PwStmNvsBackendWrite(uint32_t, const void*,
+                                                          size_t) {
+  return -1;
+}
+extern "C" __attribute__((weak)) int PwStmNvsBackendSync(void) { return -1; }
+extern "C" __attribute__((weak)) int PwStmNvsBackendErase(uint32_t, size_t) {
+  return -1;
+}
+
 // Flash program type constants
 namespace {
     constexpr uint32_t kFlashTypeProgramByte     = 0x00U;
     constexpr uint32_t kFlashTypeProgramHalfWord = 0x01U;
     constexpr uint32_t kFlashTypeProgramWord     = 0x02U;
     constexpr uint32_t kFlashTypeProgramDWord    = 0x03U;
+
+hf_nvs_err_t BackendRead(uint32_t abs, void* buf, size_t len) noexcept {
+  return PwStmNvsBackendRead(abs, buf, len) == 0 ? hf_nvs_err_t::NVS_SUCCESS
+                                                 : hf_nvs_err_t::NVS_ERR_FAILURE;
 }
+
+hf_nvs_err_t BackendWrite(uint32_t abs, const void* buf, size_t len) noexcept {
+  return PwStmNvsBackendWrite(abs, buf, len) == 0 ? hf_nvs_err_t::NVS_SUCCESS
+                                                  : hf_nvs_err_t::NVS_ERR_FAILURE;
+}
+}  // namespace
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // CONSTRUCTOR / DESTRUCTOR
@@ -273,8 +298,6 @@ bool StmNvs::IsValidKey(const char* key) const noexcept {
 
 hf_nvs_err_t StmNvs::FlushToFlash() noexcept {
     if (flash_config_.flash_start_address == 0 || flash_config_.flash_size == 0) {
-        // RAM-only mode — nothing to flush
-        // Mark all as non-dirty
         for (size_t i = 0; i < entry_count_; ++i) {
             cache_[i].dirty = false;
         }
@@ -282,40 +305,111 @@ hf_nvs_err_t StmNvs::FlushToFlash() noexcept {
     }
 
 #if defined(USE_HAL_DRIVER) && defined(STM32H747xx)
-    // STM32H7 programs internal flash in 256-bit flash words; the word-wise
-    // path below is F1/F4-era and would hard-fault. On this product the
-    // persistent NVS region lives in QSPI (memory_map.hpp __NVS_START), so
-    // internal-flash mode is intentionally rejected here.
-    return hf_nvs_err_t::NVS_ERR_FAILURE;
+    /* QSPI-backed path (PwStmNvsBackend*). Compact live entries from offset 0.
+     * Erase only the subsectors needed for the compacted log — not the full
+     * 128 KiB slice (avoids multi-second WDT risk on every Commit). */
+    size_t need = 0;
+    for (size_t i = 0; i < entry_count_; ++i) {
+        if (cache_[i].erased) {
+            continue;
+        }
+        size_t entry_size = sizeof(EntryHeader) + std::strlen(cache_[i].key) +
+                            cache_[i].data_length;
+        entry_size = (entry_size + 3U) & ~3U;
+        need += entry_size;
+    }
+    if (need == 0U) {
+        for (size_t i = 0; i < entry_count_; ++i) {
+            cache_[i].dirty = false;
+        }
+        return hf_nvs_err_t::NVS_SUCCESS;
+    }
+    constexpr size_t kSub = 4096U;
+    size_t erase_len = (need + kSub - 1U) & ~(kSub - 1U);
+    if (erase_len > flash_config_.flash_size) {
+        erase_len = flash_config_.flash_size;
+    }
+    if (PwStmNvsBackendErase(flash_config_.flash_start_address, erase_len) !=
+        0) {
+        return hf_nvs_err_t::NVS_ERR_FAILURE;
+    }
+
+    hf_u32_t address = flash_config_.flash_start_address;
+    const hf_u32_t end =
+        flash_config_.flash_start_address + flash_config_.flash_size;
+
+    for (size_t i = 0; i < entry_count_; ++i) {
+        if (cache_[i].erased) {
+            cache_[i].dirty = false;
+            continue;
+        }
+
+        EntryHeader header{};
+        header.key_length = static_cast<hf_u8_t>(std::strlen(cache_[i].key));
+        header.type = cache_[i].type;
+        header.data_length = cache_[i].data_length;
+        header.crc32 = ComputeCrc32(cache_[i].data, cache_[i].data_length);
+
+        size_t entry_size =
+            sizeof(EntryHeader) + header.key_length + header.data_length;
+        entry_size = (entry_size + 3U) & ~3U;
+        if (address + entry_size > end) {
+            return hf_nvs_err_t::NVS_ERR_STORAGE_FULL;
+        }
+
+        if (BackendWrite(address, &header, sizeof(header)) !=
+            hf_nvs_err_t::NVS_SUCCESS) {
+            return hf_nvs_err_t::NVS_ERR_FAILURE;
+        }
+        address += sizeof(header);
+
+        if (header.key_length > 0U &&
+            BackendWrite(address, cache_[i].key, header.key_length) !=
+                hf_nvs_err_t::NVS_SUCCESS) {
+            return hf_nvs_err_t::NVS_ERR_FAILURE;
+        }
+        address += header.key_length;
+        address = (address + 3U) & ~3U;
+
+        if (header.data_length > 0U &&
+            BackendWrite(address, cache_[i].data, header.data_length) !=
+                hf_nvs_err_t::NVS_SUCCESS) {
+            return hf_nvs_err_t::NVS_ERR_FAILURE;
+        }
+        address += header.data_length;
+        address = (address + 3U) & ~3U;
+        cache_[i].dirty = false;
+    }
+
+    write_offset_ = address - flash_config_.flash_start_address;
+    if (PwStmNvsBackendSync() != 0) {
+        return hf_nvs_err_t::NVS_ERR_FAILURE;
+    }
+    return hf_nvs_err_t::NVS_SUCCESS;
 #else
-    // Unlock flash
     uint32_t status = HAL_FLASH_Unlock();
     if (!hf::stm32::IsHalOk(status)) {
         return hf_nvs_err_t::NVS_ERR_FAILURE;
     }
 
-    // Write dirty entries to flash as word-aligned data
     hf_u32_t address = flash_config_.flash_start_address + write_offset_;
     for (size_t i = 0; i < entry_count_; ++i) {
         if (!cache_[i].dirty) continue;
 
-        // Write entry header + key + data as sequential words
         EntryHeader header{};
         header.key_length = static_cast<hf_u8_t>(std::strlen(cache_[i].key));
         header.type = cache_[i].erased ? EntryType::ERASED : cache_[i].type;
         header.data_length = cache_[i].data_length;
         header.crc32 = ComputeCrc32(cache_[i].data, cache_[i].data_length);
 
-        // Check space
         size_t entry_size = sizeof(EntryHeader) + header.key_length + header.data_length;
-        entry_size = (entry_size + 3) & ~3U;  // Align to 4 bytes
+        entry_size = (entry_size + 3) & ~3U;
 
         if (address + entry_size > flash_config_.flash_start_address + flash_config_.flash_size) {
             HAL_FLASH_Lock();
             return hf_nvs_err_t::NVS_ERR_STORAGE_FULL;
         }
 
-        // Program header word by word
         const uint8_t* src = reinterpret_cast<const uint8_t*>(&header);
         for (size_t b = 0; b < sizeof(header); b += 4) {
             uint32_t word = 0;
@@ -324,7 +418,6 @@ hf_nvs_err_t StmNvs::FlushToFlash() noexcept {
             address += 4;
         }
 
-        // Program key
         for (size_t b = 0; b < header.key_length; b += 4) {
             uint32_t word = 0;
             size_t chunk = (b + 4 <= header.key_length) ? 4 : header.key_length - b;
@@ -333,7 +426,6 @@ hf_nvs_err_t StmNvs::FlushToFlash() noexcept {
             address += 4;
         }
 
-        // Program data
         for (size_t b = 0; b < header.data_length; b += 4) {
             uint32_t word = 0;
             size_t chunk = (b + 4 <= header.data_length) ? 4 : header.data_length - b;
@@ -363,12 +455,17 @@ hf_nvs_err_t StmNvs::LoadFromFlash() noexcept {
 
     while (address + sizeof(EntryHeader) < end_address) {
         EntryHeader header{};
+#if defined(USE_HAL_DRIVER) && defined(STM32H747xx)
+        if (BackendRead(address, &header, sizeof(header)) !=
+            hf_nvs_err_t::NVS_SUCCESS) {
+            break;
+        }
+#else
         std::memcpy(&header, reinterpret_cast<const void*>(address), sizeof(header));
+#endif
 
-        // Check for empty flash (all 0xFF)
         if (header.key_length == 0xFF || header.key_length == 0) break;
         if (header.type == EntryType::ERASED) {
-            // Skip erased entry
             address += sizeof(EntryHeader) + header.key_length + header.data_length;
             address = (address + 3) & ~3U;
             continue;
@@ -378,18 +475,31 @@ hf_nvs_err_t StmNvs::LoadFromFlash() noexcept {
 
         address += sizeof(EntryHeader);
 
-        // Read key
         size_t key_len = header.key_length;
         if (key_len >= sizeof(CacheEntry::key)) key_len = sizeof(CacheEntry::key) - 1;
+#if defined(USE_HAL_DRIVER) && defined(STM32H747xx)
+        if (BackendRead(address, cache_[entry_count_].key, key_len) !=
+            hf_nvs_err_t::NVS_SUCCESS) {
+            break;
+        }
+#else
         std::memcpy(cache_[entry_count_].key, reinterpret_cast<const void*>(address), key_len);
+#endif
         cache_[entry_count_].key[key_len] = '\0';
         address += header.key_length;
         address = (address + 3) & ~3U;
 
-        // Read data
         size_t data_len = header.data_length;
         if (data_len > sizeof(CacheEntry::data)) data_len = sizeof(CacheEntry::data);
+#if defined(USE_HAL_DRIVER) && defined(STM32H747xx)
+        if (data_len > 0U &&
+            BackendRead(address, cache_[entry_count_].data, data_len) !=
+                hf_nvs_err_t::NVS_SUCCESS) {
+            break;
+        }
+#else
         std::memcpy(cache_[entry_count_].data, reinterpret_cast<const void*>(address), data_len);
+#endif
         cache_[entry_count_].data_length = static_cast<hf_u16_t>(data_len);
         cache_[entry_count_].type = header.type;
         cache_[entry_count_].dirty = false;

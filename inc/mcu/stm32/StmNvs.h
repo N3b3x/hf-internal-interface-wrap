@@ -43,7 +43,9 @@
  * - When sector is full, compact (copy live entries to backup sector, erase, swap)
  * - Supports U32, String, and Blob value types
  *
- * @note Flash operations require HAL_FLASH_Unlock/Lock — handled internally.
+ * @note On STM32H7, when internal flash program is unsuitable, persistent
+ *       storage may be external/QSPI-backed via PwStmNvsBackend* (see
+ *       StmNvsBackend.h). Internal HAL_FLASH is rejected in that configuration.
  */
 class StmNvs : public BaseNvs {
 public:
@@ -114,7 +116,7 @@ private:
     struct CacheEntry {
         char     key[64];          ///< Key string
         EntryType type;            ///< Value type
-        hf_u8_t  data[256];       ///< Value data
+        hf_u8_t  data[576];       ///< Value data (blob capacity for large cal records)
         hf_u16_t data_length;     ///< Actual data length
         bool     dirty;           ///< Needs flash write
         bool     erased;          ///< Marked for deletion
@@ -140,7 +142,7 @@ private:
     static hf_u32_t ComputeCrc32(const void* data, size_t length) noexcept;
 
     hf_stm32_nvs_config_t flash_config_;        ///< Flash region config
-    static constexpr size_t kMaxEntries = 64;    ///< Max cached entries
+    static constexpr size_t kMaxEntries = 8;     ///< Max cached entries (cal-sized)
     CacheEntry             cache_[kMaxEntries];  ///< RAM cache
     size_t                 entry_count_;          ///< Current entry count
     hf_u32_t               write_offset_;         ///< Current write position in flash
