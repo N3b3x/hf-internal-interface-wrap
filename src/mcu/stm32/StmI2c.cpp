@@ -240,11 +240,10 @@ hf_i2c_err_t StmI2cDevice::WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
 
     /* Register / combined read: Master_Transmit(cmd…) + Master_Receive.
      *
-     * Do NOT use HAL_I2C_Mem_Read on STM32H7 Mid-I2C0: sticky TXIS while
-     * State==READY makes I2C_RequestMemoryRead dump the command byte without
-     * a real START. Writes already used Master_Transmit successfully; the
-     * same framing for the command phase keeps PCA pointer updates reliable
-     * (observed: Mem_Read Port0 OK but Port1 stuck at INPUT_PORT_1). */
+     * Avoid HAL_I2C_Mem_Read on STM32H7: sticky TXIS while State==READY can
+     * make I2C_RequestMemoryRead emit the command byte without a real START.
+     * Writes already use Master_Transmit successfully; the same framing for
+     * the command phase keeps multi-byte register pointer updates reliable. */
     result = hf_i2c_err_t::I2C_ERR_READ_FAILURE;
     for (int attempt = 0; attempt < 2; ++attempt) {
         PrepareMasterXfer(hi2c);
