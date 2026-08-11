@@ -75,15 +75,12 @@ bool StmUart::Initialize() noexcept {
     rx_tail_ = 0;
 
 #if defined(HAL_UART_MODULE_ENABLED) && defined(UART_RXFIFO_THRESHOLD_1_8)
-    // Keep blocking RX resilient to short scheduling stalls.  STM32H7 UARTs
-    // power up with FIFO mode disabled even when the peripheral owns a 16-byte
-    // FIFO; enabling the lowest threshold preserves byte-stream behaviour while
-    // providing overrun headroom to every StmUart consumer.
-    if (HAL_UARTEx_SetRxFifoThreshold(huart_, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK ||
-        HAL_UARTEx_SetTxFifoThreshold(huart_, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK ||
-        HAL_UARTEx_EnableFifoMode(huart_) != HAL_OK) {
-        return false;
-    }
+    /* Keep FIFO OFF for blocking HAL_UART_Receive/Transmit. Enabling FIFO on
+     * STM32H7 has wedged TMC9660 TMCL (9-byte) RX far past the configured
+     * timeout (HIL: APPLY step=6 stuck). Match pw_uart4_txrx_swap (DisableFifo). */
+    (void)HAL_UARTEx_SetRxFifoThreshold(huart_, UART_RXFIFO_THRESHOLD_1_8);
+    (void)HAL_UARTEx_SetTxFifoThreshold(huart_, UART_TXFIFO_THRESHOLD_1_8);
+    (void)HAL_UARTEx_DisableFifoMode(huart_);
 #endif
 
     initialized_ = true;
@@ -130,27 +127,29 @@ hf_uart_err_t StmUart::Read(hf_u8_t* data, hf_u16_t length,
     if (!initialized_) return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
     if (!data || length == 0) return hf_uart_err_t::UART_ERR_INVALID_PARAMETER;
 
-    // If ring buffer is active, pull from there (ISR-fed). Honor timeout_ms so
-    // TLS BIO polls can wait briefly for the next byte without busy-spinning
-    // the caller into a hard failure during crypto stalls.
+    // If ring buffer is active, pull from there (ISR-fed). Wait until the
+    // full requested length is available (or timeout) — returning SUCCESS with
+    // a partial TMCL frame caused checksum CHKERR on later SAPs.
     if (rx_buf_ && rx_buf_size_ > 0) {
         const hf_u32_t tout = timeout_ms;
         const uint32_t start = HAL_GetTick();
-        while (BytesAvailable() == 0) {
-            if (tout == 0U) return hf_uart_err_t::UART_ERR_BUFFER_EMPTY;
+        while (BytesAvailable() < length) {
+            if (tout == 0U) {
+                return (BytesAvailable() == 0)
+                           ? hf_uart_err_t::UART_ERR_BUFFER_EMPTY
+                           : hf_uart_err_t::UART_ERR_TIMEOUT;
+            }
             if ((HAL_GetTick() - start) >= tout) {
                 statistics_.timeout_count++;
                 return hf_uart_err_t::UART_ERR_TIMEOUT;
             }
         }
 
-        hf_u16_t available = BytesAvailable();
-        hf_u16_t to_read = (length < available) ? length : available;
-        for (hf_u16_t i = 0; i < to_read; ++i) {
+        for (hf_u16_t i = 0; i < length; ++i) {
             data[i] = rx_buf_[rx_tail_];
             rx_tail_ = static_cast<hf_u16_t>((rx_tail_ + 1) % rx_buf_size_);
         }
-        statistics_.rx_byte_count += to_read;
+        statistics_.rx_byte_count += length;
         return hf_uart_err_t::UART_SUCCESS;
     }
 
@@ -217,12 +216,18 @@ hf_uart_err_t StmUart::FlushRx() noexcept {
     rx_head_ = 0;
     rx_tail_ = 0;
 #if defined(HAL_UART_MODULE_ENABLED)
-    /* Drop any bytes still sitting in the hardware FIFO so a fail-closed
-     * session teardown cannot leave attacker-controlled noise in front of the
-     * next ClientHello when the software ring is re-armed. */
+    /* Abort only when the HAL handle is busy — unconditional Abort between
+     * TMCL TX and RX would discard an in-flight reply. */
+    if (huart_->gState != HAL_UART_STATE_READY ||
+        huart_->RxState != HAL_UART_STATE_READY) {
+        (void)HAL_UART_Abort(huart_);
+    }
     __HAL_UART_CLEAR_FLAG(
         huart_, UART_CLEAR_OREF | UART_CLEAR_FEF | UART_CLEAR_NEF | UART_CLEAR_PEF);
-    while (__HAL_UART_GET_FLAG(huart_, UART_FLAG_RXNE) != 0U) {
+    for (unsigned i = 0; i < 64U; ++i) {
+        if (__HAL_UART_GET_FLAG(huart_, UART_FLAG_RXNE) == 0U) {
+            break;
+        }
         (void)huart_->Instance->RDR;
     }
     huart_->ErrorCode = HAL_UART_ERROR_NONE;
