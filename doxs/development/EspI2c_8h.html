@@ -101,7 +101,7 @@ $(function(){initNavTree('EspI2c_8h.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>Advanced ESP32-integrated I2C controller for ESP-IDF v5.5+ with proper bus-device architecture.  
+<p>Advanced ESP32-integrated I2C controller for ESP-IDF <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v5.5</a>+ with proper bus-device architecture.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="BaseI2c_8h_source.html">BaseI2c.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="EspTypes_8h_source.html">utils/EspTypes.h</a>&quot;</code><br />
@@ -149,13 +149,13 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8b1c0ba91ce9ce97629ed2efdd31b781" id="r_a8b1c0ba91ce9ce97629ed2efdd31b781"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b1c0ba91ce9ce97629ed2efdd31b781">HfI2COperationToString</a> (<a class="el" href="#a91a9b3d5869f268d78d2e0fd55d9b0b8">hf_i2c_operation_t</a> op) noexcept</td></tr>
+<tr class="memitem:a8b1c0ba91ce9ce97629ed2efdd31b781" id="r_a8b1c0ba91ce9ce97629ed2efdd31b781"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">char</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b1c0ba91ce9ce97629ed2efdd31b781">HfI2COperationToString</a> (<a class="el" href="#a91a9b3d5869f268d78d2e0fd55d9b0b8">hf_i2c_operation_t</a> <a class="el" href="classSoftChipSelectGuard.html">op</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a8b1c0ba91ce9ce97629ed2efdd31b781"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert operation type to string for logging.  <br /></td></tr>
 <tr class="separator:a8b1c0ba91ce9ce97629ed2efdd31b781"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Advanced ESP32-integrated I2C controller for ESP-IDF v5.5+ with proper bus-device architecture. </p>
-<p>This header provides a comprehensive I2C implementation that properly utilizes the ESP-IDF v5.5+ bus-device model, following the same pattern as the SPI implementation. The architecture separates bus management from device operations, providing clean abstraction and optimal resource management.</p>
+<div class="textblock"><p>Advanced ESP32-integrated I2C controller for ESP-IDF <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v5.5</a>+ with proper bus-device architecture. </p>
+<p>This header provides a comprehensive I2C implementation that properly utilizes the ESP-IDF <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v5.5</a>+ bus-device model, following the same pattern as the SPI implementation. The architecture separates bus management from device operations, providing clean abstraction and optimal resource management.</p>
 <h1><a class="anchor" id="features"></a>
 ESP32/ESP-IDF v5.5+ Features Supported:</h1>
 <ul>
@@ -184,85 +184,77 @@ Performance Characteristics:</h1>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>HardFOC </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>4.0.0 - Mode-aware architecture with DRY implementation</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>This implementation requires ESP-IDF v5.5+ and is optimized for ESP32. </dd>
+<dl class="section note"><dt>Note</dt><dd>This implementation requires ESP-IDF <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v5.5</a>+ and is optimized for ESP32. </dd>
 <dd>
 Thread-safe operation is guaranteed for all public methods. </dd>
 <dd>
 Follows the same architectural pattern as EspSpi for consistency. </dd>
 <dd>
-ESP-IDF v5.5+ enforces strict separation between sync/async modes.</dd></dl>
+ESP-IDF <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v5.5</a>+ enforces strict separation between sync/async modes.</dd></dl>
 <div class="fragment"><div class="line"><span class="comment">// Create sync mode bus configuration</span></div>
-<div class="line"><a class="code hl_struct" href="structhf__i2c__master__bus__config__t.html">hf_i2c_master_bus_config_t</a> bus_config = {};</div>
-<div class="line">bus_config.<a class="code hl_variable" href="structhf__i2c__master__bus__config__t.html#a716f6163484b87561aba84f289af450a">i2c_port</a> = 0;</div>
-<div class="line">bus_config.<a class="code hl_variable" href="structhf__i2c__master__bus__config__t.html#a49a9dd202058114f460dc717b8628240">sda_io_num</a> = 21;</div>
-<div class="line">bus_config.<a class="code hl_variable" href="structhf__i2c__master__bus__config__t.html#a7bb7bf1b37dd8e03233fae19f0ca8dd3">scl_io_num</a> = 22;</div>
-<div class="line">bus_config.<a class="code hl_variable" href="structhf__i2c__master__bus__config__t.html#aabb20df37d5975254ef8cb0946fcd07d">mode</a> = <a class="code hl_enumvalue" href="EspTypes__I2C_8h.html#acc25f7d1ca11777e327c8512d4137bbba6463b28dbace94d94503d1dd60bf07cf">hf_i2c_mode_t::HF_I2C_MODE_SYNC</a>;  <span class="comment">// Sync mode only</span></div>
-<div class="line">bus_config.<a class="code hl_variable" href="structhf__i2c__master__bus__config__t.html#a645ea75d55581ef349963060db1ce03d">trans_queue_depth</a> = 0;  <span class="comment">// No queue for sync mode</span></div>
+<div class="line"><a class="code hl_struct" href="structhf__i2c__master__bus__config__t.html">hf_i2c_master_bus_config_t</a> <a class="code hl_class" href="classSoftChipSelectGuard.html">bus_config</a> = {};</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">bus_config</a>.i2c_port = 0;</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">bus_config</a>.sda_io_num = 21;</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">bus_config</a>.scl_io_num = 22;</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">bus_config</a>.mode = <a class="code hl_enumvalue" href="EspTypes__I2C_8h.html#acc25f7d1ca11777e327c8512d4137bbba6463b28dbace94d94503d1dd60bf07cf">hf_i2c_mode_t::HF_I2C_MODE_SYNC</a>;  <span class="comment">// Sync mode only</span></div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">bus_config</a>.trans_queue_depth = 0;  <span class="comment">// No queue for sync mode</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Create I2C bus</span></div>
-<div class="line"><a class="code hl_class" href="classEspI2cBus.html">EspI2cBus</a> i2c_bus(bus_config);</div>
-<div class="line"><span class="keywordflow">if</span> (!i2c_bus.Initialize()) {</div>
+<div class="line"><a class="code hl_class" href="classEspI2cBus.html">EspI2cBus</a> <a class="code hl_class" href="classSoftChipSelectGuard.html">i2c_bus</a>(<a class="code hl_class" href="classSoftChipSelectGuard.html">bus_config</a>);</div>
+<div class="line"><span class="keywordflow">if</span> (!<a class="code hl_class" href="classSoftChipSelectGuard.html">i2c_bus</a>.Initialize()) {</div>
 <div class="line">    <span class="comment">// Handle initialization error</span></div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Create device configuration</span></div>
-<div class="line"><a class="code hl_struct" href="structhf__i2c__device__config__t.html">hf_i2c_device_config_t</a> device_config = {};</div>
-<div class="line">device_config.<a class="code hl_variable" href="structhf__i2c__device__config__t.html#a2043147468665929ffd3b65333a27b19">device_address</a> = 0x48;</div>
-<div class="line">device_config.<a class="code hl_variable" href="structhf__i2c__device__config__t.html#a770633f438e5e923370732a6275189d5">scl_speed_hz</a> = 400000;</div>
-<div class="line">device_config.<a class="code hl_variable" href="structhf__i2c__device__config__t.html#a30e9a6a1ffbe59f64c84486fa4e4605f">dev_addr_length</a> = <a class="code hl_enumvalue" href="EspTypes__I2C_8h.html#ada5c1c4b9978d9458ddf062c6c07c7c5aa828ccf42a365ffba5559eefcdd37f01">hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT</a>;</div>
+<div class="line"><a class="code hl_struct" href="structhf__i2c__device__config__t.html">hf_i2c_device_config_t</a> <a class="code hl_class" href="classSoftChipSelectGuard.html">device_config</a> = {};</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">device_config</a>.device_address = 0x48;</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">device_config</a>.scl_speed_hz = 400000;</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">device_config</a>.dev_addr_length = <a class="code hl_enumvalue" href="EspTypes__I2C_8h.html#ada5c1c4b9978d9458ddf062c6c07c7c5aa828ccf42a365ffba5559eefcdd37f01">hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Add device to bus</span></div>
-<div class="line"><span class="keywordtype">int</span> device_index = i2c_bus.CreateDevice(device_config);</div>
-<div class="line"><a class="code hl_class" href="classBaseI2c.html">BaseI2c</a>* device = i2c_bus.GetDevice(device_index);</div>
+<div class="line"><span class="keywordtype">int</span> <a class="code hl_class" href="classSoftChipSelectGuard.html">device_index</a> = <a class="code hl_class" href="classSoftChipSelectGuard.html">i2c_bus</a>.CreateDevice(<a class="code hl_class" href="classSoftChipSelectGuard.html">device_config</a>);</div>
+<div class="line"><a class="code hl_class" href="classBaseI2c.html">BaseI2c</a>* <a class="code hl_class" href="classSoftChipSelectGuard.html">device</a> = <a class="code hl_class" href="classSoftChipSelectGuard.html">i2c_bus</a>.GetDevice(<a class="code hl_class" href="classSoftChipSelectGuard.html">device_index</a>);</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Use device for I2C operations (sync mode)</span></div>
-<div class="line">uint8_t data[] = {0x10, 0x20, 0x30};</div>
-<div class="line"><a class="code hl_enumeration" href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a> result = device-&gt;<a class="code hl_function" href="classBaseI2c.html#abdfc7c1890423f993f1c9ca261e8a15d">Write</a>(data, <span class="keyword">sizeof</span>(data));</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">uint8_t</a> data[] = {0x10, 0x20, 0x30};</div>
+<div class="line"><a class="code hl_enumeration" href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a> <a class="code hl_class" href="classSoftChipSelectGuard.html">result</a> = <a class="code hl_class" href="classSoftChipSelectGuard.html">device</a>-&gt;Write(data, <span class="keyword">sizeof</span>(data));</div>
 <div class="ttc" id="aBaseI2c_8h_html_a24a50f7ee1f8c547cfa287c285fe7fb9"><div class="ttname"><a href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a></div><div class="ttdeci">hf_i2c_err_t</div><div class="ttdef"><b>Definition</b> BaseI2c.h:85</div></div>
 <div class="ttc" id="aEspTypes__I2C_8h_html_acc25f7d1ca11777e327c8512d4137bbba6463b28dbace94d94503d1dd60bf07cf"><div class="ttname"><a href="EspTypes__I2C_8h.html#acc25f7d1ca11777e327c8512d4137bbba6463b28dbace94d94503d1dd60bf07cf">hf_i2c_mode_t::HF_I2C_MODE_SYNC</a></div><div class="ttdeci">@ HF_I2C_MODE_SYNC</div><div class="ttdoc">Sync mode: blocking operations only, no queue.</div></div>
 <div class="ttc" id="aEspTypes__I2C_8h_html_ada5c1c4b9978d9458ddf062c6c07c7c5aa828ccf42a365ffba5559eefcdd37f01"><div class="ttname"><a href="EspTypes__I2C_8h.html#ada5c1c4b9978d9458ddf062c6c07c7c5aa828ccf42a365ffba5559eefcdd37f01">hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT</a></div><div class="ttdeci">@ HF_I2C_ADDR_7_BIT</div><div class="ttdoc">7-bit address</div></div>
 <div class="ttc" id="aclassBaseI2c_html"><div class="ttname"><a href="classBaseI2c.html">BaseI2c</a></div><div class="ttdoc">Abstract base class for I2C device implementations.</div><div class="ttdef"><b>Definition</b> BaseI2c.h:196</div></div>
-<div class="ttc" id="aclassBaseI2c_html_abdfc7c1890423f993f1c9ca261e8a15d"><div class="ttname"><a href="classBaseI2c.html#abdfc7c1890423f993f1c9ca261e8a15d">BaseI2c::Write</a></div><div class="ttdeci">virtual hf_i2c_err_t Write(const hf_u8_t *data, hf_u16_t length, hf_u32_t timeout_ms=0) noexcept=0</div><div class="ttdoc">Write data to the I2C device.</div></div>
 <div class="ttc" id="aclassEspI2cBus_html"><div class="ttname"><a href="classEspI2cBus.html">EspI2cBus</a></div><div class="ttdoc">Manages a single I2C bus. Handles bus initialization and device creation.</div><div class="ttdef"><b>Definition</b> EspI2c.h:548</div></div>
+<div class="ttc" id="aclassSoftChipSelectGuard_html"><div class="ttname"><a href="classSoftChipSelectGuard.html">SoftChipSelectGuard</a></div><div class="ttdoc">RAII soft-CS: runs assert_fn on construction and deassert_fn on destruction (including early return /...</div><div class="ttdef"><b>Definition</b> SoftChipSelectGuard.h:32</div></div>
 <div class="ttc" id="astructhf__i2c__device__config__t_html"><div class="ttname"><a href="structhf__i2c__device__config__t.html">hf_i2c_device_config_t</a></div><div class="ttdoc">I2C device configuration structure.</div><div class="ttdef"><b>Definition</b> EspTypes_I2C.h:225</div></div>
-<div class="ttc" id="astructhf__i2c__device__config__t_html_a2043147468665929ffd3b65333a27b19"><div class="ttname"><a href="structhf__i2c__device__config__t.html#a2043147468665929ffd3b65333a27b19">hf_i2c_device_config_t::device_address</a></div><div class="ttdeci">uint16_t device_address</div><div class="ttdoc">7-bit or 10-bit device address</div><div class="ttdef"><b>Definition</b> EspTypes_I2C.h:226</div></div>
-<div class="ttc" id="astructhf__i2c__device__config__t_html_a30e9a6a1ffbe59f64c84486fa4e4605f"><div class="ttname"><a href="structhf__i2c__device__config__t.html#a30e9a6a1ffbe59f64c84486fa4e4605f">hf_i2c_device_config_t::dev_addr_length</a></div><div class="ttdeci">hf_i2c_address_bits_t dev_addr_length</div><div class="ttdoc">Address bit length (7 or 10 bit)</div><div class="ttdef"><b>Definition</b> EspTypes_I2C.h:227</div></div>
-<div class="ttc" id="astructhf__i2c__device__config__t_html_a770633f438e5e923370732a6275189d5"><div class="ttname"><a href="structhf__i2c__device__config__t.html#a770633f438e5e923370732a6275189d5">hf_i2c_device_config_t::scl_speed_hz</a></div><div class="ttdeci">uint32_t scl_speed_hz</div><div class="ttdoc">SCL clock frequency for this device.</div><div class="ttdef"><b>Definition</b> EspTypes_I2C.h:228</div></div>
 <div class="ttc" id="astructhf__i2c__master__bus__config__t_html"><div class="ttname"><a href="structhf__i2c__master__bus__config__t.html">hf_i2c_master_bus_config_t</a></div><div class="ttdoc">I2C master bus configuration structure.</div><div class="ttdef"><b>Definition</b> EspTypes_I2C.h:195</div></div>
-<div class="ttc" id="astructhf__i2c__master__bus__config__t_html_a49a9dd202058114f460dc717b8628240"><div class="ttname"><a href="structhf__i2c__master__bus__config__t.html#a49a9dd202058114f460dc717b8628240">hf_i2c_master_bus_config_t::sda_io_num</a></div><div class="ttdeci">hf_pin_num_t sda_io_num</div><div class="ttdoc">SDA GPIO pin number.</div><div class="ttdef"><b>Definition</b> EspTypes_I2C.h:197</div></div>
-<div class="ttc" id="astructhf__i2c__master__bus__config__t_html_a645ea75d55581ef349963060db1ce03d"><div class="ttname"><a href="structhf__i2c__master__bus__config__t.html#a645ea75d55581ef349963060db1ce03d">hf_i2c_master_bus_config_t::trans_queue_depth</a></div><div class="ttdeci">uint32_t trans_queue_depth</div><div class="ttdoc">Transaction queue depth for async ops.</div><div class="ttdef"><b>Definition</b> EspTypes_I2C.h:200</div></div>
-<div class="ttc" id="astructhf__i2c__master__bus__config__t_html_a716f6163484b87561aba84f289af450a"><div class="ttname"><a href="structhf__i2c__master__bus__config__t.html#a716f6163484b87561aba84f289af450a">hf_i2c_master_bus_config_t::i2c_port</a></div><div class="ttdeci">i2c_port_t i2c_port</div><div class="ttdoc">I2C port number (0 to MAX_PORTS-1)</div><div class="ttdef"><b>Definition</b> EspTypes_I2C.h:196</div></div>
-<div class="ttc" id="astructhf__i2c__master__bus__config__t_html_a7bb7bf1b37dd8e03233fae19f0ca8dd3"><div class="ttname"><a href="structhf__i2c__master__bus__config__t.html#a7bb7bf1b37dd8e03233fae19f0ca8dd3">hf_i2c_master_bus_config_t::scl_io_num</a></div><div class="ttdeci">hf_pin_num_t scl_io_num</div><div class="ttdoc">SCL GPIO pin number.</div><div class="ttdef"><b>Definition</b> EspTypes_I2C.h:198</div></div>
-<div class="ttc" id="astructhf__i2c__master__bus__config__t_html_aabb20df37d5975254ef8cb0946fcd07d"><div class="ttname"><a href="structhf__i2c__master__bus__config__t.html#aabb20df37d5975254ef8cb0946fcd07d">hf_i2c_master_bus_config_t::mode</a></div><div class="ttdeci">hf_i2c_mode_t mode</div><div class="ttdoc">Operation mode (sync/async)</div><div class="ttdef"><b>Definition</b> EspTypes_I2C.h:199</div></div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// Create async mode bus configuration</span></div>
-<div class="line"><a class="code hl_struct" href="structhf__i2c__master__bus__config__t.html">hf_i2c_master_bus_config_t</a> bus_config = {};</div>
-<div class="line">bus_config.<a class="code hl_variable" href="structhf__i2c__master__bus__config__t.html#a716f6163484b87561aba84f289af450a">i2c_port</a> = 0;</div>
-<div class="line">bus_config.<a class="code hl_variable" href="structhf__i2c__master__bus__config__t.html#a49a9dd202058114f460dc717b8628240">sda_io_num</a> = 21;</div>
-<div class="line">bus_config.<a class="code hl_variable" href="structhf__i2c__master__bus__config__t.html#a7bb7bf1b37dd8e03233fae19f0ca8dd3">scl_io_num</a> = 22;</div>
-<div class="line">bus_config.<a class="code hl_variable" href="structhf__i2c__master__bus__config__t.html#aabb20df37d5975254ef8cb0946fcd07d">mode</a> = <a class="code hl_enumvalue" href="EspTypes__I2C_8h.html#acc25f7d1ca11777e327c8512d4137bbbae6ff80d90aa0fbb908f1c8284ee704eb">hf_i2c_mode_t::HF_I2C_MODE_ASYNC</a>;  <span class="comment">// Async mode only</span></div>
-<div class="line">bus_config.<a class="code hl_variable" href="structhf__i2c__master__bus__config__t.html#a645ea75d55581ef349963060db1ce03d">trans_queue_depth</a> = 10;  <span class="comment">// Queue required for async mode</span></div>
+<div class="line"><a class="code hl_struct" href="structhf__i2c__master__bus__config__t.html">hf_i2c_master_bus_config_t</a> <a class="code hl_class" href="classSoftChipSelectGuard.html">bus_config</a> = {};</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">bus_config</a>.i2c_port = 0;</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">bus_config</a>.sda_io_num = 21;</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">bus_config</a>.scl_io_num = 22;</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">bus_config</a>.mode = <a class="code hl_enumvalue" href="EspTypes__I2C_8h.html#acc25f7d1ca11777e327c8512d4137bbbae6ff80d90aa0fbb908f1c8284ee704eb">hf_i2c_mode_t::HF_I2C_MODE_ASYNC</a>;  <span class="comment">// Async mode only</span></div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">bus_config</a>.trans_queue_depth = 10;  <span class="comment">// Queue required for async mode</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Create I2C bus</span></div>
-<div class="line"><a class="code hl_class" href="classEspI2cBus.html">EspI2cBus</a> i2c_bus(bus_config);</div>
-<div class="line"><span class="keywordflow">if</span> (!i2c_bus.Initialize()) {</div>
+<div class="line"><a class="code hl_class" href="classEspI2cBus.html">EspI2cBus</a> <a class="code hl_class" href="classSoftChipSelectGuard.html">i2c_bus</a>(<a class="code hl_class" href="classSoftChipSelectGuard.html">bus_config</a>);</div>
+<div class="line"><span class="keywordflow">if</span> (!<a class="code hl_class" href="classSoftChipSelectGuard.html">i2c_bus</a>.Initialize()) {</div>
 <div class="line">    <span class="comment">// Handle initialization error</span></div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Create device configuration</span></div>
-<div class="line"><a class="code hl_struct" href="structhf__i2c__device__config__t.html">hf_i2c_device_config_t</a> device_config = {};</div>
-<div class="line">device_config.<a class="code hl_variable" href="structhf__i2c__device__config__t.html#a2043147468665929ffd3b65333a27b19">device_address</a> = 0x48;</div>
-<div class="line">device_config.<a class="code hl_variable" href="structhf__i2c__device__config__t.html#a770633f438e5e923370732a6275189d5">scl_speed_hz</a> = 400000;</div>
-<div class="line">device_config.<a class="code hl_variable" href="structhf__i2c__device__config__t.html#a30e9a6a1ffbe59f64c84486fa4e4605f">dev_addr_length</a> = <a class="code hl_enumvalue" href="EspTypes__I2C_8h.html#ada5c1c4b9978d9458ddf062c6c07c7c5aa828ccf42a365ffba5559eefcdd37f01">hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT</a>;</div>
+<div class="line"><a class="code hl_struct" href="structhf__i2c__device__config__t.html">hf_i2c_device_config_t</a> <a class="code hl_class" href="classSoftChipSelectGuard.html">device_config</a> = {};</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">device_config</a>.device_address = 0x48;</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">device_config</a>.scl_speed_hz = 400000;</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">device_config</a>.dev_addr_length = <a class="code hl_enumvalue" href="EspTypes__I2C_8h.html#ada5c1c4b9978d9458ddf062c6c07c7c5aa828ccf42a365ffba5559eefcdd37f01">hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Add device to bus</span></div>
-<div class="line"><span class="keywordtype">int</span> device_index = i2c_bus.CreateDevice(device_config);</div>
-<div class="line"><a class="code hl_class" href="classBaseI2c.html">BaseI2c</a>* device = i2c_bus.GetDevice(device_index);</div>
+<div class="line"><span class="keywordtype">int</span> <a class="code hl_class" href="classSoftChipSelectGuard.html">device_index</a> = <a class="code hl_class" href="classSoftChipSelectGuard.html">i2c_bus</a>.CreateDevice(<a class="code hl_class" href="classSoftChipSelectGuard.html">device_config</a>);</div>
+<div class="line"><a class="code hl_class" href="classBaseI2c.html">BaseI2c</a>* <a class="code hl_class" href="classSoftChipSelectGuard.html">device</a> = <a class="code hl_class" href="classSoftChipSelectGuard.html">i2c_bus</a>.GetDevice(<a class="code hl_class" href="classSoftChipSelectGuard.html">device_index</a>);</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Use device for I2C operations (async mode)</span></div>
-<div class="line">uint8_t data[] = {0x10, 0x20, 0x30};</div>
-<div class="line"><a class="code hl_enumeration" href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a> result = device-&gt;WriteAsync(data, <span class="keyword">sizeof</span>(data),</div>
-<div class="line">    [](<a class="code hl_enumeration" href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a> err, <span class="keywordtype">void</span>* user_data) {</div>
-<div class="line">        ESP_LOGI(<span class="stringliteral">&quot;Async write completed: %s&quot;</span>, <a class="code hl_function" href="BaseI2c_8h.html#ae4be4e01b5da56ce5ceffa7e4bf98fc9">HfI2CErrToString</a>(err).data());</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">uint8_t</a> data[] = {0x10, 0x20, 0x30};</div>
+<div class="line"><a class="code hl_enumeration" href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a> <a class="code hl_class" href="classSoftChipSelectGuard.html">result</a> = <a class="code hl_class" href="classSoftChipSelectGuard.html">device</a>-&gt;WriteAsync(data, <span class="keyword">sizeof</span>(data),</div>
+<div class="line">    [](<a class="code hl_enumeration" href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a> <a class="code hl_class" href="classSoftChipSelectGuard.html">err</a>, <span class="keywordtype">void</span>* <a class="code hl_class" href="classSoftChipSelectGuard.html">user_data</a>) {</div>
+<div class="line">        <a class="code hl_class" href="classSoftChipSelectGuard.html">ESP_LOGI</a>(<span class="stringliteral">&quot;Async write completed: %s&quot;</span>, <a class="code hl_function" href="BaseI2c_8h.html#ae4be4e01b5da56ce5ceffa7e4bf98fc9">HfI2CErrToString</a>(<a class="code hl_class" href="classSoftChipSelectGuard.html">err</a>).data());</div>
 <div class="line">    });</div>
 <div class="ttc" id="aBaseI2c_8h_html_ae4be4e01b5da56ce5ceffa7e4bf98fc9"><div class="ttname"><a href="BaseI2c_8h.html#ae4be4e01b5da56ce5ceffa7e4bf98fc9">HfI2CErrToString</a></div><div class="ttdeci">constexpr std::string_view HfI2CErrToString(hf_i2c_err_t err) noexcept</div><div class="ttdoc">Convert hf_i2c_err_t to human-readable string.</div><div class="ttdef"><b>Definition</b> BaseI2c.h:96</div></div>
 <div class="ttc" id="aEspTypes__I2C_8h_html_acc25f7d1ca11777e327c8512d4137bbbae6ff80d90aa0fbb908f1c8284ee704eb"><div class="ttname"><a href="EspTypes__I2C_8h.html#acc25f7d1ca11777e327c8512d4137bbbae6ff80d90aa0fbb908f1c8284ee704eb">hf_i2c_mode_t::HF_I2C_MODE_ASYNC</a></div><div class="ttdeci">@ HF_I2C_MODE_ASYNC</div><div class="ttdoc">Async mode: non-blocking operations only, with queue.</div></div>
@@ -277,7 +269,7 @@ ESP-IDF v5.5+ enforces strict separation between sync/async modes.</dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="#a91a9b3d5869f268d78d2e0fd55d9b0b8">hf_i2c_operation_t</a> : uint8_t</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">enum</a> <a class="el" href="classSoftChipSelectGuard.html">class</a> <a class="el" href="#a91a9b3d5869f268d78d2e0fd55d9b0b8">hf_i2c_operation_t</a> : <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a></td>
         </tr>
       </table>
   </td>
@@ -316,7 +308,7 @@ ESP-IDF v5.5+ enforces strict separation between sync/async modes.</dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const char * HfI2COperationToString </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">char</a> * HfI2COperationToString </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#a91a9b3d5869f268d78d2e0fd55d9b0b8">hf_i2c_operation_t</a></td>          <td class="paramname"><span class="paramname"><em>op</em></span></td><td>)</td>
           <td></td>

@@ -133,20 +133,21 @@ Classes</h2></td></tr>
 <h1><a class="anchor" id="Usage"></a>
 Usage</h1>
 <div class="fragment"><div class="line"><span class="comment">// Reserve last 2 sectors of flash (e.g., sector 6 &amp; 7 on STM32F4)</span></div>
-<div class="line"><a class="code hl_struct" href="structhf__stm32__nvs__config__t.html">hf_stm32_nvs_config_t</a> nvs_cfg(0x08060000, 2 * 0x20000);</div>
-<div class="line"><a class="code hl_class" href="classStmNvs.html">StmNvs</a> nvs(<span class="stringliteral">&quot;app_config&quot;</span>, nvs_cfg);</div>
+<div class="line"><a class="code hl_struct" href="structhf__stm32__nvs__config__t.html">hf_stm32_nvs_config_t</a> <a class="code hl_class" href="classSoftChipSelectGuard.html">nvs_cfg</a>(0x08060000, 2 * 0x20000);</div>
+<div class="line"><a class="code hl_class" href="classStmNvs.html">StmNvs</a> nvs(<span class="stringliteral">&quot;app_config&quot;</span>, <a class="code hl_class" href="classSoftChipSelectGuard.html">nvs_cfg</a>);</div>
 <div class="line">nvs.Initialize();</div>
 <div class="line"> </div>
 <div class="line">nvs.SetU32(<span class="stringliteral">&quot;boot_count&quot;</span>, 42);</div>
 <div class="line">nvs.Commit();</div>
 <div class="line"> </div>
-<div class="line">uint32_t count = 0;</div>
-<div class="line">nvs.GetU32(<span class="stringliteral">&quot;boot_count&quot;</span>, count);</div>
-<div class="ttc" id="aclassStmNvs_html"><div class="ttname"><a href="classStmNvs.html">StmNvs</a></div><div class="ttdoc">STM32 NVS — flash-backed key-value store with wear leveling.</div><div class="ttdef"><b>Definition</b> StmNvs.h:48</div></div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">uint32_t</a> <a class="code hl_class" href="classSoftChipSelectGuard.html">count</a> = 0;</div>
+<div class="line">nvs.GetU32(<span class="stringliteral">&quot;boot_count&quot;</span>, <a class="code hl_class" href="classSoftChipSelectGuard.html">count</a>);</div>
+<div class="ttc" id="aclassSoftChipSelectGuard_html"><div class="ttname"><a href="classSoftChipSelectGuard.html">SoftChipSelectGuard</a></div><div class="ttdoc">RAII soft-CS: runs assert_fn on construction and deassert_fn on destruction (including early return /...</div><div class="ttdef"><b>Definition</b> SoftChipSelectGuard.h:32</div></div>
+<div class="ttc" id="aclassStmNvs_html"><div class="ttname"><a href="classStmNvs.html">StmNvs</a></div><div class="ttdoc">STM32 NVS — flash-backed key-value store with wear leveling.</div><div class="ttdef"><b>Definition</b> StmNvs.h:50</div></div>
 <div class="ttc" id="astructhf__stm32__nvs__config__t_html"><div class="ttname"><a href="structhf__stm32__nvs__config__t.html">hf_stm32_nvs_config_t</a></div><div class="ttdoc">Flash-based NVS configuration for STM32.</div><div class="ttdef"><b>Definition</b> StmTypes.h:501</div></div>
 </div><!-- fragment --><dl class="section author"><dt>Author</dt><dd>HardFOC </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC — Licensed under GPL v3.0 or later. </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC — Licensed under GPL <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v3.0</a> or later. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

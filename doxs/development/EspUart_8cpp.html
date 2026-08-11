@@ -119,19 +119,19 @@ Include dependency graph for EspUart.cpp:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa5d0ac16b4ae57052dc9e3cf13f638ef" id="r_aa5d0ac16b4ae57052dc9e3cf13f638ef"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5d0ac16b4ae57052dc9e3cf13f638ef">IsValidUartPort</a> (<a class="el" href="HardwareTypes_8h.html#a5ae8212050d5f285c3c001078e3be3aa">hf_port_num_t</a> port_number) noexcept</td></tr>
+<tr class="memitem:aa5d0ac16b4ae57052dc9e3cf13f638ef" id="r_aa5d0ac16b4ae57052dc9e3cf13f638ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5d0ac16b4ae57052dc9e3cf13f638ef">IsValidUartPort</a> (<a class="el" href="HardwareTypes_8h.html#a5ae8212050d5f285c3c001078e3be3aa">hf_port_num_t</a> port_number) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="separator:aa5d0ac16b4ae57052dc9e3cf13f638ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9816d4c5bf01908b7066dcf57c442bea" id="r_a9816d4c5bf01908b7066dcf57c442bea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9816d4c5bf01908b7066dcf57c442bea">GetDefaultUartPins</a> (<a class="el" href="HardwareTypes_8h.html#a5ae8212050d5f285c3c001078e3be3aa">hf_port_num_t</a> port_number, <a class="el" href="HardwareTypes_8h.html#a60a0d0e5d76ed481be9bf64c307520f9">hf_pin_num_t</a> &amp;tx_pin, <a class="el" href="HardwareTypes_8h.html#a60a0d0e5d76ed481be9bf64c307520f9">hf_pin_num_t</a> &amp;rx_pin, <a class="el" href="HardwareTypes_8h.html#a60a0d0e5d76ed481be9bf64c307520f9">hf_pin_num_t</a> &amp;rts_pin, <a class="el" href="HardwareTypes_8h.html#a60a0d0e5d76ed481be9bf64c307520f9">hf_pin_num_t</a> &amp;cts_pin) noexcept</td></tr>
+<tr class="memitem:a9816d4c5bf01908b7066dcf57c442bea" id="r_a9816d4c5bf01908b7066dcf57c442bea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9816d4c5bf01908b7066dcf57c442bea">GetDefaultUartPins</a> (<a class="el" href="HardwareTypes_8h.html#a5ae8212050d5f285c3c001078e3be3aa">hf_port_num_t</a> port_number, <a class="el" href="HardwareTypes_8h.html#a60a0d0e5d76ed481be9bf64c307520f9">hf_pin_num_t</a> &amp;tx_pin, <a class="el" href="HardwareTypes_8h.html#a60a0d0e5d76ed481be9bf64c307520f9">hf_pin_num_t</a> &amp;rx_pin, <a class="el" href="HardwareTypes_8h.html#a60a0d0e5d76ed481be9bf64c307520f9">hf_pin_num_t</a> &amp;rts_pin, <a class="el" href="HardwareTypes_8h.html#a60a0d0e5d76ed481be9bf64c307520f9">hf_pin_num_t</a> &amp;cts_pin) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="separator:a9816d4c5bf01908b7066dcf57c442bea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a5a85b9c772bbeb480b209a3e6ea92b4c" id="r_a5a85b9c772bbeb480b209a3e6ea92b4c"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a> = &quot;EspUart&quot;</td></tr>
+<tr class="memitem:a5a85b9c772bbeb480b209a3e6ea92b4c" id="r_a5a85b9c772bbeb480b209a3e6ea92b4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">char</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a> = &quot;EspUart&quot;</td></tr>
 <tr class="separator:a5a85b9c772bbeb480b209a3e6ea92b4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of ESP32 UART controller for the HardFOC system. </p>
-<p>This file provides the implementation for UART communication using the ESP32's built-in UART peripheral. All platform-specific types and implementations are isolated through <a class="el" href="EspTypes__UART_8h.html" title="ESP32 UART type definitions for hardware abstraction.">EspTypes_UART.h</a>. The implementation supports multiple ports, configurable baud rates and data formats, hardware flow control, interrupt-driven operation, pattern detection, and comprehensive error handling.</p>
+<p>This file provides the implementation for UART communication using the ESP32's built-in UART peripheral. All platform-specific types and implementations are isolated through <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">EspTypes_UART.h</a>. The implementation supports multiple ports, configurable baud rates and data formats, hardware flow control, interrupt-driven operation, pattern detection, and comprehensive error handling.</p>
 <dl class="section author"><dt>Author</dt><dd>Nebiyu Tadesse </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>HardFOC </dd></dl>
@@ -146,7 +146,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool GetDefaultUartPins </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> GetDefaultUartPins </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a5ae8212050d5f285c3c001078e3be3aa">hf_port_num_t</a></td>          <td class="paramname"><span class="paramname"><em>port_number</em>, </span></td>
         </tr>
@@ -190,7 +190,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool IsValidUartPort </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> IsValidUartPort </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a5ae8212050d5f285c3c001078e3be3aa">hf_port_num_t</a></td>          <td class="paramname"><span class="paramname"><em>port_number</em></span></td><td>)</td>
           <td></td>
@@ -216,7 +216,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const char* TAG = &quot;EspUart&quot;</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">char</a>* TAG = &quot;EspUart&quot;</td>
         </tr>
       </table>
   </td>

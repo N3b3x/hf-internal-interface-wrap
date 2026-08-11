@@ -109,61 +109,61 @@ $(function(){initNavTree('structNullMutexBackend.html',''); initResizable(); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a21f429e791d9a7fbe98f960bd6c5f9f5" id="r_a21f429e791d9a7fbe98f960bd6c5f9f5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">RecursiveMutexHandle</a> = uint8_t</td></tr>
+<tr class="memitem:a21f429e791d9a7fbe98f960bd6c5f9f5" id="r_a21f429e791d9a7fbe98f960bd6c5f9f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">RecursiveMutexHandle</a> = <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a></td></tr>
 <tr class="memdesc:a21f429e791d9a7fbe98f960bd6c5f9f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque handle for a recursive mutex (1 byte, unused by no-op backend)  <br /></td></tr>
 <tr class="separator:a21f429e791d9a7fbe98f960bd6c5f9f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a626a22c11595822e794d8611a486811e" id="r_a626a22c11595822e794d8611a486811e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a626a22c11595822e794d8611a486811e">MutexHandle</a> = uint8_t</td></tr>
+<tr class="memitem:a626a22c11595822e794d8611a486811e" id="r_a626a22c11595822e794d8611a486811e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a626a22c11595822e794d8611a486811e">MutexHandle</a> = <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a></td></tr>
 <tr class="memdesc:a626a22c11595822e794d8611a486811e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque handle for a regular (non-recursive) mutex (1 byte, unused)  <br /></td></tr>
 <tr class="separator:a626a22c11595822e794d8611a486811e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a937bfd87c256d66122f4006fcd98c831" id="r_a937bfd87c256d66122f4006fcd98c831"><td class="memItemLeft" align="right" valign="top">static constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a937bfd87c256d66122f4006fcd98c831">createRecursive</a> (<a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">RecursiveMutexHandle</a> *) noexcept</td></tr>
+<tr class="memitem:a937bfd87c256d66122f4006fcd98c831" id="r_a937bfd87c256d66122f4006fcd98c831"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a937bfd87c256d66122f4006fcd98c831">createRecursive</a> (<a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">RecursiveMutexHandle</a> *) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a937bfd87c256d66122f4006fcd98c831"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a recursive mutex. Backend writes into *h.  <br /></td></tr>
 <tr class="separator:a937bfd87c256d66122f4006fcd98c831"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afeb7b8c41e2fe964b2e690188a6acbdc" id="r_afeb7b8c41e2fe964b2e690188a6acbdc"><td class="memItemLeft" align="right" valign="top">static constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afeb7b8c41e2fe964b2e690188a6acbdc">destroyRecursive</a> (<a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">RecursiveMutexHandle</a> *) noexcept</td></tr>
+<tr class="memitem:afeb7b8c41e2fe964b2e690188a6acbdc" id="r_afeb7b8c41e2fe964b2e690188a6acbdc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afeb7b8c41e2fe964b2e690188a6acbdc">destroyRecursive</a> (<a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">RecursiveMutexHandle</a> *) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:afeb7b8c41e2fe964b2e690188a6acbdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a recursive mutex pointed to by *h.  <br /></td></tr>
 <tr class="separator:afeb7b8c41e2fe964b2e690188a6acbdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1e4064ecbb884a82018a134eb5a897d" id="r_ae1e4064ecbb884a82018a134eb5a897d"><td class="memItemLeft" align="right" valign="top">static constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1e4064ecbb884a82018a134eb5a897d">lockRecursive</a> (<a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">RecursiveMutexHandle</a> *, uint32_t) noexcept</td></tr>
+<tr class="memitem:ae1e4064ecbb884a82018a134eb5a897d" id="r_ae1e4064ecbb884a82018a134eb5a897d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1e4064ecbb884a82018a134eb5a897d">lockRecursive</a> (<a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">RecursiveMutexHandle</a> *, <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:ae1e4064ecbb884a82018a134eb5a897d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock recursively with timeout (ticks). Returns true on success.  <br /></td></tr>
 <tr class="separator:ae1e4064ecbb884a82018a134eb5a897d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5a3feacb3a1f8dc01cd3e96bd77c607" id="r_ad5a3feacb3a1f8dc01cd3e96bd77c607"><td class="memItemLeft" align="right" valign="top">static constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5a3feacb3a1f8dc01cd3e96bd77c607">tryLockRecursive</a> (<a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">RecursiveMutexHandle</a> *) noexcept</td></tr>
+<tr class="memitem:ad5a3feacb3a1f8dc01cd3e96bd77c607" id="r_ad5a3feacb3a1f8dc01cd3e96bd77c607"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5a3feacb3a1f8dc01cd3e96bd77c607">tryLockRecursive</a> (<a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">RecursiveMutexHandle</a> *) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:ad5a3feacb3a1f8dc01cd3e96bd77c607"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try lock (non-blocking). Returns true on success.  <br /></td></tr>
 <tr class="separator:ad5a3feacb3a1f8dc01cd3e96bd77c607"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78c20173ade0f09e7af899e90e873ed1" id="r_a78c20173ade0f09e7af899e90e873ed1"><td class="memItemLeft" align="right" valign="top">static constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78c20173ade0f09e7af899e90e873ed1">unlockRecursive</a> (<a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">RecursiveMutexHandle</a> *) noexcept</td></tr>
+<tr class="memitem:a78c20173ade0f09e7af899e90e873ed1" id="r_a78c20173ade0f09e7af899e90e873ed1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78c20173ade0f09e7af899e90e873ed1">unlockRecursive</a> (<a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">RecursiveMutexHandle</a> *) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a78c20173ade0f09e7af899e90e873ed1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlock recursive mutex.  <br /></td></tr>
 <tr class="separator:a78c20173ade0f09e7af899e90e873ed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0b9cb0474e2ffe22a961194b2b8e804" id="r_ab0b9cb0474e2ffe22a961194b2b8e804"><td class="memItemLeft" align="right" valign="top">static constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0b9cb0474e2ffe22a961194b2b8e804">createMutex</a> (<a class="el" href="#a626a22c11595822e794d8611a486811e">MutexHandle</a> *) noexcept</td></tr>
+<tr class="memitem:ab0b9cb0474e2ffe22a961194b2b8e804" id="r_ab0b9cb0474e2ffe22a961194b2b8e804"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0b9cb0474e2ffe22a961194b2b8e804">createMutex</a> (<a class="el" href="#a626a22c11595822e794d8611a486811e">MutexHandle</a> *) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:ab0b9cb0474e2ffe22a961194b2b8e804"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a regular (non-recursive) mutex. Backend writes into *h.  <br /></td></tr>
 <tr class="separator:ab0b9cb0474e2ffe22a961194b2b8e804"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6af250f79bd775eb7ddae3e701e33668" id="r_a6af250f79bd775eb7ddae3e701e33668"><td class="memItemLeft" align="right" valign="top">static constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6af250f79bd775eb7ddae3e701e33668">destroyMutex</a> (<a class="el" href="#a626a22c11595822e794d8611a486811e">MutexHandle</a> *) noexcept</td></tr>
+<tr class="memitem:a6af250f79bd775eb7ddae3e701e33668" id="r_a6af250f79bd775eb7ddae3e701e33668"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6af250f79bd775eb7ddae3e701e33668">destroyMutex</a> (<a class="el" href="#a626a22c11595822e794d8611a486811e">MutexHandle</a> *) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a6af250f79bd775eb7ddae3e701e33668"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a regular mutex pointed to by *h.  <br /></td></tr>
 <tr class="separator:a6af250f79bd775eb7ddae3e701e33668"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e538989d9e17fe275c7a1f39db11965" id="r_a4e538989d9e17fe275c7a1f39db11965"><td class="memItemLeft" align="right" valign="top">static constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e538989d9e17fe275c7a1f39db11965">lockMutex</a> (<a class="el" href="#a626a22c11595822e794d8611a486811e">MutexHandle</a> *, uint32_t) noexcept</td></tr>
+<tr class="memitem:a4e538989d9e17fe275c7a1f39db11965" id="r_a4e538989d9e17fe275c7a1f39db11965"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e538989d9e17fe275c7a1f39db11965">lockMutex</a> (<a class="el" href="#a626a22c11595822e794d8611a486811e">MutexHandle</a> *, <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a4e538989d9e17fe275c7a1f39db11965"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock with timeout (ticks). Returns true on success.  <br /></td></tr>
 <tr class="separator:a4e538989d9e17fe275c7a1f39db11965"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abda2aa2e7aac56a65621014ca3d22662" id="r_abda2aa2e7aac56a65621014ca3d22662"><td class="memItemLeft" align="right" valign="top">static constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abda2aa2e7aac56a65621014ca3d22662">tryLockMutex</a> (<a class="el" href="#a626a22c11595822e794d8611a486811e">MutexHandle</a> *) noexcept</td></tr>
+<tr class="memitem:abda2aa2e7aac56a65621014ca3d22662" id="r_abda2aa2e7aac56a65621014ca3d22662"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abda2aa2e7aac56a65621014ca3d22662">tryLockMutex</a> (<a class="el" href="#a626a22c11595822e794d8611a486811e">MutexHandle</a> *) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:abda2aa2e7aac56a65621014ca3d22662"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try lock (non-blocking). Returns true on success.  <br /></td></tr>
 <tr class="separator:abda2aa2e7aac56a65621014ca3d22662"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a728b894a38c860d3d96c5413f84502" id="r_a5a728b894a38c860d3d96c5413f84502"><td class="memItemLeft" align="right" valign="top">static constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a728b894a38c860d3d96c5413f84502">unlockMutex</a> (<a class="el" href="#a626a22c11595822e794d8611a486811e">MutexHandle</a> *) noexcept</td></tr>
+<tr class="memitem:a5a728b894a38c860d3d96c5413f84502" id="r_a5a728b894a38c860d3d96c5413f84502"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a728b894a38c860d3d96c5413f84502">unlockMutex</a> (<a class="el" href="#a626a22c11595822e794d8611a486811e">MutexHandle</a> *) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a5a728b894a38c860d3d96c5413f84502"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlock regular mutex.  <br /></td></tr>
 <tr class="separator:a5a728b894a38c860d3d96c5413f84502"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afaa669fd91d19ca6b790b74650031708" id="r_afaa669fd91d19ca6b790b74650031708"><td class="memItemLeft" align="right" valign="top">static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afaa669fd91d19ca6b790b74650031708">getTickCount</a> () noexcept</td></tr>
+<tr class="memitem:afaa669fd91d19ca6b790b74650031708" id="r_afaa669fd91d19ca6b790b74650031708"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afaa669fd91d19ca6b790b74650031708">getTickCount</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:afaa669fd91d19ca6b790b74650031708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current RTOS tick count.  <br /></td></tr>
 <tr class="separator:afaa669fd91d19ca6b790b74650031708"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49290ba91fee448733d3b184c58b586c" id="r_a49290ba91fee448733d3b184c58b586c"><td class="memItemLeft" align="right" valign="top">static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49290ba91fee448733d3b184c58b586c">msToTicks</a> (uint32_t ms) noexcept</td></tr>
+<tr class="memitem:a49290ba91fee448733d3b184c58b586c" id="r_a49290ba91fee448733d3b184c58b586c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49290ba91fee448733d3b184c58b586c">msToTicks</a> (<a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> <a class="el" href="classSoftChipSelectGuard.html">ms</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a49290ba91fee448733d3b184c58b586c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert milliseconds to RTOS ticks.  <br /></td></tr>
 <tr class="separator:a49290ba91fee448733d3b184c58b586c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4af09a2f1c352ffc802cb3eb3d56f9d" id="r_ae4af09a2f1c352ffc802cb3eb3d56f9d"><td class="memItemLeft" align="right" valign="top">static constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4af09a2f1c352ffc802cb3eb3d56f9d">yield</a> () noexcept</td></tr>
+<tr class="memitem:ae4af09a2f1c352ffc802cb3eb3d56f9d" id="r_ae4af09a2f1c352ffc802cb3eb3d56f9d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4af09a2f1c352ffc802cb3eb3d56f9d">yield</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:ae4af09a2f1c352ffc802cb3eb3d56f9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yield to other tasks (no-op in single-threaded).  <br /></td></tr>
 <tr class="separator:ae4af09a2f1c352ffc802cb3eb3d56f9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a2b8667732688763bc985f913d0a16add" id="r_a2b8667732688763bc985f913d0a16add"><td class="memItemLeft" align="right" valign="top">static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b8667732688763bc985f913d0a16add">MAX_DELAY</a> = 0xFFFFFFFFU</td></tr>
+<tr class="memitem:a2b8667732688763bc985f913d0a16add" id="r_a2b8667732688763bc985f913d0a16add"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b8667732688763bc985f913d0a16add">MAX_DELAY</a> = 0xFFFFFFFFU</td></tr>
 <tr class="memdesc:a2b8667732688763bc985f913d0a16add"><td class="mdescLeft">&#160;</td><td class="mdescRight">Infinite wait.  <br /></td></tr>
 <tr class="separator:a2b8667732688763bc985f913d0a16add"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5390057386e19dd4dab8024246f68b8" id="r_ab5390057386e19dd4dab8024246f68b8"><td class="memItemLeft" align="right" valign="top">static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5390057386e19dd4dab8024246f68b8">TICK_RATE_HZ</a> = 1000U</td></tr>
+<tr class="memitem:ab5390057386e19dd4dab8024246f68b8" id="r_ab5390057386e19dd4dab8024246f68b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5390057386e19dd4dab8024246f68b8">TICK_RATE_HZ</a> = 1000U</td></tr>
 <tr class="memdesc:ab5390057386e19dd4dab8024246f68b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assumed tick rate.  <br /></td></tr>
 <tr class="separator:ab5390057386e19dd4dab8024246f68b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -179,7 +179,7 @@ Static Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a626a22c11595822e794d8611a486811e">NullMutexBackend::MutexHandle</a> = uint8_t</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">using</a> <a class="el" href="#a626a22c11595822e794d8611a486811e">NullMutexBackend::MutexHandle</a> = <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -195,7 +195,7 @@ Static Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">NullMutexBackend::RecursiveMutexHandle</a> = uint8_t</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">using</a> <a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">NullMutexBackend::RecursiveMutexHandle</a> = <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -215,7 +215,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static constexpr void NullMutexBackend::createMutex </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">void</a> NullMutexBackend::createMutex </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#a626a22c11595822e794d8611a486811e">MutexHandle</a> *</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -242,7 +242,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static constexpr void NullMutexBackend::createRecursive </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">void</a> NullMutexBackend::createRecursive </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">RecursiveMutexHandle</a> *</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -269,7 +269,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static constexpr void NullMutexBackend::destroyMutex </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">void</a> NullMutexBackend::destroyMutex </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#a626a22c11595822e794d8611a486811e">MutexHandle</a> *</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -296,7 +296,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static constexpr void NullMutexBackend::destroyRecursive </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">void</a> NullMutexBackend::destroyRecursive </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">RecursiveMutexHandle</a> *</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -323,7 +323,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static constexpr uint32_t NullMutexBackend::getTickCount </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> NullMutexBackend::getTickCount </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -350,14 +350,14 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static constexpr bool NullMutexBackend::lockMutex </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a> NullMutexBackend::lockMutex </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#a626a22c11595822e794d8611a486811e">MutexHandle</a> *</td>          <td class="paramname"><span class="paramname">, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a></td>          <td class="paramname"><span class="paramname"></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -381,14 +381,14 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static constexpr bool NullMutexBackend::lockRecursive </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a> NullMutexBackend::lockRecursive </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">RecursiveMutexHandle</a> *</td>          <td class="paramname"><span class="paramname">, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a></td>          <td class="paramname"><span class="paramname"></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -412,9 +412,9 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static constexpr uint32_t NullMutexBackend::msToTicks </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> NullMutexBackend::msToTicks </td>
           <td>(</td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>ms</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a></td>          <td class="paramname"><span class="paramname"><em>ms</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -439,7 +439,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static constexpr bool NullMutexBackend::tryLockMutex </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a> NullMutexBackend::tryLockMutex </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#a626a22c11595822e794d8611a486811e">MutexHandle</a> *</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -466,7 +466,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static constexpr bool NullMutexBackend::tryLockRecursive </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a> NullMutexBackend::tryLockRecursive </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">RecursiveMutexHandle</a> *</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -493,7 +493,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static constexpr void NullMutexBackend::unlockMutex </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">void</a> NullMutexBackend::unlockMutex </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#a626a22c11595822e794d8611a486811e">MutexHandle</a> *</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -520,7 +520,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static constexpr void NullMutexBackend::unlockRecursive </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">void</a> NullMutexBackend::unlockRecursive </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#a21f429e791d9a7fbe98f960bd6c5f9f5">RecursiveMutexHandle</a> *</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -547,7 +547,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static constexpr void NullMutexBackend::yield </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">void</a> NullMutexBackend::yield </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -575,7 +575,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint32_t NullMutexBackend::MAX_DELAY = 0xFFFFFFFFU</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> NullMutexBackend::MAX_DELAY = 0xFFFFFFFFU</td>
         </tr>
       </table>
   </td>
@@ -599,7 +599,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint32_t NullMutexBackend::TICK_RATE_HZ = 1000U</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> NullMutexBackend::TICK_RATE_HZ = 1000U</td>
         </tr>
       </table>
   </td>
