@@ -7,7 +7,7 @@
     <innerclass refid="structStmPeriodicTimer_1_1DispatchEntry" prot="private">StmPeriodicTimer::DispatchEntry</innerclass>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classStmPeriodicTimer_1a85098575d3142eb754cc9e9c423afd02" prot="private" static="no" mutable="no">
-        <type>TIM_HandleTypeDef *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">TIM_HandleTypeDef</ref> *</type>
         <definition>TIM_HandleTypeDef* StmPeriodicTimer::htim_</definition>
         <argsstring></argsstring>
         <name>htim_</name>
@@ -69,7 +69,7 @@
     </sectiondef>
     <sectiondef kind="private-static-attrib">
       <memberdef kind="variable" id="classStmPeriodicTimer_1aff911eeb8b0fa667025cbcf1fd725feb" prot="private" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr int</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
         <definition>constexpr int StmPeriodicTimer::kMaxTimerInstances</definition>
         <argsstring></argsstring>
         <name>kMaxTimerInstances</name>
@@ -99,7 +99,7 @@
         <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="108" column="26" bodyfile="inc/mcu/stm32/StmPeriodicTimer.h" bodystart="39" bodyend="39"/>
       </memberdef>
       <memberdef kind="variable" id="classStmPeriodicTimer_1ab2611715f13c7814ccee47ce450cd51e" prot="private" static="yes" mutable="no">
-        <type>int</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
         <definition>int StmPeriodicTimer::s_dispatch_count_</definition>
         <argsstring></argsstring>
         <name>s_dispatch_count_</name>
@@ -122,7 +122,7 @@
         <name>StmPeriodicTimer</name>
         <qualifiedname>StmPeriodicTimer::StmPeriodicTimer</qualifiedname>
         <param>
-          <type>TIM_HandleTypeDef *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">TIM_HandleTypeDef</ref> *</type>
           <declname>htim</declname>
         </param>
         <param>
@@ -132,12 +132,12 @@
         <param>
           <type><ref refid="BasePeriodicTimer_8h_1a40c3b2f30d4492b879e2939cd3ac713d" kindref="member">hf_timer_callback_t</ref></type>
           <declname>callback</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Construct from CubeMX timer handle. </para>
@@ -156,7 +156,7 @@
 <parametername>timer_clock_hz</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>APB timer clock feeding this TIM (e.g. 84 MHz). </para>
+<para>APB timer clock feeding this TIM (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">e.g</ref>. 84 MHz). </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -189,18 +189,18 @@
         <name>StmPeriodicTimer</name>
         <qualifiedname>StmPeriodicTimer::StmPeriodicTimer</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__stm32__timer__config__t" kindref="compound">hf_stm32_timer_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__stm32__timer__config__t" kindref="compound">hf_stm32_timer_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <param>
           <type><ref refid="BasePeriodicTimer_8h_1a40c3b2f30d4492b879e2939cd3ac713d" kindref="member">hf_timer_callback_t</ref></type>
           <declname>callback</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Construct from config struct. </para>
@@ -232,7 +232,7 @@
         <name>StmPeriodicTimer</name>
         <qualifiedname>StmPeriodicTimer::StmPeriodicTimer</qualifiedname>
         <param>
-          <type>const <ref refid="classStmPeriodicTimer" kindref="compound">StmPeriodicTimer</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classStmPeriodicTimer" kindref="compound">StmPeriodicTimer</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -249,7 +249,7 @@
         <name>operator=</name>
         <qualifiedname>StmPeriodicTimer::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classStmPeriodicTimer" kindref="compound">StmPeriodicTimer</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classStmPeriodicTimer" kindref="compound">StmPeriodicTimer</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -488,7 +488,7 @@
         <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="70" column="20" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="184" bodyend="188"/>
       </memberdef>
       <memberdef kind="function" id="classStmPeriodicTimer_1a1a880f8c3c0489b16879200dedc9a0be" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char * StmPeriodicTimer::GetDescription</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>GetDescription</name>
@@ -630,20 +630,20 @@
     </sectiondef>
     <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classStmPeriodicTimer_1aac7479d2dc33992ad8241eb9b0807cf2" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void StmPeriodicTimer::IsrDispatch</definition>
         <argsstring>(TIM_HandleTypeDef *htim) noexcept</argsstring>
         <name>IsrDispatch</name>
         <qualifiedname>StmPeriodicTimer::IsrDispatch</qualifiedname>
         <param>
-          <type>TIM_HandleTypeDef *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">TIM_HandleTypeDef</ref> *</type>
           <declname>htim</declname>
         </param>
         <briefdescription>
 <para>Call from HAL_TIM_PeriodElapsedCallback to dispatch to instances. </para>
         </briefdescription>
         <detaileddescription>
-<para>Usage in user code: <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*<sp/>htim)<sp/>{</highlight></codeline>
+<para>Usage in user code: <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">HAL_TIM_PeriodElapsedCallback</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">TIM_HandleTypeDef</ref>*<sp/>htim)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmPeriodicTimer_1aac7479d2dc33992ad8241eb9b0807cf2" kindref="member">StmPeriodicTimer::IsrDispatch</ref>(htim);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -655,7 +655,7 @@
     </sectiondef>
     <sectiondef kind="private-func">
       <memberdef kind="function" id="classStmPeriodicTimer_1a2b9d1f53338cf3ef0c8f1ff96e4fb63c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmPeriodicTimer::ApplyPeriod</definition>
         <argsstring>(hf_u64_t period_us) noexcept</argsstring>
         <name>ApplyPeriod</name>
@@ -674,7 +674,7 @@
         <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="100" column="10" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="236" bodyend="276"/>
       </memberdef>
       <memberdef kind="function" id="classStmPeriodicTimer_1aa4b5624471c51cbd425c12af8aaec2a9" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void StmPeriodicTimer::RegisterDispatch</definition>
         <argsstring>() noexcept</argsstring>
         <name>RegisterDispatch</name>
@@ -688,7 +688,7 @@
         <location file="inc/mcu/stm32/StmPeriodicTimer.h" line="111" column="10" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="294" bodyend="299"/>
       </memberdef>
       <memberdef kind="function" id="classStmPeriodicTimer_1a719c4bddaa4c4b71077652d9c08473f9" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void StmPeriodicTimer::UnregisterDispatch</definition>
         <argsstring>() noexcept</argsstring>
         <name>UnregisterDispatch</name>

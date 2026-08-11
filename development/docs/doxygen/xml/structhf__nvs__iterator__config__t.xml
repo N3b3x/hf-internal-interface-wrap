@@ -5,7 +5,7 @@
     <includes refid="EspTypes__NVS_8h" local="no">EspTypes_NVS.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__nvs__iterator__config__t_1a65f62a32e0cce249d88cf7ae5af478f0" prot="public" static="no" mutable="no">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char* hf_nvs_iterator_config_t::namespace_name</definition>
         <argsstring></argsstring>
         <name>namespace_name</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="133" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="133" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__nvs__iterator__config__t_1a8bc76d2487c20d73b26bd130e04878bc" prot="public" static="no" mutable="no">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char* hf_nvs_iterator_config_t::key_prefix</definition>
         <argsstring></argsstring>
         <name>key_prefix</name>
@@ -50,7 +50,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="134" column="14" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="134" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__nvs__iterator__config__t_1a36a3a658981b87edd3f46194e3e68c1b" prot="public" static="no" mutable="no">
-        <type>size_t</type>
+        <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>size_t hf_nvs_iterator_config_t::max_entries</definition>
         <argsstring></argsstring>
         <name>max_entries</name>

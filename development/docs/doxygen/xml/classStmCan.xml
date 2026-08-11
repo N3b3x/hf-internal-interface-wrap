@@ -20,7 +20,7 @@
         <location file="inc/mcu/stm32/StmCan.h" line="89" column="19" bodyfile="inc/mcu/stm32/StmCan.h" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classStmCan_1ad6af4f132f45d20b32fed168c7085dd0" prot="private" static="no" mutable="no">
-        <type>union <ref refid="classStmCan" kindref="compound">StmCan</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">union</ref> <ref refid="classStmCan" kindref="compound">StmCan</ref></type>
         <definition>union StmCan StmCan</definition>
         <argsstring></argsstring>
         <name></name>
@@ -50,7 +50,7 @@
     </sectiondef>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classStmCan_1a59d9dc49c657ebb99f4e76eb4cd072f3" prot="public" static="no" mutable="no">
-        <type>CAN_HandleTypeDef *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">CAN_HandleTypeDef</ref> *</type>
         <definition>CAN_HandleTypeDef* StmCan::hcan_</definition>
         <argsstring></argsstring>
         <name>hcan_</name>
@@ -64,7 +64,7 @@
         <location file="inc/mcu/stm32/StmCan.h" line="91" column="29" bodyfile="inc/mcu/stm32/StmCan.h" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classStmCan_1a65c6cd41415b35e10cdd85b78bfc66ec" prot="public" static="no" mutable="no">
-        <type>FDCAN_HandleTypeDef *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">FDCAN_HandleTypeDef</ref> *</type>
         <definition>FDCAN_HandleTypeDef* StmCan::hfdcan_</definition>
         <argsstring></argsstring>
         <name>hfdcan_</name>
@@ -86,7 +86,7 @@
         <name>StmCan</name>
         <qualifiedname>StmCan::StmCan</qualifiedname>
         <param>
-          <type>CAN_HandleTypeDef *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">CAN_HandleTypeDef</ref> *</type>
           <declname>hcan</declname>
         </param>
         <briefdescription>
@@ -105,7 +105,7 @@
         <name>StmCan</name>
         <qualifiedname>StmCan::StmCan</qualifiedname>
         <param>
-          <type>FDCAN_HandleTypeDef *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">FDCAN_HandleTypeDef</ref> *</type>
           <declname>hfdcan</declname>
         </param>
         <briefdescription>
@@ -124,7 +124,7 @@
         <name>StmCan</name>
         <qualifiedname>StmCan::StmCan</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__stm32__can__config__t" kindref="compound">hf_stm32_can_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__stm32__can__config__t" kindref="compound">hf_stm32_can_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -157,7 +157,7 @@
         <name>StmCan</name>
         <qualifiedname>StmCan::StmCan</qualifiedname>
         <param>
-          <type>const <ref refid="classStmCan" kindref="compound">StmCan</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classStmCan" kindref="compound">StmCan</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -174,7 +174,7 @@
         <name>operator=</name>
         <qualifiedname>StmCan::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classStmCan" kindref="compound">StmCan</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classStmCan" kindref="compound">StmCan</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -230,7 +230,7 @@
         <qualifiedname>StmCan::SendMessage</qualifiedname>
         <reimplements refid="classBaseCan_1ac3ec4c6e8a5d45cbcbb4266d58f0faf8">SendMessage</reimplements>
         <param>
-          <type>const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
           <declname>message</declname>
         </param>
         <param>
@@ -360,9 +360,9 @@
           <declname>mask</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>extended</declname>
-          <defval>false</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">false</ref></defval>
         </param>
         <briefdescription>
 <para>Set acceptance filter for incoming messages. </para>
@@ -453,7 +453,7 @@
         <location file="inc/mcu/stm32/StmCan.h" line="75" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="419" bodyend="424"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1a6c7d84e038dd0aa4bea3db1dc601c60e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmCan::SupportsCanFD</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>SupportsCanFD</name>
@@ -488,13 +488,13 @@
         <location file="inc/mcu/stm32/StmCan.h" line="81" column="19" bodyfile="inc/mcu/stm32/StmCan.h" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1a458aa6531d8b418f05c8e49b83fd229e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void StmCan::NotifyRxFromIsr</definition>
         <argsstring>(const hf_can_message_t &amp;msg) noexcept</argsstring>
         <name>NotifyRxFromIsr</name>
         <qualifiedname>StmCan::NotifyRxFromIsr</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
           <declname>msg</declname>
         </param>
         <briefdescription>
@@ -515,7 +515,7 @@
         <name>SendBxCan</name>
         <qualifiedname>StmCan::SendBxCan</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
           <declname>msg</declname>
         </param>
         <param>
@@ -559,7 +559,7 @@
         <name>SendFdCan</name>
         <qualifiedname>StmCan::SendFdCan</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
           <declname>msg</declname>
         </param>
         <param>

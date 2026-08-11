@@ -5,7 +5,7 @@
     <includes refid="BaseI2c_8h" local="no">BaseI2c.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__i2c__diagnostics__t_1a3169a40fe91cb987009c9c92adcbdbb7" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_i2c_diagnostics_t::bus_healthy</definition>
         <argsstring></argsstring>
         <name>bus_healthy</name>
@@ -20,7 +20,7 @@
         <location file="inc/base/BaseI2c.h" line="140" column="8" bodyfile="inc/base/BaseI2c.h" bodystart="140" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__diagnostics__t_1ab7de61db993d74bb5d4054e68ecba04e" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_i2c_diagnostics_t::sda_line_state</definition>
         <argsstring></argsstring>
         <name>sda_line_state</name>
@@ -35,7 +35,7 @@
         <location file="inc/base/BaseI2c.h" line="141" column="8" bodyfile="inc/base/BaseI2c.h" bodystart="141" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__diagnostics__t_1aa350d34764f83dec8fd0826702bb52e4" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_i2c_diagnostics_t::scl_line_state</definition>
         <argsstring></argsstring>
         <name>scl_line_state</name>
@@ -50,7 +50,7 @@
         <location file="inc/base/BaseI2c.h" line="142" column="8" bodyfile="inc/base/BaseI2c.h" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__diagnostics__t_1a4d00297031b5331599dbca2631332262" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_i2c_diagnostics_t::bus_locked</definition>
         <argsstring></argsstring>
         <name>bus_locked</name>
@@ -125,7 +125,7 @@
         <location file="inc/base/BaseI2c.h" line="147" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="147" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__diagnostics__t_1a6bba331d9e2a7a62afe6001b8a6370c2" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float hf_i2c_diagnostics_t::bus_utilization_percent</definition>
         <argsstring></argsstring>
         <name>bus_utilization_percent</name>

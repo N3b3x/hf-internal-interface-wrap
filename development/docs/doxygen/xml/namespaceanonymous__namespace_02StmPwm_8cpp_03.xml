@@ -4,7 +4,7 @@
     <compoundname>anonymous_namespace{StmPwm.cpp}</compoundname>
     <sectiondef kind="var">
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a2c1b6c3eb9057e3d5e7cfcd041105bf3" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimChannel1</definition>
         <argsstring></argsstring>
         <name>kTimChannel1</name>
@@ -19,7 +19,7 @@
         <location file="src/mcu/stm32/StmPwm.cpp" line="33" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1aaec9ba4dfdd164a17152237daf3f7280" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimChannel2</definition>
         <argsstring></argsstring>
         <name>kTimChannel2</name>
@@ -34,7 +34,7 @@
         <location file="src/mcu/stm32/StmPwm.cpp" line="34" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a74092637af54de9be82774f9dc83cd6f" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimChannel3</definition>
         <argsstring></argsstring>
         <name>kTimChannel3</name>
@@ -49,7 +49,7 @@
         <location file="src/mcu/stm32/StmPwm.cpp" line="35" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1afdf6cafd03df6e1a381d091a8400fefa" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimChannel4</definition>
         <argsstring></argsstring>
         <name>kTimChannel4</name>
@@ -64,7 +64,7 @@
         <location file="src/mcu/stm32/StmPwm.cpp" line="36" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a10577d1da5280b680c46bcd3eeacc184" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimPscOffset</definition>
         <argsstring></argsstring>
         <name>kTimPscOffset</name>
@@ -79,7 +79,7 @@
         <location file="src/mcu/stm32/StmPwm.cpp" line="39" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a80c8505c255f089e57c8b05b91cb911f" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimArrOffset</definition>
         <argsstring></argsstring>
         <name>kTimArrOffset</name>
@@ -94,7 +94,7 @@
         <location file="src/mcu/stm32/StmPwm.cpp" line="40" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1ab68943c4f3e5f6e4be77de41651e58cc" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimCcr1Offset</definition>
         <argsstring></argsstring>
         <name>kTimCcr1Offset</name>
@@ -109,7 +109,7 @@
         <location file="src/mcu/stm32/StmPwm.cpp" line="41" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a3fc05ec82865a303d1594bf3f7a01e12" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimEgrOffset</definition>
         <argsstring></argsstring>
         <name>kTimEgrOffset</name>
@@ -124,7 +124,7 @@
         <location file="src/mcu/stm32/StmPwm.cpp" line="42" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a61d1a038fe4834cc60d19733b4aaedba" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimBdtrOffset</definition>
         <argsstring></argsstring>
         <name>kTimBdtrOffset</name>
@@ -139,7 +139,7 @@
         <location file="src/mcu/stm32/StmPwm.cpp" line="43" column="24" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a95f6191ea8aef44939ee4420bb6700ea" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmPwm.cpp}::kTimEgrUgBit</definition>
         <argsstring></argsstring>
         <name>kTimEgrUgBit</name>

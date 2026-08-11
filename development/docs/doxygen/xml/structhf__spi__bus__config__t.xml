@@ -11,10 +11,10 @@
         <name>host</name>
         <qualifiedname>hf_spi_bus_config_t::host</qualifiedname>
         <briefdescription>
-<para>SPI host/controller (e.g., HF_SPI2_HOST) </para>
+<para>SPI host/controller (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">e.g</ref>., HF_SPI2_HOST) </para>
         </briefdescription>
         <detaileddescription>
-<para>SPI host/controller (e.g., HF_SPI2_HOST) </para>
+<para>SPI host/controller (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">e.g</ref>., HF_SPI2_HOST) </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -116,7 +116,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="157" column="19" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="157" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__bus__config__t_1a30a9804cc4b3799a4207e669243135ab" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>hf_spi_bus_config_t::use_iomux</definition>
         <argsstring></argsstring>
         <name>use_iomux</name>
@@ -132,7 +132,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="158" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="158" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__bus__config__t_1a4bb24c90eae4bccd36ec92595fe70983" prot="public" static="no" mutable="no">
-        <type>SPI_HandleTypeDef *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">SPI_HandleTypeDef</ref> *</type>
         <definition>SPI_HandleTypeDef* hf_spi_bus_config_t::hal_handle</definition>
         <argsstring></argsstring>
         <name>hal_handle</name>
@@ -162,7 +162,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="336" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="336" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__bus__config__t_1ac41e2834d780abb61584372642693e0e" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_spi_bus_config_t::use_dma</definition>
         <argsstring></argsstring>
         <name>use_dma</name>
@@ -213,7 +213,7 @@
         <name>hf_spi_bus_config_t</name>
         <qualifiedname>hf_spi_bus_config_t::hf_spi_bus_config_t</qualifiedname>
         <param>
-          <type>SPI_HandleTypeDef *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">SPI_HandleTypeDef</ref> *</type>
           <declname>handle</declname>
         </param>
         <param>
@@ -222,9 +222,9 @@
           <defval>1000</defval>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>dma</declname>
-          <defval>false</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">false</ref></defval>
         </param>
         <briefdescription>
         </briefdescription>

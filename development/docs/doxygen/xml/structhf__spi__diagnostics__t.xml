@@ -5,7 +5,7 @@
     <includes refid="BaseSpi_8h" local="no">BaseSpi.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__spi__diagnostics__t_1a67efec8de04aee3cea5c02dc3bae1701" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_spi_diagnostics_t::is_initialized</definition>
         <argsstring></argsstring>
         <name>is_initialized</name>
@@ -20,7 +20,7 @@
         <location file="inc/base/BaseSpi.h" line="133" column="8" bodyfile="inc/base/BaseSpi.h" bodystart="133" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__diagnostics__t_1a62fc174451c883a8ccffdf2e28ba68dd" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_spi_diagnostics_t::is_bus_suspended</definition>
         <argsstring></argsstring>
         <name>is_bus_suspended</name>
@@ -35,7 +35,7 @@
         <location file="inc/base/BaseSpi.h" line="134" column="8" bodyfile="inc/base/BaseSpi.h" bodystart="134" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__diagnostics__t_1aafc662a2fdb16b2e2027ade0847cfcc1" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_spi_diagnostics_t::dma_enabled</definition>
         <argsstring></argsstring>
         <name>dma_enabled</name>

@@ -161,7 +161,7 @@
     </invincdepgraph>
     <sectiondef kind="typedef">
       <memberdef kind="typedef" id="EspTypes__Timer_8h_1a5cf2d8552051c31be03ff8540f070132" prot="public" static="no">
-        <type>esp_timer_handle_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">esp_timer_handle_t</ref></type>
         <definition>typedef esp_timer_handle_t hf_timer_handle_t</definition>
         <argsstring></argsstring>
         <name>hf_timer_handle_t</name>
@@ -174,7 +174,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_Timer.h" line="39" column="28" bodyfile="inc/mcu/esp32/utils/EspTypes_Timer.h" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="EspTypes__Timer_8h_1a53aa8d08743fbbf81611697190a95fd2" prot="public" static="no">
-        <type>uint64_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint64_t</ref></type>
         <definition>typedef uint64_t hf_timestamp_us_t</definition>
         <argsstring></argsstring>
         <name>hf_timestamp_us_t</name>
@@ -227,10 +227,10 @@
 <codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>These<sp/>types<sp/>are<sp/>used<sp/>internally<sp/>by<sp/>EspPeriodicTimer<sp/>implementation</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Timer<sp/>handle<sp/>type</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39" refid="EspTypes__Timer_8h_1a5cf2d8552051c31be03ff8540f070132" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>esp_timer_handle_t<sp/><ref refid="EspTypes__Timer_8h_1a5cf2d8552051c31be03ff8540f070132" kindref="member">hf_timer_handle_t</ref>;</highlight></codeline>
+<codeline lineno="39" refid="EspTypes__Timer_8h_1a5cf2d8552051c31be03ff8540f070132" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">esp_timer_handle_t</ref><sp/><ref refid="EspTypes__Timer_8h_1a5cf2d8552051c31be03ff8540f070132" kindref="member">hf_timer_handle_t</ref>;</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Timestamp<sp/>type</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42" refid="EspTypes__Timer_8h_1a53aa8d08743fbbf81611697190a95fd2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>uint64_t<sp/><ref refid="EspTypes__Timer_8h_1a53aa8d08743fbbf81611697190a95fd2" kindref="member">hf_timestamp_us_t</ref>;</highlight></codeline>
+<codeline lineno="42" refid="EspTypes__Timer_8h_1a53aa8d08743fbbf81611697190a95fd2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">uint64_t</ref><sp/><ref refid="EspTypes__Timer_8h_1a53aa8d08743fbbf81611697190a95fd2" kindref="member">hf_timestamp_us_t</ref>;</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>END<sp/>OF<sp/>ESPTIMER<sp/>TYPES<sp/>-<sp/>MINIMAL<sp/>AND<sp/>ESSENTIAL<sp/>ONLY</highlight><highlight class="normal"></highlight></codeline>

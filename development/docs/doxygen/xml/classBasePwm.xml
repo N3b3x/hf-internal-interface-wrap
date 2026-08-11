@@ -7,7 +7,7 @@
     <includes refid="BasePwm_8h" local="no">BasePwm.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classBasePwm_1a6506053d333fbed35bfea3ee3bd74693" prot="protected" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BasePwm::initialized_</definition>
         <argsstring></argsstring>
         <name>initialized_</name>
@@ -108,7 +108,7 @@
         <location file="inc/base/BasePwm.h" line="200" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1ab75191deb5eec96c9d1f99c7c981467d" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BasePwm::IsInitialized</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsInitialized</name>
@@ -126,7 +126,7 @@
         <location file="inc/base/BasePwm.h" line="206" column="9" bodyfile="inc/base/BasePwm.h" bodystart="206" bodyend="208"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1aa084e73274f2f1d1d67cff793eda1956" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BasePwm::EnsureInitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureInitialized</name>
@@ -146,7 +146,7 @@
         <location file="inc/base/BasePwm.h" line="216" column="8" bodyfile="inc/base/BasePwm.h" bodystart="216" bodyend="221"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a8d407e46dff5f6c1f9ae2b7d68ea674c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BasePwm::EnsureDeinitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureDeinitialized</name>
@@ -232,7 +232,7 @@
         <location file="inc/base/BasePwm.h" line="251" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1af2f490b963644ca04d4750b7d947b543" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BasePwm::IsChannelEnabled</definition>
         <argsstring>(hf_channel_id_t channel_id) const noexcept=0</argsstring>
         <name>IsChannelEnabled</name>
@@ -277,7 +277,7 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>duty_cycle</declname>
         </param>
         <briefdescription>
@@ -297,7 +297,7 @@
 <parametername>duty_cycle</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Duty cycle (0.0 - 1.0) </para>
+<para>Duty cycle (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">0.0</ref> - <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">1.0</ref>) </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -412,7 +412,7 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>phase_shift_degrees</declname>
         </param>
         <briefdescription>
@@ -562,7 +562,7 @@
         <location file="inc/base/BasePwm.h" line="327" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a7d04dac1cdbfc50884b24b912a52b877" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>virtual float BasePwm::GetDutyCycle</definition>
         <argsstring>(hf_channel_id_t channel_id) const noexcept=0</argsstring>
         <name>GetDutyCycle</name>
@@ -586,7 +586,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>Current duty cycle (0.0 - 1.0), or -1.0 on error </para>
+<simplesect kind="return"><para>Current duty cycle (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">0.0</ref> - <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">1.0</ref>), or <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">-1.0</ref> on error </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -734,13 +734,13 @@
     </sectiondef>
     <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classBasePwm_1a4cba17ff79ce18faaf8b402d2b212060" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
         <definition>static constexpr hf_u32_t BasePwm::DutyCycleToRaw</definition>
         <argsstring>(float duty_cycle, hf_u8_t resolution_bits) noexcept</argsstring>
         <name>DutyCycleToRaw</name>
         <qualifiedname>BasePwm::DutyCycleToRaw</qualifiedname>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>duty_cycle</declname>
         </param>
         <param>
@@ -756,7 +756,7 @@
 <parametername>duty_cycle</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Duty cycle (0.0 - 1.0) </para>
+<para>Duty cycle (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">0.0</ref> - <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">1.0</ref>) </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -777,7 +777,7 @@
         <location file="inc/base/BasePwm.h" line="399" column="29" bodyfile="inc/base/BasePwm.h" bodystart="399" bodyend="405"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a4a6d82b9da888f91bd66e91b24121add" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>constexpr float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>static constexpr float BasePwm::RawToDutyCycle</definition>
         <argsstring>(hf_u32_t raw_value, hf_u8_t resolution_bits) noexcept</argsstring>
         <name>RawToDutyCycle</name>
@@ -811,7 +811,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>Duty cycle (0.0 - 1.0) </para>
+<simplesect kind="return"><para>Duty cycle (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">0.0</ref> - <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">1.0</ref>) </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -820,13 +820,13 @@
         <location file="inc/base/BasePwm.h" line="413" column="26" bodyfile="inc/base/BasePwm.h" bodystart="413" bodyend="418"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a352f6ddcf05ff0e0ed5c606098b24987" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>constexpr bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>static constexpr bool BasePwm::IsValidDutyCycle</definition>
         <argsstring>(float duty_cycle) noexcept</argsstring>
         <name>IsValidDutyCycle</name>
         <qualifiedname>BasePwm::IsValidDutyCycle</qualifiedname>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>duty_cycle</declname>
         </param>
         <briefdescription>
@@ -842,7 +842,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>true if valid (0.0 - 1.0), false otherwise </para>
+<simplesect kind="return"><para>true if valid (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">0.0</ref> - <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">1.0</ref>), false otherwise </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -851,7 +851,7 @@
         <location file="inc/base/BasePwm.h" line="425" column="25" bodyfile="inc/base/BasePwm.h" bodystart="425" bodyend="427"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1afab866dbce084437c35b3189f4e2952e" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>constexpr bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>static constexpr bool BasePwm::IsValidFrequency</definition>
         <argsstring>(hf_u32_t frequency_hz, hf_u32_t min_freq_hz, hf_u32_t max_freq_hz) noexcept</argsstring>
         <name>IsValidFrequency</name>
@@ -906,7 +906,7 @@
         <location file="inc/base/BasePwm.h" line="436" column="25" bodyfile="inc/base/BasePwm.h" bodystart="436" bodyend="439"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a4aae2c9b79963e8648c9cf9e6e22bc11" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>constexpr bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>static constexpr bool BasePwm::IsValidRawDuty</definition>
         <argsstring>(hf_u32_t raw_value, hf_u8_t resolution_bits) noexcept</argsstring>
         <name>IsValidRawDuty</name>
@@ -949,7 +949,7 @@
         <location file="inc/base/BasePwm.h" line="447" column="25" bodyfile="inc/base/BasePwm.h" bodystart="447" bodyend="452"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a1cbbc012f5c178e574e2fbb3bee3baf3" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>constexpr float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>static constexpr float BasePwm::CalculateFrequencyAccuracy</definition>
         <argsstring>(hf_u32_t target_freq, hf_u32_t actual_freq) noexcept</argsstring>
         <name>CalculateFrequencyAccuracy</name>
@@ -983,7 +983,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>Accuracy percentage (0.0-1.0) </para>
+<simplesect kind="return"><para>Accuracy percentage (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">0.0</ref><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">-1.0</ref>) </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -992,13 +992,13 @@
         <location file="inc/base/BasePwm.h" line="460" column="26" bodyfile="inc/base/BasePwm.h" bodystart="460" bodyend="467"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a675192d0ee597e7603a8d6831a3c227c" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>constexpr float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>static constexpr float BasePwm::ClampDutyCycle</definition>
         <argsstring>(float duty_cycle) noexcept</argsstring>
         <name>ClampDutyCycle</name>
         <qualifiedname>BasePwm::ClampDutyCycle</qualifiedname>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>duty_cycle</declname>
         </param>
         <briefdescription>
@@ -1014,7 +1014,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>Clamped duty cycle (0.0 - 1.0) </para>
+<simplesect kind="return"><para>Clamped duty cycle (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">0.0</ref> - <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">1.0</ref>) </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -1045,7 +1045,7 @@
         <name>BasePwm</name>
         <qualifiedname>BasePwm::BasePwm</qualifiedname>
         <param>
-          <type>const <ref refid="classBasePwm" kindref="compound">BasePwm</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBasePwm" kindref="compound">BasePwm</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -1062,7 +1062,7 @@
         <name>operator=</name>
         <qualifiedname>BasePwm::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classBasePwm" kindref="compound">BasePwm</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBasePwm" kindref="compound">BasePwm</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>

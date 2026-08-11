@@ -7,7 +7,7 @@
     <includes refid="BaseSpi_8h" local="no">BaseSpi.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classBaseSpi_1aa74a4ab673ba37d72c3b7f98e963b9dd" prot="protected" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseSpi::initialized_</definition>
         <argsstring></argsstring>
         <name>initialized_</name>
@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="430" column="8" bodyfile="inc/base/BaseSpi.h" bodystart="430" bodyend="-1"/>
+        <location file="inc/base/BaseSpi.h" line="499" column="8" bodyfile="inc/base/BaseSpi.h" bodystart="499" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseSpi_1a801d2346551161f1d2e1b755501cc1e1" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__spi__statistics__t" kindref="compound">hf_spi_statistics_t</ref></type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="431" column="23" bodyfile="inc/base/BaseSpi.h" bodystart="431" bodyend="-1"/>
+        <location file="inc/base/BaseSpi.h" line="500" column="23" bodyfile="inc/base/BaseSpi.h" bodystart="500" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseSpi_1aa215f89886b0839c13e94f52e9725444" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__spi__diagnostics__t" kindref="compound">hf_spi_diagnostics_t</ref></type>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="432" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="432" bodyend="-1"/>
+        <location file="inc/base/BaseSpi.h" line="501" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="501" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -75,7 +75,7 @@
         <name>BaseSpi</name>
         <qualifiedname>BaseSpi::BaseSpi</qualifiedname>
         <param>
-          <type>const <ref refid="classBaseSpi" kindref="compound">BaseSpi</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBaseSpi" kindref="compound">BaseSpi</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -92,7 +92,7 @@
         <name>operator=</name>
         <qualifiedname>BaseSpi::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classBaseSpi" kindref="compound">BaseSpi</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBaseSpi" kindref="compound">BaseSpi</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -137,7 +137,7 @@
         <location file="inc/base/BaseSpi.h" line="195" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a6e74ff977b2bfd381f25f2880387e5ca" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseSpi::EnsureInitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureInitialized</name>
@@ -155,7 +155,7 @@
         <location file="inc/base/BaseSpi.h" line="201" column="8" bodyfile="inc/base/BaseSpi.h" bodystart="201" bodyend="206"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1acd991c97d9e67d35af31a0594dd5357a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseSpi::EnsureDeinitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureDeinitialized</name>
@@ -173,7 +173,7 @@
         <location file="inc/base/BaseSpi.h" line="212" column="8" bodyfile="inc/base/BaseSpi.h" bodystart="212" bodyend="217"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a5cf6e0c4a2edba09319834e334ff2a8b" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseSpi::IsInitialized</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsInitialized</name>
@@ -191,7 +191,7 @@
         <location file="inc/base/BaseSpi.h" line="223" column="9" bodyfile="inc/base/BaseSpi.h" bodystart="223" bodyend="225"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a0ee4d13f589e319c6fbb3d5bb6492784" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseSpi::Initialize</definition>
         <argsstring>() noexcept=0</argsstring>
         <name>Initialize</name>
@@ -213,7 +213,7 @@
         <location file="inc/base/BaseSpi.h" line="236" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a20608abd3e6dc4335dc14bc11d3016e6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseSpi::Deinitialize</definition>
         <argsstring>() noexcept=0</argsstring>
         <name>Deinitialize</name>
@@ -243,7 +243,7 @@
         <reimplementedby refid="classEspSpiDevice_1ac7432fd2630032d20f8d2f8388f6e1a5">Transfer</reimplementedby>
         <reimplementedby refid="classStmSpiDevice_1aac96933b7c2db6fa0e675ee472e91ec5">Transfer</reimplementedby>
         <param>
-          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
           <declname>tx_data</declname>
         </param>
         <param>
@@ -308,8 +308,128 @@
         </inbodydescription>
         <location file="inc/base/BaseSpi.h" line="255" column="24"/>
       </memberdef>
+      <memberdef kind="function" id="classBaseSpi_1add06cca20daa53d05d3c2f3c1c8da33b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
+        <definition>virtual void BaseSpi::IdleChipSelect</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>IdleChipSelect</name>
+        <qualifiedname>BaseSpi::IdleChipSelect</qualifiedname>
+        <reimplementedby refid="classStmSpiDevice_1abfe53cdc8e2f9b6d15ec1394720c42d4">IdleChipSelect</reimplementedby>
+        <briefdescription>
+<para>Force soft-CS to the idle (deasserted) level without a transfer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Shared multi-slave buses call this on peer devices before a mode-sensitive identity burst so a stuck-low CS cannot contend on MISO. Default: no-op (hardware-NSS / single-slave backends). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="265" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="265" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseSpi_1ace8d6c66a76520de526129afb5683f09" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
+        <definition>virtual void BaseSpi::HoldChipSelectMs</definition>
+        <argsstring>(hf_u32_t) noexcept</argsstring>
+        <name>HoldChipSelectMs</name>
+        <qualifiedname>BaseSpi::HoldChipSelectMs</qualifiedname>
+        <reimplementedby refid="classStmSpiDevice_1a439c9c2f21d056f45419e88d0800016e">HoldChipSelectMs</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        </param>
+        <briefdescription>
+<para>Assert soft-CS for <computeroutput>ms</computeroutput> milliseconds (logic-analyzer / pad proof). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Shared-bus implementations should take the bus lock, idle peer CS lines, hold this CS active, then release. Default: no-op. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="273" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="273" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseSpi_1acc9c25212d020efaa0a40b42cdc8e7f2" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
+        <definition>virtual bool BaseSpi::SetTransferMode</definition>
+        <argsstring>(hf_u8_t) noexcept</argsstring>
+        <name>SetTransferMode</name>
+        <qualifiedname>BaseSpi::SetTransferMode</qualifiedname>
+        <reimplementedby refid="classStmSpiDevice_1acff2fb15de9bd32196e38cccd53a5c0e">SetTransferMode</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        </param>
+        <briefdescription>
+<para>Select CPOL/CPHA mode for the next soft-CS transfer (0..3). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Shared multi-slave buses apply this on the next <ref refid="classBaseSpi_1a7951cfcc329ab963764013ebe47288c0" kindref="member">Transfer</ref> via SPE rewrite. Default: unsupported. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="280" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="280" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseSpi_1acc89f100b746947b8828973abfb524cf" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
+        <definition>virtual bool BaseSpi::SetIoSwap</definition>
+        <argsstring>(bool) noexcept</argsstring>
+        <name>SetIoSwap</name>
+        <qualifiedname>BaseSpi::SetIoSwap</qualifiedname>
+        <reimplementedby refid="classStmSpiDevice_1abdd2402b4741ed763d807dc505595a63">SetIoSwap</reimplementedby>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
+        </param>
+        <briefdescription>
+<para>Swap MOSI↔MISO AF on the next transfer (STM32 SPI CFG2 IOSWP). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Useful when SDI/SDO leads may be crossed on long wiring. Default: unsupported. Callers must restore <computeroutput>false</computeroutput> after a failed identity sweep so Mode0 peers keep the normal pin map. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="288" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="288" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseSpi_1ae3f8cbf5ed12640919d1e263c6b4b544" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref></type>
+        <definition>virtual hf_spi_err_t BaseSpi::TransferChain</definition>
+        <argsstring>(const hf_u8_t *const *tx_frames, hf_u8_t *const *rx_frames, hf_u16_t frame_length, hf_u16_t frame_count, hf_u32_t inter_frame_gap_us, hf_u32_t timeout_ms=0) noexcept</argsstring>
+        <name>TransferChain</name>
+        <qualifiedname>BaseSpi::TransferChain</qualifiedname>
+        <reimplementedby refid="classStmSpiDevice_1a0460008b43be1249a3268280b877c7b1">TransferChain</reimplementedby>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *<ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> *</type>
+          <declname>tx_frames</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *<ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> *</type>
+          <declname>rx_frames</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>frame_length</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>frame_count</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>inter_frame_gap_us</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Run <computeroutput>frame_count</computeroutput> soft-CS frames in one ownership window. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Each frame asserts CS, transfers <computeroutput>frame_length</computeroutput> bytes, then deasserts CS. Optional <computeroutput>inter_frame_gap_us</computeroutput> is applied between frames (after CS release).</para>
+<para>Default implementation calls <ref refid="classBaseSpi_1a7951cfcc329ab963764013ebe47288c0" kindref="member">Transfer</ref> sequentially (each call may take/release the bus lock). Shared multi-slave buses should override so a pipelined protocol (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">e.g</ref>. TLE92466ED command + dummy read) cannot be interleaved with another device&apos;s mode/CS cycle. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="301" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="301" bodyend="325"/>
+      </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a6dd381f6a4423927bb59adb4395074ed" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>const void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>virtual const void * BaseSpi::GetDeviceConfig</definition>
         <argsstring>() const noexcept=0</argsstring>
         <name>GetDeviceConfig</name>
@@ -326,10 +446,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="262" column="22"/>
+        <location file="inc/base/BaseSpi.h" line="331" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a00e8995f1ccc7a5ab078e7b4c19ffa95" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseSpi::Open</definition>
         <argsstring>() noexcept</argsstring>
         <name>Open</name>
@@ -344,10 +464,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="272" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="272" bodyend="274"/>
+        <location file="inc/base/BaseSpi.h" line="341" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="341" bodyend="343"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a88b3ba81405134a3566a01ca170bf8bb" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseSpi::Close</definition>
         <argsstring>() noexcept</argsstring>
         <name>Close</name>
@@ -362,16 +482,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="280" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="280" bodyend="286"/>
+        <location file="inc/base/BaseSpi.h" line="349" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="349" bodyend="355"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a949d019c6b5d68d6f3949a63316bfcd0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseSpi::Transfer</definition>
         <argsstring>(const hf_u8_t *tx_data, hf_u8_t *rx_data, hf_u16_t length) noexcept</argsstring>
         <name>Transfer</name>
         <qualifiedname>BaseSpi::Transfer</qualifiedname>
         <param>
-          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
           <declname>tx_data</declname>
         </param>
         <param>
@@ -417,7 +537,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="295" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="295" bodyend="300"/>
+        <location file="inc/base/BaseSpi.h" line="364" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="364" bodyend="369"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a9f84c77a20232f43082b4a493c9baaf2" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref></type>
@@ -426,7 +546,7 @@
         <name>Write</name>
         <qualifiedname>BaseSpi::Write</qualifiedname>
         <param>
-          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
           <declname>data</declname>
         </param>
         <param>
@@ -473,7 +593,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="309" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="309" bodyend="312"/>
+        <location file="inc/base/BaseSpi.h" line="378" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="378" bodyend="381"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a64493eb569f32c72a0ee8b1cbf90337d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref></type>
@@ -529,16 +649,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="321" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="321" bodyend="323"/>
+        <location file="inc/base/BaseSpi.h" line="390" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="390" bodyend="392"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a5c378f3322713d058a08b8b205ad821e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseSpi::Write</definition>
         <argsstring>(const hf_u8_t *data, hf_u16_t length) noexcept</argsstring>
         <name>Write</name>
         <qualifiedname>BaseSpi::Write</qualifiedname>
         <param>
-          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
           <declname>data</declname>
         </param>
         <param>
@@ -572,10 +692,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="331" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="331" bodyend="336"/>
+        <location file="inc/base/BaseSpi.h" line="400" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="400" bodyend="405"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1af49a8f4a53f964975a4d4645b875e5d1" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseSpi::Read</definition>
         <argsstring>(hf_u8_t *data, hf_u16_t length) noexcept</argsstring>
         <name>Read</name>
@@ -615,10 +735,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="344" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="344" bodyend="349"/>
+        <location file="inc/base/BaseSpi.h" line="413" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="413" bodyend="418"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a31a33d8d816ce7189982455bed742905" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseSpi::WriteByte</definition>
         <argsstring>(hf_u8_t data) noexcept</argsstring>
         <name>WriteByte</name>
@@ -646,10 +766,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="356" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="356" bodyend="358"/>
+        <location file="inc/base/BaseSpi.h" line="425" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="425" bodyend="427"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1aef966769cc28e0e5f44e627a4a59602b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseSpi::ReadByte</definition>
         <argsstring>(hf_u8_t &amp;data) noexcept</argsstring>
         <name>ReadByte</name>
@@ -677,10 +797,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="365" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="365" bodyend="367"/>
+        <location file="inc/base/BaseSpi.h" line="434" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="434" bodyend="436"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1ac4b29e0ea6f6dd6d4c514e8d24ca13d2" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseSpi::TransferByte</definition>
         <argsstring>(hf_u8_t tx_data, hf_u8_t &amp;rx_data) noexcept</argsstring>
         <name>TransferByte</name>
@@ -720,7 +840,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="375" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="375" bodyend="377"/>
+        <location file="inc/base/BaseSpi.h" line="444" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="444" bodyend="446"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a7f63d12c1a0fad18ede02f8a7f2ab6d6" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref></type>
@@ -740,7 +860,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="388" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="388" bodyend="391"/>
+        <location file="inc/base/BaseSpi.h" line="457" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="457" bodyend="460"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a245c1518757648334ad2d2edd459c2f9" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref></type>
@@ -760,7 +880,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="398" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="398" bodyend="401"/>
+        <location file="inc/base/BaseSpi.h" line="467" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="467" bodyend="470"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a034862a5015ab8d5bb10ddebfabdd7d6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref></type>
@@ -791,7 +911,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="408" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="408" bodyend="411"/>
+        <location file="inc/base/BaseSpi.h" line="477" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="477" bodyend="480"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1af87f59a0d9b50a13294d72f2c123fdda" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref></type>
@@ -822,7 +942,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="418" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="418" bodyend="421"/>
+        <location file="inc/base/BaseSpi.h" line="487" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="487" bodyend="490"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -842,7 +962,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="428" column="3" bodyfile="inc/base/BaseSpi.h" bodystart="428" bodyend="428"/>
+        <location file="inc/base/BaseSpi.h" line="497" column="3" bodyfile="inc/base/BaseSpi.h" bodystart="497" bodyend="497"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -913,7 +1033,7 @@
         <link refid="structhf__spi__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/base/BaseSpi.h" line="184" column="1" bodyfile="inc/base/BaseSpi.h" bodystart="184" bodyend="433"/>
+    <location file="inc/base/BaseSpi.h" line="184" column="1" bodyfile="inc/base/BaseSpi.h" bodystart="184" bodyend="502"/>
     <listofallmembers>
       <member refid="classBaseSpi_1abf33121948481f9001f6d18042da61bb" prot="public" virt="non-virtual"><scope>BaseSpi</scope><name>BaseSpi</name></member>
       <member refid="classBaseSpi_1a3e7a45c66f5c951d6f023ad361e00dd2" prot="public" virt="non-virtual"><scope>BaseSpi</scope><name>BaseSpi</name></member>
@@ -926,6 +1046,8 @@
       <member refid="classBaseSpi_1a6dd381f6a4423927bb59adb4395074ed" prot="public" virt="pure-virtual"><scope>BaseSpi</scope><name>GetDeviceConfig</name></member>
       <member refid="classBaseSpi_1af87f59a0d9b50a13294d72f2c123fdda" prot="public" virt="virtual"><scope>BaseSpi</scope><name>GetDiagnostics</name></member>
       <member refid="classBaseSpi_1a034862a5015ab8d5bb10ddebfabdd7d6" prot="public" virt="virtual"><scope>BaseSpi</scope><name>GetStatistics</name></member>
+      <member refid="classBaseSpi_1ace8d6c66a76520de526129afb5683f09" prot="public" virt="virtual"><scope>BaseSpi</scope><name>HoldChipSelectMs</name></member>
+      <member refid="classBaseSpi_1add06cca20daa53d05d3c2f3c1c8da33b" prot="public" virt="virtual"><scope>BaseSpi</scope><name>IdleChipSelect</name></member>
       <member refid="classBaseSpi_1a0ee4d13f589e319c6fbb3d5bb6492784" prot="public" virt="pure-virtual"><scope>BaseSpi</scope><name>Initialize</name></member>
       <member refid="classBaseSpi_1aa74a4ab673ba37d72c3b7f98e963b9dd" prot="protected" virt="non-virtual"><scope>BaseSpi</scope><name>initialized_</name></member>
       <member refid="classBaseSpi_1a5cf6e0c4a2edba09319834e334ff2a8b" prot="public" virt="non-virtual"><scope>BaseSpi</scope><name>IsInitialized</name></member>
@@ -937,10 +1059,13 @@
       <member refid="classBaseSpi_1aef966769cc28e0e5f44e627a4a59602b" prot="public" virt="virtual"><scope>BaseSpi</scope><name>ReadByte</name></member>
       <member refid="classBaseSpi_1a245c1518757648334ad2d2edd459c2f9" prot="public" virt="virtual"><scope>BaseSpi</scope><name>ResetDiagnostics</name></member>
       <member refid="classBaseSpi_1a7f63d12c1a0fad18ede02f8a7f2ab6d6" prot="public" virt="virtual"><scope>BaseSpi</scope><name>ResetStatistics</name></member>
+      <member refid="classBaseSpi_1acc89f100b746947b8828973abfb524cf" prot="public" virt="virtual"><scope>BaseSpi</scope><name>SetIoSwap</name></member>
+      <member refid="classBaseSpi_1acc9c25212d020efaa0a40b42cdc8e7f2" prot="public" virt="virtual"><scope>BaseSpi</scope><name>SetTransferMode</name></member>
       <member refid="classBaseSpi_1a801d2346551161f1d2e1b755501cc1e1" prot="protected" virt="non-virtual"><scope>BaseSpi</scope><name>statistics_</name></member>
       <member refid="classBaseSpi_1a7951cfcc329ab963764013ebe47288c0" prot="public" virt="pure-virtual"><scope>BaseSpi</scope><name>Transfer</name></member>
       <member refid="classBaseSpi_1a949d019c6b5d68d6f3949a63316bfcd0" prot="public" virt="virtual"><scope>BaseSpi</scope><name>Transfer</name></member>
       <member refid="classBaseSpi_1ac4b29e0ea6f6dd6d4c514e8d24ca13d2" prot="public" virt="virtual"><scope>BaseSpi</scope><name>TransferByte</name></member>
+      <member refid="classBaseSpi_1ae3f8cbf5ed12640919d1e263c6b4b544" prot="public" virt="virtual"><scope>BaseSpi</scope><name>TransferChain</name></member>
       <member refid="classBaseSpi_1a9f84c77a20232f43082b4a493c9baaf2" prot="public" virt="virtual"><scope>BaseSpi</scope><name>Write</name></member>
       <member refid="classBaseSpi_1a5c378f3322713d058a08b8b205ad821e" prot="public" virt="virtual"><scope>BaseSpi</scope><name>Write</name></member>
       <member refid="classBaseSpi_1a31a33d8d816ce7189982455bed742905" prot="public" virt="virtual"><scope>BaseSpi</scope><name>WriteByte</name></member>

@@ -4,7 +4,7 @@
     <compoundname>anonymous_namespace{StmCan.cpp}::BxCanRxHeader</compoundname>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a6c0eb104ab6fa161db608c242559aede" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanRxHeader::StdId</definition>
         <argsstring></argsstring>
         <name>StdId</name>
@@ -18,7 +18,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="73" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a7fd86751986a05df29586efb8d79df15" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanRxHeader::ExtId</definition>
         <argsstring></argsstring>
         <name>ExtId</name>
@@ -32,7 +32,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="74" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a2ff3fffe32dffca437d43c05d94cd67c" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanRxHeader::IDE</definition>
         <argsstring></argsstring>
         <name>IDE</name>
@@ -46,7 +46,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="75" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a762a02c31d08072b81aa41b47cf2116a" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanRxHeader::RTR</definition>
         <argsstring></argsstring>
         <name>RTR</name>
@@ -60,7 +60,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="76" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a32ffe1690e3cc5456bc40771bcbb9814" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanRxHeader::DLC</definition>
         <argsstring></argsstring>
         <name>DLC</name>
@@ -74,7 +74,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="77" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a5c02447d6b879b2f524ef231b8f9aa2d" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanRxHeader::FilterMatchIndex</definition>
         <argsstring></argsstring>
         <name>FilterMatchIndex</name>
@@ -88,7 +88,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="78" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader_1a828966768683497b10c573def6b49c0a" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanRxHeader::Timestamp</definition>
         <argsstring></argsstring>
         <name>Timestamp</name>

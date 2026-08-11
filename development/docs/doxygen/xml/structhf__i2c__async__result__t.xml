@@ -20,7 +20,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="184" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="184" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__async__result__t_1a48f766f41df8f6b54cd6793b236c7a50" prot="public" static="no" mutable="no">
-        <type>size_t</type>
+        <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>size_t hf_i2c_async_result_t::bytes_transferred</definition>
         <argsstring></argsstring>
         <name>bytes_transferred</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="185" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="185" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__async__result__t_1a40646d396e1aa0bd4e897a7cc950dc8e" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_i2c_async_result_t::operation_id</definition>
         <argsstring></argsstring>
         <name>operation_id</name>
@@ -50,7 +50,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="186" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="186" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__async__result__t_1a7c063352d82996d1aa22e341c8d6de7a" prot="public" static="no" mutable="no">
-        <type>uint64_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint64_t</ref></type>
         <definition>uint64_t hf_i2c_async_result_t::completion_time_us</definition>
         <argsstring></argsstring>
         <name>completion_time_us</name>

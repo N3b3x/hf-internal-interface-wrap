@@ -125,13 +125,13 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a68ff4dc59cc386debc230a69c2b842e6" id="r_a68ff4dc59cc386debc230a69c2b842e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68ff4dc59cc386debc230a69c2b842e6">flush_interval_ms</a></td></tr>
 <tr class="memdesc:a68ff4dc59cc386debc230a69c2b842e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush interval in milliseconds.  <br /></td></tr>
 <tr class="separator:a68ff4dc59cc386debc230a69c2b842e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37cb39bba078b77ebda93c112f51c446" id="r_a37cb39bba078b77ebda93c112f51c446"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37cb39bba078b77ebda93c112f51c446">enable_thread_safety</a></td></tr>
+<tr class="memitem:a37cb39bba078b77ebda93c112f51c446" id="r_a37cb39bba078b77ebda93c112f51c446"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37cb39bba078b77ebda93c112f51c446">enable_thread_safety</a></td></tr>
 <tr class="memdesc:a37cb39bba078b77ebda93c112f51c446"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable thread safety.  <br /></td></tr>
 <tr class="separator:a37cb39bba078b77ebda93c112f51c446"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37b0e76820ae9a9800d3053cde8ecf89" id="r_a37b0e76820ae9a9800d3053cde8ecf89"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37b0e76820ae9a9800d3053cde8ecf89">enable_performance_monitoring</a></td></tr>
+<tr class="memitem:a37b0e76820ae9a9800d3053cde8ecf89" id="r_a37b0e76820ae9a9800d3053cde8ecf89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37b0e76820ae9a9800d3053cde8ecf89">enable_performance_monitoring</a></td></tr>
 <tr class="memdesc:a37b0e76820ae9a9800d3053cde8ecf89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable performance monitoring.  <br /></td></tr>
 <tr class="separator:a37b0e76820ae9a9800d3053cde8ecf89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52ba248a018c6aaf368bdea56a67c447" id="r_a52ba248a018c6aaf368bdea56a67c447"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(const char *, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52ba248a018c6aaf368bdea56a67c447">custom_output_callback</a> )</td></tr>
+<tr class="memitem:a52ba248a018c6aaf368bdea56a67c447" id="r_a52ba248a018c6aaf368bdea56a67c447"><td class="memItemLeft" align="right" valign="top">std::function&lt; <a class="el" href="classSoftChipSelectGuard.html">void</a>(<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">char</a> *, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52ba248a018c6aaf368bdea56a67c447">custom_output_callback</a> )</td></tr>
 <tr class="memdesc:a52ba248a018c6aaf368bdea56a67c447"><td class="mdescLeft">&#160;</td><td class="mdescRight">Custom output callback.  <br /></td></tr>
 <tr class="separator:a52ba248a018c6aaf368bdea56a67c447"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -161,7 +161,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::function&lt;void(const char*, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>) hf_logger_config_t::custom_output_callback) </td>
+          <td class="memname">std::function&lt;<a class="el" href="classSoftChipSelectGuard.html">void</a>(<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">char</a>*, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>) hf_logger_config_t::custom_output_callback) </td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -193,7 +193,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool hf_logger_config_t::enable_performance_monitoring</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> hf_logger_config_t::enable_performance_monitoring</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -209,7 +209,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool hf_logger_config_t::enable_thread_safety</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> hf_logger_config_t::enable_thread_safety</td>
         </tr>
       </table>
 </div><div class="memdoc">

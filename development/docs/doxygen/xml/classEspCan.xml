@@ -6,7 +6,7 @@
     <includes refid="EspCan_8h" local="no">EspCan.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" prot="private" static="no" mutable="no">
-        <type>const <ref refid="structhf__esp__can__config__t" kindref="compound">hf_esp_can_config_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__esp__can__config__t" kindref="compound">hf_esp_can_config_t</ref></type>
         <definition>const hf_esp_can_config_t EspCan::config_</definition>
         <argsstring></argsstring>
         <name>config_</name>
@@ -21,7 +21,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="510" column="29" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="510" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a8f4ec03bb515d5543808e3c3a076621e" prot="private" static="no" mutable="no">
-        <type>std::atomic&lt; bool &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref> &gt;</type>
         <definition>std::atomic&lt;bool&gt; EspCan::is_enabled_</definition>
         <argsstring></argsstring>
         <name>is_enabled_</name>
@@ -36,7 +36,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="513" column="15" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="513" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a9268e3542c090d15173658df7154e683" prot="private" static="no" mutable="no">
-        <type>std::atomic&lt; bool &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref> &gt;</type>
         <definition>std::atomic&lt;bool&gt; EspCan::is_recovering_</definition>
         <argsstring></argsstring>
         <name>is_recovering_</name>
@@ -96,7 +96,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="519" column="25" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="519" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" prot="private" static="no" mutable="no">
-        <type>twai_node_handle_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">twai_node_handle_t</ref></type>
         <definition>twai_node_handle_t EspCan::twai_node_handle_</definition>
         <argsstring></argsstring>
         <name>twai_node_handle_</name>
@@ -116,7 +116,7 @@
         <argsstring></argsstring>
         <name>receive_cb_</name>
         <qualifiedname>EspCan::receive_cb_</qualifiedname>
-        <initializer>{nullptr}</initializer>
+        <initializer>{<ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref>}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -126,12 +126,12 @@
         <location file="inc/mcu/esp32/EspCan.h" line="525" column="33" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="525" bodyend="525"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a2b72b11c02ef567f4e37915ad452dbf2" prot="private" static="no" mutable="no">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void* EspCan::receive_ud_</definition>
         <argsstring></argsstring>
         <name>receive_ud_</name>
         <qualifiedname>EspCan::receive_ud_</qualifiedname>
-        <initializer>= nullptr</initializer>
+        <initializer>= <ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -146,7 +146,7 @@
         <argsstring></argsstring>
         <name>error_cb_</name>
         <qualifiedname>EspCan::error_cb_</qualifiedname>
-        <initializer>{nullptr}</initializer>
+        <initializer>{<ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref>}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -156,12 +156,12 @@
         <location file="inc/mcu/esp32/EspCan.h" line="528" column="31" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="528" bodyend="528"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a4df3001f2b8ab4366f0fa38ca3ec47a8" prot="private" static="no" mutable="no">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void* EspCan::error_ud_</definition>
         <argsstring></argsstring>
         <name>error_ud_</name>
         <qualifiedname>EspCan::error_ud_</qualifiedname>
-        <initializer>= nullptr</initializer>
+        <initializer>= <ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -176,7 +176,7 @@
         <argsstring></argsstring>
         <name>state_cb_</name>
         <qualifiedname>EspCan::state_cb_</qualifiedname>
-        <initializer>{nullptr}</initializer>
+        <initializer>{<ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref>}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -186,12 +186,12 @@
         <location file="inc/mcu/esp32/EspCan.h" line="531" column="31" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="531" bodyend="531"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a5d0e83f62935d29002249184cdcb5d02" prot="private" static="no" mutable="no">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void* EspCan::state_ud_</definition>
         <argsstring></argsstring>
         <name>state_ud_</name>
         <qualifiedname>EspCan::state_ud_</qualifiedname>
-        <initializer>= nullptr</initializer>
+        <initializer>= <ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -206,7 +206,7 @@
         <argsstring></argsstring>
         <name>tx_cb_</name>
         <qualifiedname>EspCan::tx_cb_</qualifiedname>
-        <initializer>{nullptr}</initializer>
+        <initializer>{<ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref>}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -216,12 +216,12 @@
         <location file="inc/mcu/esp32/EspCan.h" line="534" column="28" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="534" bodyend="534"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1ab431b6af90e985b67e4cc2d8c5fbd0b4" prot="private" static="no" mutable="no">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void* EspCan::tx_ud_</definition>
         <argsstring></argsstring>
         <name>tx_ud_</name>
         <qualifiedname>EspCan::tx_ud_</qualifiedname>
-        <initializer>= nullptr</initializer>
+        <initializer>= <ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -291,7 +291,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="543" column="30" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="543" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1acb5ae2ddfce72a30d1bd14b721f1faab" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspCan::filter_configured_</definition>
         <argsstring></argsstring>
         <name>filter_configured_</name>
@@ -314,7 +314,7 @@
         <name>EspCan</name>
         <qualifiedname>EspCan::EspCan</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__esp__can__config__t" kindref="compound">hf_esp_can_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__esp__can__config__t" kindref="compound">hf_esp_can_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -401,11 +401,11 @@
         <qualifiedname>EspCan::SendMessage</qualifiedname>
         <reimplements refid="classBaseCan_1ac3ec4c6e8a5d45cbcbb4266d58f0faf8">SendMessage</reimplements>
         <param>
-          <type>const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
           <declname>message</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_ms</declname>
           <defval>1000</defval>
         </param>
@@ -450,7 +450,7 @@
           <declname>message</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_ms</declname>
           <defval>0</defval>
         </param>
@@ -477,7 +477,7 @@
 </parameterlist>
 <simplesect kind="return"><para>hf_can_err_t error code </para>
 </simplesect>
-<simplesect kind="note"><para>Callback-based reception is preferred for ESP-IDF v5.5+ </para>
+<simplesect kind="note"><para>Callback-based reception is preferred for ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+ </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -518,7 +518,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="265" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="296" bodyend="299"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a6c7eea2a0ccea5125cafb3b26af6c5ff" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspCan::ClearReceiveCallback</definition>
         <argsstring>() noexcept override</argsstring>
         <name>ClearReceiveCallback</name>
@@ -544,9 +544,9 @@
           <declname>cb</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -557,7 +557,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="277" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="310" bodyend="318"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1af0cad1fa0e4c312eebcc5d1b938876df" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspCan::ClearReceiveCallbackEx</definition>
         <argsstring>() noexcept</argsstring>
         <name>ClearReceiveCallbackEx</name>
@@ -581,9 +581,9 @@
           <declname>cb</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -594,7 +594,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="282" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="325" bodyend="332"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a077cc96263ea79483559055841d873d6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspCan::ClearErrorCallback</definition>
         <argsstring>() noexcept</argsstring>
         <name>ClearErrorCallback</name>
@@ -618,9 +618,9 @@
           <declname>cb</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -631,7 +631,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="286" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="339" bodyend="347"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a86db68ed58d7c1791683151cb9a49260" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspCan::ClearStateChangeCallback</definition>
         <argsstring>() noexcept</argsstring>
         <name>ClearStateChangeCallback</name>
@@ -655,9 +655,9 @@
           <declname>cb</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -668,7 +668,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="291" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="354" bodyend="361"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a335b99de3bbf289de667f843ba83d31d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspCan::ClearTxCompleteCallback</definition>
         <argsstring>() noexcept</argsstring>
         <name>ClearTxCompleteCallback</name>
@@ -740,17 +740,17 @@
         <qualifiedname>EspCan::SetAcceptanceFilter</qualifiedname>
         <reimplements refid="classBaseCan_1addc8594d5ac480f4aa2ac03b6f08d06c">SetAcceptanceFilter</reimplements>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>id</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>mask</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>extended</declname>
-          <defval>false</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">false</ref></defval>
         </param>
         <briefdescription>
 <para>Set acceptance filter for incoming messages. </para>
@@ -898,7 +898,7 @@
         <name>ConfigureAdvancedTiming</name>
         <qualifiedname>EspCan::ConfigureAdvancedTiming</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__esp__can__timing__config__t" kindref="compound">hf_esp_can_timing_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__esp__can__timing__config__t" kindref="compound">hf_esp_can_timing_config_t</ref> &amp;</type>
           <declname>timing_config</declname>
         </param>
         <briefdescription>
@@ -929,7 +929,7 @@
         <name>ConfigureAdvancedFilter</name>
         <qualifiedname>EspCan::ConfigureAdvancedFilter</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__esp__can__filter__config__t" kindref="compound">hf_esp_can_filter_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__esp__can__filter__config__t" kindref="compound">hf_esp_can_filter_config_t</ref> &amp;</type>
           <declname>filter_config</declname>
         </param>
         <briefdescription>
@@ -978,7 +978,7 @@
         <name>GetNodeInfo</name>
         <qualifiedname>EspCan::GetNodeInfo</qualifiedname>
         <param>
-          <type>twai_node_record_t &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">twai_node_record_t</ref> &amp;</type>
           <declname>node_info</declname>
         </param>
         <briefdescription>
@@ -1003,22 +1003,22 @@
         <location file="inc/mcu/esp32/EspCan.h" line="377" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="727" bodyend="740"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a1c80557f426bd1c1b78cd0a7e0bbb8ee" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t EspCan::SendMessageBatch</definition>
         <argsstring>(const hf_can_message_t *messages, uint32_t count, uint32_t timeout_ms=1000) noexcept</argsstring>
         <name>SendMessageBatch</name>
         <qualifiedname>EspCan::SendMessageBatch</qualifiedname>
         <reimplements refid="classBaseCan_1a6aa06ee8540daad6ffef529802cb2334">SendMessageBatch</reimplements>
         <param>
-          <type>const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> *</type>
           <declname>messages</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>count</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_ms</declname>
           <defval>1000</defval>
         </param>
@@ -1062,25 +1062,25 @@
     </sectiondef>
     <sectiondef kind="private-static-func">
       <memberdef kind="function" id="classEspCan_1a105e73dbb299a49c55dd044b4a30587e" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspCan::InternalReceiveCallback</definition>
         <argsstring>(twai_node_handle_t handle, const twai_rx_done_event_data_t *event_data, void *user_ctx) noexcept</argsstring>
         <name>InternalReceiveCallback</name>
         <qualifiedname>EspCan::InternalReceiveCallback</qualifiedname>
         <param>
-          <type>twai_node_handle_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">twai_node_handle_t</ref></type>
           <declname>handle</declname>
         </param>
         <param>
-          <type>const twai_rx_done_event_data_t *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">twai_rx_done_event_data_t</ref> *</type>
           <declname>event_data</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_ctx</declname>
         </param>
         <briefdescription>
-<para>Internal receive event callback for ESP-IDF v5.5 event system. </para>
+<para>Internal receive event callback for ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref> event system. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -1117,21 +1117,21 @@
         <location file="inc/mcu/esp32/EspCan.h" line="401" column="15" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="766" bodyend="801"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a47f76d6f0c8f8e313709d7a6eadaa70f" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspCan::InternalErrorCallback</definition>
         <argsstring>(twai_node_handle_t handle, const twai_error_event_data_t *event_data, void *user_ctx) noexcept</argsstring>
         <name>InternalErrorCallback</name>
         <qualifiedname>EspCan::InternalErrorCallback</qualifiedname>
         <param>
-          <type>twai_node_handle_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">twai_node_handle_t</ref></type>
           <declname>handle</declname>
         </param>
         <param>
-          <type>const twai_error_event_data_t *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">twai_error_event_data_t</ref> *</type>
           <declname>event_data</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_ctx</declname>
         </param>
         <briefdescription>
@@ -1172,21 +1172,21 @@
         <location file="inc/mcu/esp32/EspCan.h" line="412" column="15" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="803" bodyend="817"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1aa6f1d7c5c5ad82b55ae5c83076ed0013" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspCan::InternalStateChangeCallback</definition>
         <argsstring>(twai_node_handle_t handle, const twai_state_change_event_data_t *event_data, void *user_ctx) noexcept</argsstring>
         <name>InternalStateChangeCallback</name>
         <qualifiedname>EspCan::InternalStateChangeCallback</qualifiedname>
         <param>
-          <type>twai_node_handle_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">twai_node_handle_t</ref></type>
           <declname>handle</declname>
         </param>
         <param>
-          <type>const twai_state_change_event_data_t *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">twai_state_change_event_data_t</ref> *</type>
           <declname>event_data</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_ctx</declname>
         </param>
         <briefdescription>
@@ -1235,15 +1235,15 @@
         <name>ConvertToTwaiFrame</name>
         <qualifiedname>EspCan::ConvertToTwaiFrame</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
           <declname>hf_message</declname>
         </param>
         <param>
-          <type>twai_frame_t &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">twai_frame_t</ref> &amp;</type>
           <declname>twai_frame</declname>
         </param>
         <briefdescription>
-<para>Convert HF CAN message to ESP-IDF v5.5 TWAI frame. </para>
+<para>Convert HF CAN message to ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref> TWAI frame. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -1278,7 +1278,7 @@
         <name>ConvertFromTwaiFrame</name>
         <qualifiedname>EspCan::ConvertFromTwaiFrame</qualifiedname>
         <param>
-          <type>const twai_frame_t &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">twai_frame_t</ref> &amp;</type>
           <declname>twai_frame</declname>
         </param>
         <param>
@@ -1286,7 +1286,7 @@
           <declname>hf_message</declname>
         </param>
         <briefdescription>
-<para>Convert ESP-IDF v5.5 TWAI frame to HF CAN message. </para>
+<para>Convert ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref> TWAI frame to HF CAN message. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -1321,7 +1321,7 @@
         <name>ConvertEspError</name>
         <qualifiedname>EspCan::ConvertEspError</qualifiedname>
         <param>
-          <type>esp_err_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">esp_err_t</ref></type>
           <declname>esp_err</declname>
         </param>
         <briefdescription>
@@ -1346,7 +1346,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="454" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="898" bodyend="917"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1aac77cb4d9af633288fd60fad3fee474b" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspCan::UpdateStatistics</definition>
         <argsstring>(hf_can_operation_type_t operation_type, bool success) noexcept</argsstring>
         <name>UpdateStatistics</name>
@@ -1356,7 +1356,7 @@
           <declname>operation_type</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>success</declname>
         </param>
         <briefdescription>
@@ -1387,13 +1387,13 @@
         <location file="inc/mcu/esp32/EspCan.h" line="461" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="919" bodyend="941"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a5c0fe05680907d926d0bacdc6cebd811" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspCan::ProcessReceivedMessage</definition>
         <argsstring>(const twai_frame_t &amp;frame) noexcept</argsstring>
         <name>ProcessReceivedMessage</name>
         <qualifiedname>EspCan::ProcessReceivedMessage</qualifiedname>
         <param>
-          <type>const twai_frame_t &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">twai_frame_t</ref> &amp;</type>
           <declname>frame</declname>
         </param>
         <briefdescription>
@@ -1416,13 +1416,13 @@
         <location file="inc/mcu/esp32/EspCan.h" line="467" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="947" bodyend="950"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a8fff536c8eae7799252dc4341bad7ba3" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspCan::UpdateErrorStatistics</definition>
         <argsstring>(uint32_t error_type) noexcept</argsstring>
         <name>UpdateErrorStatistics</name>
         <qualifiedname>EspCan::UpdateErrorStatistics</qualifiedname>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>error_type</declname>
         </param>
         <briefdescription>
@@ -1445,13 +1445,13 @@
         <location file="inc/mcu/esp32/EspCan.h" line="473" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="985" bodyend="1016"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1aea03a2e1e72fe5e104c150e71f988083" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspCan::DispatchReceiveCallbacks</definition>
         <argsstring>(const twai_frame_t &amp;frame) noexcept</argsstring>
         <name>DispatchReceiveCallbacks</name>
         <qualifiedname>EspCan::DispatchReceiveCallbacks</qualifiedname>
         <param>
-          <type>const twai_frame_t &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">twai_frame_t</ref> &amp;</type>
           <declname>frame</declname>
         </param>
         <briefdescription>
@@ -1474,13 +1474,13 @@
         <location file="inc/mcu/esp32/EspCan.h" line="483" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="952" bodyend="963"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a67fa247f0a5f007b0cb20e405ed1ed0c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspCan::DispatchErrorCallbacks</definition>
         <argsstring>(const hf_esp_can_error_info_t &amp;error_info) noexcept</argsstring>
         <name>DispatchErrorCallbacks</name>
         <qualifiedname>EspCan::DispatchErrorCallbacks</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__esp__can__error__info__t" kindref="compound">hf_esp_can_error_info_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__esp__can__error__info__t" kindref="compound">hf_esp_can_error_info_t</ref> &amp;</type>
           <declname>error_info</declname>
         </param>
         <briefdescription>
@@ -1503,13 +1503,13 @@
         <location file="inc/mcu/esp32/EspCan.h" line="489" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="965" bodyend="969"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1abead43013dd161753d56006157679fe0" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspCan::DispatchStateChangeCallbacks</definition>
         <argsstring>(const hf_esp_can_state_info_t &amp;state_info) noexcept</argsstring>
         <name>DispatchStateChangeCallbacks</name>
         <qualifiedname>EspCan::DispatchStateChangeCallbacks</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__esp__can__state__info__t" kindref="compound">hf_esp_can_state_info_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__esp__can__state__info__t" kindref="compound">hf_esp_can_state_info_t</ref> &amp;</type>
           <declname>state_info</declname>
         </param>
         <briefdescription>
@@ -1532,13 +1532,13 @@
         <location file="inc/mcu/esp32/EspCan.h" line="495" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="971" bodyend="975"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1afbdb95ac14728f468847fae264b8f536" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspCan::DispatchTxCompleteCallbacks</definition>
         <argsstring>(const hf_esp_can_tx_info_t &amp;tx_info) noexcept</argsstring>
         <name>DispatchTxCompleteCallbacks</name>
         <qualifiedname>EspCan::DispatchTxCompleteCallbacks</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__esp__can__tx__info__t" kindref="compound">hf_esp_can_tx_info_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__esp__can__tx__info__t" kindref="compound">hf_esp_can_tx_info_t</ref> &amp;</type>
           <declname>tx_info</declname>
         </param>
         <briefdescription>
@@ -1562,12 +1562,12 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>ESP32 CAN (TWAI) implementation using ESP-IDF v5.5+ node-based API. </para>
+<para>ESP32 CAN (TWAI) implementation using ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+ node-based API. </para>
     </briefdescription>
     <detaileddescription>
-<para>This class provides clean, comprehensive CAN communication using the ESP32&apos;s TWAI (Two-Wire Automotive Interface) controllers with modern ESP-IDF v5.5+ node-based APIs. The implementation supports ESP32 and external SN65 CAN transceivers.</para>
+<para>This class provides clean, comprehensive CAN communication using the ESP32&apos;s TWAI (Two-Wire Automotive Interface) controllers with modern ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+ node-based APIs. The implementation supports ESP32 and external SN65 CAN transceivers.</para>
 <para>Key Features:<itemizedlist>
-<listitem><para>ESP-IDF v5.5+ handle-based TWAI node API</para>
+<listitem><para>ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+ handle-based TWAI node API</para>
 </listitem><listitem><para>ESP32 compatible TWAI controller support</para>
 </listitem><listitem><para>Event-driven callback-based message reception</para>
 </listitem><listitem><para>Advanced acceptance filtering (single/dual mask modes)</para>
@@ -1578,7 +1578,7 @@
 </listitem><listitem><para>Comprehensive diagnostics and performance monitoring</para>
 </listitem></itemizedlist>
 </para>
-<para><simplesect kind="note"><para>This implementation requires ESP-IDF v5.5 or later </para>
+<para><simplesect kind="note"><para>This implementation requires ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref> or later </para>
 </simplesect>
 <simplesect kind="note"><para>Each <ref refid="classEspCan" kindref="compound">EspCan</ref> instance represents a single TWAI node </para>
 </simplesect>

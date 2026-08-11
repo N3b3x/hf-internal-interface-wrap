@@ -171,7 +171,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="513" column="34" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="513" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspTemperature_1a64679e2522454245be7bdba622ef8176" prot="private" static="no" mutable="no">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void* EspTemperature::threshold_user_data_</definition>
         <argsstring></argsstring>
         <name>threshold_user_data_</name>
@@ -186,7 +186,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="514" column="8" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="514" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspTemperature_1a8fe2e9d176f71696e4fb12afbcd25bc8" prot="private" static="no" mutable="no">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void* EspTemperature::monitoring_user_data_</definition>
         <argsstring></argsstring>
         <name>monitoring_user_data_</name>
@@ -203,7 +203,7 @@
     </sectiondef>
     <sectiondef kind="private-static-attrib">
       <memberdef kind="variable" id="classEspTemperature_1a0e3aba6824d5d671a2298f402d2b397c" prot="private" static="yes" mutable="no">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char * EspTemperature::TAG</definition>
         <argsstring></argsstring>
         <name>TAG</name>
@@ -219,17 +219,17 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="603" column="21" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="603" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspTemperature_1aa829f22f1d02247e2da26709702812ae" prot="private" static="yes" mutable="no">
-        <type>const <ref refid="structesp__temp__range__info__t" kindref="compound">esp_temp_range_info_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structesp__temp__range__info__t" kindref="compound">esp_temp_range_info_t</ref></type>
         <definition>const esp_temp_range_info_t EspTemperature::RANGE_INFO</definition>
         <argsstring>[]</argsstring>
         <name>RANGE_INFO</name>
         <qualifiedname>EspTemperature::RANGE_INFO</qualifiedname>
         <initializer>= {
-    {<ref refid="EspTemperature_8h_1ac20464eaa276aa198cb03d0fc5a6e679a9db37d9d8ddf77ef1c17909a3da21f1e" kindref="member">ESP_TEMP_RANGE_NEG10_80</ref>, -10.0f, 80.0f, 1.0f, &quot;-10°C to 80°C (±1°C accuracy, recommended)&quot;},
-    {ESP_TEMP_RANGE_20_100, 20.0f, 100.0f, 2.0f, &quot;20°C to 100°C (±2°C accuracy, high temp)&quot;},
-    {ESP_TEMP_RANGE_NEG30_50, -30.0f, 50.0f, 2.0f, &quot;-30°C to 50°C (±2°C accuracy, low temp)&quot;},
-    {ESP_TEMP_RANGE_50_125, 50.0f, 125.0f, 3.0f, &quot;50°C to 125°C (±3°C accuracy, extreme high)&quot;},
-    {ESP_TEMP_RANGE_NEG40_20, -40.0f, 20.0f, 3.0f, &quot;-40°C to 20°C (±3°C accuracy, extreme low)&quot;}}</initializer>
+    {<ref refid="EspTemperature_8h_1ac20464eaa276aa198cb03d0fc5a6e679a9db37d9d8ddf77ef1c17909a3da21f1e" kindref="member">ESP_TEMP_RANGE_NEG10_80</ref>, -10.0f, 80.0f, 1.0f, &quot;-10°C <ref refid="classSoftChipSelectGuard" kindref="compound">to</ref> 80°C (<ref refid="classSoftChipSelectGuard" kindref="compound">±1°C</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">accuracy</ref>, <ref refid="classSoftChipSelectGuard" kindref="compound">recommended</ref>)&quot;},
+    {ESP_TEMP_RANGE_20_100, 20.0f, 100.0f, 2.0f, &quot;20°C <ref refid="classSoftChipSelectGuard" kindref="compound">to</ref> 100°C (<ref refid="classSoftChipSelectGuard" kindref="compound">±2°C</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">accuracy</ref>, <ref refid="classSoftChipSelectGuard" kindref="compound">high</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">temp</ref>)&quot;},
+    {ESP_TEMP_RANGE_NEG30_50, -30.0f, 50.0f, 2.0f, &quot;-30°C <ref refid="classSoftChipSelectGuard" kindref="compound">to</ref> 50°C (<ref refid="classSoftChipSelectGuard" kindref="compound">±2°C</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">accuracy</ref>, <ref refid="classSoftChipSelectGuard" kindref="compound">low</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">temp</ref>)&quot;},
+    {ESP_TEMP_RANGE_50_125, 50.0f, 125.0f, 3.0f, &quot;50°C <ref refid="classSoftChipSelectGuard" kindref="compound">to</ref> 125<ref refid="classSoftChipSelectGuard" kindref="compound">°C</ref> (<ref refid="classSoftChipSelectGuard" kindref="compound">±3°C</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">accuracy</ref>, <ref refid="classSoftChipSelectGuard" kindref="compound">extreme</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">high</ref>)&quot;},
+    {ESP_TEMP_RANGE_NEG40_20, -40.0f, 20.0f, 3.0f, &quot;-40°C <ref refid="classSoftChipSelectGuard" kindref="compound">to</ref> 20°C (<ref refid="classSoftChipSelectGuard" kindref="compound">±3°C</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">accuracy</ref>, <ref refid="classSoftChipSelectGuard" kindref="compound">extreme</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">low</ref>)&quot;}}</initializer>
         <briefdescription>
 <para>Range information table. </para>
         </briefdescription>
@@ -257,7 +257,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="607" column="24" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="607" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspTemperature_1aef85506e203917c06e7d951370f983ad" prot="private" static="yes" mutable="no">
-        <type>std::atomic&lt; int &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">int</ref> &gt;</type>
         <definition>std::atomic&lt; int &gt; EspTemperature::s_refcount_</definition>
         <argsstring></argsstring>
         <name>s_refcount_</name>
@@ -273,12 +273,12 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="608" column="22" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="variable" id="classEspTemperature_1acc45986a38969e94e206b1531eedcbac" prot="private" static="yes" mutable="no">
-        <type>temperature_sensor_handle_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">temperature_sensor_handle_t</ref></type>
         <definition>temperature_sensor_handle_t EspTemperature::s_shared_handle_</definition>
         <argsstring></argsstring>
         <name>s_shared_handle_</name>
         <qualifiedname>EspTemperature::s_shared_handle_</qualifiedname>
-        <initializer>= nullptr</initializer>
+        <initializer>= <ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></initializer>
         <briefdescription>
 <para>Shared ESP-IDF handle. </para>
         </briefdescription>
@@ -312,7 +312,7 @@
         <name>EspTemperature</name>
         <qualifiedname>EspTemperature::EspTemperature</qualifiedname>
         <param>
-          <type>const <ref refid="structesp__temp__config__t" kindref="compound">esp_temp_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structesp__temp__config__t" kindref="compound">esp_temp_config_t</ref> &amp;</type>
           <declname>esp_config</declname>
         </param>
         <briefdescription>
@@ -341,7 +341,7 @@
         <name>EspTemperature</name>
         <qualifiedname>EspTemperature::EspTemperature</qualifiedname>
         <param>
-          <type>const <ref refid="classEspTemperature" kindref="compound">EspTemperature</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classEspTemperature" kindref="compound">EspTemperature</ref> &amp;</type>
         </param>
         <briefdescription>
 <para>Copy constructor is deleted to avoid copying instances. </para>
@@ -359,7 +359,7 @@
         <name>operator=</name>
         <qualifiedname>EspTemperature::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classEspTemperature" kindref="compound">EspTemperature</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classEspTemperature" kindref="compound">EspTemperature</ref> &amp;</type>
         </param>
         <briefdescription>
 <para>Assignment operator is deleted to avoid copying instances. </para>
@@ -444,11 +444,11 @@
         <qualifiedname>EspTemperature::SetRange</qualifiedname>
         <reimplements refid="classBaseTemperature_1a1bfe9f1a1069222166008b4dafe5a282">SetRange</reimplements>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>min_celsius</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>max_celsius</declname>
         </param>
         <briefdescription>
@@ -488,11 +488,11 @@
         <qualifiedname>EspTemperature::GetRange</qualifiedname>
         <reimplements refid="classBaseTemperature_1a21d2b3e6c1855f666d5dc2856e9f8cea">GetRange</reimplements>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>min_celsius</declname>
         </param>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>max_celsius</declname>
         </param>
         <briefdescription>
@@ -532,7 +532,7 @@
         <qualifiedname>EspTemperature::GetResolution</qualifiedname>
         <reimplements refid="classBaseTemperature_1a5362eaf0cb2478a4e060d8dfca70f3c8">GetResolution</reimplements>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>resolution_celsius</declname>
         </param>
         <briefdescription>
@@ -564,11 +564,11 @@
         <qualifiedname>EspTemperature::SetThresholds</qualifiedname>
         <reimplements refid="classBaseTemperature_1a483f6f9ec09ecd6e8cd32c9f61836763">SetThresholds</reimplements>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>low_threshold_celsius</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>high_threshold_celsius</declname>
         </param>
         <briefdescription>
@@ -608,11 +608,11 @@
         <qualifiedname>EspTemperature::GetThresholds</qualifiedname>
         <reimplements refid="classBaseTemperature_1a692b8120d0ceb3ae699cd2bd0981b993">GetThresholds</reimplements>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>low_threshold_celsius</declname>
         </param>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>high_threshold_celsius</declname>
         </param>
         <briefdescription>
@@ -656,7 +656,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
         </param>
         <briefdescription>
@@ -723,7 +723,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
         </param>
         <briefdescription>
@@ -783,7 +783,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="341" column="17" bodyfile="src/mcu/esp32/EspTemperature.cpp" bodystart="598" bodyend="636"/>
       </memberdef>
       <memberdef kind="function" id="classEspTemperature_1abd650022450dbbcbba8fed4085386da3" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspTemperature::IsMonitoringActive</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>IsMonitoringActive</name>
@@ -809,7 +809,7 @@
         <qualifiedname>EspTemperature::SetCalibrationOffset</qualifiedname>
         <reimplements refid="classBaseTemperature_1a97cd78cf3f336211747e15a1c25d61ee">SetCalibrationOffset</reimplements>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>offset_celsius</declname>
         </param>
         <briefdescription>
@@ -841,7 +841,7 @@
         <qualifiedname>EspTemperature::GetCalibrationOffset</qualifiedname>
         <reimplements refid="classBaseTemperature_1a55f58d0cccee590dd10e55c2668e7f0b">GetCalibrationOffset</reimplements>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>offset_celsius</declname>
         </param>
         <briefdescription>
@@ -923,7 +923,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="379" column="17" bodyfile="src/mcu/esp32/EspTemperature.cpp" bodystart="703" bodyend="722"/>
       </memberdef>
       <memberdef kind="function" id="classEspTemperature_1ac6c685911fa0fe6bb38e1d2d8299ad2d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspTemperature::IsSleeping</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>IsSleeping</name>
@@ -1088,7 +1088,7 @@
         <name>InitializeEsp32</name>
         <qualifiedname>EspTemperature::InitializeEsp32</qualifiedname>
         <param>
-          <type>const <ref refid="structesp__temp__config__t" kindref="compound">esp_temp_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structesp__temp__config__t" kindref="compound">esp_temp_config_t</ref> &amp;</type>
           <declname>esp_config</declname>
         </param>
         <briefdescription>
@@ -1172,15 +1172,15 @@
           <declname>range</declname>
         </param>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>min_celsius</declname>
         </param>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>max_celsius</declname>
         </param>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>accuracy_celsius</declname>
         </param>
         <briefdescription>
@@ -1235,11 +1235,11 @@
         <name>FindOptimalRange</name>
         <qualifiedname>EspTemperature::FindOptimalRange</qualifiedname>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>min_celsius</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>max_celsius</declname>
         </param>
         <briefdescription>
@@ -1278,7 +1278,7 @@
         <name>ReadRawTemperature</name>
         <qualifiedname>EspTemperature::ReadRawTemperature</qualifiedname>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>raw_value</declname>
         </param>
         <briefdescription>
@@ -1303,7 +1303,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="474" column="17" bodyfile="src/mcu/esp32/EspTemperature.cpp" bodystart="990" bodyend="1007"/>
       </memberdef>
       <memberdef kind="function" id="classEspTemperature_1a2e11508c1cc97b8e44796d812319edeb" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>temperature_sensor_handle_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">temperature_sensor_handle_t</ref></type>
         <definition>temperature_sensor_handle_t EspTemperature::GetEspHandle</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetEspHandle</name>
@@ -1385,7 +1385,7 @@
     </sectiondef>
     <sectiondef kind="protected-func">
       <memberdef kind="function" id="classEspTemperature_1a92699d024919bf1f5f40cfc2a05c5465" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspTemperature::Initialize</definition>
         <argsstring>() noexcept override</argsstring>
         <name>Initialize</name>
@@ -1404,7 +1404,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="233" column="8" bodyfile="src/mcu/esp32/EspTemperature.cpp" bodystart="128" bodyend="193"/>
       </memberdef>
       <memberdef kind="function" id="classEspTemperature_1acee4cee66dd94a80f8ebd8697718560e" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspTemperature::Deinitialize</definition>
         <argsstring>() noexcept override</argsstring>
         <name>Deinitialize</name>
@@ -1430,7 +1430,7 @@
         <qualifiedname>EspTemperature::ReadTemperatureCelsiusImpl</qualifiedname>
         <reimplements refid="classBaseTemperature_1af171259d6aa00825f0b8743d2331850e">ReadTemperatureCelsiusImpl</reimplements>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>temperature_celsius</declname>
         </param>
         <briefdescription>
@@ -1463,7 +1463,7 @@
         <name>ConvertEspError</name>
         <qualifiedname>EspTemperature::ConvertEspError</qualifiedname>
         <param>
-          <type>esp_err_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">esp_err_t</ref></type>
           <declname>esp_err</declname>
         </param>
         <briefdescription>
@@ -1537,7 +1537,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="539" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspTemperature_1a575d8aef9720c553f8c718bca0c67417" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspTemperature::GetRangeConfig</definition>
         <argsstring>(esp_temp_range_t range, float *min_celsius, float *max_celsius, float *accuracy_celsius) const noexcept</argsstring>
         <name>GetRangeConfig</name>
@@ -1547,15 +1547,15 @@
           <declname>range</declname>
         </param>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>min_celsius</declname>
         </param>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>max_celsius</declname>
         </param>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>accuracy_celsius</declname>
         </param>
         <briefdescription>
@@ -1602,7 +1602,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="548" column="8" bodyfile="src/mcu/esp32/EspTemperature.cpp" bodystart="1053" bodyend="1072"/>
       </memberdef>
       <memberdef kind="function" id="classEspTemperature_1a149603f54dfa682cefceae26805a77e2" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspTemperature::SetLastError</definition>
         <argsstring>(hf_temp_err_t error) noexcept</argsstring>
         <name>SetLastError</name>
@@ -1631,13 +1631,13 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="555" column="8" bodyfile="src/mcu/esp32/EspTemperature.cpp" bodystart="1074" bodyend="1077"/>
       </memberdef>
       <memberdef kind="function" id="classEspTemperature_1ad5980d76ca4268f56feea2f18d4f1af6" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspTemperature::UpdateStatistics</definition>
         <argsstring>(bool operation_successful, hf_u32_t operation_time_us) noexcept</argsstring>
         <name>UpdateStatistics</name>
         <qualifiedname>EspTemperature::UpdateStatistics</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>operation_successful</declname>
         </param>
         <param>
@@ -1672,7 +1672,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="562" column="8" bodyfile="src/mcu/esp32/EspTemperature.cpp" bodystart="1079" bodyend="1108"/>
       </memberdef>
       <memberdef kind="function" id="classEspTemperature_1a805d97b69f14c4e13e9cb7736a45617d" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspTemperature::UpdateDiagnostics</definition>
         <argsstring>(hf_temp_err_t error) noexcept</argsstring>
         <name>UpdateDiagnostics</name>
@@ -1701,13 +1701,13 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="568" column="8" bodyfile="src/mcu/esp32/EspTemperature.cpp" bodystart="1110" bodyend="1118"/>
       </memberdef>
       <memberdef kind="function" id="classEspTemperature_1ac0b3dd90b074db26ee48e66748597faa" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspTemperature::CheckThresholds</definition>
         <argsstring>(float temperature) noexcept</argsstring>
         <name>CheckThresholds</name>
         <qualifiedname>EspTemperature::CheckThresholds</qualifiedname>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>temperature</declname>
         </param>
         <briefdescription>
@@ -1736,7 +1736,7 @@
         <name>ValidateConfig</name>
         <qualifiedname>EspTemperature::ValidateConfig</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__temp__config__t" kindref="compound">hf_temp_config_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__temp__config__t" kindref="compound">hf_temp_config_t</ref> *</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -1767,7 +1767,7 @@
         <name>ValidateEspConfig</name>
         <qualifiedname>EspTemperature::ValidateEspConfig</qualifiedname>
         <param>
-          <type>const <ref refid="structesp__temp__config__t" kindref="compound">esp_temp_config_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structesp__temp__config__t" kindref="compound">esp_temp_config_t</ref> *</type>
           <declname>esp_config</declname>
         </param>
         <briefdescription>
@@ -1794,13 +1794,13 @@
     </sectiondef>
     <sectiondef kind="private-static-func">
       <memberdef kind="function" id="classEspTemperature_1abe6ae1ced0d8c565b722b416cb64e9ae" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspTemperature::MonitoringTimerCallback</definition>
         <argsstring>(void *arg) noexcept</argsstring>
         <name>MonitoringTimerCallback</name>
         <qualifiedname>EspTemperature::MonitoringTimerCallback</qualifiedname>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>arg</declname>
         </param>
         <briefdescription>
@@ -1859,7 +1859,7 @@
 </para>
 <para><simplesect kind="note"><para>This implementation is thread-safe and can be used in multi-threaded applications </para>
 </simplesect>
-<simplesect kind="note"><para>The sensor provides approximately 0.25°C resolution with response time around 50ms </para>
+<simplesect kind="note"><para>The sensor provides approximately <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">0.25</ref>°C resolution with response time around 50ms </para>
 </simplesect>
 <simplesect kind="note"><para>Different measurement ranges offer different accuracy levels (±1°C to ±3°C) </para>
 </simplesect>

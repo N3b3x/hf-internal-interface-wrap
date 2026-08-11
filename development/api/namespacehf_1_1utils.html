@@ -101,12 +101,12 @@ $(function(){initNavTree('namespacehf_1_1utils.html',''); initResizable(); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8cc6a65bb150aad69866ad9c665487b9" id="r_a8cc6a65bb150aad69866ad9c665487b9"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
-<tr class="memitem:a8cc6a65bb150aad69866ad9c665487b9"><td class="memTemplItemLeft" align="right" valign="top">std::unique_ptr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a8cc6a65bb150aad69866ad9c665487b9">make_unique_nothrow</a> (Args &amp;&amp;... args)</td></tr>
+<tr class="memitem:a8cc6a65bb150aad69866ad9c665487b9" id="r_a8cc6a65bb150aad69866ad9c665487b9"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classSoftChipSelectGuard.html">typename</a> <a class="el" href="classSoftChipSelectGuard.html">T</a> , typename... Args&gt; </td></tr>
+<tr class="memitem:a8cc6a65bb150aad69866ad9c665487b9"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::unique_ptr</a>&lt; <a class="el" href="classSoftChipSelectGuard.html">T</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a8cc6a65bb150aad69866ad9c665487b9">make_unique_nothrow</a> (<a class="el" href="classSoftChipSelectGuard.html">Args</a> &amp;&amp;... <a class="el" href="classSoftChipSelectGuard.html">args</a>)</td></tr>
 <tr class="memdesc:a8cc6a65bb150aad69866ad9c665487b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a unique_ptr using nothrow new for exception-free design.  <br /></td></tr>
 <tr class="separator:a8cc6a65bb150aad69866ad9c665487b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af69771ffbe64d79f38a652012d5d7a93" id="r_af69771ffbe64d79f38a652012d5d7a93"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:af69771ffbe64d79f38a652012d5d7a93"><td class="memTemplItemLeft" align="right" valign="top">std::unique_ptr&lt; T[]&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#af69771ffbe64d79f38a652012d5d7a93">make_unique_array_nothrow</a> (size_t size)</td></tr>
+<tr class="memitem:af69771ffbe64d79f38a652012d5d7a93" id="r_af69771ffbe64d79f38a652012d5d7a93"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classSoftChipSelectGuard.html">typename</a> <a class="el" href="classSoftChipSelectGuard.html">T</a> &gt; </td></tr>
+<tr class="memitem:af69771ffbe64d79f38a652012d5d7a93"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::unique_ptr</a>&lt; <a class="el" href="classSoftChipSelectGuard.html">T</a>[]&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#af69771ffbe64d79f38a652012d5d7a93">make_unique_array_nothrow</a> (<a class="el" href="StmNvs_8cpp.html#aa07e4d229c83037af4aa76007a34b34d">size_t</a> size)</td></tr>
 <tr class="memdesc:af69771ffbe64d79f38a652012d5d7a93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a unique_ptr for arrays using nothrow new.  <br /></td></tr>
 <tr class="separator:af69771ffbe64d79f38a652012d5d7a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -117,12 +117,12 @@ Functions</h2></td></tr>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;<a class="el" href="classSoftChipSelectGuard.html">typename</a> <a class="el" href="classSoftChipSelectGuard.html">T</a> &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt; T[]&gt; hf::utils::make_unique_array_nothrow </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::unique_ptr</a>&lt; <a class="el" href="classSoftChipSelectGuard.html">T</a>[]&gt; hf::utils::make_unique_array_nothrow </td>
           <td>(</td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="StmNvs_8cpp.html#aa07e4d229c83037af4aa76007a34b34d">size_t</a></td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -142,14 +142,14 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>std::unique_ptr&lt;T[]&gt; Valid pointer on success, nullptr on allocation failure</dd></dl>
-<dl class="section user"><dt>Array Allocation Example:</dt><dd><div class="fragment"><div class="line"><span class="keyword">auto</span> arr = <a class="code hl_function" href="#af69771ffbe64d79f38a652012d5d7a93">make_unique_array_nothrow&lt;int&gt;</a>(1000);</div>
-<div class="line"><span class="keywordflow">if</span> (!<a class="code hl_function" href="#af69771ffbe64d79f38a652012d5d7a93">arr</a>) {</div>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::unique_ptr&lt;T[]&gt;</a> Valid pointer on success, nullptr on allocation failure</dd></dl>
+<dl class="section user"><dt>Array Allocation Example:</dt><dd><div class="fragment"><div class="line"><span class="keyword">auto</span> <a class="code hl_class" href="classSoftChipSelectGuard.html">arr</a> = <a class="code hl_class" href="classSoftChipSelectGuard.html">make_unique_array_nothrow&lt;int&gt;</a>(1000);</div>
+<div class="line"><span class="keywordflow">if</span> (!<a class="code hl_class" href="classSoftChipSelectGuard.html">arr</a>) {</div>
 <div class="line">    <span class="comment">// Handle allocation failure</span></div>
 <div class="line">    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">// Use arr safely</span></div>
-<div class="ttc" id="anamespacehf_1_1utils_html_af69771ffbe64d79f38a652012d5d7a93"><div class="ttname"><a href="#af69771ffbe64d79f38a652012d5d7a93">hf::utils::make_unique_array_nothrow</a></div><div class="ttdeci">std::unique_ptr&lt; T[]&gt; make_unique_array_nothrow(size_t size)</div><div class="ttdoc">Creates a unique_ptr for arrays using nothrow new.</div><div class="ttdef"><b>Definition</b> memory_utils.h:67</div></div>
+<div class="ttc" id="aclassSoftChipSelectGuard_html"><div class="ttname"><a href="classSoftChipSelectGuard.html">SoftChipSelectGuard</a></div><div class="ttdoc">RAII soft-CS: runs assert_fn on construction and deassert_fn on destruction (including early return /...</div><div class="ttdef"><b>Definition</b> SoftChipSelectGuard.h:32</div></div>
 </div><!-- fragment --> </dd></dl>
 
 </div>
@@ -160,19 +160,19 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;<a class="el" href="#af69771ffbe64d79f38a652012d5d7a93">typename</a> <a class="el" href="#af69771ffbe64d79f38a652012d5d7a93">T</a> , typename... Args&gt; </div>
+template&lt;<a class="el" href="classSoftChipSelectGuard.html">typename</a> <a class="el" href="classSoftChipSelectGuard.html">T</a> , typename... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt; <a class="el" href="#af69771ffbe64d79f38a652012d5d7a93">T</a> &gt; hf::utils::make_unique_nothrow </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::unique_ptr</a>&lt; <a class="el" href="classSoftChipSelectGuard.html">T</a> &gt; hf::utils::make_unique_nothrow </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="#af69771ffbe64d79f38a652012d5d7a93">Args</a> &amp;&amp;...</td>          <td class="paramname"><span class="paramname"><em>args</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">Args</a> &amp;&amp;...</td>          <td class="paramname"><span class="paramname"><em>args</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Creates a unique_ptr using nothrow new for exception-free design. </p>
-<p>This function template provides a safe alternative to std::make_unique for environments that require no-exception guarantees. It uses nothrow new to allocate memory and returns nullptr on allocation failure instead of throwing std::bad_alloc.</p>
+<p>This function template provides a safe alternative to <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::make_unique</a> for environments that require no-exception guarantees. It uses nothrow new to allocate memory and returns nullptr on allocation failure instead of throwing <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::bad_alloc</a>.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>The type to create </td></tr>
@@ -186,9 +186,9 @@ template&lt;<a class="el" href="#af69771ffbe64d79f38a652012d5d7a93">typename</a>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>std::unique_ptr&lt;T&gt; Valid pointer on success, nullptr on allocation failure</dd></dl>
-<div class="fragment"><div class="line"><span class="keyword">auto</span> <a class="code hl_function" href="#af69771ffbe64d79f38a652012d5d7a93">ptr</a> = <a class="code hl_function" href="#af69771ffbe64d79f38a652012d5d7a93">make_unique_nothrow&lt;MyClass&gt;</a>(<a class="code hl_function" href="#af69771ffbe64d79f38a652012d5d7a93">arg1</a>, <a class="code hl_function" href="#af69771ffbe64d79f38a652012d5d7a93">arg2</a>);</div>
-<div class="line"><span class="keywordflow">if</span> (!<a class="code hl_function" href="#af69771ffbe64d79f38a652012d5d7a93">ptr</a>) {</div>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::unique_ptr&lt;T&gt;</a> Valid pointer on success, nullptr on allocation failure</dd></dl>
+<div class="fragment"><div class="line"><span class="keyword">auto</span> <a class="code hl_class" href="classSoftChipSelectGuard.html">ptr</a> = <a class="code hl_class" href="classSoftChipSelectGuard.html">make_unique_nothrow&lt;MyClass&gt;</a>(<a class="code hl_class" href="classSoftChipSelectGuard.html">arg1</a>, <a class="code hl_class" href="classSoftChipSelectGuard.html">arg2</a>);</div>
+<div class="line"><span class="keywordflow">if</span> (!<a class="code hl_class" href="classSoftChipSelectGuard.html">ptr</a>) {</div>
 <div class="line">    <span class="comment">// Handle allocation failure</span></div>
 <div class="line">    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line">}</div>

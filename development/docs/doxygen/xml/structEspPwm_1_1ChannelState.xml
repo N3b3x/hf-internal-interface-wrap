@@ -4,7 +4,7 @@
     <compoundname>EspPwm::ChannelState</compoundname>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a08e09a488378148fbb177d6f9a50a2f8" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspPwm::ChannelState::configured</definition>
         <argsstring></argsstring>
         <name>configured</name>
@@ -19,7 +19,7 @@
         <location file="inc/mcu/esp32/EspPwm.h" line="718" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="718" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a6d8fcca202029b029e059b4fb1d621e3" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspPwm::ChannelState::enabled</definition>
         <argsstring></argsstring>
         <name>enabled</name>
@@ -94,7 +94,7 @@
         <location file="inc/mcu/esp32/EspPwm.h" line="723" column="18" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="723" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a6fe68bb974541877f3c6947ca3b9f8ab" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspPwm::ChannelState::fade_active</definition>
         <argsstring></argsstring>
         <name>fade_active</name>
@@ -109,7 +109,7 @@
         <location file="inc/mcu/esp32/EspPwm.h" line="724" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="724" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a9dcd4d475588c89b0812cbd814e0bf7e" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspPwm::ChannelState::needs_reconfiguration</definition>
         <argsstring></argsstring>
         <name>needs_reconfiguration</name>
@@ -139,7 +139,7 @@
         <location file="inc/mcu/esp32/EspPwm.h" line="728" column="31" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="728" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a8c101fbd0e7dcca25c6624ae98b12efa" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspPwm::ChannelState::is_critical</definition>
         <argsstring></argsstring>
         <name>is_critical</name>
@@ -154,7 +154,7 @@
         <location file="inc/mcu/esp32/EspPwm.h" line="729" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="729" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a09ce373d96d3849a879fcfd622953997" prot="public" static="no" mutable="no">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char* EspPwm::ChannelState::description</definition>
         <argsstring></argsstring>
         <name>description</name>
@@ -169,7 +169,7 @@
         <location file="inc/mcu/esp32/EspPwm.h" line="730" column="16" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="730" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1ab5cc36c9cd4297730d6fd8e381e351b1" prot="public" static="no" mutable="no">
-        <type>void(*</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref>(*</type>
         <definition>void(* EspPwm::ChannelState::fade_callback) (hf_channel_id_t)</definition>
         <argsstring>)(hf_channel_id_t)</argsstring>
         <name>fade_callback</name>

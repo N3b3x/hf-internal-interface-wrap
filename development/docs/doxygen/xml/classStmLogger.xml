@@ -78,7 +78,7 @@
         <location file="inc/mcu/stm32/StmLogger.h" line="97" column="27" bodyfile="inc/mcu/stm32/StmLogger.h" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classStmLogger_1ad636d2f9d50ecc3a69791f70406bf3a2" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmLogger::initialized_</definition>
         <argsstring></argsstring>
         <name>initialized_</name>
@@ -153,7 +153,7 @@
         <location file="inc/mcu/stm32/StmLogger.h" line="102" column="28" bodyfile="inc/mcu/stm32/StmLogger.h" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classStmLogger_1a9385bc2edaebaddaf84544ae3b401ace" prot="private" static="no" mutable="no">
-        <type>char</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">char</ref></type>
         <definition>char StmLogger::format_buffer_[256]</definition>
         <argsstring>[256]</argsstring>
         <name>format_buffer_</name>
@@ -178,7 +178,7 @@
         <param>
           <type><ref refid="StmUart_8h_1a5de4a49eb132735325e706f406c69d6e" kindref="member">UART_HandleTypeDef</ref> *</type>
           <declname>uart_handle</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <param>
           <type><ref refid="classStmLogger_1a61646c2f7c850f826a73d37065982705" kindref="member">Backend</ref></type>
@@ -216,7 +216,7 @@
         <qualifiedname>StmLogger::Initialize</qualifiedname>
         <reimplements refid="classBaseLogger_1ad0406cdacbade55f2911bf717e35c22c">Initialize</reimplements>
         <param>
-          <type>const <ref refid="structhf__logger__config__t" kindref="compound">hf_logger_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__logger__config__t" kindref="compound">hf_logger_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -260,7 +260,7 @@
         <location file="inc/mcu/stm32/StmLogger.h" line="54" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="93" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1ad63dccfd7f9aba556a3fef83bc2c2ac3" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmLogger::IsInitialized</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>IsInitialized</name>
@@ -279,7 +279,7 @@
         <location file="inc/mcu/stm32/StmLogger.h" line="55" column="10" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="98" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a015a61a54d5f3e93af13ad2630b505ed" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmLogger::EnsureInitialized</definition>
         <argsstring>() noexcept override</argsstring>
         <name>EnsureInitialized</name>
@@ -305,7 +305,7 @@
         <qualifiedname>StmLogger::SetLogLevel</qualifiedname>
         <reimplements refid="classBaseLogger_1a960f90f79007791d7129bd22be151a57">SetLogLevel</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>tag</declname>
         </param>
         <param>
@@ -349,7 +349,7 @@
         <qualifiedname>StmLogger::GetLogLevel</qualifiedname>
         <reimplements refid="classBaseLogger_1a7bab272b2ae8e5bf4a2d0c0c8a9ea203">GetLogLevel</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>tag</declname>
         </param>
         <param>
@@ -393,11 +393,11 @@
         <qualifiedname>StmLogger::Error</qualifiedname>
         <reimplements refid="classBaseLogger_1a4075d445b4199e72e9a0c09ba438c076">Error</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>tag</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>format</declname>
         </param>
         <param>
@@ -448,11 +448,11 @@
         <qualifiedname>StmLogger::Warn</qualifiedname>
         <reimplements refid="classBaseLogger_1ac1492294d1cc35697eaf02d6b617cce8">Warn</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>tag</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>format</declname>
         </param>
         <param>
@@ -503,11 +503,11 @@
         <qualifiedname>StmLogger::Info</qualifiedname>
         <reimplements refid="classBaseLogger_1a79975dd958a7f1b10570474deb42637b">Info</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>tag</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>format</declname>
         </param>
         <param>
@@ -558,11 +558,11 @@
         <qualifiedname>StmLogger::Debug</qualifiedname>
         <reimplements refid="classBaseLogger_1a15474a07a615cd39de6c2884b1035808">Debug</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>tag</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>format</declname>
         </param>
         <param>
@@ -613,11 +613,11 @@
         <qualifiedname>StmLogger::Verbose</qualifiedname>
         <reimplements refid="classBaseLogger_1a7c108881b2bda1a6b938f0aebbe1b264">Verbose</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>tag</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>format</declname>
         </param>
         <param>
@@ -672,11 +672,11 @@
           <declname>level</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>tag</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>format</declname>
         </param>
         <param>
@@ -739,15 +739,15 @@
           <declname>level</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>tag</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>format</declname>
         </param>
         <param>
-          <type>va_list</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">va_list</ref></type>
           <declname>args</declname>
         </param>
         <briefdescription>
@@ -807,11 +807,11 @@
           <declname>level</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>tag</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>file</declname>
         </param>
         <param>
@@ -819,11 +819,11 @@
           <declname>line</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>function</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>format</declname>
         </param>
         <param>
@@ -918,7 +918,7 @@
         <location file="inc/mcu/stm32/StmLogger.h" line="74" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="227" bodyend="230"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1aed1e8557a3a37a78c169aa921acff3fc" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmLogger::IsLevelEnabled</definition>
         <argsstring>(hf_log_level_t level, const char *tag=nullptr) const noexcept override</argsstring>
         <name>IsLevelEnabled</name>
@@ -929,9 +929,9 @@
           <declname>level</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>tag</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Check if a log level is enabled for a tag. </para>
@@ -1065,7 +1065,7 @@
         <location file="inc/mcu/stm32/StmLogger.h" line="80" column="21" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="251" bodyend="254"/>
       </memberdef>
       <memberdef kind="function" id="classStmLogger_1a16a88780953992653e289b1f2b519d4c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmLogger::IsHealthy</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>IsHealthy</name>
@@ -1110,7 +1110,7 @@
         <qualifiedname>StmLogger::GetLastErrorMessage</qualifiedname>
         <reimplements refid="classBaseLogger_1ae1ce782666e43f19b3b4e59278398880">GetLastErrorMessage</reimplements>
         <param>
-          <type>char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>message</declname>
         </param>
         <param>
@@ -1154,14 +1154,14 @@
         <qualifiedname>StmLogger::PrintStatistics</qualifiedname>
         <reimplements refid="classBaseLogger_1a7c7b4dd7579edbf83e3f3abe51d9605d">PrintStatistics</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>tag</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>detailed</declname>
-          <defval>true</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">true</ref></defval>
         </param>
         <briefdescription>
 <para>Print statistics to log output. </para>
@@ -1200,14 +1200,14 @@
         <qualifiedname>StmLogger::PrintDiagnostics</qualifiedname>
         <reimplements refid="classBaseLogger_1abf400ef24cd83257f6c3ca6e5f905069">PrintDiagnostics</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>tag</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>detailed</declname>
-          <defval>true</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">true</ref></defval>
         </param>
         <briefdescription>
 <para>Print diagnostics to log output. </para>
@@ -1246,14 +1246,14 @@
         <qualifiedname>StmLogger::PrintStatus</qualifiedname>
         <reimplements refid="classBaseLogger_1a0fb33baa7231cd20d8ada51eb144e47c">PrintStatus</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>tag</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>detailed</declname>
-          <defval>true</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">true</ref></defval>
         </param>
         <briefdescription>
 <para>Print both statistics and diagnostics. </para>
@@ -1287,13 +1287,13 @@
     </sectiondef>
     <sectiondef kind="private-func">
       <memberdef kind="function" id="classStmLogger_1aad07a8fb34502403b23fd347390a1c08" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void StmLogger::OutputString</definition>
         <argsstring>(const char *str, hf_u32_t length) noexcept</argsstring>
         <name>OutputString</name>
         <qualifiedname>StmLogger::OutputString</qualifiedname>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>str</declname>
         </param>
         <param>
@@ -1320,15 +1320,15 @@
           <declname>level</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>tag</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>format</declname>
         </param>
         <param>
-          <type>va_list</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">va_list</ref></type>
           <declname>args</declname>
         </param>
         <briefdescription>

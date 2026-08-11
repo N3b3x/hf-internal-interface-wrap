@@ -623,7 +623,7 @@
     </sectiondef>
     <sectiondef kind="typedef">
       <memberdef kind="typedef" id="group__gpio_1ga9a7aef9fbdf0b553981712baf9a4223a" prot="public" static="no">
-        <type>void(*)(<ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> *gpio, <ref refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kindref="member">hf_gpio_interrupt_trigger_t</ref> trigger, void *user_data)</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref>(*)(<ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> *gpio, <ref refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kindref="member">hf_gpio_interrupt_trigger_t</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">trigger</ref>, <ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *<ref refid="classSoftChipSelectGuard" kindref="compound">user_data</ref>)</type>
         <definition>using InterruptCallback = 
     void(*)(BaseGpio* gpio, hf_gpio_interrupt_trigger_t trigger, void* user_data)</definition>
         <argsstring></argsstring>
@@ -666,7 +666,7 @@
     </sectiondef>
     <sectiondef kind="func">
       <memberdef kind="function" id="group__gpio_1gafc39fe16e57bc415f05e1f8bf7c4e0be" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>constexpr std::string_view</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string_view</ref></type>
         <definition>constexpr std::string_view HfGpioErrToString</definition>
         <argsstring>(hf_gpio_err_t err) noexcept</argsstring>
         <name>HfGpioErrToString</name>

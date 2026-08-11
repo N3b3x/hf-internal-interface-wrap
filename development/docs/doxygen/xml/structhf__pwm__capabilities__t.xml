@@ -5,7 +5,7 @@
     <includes refid="EspTypes__PWM_8h" local="no">EspTypes_PWM.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a391016f7b9de8439103097b0775a50ea" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t hf_pwm_capabilities_t::num_channels</definition>
         <argsstring></argsstring>
         <name>num_channels</name>
@@ -20,7 +20,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="361" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="361" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__capabilities__t_1af34217d5f45ed2d62c49fe836a58880b" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t hf_pwm_capabilities_t::num_timers</definition>
         <argsstring></argsstring>
         <name>num_timers</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="362" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="362" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a57019e090c215e8fcc5810b0ede2ab2e" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t hf_pwm_capabilities_t::max_resolution_bits</definition>
         <argsstring></argsstring>
         <name>max_resolution_bits</name>
@@ -50,7 +50,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="363" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="363" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a5bcf2ec696c8dee2f23ffee7588b0c7f" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_pwm_capabilities_t::max_frequency_hz</definition>
         <argsstring></argsstring>
         <name>max_frequency_hz</name>
@@ -65,7 +65,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="364" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="364" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a34f963a1dccf23611000bcded3eb935f" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_pwm_capabilities_t::min_frequency_hz</definition>
         <argsstring></argsstring>
         <name>min_frequency_hz</name>
@@ -80,7 +80,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="365" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="365" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__capabilities__t_1acb74e0bd939ed4dc052b2b83aa9a3cda" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pwm_capabilities_t::supports_fade</definition>
         <argsstring></argsstring>
         <name>supports_fade</name>
@@ -95,7 +95,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="366" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="366" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a8193026ef5e9a5fc865277f6383ed4a7" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pwm_capabilities_t::supports_sleep_retention</definition>
         <argsstring></argsstring>
         <name>supports_sleep_retention</name>
@@ -110,7 +110,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="367" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="367" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a18eb3aa4a859aea687a8f21726e1a6ef" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pwm_capabilities_t::supports_complementary</definition>
         <argsstring></argsstring>
         <name>supports_complementary</name>
@@ -125,7 +125,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="368" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="368" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a90a592704f07045c101bc4fdb8ee269c" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pwm_capabilities_t::supports_deadtime</definition>
         <argsstring></argsstring>
         <name>supports_deadtime</name>
@@ -140,7 +140,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="369" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="369" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a779fb16b4bb4ba10697ed75526c1b639" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pwm_capabilities_t::supports_phase_shift</definition>
         <argsstring></argsstring>
         <name>supports_phase_shift</name>
@@ -155,7 +155,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="370" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="370" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a3e0bdc9f368c909ed63f194821f3d8b9" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t hf_pwm_capabilities_t::available_clock_sources</definition>
         <argsstring></argsstring>
         <name>available_clock_sources</name>

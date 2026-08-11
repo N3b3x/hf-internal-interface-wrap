@@ -20,7 +20,7 @@
         <location file="inc/base/BaseTemperature.h" line="238" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="238" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__sensor__info__t_1a4221b056d9548525e309e4aac693e9a1" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float hf_temp_sensor_info_t::min_temp_celsius</definition>
         <argsstring></argsstring>
         <name>min_temp_celsius</name>
@@ -35,7 +35,7 @@
         <location file="inc/base/BaseTemperature.h" line="239" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="239" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__sensor__info__t_1a6de08587fd4c08f24b025ab985966fe9" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float hf_temp_sensor_info_t::max_temp_celsius</definition>
         <argsstring></argsstring>
         <name>max_temp_celsius</name>
@@ -50,7 +50,7 @@
         <location file="inc/base/BaseTemperature.h" line="240" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="240" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__sensor__info__t_1ac9cf0f05bef73c301ed9e8b6b07f75fd" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float hf_temp_sensor_info_t::resolution_celsius</definition>
         <argsstring></argsstring>
         <name>resolution_celsius</name>
@@ -65,7 +65,7 @@
         <location file="inc/base/BaseTemperature.h" line="241" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="241" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__sensor__info__t_1a1a0629db07414a728cd5b5194eedb01e" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float hf_temp_sensor_info_t::accuracy_celsius</definition>
         <argsstring></argsstring>
         <name>accuracy_celsius</name>
@@ -110,7 +110,7 @@
         <location file="inc/base/BaseTemperature.h" line="244" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="244" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__sensor__info__t_1a548d01ddec59454ff327118d58b7262d" prot="public" static="no" mutable="no">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char* hf_temp_sensor_info_t::manufacturer</definition>
         <argsstring></argsstring>
         <name>manufacturer</name>
@@ -125,7 +125,7 @@
         <location file="inc/base/BaseTemperature.h" line="245" column="14" bodyfile="inc/base/BaseTemperature.h" bodystart="245" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__sensor__info__t_1a0c4fd02170af505ef07488baa106c5b3" prot="public" static="no" mutable="no">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char* hf_temp_sensor_info_t::model</definition>
         <argsstring></argsstring>
         <name>model</name>
@@ -140,7 +140,7 @@
         <location file="inc/base/BaseTemperature.h" line="246" column="14" bodyfile="inc/base/BaseTemperature.h" bodystart="246" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__sensor__info__t_1a36d44a724620dbdd0d1ca9a0e595c069" prot="public" static="no" mutable="no">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char* hf_temp_sensor_info_t::version</definition>
         <argsstring></argsstring>
         <name>version</name>

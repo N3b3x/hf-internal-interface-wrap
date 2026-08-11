@@ -20,7 +20,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="165" column="20" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="165" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__tx__info__t_1a8cc21dcb52667cae68c81c781d46a0c2" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_esp_can_tx_info_t::success</definition>
         <argsstring></argsstring>
         <name>success</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="166" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="166" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__tx__info__t_1a3c647fd808e471906496542390b24dbb" prot="public" static="no" mutable="no">
-        <type>uint64_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint64_t</ref></type>
         <definition>uint64_t hf_esp_can_tx_info_t::timestamp_us</definition>
         <argsstring></argsstring>
         <name>timestamp_us</name>

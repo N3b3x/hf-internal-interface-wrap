@@ -7,7 +7,7 @@
     <includes refid="BaseGpio_8h" local="no">BaseGpio.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classBaseGpio_1ae1bd179f793ec92b56b56bf6ea386546" prot="protected" static="no" mutable="no">
-        <type>const <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>const hf_pin_num_t BaseGpio::pin_</definition>
         <argsstring></argsstring>
         <name>pin_</name>
@@ -22,7 +22,7 @@
         <location file="inc/base/BaseGpio.h" line="770" column="22" bodyfile="inc/base/BaseGpio.h" bodystart="770" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseGpio_1ac5c36e8f02f1483820a15c7dbcdc8e6c" prot="protected" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseGpio::initialized_</definition>
         <argsstring></argsstring>
         <name>initialized_</name>
@@ -150,7 +150,7 @@
         <name>BaseGpio</name>
         <qualifiedname>BaseGpio::BaseGpio</qualifiedname>
         <param>
-          <type>const <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> &amp;</type>
           <declname>copy</declname>
         </param>
         <briefdescription>
@@ -169,7 +169,7 @@
         <name>operator=</name>
         <qualifiedname>BaseGpio::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> &amp;</type>
           <declname>copy</declname>
         </param>
         <briefdescription>
@@ -197,7 +197,7 @@
         <location file="inc/base/BaseGpio.h" line="313" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a2c654042248121cefac7e79590b35ec6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseGpio::IsInitialized</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsInitialized</name>
@@ -215,7 +215,7 @@
         <location file="inc/base/BaseGpio.h" line="323" column="9" bodyfile="inc/base/BaseGpio.h" bodystart="786" bodyend="788"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a363769239e2d658315215af324ee5aba" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseGpio::EnsureInitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureInitialized</name>
@@ -233,7 +233,7 @@
         <location file="inc/base/BaseGpio.h" line="329" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="790" bodyend="795"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a33c01186a67211b905c9efd8a64af2b1" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseGpio::EnsureDeinitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureDeinitialized</name>
@@ -318,7 +318,7 @@
         <location file="inc/base/BaseGpio.h" line="424" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="814" bodyend="825"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a33f91a55c88f95d12f651a08c2175f9e" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseGpio::IsInput</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsInput</name>
@@ -336,7 +336,7 @@
         <location file="inc/base/BaseGpio.h" line="430" column="9" bodyfile="inc/base/BaseGpio.h" bodystart="833" bodyend="835"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1ae6daa5410a578598b694320cdc1997e0" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseGpio::IsOutput</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsOutput</name>
@@ -519,7 +519,7 @@
         <location file="inc/base/BaseGpio.h" line="489" column="27" bodyfile="inc/base/BaseGpio.h" bodystart="896" bodyend="898"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a17782f317993dcb800ba05411f157d70" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void BaseGpio::SetActiveState</definition>
         <argsstring>(hf_gpio_active_state_t active_state) noexcept</argsstring>
         <name>SetActiveState</name>
@@ -608,7 +608,7 @@
         <name>IsActive</name>
         <qualifiedname>BaseGpio::IsActive</qualifiedname>
         <param>
-          <type>bool &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref> &amp;</type>
           <declname>is_active</declname>
         </param>
         <briefdescription>
@@ -717,7 +717,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         <location file="inc/base/BaseGpio.h" line="557" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="1137" bodyend="1165"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a5fa43d23d2049a40d1235de202ccc935" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseGpio::IsPinAvailable</definition>
         <argsstring>() const noexcept=0</argsstring>
         <name>IsPinAvailable</name>
@@ -757,7 +757,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         <location file="inc/base/BaseGpio.h" line="573" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a36d5613164945ed0d1fdd121bb47bff3" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>virtual const char * BaseGpio::GetDescription</definition>
         <argsstring>() const noexcept=0</argsstring>
         <name>GetDescription</name>
@@ -809,12 +809,12 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         <param>
           <type><ref refid="group__gpio_1ga9a7aef9fbdf0b553981712baf9a4223a" kindref="member">InterruptCallback</ref></type>
           <declname>callback</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Configure GPIO interrupt settings. </para>
@@ -1080,7 +1080,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         <location file="inc/base/BaseGpio.h" line="686" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="686" bodyend="689"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a74b7105774c1a992884e332d9ebf6979" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseGpio::Initialize</definition>
         <argsstring>() noexcept=0</argsstring>
         <name>Initialize</name>
@@ -1100,7 +1100,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         <location file="inc/base/BaseGpio.h" line="710" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a10393bd9b8eeacc40bc2e643be69576d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseGpio::Deinitialize</definition>
         <argsstring>() noexcept</argsstring>
         <name>Deinitialize</name>
@@ -1541,7 +1541,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
     </sectiondef>
     <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classBaseGpio_1a26162b7180af0e0715fe0d8f37e695a3" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char * BaseGpio::ToString</definition>
         <argsstring>(hf_gpio_state_t state) noexcept</argsstring>
         <name>ToString</name>
@@ -1559,7 +1559,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
         <location file="inc/base/BaseGpio.h" line="694" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1004" bodyend="1013"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a2eda1258440e5533133c3b19fe616673" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char * BaseGpio::ToString</definition>
         <argsstring>(hf_gpio_level_t level) noexcept</argsstring>
         <name>ToString</name>
@@ -1577,7 +1577,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
         <location file="inc/base/BaseGpio.h" line="695" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1015" bodyend="1024"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a2362c8606c31008f0687640df813dee8" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char * BaseGpio::ToString</definition>
         <argsstring>(hf_gpio_active_state_t active_state) noexcept</argsstring>
         <name>ToString</name>
@@ -1595,7 +1595,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
         <location file="inc/base/BaseGpio.h" line="696" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1026" bodyend="1035"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a51484809ee69e5742cb5130aead62fb4" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char * BaseGpio::ToString</definition>
         <argsstring>(hf_gpio_direction_t direction) noexcept</argsstring>
         <name>ToString</name>
@@ -1613,7 +1613,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
         <location file="inc/base/BaseGpio.h" line="697" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1037" bodyend="1046"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a191e85e652bd5133968d0f3d7bb21b0e" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char * BaseGpio::ToString</definition>
         <argsstring>(hf_gpio_output_mode_t output_mode) noexcept</argsstring>
         <name>ToString</name>
@@ -1631,7 +1631,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
         <location file="inc/base/BaseGpio.h" line="698" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1048" bodyend="1057"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a61bd63d0e7a6dc373a22856e9b90ef7c" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char * BaseGpio::ToString</definition>
         <argsstring>(hf_gpio_pull_mode_t pull_mode) noexcept</argsstring>
         <name>ToString</name>
@@ -1649,7 +1649,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
         <location file="inc/base/BaseGpio.h" line="699" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1059" bodyend="1072"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a28828756e1f8fffe36628ec3cc7979bd" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char * BaseGpio::ToString</definition>
         <argsstring>(hf_gpio_interrupt_trigger_t trigger) noexcept</argsstring>
         <name>ToString</name>

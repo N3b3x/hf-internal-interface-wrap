@@ -5,7 +5,7 @@
     <includes refid="EspTypes__WiFi_8h" local="no">EspTypes_WiFi.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structHfEspWifiCalibration_1a139bff7921942a9199696a7518dc29eb" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool HfEspWifiCalibration::rf_cal_valid</definition>
         <argsstring></argsstring>
         <name>rf_cal_valid</name>
@@ -20,7 +20,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="159" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="159" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiCalibration_1a2b1c445dad311f2289ce2262c8e129ef" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool HfEspWifiCalibration::phy_cal_valid</definition>
         <argsstring></argsstring>
         <name>phy_cal_valid</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="160" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="160" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiCalibration_1abb24c638640ee96a9c8603264ca85821" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t HfEspWifiCalibration::rf_cal_data[32]</definition>
         <argsstring>[32]</argsstring>
         <name>rf_cal_data</name>
@@ -50,7 +50,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="161" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="161" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiCalibration_1a8ae7899cb5988746b70b7af492962a8c" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t HfEspWifiCalibration::phy_cal_data[16]</definition>
         <argsstring>[16]</argsstring>
         <name>phy_cal_data</name>

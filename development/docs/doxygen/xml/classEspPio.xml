@@ -7,7 +7,7 @@
     <innerclass refid="structEspPio_1_1ChannelState" prot="private">EspPio::ChannelState</innerclass>
     <sectiondef kind="private-static-attrib">
       <memberdef kind="variable" id="classEspPio_1ac4e5b7482b20d6852d1e8ab45984d853" prot="private" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
         <definition>constexpr hf_u8_t EspPio::MAX_CHANNELS</definition>
         <argsstring></argsstring>
         <name>MAX_CHANNELS</name>
@@ -22,7 +22,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="374" column="28" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="374" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPio_1a03675432b6a1a0d67ba0a87d8782d854" prot="private" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr size_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>constexpr size_t EspPio::MAX_SYMBOLS_PER_TRANSMISSION</definition>
         <argsstring></argsstring>
         <name>MAX_SYMBOLS_PER_TRANSMISSION</name>
@@ -37,7 +37,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="375" column="27" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="375" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPio_1a98997f966da26af47b3c6259dbaeb07b" prot="private" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t EspPio::DEFAULT_RESOLUTION_NS</definition>
         <argsstring></argsstring>
         <name>DEFAULT_RESOLUTION_NS</name>
@@ -52,7 +52,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="376" column="29" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="376" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPio_1a56edcc56d779c721e32fe3e0deca9c3d" prot="private" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t EspPio::RMT_CLK_SRC_FREQ</definition>
         <argsstring></argsstring>
         <name>RMT_CLK_SRC_FREQ</name>
@@ -67,7 +67,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="381" column="29" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="381" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPio_1a6961547bda9a07105b8a285b884922c1" prot="private" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>constexpr const char* EspPio::TAG</definition>
         <argsstring></argsstring>
         <name>TAG</name>
@@ -85,7 +85,7 @@
     </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classEspPio_1a2cfe917257c8f0d1e35914b545690c6b" prot="private" static="no" mutable="no">
-        <type>std::array&lt; <ref refid="structEspPio_1_1ChannelState" kindref="compound">ChannelState</ref>, <ref refid="classEspPio_1ac4e5b7482b20d6852d1e8ab45984d853" kindref="member">MAX_CHANNELS</ref> &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::array</ref>&lt; <ref refid="structEspPio_1_1ChannelState" kindref="compound">ChannelState</ref>, <ref refid="classEspPio_1ac4e5b7482b20d6852d1e8ab45984d853" kindref="member">MAX_CHANNELS</ref> &gt;</type>
         <definition>std::array&lt;ChannelState, MAX_CHANNELS&gt; EspPio::channels_</definition>
         <argsstring></argsstring>
         <name>channels_</name>
@@ -179,7 +179,7 @@
         <name>EspPio</name>
         <qualifiedname>EspPio::EspPio</qualifiedname>
         <param>
-          <type>const <ref refid="classEspPio" kindref="compound">EspPio</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classEspPio" kindref="compound">EspPio</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -196,7 +196,7 @@
         <name>operator=</name>
         <qualifiedname>EspPio::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classEspPio" kindref="compound">EspPio</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classEspPio" kindref="compound">EspPio</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -290,7 +290,7 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>const <ref refid="structhf__pio__channel__config__t" kindref="compound">hf_pio_channel_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__pio__channel__config__t" kindref="compound">hf_pio_channel_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -334,17 +334,17 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>const <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> *</type>
           <declname>symbols</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>symbol_count</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>wait_completion</declname>
-          <defval>false</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">false</ref></defval>
         </param>
         <briefdescription>
 <para>Transmit a sequence of symbols. </para>
@@ -407,11 +407,11 @@
           <declname>buffer</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>buffer_size</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_us</declname>
           <defval>0</defval>
         </param>
@@ -472,7 +472,7 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>size_t &amp;</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref> &amp;</type>
           <declname>symbols_received</declname>
         </param>
         <briefdescription>
@@ -505,7 +505,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="145" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a9763ed6befd9ce2928a9710116f4d84d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspPio::IsChannelBusy</definition>
         <argsstring>(hf_u8_t channel_id) const noexcept override</argsstring>
         <name>IsChannelBusy</name>
@@ -613,7 +613,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="150" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1ac24f012073be0c9e406724cadd1c9788" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspPio::SetTransmitCallback</definition>
         <argsstring>(hf_u8_t channel_id, hf_pio_transmit_callback_t callback, void *user_data=nullptr) noexcept override</argsstring>
         <name>SetTransmitCallback</name>
@@ -628,9 +628,9 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Set callback for transmission complete events. </para>
@@ -668,7 +668,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="152" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a80cc3f6b0def51b6d46dfb15d9ab4d95" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspPio::SetReceiveCallback</definition>
         <argsstring>(hf_u8_t channel_id, hf_pio_receive_callback_t callback, void *user_data=nullptr) noexcept override</argsstring>
         <name>SetReceiveCallback</name>
@@ -683,9 +683,9 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Set callback for reception complete events. </para>
@@ -723,7 +723,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="154" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a5c5371ff00a9b3f4c8f753907d8a40ff" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspPio::SetErrorCallback</definition>
         <argsstring>(hf_u8_t channel_id, hf_pio_error_callback_t callback, void *user_data=nullptr) noexcept override</argsstring>
         <name>SetErrorCallback</name>
@@ -738,9 +738,9 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Set callback for error events. </para>
@@ -778,7 +778,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="156" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a07ad6ee8046e03dc6f224d5b219c392f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspPio::ClearChannelCallbacks</definition>
         <argsstring>(hf_u8_t channel_id) noexcept override</argsstring>
         <name>ClearChannelCallbacks</name>
@@ -808,7 +808,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="158" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a6bfe58b6673ae3aa9d1cd0f54ebb6901" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspPio::ClearCallbacks</definition>
         <argsstring>() noexcept override</argsstring>
         <name>ClearCallbacks</name>
@@ -922,17 +922,17 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>const rmt_symbol_word_t *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">rmt_symbol_word_t</ref> *</type>
           <declname>rmt_symbols</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>symbol_count</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>wait_completion</declname>
-          <defval>false</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">false</ref></defval>
         </param>
         <briefdescription>
 <para>Transmit raw RMT symbols directly (bypassing <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> conversion) </para>
@@ -973,7 +973,7 @@
 </parameterlist>
 <simplesect kind="return"><para>Error code indicating success or failure </para>
 </simplesect>
-<simplesect kind="note"><para>This provides direct RMT access similar to rmt_wrapper.hpp </para>
+<simplesect kind="note"><para>This provides direct RMT access similar to <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">rmt_wrapper.hpp</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -992,19 +992,19 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>rmt_symbol_word_t *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">rmt_symbol_word_t</ref> *</type>
           <declname>rmt_buffer</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>buffer_size</declname>
         </param>
         <param>
-          <type>size_t &amp;</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref> &amp;</type>
           <declname>symbols_received</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_us</declname>
           <defval>10000</defval>
         </param>
@@ -1055,7 +1055,7 @@
 </parameterlist>
 <simplesect kind="return"><para>Error code indicating success or failure </para>
 </simplesect>
-<simplesect kind="note"><para>This provides direct RMT access similar to rmt_wrapper.hpp </para>
+<simplesect kind="note"><para>This provides direct RMT access similar to <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">rmt_wrapper.hpp</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -1074,17 +1074,17 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>memory_blocks</declname>
           <defval>64</defval>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>enable_dma</declname>
-          <defval>false</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">false</ref></defval>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>queue_depth</declname>
           <defval>4</defval>
         </param>
@@ -1144,11 +1144,11 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>carrier_freq_hz</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>duty_cycle</declname>
         </param>
         <briefdescription>
@@ -1176,7 +1176,7 @@
 <parametername>duty_cycle</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Carrier duty cycle (0.0 to 1.0) </para>
+<para>Carrier duty cycle (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">0.0</ref> to <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">1.0</ref>) </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -1199,7 +1199,7 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>enable</declname>
         </param>
         <briefdescription>
@@ -1232,7 +1232,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="240" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1aa5050a7a117545e320540581461d2c08" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>size_t</type>
+        <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>size_t EspPio::GetMaxSymbolCount</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetMaxSymbolCount</name>
@@ -1250,7 +1250,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="246" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a78667ac6a809d1c275b01086b3bfaf7b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspPio::ValidatePioSystem</definition>
         <argsstring>() noexcept</argsstring>
         <name>ValidatePioSystem</name>
@@ -1278,11 +1278,11 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>const <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> &amp;</type>
           <declname>bit0_config</declname>
         </param>
         <param>
-          <type>const <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> &amp;</type>
           <declname>bit1_config</declname>
         </param>
         <briefdescription>
@@ -1333,7 +1333,7 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>idle_level</declname>
         </param>
         <briefdescription>
@@ -1495,7 +1495,7 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>rmt_clock_source_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">rmt_clock_source_t</ref></type>
           <declname>clk_src</declname>
         </param>
         <briefdescription>
@@ -1515,7 +1515,7 @@
 <parametername>clk_src</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>RMT clock source (e.g. RMT_CLK_SRC_PLL_F80M, RMT_CLK_SRC_XTAL, RMT_CLK_SRC_RC_FAST) </para>
+<para>RMT clock source (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">e.g</ref>. RMT_CLK_SRC_PLL_F80M, RMT_CLK_SRC_XTAL, RMT_CLK_SRC_RC_FAST) </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -1540,7 +1540,7 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>rmt_clock_source_t &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">rmt_clock_source_t</ref> &amp;</type>
           <declname>clk_src</declname>
         </param>
         <briefdescription>
@@ -1578,7 +1578,7 @@
     </sectiondef>
     <sectiondef kind="private-func">
       <memberdef kind="function" id="classEspPio_1a68923d078ceecd71f7e2f77e8c5bc947" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspPio::IsValidChannelId</definition>
         <argsstring>(hf_u8_t channel_id) const noexcept</argsstring>
         <name>IsValidChannelId</name>
@@ -1603,19 +1603,19 @@
         <name>ConvertToRmtSymbols</name>
         <qualifiedname>EspPio::ConvertToRmtSymbols</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> *</type>
           <declname>symbols</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>symbol_count</declname>
         </param>
         <param>
-          <type>rmt_symbol_word_t *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">rmt_symbol_word_t</ref> *</type>
           <declname>rmt_symbols</declname>
         </param>
         <param>
-          <type>size_t &amp;</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref> &amp;</type>
           <declname>rmt_symbol_count</declname>
         </param>
         <briefdescription>
@@ -1634,11 +1634,11 @@
         <name>ConvertFromRmtSymbols</name>
         <qualifiedname>EspPio::ConvertFromRmtSymbols</qualifiedname>
         <param>
-          <type>const rmt_symbol_word_t *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">rmt_symbol_word_t</ref> *</type>
           <declname>rmt_symbols</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>rmt_symbol_count</declname>
         </param>
         <param>
@@ -1646,11 +1646,11 @@
           <declname>symbols</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>max_symbols</declname>
         </param>
         <param>
-          <type>size_t &amp;</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref> &amp;</type>
           <declname>symbols_converted</declname>
         </param>
         <briefdescription>
@@ -1749,11 +1749,11 @@
         <name>ValidateSymbols</name>
         <qualifiedname>EspPio::ValidateSymbols</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> *</type>
           <declname>symbols</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>symbol_count</declname>
         </param>
         <briefdescription>
@@ -1823,21 +1823,21 @@
         <location file="inc/mcu/esp32/EspPio.h" line="450" column="12"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1adb7169afd80d8ff319e03a551a73a848" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t EspPio::CalculateClockDivider</definition>
         <argsstring>(uint32_t resolution_ns, uint32_t &amp;actual_resolution_ns, uint32_t source_clock_hz) const noexcept</argsstring>
         <name>CalculateClockDivider</name>
         <qualifiedname>EspPio::CalculateClockDivider</qualifiedname>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>resolution_ns</declname>
         </param>
         <param>
-          <type>uint32_t &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref> &amp;</type>
           <declname>actual_resolution_ns</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>source_clock_hz</declname>
         </param>
         <briefdescription>
@@ -1880,17 +1880,17 @@
         <location file="inc/mcu/esp32/EspPio.h" line="462" column="12"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a45cde70f88c3c21f89bffe86998f87c6" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t EspPio::GetEffectiveClockFrequency</definition>
         <argsstring>(uint32_t clock_divider, uint32_t source_clock_hz) const noexcept</argsstring>
         <name>GetEffectiveClockFrequency</name>
         <qualifiedname>EspPio::GetEffectiveClockFrequency</qualifiedname>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>clock_divider</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>source_clock_hz</declname>
         </param>
         <briefdescription>
@@ -2019,7 +2019,7 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>const <ref refid="structhf__pio__channel__config__t" kindref="compound">hf_pio_channel_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__pio__channel__config__t" kindref="compound">hf_pio_channel_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -2052,7 +2052,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="503" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a6e9a1caf693efaa2f0c7f3b71fe2d02c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspPio::InvokeChannelErrorCallback</definition>
         <argsstring>(hf_u8_t channel_id, hf_pio_err_t error) noexcept</argsstring>
         <name>InvokeChannelErrorCallback</name>
@@ -2101,7 +2101,7 @@
         <name>GetClockSourceFrequency</name>
         <qualifiedname>EspPio::GetClockSourceFrequency</qualifiedname>
         <param>
-          <type>rmt_clock_source_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">rmt_clock_source_t</ref></type>
           <declname>clk_src</declname>
         </param>
         <briefdescription>
@@ -2120,7 +2120,7 @@
         <name>ResolveClockSourceHz</name>
         <qualifiedname>EspPio::ResolveClockSourceHz</qualifiedname>
         <param>
-          <type>rmt_clock_source_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">rmt_clock_source_t</ref></type>
           <declname>clk_src</declname>
         </param>
         <briefdescription>
@@ -2133,10 +2133,10 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>ESP32 RMT-based Programmable IO Channel implementation with advanced ESP-IDF v5.5+ features. </para>
+<para>ESP32 RMT-based Programmable IO Channel implementation with advanced ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+ features. </para>
     </briefdescription>
     <detaileddescription>
-<para>This class implements the <ref refid="classBasePio" kindref="compound">BasePio</ref> interface using the ESP32&apos;s advanced RMT peripheral with full ESP-IDF v5.5+ feature support. The RMT peripheral is specifically designed for generating and receiving infrared remote control signals, but it&apos;s versatile enough to handle many types of precisely-timed digital protocols with hardware acceleration.</para>
+<para>This class implements the <ref refid="classBasePio" kindref="compound">BasePio</ref> interface using the ESP32&apos;s advanced RMT peripheral with full ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+ feature support. The RMT peripheral is specifically designed for generating and receiving infrared remote control signals, but it&apos;s versatile enough to handle many types of precisely-timed digital protocols with hardware acceleration.</para>
 <para><bold>Key ESP32 RMT features utilized:</bold><itemizedlist>
 <listitem><para>Hardware symbol encoding with configurable timing and DMA support</para>
 </listitem><listitem><para>Built-in carrier generation for IR protocols with precise frequency control</para>
@@ -2148,7 +2148,7 @@
 </listitem><listitem><para>Multi-channel synchronization and triggered sampling support</para>
 </listitem></itemizedlist>
 </para>
-<para><bold>Advanced ESP-IDF v5.5+ Features:</bold><itemizedlist>
+<para><bold>Advanced ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+ Features:</bold><itemizedlist>
 <listitem><para>DMA-accelerated transfers for high-throughput applications</para>
 </listitem><listitem><para>Hardware-based digital filters for signal conditioning</para>
 </listitem><listitem><para>Advanced calibration and drift compensation mechanisms</para>

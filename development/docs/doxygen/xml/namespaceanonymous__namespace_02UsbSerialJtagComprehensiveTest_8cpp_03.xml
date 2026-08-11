@@ -4,7 +4,7 @@
     <compoundname>anonymous_namespace{UsbSerialJtagComprehensiveTest.cpp}</compoundname>
     <sectiondef kind="func">
       <memberdef kind="function" id="namespaceanonymous__namespace_02UsbSerialJtagComprehensiveTest_8cpp_03_1a1ed70e441e6ad6036e44805a149ca710" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void anonymous_namespace{UsbSerialJtagComprehensiveTest.cpp}::drain_rx</definition>
         <argsstring>(BaseUsbSerialJtag &amp;s, uint32_t max_ms=50) noexcept</argsstring>
         <name>drain_rx</name>
@@ -14,7 +14,7 @@
           <declname>s</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>max_ms</declname>
           <defval>50</defval>
         </param>

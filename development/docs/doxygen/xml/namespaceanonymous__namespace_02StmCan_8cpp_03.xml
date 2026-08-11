@@ -10,7 +10,7 @@
     <innerclass refid="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader" prot="public">anonymous_namespace{StmCan.cpp}::FdCanTxHeader</innerclass>
     <sectiondef kind="var">
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmCan_8cpp_03_1aba2c1ce526196a638d1a1dce049425d4" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmCan.cpp}::kCanRxFifo0</definition>
         <argsstring></argsstring>
         <name>kCanRxFifo0</name>

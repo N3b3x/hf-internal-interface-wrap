@@ -5,7 +5,7 @@
     <includes refid="EspCan_8h" local="no">EspCan.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__esp__can__filter__config__t_1a714c587cf6ca14b1e59d2c09403d6c82" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_esp_can_filter_config_t::id</definition>
         <argsstring></argsstring>
         <name>id</name>
@@ -20,7 +20,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="122" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__filter__config__t_1a457c38e26bbd3137793f28d03856a542" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_esp_can_filter_config_t::mask</definition>
         <argsstring></argsstring>
         <name>mask</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="123" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__filter__config__t_1ab3643098ab53fb26bc1ec66cd1c27ad0" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_esp_can_filter_config_t::is_extended</definition>
         <argsstring></argsstring>
         <name>is_extended</name>
@@ -50,7 +50,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="124" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__filter__config__t_1abe6a19952410570b8be6ccdb2e2daf39" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_esp_can_filter_config_t::is_dual_filter</definition>
         <argsstring></argsstring>
         <name>is_dual_filter</name>
@@ -65,7 +65,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="125" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__filter__config__t_1a275e899f3f7a6d7beaf9c82fd16d7509" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_esp_can_filter_config_t::id2</definition>
         <argsstring></argsstring>
         <name>id2</name>
@@ -80,7 +80,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="128" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="128" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__filter__config__t_1a736e5d38a1eb7e571879dbcbe69caaa6" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_esp_can_filter_config_t::mask2</definition>
         <argsstring></argsstring>
         <name>mask2</name>

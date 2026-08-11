@@ -5,7 +5,7 @@
     <includes refid="BaseAdc_8h" local="no">BaseAdc.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__adc__diagnostics__t_1a1e0b1c99282c5fe283580316afefc930" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_adc_diagnostics_t::adcHealthy</definition>
         <argsstring></argsstring>
         <name>adcHealthy</name>
@@ -65,7 +65,7 @@
         <location file="inc/base/BaseAdc.h" line="169" column="12" bodyfile="inc/base/BaseAdc.h" bodystart="169" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__adc__diagnostics__t_1ab296ef25d5896f5b5bed5968fe20439d" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float hf_adc_diagnostics_t::temperatureC</definition>
         <argsstring></argsstring>
         <name>temperatureC</name>
@@ -80,7 +80,7 @@
         <location file="inc/base/BaseAdc.h" line="170" column="9" bodyfile="inc/base/BaseAdc.h" bodystart="170" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__adc__diagnostics__t_1abdc5d12be09f67f96148c75af7a9fb9f" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float hf_adc_diagnostics_t::referenceVoltage</definition>
         <argsstring></argsstring>
         <name>referenceVoltage</name>
@@ -95,7 +95,7 @@
         <location file="inc/base/BaseAdc.h" line="171" column="9" bodyfile="inc/base/BaseAdc.h" bodystart="171" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__adc__diagnostics__t_1a5f4abea43e69583dc8b52c99b710da40" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_adc_diagnostics_t::calibrationValid</definition>
         <argsstring></argsstring>
         <name>calibrationValid</name>
@@ -125,7 +125,7 @@
         <location file="inc/base/BaseAdc.h" line="173" column="12" bodyfile="inc/base/BaseAdc.h" bodystart="173" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__adc__diagnostics__t_1a358f62bd5c7258359c204ef9fbe3a9e6" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_adc_diagnostics_t::initialization_state</definition>
         <argsstring></argsstring>
         <name>initialization_state</name>

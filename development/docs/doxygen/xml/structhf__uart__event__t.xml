@@ -20,7 +20,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="261" column="24" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="261" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__event__t_1ab767636a5abe68c979e61ace6da45a14" prot="public" static="no" mutable="no">
-        <type>size_t</type>
+        <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>size_t hf_uart_event_t::size</definition>
         <argsstring></argsstring>
         <name>size</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="262" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="262" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__event__t_1a6a8642e30e8aa3174f501fadf0bf08b7" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t hf_uart_event_t::timeout_flag</definition>
         <argsstring></argsstring>
         <name>timeout_flag</name>

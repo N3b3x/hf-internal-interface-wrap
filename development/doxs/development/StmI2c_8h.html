@@ -102,13 +102,14 @@ $(function(){initNavTree('StmI2c_8h.html',''); initResizable(); });
 <p>STM32 I2C Bus+Device wrapper — wraps STM32 HAL I2C via CubeMX handle.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="BaseI2c_8h_source.html">BaseI2c.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="PlatformMutex_8h_source.html">PlatformMutex.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="StmTypes_8h_source.html">StmTypes.h</a>&quot;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for StmI2c.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="StmI2c_8h__incl.svg" width="572" height="278"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="StmI2c_8h__incl.svg" width="100%" height="508"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -135,30 +136,28 @@ Classes</h2></td></tr>
 </ul>
 <h1><a class="anchor" id="Usage"></a>
 Usage</h1>
-<div class="fragment"><div class="line"><span class="keyword">extern</span> I2C_HandleTypeDef hi2c1;</div>
+<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code hl_class" href="classSoftChipSelectGuard.html">I2C_HandleTypeDef</a> <a class="code hl_class" href="classSoftChipSelectGuard.html">hi2c1</a>;</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_struct" href="structhf__i2c__bus__config__t.html">hf_i2c_bus_config_t</a> bus_cfg(&amp;hi2c1);</div>
-<div class="line"><a class="code hl_class" href="classStmI2cBus.html">StmI2cBus</a> i2cBus(bus_cfg);</div>
-<div class="line">i2cBus.Initialize();</div>
+<div class="line"><a class="code hl_struct" href="structhf__i2c__bus__config__t.html">hf_i2c_bus_config_t</a> <a class="code hl_class" href="classSoftChipSelectGuard.html">bus_cfg</a>(&amp;<a class="code hl_class" href="classSoftChipSelectGuard.html">hi2c1</a>);</div>
+<div class="line"><a class="code hl_class" href="classStmI2cBus.html">StmI2cBus</a> <a class="code hl_class" href="classSoftChipSelectGuard.html">i2cBus</a>(<a class="code hl_class" href="classSoftChipSelectGuard.html">bus_cfg</a>);</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">i2cBus</a>.Initialize();</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_struct" href="structhf__i2c__device__config__t.html">hf_i2c_device_config_t</a> dev_cfg;</div>
-<div class="line">dev_cfg.<a class="code hl_variable" href="structhf__i2c__device__config__t.html#a2043147468665929ffd3b65333a27b19">device_address</a> = 0x68;  <span class="comment">// MPU6050</span></div>
-<div class="line"><span class="keywordtype">int</span> idx = i2cBus.CreateDevice(dev_cfg);</div>
-<div class="line"><a class="code hl_class" href="classBaseI2c.html">BaseI2c</a>* mpu = i2cBus.GetDevice(idx);</div>
-<div class="line">mpu-&gt;<a class="code hl_function" href="classBaseI2c.html#adcdc753cf18e47cbc651cc608759bf32">Initialize</a>();</div>
+<div class="line"><a class="code hl_struct" href="structhf__i2c__device__config__t.html">hf_i2c_device_config_t</a> <a class="code hl_class" href="classSoftChipSelectGuard.html">dev_cfg</a>;</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">dev_cfg</a>.device_address = 0x68;  <span class="comment">// MPU6050</span></div>
+<div class="line"><span class="keywordtype">int</span> <a class="code hl_class" href="classSoftChipSelectGuard.html">idx</a> = <a class="code hl_class" href="classSoftChipSelectGuard.html">i2cBus</a>.CreateDevice(<a class="code hl_class" href="classSoftChipSelectGuard.html">dev_cfg</a>);</div>
+<div class="line"><a class="code hl_class" href="classBaseI2c.html">BaseI2c</a>* <a class="code hl_class" href="classSoftChipSelectGuard.html">mpu</a> = <a class="code hl_class" href="classSoftChipSelectGuard.html">i2cBus</a>.GetDevice(<a class="code hl_class" href="classSoftChipSelectGuard.html">idx</a>);</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">mpu</a>-&gt;Initialize();</div>
 <div class="line"> </div>
-<div class="line">uint8_t who_am_i = 0;</div>
-<div class="line">mpu-&gt;<a class="code hl_function" href="classBaseI2c.html#aec25744c5d3ab1ec6c326950001949a0">ReadRegister</a>(0x75, who_am_i);</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">uint8_t</a> <a class="code hl_class" href="classSoftChipSelectGuard.html">who_am_i</a> = 0;</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">mpu</a>-&gt;ReadRegister(0x75, <a class="code hl_class" href="classSoftChipSelectGuard.html">who_am_i</a>);</div>
 <div class="ttc" id="aclassBaseI2c_html"><div class="ttname"><a href="classBaseI2c.html">BaseI2c</a></div><div class="ttdoc">Abstract base class for I2C device implementations.</div><div class="ttdef"><b>Definition</b> BaseI2c.h:196</div></div>
-<div class="ttc" id="aclassBaseI2c_html_adcdc753cf18e47cbc651cc608759bf32"><div class="ttname"><a href="classBaseI2c.html#adcdc753cf18e47cbc651cc608759bf32">BaseI2c::Initialize</a></div><div class="ttdeci">virtual bool Initialize() noexcept=0</div><div class="ttdoc">Initialize the I2C bus.</div></div>
-<div class="ttc" id="aclassBaseI2c_html_aec25744c5d3ab1ec6c326950001949a0"><div class="ttname"><a href="classBaseI2c.html#aec25744c5d3ab1ec6c326950001949a0">BaseI2c::ReadRegister</a></div><div class="ttdeci">virtual bool ReadRegister(hf_u8_t reg_addr, hf_u8_t &amp;data) noexcept</div><div class="ttdoc">Read from a register on the I2C device.</div><div class="ttdef"><b>Definition</b> BaseI2c.h:375</div></div>
-<div class="ttc" id="aclassStmI2cBus_html"><div class="ttname"><a href="classStmI2cBus.html">StmI2cBus</a></div><div class="ttdoc">STM32 I2C bus — manages the HAL handle and device collection.</div><div class="ttdef"><b>Definition</b> StmI2c.h:87</div></div>
+<div class="ttc" id="aclassSoftChipSelectGuard_html"><div class="ttname"><a href="classSoftChipSelectGuard.html">SoftChipSelectGuard</a></div><div class="ttdoc">RAII soft-CS: runs assert_fn on construction and deassert_fn on destruction (including early return /...</div><div class="ttdef"><b>Definition</b> SoftChipSelectGuard.h:32</div></div>
+<div class="ttc" id="aclassStmI2cBus_html"><div class="ttname"><a href="classStmI2cBus.html">StmI2cBus</a></div><div class="ttdoc">STM32 I2C bus — manages the HAL handle and device collection.</div><div class="ttdef"><b>Definition</b> StmI2c.h:106</div></div>
 <div class="ttc" id="astructhf__i2c__bus__config__t_html"><div class="ttname"><a href="structhf__i2c__bus__config__t.html">hf_i2c_bus_config_t</a></div><div class="ttdoc">Platform-agnostic I2C bus configuration for STM32. Users pass their CubeMX-generated I2C_HandleTypeDe...</div><div class="ttdef"><b>Definition</b> StmTypes.h:293</div></div>
 <div class="ttc" id="astructhf__i2c__device__config__t_html"><div class="ttname"><a href="structhf__i2c__device__config__t.html">hf_i2c_device_config_t</a></div><div class="ttdoc">I2C device configuration structure.</div><div class="ttdef"><b>Definition</b> EspTypes_I2C.h:225</div></div>
-<div class="ttc" id="astructhf__i2c__device__config__t_html_a2043147468665929ffd3b65333a27b19"><div class="ttname"><a href="structhf__i2c__device__config__t.html#a2043147468665929ffd3b65333a27b19">hf_i2c_device_config_t::device_address</a></div><div class="ttdeci">uint16_t device_address</div><div class="ttdoc">7-bit or 10-bit device address</div><div class="ttdef"><b>Definition</b> EspTypes_I2C.h:226</div></div>
 </div><!-- fragment --><dl class="section author"><dt>Author</dt><dd>HardFOC </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC — Licensed under GPL v3.0 or later. </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC — Licensed under GPL <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v3.0</a> or later. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

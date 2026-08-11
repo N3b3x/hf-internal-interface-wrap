@@ -4,7 +4,7 @@
     <compoundname>anonymous_namespace{StmLogger.cpp}</compoundname>
     <sectiondef kind="func">
       <memberdef kind="function" id="namespaceanonymous__namespace_02StmLogger_8cpp_03_1a7851fb0201253a204b1fc6c2da664dd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char * anonymous_namespace{StmLogger.cpp}::LevelToPrefix</definition>
         <argsstring>(hf_log_level_t level)</argsstring>
         <name>LevelToPrefix</name>

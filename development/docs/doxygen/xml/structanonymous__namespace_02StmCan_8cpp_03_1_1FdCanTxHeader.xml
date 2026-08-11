@@ -4,7 +4,7 @@
     <compoundname>anonymous_namespace{StmCan.cpp}::FdCanTxHeader</compoundname>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1ac27e061811c0a0b383fbba9498666f1e" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::Identifier</definition>
         <argsstring></argsstring>
         <name>Identifier</name>
@@ -18,7 +18,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="97" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1a013ed1a3960177d9d02e66f0207c3362" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::IdType</definition>
         <argsstring></argsstring>
         <name>IdType</name>
@@ -32,7 +32,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="98" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1ac0d3fd9c5c95bfd1b2763a1f6b7b13c3" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::TxFrameType</definition>
         <argsstring></argsstring>
         <name>TxFrameType</name>
@@ -46,7 +46,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="99" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1ac8af54066a16b626cdb857d9949758cd" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::DataLength</definition>
         <argsstring></argsstring>
         <name>DataLength</name>
@@ -60,7 +60,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="100" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1aa4d19915abf99f0a45cd0613df9efbca" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::ErrorStateIndicator</definition>
         <argsstring></argsstring>
         <name>ErrorStateIndicator</name>
@@ -74,7 +74,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="101" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1a5551bd00ae60c2a30fc79bfab2395e23" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::BitRateSwitch</definition>
         <argsstring></argsstring>
         <name>BitRateSwitch</name>
@@ -88,7 +88,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="102" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1a14a05a7038cc88fadd889192191f8316" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::FDFormat</definition>
         <argsstring></argsstring>
         <name>FDFormat</name>
@@ -102,7 +102,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="103" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="103" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1a3aea62c5fbf77d292af7c7245ef4bbae" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::TxEventFifoControl</definition>
         <argsstring></argsstring>
         <name>TxEventFifoControl</name>
@@ -116,7 +116,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="104" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1FdCanTxHeader_1ab92105698a3c82a8a78ef1951337748f" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::FdCanTxHeader::MessageMarker</definition>
         <argsstring></argsstring>
         <name>MessageMarker</name>

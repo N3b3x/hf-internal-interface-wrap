@@ -5,7 +5,7 @@
     <includes refid="BaseWifi_8h" local="no">BaseWifi.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__wifi__station__config__t_1a9bec5a9a39cf0f7827fa697c46ed338a" prot="public" static="no" mutable="no">
-        <type>std::string</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref></type>
         <definition>std::string hf_wifi_station_config_t::ssid</definition>
         <argsstring></argsstring>
         <name>ssid</name>
@@ -20,7 +20,7 @@
         <location file="inc/base/BaseWifi.h" line="194" column="15" bodyfile="inc/base/BaseWifi.h" bodystart="194" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__wifi__station__config__t_1a18939a056d90423a88c5f31412f93fce" prot="public" static="no" mutable="no">
-        <type>std::string</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref></type>
         <definition>std::string hf_wifi_station_config_t::password</definition>
         <argsstring></argsstring>
         <name>password</name>
@@ -35,7 +35,7 @@
         <location file="inc/base/BaseWifi.h" line="195" column="15" bodyfile="inc/base/BaseWifi.h" bodystart="195" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__wifi__station__config__t_1ac3fc454eb6e2d3c3892527984e6bfd23" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t hf_wifi_station_config_t::bssid[6]</definition>
         <argsstring>[6]</argsstring>
         <name>bssid</name>
@@ -50,7 +50,7 @@
         <location file="inc/base/BaseWifi.h" line="196" column="11" bodyfile="inc/base/BaseWifi.h" bodystart="196" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__wifi__station__config__t_1ae92c8cdb70a56a99ad11d433c18925e6" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t hf_wifi_station_config_t::channel</definition>
         <argsstring></argsstring>
         <name>channel</name>
@@ -65,7 +65,7 @@
         <location file="inc/base/BaseWifi.h" line="197" column="11" bodyfile="inc/base/BaseWifi.h" bodystart="197" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__wifi__station__config__t_1ab17e16f345d3be419ac4635abcac681d" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_wifi_station_config_t::bssid_set</definition>
         <argsstring></argsstring>
         <name>bssid_set</name>
@@ -80,7 +80,7 @@
         <location file="inc/base/BaseWifi.h" line="198" column="8" bodyfile="inc/base/BaseWifi.h" bodystart="198" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__wifi__station__config__t_1a803122e9c77b8f5d4c026afc64b80efe" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_wifi_station_config_t::scan_method</definition>
         <argsstring></argsstring>
         <name>scan_method</name>
@@ -95,7 +95,7 @@
         <location file="inc/base/BaseWifi.h" line="199" column="12" bodyfile="inc/base/BaseWifi.h" bodystart="199" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__wifi__station__config__t_1af9150571eac6a1dacf0f02bd9650f152" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_wifi_station_config_t::sort_method</definition>
         <argsstring></argsstring>
         <name>sort_method</name>
@@ -110,7 +110,7 @@
         <location file="inc/base/BaseWifi.h" line="200" column="8" bodyfile="inc/base/BaseWifi.h" bodystart="200" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__wifi__station__config__t_1a8fdad64ca7df7590d9e1a3a4c25fec56" prot="public" static="no" mutable="no">
-        <type>uint16_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
         <definition>uint16_t hf_wifi_station_config_t::threshold_rssi</definition>
         <argsstring></argsstring>
         <name>threshold_rssi</name>

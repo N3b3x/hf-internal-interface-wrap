@@ -20,7 +20,7 @@
         <location file="inc/base/BaseBluetooth.h" line="273" column="26" bodyfile="inc/base/BaseBluetooth.h" bodystart="273" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__bluetooth__device__info__t_1a5d6aca83d72d1ba01f265f33987cf9ae" prot="public" static="no" mutable="no">
-        <type>std::string</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref></type>
         <definition>std::string hf_bluetooth_device_info_t::name</definition>
         <argsstring></argsstring>
         <name>name</name>
@@ -50,7 +50,7 @@
         <location file="inc/base/BaseBluetooth.h" line="275" column="30" bodyfile="inc/base/BaseBluetooth.h" bodystart="275" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__bluetooth__device__info__t_1ad26d487cdd1b817651ef2afca7c24314" prot="public" static="no" mutable="no">
-        <type>int8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int8_t</ref></type>
         <definition>int8_t hf_bluetooth_device_info_t::rssi</definition>
         <argsstring></argsstring>
         <name>rssi</name>
@@ -65,7 +65,7 @@
         <location file="inc/base/BaseBluetooth.h" line="276" column="10" bodyfile="inc/base/BaseBluetooth.h" bodystart="276" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__bluetooth__device__info__t_1a4cd72b73b359afa903623039f7b71a52" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_bluetooth_device_info_t::class_of_device</definition>
         <argsstring></argsstring>
         <name>class_of_device</name>
@@ -80,7 +80,7 @@
         <location file="inc/base/BaseBluetooth.h" line="277" column="12" bodyfile="inc/base/BaseBluetooth.h" bodystart="277" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__bluetooth__device__info__t_1ac1b435de54e204fc372f301d22bceb58" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; std::string &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref> &gt;</type>
         <definition>std::vector&lt;std::string&gt; hf_bluetooth_device_info_t::uuids</definition>
         <argsstring></argsstring>
         <name>uuids</name>
@@ -95,7 +95,7 @@
         <location file="inc/base/BaseBluetooth.h" line="278" column="15" bodyfile="inc/base/BaseBluetooth.h" bodystart="278" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__bluetooth__device__info__t_1af6c0fe4a8d8e125da4a9fd39415879d8" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_bluetooth_device_info_t::is_bonded</definition>
         <argsstring></argsstring>
         <name>is_bonded</name>
@@ -110,7 +110,7 @@
         <location file="inc/base/BaseBluetooth.h" line="279" column="8" bodyfile="inc/base/BaseBluetooth.h" bodystart="279" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__bluetooth__device__info__t_1a6c8d766924120cf874847fa36635e087" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_bluetooth_device_info_t::is_connected</definition>
         <argsstring></argsstring>
         <name>is_connected</name>

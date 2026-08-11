@@ -120,12 +120,14 @@ $(function(){initNavTree('index.html',''); initResizable(); });
 <h2><a class="anchor" id="autotoc_md28"></a>
 🎨 <b>Design Philosophy</b></h2>
 <div class="fragment"><div class="line"><span class="comment">// Write hardware-agnostic code</span></div>
-<div class="line"><a class="code hl_class" href="classBaseGpio.html">BaseGpio</a>* led = GpioFactory::Create(GPIO_PIN_2, GPIO_OUTPUT);</div>
-<div class="line">led-&gt;SetHigh();</div>
+<div class="line"><a class="code hl_class" href="classBaseGpio.html">BaseGpio</a>* <a class="code hl_class" href="classSoftChipSelectGuard.html">led</a> = <a class="code hl_function" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">GpioFactory::Create</a>(<a class="code hl_class" href="classSoftChipSelectGuard.html">GPIO_PIN_2</a>, <a class="code hl_class" href="classSoftChipSelectGuard.html">GPIO_OUTPUT</a>);</div>
+<div class="line"><a class="code hl_class" href="classSoftChipSelectGuard.html">led</a>-&gt;SetHigh();</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Same code works on ESP32, STM32, or any supported MCU</span></div>
 <div class="line"><span class="comment">// The factory handles MCU-specific implementation selection</span></div>
 <div class="ttc" id="aclassBaseGpio_html"><div class="ttname"><a href="classBaseGpio.html">BaseGpio</a></div><div class="ttdoc">Unified GPIO base class for all digital GPIO implementations.</div><div class="ttdef"><b>Definition</b> BaseGpio.h:294</div></div>
+<div class="ttc" id="aclassSoftChipSelectGuard_html"><div class="ttname"><a href="classSoftChipSelectGuard.html">SoftChipSelectGuard</a></div><div class="ttdoc">RAII soft-CS: runs assert_fn on construction and deassert_fn on destruction (including early return /...</div><div class="ttdef"><b>Definition</b> SoftChipSelectGuard.h:32</div></div>
+<div class="ttc" id="aclassSoftChipSelectGuard_html_acbe56b56922f2d3988c3ecf86208aa4a"><div class="ttname"><a href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">SoftChipSelectGuard::SoftChipSelectGuard</a></div><div class="ttdeci">SoftChipSelectGuard(AssertFn assert_fn, DeassertFn deassert_fn) noexcept</div><div class="ttdef"><b>Definition</b> SoftChipSelectGuard.h:34</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md29"></a>
 🔌 <b>Peripheral Interfaces</b></h1>
 <blockquote class="doxtable">
@@ -189,16 +191,16 @@ $(function(){initNavTree('index.html',''); initResizable(); });
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="BaseGpio_8h.html">base/BaseGpio.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="EspGpio_8h.html">mcu/esp32/EspGpio.h</a>&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> setup() {</div>
+<div class="line"><span class="keywordtype">void</span> <a class="code hl_class" href="classSoftChipSelectGuard.html">setup</a>() {</div>
 <div class="line">    <span class="comment">// Create GPIO instance for built-in LED</span></div>
-<div class="line">    <a class="code hl_class" href="classBaseGpio.html">BaseGpio</a>* led = <span class="keyword">new</span> <a class="code hl_class" href="classEspGpio.html">EspGpio</a>(GPIO_NUM_2, GPIO_MODE_OUTPUT);</div>
+<div class="line">    <a class="code hl_class" href="classBaseGpio.html">BaseGpio</a>* <a class="code hl_class" href="classSoftChipSelectGuard.html">led</a> = <span class="keyword">new</span> <a class="code hl_class" href="classEspGpio.html">EspGpio</a>(<a class="code hl_class" href="classSoftChipSelectGuard.html">GPIO_NUM_2</a>, <a class="code hl_class" href="classSoftChipSelectGuard.html">GPIO_MODE_OUTPUT</a>);</div>
 <div class="line">    </div>
 <div class="line">    <span class="comment">// Blink LED</span></div>
 <div class="line">    <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
-<div class="line">        led-&gt;SetHigh();</div>
-<div class="line">        vTaskDelay(pdMS_TO_TICKS(500));</div>
-<div class="line">        led-&gt;SetLow();</div>
-<div class="line">        vTaskDelay(pdMS_TO_TICKS(500));</div>
+<div class="line">        <a class="code hl_class" href="classSoftChipSelectGuard.html">led</a>-&gt;SetHigh();</div>
+<div class="line">        <a class="code hl_class" href="classSoftChipSelectGuard.html">vTaskDelay</a>(<a class="code hl_class" href="classSoftChipSelectGuard.html">pdMS_TO_TICKS</a>(500));</div>
+<div class="line">        <a class="code hl_class" href="classSoftChipSelectGuard.html">led</a>-&gt;SetLow();</div>
+<div class="line">        <a class="code hl_class" href="classSoftChipSelectGuard.html">vTaskDelay</a>(<a class="code hl_class" href="classSoftChipSelectGuard.html">pdMS_TO_TICKS</a>(500));</div>
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="ttc" id="aBaseGpio_8h_html"><div class="ttname"><a href="BaseGpio_8h.html">BaseGpio.h</a></div><div class="ttdoc">Unified GPIO base class for all digital GPIO implementations.</div></div>
@@ -225,7 +227,7 @@ $(function(){initNavTree('index.html',''); initResizable(); });
 </div><!-- fragment --><p> yaml</p>
 <h2><a class="anchor" id="autotoc_md43"></a>
 <b>Configuration</b></h2>
-<p>Applications are configured in <code>examples/esp32/app_config.yml</code>: </p><div class="fragment"><div class="line">applications:</div>
+<p>Applications are configured in <code><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">examples/esp32/app_config.yml</a></code>: </p><div class="fragment"><div class="line">applications:</div>
 <div class="line">  gpio_test:</div>
 <div class="line">    source_file: &quot;GpioComprehensiveTest.cpp&quot;</div>
 <div class="line">    description: &quot;GPIO interface testing&quot;</div>
@@ -250,8 +252,8 @@ $(function(){initNavTree('index.html',''); initResizable(); });
 <h2><a class="anchor" id="autotoc_md46"></a>
 <b>Adding New Peripherals</b></h2>
 <ol type="1">
-<li><b>Create base interface</b> in <code>inc/base/BaseYourPeripheral.h</code></li>
-<li><b>Implement for ESP32</b> in <code>inc/mcu/esp32/EspYourPeripheral.h</code></li>
+<li><b>Create base interface</b> in <code><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">inc/base/BaseYourPeripheral.h</a></code></li>
+<li><b>Implement for ESP32</b> in <code><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">inc/mcu/esp32/EspYourPeripheral.h</a></code></li>
 <li><b>Add comprehensive tests</b> in <code>examples/esp32/main/</code></li>
 <li><b>Update documentation</b></li>
 </ol>
@@ -261,7 +263,7 @@ $(function(){initNavTree('index.html',''); initResizable(); });
 <li><b>Functions</b>: CamelCase (<code>SetDutyCycle</code>, <code>ReadValue</code>)</li>
 <li><b>Types</b>: snake_case with <code>*t</code> suffix (<code>hf_gpio_state_t</code>)</li>
 <li><b>Enums</b>: snake_case enum class (<code>hf_adc_err_t</code>)</li>
-<li><b>Logging</b>: Use <code>Logger::GetInstance()</code> for all output</li>
+<li><b>Logging</b>: Use <code><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">Logger::GetInstance()</a></code> for all output</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md48"></a>
 🔗 <b>Quick Links</b></h1>
@@ -281,7 +283,7 @@ $(function(){initNavTree('index.html',''); initResizable(); });
 <b>Development</b></h2>
 <ul>
 <li>🚀 <a href="examples/esp32/">Examples</a> - Test applications and usage examples</li>
-<li>🧪 Test Documentation - Comprehensive test documentation</li>
+<li>🧪 <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">Test Documentation</a> - Comprehensive test documentation</li>
 <li>🔧 <a href="examples/esp32/scripts/">Scripts</a> - Build, flash, and development tools</li>
 <li>📊 <a href="examples/esp32/app_config.yml">Configuration</a> - Application and build settings</li>
 </ul>

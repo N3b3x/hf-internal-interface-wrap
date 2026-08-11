@@ -5,7 +5,7 @@
     <includes refid="BaseGpio_8h" local="no">BaseGpio.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__gpio__diagnostics__t_1a5c298feebbd6638ca9f64268e82d6e67" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_gpio_diagnostics_t::gpioHealthy</definition>
         <argsstring></argsstring>
         <name>gpioHealthy</name>
@@ -65,7 +65,7 @@
         <location file="inc/base/BaseGpio.h" line="263" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="263" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__diagnostics__t_1a710b653c565502856fd9d315971f83bb" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_gpio_diagnostics_t::pinAvailable</definition>
         <argsstring></argsstring>
         <name>pinAvailable</name>
@@ -80,7 +80,7 @@
         <location file="inc/base/BaseGpio.h" line="264" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="264" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__diagnostics__t_1adcf06a0c92672015d2edee04e2dfa77e" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_gpio_diagnostics_t::interruptSupported</definition>
         <argsstring></argsstring>
         <name>interruptSupported</name>
@@ -95,7 +95,7 @@
         <location file="inc/base/BaseGpio.h" line="265" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="265" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__diagnostics__t_1a7c1405d16c54202418b8c391eab941e1" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_gpio_diagnostics_t::interruptEnabled</definition>
         <argsstring></argsstring>
         <name>interruptEnabled</name>

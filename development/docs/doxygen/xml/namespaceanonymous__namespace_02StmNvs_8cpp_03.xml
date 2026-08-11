@@ -4,7 +4,7 @@
     <compoundname>anonymous_namespace{StmNvs.cpp}</compoundname>
     <sectiondef kind="var">
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmNvs_8cpp_03_1ac7a9adc51e5ed1cdd49b551cc2217fad" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmNvs.cpp}::kFlashTypeProgramByte</definition>
         <argsstring></argsstring>
         <name>kFlashTypeProgramByte</name>
@@ -16,10 +16,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmNvs.cpp" line="29" column="24" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="29" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmNvs.cpp" line="44" column="24" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmNvs_8cpp_03_1ab52bb688b31f1a467cc33543577eb6c2" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmNvs.cpp}::kFlashTypeProgramHalfWord</definition>
         <argsstring></argsstring>
         <name>kFlashTypeProgramHalfWord</name>
@@ -31,10 +31,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmNvs.cpp" line="30" column="24" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="30" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmNvs.cpp" line="45" column="24" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmNvs_8cpp_03_1ad68afd2725df899e49349a9ba095842a" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmNvs.cpp}::kFlashTypeProgramWord</definition>
         <argsstring></argsstring>
         <name>kFlashTypeProgramWord</name>
@@ -46,10 +46,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmNvs.cpp" line="31" column="24" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="31" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmNvs.cpp" line="46" column="24" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmNvs_8cpp_03_1a213e29d94ccd46ce58da6c3d04482735" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmNvs.cpp}::kFlashTypeProgramDWord</definition>
         <argsstring></argsstring>
         <name>kFlashTypeProgramDWord</name>
@@ -61,13 +61,67 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmNvs.cpp" line="32" column="24" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="32" bodyend="-1"/>
+        <location file="src/mcu/stm32/StmNvs.cpp" line="47" column="24" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceanonymous__namespace_02StmNvs_8cpp_03_1aa7642062eebf52c63971a1232791a21c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t anonymous_namespace{StmNvs.cpp}::BackendRead</definition>
+        <argsstring>(uint32_t abs, void *buf, size_t len) noexcept</argsstring>
+        <name>BackendRead</name>
+        <qualifiedname>anonymous_namespace{StmNvs.cpp}::BackendRead</qualifiedname>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
+          <declname>abs</declname>
+        </param>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmNvs.cpp" line="49" column="14" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="49" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceanonymous__namespace_02StmNvs_8cpp_03_1a04a839c5de2f4700ff246f8d66d0686e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t anonymous_namespace{StmNvs.cpp}::BackendWrite</definition>
+        <argsstring>(uint32_t abs, const void *buf, size_t len) noexcept</argsstring>
+        <name>BackendWrite</name>
+        <qualifiedname>anonymous_namespace{StmNvs.cpp}::BackendWrite</qualifiedname>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
+          <declname>abs</declname>
+        </param>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmNvs.cpp" line="54" column="14" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="54" bodyend="57"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/mcu/stm32/StmNvs.cpp" line="28" column="1"/>
+    <location file="src/mcu/stm32/StmNvs.cpp" line="43" column="1"/>
   </compounddef>
 </doxygen>

@@ -21,7 +21,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="359" column="25" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="359" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1adb31106309d33af5ce16e90e46906939" prot="private" static="no" mutable="no">
-        <type>std::atomic&lt; bool &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref> &gt;</type>
         <definition>std::atomic&lt;bool&gt; EspWifi::m_initialized</definition>
         <argsstring></argsstring>
         <name>m_initialized</name>
@@ -36,7 +36,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="360" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="360" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a545838e3b8d960377c122e753db8cf47" prot="private" static="no" mutable="no">
-        <type>std::atomic&lt; bool &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref> &gt;</type>
         <definition>std::atomic&lt;bool&gt; EspWifi::m_enabled</definition>
         <argsstring></argsstring>
         <name>m_enabled</name>
@@ -51,7 +51,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="361" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="361" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a0d89e54dd5537c34d49da6bda7c74c4c" prot="private" static="no" mutable="no">
-        <type>std::atomic&lt; <ref refid="group__wifi_1ga90ab2c8a51fc7cb116b659df115407b9" kindref="member">hf_wifi_mode_t</ref> &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="group__wifi_1ga90ab2c8a51fc7cb116b659df115407b9" kindref="member">hf_wifi_mode_t</ref> &gt;</type>
         <definition>std::atomic&lt;hf_wifi_mode_t&gt; EspWifi::m_mode</definition>
         <argsstring></argsstring>
         <name>m_mode</name>
@@ -66,7 +66,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="362" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="362" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1aaf955c4a26114ca8ce1b9a436bab2ed5" prot="private" static="no" mutable="no">
-        <type>std::atomic&lt; <ref refid="group__wifi_1ga45e751432d70ba4ee36c1369914ee419" kindref="member">hf_wifi_state_t</ref> &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="group__wifi_1ga45e751432d70ba4ee36c1369914ee419" kindref="member">hf_wifi_state_t</ref> &gt;</type>
         <definition>std::atomic&lt;hf_wifi_state_t&gt; EspWifi::m_state</definition>
         <argsstring></argsstring>
         <name>m_state</name>
@@ -126,7 +126,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="368" column="25" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="368" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1ab07e9f6a54a566842081cb9e437f8c10" prot="private" static="no" mutable="no">
-        <type>esp_netif_t *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">esp_netif_t</ref> *</type>
         <definition>esp_netif_t* EspWifi::m_sta_netif</definition>
         <argsstring></argsstring>
         <name>m_sta_netif</name>
@@ -141,7 +141,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="371" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="371" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a1cc51a8850a5a1c8fdf4bcada04bde90" prot="private" static="no" mutable="no">
-        <type>esp_netif_t *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">esp_netif_t</ref> *</type>
         <definition>esp_netif_t* EspWifi::m_ap_netif</definition>
         <argsstring></argsstring>
         <name>m_ap_netif</name>
@@ -156,7 +156,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="372" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="372" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1adbfa09b39eb14ed286bd28b04cff7d98" prot="private" static="no" mutable="no">
-        <type>EventGroupHandle_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">EventGroupHandle_t</ref></type>
         <definition>EventGroupHandle_t EspWifi::m_event_group</definition>
         <argsstring></argsstring>
         <name>m_event_group</name>
@@ -171,7 +171,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="373" column="22" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="373" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a9f8dedfb68e0d7b6acf46ccdf231c798" prot="private" static="no" mutable="no">
-        <type>esp_event_handler_instance_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">esp_event_handler_instance_t</ref></type>
         <definition>esp_event_handler_instance_t EspWifi::m_wifi_event_handler</definition>
         <argsstring></argsstring>
         <name>m_wifi_event_handler</name>
@@ -186,7 +186,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="374" column="32" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="374" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1ae01a87adacafedea6f333196683bfe27" prot="private" static="no" mutable="no">
-        <type>esp_event_handler_instance_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">esp_event_handler_instance_t</ref></type>
         <definition>esp_event_handler_instance_t EspWifi::m_ip_event_handler</definition>
         <argsstring></argsstring>
         <name>m_ip_event_handler</name>
@@ -231,7 +231,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="379" column="27" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="379" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a3a1a88d567809ce53ce3d5575755b453" prot="private" static="no" mutable="no">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void* EspWifi::m_event_user_data</definition>
         <argsstring></argsstring>
         <name>m_event_user_data</name>
@@ -246,7 +246,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="380" column="8" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="380" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a8667062fa9debd9273cdd2480636259f" prot="private" static="no" mutable="no">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void* EspWifi::m_scan_user_data</definition>
         <argsstring></argsstring>
         <name>m_scan_user_data</name>
@@ -261,7 +261,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="381" column="8" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="381" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1ab362b3836b671682f5789ca2e9fad4d6" prot="private" static="no" mutable="no">
-        <type>std::queue&lt; std::pair&lt; <ref refid="group__wifi_1ga0fc5cd83d2820476528dba010f9ccfbb" kindref="member">hf_wifi_event_t</ref>, void * &gt; &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::queue</ref>&lt; <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::pair</ref>&lt; <ref refid="group__wifi_1ga0fc5cd83d2820476528dba010f9ccfbb" kindref="member">hf_wifi_event_t</ref>, <ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> * &gt; &gt;</type>
         <definition>std::queue&lt;std::pair&lt;hf_wifi_event_t, void*&gt; &gt; EspWifi::m_event_queue</definition>
         <argsstring></argsstring>
         <name>m_event_queue</name>
@@ -291,7 +291,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="383" column="25" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="383" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a5d96729fa9dac2b05153578461f1e781" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="structhf__wifi__network__info__t" kindref="compound">hf_wifi_network_info_t</ref> &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="structhf__wifi__network__info__t" kindref="compound">hf_wifi_network_info_t</ref> &gt;</type>
         <definition>std::vector&lt;hf_wifi_network_info_t&gt; EspWifi::m_scan_results</definition>
         <argsstring></argsstring>
         <name>m_scan_results</name>
@@ -306,7 +306,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="386" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="386" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a7035508c06cc3cd794c3c0baec151f30" prot="private" static="no" mutable="no">
-        <type>std::atomic&lt; bool &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref> &gt;</type>
         <definition>std::atomic&lt;bool&gt; EspWifi::m_scanning</definition>
         <argsstring></argsstring>
         <name>m_scanning</name>
@@ -336,7 +336,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="388" column="25" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="388" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1af91498a9a25bfbe8819054cc8235a644" prot="private" static="no" mutable="no">
-        <type>std::atomic&lt; bool &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref> &gt;</type>
         <definition>std::atomic&lt;bool&gt; EspWifi::m_connected</definition>
         <argsstring></argsstring>
         <name>m_connected</name>
@@ -351,7 +351,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="391" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="391" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1aa803cd3263ba9a2ae68fae0ed07e2693" prot="private" static="no" mutable="no">
-        <type>std::atomic&lt; bool &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref> &gt;</type>
         <definition>std::atomic&lt;bool&gt; EspWifi::m_ap_active</definition>
         <argsstring></argsstring>
         <name>m_ap_active</name>
@@ -366,7 +366,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="392" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="392" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1acf74e0cf81678090bfd6217dbfc5d0ad" prot="private" static="no" mutable="no">
-        <type>std::atomic&lt; int8_t &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">int8_t</ref> &gt;</type>
         <definition>std::atomic&lt;int8_t&gt; EspWifi::m_rssi</definition>
         <argsstring></argsstring>
         <name>m_rssi</name>
@@ -381,7 +381,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="393" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="393" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1ad9bcdfee7deaa0fd3bd1c41378e359dc" prot="private" static="no" mutable="no">
-        <type>std::atomic&lt; uint8_t &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref> &gt;</type>
         <definition>std::atomic&lt;uint8_t&gt; EspWifi::m_channel</definition>
         <argsstring></argsstring>
         <name>m_channel</name>
@@ -396,7 +396,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="394" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="394" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1acf463caaf71fcae20d22a391a0e66250" prot="private" static="no" mutable="no">
-        <type>std::atomic&lt; bool &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref> &gt;</type>
         <definition>std::atomic&lt;bool&gt; EspWifi::m_smartconfig_active</definition>
         <argsstring></argsstring>
         <name>m_smartconfig_active</name>
@@ -411,7 +411,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="397" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="397" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a54eddd362c8341bba3715f70a68dbd86" prot="private" static="no" mutable="no">
-        <type>std::atomic&lt; bool &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref> &gt;</type>
         <definition>std::atomic&lt;bool&gt; EspWifi::m_mesh_active</definition>
         <argsstring></argsstring>
         <name>m_mesh_active</name>
@@ -434,9 +434,9 @@
         <name>EspWifi</name>
         <qualifiedname>EspWifi::EspWifi</qualifiedname>
         <param>
-          <type>const <ref refid="structEspWifiAdvancedConfig" kindref="compound">EspWifiAdvancedConfig</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structEspWifiAdvancedConfig" kindref="compound">EspWifiAdvancedConfig</ref> *</type>
           <declname>advanced_config</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Constructor with optional advanced configuration. </para>
@@ -524,7 +524,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="160" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="360" bodyend="447"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1adc3d8d89148cf2eb1814d1170df8769d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspWifi::IsInitialized</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>IsInitialized</name>
@@ -601,7 +601,7 @@
         <qualifiedname>EspWifi::ConfigureStation</qualifiedname>
         <reimplements refid="classBaseWifi_1a7edf6961ded18919b607bb271527e617">ConfigureStation</reimplements>
         <param>
-          <type>const <ref refid="structhf__wifi__station__config__t" kindref="compound">hf_wifi_station_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__wifi__station__config__t" kindref="compound">hf_wifi_station_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -633,7 +633,7 @@
         <qualifiedname>EspWifi::Connect</qualifiedname>
         <reimplements refid="classBaseWifi_1aafb382c35a7a955c4817a150eac99abe">Connect</reimplements>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_ms</declname>
           <defval>0</defval>
         </param>
@@ -678,7 +678,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="168" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1104" bodyend="1113"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a1acc04aee004b91ba8329c43d3ba8f09" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspWifi::IsConnected</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>IsConnected</name>
@@ -697,7 +697,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="169" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1115" bodyend="1118"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1aaa1f6c1334ff7cdfcfe3c42b4610ef4a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>int8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int8_t</ref></type>
         <definition>int8_t EspWifi::GetRssi</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>GetRssi</name>
@@ -755,7 +755,7 @@
         <qualifiedname>EspWifi::ConfigureAccessPoint</qualifiedname>
         <reimplements refid="classBaseWifi_1a6ab63d13615654924cfd13934d6d0c24">ConfigureAccessPoint</reimplements>
         <param>
-          <type>const <ref refid="structhf__wifi__ap__config__t" kindref="compound">hf_wifi_ap_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__wifi__ap__config__t" kindref="compound">hf_wifi_ap_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -818,7 +818,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="176" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="621" bodyend="661"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a1d267eba2944b8e911c10897ce953e92" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspWifi::IsAccessPointActive</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>IsAccessPointActive</name>
@@ -837,7 +837,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="177" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="663" bodyend="666"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a937edac1c632616c615df47e88c62efd" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>int</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
         <definition>int EspWifi::GetConnectedStationCount</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>GetConnectedStationCount</name>
@@ -863,17 +863,17 @@
         <qualifiedname>EspWifi::StartScan</qualifiedname>
         <reimplements refid="classBaseWifi_1a9aa96710ea88c9287acd7aa0135b2615">StartScan</reimplements>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>show_hidden</declname>
-          <defval>false</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">false</ref></defval>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>passive</declname>
-          <defval>false</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">false</ref></defval>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>max_scan_time_ms</declname>
           <defval>0</defval>
         </param>
@@ -922,11 +922,11 @@
         <qualifiedname>EspWifi::GetScanResults</qualifiedname>
         <reimplements refid="classBaseWifi_1a171cdfdb4d87bae65d8c5642559ebcfc">GetScanResults</reimplements>
         <param>
-          <type>std::vector&lt; <ref refid="structhf__wifi__network__info__t" kindref="compound">hf_wifi_network_info_t</ref> &gt; &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="structhf__wifi__network__info__t" kindref="compound">hf_wifi_network_info_t</ref> &gt; &amp;</type>
           <declname>networks</declname>
         </param>
         <param>
-          <type>uint16_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
           <declname>max_networks</declname>
           <defval>0</defval>
         </param>
@@ -960,7 +960,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="183" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="736" bodyend="811"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a8ef0a3c1147e6de6e06ebead18de288d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspWifi::IsScanning</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>IsScanning</name>
@@ -998,7 +998,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="188" column="19" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="818" bodyend="821"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1ac55ce93c135b56d2a5ba7826c2563a1d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>std::string</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref></type>
         <definition>std::string EspWifi::GetConnectedSsid</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>GetConnectedSsid</name>
@@ -1024,7 +1024,7 @@
         <qualifiedname>EspWifi::GetConnectedBssid</qualifiedname>
         <reimplements refid="classBaseWifi_1a1867093f6857b178292f6107a0799397">GetConnectedBssid</reimplements>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>bssid</declname>
           <array>[6]</array>
         </param>
@@ -1159,12 +1159,12 @@
         <qualifiedname>EspWifi::GetMacAddress</qualifiedname>
         <reimplements refid="classBaseWifi_1a1bc97f10cc20824db4d2a71f5bd599e6">GetMacAddress</reimplements>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>mac</declname>
           <array>[6]</array>
         </param>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>interface</declname>
           <defval>0</defval>
         </param>
@@ -1205,12 +1205,12 @@
         <qualifiedname>EspWifi::SetMacAddress</qualifiedname>
         <reimplements refid="classBaseWifi_1a4000a9838ec51affceaea83fb8402c0c">SetMacAddress</reimplements>
         <param>
-          <type>const uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>mac</declname>
           <array>[6]</array>
         </param>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>interface</declname>
           <defval>0</defval>
         </param>
@@ -1244,7 +1244,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="202" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="942" bodyend="963"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a7cf0530f49174b55d7c5f3180a24e917" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t EspWifi::GetChannel</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>GetChannel</name>
@@ -1270,7 +1270,7 @@
         <qualifiedname>EspWifi::SetChannel</qualifiedname>
         <reimplements refid="classBaseWifi_1aa79383d99aa5aa88a4802e8bd724dba7">SetChannel</reimplements>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>channel</declname>
         </param>
         <briefdescription>
@@ -1301,7 +1301,7 @@
         <name>SetAdvancedConfig</name>
         <qualifiedname>EspWifi::SetAdvancedConfig</qualifiedname>
         <param>
-          <type>const <ref refid="structEspWifiAdvancedConfig" kindref="compound">EspWifiAdvancedConfig</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structEspWifiAdvancedConfig" kindref="compound">EspWifiAdvancedConfig</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -1363,7 +1363,7 @@
         <name>EnableWpa3Transition</name>
         <qualifiedname>EspWifi::EnableWpa3Transition</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>enable</declname>
         </param>
         <briefdescription>
@@ -1394,19 +1394,19 @@
         <name>ConfigureRoaming</name>
         <qualifiedname>EspWifi::ConfigureRoaming</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>enable_11k</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>enable_11r</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>enable_11v</declname>
         </param>
         <briefdescription>
-<para>Configure 802.11k/r/v roaming features. </para>
+<para>Configure <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">802.11k</ref>/r/v roaming features. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -1414,7 +1414,7 @@
 <parametername>enable_11k</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Enable 802.11k Radio Resource Management </para>
+<para>Enable <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">802.11k</ref> Radio Resource Management </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -1422,7 +1422,7 @@
 <parametername>enable_11r</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Enable 802.11r Fast BSS Transition </para>
+<para>Enable <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">802.11r</ref> Fast BSS Transition </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -1430,7 +1430,7 @@
 <parametername>enable_11v</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Enable 802.11v BSS Transition Management </para>
+<para>Enable <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">802.11v</ref> BSS Transition Management </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -1449,25 +1449,25 @@
         <name>ConfigureEnterprise</name>
         <qualifiedname>EspWifi::ConfigureEnterprise</qualifiedname>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref> &amp;</type>
           <declname>username</declname>
         </param>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref> &amp;</type>
           <declname>password</declname>
         </param>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref> &amp;</type>
           <declname>ca_cert</declname>
           <defval>&quot;&quot;</defval>
         </param>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref> &amp;</type>
           <declname>client_cert</declname>
           <defval>&quot;&quot;</defval>
         </param>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref> &amp;</type>
           <declname>client_key</declname>
           <defval>&quot;&quot;</defval>
         </param>
@@ -1531,12 +1531,12 @@
         <name>StartSmartConfig</name>
         <qualifiedname>EspWifi::StartSmartConfig</qualifiedname>
         <param>
-          <type>smartconfig_type_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">smartconfig_type_t</ref></type>
           <declname>type</declname>
-          <defval>SC_TYPE_ESPTOUCH</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">SC_TYPE_ESPTOUCH</ref></defval>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_ms</declname>
           <defval>60000</defval>
         </param>
@@ -1594,17 +1594,17 @@
         <name>InitMesh</name>
         <qualifiedname>EspWifi::InitMesh</qualifiedname>
         <param>
-          <type>const uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>mesh_id</declname>
           <array>[6]</array>
         </param>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>max_layer</declname>
           <defval>6</defval>
         </param>
         <param>
-          <type>uint16_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
           <declname>max_connection</declname>
           <defval>10</defval>
         </param>
@@ -1706,7 +1706,7 @@
         <name>GetStatistics</name>
         <qualifiedname>EspWifi::GetStatistics</qualifiedname>
         <param>
-          <type>wifi_pkt_rx_ctrl_t &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">wifi_pkt_rx_ctrl_t</ref> &amp;</type>
           <declname>stats</declname>
         </param>
         <briefdescription>
@@ -1737,7 +1737,7 @@
         <name>SetTxPower</name>
         <qualifiedname>EspWifi::SetTxPower</qualifiedname>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>power</declname>
         </param>
         <briefdescription>
@@ -1762,7 +1762,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="322" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1330" bodyend="1347"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1ae5e01cbadeb8020b87dff80abf89d474" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>int8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int8_t</ref></type>
         <definition>int8_t EspWifi::GetTxPower</definition>
         <argsstring>() const</argsstring>
         <name>GetTxPower</name>
@@ -1786,7 +1786,7 @@
         <name>SetBandwidth</name>
         <qualifiedname>EspWifi::SetBandwidth</qualifiedname>
         <param>
-          <type>wifi_bandwidth_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">wifi_bandwidth_t</ref></type>
           <declname>bandwidth</declname>
         </param>
         <briefdescription>
@@ -1811,7 +1811,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="335" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1359" bodyend="1368"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1ae11fb0318c3118264269ed8c3f0f0190" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>wifi_bandwidth_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">wifi_bandwidth_t</ref></type>
         <definition>wifi_bandwidth_t EspWifi::GetBandwidth</definition>
         <argsstring>() const</argsstring>
         <name>GetBandwidth</name>
@@ -1853,7 +1853,7 @@
         <name>GetConnectionInfo</name>
         <qualifiedname>EspWifi::GetConnectionInfo</qualifiedname>
         <param>
-          <type>wifi_ap_record_t &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">wifi_ap_record_t</ref> &amp;</type>
           <declname>info</declname>
         </param>
         <briefdescription>
@@ -1952,7 +1952,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="425" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a02d8d51377fc2b7c74b040bd2b376a81" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>wifi_mode_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">wifi_mode_t</ref></type>
         <definition>wifi_mode_t EspWifi::ConvertToEspMode</definition>
         <argsstring>(hf_wifi_mode_t mode) const</argsstring>
         <name>ConvertToEspMode</name>
@@ -1989,7 +1989,7 @@
         <name>ConvertFromEspMode</name>
         <qualifiedname>EspWifi::ConvertFromEspMode</qualifiedname>
         <param>
-          <type>wifi_mode_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">wifi_mode_t</ref></type>
           <declname>mode</declname>
         </param>
         <briefdescription>
@@ -2014,7 +2014,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="439" column="18" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1244" bodyend="1257"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a85184affd47380dc4c18243c52695aff" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>wifi_auth_mode_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">wifi_auth_mode_t</ref></type>
         <definition>wifi_auth_mode_t EspWifi::ConvertToEspAuthMode</definition>
         <argsstring>(hf_wifi_security_t security) const</argsstring>
         <name>ConvertToEspAuthMode</name>
@@ -2051,7 +2051,7 @@
         <name>ConvertFromEspAuthMode</name>
         <qualifiedname>EspWifi::ConvertFromEspAuthMode</qualifiedname>
         <param>
-          <type>wifi_auth_mode_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">wifi_auth_mode_t</ref></type>
           <declname>auth_mode</declname>
         </param>
         <briefdescription>
@@ -2082,7 +2082,7 @@
         <name>ConvertEspError</name>
         <qualifiedname>EspWifi::ConvertEspError</qualifiedname>
         <param>
-          <type>esp_err_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">esp_err_t</ref></type>
           <declname>esp_err</declname>
         </param>
         <briefdescription>
@@ -2107,17 +2107,17 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="460" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1038" bodyend="1089"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a53e8186fcd0b012235228f62264d616c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspWifi::handleWifiEvent</definition>
         <argsstring>(int32_t event_id, void *event_data)</argsstring>
         <name>handleWifiEvent</name>
         <qualifiedname>EspWifi::handleWifiEvent</qualifiedname>
         <param>
-          <type>int32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">int32_t</ref></type>
           <declname>event_id</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>event_data</declname>
         </param>
         <briefdescription>
@@ -2148,17 +2148,17 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="497" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1136" bodyend="1200"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a080e6d8828cc502fe12217cb8702ceb1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspWifi::handleIpEvent</definition>
         <argsstring>(int32_t event_id, void *event_data)</argsstring>
         <name>handleIpEvent</name>
         <qualifiedname>EspWifi::handleIpEvent</qualifiedname>
         <param>
-          <type>int32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">int32_t</ref></type>
           <declname>event_id</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>event_data</declname>
         </param>
         <briefdescription>
@@ -2189,17 +2189,17 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="504" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1202" bodyend="1227"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1ae6ab0e3f8f9ce7a8a0c2710b3069e52e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspWifi::handleSmartconfigEvent</definition>
         <argsstring>(int32_t event_id, void *event_data)</argsstring>
         <name>handleSmartconfigEvent</name>
         <qualifiedname>EspWifi::handleSmartconfigEvent</qualifiedname>
         <param>
-          <type>int32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">int32_t</ref></type>
           <declname>event_id</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>event_data</declname>
         </param>
         <briefdescription>
@@ -2230,7 +2230,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="511" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1229" bodyend="1242"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a77de796e68ddc5176f8d9d7ec5c16188" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspWifi::NotifyEventCallback</definition>
         <argsstring>(hf_wifi_event_t event, void *event_data)</argsstring>
         <name>NotifyEventCallback</name>
@@ -2240,7 +2240,7 @@
           <declname>event</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>event_data</declname>
         </param>
         <briefdescription>
@@ -2271,7 +2271,7 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="518" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1ac0a0787613efaf1d60a90904ff0c055a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspWifi::UpdateState</definition>
         <argsstring>(hf_wifi_state_t new_state)</argsstring>
         <name>UpdateState</name>
@@ -2318,13 +2318,13 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="530" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1aabc702294956cafe64737dee7a463d77" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspWifi::ValidateConfig</definition>
         <argsstring>(const hf_wifi_station_config_t &amp;config) const</argsstring>
         <name>ValidateConfig</name>
         <qualifiedname>EspWifi::ValidateConfig</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__wifi__station__config__t" kindref="compound">hf_wifi_station_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__wifi__station__config__t" kindref="compound">hf_wifi_station_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -2349,13 +2349,13 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="537" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a961be99b2a602814d89231be57006f71" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspWifi::ValidateApConfig</definition>
         <argsstring>(const hf_wifi_ap_config_t &amp;config) const</argsstring>
         <name>ValidateApConfig</name>
         <qualifiedname>EspWifi::ValidateApConfig</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__wifi__ap__config__t" kindref="compound">hf_wifi_ap_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__wifi__ap__config__t" kindref="compound">hf_wifi_ap_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -2386,7 +2386,7 @@
         <name>EspWifi</name>
         <qualifiedname>EspWifi::EspWifi</qualifiedname>
         <param>
-          <type>const <ref refid="classEspWifi" kindref="compound">EspWifi</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classEspWifi" kindref="compound">EspWifi</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -2403,7 +2403,7 @@
         <name>operator=</name>
         <qualifiedname>EspWifi::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classEspWifi" kindref="compound">EspWifi</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classEspWifi" kindref="compound">EspWifi</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -2416,25 +2416,25 @@
     </sectiondef>
     <sectiondef kind="private-static-func">
       <memberdef kind="function" id="classEspWifi_1a85ea58d88862a24b24e337551056b4f6" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspWifi::wifiEventHandler</definition>
         <argsstring>(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data)</argsstring>
         <name>wifiEventHandler</name>
         <qualifiedname>EspWifi::wifiEventHandler</qualifiedname>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>arg</declname>
         </param>
         <param>
-          <type>esp_event_base_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">esp_event_base_t</ref></type>
           <declname>event_base</declname>
         </param>
         <param>
-          <type>int32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">int32_t</ref></type>
           <declname>event_id</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>event_data</declname>
         </param>
         <briefdescription>
@@ -2481,25 +2481,25 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="469" column="15" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1016" bodyend="1020"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a23bfa099193ab347fbe7022193e6ff47" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspWifi::ipEventHandler</definition>
         <argsstring>(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data)</argsstring>
         <name>ipEventHandler</name>
         <qualifiedname>EspWifi::ipEventHandler</qualifiedname>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>arg</declname>
         </param>
         <param>
-          <type>esp_event_base_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">esp_event_base_t</ref></type>
           <declname>event_base</declname>
         </param>
         <param>
-          <type>int32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">int32_t</ref></type>
           <declname>event_id</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>event_data</declname>
         </param>
         <briefdescription>
@@ -2546,25 +2546,25 @@
         <location file="inc/mcu/esp32/EspWifi.h" line="479" column="15" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1022" bodyend="1026"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a096aada913999e7bfbd3ec2c1b8d570f" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspWifi::smartconfigEventHandler</definition>
         <argsstring>(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data)</argsstring>
         <name>smartconfigEventHandler</name>
         <qualifiedname>EspWifi::smartconfigEventHandler</qualifiedname>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>arg</declname>
         </param>
         <param>
-          <type>esp_event_base_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">esp_event_base_t</ref></type>
           <declname>event_base</declname>
         </param>
         <param>
-          <type>int32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">int32_t</ref></type>
           <declname>event_id</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>event_data</declname>
         </param>
         <briefdescription>
@@ -2612,7 +2612,7 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Advanced ESP32 implementation of unified <ref refid="classBaseWifi" kindref="compound">BaseWifi</ref> with ESP-IDF v5.5+ features. </para>
+<para>Advanced ESP32 implementation of unified <ref refid="classBaseWifi" kindref="compound">BaseWifi</ref> with ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+ features. </para>
     </briefdescription>
     <detaileddescription>
 <para>This class provides a comprehensive implementation of <ref refid="classBaseWifi" kindref="compound">BaseWifi</ref> for ESP32 microcontrollers with support for both basic and advanced features including:</para>
@@ -2624,9 +2624,9 @@
 </listitem><listitem><para>Thread-safe state management</para>
 </listitem></itemizedlist>
 </para>
-<para><bold>Advanced Features (ESP-IDF v5.5+):</bold><itemizedlist>
+<para><bold>Advanced Features (ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+):</bold><itemizedlist>
 <listitem><para>WPA3 Personal and Enterprise security</para>
-</listitem><listitem><para>802.11k/r/v roaming standards</para>
+</listitem><listitem><para><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">802.11k</ref>/r/v roaming standards</para>
 </listitem><listitem><para>Protected Management Frames (PMF)</para>
 </listitem><listitem><para>A-MPDU aggregation for performance</para>
 </listitem><listitem><para>ESP-MESH networking</para>

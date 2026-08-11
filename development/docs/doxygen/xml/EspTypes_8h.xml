@@ -411,7 +411,7 @@
     </briefdescription>
     <detaileddescription>
 <para>This header consolidates all MCU-specific types and constants by including the specialized peripheral headers. This maintains backward compatibility while providing a cleaner, modular organization.</para>
-<para>ESP32/ESP-IDF v5.5+ Features Supported:<itemizedlist>
+<para>ESP32/ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+ Features Supported:<itemizedlist>
 <listitem><para>Dual TWAI/CAN controllers with v2 API support</para>
 </listitem><listitem><para>GPIO hardware glitch filters (pin + 8 flexible filters)</para>
 </listitem><listitem><para>RTC GPIO with sleep retention and wake-up sources</para>
@@ -430,7 +430,7 @@
 </simplesect>
 <simplesect kind="note"><para>All interface classes (CAN, UART, I2C, SPI, GPIO, ADC, PWM, RMT) must use only these types. </para>
 </simplesect>
-<simplesect kind="note"><para>This implementation is verified against ESP-IDF v5.5+ documentation and supports all latest features. </para>
+<simplesect kind="note"><para>This implementation is verified against ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+ documentation and supports all latest features. </para>
 </simplesect>
 </para>
     </detaileddescription>

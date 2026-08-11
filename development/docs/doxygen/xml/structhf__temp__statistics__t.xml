@@ -140,7 +140,7 @@
         <location file="inc/base/BaseTemperature.h" line="262" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="262" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__statistics__t_1a7565696ba2cfde7e3e27550e11f26417" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float hf_temp_statistics_t::min_temperature_celsius</definition>
         <argsstring></argsstring>
         <name>min_temperature_celsius</name>
@@ -155,7 +155,7 @@
         <location file="inc/base/BaseTemperature.h" line="263" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="263" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__statistics__t_1a8c6d2152708b1464f42c731944688dfc" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float hf_temp_statistics_t::max_temperature_celsius</definition>
         <argsstring></argsstring>
         <name>max_temperature_celsius</name>
@@ -170,7 +170,7 @@
         <location file="inc/base/BaseTemperature.h" line="264" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="264" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__statistics__t_1a849d592b1fef29eba4c77248bdb6face" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float hf_temp_statistics_t::avg_temperature_celsius</definition>
         <argsstring></argsstring>
         <name>avg_temperature_celsius</name>

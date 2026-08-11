@@ -6,7 +6,7 @@
     <includes refid="StmPwm_8h" local="no">StmPwm.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classStmPwm_1afd4b32467181d8775da3406f5e15d7af" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
         <definition>constexpr hf_u8_t StmPwm::kMaxChannels</definition>
         <argsstring></argsstring>
         <name>kMaxChannels</name>
@@ -23,7 +23,7 @@
     </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classStmPwm_1afc2206a7a40642308b6b6828ccc4633d" prot="private" static="no" mutable="no">
-        <type>TIM_HandleTypeDef *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">TIM_HandleTypeDef</ref> *</type>
         <definition>TIM_HandleTypeDef* StmPwm::htim_</definition>
         <argsstring></argsstring>
         <name>htim_</name>
@@ -51,7 +51,7 @@
         <location file="inc/mcu/stm32/StmPwm.h" line="89" column="24" bodyfile="inc/mcu/stm32/StmPwm.h" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classStmPwm_1ad7bfc76e37cca9dabdac5aeba9cd1f62" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmPwm::channel_enabled_[kMaxChannels]</definition>
         <argsstring>[kMaxChannels]</argsstring>
         <name>channel_enabled_</name>
@@ -65,13 +65,13 @@
         <location file="inc/mcu/stm32/StmPwm.h" line="90" column="24" bodyfile="inc/mcu/stm32/StmPwm.h" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classStmPwm_1a15a6e06ba60d8c8fcce50fa78e3d51c5" prot="private" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float StmPwm::duty_[kMaxChannels]</definition>
         <argsstring>[kMaxChannels]</argsstring>
         <name>duty_</name>
         <qualifiedname>StmPwm::duty_</qualifiedname>
         <briefdescription>
-<para>Cached duty 0.0–1.0. </para>
+<para>Cached duty <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">0.0</ref>–1.0. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
@@ -103,7 +103,7 @@
         <name>StmPwm</name>
         <qualifiedname>StmPwm::StmPwm</qualifiedname>
         <param>
-          <type>TIM_HandleTypeDef *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">TIM_HandleTypeDef</ref> *</type>
           <declname>htim</declname>
         </param>
         <param>
@@ -127,7 +127,7 @@
 <parametername>timer_clock_hz</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>APB timer input clock (e.g. 84 MHz). </para>
+<para>APB timer input clock (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">e.g</ref>. 84 MHz). </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -144,7 +144,7 @@
         <name>StmPwm</name>
         <qualifiedname>StmPwm::StmPwm</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__stm32__pwm__config__t" kindref="compound">hf_stm32_pwm_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__stm32__pwm__config__t" kindref="compound">hf_stm32_pwm_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -177,7 +177,7 @@
         <name>StmPwm</name>
         <qualifiedname>StmPwm::StmPwm</qualifiedname>
         <param>
-          <type>const <ref refid="classStmPwm" kindref="compound">StmPwm</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classStmPwm" kindref="compound">StmPwm</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -194,7 +194,7 @@
         <name>operator=</name>
         <qualifiedname>StmPwm::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classStmPwm" kindref="compound">StmPwm</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classStmPwm" kindref="compound">StmPwm</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -307,7 +307,7 @@
         <location file="inc/mcu/stm32/StmPwm.h" line="61" column="18" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="118" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="classStmPwm_1a169948bffba231f28cfb8e2a21e47d9d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmPwm::IsChannelEnabled</definition>
         <argsstring>(hf_channel_id_t channel_id) const noexcept override</argsstring>
         <name>IsChannelEnabled</name>
@@ -350,7 +350,7 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>duty_cycle</declname>
         </param>
         <briefdescription>
@@ -370,7 +370,7 @@
 <parametername>duty_cycle</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Duty cycle (0.0 - 1.0) </para>
+<para>Duty cycle (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">0.0</ref> - <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">1.0</ref>) </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -482,7 +482,7 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>phase_shift_degrees</declname>
         </param>
         <briefdescription>
@@ -628,7 +628,7 @@
         <location file="inc/mcu/stm32/StmPwm.h" line="74" column="18" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="227" bodyend="258"/>
       </memberdef>
       <memberdef kind="function" id="classStmPwm_1af0f3f38f53d25e5707f2e7fac065b585" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float StmPwm::GetDutyCycle</definition>
         <argsstring>(hf_channel_id_t channel_id) const noexcept override</argsstring>
         <name>GetDutyCycle</name>
@@ -651,7 +651,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>Current duty cycle (0.0 - 1.0), or -1.0 on error </para>
+<simplesect kind="return"><para>Current duty cycle (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">0.0</ref> - <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">1.0</ref>), or <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">-1.0</ref> on error </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -692,7 +692,7 @@
         <location file="inc/mcu/stm32/StmPwm.h" line="80" column="23" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="268" bodyend="271"/>
       </memberdef>
       <memberdef kind="function" id="classStmPwm_1afafe3ab43b9e3ae2226a1712c40d4456" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>TIM_HandleTypeDef *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">TIM_HandleTypeDef</ref> *</type>
         <definition>TIM_HandleTypeDef * StmPwm::GetHalHandle</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetHalHandle</name>
@@ -729,7 +729,7 @@
     </sectiondef>
     <sectiondef kind="private-func">
       <memberdef kind="function" id="classStmPwm_1a38f6aaf9c3dd7535b530199f3249fb26" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmPwm::ApplyFrequency</definition>
         <argsstring>(hf_frequency_hz_t freq_hz) noexcept</argsstring>
         <name>ApplyFrequency</name>
@@ -748,7 +748,7 @@
         <location file="inc/mcu/stm32/StmPwm.h" line="98" column="10" bodyfile="src/mcu/stm32/StmPwm.cpp" bodystart="287" bodyend="319"/>
       </memberdef>
       <memberdef kind="function" id="classStmPwm_1ae865b0c672222b2537a5dc2a2d27938d" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void StmPwm::ReapplyDuties</definition>
         <argsstring>() noexcept</argsstring>
         <name>ReapplyDuties</name>

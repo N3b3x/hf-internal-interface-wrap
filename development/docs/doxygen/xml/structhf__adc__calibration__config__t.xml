@@ -5,7 +5,7 @@
     <includes refid="EspTypes__ADC_8h" local="no">EspTypes_ADC.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__adc__calibration__config__t_1a8df0f9715e45be1004ae9952d87bfbb7" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_adc_calibration_config_t::enable_calibration</definition>
         <argsstring></argsstring>
         <name>enable_calibration</name>
@@ -20,7 +20,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="158" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="158" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__adc__calibration__config__t_1ad4d29c46a649aadda48ed97ed7a3f3f8" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_adc_calibration_config_t::auto_calibration</definition>
         <argsstring></argsstring>
         <name>auto_calibration</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="159" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="159" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__adc__calibration__config__t_1a3d119cf73ad68b09012edfbc1f54595f" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_adc_calibration_config_t::calibration_interval_ms</definition>
         <argsstring></argsstring>
         <name>calibration_interval_ms</name>

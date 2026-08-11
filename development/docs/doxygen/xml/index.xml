@@ -425,6 +425,11 @@
     <member refid="classBaseSpi_1a0ee4d13f589e319c6fbb3d5bb6492784" kind="function"><name>Initialize</name></member>
     <member refid="classBaseSpi_1a20608abd3e6dc4335dc14bc11d3016e6" kind="function"><name>Deinitialize</name></member>
     <member refid="classBaseSpi_1a7951cfcc329ab963764013ebe47288c0" kind="function"><name>Transfer</name></member>
+    <member refid="classBaseSpi_1add06cca20daa53d05d3c2f3c1c8da33b" kind="function"><name>IdleChipSelect</name></member>
+    <member refid="classBaseSpi_1ace8d6c66a76520de526129afb5683f09" kind="function"><name>HoldChipSelectMs</name></member>
+    <member refid="classBaseSpi_1acc9c25212d020efaa0a40b42cdc8e7f2" kind="function"><name>SetTransferMode</name></member>
+    <member refid="classBaseSpi_1acc89f100b746947b8828973abfb524cf" kind="function"><name>SetIoSwap</name></member>
+    <member refid="classBaseSpi_1ae3f8cbf5ed12640919d1e263c6b4b544" kind="function"><name>TransferChain</name></member>
     <member refid="classBaseSpi_1a6dd381f6a4423927bb59adb4395074ed" kind="function"><name>GetDeviceConfig</name></member>
     <member refid="classBaseSpi_1a00e8995f1ccc7a5ab078e7b4c19ffa95" kind="function"><name>Open</name></member>
     <member refid="classBaseSpi_1a88b3ba81405134a3566a01ca170bf8bb" kind="function"><name>Close</name></member>
@@ -615,7 +620,7 @@
   <compound refid="structStmNvs_1_1CacheEntry" kind="struct"><name>StmNvs::CacheEntry</name>
     <member refid="structStmNvs_1_1CacheEntry_1a9290800ad0d8831b10c1384fd884e2d6" kind="variable"><name>key</name></member>
     <member refid="structStmNvs_1_1CacheEntry_1aeb6cfca73e4c601bbc676a7c0d3fd310" kind="variable"><name>type</name></member>
-    <member refid="structStmNvs_1_1CacheEntry_1a9fa7ff11ba29987b0c5c5a85ea1ba556" kind="variable"><name>data</name></member>
+    <member refid="structStmNvs_1_1CacheEntry_1a49c61a902b15b95bbac0b9d1f3f3dea0" kind="variable"><name>data</name></member>
     <member refid="structStmNvs_1_1CacheEntry_1a64e9ad2f8004057086080f306fc2091e" kind="variable"><name>data_length</name></member>
     <member refid="structStmNvs_1_1CacheEntry_1a24ba5a410c019457f50d76091d90d3f9" kind="variable"><name>dirty</name></member>
     <member refid="structStmNvs_1_1CacheEntry_1af9fc9fd75aafeeea2f5103ba9c1e59a4" kind="variable"><name>erased</name></member>
@@ -2932,6 +2937,18 @@
     <member refid="classPlatformUniqueLock_1a871d9440659f9b5c645d61f148fa2f4a" kind="function"><name>IsLocked</name></member>
     <member refid="classPlatformUniqueLock_1ab2caf1f955482a39cc775a2460ce225b" kind="function"><name>Unlock</name></member>
   </compound>
+  <compound refid="classSoftChipSelectGuard" kind="class"><name>SoftChipSelectGuard</name>
+    <member refid="classSoftChipSelectGuard_1a9dd5fd1321e16ec6f069ec8d795479c2" kind="variable"><name>deassert_</name></member>
+    <member refid="classSoftChipSelectGuard_1a5152814739582dad47f1be0726179105" kind="variable"><name>armed_</name></member>
+    <member refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kind="function"><name>SoftChipSelectGuard</name></member>
+    <member refid="classSoftChipSelectGuard_1ad4d1c548ef737ae374054f7d2701a8c5" kind="function"><name>~SoftChipSelectGuard</name></member>
+    <member refid="classSoftChipSelectGuard_1ae47f77fa2cf4252bac533f19c0c0e811" kind="function"><name>SoftChipSelectGuard</name></member>
+    <member refid="classSoftChipSelectGuard_1abb758d47c67a15f2daee46bfa50c8db4" kind="function"><name>operator=</name></member>
+    <member refid="classSoftChipSelectGuard_1a56665795cc45e9ba7342ab5f44e112d8" kind="function"><name>SoftChipSelectGuard</name></member>
+    <member refid="classSoftChipSelectGuard_1af6e6d7531163781b7152d5b637181011" kind="function"><name>operator=</name></member>
+    <member refid="classSoftChipSelectGuard_1a0b212277c5cf829949c717d62923d9d6" kind="function"><name>Release</name></member>
+    <member refid="classSoftChipSelectGuard_1a7948dda8fc77490f105cfcf1092b5698" kind="function"><name>OwnsCs</name></member>
+  </compound>
   <compound refid="classStmAdc" kind="class"><name>StmAdc</name>
     <member refid="classStmAdc_1acf127c390af41b399056268e52563484" kind="variable"><name>config_</name></member>
     <member refid="classStmAdc_1a4ab34664e67dcacf383492c31c87f0fc" kind="function"><name>StmAdc</name></member>
@@ -3009,8 +3026,10 @@
     <member refid="classStmGpio_1a60cfdb35581560221763d251203e1439" kind="function"><name>ApplyHalConfig</name></member>
   </compound>
   <compound refid="classStmI2cBus" kind="class"><name>StmI2cBus</name>
+    <member refid="classStmI2cBus_1a3744e8794aa522fd06dcd72ff2fa8a97" kind="friend"><name>StmI2cDevice</name></member>
     <member refid="classStmI2cBus_1a0b1e24e2415315eab6f4aa44164e8974" kind="variable"><name>config_</name></member>
     <member refid="classStmI2cBus_1ae6ba6015e9db63fe68a8f94d7fba0998" kind="variable"><name>initialized_</name></member>
+    <member refid="classStmI2cBus_1aca042d3b84ca5494e0a5fe6edd96cc5c" kind="variable"><name>bus_mutex_</name></member>
     <member refid="classStmI2cBus_1a1925ed83778b2afb19499766b285a5ba" kind="variable"><name>devices_</name></member>
     <member refid="classStmI2cBus_1ac49054609128569d92c431dc8e9596df" kind="function"><name>StmI2cBus</name></member>
     <member refid="classStmI2cBus_1a0fc5e38fa9035974f2df28e8c18c83f2" kind="function"><name>StmI2cBus</name></member>
@@ -3025,6 +3044,8 @@
     <member refid="classStmI2cBus_1a11753ef2415ff9ba31aff20da98b3af9" kind="function"><name>RemoveDevice</name></member>
     <member refid="classStmI2cBus_1aefde57ad70e9a5e3a63dcdec59a31593" kind="function"><name>GetConfig</name></member>
     <member refid="classStmI2cBus_1ac9dcf8eae7f8ec7b814c05e522b2ef77" kind="function"><name>GetHalHandle</name></member>
+    <member refid="classStmI2cBus_1aee43d2df39cac7de47bf6f9eba8ef436" kind="function"><name>LockBus</name></member>
+    <member refid="classStmI2cBus_1aec8eff6f44d82c66e1f3e6305863d4cb" kind="function"><name>UnlockBus</name></member>
   </compound>
   <compound refid="classStmI2cDevice" kind="class"><name>StmI2cDevice</name>
     <member refid="classStmI2cDevice_1aa427f3773fffe66a6e6313e1ed273474" kind="variable"><name>parent_bus_</name></member>
@@ -3037,6 +3058,7 @@
     <member refid="classStmI2cDevice_1a8cd7f86df640e25578aaaabe4ca194ec" kind="function"><name>Read</name></member>
     <member refid="classStmI2cDevice_1a785e780f32c9353a7aa5ad48784352df" kind="function"><name>WriteRead</name></member>
     <member refid="classStmI2cDevice_1aae434c3a1e5f13290326c0a862cebc37" kind="function"><name>GetDeviceAddress</name></member>
+    <member refid="classStmI2cDevice_1a27ec07cab26b31fd9d15c97b204a8dca" kind="function"><name>SetDeviceAddress</name></member>
     <member refid="classStmI2cDevice_1a540861718a8da891acf2df06e51c8b25" kind="function"><name>GetConfig</name></member>
     <member refid="classStmI2cDevice_1a85d54c5784ac4a070c9752112d57f2dc" kind="function"><name>GetParentBus</name></member>
     <member refid="classStmI2cDevice_1ad39db07781cc86805ff4646466b1235c" kind="function"><name>GetEffectiveTimeout</name></member>
@@ -3190,8 +3212,14 @@
     <member refid="classStmPwm_1ae865b0c672222b2537a5dc2a2d27938d" kind="function"><name>ReapplyDuties</name></member>
   </compound>
   <compound refid="classStmSpiBus" kind="class"><name>StmSpiBus</name>
+    <member refid="classStmSpiBus_1aa8224874d0610e683da388ec3d6d2c8f" kind="friend"><name>StmSpiDevice</name></member>
+    <member refid="classStmSpiBus_1a4083a55126681d7ab330b5993ce8fbae" kind="friend"><name>StmSpiBusLock</name></member>
     <member refid="classStmSpiBus_1ada6d7feb79b067200075f7bb9a486ea9" kind="variable"><name>config_</name></member>
     <member refid="classStmSpiBus_1a611e37f08b9d7ace431eccb29ddc90d0" kind="variable"><name>initialized_</name></member>
+    <member refid="classStmSpiBus_1ad48dbdada26c78ab437c61c2d6e059c5" kind="variable"><name>mode_applied_</name></member>
+    <member refid="classStmSpiBus_1af81eaff03dddc44e3a62cbb981ddf6a2" kind="variable"><name>last_mode_</name></member>
+    <member refid="classStmSpiBus_1a54c64c3bd0ee8eb8d44b59ba3c06a186" kind="variable"><name>last_io_swap_</name></member>
+    <member refid="classStmSpiBus_1a044f12506bf38f5d1537ecae167a866c" kind="variable"><name>bus_mutex_</name></member>
     <member refid="classStmSpiBus_1a5303b40e97ecdc7f59d91a865cc97d92" kind="variable"><name>devices_</name></member>
     <member refid="classStmSpiBus_1a69cafaa6911c26bdd2c288fb10df37be" kind="function"><name>StmSpiBus</name></member>
     <member refid="classStmSpiBus_1ae9b391925b8b34a47d17a91cdabb87cf" kind="function"><name>StmSpiBus</name></member>
@@ -3206,19 +3234,43 @@
     <member refid="classStmSpiBus_1ad8fc3bd4ef289384acf536b01700aa3c" kind="function"><name>RemoveDevice</name></member>
     <member refid="classStmSpiBus_1a285df3f22b4b762454e5ca47af1ad31c" kind="function"><name>GetConfig</name></member>
     <member refid="classStmSpiBus_1aeabf2129d32b93d68715d4a1d20e3eee" kind="function"><name>GetHalHandle</name></member>
+    <member refid="classStmSpiBus_1ac9d2f3f7cbc14f8d79e0ca8182a4ecb2" kind="function"><name>ApplyDeviceMode</name></member>
+    <member refid="classStmSpiBus_1ad2942f7f1b57611474e8839226685471" kind="function"><name>IdleAllChipSelects</name></member>
+    <member refid="classStmSpiBus_1ac93b7752ef007137adbdb59b2069a96d" kind="function"><name>ProbeMisoLine</name></member>
+    <member refid="classStmSpiBus_1a0375345f33cb95f9d0ff7c02c5dd323f" kind="function"><name>LockBus</name></member>
+    <member refid="classStmSpiBus_1a3a9373812597b450310b1dae3311a733" kind="function"><name>UnlockBus</name></member>
+  </compound>
+  <compound refid="classStmSpiBusLock" kind="class"><name>StmSpiBusLock</name>
+    <member refid="classStmSpiBusLock_1a2cb5dba2a195673057546d64d48d77ef" kind="variable"><name>bus_</name></member>
+    <member refid="classStmSpiBusLock_1ae5d59e028fdbf4ec0e75595055be91e5" kind="variable"><name>locked_</name></member>
+    <member refid="classStmSpiBusLock_1a767bf633388d8b7a95646f6f6feaef7c" kind="function"><name>StmSpiBusLock</name></member>
+    <member refid="classStmSpiBusLock_1aac5273d27989b6756e338c3c0f37686c" kind="function"><name>~StmSpiBusLock</name></member>
+    <member refid="classStmSpiBusLock_1a37e2425e4f0181db6698752fd8ae43e9" kind="function"><name>StmSpiBusLock</name></member>
+    <member refid="classStmSpiBusLock_1ad8e04441376f2ab174f983d33c3a47ff" kind="function"><name>operator=</name></member>
+    <member refid="classStmSpiBusLock_1a1c51599ca418abe35ccb8ff5adf027d4" kind="function"><name>StmSpiBusLock</name></member>
+    <member refid="classStmSpiBusLock_1afeaef24b7ab305c7322a3d837ad5ee82" kind="function"><name>operator=</name></member>
+    <member refid="classStmSpiBusLock_1a11e368f591e8536c8606c1c6864848ca" kind="function"><name>OwnsLock</name></member>
   </compound>
   <compound refid="classStmSpiDevice" kind="class"><name>StmSpiDevice</name>
+    <member refid="classStmSpiDevice_1a44c5f9f4c069239f87fbb87ae89fe8d3" kind="friend"><name>StmSpiBus</name></member>
     <member refid="classStmSpiDevice_1a9bcbb9d85057de78b3b9562d353bce24" kind="variable"><name>parent_bus_</name></member>
     <member refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kind="variable"><name>config_</name></member>
+    <member refid="classStmSpiDevice_1a2d91db0463a088a18caef8501f996757" kind="variable"><name>io_swap_</name></member>
     <member refid="classStmSpiDevice_1afdf4b29ed25cc110f43e67e981a86e45" kind="function"><name>StmSpiDevice</name></member>
     <member refid="classStmSpiDevice_1af28e7126cd16773d1e9bade2f0c889eb" kind="function"><name>~StmSpiDevice</name></member>
     <member refid="classStmSpiDevice_1a8321dbe44a6d665d0b43ce71c5747077" kind="function"><name>Initialize</name></member>
     <member refid="classStmSpiDevice_1a71d72c791cff754938477785e843efbb" kind="function"><name>Deinitialize</name></member>
     <member refid="classStmSpiDevice_1aac96933b7c2db6fa0e675ee472e91ec5" kind="function"><name>Transfer</name></member>
+    <member refid="classStmSpiDevice_1a0460008b43be1249a3268280b877c7b1" kind="function"><name>TransferChain</name></member>
     <member refid="classStmSpiDevice_1a454179a24cf34d9925fb0f72d240280e" kind="function"><name>GetDeviceConfig</name></member>
+    <member refid="classStmSpiDevice_1abfe53cdc8e2f9b6d15ec1394720c42d4" kind="function"><name>IdleChipSelect</name></member>
+    <member refid="classStmSpiDevice_1a439c9c2f21d056f45419e88d0800016e" kind="function"><name>HoldChipSelectMs</name></member>
+    <member refid="classStmSpiDevice_1acff2fb15de9bd32196e38cccd53a5c0e" kind="function"><name>SetTransferMode</name></member>
+    <member refid="classStmSpiDevice_1abdd2402b4741ed763d807dc505595a63" kind="function"><name>SetIoSwap</name></member>
     <member refid="classStmSpiDevice_1a330f2558758a893af42d8efebef57f3f" kind="function"><name>GetConfig</name></member>
     <member refid="classStmSpiDevice_1a72d8ba6db14002784629df6b66f48d12" kind="function"><name>AssertCS</name></member>
     <member refid="classStmSpiDevice_1a14982c1b1dac9337631b08722265baeb" kind="function"><name>DeassertCS</name></member>
+    <member refid="classStmSpiDevice_1a192cdf8b49e6bd16a1d7e4495c379cc6" kind="function"><name>TransferLocked</name></member>
     <member refid="classStmSpiDevice_1a101c3f09a77b3a50575d5c03f8223861" kind="function"><name>GetEffectiveTimeout</name></member>
     <member refid="classStmSpiDevice_1ad3874dd35a07942be355864ea4423e86" kind="function"><name>ConvertHalStatus</name></member>
   </compound>
@@ -3333,6 +3385,13 @@
     <member refid="namespaceanonymous__namespace_02StmGpio_8cpp_03_1ae3a109a152e624d7e22bcb82e9ae8aa4" kind="variable"><name>kGpioSpeedHigh</name></member>
     <member refid="namespaceanonymous__namespace_02StmGpio_8cpp_03_1a79d0c8643c52418574fa734a1408ff63" kind="variable"><name>kGpioSpeedVeryHigh</name></member>
   </compound>
+  <compound refid="namespaceanonymous__namespace_02StmI2c_8cpp_03" kind="namespace"><name>anonymous_namespace{StmI2c.cpp}</name>
+    <member refid="namespaceanonymous__namespace_02StmI2c_8cpp_03_1ad9050bfcc89c5472b04e9d50125d5348" kind="function"><name>FlushTxdr</name></member>
+    <member refid="namespaceanonymous__namespace_02StmI2c_8cpp_03_1aea72fc68c89669974e546f49db2a27a6" kind="function"><name>FlushRxdr</name></member>
+    <member refid="namespaceanonymous__namespace_02StmI2c_8cpp_03_1a53de132257604159ced159540146a363" kind="function"><name>RecoverI2cAfterError</name></member>
+    <member refid="namespaceanonymous__namespace_02StmI2c_8cpp_03_1ae26a414b9761b2b60db2a4f5136e69bc" kind="function"><name>PrepareMasterXfer</name></member>
+    <member refid="namespaceanonymous__namespace_02StmI2c_8cpp_03_1ac999e2f65b53a052576810d90a3a4b8d" kind="function"><name>HalXferOk</name></member>
+  </compound>
   <compound refid="namespaceanonymous__namespace_02StmLogger_8cpp_03" kind="namespace"><name>anonymous_namespace{StmLogger.cpp}</name>
     <member refid="namespaceanonymous__namespace_02StmLogger_8cpp_03_1a7851fb0201253a204b1fc6c2da664dd6" kind="function"><name>LevelToPrefix</name></member>
   </compound>
@@ -3341,6 +3400,8 @@
     <member refid="namespaceanonymous__namespace_02StmNvs_8cpp_03_1ab52bb688b31f1a467cc33543577eb6c2" kind="variable"><name>kFlashTypeProgramHalfWord</name></member>
     <member refid="namespaceanonymous__namespace_02StmNvs_8cpp_03_1ad68afd2725df899e49349a9ba095842a" kind="variable"><name>kFlashTypeProgramWord</name></member>
     <member refid="namespaceanonymous__namespace_02StmNvs_8cpp_03_1a213e29d94ccd46ce58da6c3d04482735" kind="variable"><name>kFlashTypeProgramDWord</name></member>
+    <member refid="namespaceanonymous__namespace_02StmNvs_8cpp_03_1aa7642062eebf52c63971a1232791a21c" kind="function"><name>BackendRead</name></member>
+    <member refid="namespaceanonymous__namespace_02StmNvs_8cpp_03_1a04a839c5de2f4700ff246f8d66d0686e" kind="function"><name>BackendWrite</name></member>
   </compound>
   <compound refid="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03" kind="namespace"><name>anonymous_namespace{StmPeriodicTimer.cpp}</name>
     <member refid="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03_1addee097d86298b115ec84fdf83c00338" kind="variable"><name>kTimPscOffset</name></member>
@@ -3359,6 +3420,16 @@
     <member refid="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a3fc05ec82865a303d1594bf3f7a01e12" kind="variable"><name>kTimEgrOffset</name></member>
     <member refid="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a61d1a038fe4834cc60d19733b4aaedba" kind="variable"><name>kTimBdtrOffset</name></member>
     <member refid="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a95f6191ea8aef44939ee4420bb6700ea" kind="variable"><name>kTimEgrUgBit</name></member>
+  </compound>
+  <compound refid="namespaceanonymous__namespace_02StmSpi_8cpp_03" kind="namespace"><name>anonymous_namespace{StmSpi.cpp}</name>
+    <member refid="namespaceanonymous__namespace_02StmSpi_8cpp_03_1aa45f034b9ec9701cd8a73551bfbb559c" kind="variable"><name>kSpiScratchBytes</name></member>
+    <member refid="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a89c01d76c63867b951659a5210bd6898" kind="variable"><name>g_spi_axi_tx</name></member>
+    <member refid="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a4dd214978f8306aaaa63ffd9e3776b05" kind="variable"><name>g_spi_axi_rx</name></member>
+    <member refid="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a9b70e6340dde68d5e013a8369652dcb9" kind="function"><name>CopyFromMaybeFmcToAxi</name></member>
+    <member refid="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a86ca057477851ca401c3c584653a70d8" kind="function"><name>CopyFromAxiToMaybeFmc</name></member>
+    <member refid="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a899000c13ecd09d81b13e23780711e72" kind="function"><name>FlushSpiFifo</name></member>
+    <member refid="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a9395d2212b103c5c9150ec5c77ac91ee" kind="function"><name>CsEdgeSettle</name></member>
+    <member refid="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a001b9f9d7d6d2462b190dc5fa9f4bbff" kind="function"><name>InterFrameGapUs</name></member>
   </compound>
   <compound refid="namespaceanonymous__namespace_02StmUart_8cpp_03" kind="namespace"><name>anonymous_namespace{StmUart.cpp}</name>
     <member refid="namespaceanonymous__namespace_02StmUart_8cpp_03_1ab2a4d5fbf0156cc690a4ac7ed0757a95" kind="variable"><name>kDefaultTimeoutMs</name></member>
@@ -5374,6 +5445,12 @@
   </compound>
   <compound refid="StmNvs_8h" kind="file"><name>StmNvs.h</name>
   </compound>
+  <compound refid="StmNvsBackend_8h" kind="file"><name>StmNvsBackend.h</name>
+    <member refid="StmNvsBackend_8h_1a6d17c658207c55bc07f3f6269d7ef24d" kind="function"><name>PwStmNvsBackendRead</name></member>
+    <member refid="StmNvsBackend_8h_1ab897a891c5786c009be9df211881efe3" kind="function"><name>PwStmNvsBackendWrite</name></member>
+    <member refid="StmNvsBackend_8h_1a62823792f15d29c277492d271febaf02" kind="function"><name>PwStmNvsBackendSync</name></member>
+    <member refid="StmNvsBackend_8h_1a855b12a416af54ec750e7d628dc48873" kind="function"><name>PwStmNvsBackendErase</name></member>
+  </compound>
   <compound refid="StmPeriodicTimer_8h" kind="file"><name>StmPeriodicTimer.h</name>
   </compound>
   <compound refid="StmPwm_8h" kind="file"><name>StmPwm.h</name>
@@ -5444,6 +5521,9 @@
     <member refid="PlatformMutex_8h_1a3dab6fdaf8d72d84ebef1678033424a4" kind="typedef"><name>PlatformSharedMutex</name></member>
     <member refid="PlatformMutex_8h_1a9e65865add93ca50ec0af02b8a5a3737" kind="typedef"><name>PlatformMutexLockGuard</name></member>
     <member refid="PlatformMutex_8h_1a5b9f484b1baa691901486c8cfd7080d1" kind="typedef"><name>PlatformLockGuard</name></member>
+  </compound>
+  <compound refid="SoftChipSelectGuard_8h" kind="file"><name>SoftChipSelectGuard.h</name>
+    <member refid="SoftChipSelectGuard_8h_1ad06bf454909894e47def4af90f15f991" kind="function"><name>MakeSoftChipSelectGuard</name></member>
   </compound>
   <compound refid="README_8md" kind="file"><name>README.md</name>
   </compound>
@@ -5550,10 +5630,12 @@
     <member refid="StmLogger_8cpp_1a9831daab83c8b1a8791d0f6fe523d45e" kind="function"><name>HF_ITM_SendChar</name></member>
   </compound>
   <compound refid="StmNvs_8cpp" kind="file"><name>StmNvs.cpp</name>
+    <member refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kind="variable"><name>size_t</name></member>
     <member refid="StmNvs_8cpp_1aeeff9bea79726094fc3a4fdda3bfe50a" kind="function"><name>HAL_FLASH_Unlock</name></member>
     <member refid="StmNvs_8cpp_1aaaf6b5a92d157e7ea873f78a84094e5a" kind="function"><name>HAL_FLASH_Lock</name></member>
     <member refid="StmNvs_8cpp_1ac88663b054cd4d4f556817663c50111b" kind="function"><name>HAL_FLASH_Program</name></member>
     <member refid="StmNvs_8cpp_1a6e438e96b674721e44bae034d1a6b9fd" kind="function"><name>HAL_FLASHEx_Erase</name></member>
+    <member refid="StmNvs_8cpp_1a11de4bd5dfa76cfda2d7d351670aa207" kind="function"><name>__attribute__</name></member>
   </compound>
   <compound refid="StmPeriodicTimer_8cpp" kind="file"><name>StmPeriodicTimer.cpp</name>
     <member refid="StmPeriodicTimer_8cpp_1af0f1dc4bc546e616dc198083ef8758df" kind="function"><name>HAL_TIM_Base_Start_IT</name></member>

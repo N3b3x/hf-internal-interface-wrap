@@ -5,7 +5,7 @@
     <includes refid="TestFramework_8h" local="no">TestFramework.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structTestTaskContext_1abcf19d2762ab98990c3fdc1eacf86130" prot="public" static="no" mutable="no">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char* TestTaskContext::test_name</definition>
         <argsstring></argsstring>
         <name>test_name</name>
@@ -19,7 +19,7 @@
         <location file="examples/esp32/main/TestFramework.h" line="245" column="14" bodyfile="examples/esp32/main/TestFramework.h" bodystart="245" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structTestTaskContext_1aa72faa223fd0ff992772b12458f62ec8" prot="public" static="no" mutable="no">
-        <type>bool(*</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref>(*</type>
         <definition>bool(* TestTaskContext::test_func) () noexcept</definition>
         <argsstring>)() noexcept</argsstring>
         <name>test_func</name>
@@ -47,7 +47,7 @@
         <location file="examples/esp32/main/TestFramework.h" line="247" column="15" bodyfile="examples/esp32/main/TestFramework.h" bodystart="247" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structTestTaskContext_1ae51f49c33ea802bc7f8bdde560a27304" prot="public" static="no" mutable="no">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char* TestTaskContext::tag</definition>
         <argsstring></argsstring>
         <name>tag</name>
@@ -61,7 +61,7 @@
         <location file="examples/esp32/main/TestFramework.h" line="248" column="14" bodyfile="examples/esp32/main/TestFramework.h" bodystart="248" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structTestTaskContext_1ab82bee11b198be2f2b4d6c908573ddb6" prot="public" static="no" mutable="no">
-        <type>SemaphoreHandle_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">SemaphoreHandle_t</ref></type>
         <definition>SemaphoreHandle_t TestTaskContext::completion_semaphore</definition>
         <argsstring></argsstring>
         <name>completion_semaphore</name>

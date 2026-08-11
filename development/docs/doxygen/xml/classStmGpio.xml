@@ -6,7 +6,7 @@
     <includes refid="StmGpio_8h" local="no">StmGpio.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classStmGpio_1ad25d7497412c54842ceda554f256014f" prot="private" static="no" mutable="no">
-        <type>GPIO_TypeDef *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">GPIO_TypeDef</ref> *</type>
         <definition>GPIO_TypeDef* StmGpio::port_</definition>
         <argsstring></argsstring>
         <name>port_</name>
@@ -120,7 +120,7 @@
           <declname>pin_num</declname>
         </param>
         <param>
-          <type>GPIO_TypeDef *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">GPIO_TypeDef</ref> *</type>
           <declname>port</declname>
         </param>
         <param>
@@ -169,7 +169,7 @@
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>GPIO_TypeDef* port (e.g. GPIOA). </para>
+<para>GPIO_TypeDef* port (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">e.g</ref>. GPIOA). </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -177,7 +177,7 @@
 <parametername>hal_pin_mask</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>HAL pin bitmask (e.g. GPIO_PIN_5 = 1&lt;&lt;5). </para>
+<para>HAL pin bitmask (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">e.g</ref>. GPIO_PIN_5 = 1&lt;&lt;5). </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -234,7 +234,7 @@
         <name>StmGpio</name>
         <qualifiedname>StmGpio::StmGpio</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__stm32__gpio__config__t" kindref="compound">hf_stm32_gpio_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__stm32__gpio__config__t" kindref="compound">hf_stm32_gpio_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -261,7 +261,7 @@
         <location file="inc/mcu/stm32/StmGpio.h" line="68" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1ad108587cd354d234cdd7267876da4be8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmGpio::Initialize</definition>
         <argsstring>() noexcept override</argsstring>
         <name>Initialize</name>
@@ -280,7 +280,7 @@
         <location file="inc/mcu/stm32/StmGpio.h" line="71" column="10" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="66" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a08972988dbdb87d8449efbcbe544e95b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmGpio::IsPinAvailable</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>IsPinAvailable</name>
@@ -318,7 +318,7 @@
         <location file="inc/mcu/stm32/StmGpio.h" line="73" column="13" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="76" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a7c8c088887133a57c4c68884fe310e4b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char * StmGpio::GetDescription</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>GetDescription</name>
@@ -337,7 +337,7 @@
         <location file="inc/mcu/stm32/StmGpio.h" line="74" column="16" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="78" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classStmGpio_1a7fb86a0903ac2402015aacf4b7d27160" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>GPIO_TypeDef *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">GPIO_TypeDef</ref> *</type>
         <definition>GPIO_TypeDef * StmGpio::GetPort</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetPort</name>
@@ -367,7 +367,7 @@
     </sectiondef>
     <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classStmGpio_1ab65299b0d8ae49f10374a65be90a05a1" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void StmGpio::ExtiCallbackDispatch</definition>
         <argsstring>(hf_u16_t gpio_pin_mask) noexcept</argsstring>
         <name>ExtiCallbackDispatch</name>
@@ -380,8 +380,8 @@
 <para>Route EXTI callback to the registered <ref refid="classStmGpio" kindref="compound">StmGpio</ref> instance. </para>
         </briefdescription>
         <detaileddescription>
-<para>Usage: <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_GPIO_EXTI_Callback(uint16_t<sp/>GPIO_Pin)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmGpio_1ab65299b0d8ae49f10374a65be90a05a1" kindref="member">StmGpio::ExtiCallbackDispatch</ref>(GPIO_Pin);</highlight></codeline>
+<para>Usage: <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">HAL_GPIO_EXTI_Callback</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">GPIO_Pin</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmGpio_1ab65299b0d8ae49f10374a65be90a05a1" kindref="member">StmGpio::ExtiCallbackDispatch</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">GPIO_Pin</ref>);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -643,7 +643,7 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
     </sectiondef>
     <sectiondef kind="private-func">
       <memberdef kind="function" id="classStmGpio_1a60cfdb35581560221763d251203e1439" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void StmGpio::ApplyHalConfig</definition>
         <argsstring>() noexcept</argsstring>
         <name>ApplyHalConfig</name>

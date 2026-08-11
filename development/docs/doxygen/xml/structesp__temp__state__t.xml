@@ -5,7 +5,7 @@
     <includes refid="EspTemperature_8h" local="no">EspTemperature.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structesp__temp__state__t_1a8c43679a55729c46d107804c3e0f8d91" prot="public" static="no" mutable="no">
-        <type>temperature_sensor_handle_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">temperature_sensor_handle_t</ref></type>
         <definition>temperature_sensor_handle_t esp_temp_state_t::handle</definition>
         <argsstring></argsstring>
         <name>handle</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="102" column="20" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__state__t_1a7ea6386f0990755a7e6569081a701bfa" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float esp_temp_state_t::calibration_offset</definition>
         <argsstring></argsstring>
         <name>calibration_offset</name>
@@ -50,7 +50,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="103" column="9" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="103" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__state__t_1a88f1b850e2b1a619dd9e87a246c26eda" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool esp_temp_state_t::threshold_monitoring_enabled</definition>
         <argsstring></argsstring>
         <name>threshold_monitoring_enabled</name>
@@ -65,7 +65,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="104" column="8" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__state__t_1a2a7e449e9494d084491b6a02682a407c" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool esp_temp_state_t::continuous_monitoring_active</definition>
         <argsstring></argsstring>
         <name>continuous_monitoring_active</name>
@@ -80,7 +80,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="105" column="8" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="105" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__state__t_1ad9f8009a7018aa3365717afffdd4839c" prot="public" static="no" mutable="no">
-        <type>esp_timer_handle_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">esp_timer_handle_t</ref></type>
         <definition>esp_timer_handle_t esp_temp_state_t::monitoring_timer</definition>
         <argsstring></argsstring>
         <name>monitoring_timer</name>
@@ -125,7 +125,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="108" column="12" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="108" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__state__t_1a0bd9df15c3eadb5793ecdf9829ad1bab" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float esp_temp_state_t::last_temperature_celsius</definition>
         <argsstring></argsstring>
         <name>last_temperature_celsius</name>
@@ -140,7 +140,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="109" column="9" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__state__t_1ae3ff4b7eb1a7c86c3c083bdc7d46ca1c" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool esp_temp_state_t::allow_power_down</definition>
         <argsstring></argsstring>
         <name>allow_power_down</name>

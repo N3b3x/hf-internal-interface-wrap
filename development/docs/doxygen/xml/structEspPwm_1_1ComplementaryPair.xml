@@ -49,7 +49,7 @@
         <location file="inc/mcu/esp32/EspPwm.h" line="765" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="765" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ComplementaryPair_1a390304b940ca626fdaba6b55c61f5bf9" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspPwm::ComplementaryPair::active</definition>
         <argsstring></argsstring>
         <name>active</name>

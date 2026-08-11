@@ -1,0 +1,9 @@
+<map id="StmSpiBusLock" name="StmSpiBusLock">
+<area shape="rect" id="Node000001" title="RAII exclusive ownership of one StmSpiBus (RTOS mutex)." alt="" coords="149,223,300,253"/>
+<area shape="rect" id="Node000002" href="$classStmSpiBus.html" title="One MCU SPI peripheral + its soft&#45;CS device collection." alt="" coords="169,124,281,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,168,227,222,222,222,222,168"/>
+<area shape="rect" id="Node000003" href="$structhf__spi__bus__config__t.html" title="Platform&#45;agnostic SPI bus configuration for STM32." alt="" coords="5,15,188,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="126,53,209,122,206,126,123,57"/>
+<area shape="rect" id="Node000004" href="$classPlatformMutexImpl.html" title=" " alt="" coords="213,5,493,56"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="315,67,244,126,240,122,311,63"/>
+</map>

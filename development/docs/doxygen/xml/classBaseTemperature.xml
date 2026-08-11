@@ -7,7 +7,7 @@
     <includes refid="BaseTemperature_8h" local="no">BaseTemperature.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classBaseTemperature_1a6657e59b1e8c59d68aabe08f276090fe" prot="protected" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseTemperature::initialized_</definition>
         <argsstring></argsstring>
         <name>initialized_</name>
@@ -45,7 +45,7 @@
         <name>BaseTemperature</name>
         <qualifiedname>BaseTemperature::BaseTemperature</qualifiedname>
         <param>
-          <type>const <ref refid="classBaseTemperature" kindref="compound">BaseTemperature</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBaseTemperature" kindref="compound">BaseTemperature</ref> &amp;</type>
         </param>
         <briefdescription>
 <para>Copy constructor is deleted to avoid copying instances. </para>
@@ -63,7 +63,7 @@
         <name>operator=</name>
         <qualifiedname>BaseTemperature::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classBaseTemperature" kindref="compound">BaseTemperature</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBaseTemperature" kindref="compound">BaseTemperature</ref> &amp;</type>
         </param>
         <briefdescription>
 <para>Assignment operator is deleted to avoid copying instances. </para>
@@ -90,7 +90,7 @@
         <location file="inc/base/BaseTemperature.h" line="426" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a25b8ade43d75916d0d48464cfdcaa6c2" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseTemperature::IsInitialized</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsInitialized</name>
@@ -108,7 +108,7 @@
         <location file="inc/base/BaseTemperature.h" line="436" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="800" bodyend="802"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1ac3e2177be073e991acc4f03da8c2b07d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseTemperature::EnsureInitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureInitialized</name>
@@ -126,7 +126,7 @@
         <location file="inc/base/BaseTemperature.h" line="442" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="804" bodyend="812"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a015ca3f4802b9a68140531f0175fd1bf" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseTemperature::EnsureDeinitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureDeinitialized</name>
@@ -168,7 +168,7 @@
         <name>ReadTemperatureCelsius</name>
         <qualifiedname>BaseTemperature::ReadTemperatureCelsius</qualifiedname>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>temperature_celsius</declname>
         </param>
         <briefdescription>
@@ -230,7 +230,7 @@
         <name>ReadTemperatureFahrenheit</name>
         <qualifiedname>BaseTemperature::ReadTemperatureFahrenheit</qualifiedname>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>temperature_fahrenheit</declname>
         </param>
         <briefdescription>
@@ -261,7 +261,7 @@
         <name>ReadTemperatureKelvin</name>
         <qualifiedname>BaseTemperature::ReadTemperatureKelvin</qualifiedname>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>temperature_kelvin</declname>
         </param>
         <briefdescription>
@@ -292,7 +292,7 @@
         <name>ReadTemperatureUnit</name>
         <qualifiedname>BaseTemperature::ReadTemperatureUnit</qualifiedname>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>temperature</declname>
         </param>
         <param>
@@ -382,7 +382,7 @@
         <location file="inc/base/BaseTemperature.h" line="540" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1ad97ed939d85e2686653d76967c53f790" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseTemperature::HasCapability</definition>
         <argsstring>(hf_temp_capabilities_t capability) const noexcept</argsstring>
         <name>HasCapability</name>
@@ -421,11 +421,11 @@
         <reimplementedby refid="classEspTemperature_1a92b30bf532e07d1f1927d4fccf5322ba">SetRange</reimplementedby>
         <reimplementedby refid="classStmTemperature_1a608596a4778ff7dbcc6b29099d525afb">SetRange</reimplementedby>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>min_celsius</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>max_celsius</declname>
         </param>
         <briefdescription>
@@ -466,11 +466,11 @@
         <reimplementedby refid="classEspTemperature_1a5763ab0b92fff25c5854bcfb04a8ba9f">GetRange</reimplementedby>
         <reimplementedby refid="classStmTemperature_1a42c8899bcbec1bd9ef5d6273db3f6842">GetRange</reimplementedby>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>min_celsius</declname>
         </param>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>max_celsius</declname>
         </param>
         <briefdescription>
@@ -509,7 +509,7 @@
         <name>SetResolution</name>
         <qualifiedname>BaseTemperature::SetResolution</qualifiedname>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>resolution_celsius</declname>
         </param>
         <briefdescription>
@@ -541,7 +541,7 @@
         <qualifiedname>BaseTemperature::GetResolution</qualifiedname>
         <reimplementedby refid="classEspTemperature_1ae1bfe0b1ceeb20ea8eb5010ef09f832d">GetResolution</reimplementedby>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>resolution_celsius</declname>
         </param>
         <briefdescription>
@@ -573,11 +573,11 @@
         <qualifiedname>BaseTemperature::SetThresholds</qualifiedname>
         <reimplementedby refid="classEspTemperature_1aaeda9f32dfc75e5ca2ab15142d0c9998">SetThresholds</reimplementedby>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>low_threshold_celsius</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>high_threshold_celsius</declname>
         </param>
         <briefdescription>
@@ -617,11 +617,11 @@
         <qualifiedname>BaseTemperature::GetThresholds</qualifiedname>
         <reimplementedby refid="classEspTemperature_1ae122e823c11b55550cb91af01e26461e">GetThresholds</reimplementedby>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>low_threshold_celsius</declname>
         </param>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>high_threshold_celsius</declname>
         </param>
         <briefdescription>
@@ -665,7 +665,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
         </param>
         <briefdescription>
@@ -732,7 +732,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
         </param>
         <briefdescription>
@@ -792,7 +792,7 @@
         <location file="inc/base/BaseTemperature.h" line="649" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="649" bodyend="651"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1ab965dfed096914ca4a8e733b17bc978e" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseTemperature::IsMonitoringActive</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsMonitoringActive</name>
@@ -817,7 +817,7 @@
         <name>Calibrate</name>
         <qualifiedname>BaseTemperature::Calibrate</qualifiedname>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>reference_temperature_celsius</declname>
         </param>
         <briefdescription>
@@ -850,7 +850,7 @@
         <reimplementedby refid="classEspTemperature_1a2665b30cb4301b8fccb577f74e4fa7fc">SetCalibrationOffset</reimplementedby>
         <reimplementedby refid="classStmTemperature_1a2fd741be7e01983487293cd79ea6694c">SetCalibrationOffset</reimplementedby>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>offset_celsius</declname>
         </param>
         <briefdescription>
@@ -883,7 +883,7 @@
         <reimplementedby refid="classEspTemperature_1ad6ee47301f32825678e5838b453bd1f1">GetCalibrationOffset</reimplementedby>
         <reimplementedby refid="classStmTemperature_1af6ea97a7123fac478b300b7a6e6c76d1">GetCalibrationOffset</reimplementedby>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>offset_celsius</declname>
         </param>
         <briefdescription>
@@ -965,7 +965,7 @@
         <location file="inc/base/BaseTemperature.h" line="708" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="708" bodyend="710"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a65f6deb4af75c89ae44723015731d195" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseTemperature::IsSleeping</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsSleeping</name>
@@ -1126,7 +1126,7 @@
     </sectiondef>
     <sectiondef kind="protected-func">
       <memberdef kind="function" id="classBaseTemperature_1ad19ade5e58bb71af6ae98e8e34d477be" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseTemperature::Initialize</definition>
         <argsstring>() noexcept=0</argsstring>
         <name>Initialize</name>
@@ -1146,7 +1146,7 @@
         <location file="inc/base/BaseTemperature.h" line="465" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1ac2af8a969cf2c755f52ba302645a4b87" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseTemperature::Deinitialize</definition>
         <argsstring>() noexcept=0</argsstring>
         <name>Deinitialize</name>
@@ -1174,7 +1174,7 @@
         <reimplementedby refid="classEspTemperature_1a0357ccb31a009ae7b55ca02db5e0c58a">ReadTemperatureCelsiusImpl</reimplementedby>
         <reimplementedby refid="classStmTemperature_1aec6918308bc56058d12cd1d5dde7aa03">ReadTemperatureCelsiusImpl</reimplementedby>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>temperature_celsius</declname>
         </param>
         <briefdescription>

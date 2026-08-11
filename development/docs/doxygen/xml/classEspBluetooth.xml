@@ -6,7 +6,7 @@
     <includes refid="EspBluetooth_8h" local="no">EspBluetooth.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classEspBluetooth_1a4d84bbbb3cb06d234d4e300de6021849" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspBluetooth::m_initialized</definition>
         <argsstring></argsstring>
         <name>m_initialized</name>
@@ -20,7 +20,7 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="179" column="8" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="179" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1a887d8aec908d8d0157e78df04b1a1b65" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspBluetooth::m_enabled</definition>
         <argsstring></argsstring>
         <name>m_enabled</name>
@@ -62,7 +62,7 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="182" column="24" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="182" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1aaaadf2899fec6782cb774f942aa18c98" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt;</type>
         <definition>std::vector&lt;hf_bluetooth_device_info_t&gt; EspBluetooth::m_discovered_devices</definition>
         <argsstring></argsstring>
         <name>m_discovered_devices</name>
@@ -76,7 +76,7 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="185" column="15" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="185" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1adb7ac39e03c55983d3ab3d992d80dd64" prot="private" static="no" mutable="no">
-        <type>std::map&lt; std::string, <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::map</ref>&lt; <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref>, <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt;</type>
         <definition>std::map&lt;std::string, hf_bluetooth_device_info_t&gt; EspBluetooth::m_connected_devices</definition>
         <argsstring></argsstring>
         <name>m_connected_devices</name>
@@ -160,7 +160,7 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="197" column="32" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="197" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1a7143aa7604d8fb3d70d2ce725fb888b9" prot="private" static="no" mutable="no">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void* EspBluetooth::m_callback_context</definition>
         <argsstring></argsstring>
         <name>m_callback_context</name>
@@ -176,7 +176,7 @@
     </sectiondef>
     <sectiondef kind="private-func">
       <memberdef kind="function" id="classEspBluetooth_1aba97116a09dbb885c55d3f503fe34433" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspBluetooth::TriggerEvent</definition>
         <argsstring>(hf_bluetooth_event_t event, const void *data=nullptr)</argsstring>
         <name>TriggerEvent</name>
@@ -186,9 +186,9 @@
           <declname>event</declname>
         </param>
         <param>
-          <type>const void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -205,7 +205,7 @@
         <name>ValidateAddress</name>
         <qualifiedname>EspBluetooth::ValidateAddress</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
         </param>
         <briefdescription>
@@ -217,13 +217,13 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="247" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1037" bodyend="1052"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1ac6ca2eab7f75aeb09e6a227dca39195b" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::string</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref></type>
         <definition>std::string EspBluetooth::AddressToString</definition>
         <argsstring>(const hf_bluetooth_address_t &amp;address) const</argsstring>
         <name>AddressToString</name>
         <qualifiedname>EspBluetooth::AddressToString</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
         </param>
         <briefdescription>
@@ -241,7 +241,7 @@
         <name>StringToAddress</name>
         <qualifiedname>EspBluetooth::StringToAddress</qualifiedname>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref> &amp;</type>
           <declname>address_str</declname>
         </param>
         <briefdescription>
@@ -338,7 +338,7 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="277" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="152" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1a3614348f32fdffd9ecafc94609c13c7d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspBluetooth::IsInitialized</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>IsInitialized</name>
@@ -395,7 +395,7 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="295" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="249" bodyend="286"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1a8dbe05f9ae739562f8d79017c6a2613a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspBluetooth::IsEnabled</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>IsEnabled</name>
@@ -504,7 +504,7 @@
         <qualifiedname>EspBluetooth::SetDeviceName</qualifiedname>
         <reimplements refid="classBaseBluetooth_1a4fb3e215a996b0d5adba08851ef6902b">SetDeviceName</reimplements>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref> &amp;</type>
           <declname>name</declname>
         </param>
         <briefdescription>
@@ -529,7 +529,7 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="330" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="628" bodyend="654"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1a62271ef1873ae263b2046a0445d077da" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>std::string</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref></type>
         <definition>std::string EspBluetooth::GetDeviceName</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>GetDeviceName</name>
@@ -555,7 +555,7 @@
         <qualifiedname>EspBluetooth::StartScan</qualifiedname>
         <reimplements refid="classBaseBluetooth_1a7ed30dacabc311649b462d809b9ba3c9">StartScan</reimplements>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>duration_ms</declname>
           <defval>0</defval>
         </param>
@@ -613,7 +613,7 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="355" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="770" bodyend="791"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1ac5fa0f11be5c7e1e5194ecc12818251b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspBluetooth::IsScanning</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>IsScanning</name>
@@ -639,7 +639,7 @@
         <qualifiedname>EspBluetooth::GetDiscoveredDevices</qualifiedname>
         <reimplements refid="classBaseBluetooth_1a6eb10b728e86c6347d78db68d9daca38">GetDiscoveredDevices</reimplements>
         <param>
-          <type>std::vector&lt; <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt; &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt; &amp;</type>
           <declname>devices</declname>
         </param>
         <briefdescription>
@@ -721,7 +721,7 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="389" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="819" bodyend="822"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1acf0cc8ea815792cff6cf2be61c819ed3" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspBluetooth::IsAdvertising</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>IsAdvertising</name>
@@ -747,11 +747,11 @@
         <qualifiedname>EspBluetooth::Connect</qualifiedname>
         <reimplements refid="classBaseBluetooth_1a617291c44633b686263c240181ae3cea">Connect</reimplements>
         <param>
-          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_ms</declname>
           <defval>0</defval>
         </param>
@@ -792,7 +792,7 @@
         <qualifiedname>EspBluetooth::Disconnect</qualifiedname>
         <reimplements refid="classBaseBluetooth_1a7bead8aef6793700b27cbf09f9067056">Disconnect</reimplements>
         <param>
-          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
         </param>
         <briefdescription>
@@ -817,14 +817,14 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="413" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="834" bodyend="837"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1adbcf453657dd1c372bc45c9e0cca302a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspBluetooth::IsConnected</definition>
         <argsstring>(const hf_bluetooth_address_t &amp;address) const noexcept override</argsstring>
         <name>IsConnected</name>
         <qualifiedname>EspBluetooth::IsConnected</qualifiedname>
         <reimplements refid="classBaseBluetooth_1aaaa1fe08e98f160ad26c1285fa027ae4">IsConnected</reimplements>
         <param>
-          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
         </param>
         <briefdescription>
@@ -856,7 +856,7 @@
         <qualifiedname>EspBluetooth::GetConnectedDevices</qualifiedname>
         <reimplements refid="classBaseBluetooth_1a60f462a47b67c139f8be15ed632bafb3">GetConnectedDevices</reimplements>
         <param>
-          <type>std::vector&lt; <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt; &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt; &amp;</type>
           <declname>devices</declname>
         </param>
         <briefdescription>
@@ -888,11 +888,11 @@
         <qualifiedname>EspBluetooth::Pair</qualifiedname>
         <reimplements refid="classBaseBluetooth_1a50efd732485a32e6accd1f51e9fc58f6">Pair</reimplements>
         <param>
-          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
         </param>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref> &amp;</type>
           <declname>pin</declname>
           <defval>&quot;&quot;</defval>
         </param>
@@ -933,7 +933,7 @@
         <qualifiedname>EspBluetooth::Unpair</qualifiedname>
         <reimplements refid="classBaseBluetooth_1ac86df1a77e652a46ff4a05516c53dd90">Unpair</reimplements>
         <param>
-          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
         </param>
         <briefdescription>
@@ -958,14 +958,14 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="445" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="859" bodyend="862"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1acdf4674571e946491fc166e0f6cfeee8" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspBluetooth::IsPaired</definition>
         <argsstring>(const hf_bluetooth_address_t &amp;address) const noexcept override</argsstring>
         <name>IsPaired</name>
         <qualifiedname>EspBluetooth::IsPaired</qualifiedname>
         <reimplements refid="classBaseBluetooth_1af2e91ee25f4f133566544895cbe9ccc1">IsPaired</reimplements>
         <param>
-          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
         </param>
         <briefdescription>
@@ -997,11 +997,11 @@
         <qualifiedname>EspBluetooth::SendData</qualifiedname>
         <reimplements refid="classBaseBluetooth_1aeb6a2808eba39d846234d4daa5e7721a">SendData</reimplements>
         <param>
-          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
         </param>
         <param>
-          <type>const std::vector&lt; uint8_t &gt; &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref> &gt; &amp;</type>
           <declname>data</declname>
         </param>
         <briefdescription>
@@ -1034,14 +1034,14 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="462" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="868" bodyend="872"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1ad9b72feec623b72121fd7dc903980205" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>int</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
         <definition>int EspBluetooth::GetAvailableData</definition>
         <argsstring>(const hf_bluetooth_address_t &amp;address) const noexcept override</argsstring>
         <name>GetAvailableData</name>
         <qualifiedname>EspBluetooth::GetAvailableData</qualifiedname>
         <reimplements refid="classBaseBluetooth_1a817f50486c8cc2d8fb90e5e02cee730c">GetAvailableData</reimplements>
         <param>
-          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
         </param>
         <briefdescription>
@@ -1073,15 +1073,15 @@
         <qualifiedname>EspBluetooth::ReadData</qualifiedname>
         <reimplements refid="classBaseBluetooth_1aaeda8dabc23f43f7b034d9ea5b710aa3">ReadData</reimplements>
         <param>
-          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
         </param>
         <param>
-          <type>std::vector&lt; uint8_t &gt; &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref> &gt; &amp;</type>
           <declname>data</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>max_bytes</declname>
           <defval>0</defval>
         </param>
@@ -1130,11 +1130,11 @@
         <qualifiedname>EspBluetooth::DiscoverServices</qualifiedname>
         <reimplements refid="classBaseBluetooth_1a1ba1c8b0f8825bb6fca5b157466b263a">DiscoverServices</reimplements>
         <param>
-          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
         </param>
         <param>
-          <type>std::vector&lt; <ref refid="structhf__bluetooth__gatt__service__t" kindref="compound">hf_bluetooth_gatt_service_t</ref> &gt; &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="structhf__bluetooth__gatt__service__t" kindref="compound">hf_bluetooth_gatt_service_t</ref> &gt; &amp;</type>
           <declname>services</declname>
         </param>
         <briefdescription>
@@ -1174,15 +1174,15 @@
         <qualifiedname>EspBluetooth::DiscoverCharacteristics</qualifiedname>
         <reimplements refid="classBaseBluetooth_1a71dbea977b9400ae1be9358df7161a41">DiscoverCharacteristics</reimplements>
         <param>
-          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
         </param>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref> &amp;</type>
           <declname>service_uuid</declname>
         </param>
         <param>
-          <type>std::vector&lt; <ref refid="structhf__bluetooth__gatt__characteristic__t" kindref="compound">hf_bluetooth_gatt_characteristic_t</ref> &gt; &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="structhf__bluetooth__gatt__characteristic__t" kindref="compound">hf_bluetooth_gatt_characteristic_t</ref> &gt; &amp;</type>
           <declname>characteristics</declname>
         </param>
         <briefdescription>
@@ -1230,19 +1230,19 @@
         <qualifiedname>EspBluetooth::ReadCharacteristic</qualifiedname>
         <reimplements refid="classBaseBluetooth_1a7a6fcf0460f5d2454fac81851457ea9d">ReadCharacteristic</reimplements>
         <param>
-          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
         </param>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref> &amp;</type>
           <declname>service_uuid</declname>
         </param>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref> &amp;</type>
           <declname>characteristic_uuid</declname>
         </param>
         <param>
-          <type>std::vector&lt; uint8_t &gt; &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref> &gt; &amp;</type>
           <declname>value</declname>
         </param>
         <briefdescription>
@@ -1298,25 +1298,25 @@
         <qualifiedname>EspBluetooth::WriteCharacteristic</qualifiedname>
         <reimplements refid="classBaseBluetooth_1a355e1dc5a888deede264cbb0a0cada01">WriteCharacteristic</reimplements>
         <param>
-          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
         </param>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref> &amp;</type>
           <declname>service_uuid</declname>
         </param>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref> &amp;</type>
           <declname>characteristic_uuid</declname>
         </param>
         <param>
-          <type>const std::vector&lt; uint8_t &gt; &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref> &gt; &amp;</type>
           <declname>value</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>with_response</declname>
-          <defval>true</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">true</ref></defval>
         </param>
         <briefdescription>
 <para>Write GATT characteristic value. </para>
@@ -1379,19 +1379,19 @@
         <qualifiedname>EspBluetooth::SubscribeCharacteristic</qualifiedname>
         <reimplements refid="classBaseBluetooth_1a28375008b15506311fae513f01d793a7">SubscribeCharacteristic</reimplements>
         <param>
-          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
         </param>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref> &amp;</type>
           <declname>service_uuid</declname>
         </param>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref> &amp;</type>
           <declname>characteristic_uuid</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>enable</declname>
         </param>
         <briefdescription>
@@ -1459,14 +1459,14 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="551" column="24" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="922" bodyend="925"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1ad59ff6490e87be4dfa9f1191e402fd2b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>int8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int8_t</ref></type>
         <definition>int8_t EspBluetooth::GetRssi</definition>
         <argsstring>(const hf_bluetooth_address_t &amp;address) const noexcept override</argsstring>
         <name>GetRssi</name>
         <qualifiedname>EspBluetooth::GetRssi</qualifiedname>
         <reimplements refid="classBaseBluetooth_1ae2e305a568401408da0c317e4b6a2040">GetRssi</reimplements>
         <param>
-          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
         </param>
         <briefdescription>
@@ -1600,7 +1600,7 @@
         <qualifiedname>EspBluetooth::ConfigureClassic</qualifiedname>
         <reimplements refid="classBaseBluetooth_1a05c3be910231f2f62b907353444b57a3">ConfigureClassic</reimplements>
         <param>
-          <type>const <ref refid="structhf__bluetooth__classic__config__t" kindref="compound">hf_bluetooth_classic_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__classic__config__t" kindref="compound">hf_bluetooth_classic_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -1632,11 +1632,11 @@
         <qualifiedname>EspBluetooth::SetDiscoverable</qualifiedname>
         <reimplements refid="classBaseBluetooth_1af19e222b1e62772e76669918d4ecacb5">SetDiscoverable</reimplements>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>discoverable</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_ms</declname>
           <defval>0</defval>
         </param>
@@ -1670,7 +1670,7 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="603" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="962" bodyend="965"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1a37a10b193de4105734f148a7d8cd9c26" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspBluetooth::IsDiscoverable</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>IsDiscoverable</name>
@@ -1696,7 +1696,7 @@
         <qualifiedname>EspBluetooth::ConfigureBle</qualifiedname>
         <reimplements refid="classBaseBluetooth_1ac5cb25b01043f0aada11b7073702dd76">ConfigureBle</reimplements>
         <param>
-          <type>const <ref refid="structhf__bluetooth__ble__config__t" kindref="compound">hf_bluetooth_ble_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__ble__config__t" kindref="compound">hf_bluetooth_ble_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -1728,7 +1728,7 @@
         <qualifiedname>EspBluetooth::GetPairedDevices</qualifiedname>
         <reimplements refid="classBaseBluetooth_1a89d0044ec124c5ef2d2737462a22df9e">GetPairedDevices</reimplements>
         <param>
-          <type>std::vector&lt; <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt; &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt; &amp;</type>
           <declname>devices</declname>
         </param>
         <briefdescription>
@@ -1753,7 +1753,7 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="627" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="976" bodyend="981"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1aea62727908de168c5694694596b3bc04" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::string</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref></type>
         <definition>std::string EspBluetooth::GetImplementationInfo</definition>
         <argsstring>() const</argsstring>
         <name>GetImplementationInfo</name>
@@ -1771,7 +1771,7 @@
         <location file="inc/mcu/esp32/EspBluetooth.h" line="635" column="15" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="983" bodyend="1008"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1a25a1cdbecb847dbd24b65d83642bd90a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t EspBluetooth::GetSupportedFeatures</definition>
         <argsstring>() const</argsstring>
         <name>GetSupportedFeatures</name>

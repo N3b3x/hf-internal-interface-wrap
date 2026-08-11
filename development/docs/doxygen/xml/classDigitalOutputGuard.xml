@@ -20,7 +20,7 @@
         <location file="inc/utils/DigitalOutputGuard.h" line="119" column="12" bodyfile="inc/utils/DigitalOutputGuard.h" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classDigitalOutputGuard_1aee20e95f884029b17d08eaff68156304" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool DigitalOutputGuard::was_output_mode_</definition>
         <argsstring></argsstring>
         <name>was_output_mode_</name>
@@ -35,7 +35,7 @@
         <location file="inc/utils/DigitalOutputGuard.h" line="120" column="8" bodyfile="inc/utils/DigitalOutputGuard.h" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classDigitalOutputGuard_1a17b9cdad4008b79d15935976d29dd730" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool DigitalOutputGuard::is_valid_</definition>
         <argsstring></argsstring>
         <name>is_valid_</name>
@@ -77,9 +77,9 @@
           <declname>gpio</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>ensure_output_mode</declname>
-          <defval>true</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">true</ref></defval>
         </param>
         <briefdescription>
 <para>Constructor with <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> reference. </para>
@@ -119,9 +119,9 @@ Configures the GPIO as output (if needed) and sets it to active state. If the GP
           <declname>gpio</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>ensure_output_mode</declname>
-          <defval>true</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">true</ref></defval>
         </param>
         <briefdescription>
 <para>Constructor with <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> pointer. </para>
@@ -173,7 +173,7 @@ Configures the GPIO as output (if needed) and sets it to active state. If the GP
         <name>DigitalOutputGuard</name>
         <qualifiedname>DigitalOutputGuard::DigitalOutputGuard</qualifiedname>
         <param>
-          <type>const <ref refid="classDigitalOutputGuard" kindref="compound">DigitalOutputGuard</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classDigitalOutputGuard" kindref="compound">DigitalOutputGuard</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -190,7 +190,7 @@ Configures the GPIO as output (if needed) and sets it to active state. If the GP
         <name>operator=</name>
         <qualifiedname>DigitalOutputGuard::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classDigitalOutputGuard" kindref="compound">DigitalOutputGuard</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classDigitalOutputGuard" kindref="compound">DigitalOutputGuard</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -235,7 +235,7 @@ Configures the GPIO as output (if needed) and sets it to active state. If the GP
         <location file="inc/utils/DigitalOutputGuard.h" line="76" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classDigitalOutputGuard_1a848c506b63971c715801b44192cc0ce9" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool DigitalOutputGuard::IsValid</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsValid</name>
@@ -327,13 +327,13 @@ Allows manual control while the guard is active. The destructor will still attem
     </sectiondef>
     <sectiondef kind="private-func">
       <memberdef kind="function" id="classDigitalOutputGuard_1ae7949ca40e1d7dcc530dfb9559bd89b2" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool DigitalOutputGuard::InitializeGuard</definition>
         <argsstring>(bool ensure_output_mode) noexcept</argsstring>
         <name>InitializeGuard</name>
         <qualifiedname>DigitalOutputGuard::InitializeGuard</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>ensure_output_mode</declname>
         </param>
         <briefdescription>

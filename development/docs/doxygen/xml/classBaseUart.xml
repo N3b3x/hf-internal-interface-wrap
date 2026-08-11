@@ -22,7 +22,7 @@
         <location file="inc/base/BaseUart.h" line="402" column="17" bodyfile="inc/base/BaseUart.h" bodystart="402" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseUart_1a79a571b629da5ad6a3675619eb25903f" prot="protected" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseUart::initialized_</definition>
         <argsstring></argsstring>
         <name>initialized_</name>
@@ -90,7 +90,7 @@
         <name>BaseUart</name>
         <qualifiedname>BaseUart::BaseUart</qualifiedname>
         <param>
-          <type>const <ref refid="classBaseUart" kindref="compound">BaseUart</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBaseUart" kindref="compound">BaseUart</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -107,7 +107,7 @@
         <name>operator=</name>
         <qualifiedname>BaseUart::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classBaseUart" kindref="compound">BaseUart</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBaseUart" kindref="compound">BaseUart</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -152,7 +152,7 @@
         <location file="inc/base/BaseUart.h" line="202" column="12"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a3551794eb6e958cbdf8c15aec49c4433" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseUart::EnsureInitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureInitialized</name>
@@ -170,7 +170,7 @@
         <location file="inc/base/BaseUart.h" line="208" column="8" bodyfile="inc/base/BaseUart.h" bodystart="208" bodyend="213"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a0775104a12d8e7b418246ed53b660e55" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseUart::EnsureDeinitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureDeinitialized</name>
@@ -188,7 +188,7 @@
         <location file="inc/base/BaseUart.h" line="219" column="8" bodyfile="inc/base/BaseUart.h" bodystart="219" bodyend="224"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1aa01db7402b20038f979b9073281bb430" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseUart::IsInitialized</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsInitialized</name>
@@ -224,7 +224,7 @@
         <location file="inc/base/BaseUart.h" line="238" column="18" bodyfile="inc/base/BaseUart.h" bodystart="238" bodyend="240"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1ac5f93b4f75c229d2e0ec04196f5cb844" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseUart::Initialize</definition>
         <argsstring>() noexcept=0</argsstring>
         <name>Initialize</name>
@@ -244,7 +244,7 @@
         <location file="inc/base/BaseUart.h" line="250" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a6778f2da517273aa1a51c0658ec0a2c0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseUart::Deinitialize</definition>
         <argsstring>() noexcept=0</argsstring>
         <name>Deinitialize</name>
@@ -272,7 +272,7 @@
         <reimplementedby refid="classStmUart_1a63cff3de4915c888201a3049c414edaa">Write</reimplementedby>
         <reimplementedby refid="classEspUart_1aae3b52313f5bcf520d34457140a23112">Write</reimplementedby>
         <param>
-          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
           <declname>data</declname>
         </param>
         <param>
@@ -440,7 +440,7 @@
         <location file="inc/base/BaseUart.h" line="293" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a9d071b6aa4fb1fe97b33cadf47b8ad7b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>int</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
         <definition>virtual int BaseUart::Printf</definition>
         <argsstring>(const char *format,...) noexcept=0</argsstring>
         <name>Printf</name>
@@ -448,7 +448,7 @@
         <reimplementedby refid="classEspUart_1ad507db496e86a84d3a5ed5d6d2d8eb38">Printf</reimplementedby>
         <reimplementedby refid="classStmUart_1aa620e720b5121683357f9c7ddf5f8b8e">Printf</reimplementedby>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>format</declname>
         </param>
         <param>
@@ -484,7 +484,7 @@
         <location file="inc/base/BaseUart.h" line="301" column="15"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a75cbb2ce81d78f722874184878433249" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseUart::Open</definition>
         <argsstring>() noexcept</argsstring>
         <name>Open</name>
@@ -502,7 +502,7 @@
         <location file="inc/base/BaseUart.h" line="311" column="16" bodyfile="inc/base/BaseUart.h" bodystart="311" bodyend="313"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1aec851bc0079da79a3cbc617fafad7432" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseUart::Close</definition>
         <argsstring>() noexcept</argsstring>
         <name>Close</name>
@@ -520,13 +520,13 @@
         <location file="inc/base/BaseUart.h" line="319" column="16" bodyfile="inc/base/BaseUart.h" bodystart="319" bodyend="321"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1aacddae116924093dc2d45a894772a9a6" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseUart::WriteString</definition>
         <argsstring>(const char *str) noexcept</argsstring>
         <name>WriteString</name>
         <qualifiedname>BaseUart::WriteString</qualifiedname>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>str</declname>
         </param>
         <briefdescription>
@@ -551,7 +551,7 @@
         <location file="inc/base/BaseUart.h" line="332" column="16" bodyfile="inc/base/BaseUart.h" bodystart="332" bodyend="337"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a9c42866eb7d966a138755e5b71c725cf" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseUart::WriteByte</definition>
         <argsstring>(hf_u8_t byte) noexcept</argsstring>
         <name>WriteByte</name>

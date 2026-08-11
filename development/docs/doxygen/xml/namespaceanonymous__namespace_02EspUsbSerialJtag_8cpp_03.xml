@@ -4,7 +4,7 @@
     <compoundname>anonymous_namespace{EspUsbSerialJtag.cpp}</compoundname>
     <sectiondef kind="func">
       <memberdef kind="function" id="namespaceanonymous__namespace_02EspUsbSerialJtag_8cpp_03_1ae9f75b1971ab0c326d59cdcc0d786b29" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>TickType_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">TickType_t</ref></type>
         <definition>TickType_t anonymous_namespace{EspUsbSerialJtag.cpp}::MsToTicks</definition>
         <argsstring>(hf_u32_t ms) noexcept</argsstring>
         <name>MsToTicks</name>

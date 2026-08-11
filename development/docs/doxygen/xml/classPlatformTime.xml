@@ -5,7 +5,7 @@
     <includes refid="PlatformMutex_8h" local="no">PlatformMutex.h</includes>
     <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classPlatformTime_1adfd9d6d2d3429c90ead4430ba565bce9" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>uint64_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint64_t</ref></type>
         <definition>static uint64_t PlatformTime::GetCurrentTimeUs</definition>
         <argsstring>() noexcept</argsstring>
         <name>GetCurrentTimeUs</name>
@@ -23,13 +23,13 @@
         <location file="inc/utils/PlatformMutex.h" line="139" column="21" bodyfile="inc/utils/PlatformMutex.h" bodystart="139" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformTime_1a8cff669a89cba4fa58a44687ec3ce4d4" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>static uint32_t PlatformTime::MsToTicks</definition>
         <argsstring>(uint32_t ms) noexcept</argsstring>
         <name>MsToTicks</name>
         <qualifiedname>PlatformTime::MsToTicks</qualifiedname>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>ms</declname>
         </param>
         <briefdescription>

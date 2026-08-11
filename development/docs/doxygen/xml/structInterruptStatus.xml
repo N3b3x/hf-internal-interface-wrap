@@ -5,7 +5,7 @@
     <includes refid="BaseGpio_8h" local="no">BaseGpio.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structInterruptStatus_1a26b3eebb18b5e2a7e45264b0cb216e4e" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool InterruptStatus::is_enabled</definition>
         <argsstring></argsstring>
         <name>is_enabled</name>
@@ -50,7 +50,7 @@
         <location file="inc/base/BaseGpio.h" line="230" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="230" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structInterruptStatus_1a55d2170d02fd159469846fac43c5b15d" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool InterruptStatus::has_callback</definition>
         <argsstring></argsstring>
         <name>has_callback</name>

@@ -20,7 +20,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="117" column="20" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__config__t_1a32f4e0572841ba20c07eb951d8c14b5c" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float esp_temp_config_t::calibration_offset</definition>
         <argsstring></argsstring>
         <name>calibration_offset</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="118" column="9" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="118" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__config__t_1a532b01f4a182e30097a84fd14ceac05c" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool esp_temp_config_t::enable_threshold_monitoring</definition>
         <argsstring></argsstring>
         <name>enable_threshold_monitoring</name>
@@ -50,7 +50,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="119" column="8" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__config__t_1a9107debb3e289dccaa1a45aeb5454d93" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float esp_temp_config_t::high_threshold_celsius</definition>
         <argsstring></argsstring>
         <name>high_threshold_celsius</name>
@@ -65,7 +65,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="120" column="9" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__config__t_1a3cc2eee57cb670b909dc1eefa8d7049a" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float esp_temp_config_t::low_threshold_celsius</definition>
         <argsstring></argsstring>
         <name>low_threshold_celsius</name>
@@ -80,7 +80,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="121" column="9" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__config__t_1a47cf6e19b01a751baa1cfe492f4ce54f" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool esp_temp_config_t::enable_continuous_monitoring</definition>
         <argsstring></argsstring>
         <name>enable_continuous_monitoring</name>
@@ -110,7 +110,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="123" column="12" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__config__t_1aeab3fc2dc607aa1a06b9169c25edf056" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool esp_temp_config_t::allow_power_down</definition>
         <argsstring></argsstring>
         <name>allow_power_down</name>

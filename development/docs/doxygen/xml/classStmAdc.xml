@@ -29,7 +29,7 @@
         <name>StmAdc</name>
         <qualifiedname>StmAdc::StmAdc</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__stm32__adc__config__t" kindref="compound">hf_stm32_adc_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__stm32__adc__config__t" kindref="compound">hf_stm32_adc_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -58,7 +58,7 @@
         <name>StmAdc</name>
         <qualifiedname>StmAdc::StmAdc</qualifiedname>
         <param>
-          <type>ADC_HandleTypeDef *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">ADC_HandleTypeDef</ref> *</type>
           <declname>hal_handle</declname>
         </param>
         <param>
@@ -90,7 +90,7 @@
         <location file="inc/mcu/stm32/StmAdc.h" line="51" column="5" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="40" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1a1151c9bbc4aa559ded1de1bd4208f5c8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmAdc::Initialize</definition>
         <argsstring>() noexcept override</argsstring>
         <name>Initialize</name>
@@ -109,7 +109,7 @@
         <location file="inc/mcu/stm32/StmAdc.h" line="55" column="10" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="50" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1a1b96f7e2030b803b9dbd1c9d3e66ec61" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmAdc::Deinitialize</definition>
         <argsstring>() noexcept override</argsstring>
         <name>Deinitialize</name>
@@ -147,7 +147,7 @@
         <location file="inc/mcu/stm32/StmAdc.h" line="57" column="13" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="71" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1a59285ceb3a921fa3f4f9176192f891b1" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmAdc::IsChannelAvailable</definition>
         <argsstring>(hf_channel_id_t channel_id) const noexcept override</argsstring>
         <name>IsChannelAvailable</name>
@@ -190,7 +190,7 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>float &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> &amp;</type>
           <declname>channel_reading_v</declname>
         </param>
         <param>
@@ -334,7 +334,7 @@
           <declname>channel_reading_count</declname>
         </param>
         <param>
-          <type>float &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> &amp;</type>
           <declname>channel_reading_v</declname>
         </param>
         <param>
@@ -401,7 +401,7 @@
         <location file="inc/mcu/stm32/StmAdc.h" line="68" column="18" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="140" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1a4a3ab5e2ba045538e61444c6bbb3e49a" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>ADC_HandleTypeDef *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">ADC_HandleTypeDef</ref> *</type>
         <definition>ADC_HandleTypeDef * StmAdc::GetHalHandle</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetHalHandle</name>
@@ -416,7 +416,7 @@
         <location file="inc/mcu/stm32/StmAdc.h" line="75" column="23" bodyfile="inc/mcu/stm32/StmAdc.h" bodystart="75" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1a5e82f1ed7fca48f4ad8c8f2466043a0c" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float StmAdc::GetVref</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetVref</name>
@@ -461,7 +461,7 @@
         <location file="inc/mcu/stm32/StmAdc.h" line="84" column="14" bodyfile="src/mcu/stm32/StmAdc.cpp" bodystart="161" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="classStmAdc_1a6d5db74ebfc1eed67933bb9f2d297c12" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float StmAdc::CountToVoltage</definition>
         <argsstring>(hf_u32_t count) const noexcept</argsstring>
         <name>CountToVoltage</name>

@@ -8,6 +8,7 @@
     <innerfile refid="StmI2c_8h">StmI2c.h</innerfile>
     <innerfile refid="StmLogger_8h">StmLogger.h</innerfile>
     <innerfile refid="StmNvs_8h">StmNvs.h</innerfile>
+    <innerfile refid="StmNvsBackend_8h">StmNvsBackend.h</innerfile>
     <innerfile refid="StmPeriodicTimer_8h">StmPeriodicTimer.h</innerfile>
     <innerfile refid="StmPwm_8h">StmPwm.h</innerfile>
     <innerfile refid="StmSpi_8h">StmSpi.h</innerfile>

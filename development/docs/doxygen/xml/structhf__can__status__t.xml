@@ -65,7 +65,7 @@
         <location file="inc/base/BaseCan.h" line="301" column="12" bodyfile="inc/base/BaseCan.h" bodystart="301" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__status__t_1aa4658cc3642f8be7392d596b285bf2d6" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_can_status_t::bus_off</definition>
         <argsstring></argsstring>
         <name>bus_off</name>
@@ -80,7 +80,7 @@
         <location file="inc/base/BaseCan.h" line="302" column="8" bodyfile="inc/base/BaseCan.h" bodystart="302" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__status__t_1a2b7d5ed0e596f6752c53421dbd681f3e" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_can_status_t::error_warning</definition>
         <argsstring></argsstring>
         <name>error_warning</name>
@@ -95,7 +95,7 @@
         <location file="inc/base/BaseCan.h" line="303" column="8" bodyfile="inc/base/BaseCan.h" bodystart="303" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__status__t_1a602db26f6503f45e1178ccf84ea04c0b" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_can_status_t::error_passive</definition>
         <argsstring></argsstring>
         <name>error_passive</name>
@@ -110,7 +110,7 @@
         <location file="inc/base/BaseCan.h" line="304" column="8" bodyfile="inc/base/BaseCan.h" bodystart="304" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__status__t_1aed91b1c0a81cd06d31b79d2a6f53baf5" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_can_status_t::canfd_enabled</definition>
         <argsstring></argsstring>
         <name>canfd_enabled</name>
@@ -125,7 +125,7 @@
         <location file="inc/base/BaseCan.h" line="307" column="8" bodyfile="inc/base/BaseCan.h" bodystart="307" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__status__t_1ae0eb52f010f38bfc19737e45b809c9e1" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_can_status_t::canfd_brs_enabled</definition>
         <argsstring></argsstring>
         <name>canfd_brs_enabled</name>

@@ -119,19 +119,19 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac7fa91057bdbd80cb6bfdad0f650f21d" id="r_ac7fa91057bdbd80cb6bfdad0f650f21d"><td class="memItemLeft" align="right" valign="top">std::uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__time.html#ac7fa91057bdbd80cb6bfdad0f650f21d">hf_time::MonotonicMs</a> () noexcept</td></tr>
+<tr class="memitem:ac7fa91057bdbd80cb6bfdad0f650f21d" id="r_ac7fa91057bdbd80cb6bfdad0f650f21d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::uint64_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__time.html#ac7fa91057bdbd80cb6bfdad0f650f21d">hf_time::MonotonicMs</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:ac7fa91057bdbd80cb6bfdad0f650f21d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience milliseconds view of the monotonic counter.  <br /></td></tr>
 <tr class="separator:ac7fa91057bdbd80cb6bfdad0f650f21d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac104941aa853c491e65fae6e388b352" id="r_aac104941aa853c491e65fae6e388b352"><td class="memItemLeft" align="right" valign="top">std::uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__time.html#aac104941aa853c491e65fae6e388b352">hf_time::ElapsedUs</a> (std::uint64_t t0) noexcept</td></tr>
+<tr class="memitem:aac104941aa853c491e65fae6e388b352" id="r_aac104941aa853c491e65fae6e388b352"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::uint64_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__time.html#aac104941aa853c491e65fae6e388b352">hf_time::ElapsedUs</a> (<a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::uint64_t</a> <a class="el" href="classSoftChipSelectGuard.html">t0</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:aac104941aa853c491e65fae6e388b352"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience: elapsed-since-<code>t0</code> in microseconds.  <br /></td></tr>
 <tr class="separator:aac104941aa853c491e65fae6e388b352"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>MCU-agnostic high-resolution monotonic time source. </p>
-<p>Public surface for higher layers (HAL handlers, middleware, application self-tests) that need a sub-millisecond timebase. The concrete implementation lives under <code>mcu/&lt;vendor&gt;/&lt;X&gt;Time.h</code> and is selected at compile time from <code><a class="el" href="McuSelect_8h.html" title="Centralized MCU platform selection and configuration header.">McuSelect.h</a></code>. Adding a new MCU is a one-folder change:</p>
+<p>Public surface for higher layers (HAL handlers, middleware, application self-tests) that need a sub-millisecond timebase. The concrete implementation lives under <code>mcu/&lt;vendor&gt;/&lt;X&gt;<a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">Time.h</a></code> and is selected at compile time from <code><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">McuSelect.h</a></code>. Adding a new MCU is a one-folder change:</p>
 <ol type="1">
-<li>drop in <code>mcu/&lt;vendor&gt;/&lt;X&gt;Time.h</code> exposing <code>namespace <a class="el" href="namespacehf__time.html">hf_time</a>::&lt;vendor&gt; { void InitMonotonic(); uint64_t MonotonicUs(); }</code>,</li>
-<li>extend <code><a class="el" href="McuSelect_8h.html" title="Centralized MCU platform selection and configuration header.">McuSelect.h</a></code> if it doesn't already detect that target,</li>
+<li>drop in <code>mcu/&lt;vendor&gt;/&lt;X&gt;<a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">Time.h</a></code> exposing <code>namespace <a class="el" href="namespacehf__time.html">hf_time</a>::&lt;vendor&gt; { void InitMonotonic(); uint64_t MonotonicUs(); }</code>,</li>
+<li>extend <code><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">McuSelect.h</a></code> if it doesn't already detect that target,</li>
 <li>add one <code>#elif</code> block here aliasing the new namespace into <code><a class="el" href="namespacehf__time.html">hf_time</a></code>.</li>
 </ol>
 <p>Why this is a static-policy header and not a virtual <code>BaseTime</code>:</p><ul>

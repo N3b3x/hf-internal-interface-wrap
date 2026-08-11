@@ -6,7 +6,7 @@
     <includes refid="HostNvs_8h" local="no">HostNvs.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classHostNvs_1afb926b9f0d12dd8a2974540c96d432c9" prot="private" static="no" mutable="no">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char* HostNvs::name_</definition>
         <argsstring></argsstring>
         <name>name_</name>
@@ -20,7 +20,7 @@
         <location file="inc/mcu/host/HostNvs.h" line="45" column="14" bodyfile="inc/mcu/host/HostNvs.h" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classHostNvs_1a892b5b9c6a8ff4a9319feab52caaf4c4" prot="private" static="no" mutable="no">
-        <type>std::unordered_map&lt; std::string, std::vector&lt; uint8_t &gt; &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::unordered_map</ref>&lt; <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref>, <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref> &gt; &gt;</type>
         <definition>std::unordered_map&lt;std::string, std::vector&lt;uint8_t&gt; &gt; HostNvs::blobs_</definition>
         <argsstring></argsstring>
         <name>blobs_</name>
@@ -34,7 +34,7 @@
         <location file="inc/mcu/host/HostNvs.h" line="46" column="22" bodyfile="inc/mcu/host/HostNvs.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classHostNvs_1a4d37cd5b69a932b16fa18895d38b1737" prot="private" static="no" mutable="no">
-        <type>std::unordered_map&lt; std::string, <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::unordered_map</ref>&lt; <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref>, <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
         <definition>std::unordered_map&lt;std::string, hf_u32_t&gt; HostNvs::u32s_</definition>
         <argsstring></argsstring>
         <name>u32s_</name>
@@ -48,7 +48,7 @@
         <location file="inc/mcu/host/HostNvs.h" line="47" column="22" bodyfile="inc/mcu/host/HostNvs.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classHostNvs_1a413475c7f1210961d4eb819ce3eb64a6" prot="private" static="no" mutable="no">
-        <type>std::unordered_map&lt; std::string, std::string &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::unordered_map</ref>&lt; <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref>, <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref> &gt;</type>
         <definition>std::unordered_map&lt;std::string, std::string&gt; HostNvs::strings_</definition>
         <argsstring></argsstring>
         <name>strings_</name>
@@ -70,7 +70,7 @@
         <name>HostNvs</name>
         <qualifiedname>HostNvs::HostNvs</qualifiedname>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>name</declname>
         </param>
         <briefdescription>
@@ -143,7 +143,7 @@
         <qualifiedname>HostNvs::SetU32</qualifiedname>
         <reimplements refid="classBaseNvs_1a8f2069d78e8f913e752ba4449255a86b">SetU32</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <param>
@@ -187,7 +187,7 @@
         <qualifiedname>HostNvs::GetU32</qualifiedname>
         <reimplements refid="classBaseNvs_1aa789f6917b5be890f288ce2fe470da11">GetU32</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <param>
@@ -231,11 +231,11 @@
         <qualifiedname>HostNvs::SetString</qualifiedname>
         <reimplements refid="classBaseNvs_1ae954b55a41d477e1190fbbe3ce0cc687">SetString</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>value</declname>
         </param>
         <briefdescription>
@@ -275,19 +275,19 @@
         <qualifiedname>HostNvs::GetString</qualifiedname>
         <reimplements refid="classBaseNvs_1a8954da94247836ede0a895ddd245e634">GetString</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <param>
-          <type>char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>buffer</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>buffer_size</declname>
         </param>
         <param>
-          <type>size_t *</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref> *</type>
           <declname>actual_size</declname>
         </param>
         <briefdescription>
@@ -343,15 +343,15 @@
         <qualifiedname>HostNvs::SetBlob</qualifiedname>
         <reimplements refid="classBaseNvs_1a22431b512d09cb8c0397cf15a8a73b19">SetBlob</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <param>
-          <type>const void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>data</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>data_size</declname>
         </param>
         <briefdescription>
@@ -399,19 +399,19 @@
         <qualifiedname>HostNvs::GetBlob</qualifiedname>
         <reimplements refid="classBaseNvs_1ab699cfd03ee2f8c9d05a8d43d636011b">GetBlob</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>buffer</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>buffer_size</declname>
         </param>
         <param>
-          <type>size_t *</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref> *</type>
           <declname>actual_size</declname>
         </param>
         <briefdescription>
@@ -467,7 +467,7 @@
         <qualifiedname>HostNvs::EraseKey</qualifiedname>
         <reimplements refid="classBaseNvs_1ac3a2738d1f6a3e488c08edaecf49af9d">EraseKey</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <briefdescription>
@@ -511,14 +511,14 @@
         <location file="inc/mcu/host/HostNvs.h" line="37" column="16" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="14" bodyend="14"/>
       </memberdef>
       <memberdef kind="function" id="classHostNvs_1a66d0e8332d475659a17b6e2274a7c3ca" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool HostNvs::KeyExists</definition>
         <argsstring>(const char *key) noexcept override</argsstring>
         <name>KeyExists</name>
         <qualifiedname>HostNvs::KeyExists</qualifiedname>
         <reimplements refid="classBaseNvs_1a911caf95d3c25047f044ca748164df39">KeyExists</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <briefdescription>
@@ -550,11 +550,11 @@
         <qualifiedname>HostNvs::GetSize</qualifiedname>
         <reimplements refid="classBaseNvs_1a79b44044be6cef3963fa8b9f18abcf30">GetSize</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <param>
-          <type>size_t &amp;</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref> &amp;</type>
           <declname>size</declname>
         </param>
         <briefdescription>
@@ -587,7 +587,7 @@
         <location file="inc/mcu/host/HostNvs.h" line="39" column="16" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="75" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="classHostNvs_1a97a346f481173bdd388890c236f103e3" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char * HostNvs::GetDescription</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>GetDescription</name>
@@ -606,7 +606,7 @@
         <location file="inc/mcu/host/HostNvs.h" line="40" column="14" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="91" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="classHostNvs_1a50a377afbab2b17d3756ef48662a3408" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>size_t</type>
+        <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>size_t HostNvs::GetMaxKeyLength</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>GetMaxKeyLength</name>
@@ -625,7 +625,7 @@
         <location file="inc/mcu/host/HostNvs.h" line="41" column="10" bodyfile="src/mcu/host/HostNvs.cpp" bodystart="92" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classHostNvs_1a425627b7e2e24fe8fae6893f398ed2f6" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>size_t</type>
+        <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>size_t HostNvs::GetMaxValueSize</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>GetMaxValueSize</name>

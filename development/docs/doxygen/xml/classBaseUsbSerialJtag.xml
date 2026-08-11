@@ -22,12 +22,12 @@
         <location file="inc/base/BaseUsbSerialJtag.h" line="224" column="31" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="224" bodyend="224"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseUsbSerialJtag_1a68aebb3ea8df33f1ca8db923f4509a10" prot="protected" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseUsbSerialJtag::initialized_</definition>
         <argsstring></argsstring>
         <name>initialized_</name>
         <qualifiedname>BaseUsbSerialJtag::initialized_</qualifiedname>
-        <initializer>{false}</initializer>
+        <initializer>{<ref refid="classSoftChipSelectGuard" kindref="compound">false</ref>}</initializer>
         <briefdescription>
 <para>Lifecycle latch maintained by <computeroutput><ref refid="classBaseUsbSerialJtag_1a8814f384acbc04aa1905b65ab9f57748" kindref="member">EnsureInitialized()</ref></computeroutput> / <computeroutput><ref refid="classBaseUsbSerialJtag_1af5ed28132861beec33242bd9f534bbd3" kindref="member">EnsureDeinitialized()</ref></computeroutput>. </para>
         </briefdescription>
@@ -60,7 +60,7 @@
         <name>BaseUsbSerialJtag</name>
         <qualifiedname>BaseUsbSerialJtag::BaseUsbSerialJtag</qualifiedname>
         <param>
-          <type>const <ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -77,7 +77,7 @@
         <name>operator=</name>
         <qualifiedname>BaseUsbSerialJtag::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBaseUsbSerialJtag" kindref="compound">BaseUsbSerialJtag</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -122,7 +122,7 @@
         <location file="inc/base/BaseUsbSerialJtag.h" line="106" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUsbSerialJtag_1a8814f384acbc04aa1905b65ab9f57748" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseUsbSerialJtag::EnsureInitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureInitialized</name>
@@ -137,7 +137,7 @@
         <location file="inc/base/BaseUsbSerialJtag.h" line="113" column="8" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="113" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUsbSerialJtag_1af5ed28132861beec33242bd9f534bbd3" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseUsbSerialJtag::EnsureDeinitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureDeinitialized</name>
@@ -152,7 +152,7 @@
         <location file="inc/base/BaseUsbSerialJtag.h" line="121" column="8" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="121" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUsbSerialJtag_1ac6fc039269661a1b43597b28ee8f8c1a" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseUsbSerialJtag::IsInitialized</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsInitialized</name>
@@ -166,7 +166,7 @@
         <location file="inc/base/BaseUsbSerialJtag.h" line="128" column="9" bodyfile="inc/base/BaseUsbSerialJtag.h" bodystart="128" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUsbSerialJtag_1a27cd5ec0867b047622014ec220cfc50e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseUsbSerialJtag::Initialize</definition>
         <argsstring>() noexcept=0</argsstring>
         <name>Initialize</name>
@@ -182,7 +182,7 @@
         <location file="inc/base/BaseUsbSerialJtag.h" line="137" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUsbSerialJtag_1a378c11ef4540c02dbd9a0f8549767d36" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseUsbSerialJtag::Deinitialize</definition>
         <argsstring>() noexcept=0</argsstring>
         <name>Deinitialize</name>
@@ -205,7 +205,7 @@
         <qualifiedname>BaseUsbSerialJtag::Write</qualifiedname>
         <reimplementedby refid="classEspUsbSerialJtag_1a8fe75308c29ca648939293c6f3c3f44b">Write</reimplementedby>
         <param>
-          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
           <declname>data</declname>
         </param>
         <param>
@@ -277,7 +277,7 @@
         <param>
           <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> *</type>
           <declname>out_read_count</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Pull up to <computeroutput>length</computeroutput> bytes from the host PC. </para>
@@ -346,7 +346,7 @@
         <location file="inc/base/BaseUsbSerialJtag.h" line="170" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUsbSerialJtag_1a2741539cff92b018a59a6e26a17e555a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseUsbSerialJtag::IsHostConnected</definition>
         <argsstring>() const noexcept=0</argsstring>
         <name>IsHostConnected</name>
@@ -355,7 +355,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>True iff the host PC is currently enumerating / receiving SOF packets. Returns false when only powered (e.g. plugged into a power bank). </para>
+<para>True iff the host PC is currently enumerating / receiving SOF packets. Returns false when only powered (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">e.g</ref>. plugged into a power bank). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -368,7 +368,7 @@
         <name>WriteString</name>
         <qualifiedname>BaseUsbSerialJtag::WriteString</qualifiedname>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>s</declname>
         </param>
         <param>
@@ -392,7 +392,7 @@
         <name>WriteLine</name>
         <qualifiedname>BaseUsbSerialJtag::WriteLine</qualifiedname>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>s</declname>
         </param>
         <param>
@@ -473,7 +473,7 @@
         <name>BaseUsbSerialJtag</name>
         <qualifiedname>BaseUsbSerialJtag::BaseUsbSerialJtag</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__usb__serial__jtag__config__t" kindref="compound">hf_usb_serial_jtag_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__usb__serial__jtag__config__t" kindref="compound">hf_usb_serial_jtag_config_t</ref> &amp;</type>
           <declname>cfg</declname>
         </param>
         <briefdescription>
@@ -490,7 +490,7 @@
     </briefdescription>
     <detaileddescription>
 <para>Mirrors the lazy-initialise / Read / Write / Flush shape of <computeroutput><ref refid="classBaseUart" kindref="compound">BaseUart</ref></computeroutput> so a <computeroutput>ConsoleSerialTransport</computeroutput> can hold either a <computeroutput>BaseUart*</computeroutput> or a <computeroutput>BaseUsbSerialJtag*</computeroutput> behind a tiny adapter.</para>
-<para><simplesect kind="note"><para>Not inherently thread-safe. The underlying ESP-IDF driver is safe for concurrent reader/writer callers, but if you wrap it with stateful helpers (e.g. printf) protect them with a mutex. </para>
+<para><simplesect kind="note"><para>Not inherently thread-safe. The underlying ESP-IDF driver is safe for concurrent reader/writer callers, but if you wrap it with stateful helpers (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">e.g</ref>. printf) protect them with a mutex. </para>
 </simplesect>
 </para>
     </detaileddescription>

@@ -4,7 +4,7 @@
     <compoundname>EspUart::UartState</compoundname>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structEspUart_1_1UartState_1aae872fa89746ec3e62b4caba0a47a4af" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUart::UartState::configured</definition>
         <argsstring></argsstring>
         <name>configured</name>
@@ -19,7 +19,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="490" column="10" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="490" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspUart_1_1UartState_1af3e1cad0ad315b431b9528d1133c2d7e" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUart::UartState::enabled</definition>
         <argsstring></argsstring>
         <name>enabled</name>

@@ -98,12 +98,13 @@ $(function(){initNavTree('classStmSpiDevice.html',''); initResizable(); });
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classStmSpiDevice-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">StmSpiDevice Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 SPI device — manages chip-select and delegates transfers to parent bus.  
+<p>Soft-CS SPI slave on a shared <a class="el" href="classStmSpiBus.html">StmSpiBus</a>.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="StmSpi_8h_source.html">StmSpi.h</a>&gt;</code></p>
@@ -115,110 +116,128 @@ Inheritance diagram for StmSpiDevice:</div>
 <div class="dynheader">
 Collaboration diagram for StmSpiDevice:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classStmSpiDevice__coll__graph.svg" width="100%" height="479"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classStmSpiDevice__coll__graph.svg" width="100%" height="470"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afdf4b29ed25cc110f43e67e981a86e45" id="r_afdf4b29ed25cc110f43e67e981a86e45"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afdf4b29ed25cc110f43e67e981a86e45">StmSpiDevice</a> (<a class="el" href="classStmSpiBus.html">StmSpiBus</a> *parent, const <a class="el" href="structhf__spi__device__config__t.html">hf_spi_device_config_t</a> &amp;config) noexcept</td></tr>
+<tr class="memitem:afdf4b29ed25cc110f43e67e981a86e45" id="r_afdf4b29ed25cc110f43e67e981a86e45"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afdf4b29ed25cc110f43e67e981a86e45">StmSpiDevice</a> (<a class="el" href="classStmSpiBus.html">StmSpiBus</a> *<a class="el" href="classSoftChipSelectGuard.html">parent</a>, <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__spi__device__config__t.html">hf_spi_device_config_t</a> &amp;config) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="separator:afdf4b29ed25cc110f43e67e981a86e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af28e7126cd16773d1e9bade2f0c889eb" id="r_af28e7126cd16773d1e9bade2f0c889eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af28e7126cd16773d1e9bade2f0c889eb">~StmSpiDevice</a> () noexcept override</td></tr>
+<tr class="memitem:af28e7126cd16773d1e9bade2f0c889eb" id="r_af28e7126cd16773d1e9bade2f0c889eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af28e7126cd16773d1e9bade2f0c889eb">~StmSpiDevice</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="separator:af28e7126cd16773d1e9bade2f0c889eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8321dbe44a6d665d0b43ce71c5747077" id="r_a8321dbe44a6d665d0b43ce71c5747077"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8321dbe44a6d665d0b43ce71c5747077">Initialize</a> () noexcept override</td></tr>
+<tr class="memitem:a8321dbe44a6d665d0b43ce71c5747077" id="r_a8321dbe44a6d665d0b43ce71c5747077"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8321dbe44a6d665d0b43ce71c5747077">Initialize</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a8321dbe44a6d665d0b43ce71c5747077"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the SPI bus.  <br /></td></tr>
 <tr class="separator:a8321dbe44a6d665d0b43ce71c5747077"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71d72c791cff754938477785e843efbb" id="r_a71d72c791cff754938477785e843efbb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71d72c791cff754938477785e843efbb">Deinitialize</a> () noexcept override</td></tr>
+<tr class="memitem:a71d72c791cff754938477785e843efbb" id="r_a71d72c791cff754938477785e843efbb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71d72c791cff754938477785e843efbb">Deinitialize</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a71d72c791cff754938477785e843efbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinitialize the SPI bus.  <br /></td></tr>
 <tr class="separator:a71d72c791cff754938477785e843efbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac96933b7c2db6fa0e675ee472e91ec5" id="r_aac96933b7c2db6fa0e675ee472e91ec5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac96933b7c2db6fa0e675ee472e91ec5">Transfer</a> (const <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *tx_data, <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *rx_data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms=0) noexcept override</td></tr>
-<tr class="memdesc:aac96933b7c2db6fa0e675ee472e91ec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a full-duplex SPI transfer.  <br /></td></tr>
+<tr class="memitem:aac96933b7c2db6fa0e675ee472e91ec5" id="r_aac96933b7c2db6fa0e675ee472e91ec5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac96933b7c2db6fa0e675ee472e91ec5">Transfer</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">tx_data</a>, <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">rx_data</a>, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms=0) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
+<tr class="memdesc:aac96933b7c2db6fa0e675ee472e91ec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">One soft-CS frame: bus lock + mode + FIFO flush + CS RAII + HAL.  <br /></td></tr>
 <tr class="separator:aac96933b7c2db6fa0e675ee472e91ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a454179a24cf34d9925fb0f72d240280e" id="r_a454179a24cf34d9925fb0f72d240280e"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a454179a24cf34d9925fb0f72d240280e">GetDeviceConfig</a> () const noexcept override</td></tr>
+<tr class="memitem:a0460008b43be1249a3268280b877c7b1" id="r_a0460008b43be1249a3268280b877c7b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0460008b43be1249a3268280b877c7b1">TransferChain</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">const</a> *<a class="el" href="classSoftChipSelectGuard.html">tx_frames</a>, <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">const</a> *<a class="el" href="classSoftChipSelectGuard.html">rx_frames</a>, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> <a class="el" href="classSoftChipSelectGuard.html">frame_length</a>, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> <a class="el" href="classSoftChipSelectGuard.html">frame_count</a>, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> <a class="el" href="classSoftChipSelectGuard.html">inter_frame_gap_us</a>, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms=0) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
+<tr class="memdesc:a0460008b43be1249a3268280b877c7b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">N soft-CS frames under one bus lock (CS still toggles per frame).  <br /></td></tr>
+<tr class="separator:a0460008b43be1249a3268280b877c7b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a454179a24cf34d9925fb0f72d240280e" id="r_a454179a24cf34d9925fb0f72d240280e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">void</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a454179a24cf34d9925fb0f72d240280e">GetDeviceConfig</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a454179a24cf34d9925fb0f72d240280e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the device configuration for this SPI device.  <br /></td></tr>
 <tr class="separator:a454179a24cf34d9925fb0f72d240280e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a330f2558758a893af42d8efebef57f3f" id="r_a330f2558758a893af42d8efebef57f3f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structhf__spi__device__config__t.html">hf_spi_device_config_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a330f2558758a893af42d8efebef57f3f">GetConfig</a> () const noexcept</td></tr>
-<tr class="memdesc:a330f2558758a893af42d8efebef57f3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the device configuration.  <br /></td></tr>
+<tr class="memitem:abfe53cdc8e2f9b6d15ec1394720c42d4" id="r_abfe53cdc8e2f9b6d15ec1394720c42d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abfe53cdc8e2f9b6d15ec1394720c42d4">IdleChipSelect</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
+<tr class="memdesc:abfe53cdc8e2f9b6d15ec1394720c42d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force soft-CS idle-high (shared-bus peer park before Mode1 identity).  <br /></td></tr>
+<tr class="separator:abfe53cdc8e2f9b6d15ec1394720c42d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a439c9c2f21d056f45419e88d0800016e" id="r_a439c9c2f21d056f45419e88d0800016e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a439c9c2f21d056f45419e88d0800016e">HoldChipSelectMs</a> (<a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> <a class="el" href="classSoftChipSelectGuard.html">ms</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
+<tr class="memdesc:a439c9c2f21d056f45419e88d0800016e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bus-locked soft-CS hold for pad proof (peers idle-high).  <br /></td></tr>
+<tr class="separator:a439c9c2f21d056f45419e88d0800016e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acff2fb15de9bd32196e38cccd53a5c0e" id="r_acff2fb15de9bd32196e38cccd53a5c0e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acff2fb15de9bd32196e38cccd53a5c0e">SetTransferMode</a> (<a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> <a class="el" href="classSoftChipSelectGuard.html">mode_0_to_3</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
+<tr class="memdesc:acff2fb15de9bd32196e38cccd53a5c0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set CPOL/CPHA for the next transfer (0=Mode0 … 3=Mode3).  <br /></td></tr>
+<tr class="separator:acff2fb15de9bd32196e38cccd53a5c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdd2402b4741ed763d807dc505595a63" id="r_abdd2402b4741ed763d807dc505595a63"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdd2402b4741ed763d807dc505595a63">SetIoSwap</a> (<a class="el" href="classSoftChipSelectGuard.html">bool</a> <a class="el" href="classSoftChipSelectGuard.html">enable</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
+<tr class="memdesc:abdd2402b4741ed763d807dc505595a63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set MOSI↔MISO IOSwap for the next transfer (CFG2 IOSWP).  <br /></td></tr>
+<tr class="separator:abdd2402b4741ed763d807dc505595a63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a330f2558758a893af42d8efebef57f3f" id="r_a330f2558758a893af42d8efebef57f3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__spi__device__config__t.html">hf_spi_device_config_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a330f2558758a893af42d8efebef57f3f">GetConfig</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a330f2558758a893af42d8efebef57f3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Device configuration (CS port/pin, mode, clock hint).  <br /></td></tr>
 <tr class="separator:a330f2558758a893af42d8efebef57f3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classBaseSpi"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classBaseSpi')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classBaseSpi.html">BaseSpi</a></td></tr>
-<tr class="memitem:a00d984807a767a1b3de27d3ce0a61fd8 inherit pub_methods_classBaseSpi" id="r_a00d984807a767a1b3de27d3ce0a61fd8"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a00d984807a767a1b3de27d3ce0a61fd8">~BaseSpi</a> () noexcept=default</td></tr>
+<tr class="memitem:a00d984807a767a1b3de27d3ce0a61fd8 inherit pub_methods_classBaseSpi" id="r_a00d984807a767a1b3de27d3ce0a61fd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a00d984807a767a1b3de27d3ce0a61fd8">~BaseSpi</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a>=<a class="el" href="classSoftChipSelectGuard.html">default</a></td></tr>
 <tr class="memdesc:a00d984807a767a1b3de27d3ce0a61fd8 inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor ensures proper cleanup in derived classes.  <br /></td></tr>
 <tr class="separator:a00d984807a767a1b3de27d3ce0a61fd8 inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf33121948481f9001f6d18042da61bb inherit pub_methods_classBaseSpi" id="r_abf33121948481f9001f6d18042da61bb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#abf33121948481f9001f6d18042da61bb">BaseSpi</a> (const <a class="el" href="classBaseSpi.html">BaseSpi</a> &amp;)=delete</td></tr>
+<tr class="memitem:abf33121948481f9001f6d18042da61bb inherit pub_methods_classBaseSpi" id="r_abf33121948481f9001f6d18042da61bb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#abf33121948481f9001f6d18042da61bb">BaseSpi</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classBaseSpi.html">BaseSpi</a> &amp;)=<a class="el" href="classSoftChipSelectGuard.html">delete</a></td></tr>
 <tr class="separator:abf33121948481f9001f6d18042da61bb inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c4096c2e9300928a41671fd755d5b30 inherit pub_methods_classBaseSpi" id="r_a3c4096c2e9300928a41671fd755d5b30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBaseSpi.html">BaseSpi</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a3c4096c2e9300928a41671fd755d5b30">operator=</a> (const <a class="el" href="classBaseSpi.html">BaseSpi</a> &amp;)=delete</td></tr>
+<tr class="memitem:a3c4096c2e9300928a41671fd755d5b30 inherit pub_methods_classBaseSpi" id="r_a3c4096c2e9300928a41671fd755d5b30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBaseSpi.html">BaseSpi</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a3c4096c2e9300928a41671fd755d5b30">operator=</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classBaseSpi.html">BaseSpi</a> &amp;)=<a class="el" href="classSoftChipSelectGuard.html">delete</a></td></tr>
 <tr class="separator:a3c4096c2e9300928a41671fd755d5b30 inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e7a45c66f5c951d6f023ad361e00dd2 inherit pub_methods_classBaseSpi" id="r_a3e7a45c66f5c951d6f023ad361e00dd2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a3e7a45c66f5c951d6f023ad361e00dd2">BaseSpi</a> (<a class="el" href="classBaseSpi.html">BaseSpi</a> &amp;&amp;)=delete</td></tr>
+<tr class="memitem:a3e7a45c66f5c951d6f023ad361e00dd2 inherit pub_methods_classBaseSpi" id="r_a3e7a45c66f5c951d6f023ad361e00dd2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a3e7a45c66f5c951d6f023ad361e00dd2">BaseSpi</a> (<a class="el" href="classBaseSpi.html">BaseSpi</a> &amp;&amp;)=<a class="el" href="classSoftChipSelectGuard.html">delete</a></td></tr>
 <tr class="separator:a3e7a45c66f5c951d6f023ad361e00dd2 inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98b2462a1b60f70c5fd8eaf56b28f2b7 inherit pub_methods_classBaseSpi" id="r_a98b2462a1b60f70c5fd8eaf56b28f2b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBaseSpi.html">BaseSpi</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a98b2462a1b60f70c5fd8eaf56b28f2b7">operator=</a> (<a class="el" href="classBaseSpi.html">BaseSpi</a> &amp;&amp;)=delete</td></tr>
+<tr class="memitem:a98b2462a1b60f70c5fd8eaf56b28f2b7 inherit pub_methods_classBaseSpi" id="r_a98b2462a1b60f70c5fd8eaf56b28f2b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBaseSpi.html">BaseSpi</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a98b2462a1b60f70c5fd8eaf56b28f2b7">operator=</a> (<a class="el" href="classBaseSpi.html">BaseSpi</a> &amp;&amp;)=<a class="el" href="classSoftChipSelectGuard.html">delete</a></td></tr>
 <tr class="separator:a98b2462a1b60f70c5fd8eaf56b28f2b7 inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e74ff977b2bfd381f25f2880387e5ca inherit pub_methods_classBaseSpi" id="r_a6e74ff977b2bfd381f25f2880387e5ca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a6e74ff977b2bfd381f25f2880387e5ca">EnsureInitialized</a> () noexcept</td></tr>
+<tr class="memitem:a6e74ff977b2bfd381f25f2880387e5ca inherit pub_methods_classBaseSpi" id="r_a6e74ff977b2bfd381f25f2880387e5ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a6e74ff977b2bfd381f25f2880387e5ca">EnsureInitialized</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a6e74ff977b2bfd381f25f2880387e5ca inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the SPI bus is initialized (lazy initialization).  <br /></td></tr>
 <tr class="separator:a6e74ff977b2bfd381f25f2880387e5ca inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd991c97d9e67d35af31a0594dd5357a inherit pub_methods_classBaseSpi" id="r_acd991c97d9e67d35af31a0594dd5357a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#acd991c97d9e67d35af31a0594dd5357a">EnsureDeinitialized</a> () noexcept</td></tr>
+<tr class="memitem:acd991c97d9e67d35af31a0594dd5357a inherit pub_methods_classBaseSpi" id="r_acd991c97d9e67d35af31a0594dd5357a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#acd991c97d9e67d35af31a0594dd5357a">EnsureDeinitialized</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:acd991c97d9e67d35af31a0594dd5357a inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the SPI bus is deinitialized (lazy deinitialization).  <br /></td></tr>
 <tr class="separator:acd991c97d9e67d35af31a0594dd5357a inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cf6e0c4a2edba09319834e334ff2a8b inherit pub_methods_classBaseSpi" id="r_a5cf6e0c4a2edba09319834e334ff2a8b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a5cf6e0c4a2edba09319834e334ff2a8b">IsInitialized</a> () const noexcept</td></tr>
+<tr class="memitem:a5cf6e0c4a2edba09319834e334ff2a8b inherit pub_methods_classBaseSpi" id="r_a5cf6e0c4a2edba09319834e334ff2a8b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a5cf6e0c4a2edba09319834e334ff2a8b">IsInitialized</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a5cf6e0c4a2edba09319834e334ff2a8b inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the bus is initialized.  <br /></td></tr>
 <tr class="separator:a5cf6e0c4a2edba09319834e334ff2a8b inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00e8995f1ccc7a5ab078e7b4c19ffa95 inherit pub_methods_classBaseSpi" id="r_a00e8995f1ccc7a5ab078e7b4c19ffa95"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a00e8995f1ccc7a5ab078e7b4c19ffa95">Open</a> () noexcept</td></tr>
+<tr class="memitem:a00e8995f1ccc7a5ab078e7b4c19ffa95 inherit pub_methods_classBaseSpi" id="r_a00e8995f1ccc7a5ab078e7b4c19ffa95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a00e8995f1ccc7a5ab078e7b4c19ffa95">Open</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a00e8995f1ccc7a5ab078e7b4c19ffa95 inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Legacy compatibility: Open and initialize the SPI bus.  <br /></td></tr>
 <tr class="separator:a00e8995f1ccc7a5ab078e7b4c19ffa95 inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88b3ba81405134a3566a01ca170bf8bb inherit pub_methods_classBaseSpi" id="r_a88b3ba81405134a3566a01ca170bf8bb"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a88b3ba81405134a3566a01ca170bf8bb">Close</a> () noexcept</td></tr>
+<tr class="memitem:a88b3ba81405134a3566a01ca170bf8bb inherit pub_methods_classBaseSpi" id="r_a88b3ba81405134a3566a01ca170bf8bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a88b3ba81405134a3566a01ca170bf8bb">Close</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a88b3ba81405134a3566a01ca170bf8bb inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Legacy compatibility: Close and de-initialize the SPI bus.  <br /></td></tr>
 <tr class="separator:a88b3ba81405134a3566a01ca170bf8bb inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a949d019c6b5d68d6f3949a63316bfcd0 inherit pub_methods_classBaseSpi" id="r_a949d019c6b5d68d6f3949a63316bfcd0"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a949d019c6b5d68d6f3949a63316bfcd0">Transfer</a> (const <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *tx_data, <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *rx_data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length) noexcept</td></tr>
+<tr class="memitem:a949d019c6b5d68d6f3949a63316bfcd0 inherit pub_methods_classBaseSpi" id="r_a949d019c6b5d68d6f3949a63316bfcd0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a949d019c6b5d68d6f3949a63316bfcd0">Transfer</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">tx_data</a>, <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">rx_data</a>, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a949d019c6b5d68d6f3949a63316bfcd0 inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Legacy compatibility: Transfer with boolean return.  <br /></td></tr>
 <tr class="separator:a949d019c6b5d68d6f3949a63316bfcd0 inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f84c77a20232f43082b4a493c9baaf2 inherit pub_methods_classBaseSpi" id="r_a9f84c77a20232f43082b4a493c9baaf2"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a9f84c77a20232f43082b4a493c9baaf2">Write</a> (const <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms=0) noexcept</td></tr>
+<tr class="memitem:a9f84c77a20232f43082b4a493c9baaf2 inherit pub_methods_classBaseSpi" id="r_a9f84c77a20232f43082b4a493c9baaf2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a9f84c77a20232f43082b4a493c9baaf2">Write</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms=0) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a9f84c77a20232f43082b4a493c9baaf2 inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write data to SPI bus.  <br /></td></tr>
 <tr class="separator:a9f84c77a20232f43082b4a493c9baaf2 inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64493eb569f32c72a0ee8b1cbf90337d inherit pub_methods_classBaseSpi" id="r_a64493eb569f32c72a0ee8b1cbf90337d"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a64493eb569f32c72a0ee8b1cbf90337d">Read</a> (<a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms=0) noexcept</td></tr>
+<tr class="memitem:a64493eb569f32c72a0ee8b1cbf90337d inherit pub_methods_classBaseSpi" id="r_a64493eb569f32c72a0ee8b1cbf90337d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a64493eb569f32c72a0ee8b1cbf90337d">Read</a> (<a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms=0) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a64493eb569f32c72a0ee8b1cbf90337d inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data from SPI bus.  <br /></td></tr>
 <tr class="separator:a64493eb569f32c72a0ee8b1cbf90337d inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c378f3322713d058a08b8b205ad821e inherit pub_methods_classBaseSpi" id="r_a5c378f3322713d058a08b8b205ad821e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a5c378f3322713d058a08b8b205ad821e">Write</a> (const <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length) noexcept</td></tr>
+<tr class="memitem:a5c378f3322713d058a08b8b205ad821e inherit pub_methods_classBaseSpi" id="r_a5c378f3322713d058a08b8b205ad821e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a5c378f3322713d058a08b8b205ad821e">Write</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a5c378f3322713d058a08b8b205ad821e inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Legacy compatibility: Write with boolean return.  <br /></td></tr>
 <tr class="separator:a5c378f3322713d058a08b8b205ad821e inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af49a8f4a53f964975a4d4645b875e5d1 inherit pub_methods_classBaseSpi" id="r_af49a8f4a53f964975a4d4645b875e5d1"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#af49a8f4a53f964975a4d4645b875e5d1">Read</a> (<a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length) noexcept</td></tr>
+<tr class="memitem:af49a8f4a53f964975a4d4645b875e5d1 inherit pub_methods_classBaseSpi" id="r_af49a8f4a53f964975a4d4645b875e5d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#af49a8f4a53f964975a4d4645b875e5d1">Read</a> (<a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:af49a8f4a53f964975a4d4645b875e5d1 inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Legacy compatibility: Read with boolean return.  <br /></td></tr>
 <tr class="separator:af49a8f4a53f964975a4d4645b875e5d1 inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31a33d8d816ce7189982455bed742905 inherit pub_methods_classBaseSpi" id="r_a31a33d8d816ce7189982455bed742905"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a31a33d8d816ce7189982455bed742905">WriteByte</a> (<a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> data) noexcept</td></tr>
+<tr class="memitem:a31a33d8d816ce7189982455bed742905 inherit pub_methods_classBaseSpi" id="r_a31a33d8d816ce7189982455bed742905"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a31a33d8d816ce7189982455bed742905">WriteByte</a> (<a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> data) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a31a33d8d816ce7189982455bed742905 inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write single byte to SPI bus.  <br /></td></tr>
 <tr class="separator:a31a33d8d816ce7189982455bed742905 inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef966769cc28e0e5f44e627a4a59602b inherit pub_methods_classBaseSpi" id="r_aef966769cc28e0e5f44e627a4a59602b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#aef966769cc28e0e5f44e627a4a59602b">ReadByte</a> (<a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> &amp;data) noexcept</td></tr>
+<tr class="memitem:aef966769cc28e0e5f44e627a4a59602b inherit pub_methods_classBaseSpi" id="r_aef966769cc28e0e5f44e627a4a59602b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#aef966769cc28e0e5f44e627a4a59602b">ReadByte</a> (<a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> &amp;data) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:aef966769cc28e0e5f44e627a4a59602b inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read single byte from SPI bus.  <br /></td></tr>
 <tr class="separator:aef966769cc28e0e5f44e627a4a59602b inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4b29e0ea6f6dd6d4c514e8d24ca13d2 inherit pub_methods_classBaseSpi" id="r_ac4b29e0ea6f6dd6d4c514e8d24ca13d2"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#ac4b29e0ea6f6dd6d4c514e8d24ca13d2">TransferByte</a> (<a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> tx_data, <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> &amp;rx_data) noexcept</td></tr>
+<tr class="memitem:ac4b29e0ea6f6dd6d4c514e8d24ca13d2 inherit pub_methods_classBaseSpi" id="r_ac4b29e0ea6f6dd6d4c514e8d24ca13d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#ac4b29e0ea6f6dd6d4c514e8d24ca13d2">TransferByte</a> (<a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> <a class="el" href="classSoftChipSelectGuard.html">tx_data</a>, <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">rx_data</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:ac4b29e0ea6f6dd6d4c514e8d24ca13d2 inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write single byte and read response.  <br /></td></tr>
 <tr class="separator:ac4b29e0ea6f6dd6d4c514e8d24ca13d2 inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f63d12c1a0fad18ede02f8a7f2ab6d6 inherit pub_methods_classBaseSpi" id="r_a7f63d12c1a0fad18ede02f8a7f2ab6d6"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a7f63d12c1a0fad18ede02f8a7f2ab6d6">ResetStatistics</a> () noexcept</td></tr>
+<tr class="memitem:a7f63d12c1a0fad18ede02f8a7f2ab6d6 inherit pub_methods_classBaseSpi" id="r_a7f63d12c1a0fad18ede02f8a7f2ab6d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a7f63d12c1a0fad18ede02f8a7f2ab6d6">ResetStatistics</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a7f63d12c1a0fad18ede02f8a7f2ab6d6 inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset SPI operation statistics.  <br /></td></tr>
 <tr class="separator:a7f63d12c1a0fad18ede02f8a7f2ab6d6 inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a245c1518757648334ad2d2edd459c2f9 inherit pub_methods_classBaseSpi" id="r_a245c1518757648334ad2d2edd459c2f9"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a245c1518757648334ad2d2edd459c2f9">ResetDiagnostics</a> () noexcept</td></tr>
+<tr class="memitem:a245c1518757648334ad2d2edd459c2f9 inherit pub_methods_classBaseSpi" id="r_a245c1518757648334ad2d2edd459c2f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a245c1518757648334ad2d2edd459c2f9">ResetDiagnostics</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a245c1518757648334ad2d2edd459c2f9 inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset SPI diagnostic information.  <br /></td></tr>
 <tr class="separator:a245c1518757648334ad2d2edd459c2f9 inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a034862a5015ab8d5bb10ddebfabdd7d6 inherit pub_methods_classBaseSpi" id="r_a034862a5015ab8d5bb10ddebfabdd7d6"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a034862a5015ab8d5bb10ddebfabdd7d6">GetStatistics</a> (<a class="el" href="structhf__spi__statistics__t.html">hf_spi_statistics_t</a> &amp;statistics) const noexcept</td></tr>
+<tr class="memitem:a034862a5015ab8d5bb10ddebfabdd7d6 inherit pub_methods_classBaseSpi" id="r_a034862a5015ab8d5bb10ddebfabdd7d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a034862a5015ab8d5bb10ddebfabdd7d6">GetStatistics</a> (<a class="el" href="structhf__spi__statistics__t.html">hf_spi_statistics_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">statistics</a>) <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a034862a5015ab8d5bb10ddebfabdd7d6 inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get SPI operation statistics.  <br /></td></tr>
 <tr class="separator:a034862a5015ab8d5bb10ddebfabdd7d6 inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af87f59a0d9b50a13294d72f2c123fdda inherit pub_methods_classBaseSpi" id="r_af87f59a0d9b50a13294d72f2c123fdda"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#af87f59a0d9b50a13294d72f2c123fdda">GetDiagnostics</a> (<a class="el" href="structhf__spi__diagnostics__t.html">hf_spi_diagnostics_t</a> &amp;diagnostics) const noexcept</td></tr>
+<tr class="memitem:af87f59a0d9b50a13294d72f2c123fdda inherit pub_methods_classBaseSpi" id="r_af87f59a0d9b50a13294d72f2c123fdda"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#af87f59a0d9b50a13294d72f2c123fdda">GetDiagnostics</a> (<a class="el" href="structhf__spi__diagnostics__t.html">hf_spi_diagnostics_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">diagnostics</a>) <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:af87f59a0d9b50a13294d72f2c123fdda inherit pub_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get SPI diagnostic information.  <br /></td></tr>
 <tr class="separator:af87f59a0d9b50a13294d72f2c123fdda inherit pub_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a72d8ba6db14002784629df6b66f48d12" id="r_a72d8ba6db14002784629df6b66f48d12"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72d8ba6db14002784629df6b66f48d12">AssertCS</a> () noexcept</td></tr>
-<tr class="memdesc:a72d8ba6db14002784629df6b66f48d12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assert CS (drive low/high depending on active_low flag)  <br /></td></tr>
+<tr class="memitem:a72d8ba6db14002784629df6b66f48d12" id="r_a72d8ba6db14002784629df6b66f48d12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72d8ba6db14002784629df6b66f48d12">AssertCS</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a72d8ba6db14002784629df6b66f48d12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drive CS to the active level (active-low → GPIO low).  <br /></td></tr>
 <tr class="separator:a72d8ba6db14002784629df6b66f48d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14982c1b1dac9337631b08722265baeb" id="r_a14982c1b1dac9337631b08722265baeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14982c1b1dac9337631b08722265baeb">DeassertCS</a> () noexcept</td></tr>
-<tr class="memdesc:a14982c1b1dac9337631b08722265baeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deassert CS.  <br /></td></tr>
+<tr class="memitem:a14982c1b1dac9337631b08722265baeb" id="r_a14982c1b1dac9337631b08722265baeb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14982c1b1dac9337631b08722265baeb">DeassertCS</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a14982c1b1dac9337631b08722265baeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drive CS to the idle level (active-low → GPIO high).  <br /></td></tr>
 <tr class="separator:a14982c1b1dac9337631b08722265baeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a101c3f09a77b3a50575d5c03f8223861" id="r_a101c3f09a77b3a50575d5c03f8223861"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a101c3f09a77b3a50575d5c03f8223861">GetEffectiveTimeout</a> (<a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> requested_ms) const noexcept</td></tr>
-<tr class="memdesc:a101c3f09a77b3a50575d5c03f8223861"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get effective timeout.  <br /></td></tr>
+<tr class="memitem:a192cdf8b49e6bd16a1d7e4495c379cc6" id="r_a192cdf8b49e6bd16a1d7e4495c379cc6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a192cdf8b49e6bd16a1d7e4495c379cc6">TransferLocked</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">tx_data</a>, <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">rx_data</a>, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> <a class="el" href="classSoftChipSelectGuard.html">effective_timeout</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a192cdf8b49e6bd16a1d7e4495c379cc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">One CS-framed HAL transfer; caller must hold <a class="el" href="classStmSpiBusLock.html">StmSpiBusLock</a>.  <br /></td></tr>
+<tr class="separator:a192cdf8b49e6bd16a1d7e4495c379cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a101c3f09a77b3a50575d5c03f8223861" id="r_a101c3f09a77b3a50575d5c03f8223861"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a101c3f09a77b3a50575d5c03f8223861">GetEffectiveTimeout</a> (<a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> <a class="el" href="classSoftChipSelectGuard.html">requested_ms</a>) <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a101c3f09a77b3a50575d5c03f8223861"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolve <code>requested_ms</code> against the parent bus default.  <br /></td></tr>
 <tr class="separator:a101c3f09a77b3a50575d5c03f8223861"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
-<tr class="memitem:ad3874dd35a07942be355864ea4423e86" id="r_ad3874dd35a07942be355864ea4423e86"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3874dd35a07942be355864ea4423e86">ConvertHalStatus</a> (<a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> hal_status) noexcept</td></tr>
-<tr class="memdesc:ad3874dd35a07942be355864ea4423e86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert HAL status to SPI error.  <br /></td></tr>
+<tr class="memitem:ad3874dd35a07942be355864ea4423e86" id="r_ad3874dd35a07942be355864ea4423e86"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3874dd35a07942be355864ea4423e86">ConvertHalStatus</a> (<a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> <a class="el" href="classSoftChipSelectGuard.html">hal_status</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:ad3874dd35a07942be355864ea4423e86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map STM32 HAL status codes to <a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>.  <br /></td></tr>
 <tr class="separator:ad3874dd35a07942be355864ea4423e86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -229,15 +248,23 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:afd55e6d85cfe8e0020665c7039576ebe" id="r_afd55e6d85cfe8e0020665c7039576ebe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhf__spi__device__config__t.html">hf_spi_device_config_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd55e6d85cfe8e0020665c7039576ebe">config_</a></td></tr>
 <tr class="memdesc:afd55e6d85cfe8e0020665c7039576ebe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Device configuration.  <br /></td></tr>
 <tr class="separator:afd55e6d85cfe8e0020665c7039576ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d91db0463a088a18caef8501f996757" id="r_a2d91db0463a088a18caef8501f996757"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d91db0463a088a18caef8501f996757">io_swap_</a> {<a class="el" href="classSoftChipSelectGuard.html">false</a>}</td></tr>
+<tr class="memdesc:a2d91db0463a088a18caef8501f996757"><td class="mdescLeft">&#160;</td><td class="mdescRight">CFG2 IOSWP for next transfer.  <br /></td></tr>
+<tr class="separator:a2d91db0463a088a18caef8501f996757"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a44c5f9f4c069239f87fbb87ae89fe8d3" id="r_a44c5f9f4c069239f87fbb87ae89fe8d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">class</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44c5f9f4c069239f87fbb87ae89fe8d3">StmSpiBus</a></td></tr>
+<tr class="separator:a44c5f9f4c069239f87fbb87ae89fe8d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classBaseSpi"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classBaseSpi')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classBaseSpi.html">BaseSpi</a></td></tr>
-<tr class="memitem:ad499c99d4a592cb117483db0e692f12d inherit pro_methods_classBaseSpi" id="r_ad499c99d4a592cb117483db0e692f12d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#ad499c99d4a592cb117483db0e692f12d">BaseSpi</a> () noexcept</td></tr>
+<tr class="memitem:ad499c99d4a592cb117483db0e692f12d inherit pro_methods_classBaseSpi" id="r_ad499c99d4a592cb117483db0e692f12d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#ad499c99d4a592cb117483db0e692f12d">BaseSpi</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:ad499c99d4a592cb117483db0e692f12d inherit pro_methods_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Protected default constructor.  <br /></td></tr>
 <tr class="separator:ad499c99d4a592cb117483db0e692f12d inherit pro_methods_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classBaseSpi"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classBaseSpi')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classBaseSpi.html">BaseSpi</a></td></tr>
-<tr class="memitem:aa74a4ab673ba37d72c3b7f98e963b9dd inherit pro_attribs_classBaseSpi" id="r_aa74a4ab673ba37d72c3b7f98e963b9dd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#aa74a4ab673ba37d72c3b7f98e963b9dd">initialized_</a></td></tr>
+<tr class="memitem:aa74a4ab673ba37d72c3b7f98e963b9dd inherit pro_attribs_classBaseSpi" id="r_aa74a4ab673ba37d72c3b7f98e963b9dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#aa74a4ab673ba37d72c3b7f98e963b9dd">initialized_</a></td></tr>
 <tr class="memdesc:aa74a4ab673ba37d72c3b7f98e963b9dd inherit pro_attribs_classBaseSpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization state.  <br /></td></tr>
 <tr class="separator:aa74a4ab673ba37d72c3b7f98e963b9dd inherit pro_attribs_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a801d2346551161f1d2e1b755501cc1e1 inherit pro_attribs_classBaseSpi" id="r_a801d2346551161f1d2e1b755501cc1e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhf__spi__statistics__t.html">hf_spi_statistics_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseSpi.html#a801d2346551161f1d2e1b755501cc1e1">statistics_</a></td></tr>
@@ -248,8 +275,17 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:aa215f89886b0839c13e94f52e9725444 inherit pro_attribs_classBaseSpi"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 SPI device — manages chip-select and delegates transfers to parent bus. </p>
-<p>Each device has its own CS pin (managed via HAL_GPIO_WritePin). The actual SPI peripheral (SCK/MOSI/MISO) is shared via the parent bus. </p>
+<div class="textblock"><p>Soft-CS SPI slave on a shared <a class="el" href="classStmSpiBus.html">StmSpiBus</a>. </p>
+<p>Owns one GPIO chip-select and a per-device SPI mode (<a class="el" href="structhf__spi__device__config__t.html#a7f5737b1045c78fc5ed7d8f2b6c9c0cf">hf_spi_device_config_t::mode</a>). Each Transfer:</p><ol type="1">
+<li>Takes <a class="el" href="classStmSpiBusLock.html">StmSpiBusLock</a> (RTOS mutex — peers wait),</li>
+<li>Parks <b>all</b> soft-CS on the bus idle-high,</li>
+<li>Applies this device's CPOL/CPHA (SPE toggle only with every CS high),</li>
+<li>Flushes the RX FIFO,</li>
+<li>Scopes <b>only this</b> CS with <a class="el" href="classSoftChipSelectGuard.html">SoftChipSelectGuard</a>,</li>
+<li>Releases the bus lock.</li>
+</ol>
+<p>Mixed Mode 0/1/3 slaves may share one CubeMX SPI peripheral. Chip handlers and external drivers must not poke CS — only <a class="el" href="#aac96933b7c2db6fa0e675ee472e91ec5">Transfer</a> / <a class="el" href="#a0460008b43be1249a3268280b877c7b1">TransferChain</a>.</p>
+<dl class="section note"><dt>Note</dt><dd>CS low during a Mode1 (TLE) frame is expected. CS must be high for every other slave while Mode0/1/3 SPE/CPOL is being rewritten. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afdf4b29ed25cc110f43e67e981a86e45" name="afdf4b29ed25cc110f43e67e981a86e45"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afdf4b29ed25cc110f43e67e981a86e45">&#9670;&#160;</a></span>StmSpiDevice()</h2>
@@ -268,7 +304,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structhf__spi__device__config__t.html">hf_spi_device_config_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__spi__device__config__t.html">hf_spi_device_config_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -316,7 +352,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void StmSpiDevice::AssertCS </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> StmSpiDevice::AssertCS </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -329,7 +365,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Assert CS (drive low/high depending on active_low flag) </p>
+<p>Drive CS to the active level (active-low → GPIO low). </p>
 
 </div>
 </div>
@@ -356,7 +392,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Convert HAL status to SPI error. </p>
+<p>Map STM32 HAL status codes to <a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>. </p>
 
 </div>
 </div>
@@ -370,7 +406,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void StmSpiDevice::DeassertCS </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> StmSpiDevice::DeassertCS </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -383,7 +419,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Deassert CS. </p>
+<p>Drive CS to the idle level (active-low → GPIO high). </p>
 
 </div>
 </div>
@@ -397,7 +433,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool StmSpiDevice::Deinitialize </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> StmSpiDevice::Deinitialize </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -428,7 +464,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="structhf__spi__device__config__t.html">hf_spi_device_config_t</a> &amp; StmSpiDevice::GetConfig </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__spi__device__config__t.html">hf_spi_device_config_t</a> &amp; StmSpiDevice::GetConfig </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
@@ -441,7 +477,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the device configuration. </p>
+<p>Device configuration (CS port/pin, mode, clock hint). </p>
 
 </div>
 </div>
@@ -455,7 +491,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const void * StmSpiDevice::GetDeviceConfig </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">void</a> * StmSpiDevice::GetDeviceConfig </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
@@ -498,7 +534,65 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get effective timeout. </p>
+<p>Resolve <code>requested_ms</code> against the parent bus default. </p>
+
+</div>
+</div>
+<a id="a439c9c2f21d056f45419e88d0800016e" name="a439c9c2f21d056f45419e88d0800016e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a439c9c2f21d056f45419e88d0800016e">&#9670;&#160;</a></span>HoldChipSelectMs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> StmSpiDevice::HoldChipSelectMs </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a></td>          <td class="paramname"><span class="paramname"><em>ms</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bus-locked soft-CS hold for pad proof (peers idle-high). </p>
+
+<p>Reimplemented from <a class="el" href="classBaseSpi.html#ace8d6c66a76520de526129afb5683f09">BaseSpi</a>.</p>
+
+</div>
+</div>
+<a id="abfe53cdc8e2f9b6d15ec1394720c42d4" name="abfe53cdc8e2f9b6d15ec1394720c42d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfe53cdc8e2f9b6d15ec1394720c42d4">&#9670;&#160;</a></span>IdleChipSelect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> StmSpiDevice::IdleChipSelect </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Force soft-CS idle-high (shared-bus peer park before Mode1 identity). </p>
+
+<p>Reimplemented from <a class="el" href="classBaseSpi.html#add06cca20daa53d05d3c2f3c1c8da33b">BaseSpi</a>.</p>
 
 </div>
 </div>
@@ -512,7 +606,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool StmSpiDevice::Initialize </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> StmSpiDevice::Initialize </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -533,6 +627,64 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="abdd2402b4741ed763d807dc505595a63" name="abdd2402b4741ed763d807dc505595a63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdd2402b4741ed763d807dc505595a63">&#9670;&#160;</a></span>SetIoSwap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> StmSpiDevice::SetIoSwap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">bool</a></td>          <td class="paramname"><span class="paramname"><em>enable</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set MOSI↔MISO IOSwap for the next transfer (CFG2 IOSWP). </p>
+
+<p>Reimplemented from <a class="el" href="classBaseSpi.html#acc89f100b746947b8828973abfb524cf">BaseSpi</a>.</p>
+
+</div>
+</div>
+<a id="acff2fb15de9bd32196e38cccd53a5c0e" name="acff2fb15de9bd32196e38cccd53a5c0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acff2fb15de9bd32196e38cccd53a5c0e">&#9670;&#160;</a></span>SetTransferMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> StmSpiDevice::SetTransferMode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>          <td class="paramname"><span class="paramname"><em>mode_0_to_3</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set CPOL/CPHA for the next transfer (0=Mode0 … 3=Mode3). </p>
+
+<p>Reimplemented from <a class="el" href="classBaseSpi.html#acc9c25212d020efaa0a40b42cdc8e7f2">BaseSpi</a>.</p>
+
+</div>
+</div>
 <a id="aac96933b7c2db6fa0e675ee472e91ec5" name="aac96933b7c2db6fa0e675ee472e91ec5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aac96933b7c2db6fa0e675ee472e91ec5">&#9670;&#160;</a></span>Transfer()</h2>
 
@@ -545,7 +697,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a> StmSpiDevice::Transfer </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *</td>          <td class="paramname"><span class="paramname"><em>tx_data</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *</td>          <td class="paramname"><span class="paramname"><em>tx_data</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -570,22 +722,136 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Perform a full-duplex SPI transfer. </p>
+<p>One soft-CS frame: bus lock + mode + FIFO flush + CS RAII + HAL. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tx_data</td><td>Transmit data buffer (can be nullptr for read-only) </td></tr>
-    <tr><td class="paramname">rx_data</td><td>Receive data buffer (can be nullptr for write-only) </td></tr>
-    <tr><td class="paramname">length</td><td>Number of bytes to transfer </td></tr>
-    <tr><td class="paramname">timeout_ms</td><td>Timeout in milliseconds (0 = use default) </td></tr>
+    <tr><td class="paramname">tx_data</td><td>Transmit buffer, or nullptr for RX-only. </td></tr>
+    <tr><td class="paramname">rx_data</td><td>Receive buffer, or nullptr for TX-only. </td></tr>
+    <tr><td class="paramname">length</td><td>Byte count (both directions when both buffers set). </td></tr>
+    <tr><td class="paramname">timeout_ms</td><td>0 → bus default timeout (bus-mutex wait). </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>hf_spi_err_t result code </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Must be implemented by concrete classes. </dd>
-<dd>
-Chip select is managed automatically by the device implementation. </dd></dl>
 
 <p>Implements <a class="el" href="classBaseSpi.html#a7951cfcc329ab963764013ebe47288c0">BaseSpi</a>.</p>
+
+</div>
+</div>
+<a id="a0460008b43be1249a3268280b877c7b1" name="a0460008b43be1249a3268280b877c7b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0460008b43be1249a3268280b877c7b1">&#9670;&#160;</a></span>TransferChain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a> StmSpiDevice::TransferChain </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">const</a> *</td>          <td class="paramname"><span class="paramname"><em>tx_frames</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">const</a> *</td>          <td class="paramname"><span class="paramname"><em>rx_frames</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a></td>          <td class="paramname"><span class="paramname"><em>frame_length</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a></td>          <td class="paramname"><span class="paramname"><em>frame_count</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a></td>          <td class="paramname"><span class="paramname"><em>inter_frame_gap_us</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a></td>          <td class="paramname"><span class="paramname"><em>timeout_ms</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>N soft-CS frames under one bus lock (CS still toggles per frame). </p>
+<p>Holds <a class="el" href="classStmSpiBusLock.html">StmSpiBusLock</a> across the chain so Mode0/1/3 peers cannot interleave mid-pipeline (<a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">e.g</a>. TLE command + dummy). Each frame uses its own <a class="el" href="classSoftChipSelectGuard.html">SoftChipSelectGuard</a> — matching datasheets that require CSN rise between 32-bit accesses. </p>
+
+<p>Reimplemented from <a class="el" href="classBaseSpi.html#ae3f8cbf5ed12640919d1e263c6b4b544">BaseSpi</a>.</p>
+
+</div>
+</div>
+<a id="a192cdf8b49e6bd16a1d7e4495c379cc6" name="a192cdf8b49e6bd16a1d7e4495c379cc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a192cdf8b49e6bd16a1d7e4495c379cc6">&#9670;&#160;</a></span>TransferLocked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a> StmSpiDevice::TransferLocked </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *</td>          <td class="paramname"><span class="paramname"><em>tx_data</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *</td>          <td class="paramname"><span class="paramname"><em>rx_data</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a></td>          <td class="paramname"><span class="paramname"><em>length</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a></td>          <td class="paramname"><span class="paramname"><em>effective_timeout</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>One CS-framed HAL transfer; caller must hold <a class="el" href="classStmSpiBusLock.html">StmSpiBusLock</a>. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Symbol Documentation</h2>
+<a id="a44c5f9f4c069239f87fbb87ae89fe8d3" name="a44c5f9f4c069239f87fbb87ae89fe8d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44c5f9f4c069239f87fbb87ae89fe8d3">&#9670;&#160;</a></span>StmSpiBus</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">friend</a> <a class="el" href="classSoftChipSelectGuard.html">class</a> <a class="el" href="classStmSpiBus.html">StmSpiBus</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -611,6 +877,30 @@ Chip select is managed automatically by the device implementation. </dd></dl>
 </div><div class="memdoc">
 
 <p>Device configuration. </p>
+
+</div>
+</div>
+<a id="a2d91db0463a088a18caef8501f996757" name="a2d91db0463a088a18caef8501f996757"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d91db0463a088a18caef8501f996757">&#9670;&#160;</a></span>io_swap_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> StmSpiDevice::io_swap_ {<a class="el" href="classSoftChipSelectGuard.html">false</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>CFG2 IOSWP for next transfer. </p>
 
 </div>
 </div>

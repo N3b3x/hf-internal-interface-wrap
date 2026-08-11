@@ -4,7 +4,7 @@
     <compoundname>EspPwm::ValidationResult</compoundname>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structEspPwm_1_1ValidationResult_1a866fcdc59c761dde8870337f03af992e" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspPwm::ValidationResult::is_valid</definition>
         <argsstring></argsstring>
         <name>is_valid</name>
@@ -34,7 +34,7 @@
         <location file="inc/mcu/esp32/EspPwm.h" line="948" column="18" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="948" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ValidationResult_1a479799d6007643681a43b0da284da79e" prot="public" static="no" mutable="no">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char* EspPwm::ValidationResult::reason</definition>
         <argsstring></argsstring>
         <name>reason</name>
@@ -79,7 +79,7 @@
         <location file="inc/mcu/esp32/EspPwm.h" line="951" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="951" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ValidationResult_1ab8910eb820419fc2c601d283a3d98a46" prot="public" static="no" mutable="no">
-        <type>uint64_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint64_t</ref></type>
         <definition>uint64_t EspPwm::ValidationResult::required_clock_hz</definition>
         <argsstring></argsstring>
         <name>required_clock_hz</name>
@@ -94,7 +94,7 @@
         <location file="inc/mcu/esp32/EspPwm.h" line="952" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="952" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ValidationResult_1a46a6889b96ddfd7dee0739f92fe5211d" prot="public" static="no" mutable="no">
-        <type>uint64_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint64_t</ref></type>
         <definition>uint64_t EspPwm::ValidationResult::available_clock_hz</definition>
         <argsstring></argsstring>
         <name>available_clock_hz</name>

@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classSoftChipSelectGuard" kind="class" language="C++" prot="public">
+    <compoundname>SoftChipSelectGuard</compoundname>
+    <includes refid="SoftChipSelectGuard_8h" local="no">SoftChipSelectGuard.h</includes>
+    <templateparamlist>
+      <param>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">typename</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">AssertFn</ref></type>
+      </param>
+      <param>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">typename</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">DeassertFn</ref></type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classSoftChipSelectGuard_1a9dd5fd1321e16ec6f069ec8d795479c2" prot="private" static="no" mutable="no">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">DeassertFn</ref></type>
+        <definition>DeassertFn SoftChipSelectGuard&lt; AssertFn, DeassertFn &gt;::deassert_</definition>
+        <argsstring></argsstring>
+        <name>deassert_</name>
+        <qualifiedname>SoftChipSelectGuard::deassert_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/SoftChipSelectGuard.h" line="72" column="14" bodyfile="inc/utils/SoftChipSelectGuard.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSoftChipSelectGuard_1a5152814739582dad47f1be0726179105" prot="private" static="no" mutable="no">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
+        <definition>bool SoftChipSelectGuard&lt; AssertFn, DeassertFn &gt;::armed_</definition>
+        <argsstring></argsstring>
+        <name>armed_</name>
+        <qualifiedname>SoftChipSelectGuard::armed_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/SoftChipSelectGuard.h" line="73" column="8" bodyfile="inc/utils/SoftChipSelectGuard.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>SoftChipSelectGuard&lt; AssertFn, DeassertFn &gt;::SoftChipSelectGuard</definition>
+        <argsstring>(AssertFn assert_fn, DeassertFn deassert_fn) noexcept</argsstring>
+        <name>SoftChipSelectGuard</name>
+        <qualifiedname>SoftChipSelectGuard::SoftChipSelectGuard</qualifiedname>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">AssertFn</ref></type>
+          <declname>assert_fn</declname>
+        </param>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">DeassertFn</ref></type>
+          <declname>deassert_fn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/SoftChipSelectGuard.h" line="34" column="3" bodyfile="inc/utils/SoftChipSelectGuard.h" bodystart="34" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoftChipSelectGuard_1ad4d1c548ef737ae374054f7d2701a8c5" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>SoftChipSelectGuard&lt; AssertFn, DeassertFn &gt;::~SoftChipSelectGuard</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~SoftChipSelectGuard</name>
+        <qualifiedname>SoftChipSelectGuard::~SoftChipSelectGuard</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/SoftChipSelectGuard.h" line="39" column="3" bodyfile="inc/utils/SoftChipSelectGuard.h" bodystart="39" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoftChipSelectGuard_1ae47f77fa2cf4252bac533f19c0c0e811" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SoftChipSelectGuard&lt; AssertFn, DeassertFn &gt;::SoftChipSelectGuard</definition>
+        <argsstring>(const SoftChipSelectGuard &amp;)=delete</argsstring>
+        <name>SoftChipSelectGuard</name>
+        <qualifiedname>SoftChipSelectGuard::SoftChipSelectGuard</qualifiedname>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">SoftChipSelectGuard</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/SoftChipSelectGuard.h" line="43" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoftChipSelectGuard_1abb758d47c67a15f2daee46bfa50c8db4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">SoftChipSelectGuard</ref> &amp;</type>
+        <definition>SoftChipSelectGuard &amp; SoftChipSelectGuard&lt; AssertFn, DeassertFn &gt;::operator=</definition>
+        <argsstring>(const SoftChipSelectGuard &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>SoftChipSelectGuard::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">SoftChipSelectGuard</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/SoftChipSelectGuard.h" line="44" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoftChipSelectGuard_1a56665795cc45e9ba7342ab5f44e112d8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>SoftChipSelectGuard&lt; AssertFn, DeassertFn &gt;::SoftChipSelectGuard</definition>
+        <argsstring>(SoftChipSelectGuard &amp;&amp;other) noexcept</argsstring>
+        <name>SoftChipSelectGuard</name>
+        <qualifiedname>SoftChipSelectGuard::SoftChipSelectGuard</qualifiedname>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">SoftChipSelectGuard</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/SoftChipSelectGuard.h" line="46" column="3" bodyfile="inc/utils/SoftChipSelectGuard.h" bodystart="46" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoftChipSelectGuard_1af6e6d7531163781b7152d5b637181011" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">SoftChipSelectGuard</ref> &amp;</type>
+        <definition>SoftChipSelectGuard &amp; SoftChipSelectGuard&lt; AssertFn, DeassertFn &gt;::operator=</definition>
+        <argsstring>(SoftChipSelectGuard &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>SoftChipSelectGuard::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">SoftChipSelectGuard</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/SoftChipSelectGuard.h" line="51" column="23" bodyfile="inc/utils/SoftChipSelectGuard.h" bodystart="51" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoftChipSelectGuard_1a0b212277c5cf829949c717d62923d9d6" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
+        <definition>void SoftChipSelectGuard&lt; AssertFn, DeassertFn &gt;::Release</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>Release</name>
+        <qualifiedname>SoftChipSelectGuard::Release</qualifiedname>
+        <briefdescription>
+<para>Early deassert (idempotent). Destructor becomes a no-op. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/SoftChipSelectGuard.h" line="62" column="8" bodyfile="inc/utils/SoftChipSelectGuard.h" bodystart="62" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoftChipSelectGuard_1a7948dda8fc77490f105cfcf1092b5698" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
+        <definition>bool SoftChipSelectGuard&lt; AssertFn, DeassertFn &gt;::OwnsCs</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>OwnsCs</name>
+        <qualifiedname>SoftChipSelectGuard::OwnsCs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/SoftChipSelectGuard.h" line="69" column="9" bodyfile="inc/utils/SoftChipSelectGuard.h" bodystart="69" bodyend="69"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>RAII soft-CS: runs <computeroutput>assert_fn</computeroutput> on construction and <computeroutput>deassert_fn</computeroutput> on destruction (including early return / error paths). </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>AssertFn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callable <computeroutput><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">void()</ref></computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>DeassertFn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callable <computeroutput><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">void()</ref></computeroutput></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Typical STM32 soft-CS device usage (inside a bus lock): <programlisting><codeline><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">SoftChipSelectGuard</ref><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">cs</ref>{[&amp;]{<sp/>AssertCS();<sp/>},<sp/>[&amp;]{<sp/>DeassertCS();<sp/>}};</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>HAL_SPI_TransmitReceive...</highlight></codeline>
+</programlisting> </para>
+    </detaileddescription>
+    <location file="inc/utils/SoftChipSelectGuard.h" line="32" column="1" bodyfile="inc/utils/SoftChipSelectGuard.h" bodystart="32" bodyend="74"/>
+    <listofallmembers>
+      <member refid="classSoftChipSelectGuard_1a5152814739582dad47f1be0726179105" prot="private" virt="non-virtual"><scope>SoftChipSelectGuard</scope><name>armed_</name></member>
+      <member refid="classSoftChipSelectGuard_1a9dd5fd1321e16ec6f069ec8d795479c2" prot="private" virt="non-virtual"><scope>SoftChipSelectGuard</scope><name>deassert_</name></member>
+      <member refid="classSoftChipSelectGuard_1abb758d47c67a15f2daee46bfa50c8db4" prot="public" virt="non-virtual"><scope>SoftChipSelectGuard</scope><name>operator=</name></member>
+      <member refid="classSoftChipSelectGuard_1af6e6d7531163781b7152d5b637181011" prot="public" virt="non-virtual"><scope>SoftChipSelectGuard</scope><name>operator=</name></member>
+      <member refid="classSoftChipSelectGuard_1a7948dda8fc77490f105cfcf1092b5698" prot="public" virt="non-virtual"><scope>SoftChipSelectGuard</scope><name>OwnsCs</name></member>
+      <member refid="classSoftChipSelectGuard_1a0b212277c5cf829949c717d62923d9d6" prot="public" virt="non-virtual"><scope>SoftChipSelectGuard</scope><name>Release</name></member>
+      <member refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" prot="public" virt="non-virtual"><scope>SoftChipSelectGuard</scope><name>SoftChipSelectGuard</name></member>
+      <member refid="classSoftChipSelectGuard_1ae47f77fa2cf4252bac533f19c0c0e811" prot="public" virt="non-virtual"><scope>SoftChipSelectGuard</scope><name>SoftChipSelectGuard</name></member>
+      <member refid="classSoftChipSelectGuard_1a56665795cc45e9ba7342ab5f44e112d8" prot="public" virt="non-virtual"><scope>SoftChipSelectGuard</scope><name>SoftChipSelectGuard</name></member>
+      <member refid="classSoftChipSelectGuard_1ad4d1c548ef737ae374054f7d2701a8c5" prot="public" virt="non-virtual"><scope>SoftChipSelectGuard</scope><name>~SoftChipSelectGuard</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

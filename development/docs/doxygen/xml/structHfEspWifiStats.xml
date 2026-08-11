@@ -5,7 +5,7 @@
     <includes refid="EspTypes__WiFi_8h" local="no">EspTypes_WiFi.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structHfEspWifiStats_1a58a2a3caa026dd575e3dfb5bee297ab2" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t HfEspWifiStats::tx_packets</definition>
         <argsstring></argsstring>
         <name>tx_packets</name>
@@ -20,7 +20,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="143" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiStats_1aa1b17128088b88af45ede1ac2da0b4cc" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t HfEspWifiStats::rx_packets</definition>
         <argsstring></argsstring>
         <name>rx_packets</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="144" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiStats_1acbcbfc263951a746cc353fde04945e4f" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t HfEspWifiStats::tx_bytes</definition>
         <argsstring></argsstring>
         <name>tx_bytes</name>
@@ -50,7 +50,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="145" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="145" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiStats_1a8992f599c6de40d6604439be30d5adc3" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t HfEspWifiStats::rx_bytes</definition>
         <argsstring></argsstring>
         <name>rx_bytes</name>
@@ -65,7 +65,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="146" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="146" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiStats_1af07c6a04c1c0d50ee9dd09feac8a94e2" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t HfEspWifiStats::tx_errors</definition>
         <argsstring></argsstring>
         <name>tx_errors</name>
@@ -80,7 +80,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="147" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="147" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiStats_1a183e340f1a6c4b909070a95f75991687" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t HfEspWifiStats::rx_errors</definition>
         <argsstring></argsstring>
         <name>rx_errors</name>
@@ -95,7 +95,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="148" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="148" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiStats_1aa996220a922cadacd9db89d6d106d1aa" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t HfEspWifiStats::tx_retries</definition>
         <argsstring></argsstring>
         <name>tx_retries</name>
@@ -110,7 +110,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="149" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="149" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiStats_1ad60b7629b753655b0ba2809a36c3f9cf" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t HfEspWifiStats::rx_missed</definition>
         <argsstring></argsstring>
         <name>rx_missed</name>
@@ -125,7 +125,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="150" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="150" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiStats_1a74acd38b83fcb08be0fdbf6c416e13e9" prot="public" static="no" mutable="no">
-        <type>int8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int8_t</ref></type>
         <definition>int8_t HfEspWifiStats::noise_floor</definition>
         <argsstring></argsstring>
         <name>noise_floor</name>
@@ -140,7 +140,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="151" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="151" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiStats_1ab068e52ec8259f4a0b41ed15da8c9b37" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t HfEspWifiStats::channel_utilization</definition>
         <argsstring></argsstring>
         <name>channel_utilization</name>

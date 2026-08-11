@@ -4,7 +4,7 @@
     <compoundname>StmNvs::CacheEntry</compoundname>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structStmNvs_1_1CacheEntry_1a9290800ad0d8831b10c1384fd884e2d6" prot="public" static="no" mutable="no">
-        <type>char</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">char</ref></type>
         <definition>char StmNvs::CacheEntry::key[64]</definition>
         <argsstring>[64]</argsstring>
         <name>key</name>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="115" column="18" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="115" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="117" column="18" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structStmNvs_1_1CacheEntry_1aeb6cfca73e4c601bbc676a7c0d3fd310" prot="public" static="no" mutable="no">
         <type><ref refid="classStmNvs_1a0bcc4c0e9ca2496bf414508a23ae60db" kindref="member">EntryType</ref></type>
@@ -31,22 +31,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="116" column="19" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="116" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="118" column="19" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="118" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structStmNvs_1_1CacheEntry_1a9fa7ff11ba29987b0c5c5a85ea1ba556" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="structStmNvs_1_1CacheEntry_1a49c61a902b15b95bbac0b9d1f3f3dea0" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
-        <definition>hf_u8_t StmNvs::CacheEntry::data[256]</definition>
-        <argsstring>[256]</argsstring>
+        <definition>hf_u8_t StmNvs::CacheEntry::data[576]</definition>
+        <argsstring>[576]</argsstring>
         <name>data</name>
         <qualifiedname>StmNvs::CacheEntry::data</qualifiedname>
         <briefdescription>
-<para>Value data. </para>
+<para>Value data (blob capacity for large cal records) </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="117" column="18" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="117" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="119" column="18" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structStmNvs_1_1CacheEntry_1a64e9ad2f8004057086080f306fc2091e" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -61,10 +61,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="118" column="18" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="118" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="120" column="18" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structStmNvs_1_1CacheEntry_1a24ba5a410c019457f50d76091d90d3f9" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmNvs::CacheEntry::dirty</definition>
         <argsstring></argsstring>
         <name>dirty</name>
@@ -76,10 +76,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="119" column="18" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="119" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="121" column="18" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structStmNvs_1_1CacheEntry_1af9fc9fd75aafeeea2f5103ba9c1e59a4" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmNvs::CacheEntry::erased</definition>
         <argsstring></argsstring>
         <name>erased</name>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmNvs.h" line="120" column="18" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="120" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmNvs.h" line="122" column="18" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="122" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -99,9 +99,9 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/mcu/stm32/StmNvs.h" line="114" column="5" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="114" bodyend="121"/>
+    <location file="inc/mcu/stm32/StmNvs.h" line="116" column="5" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="116" bodyend="123"/>
     <listofallmembers>
-      <member refid="structStmNvs_1_1CacheEntry_1a9fa7ff11ba29987b0c5c5a85ea1ba556" prot="public" virt="non-virtual"><scope>StmNvs::CacheEntry</scope><name>data</name></member>
+      <member refid="structStmNvs_1_1CacheEntry_1a49c61a902b15b95bbac0b9d1f3f3dea0" prot="public" virt="non-virtual"><scope>StmNvs::CacheEntry</scope><name>data</name></member>
       <member refid="structStmNvs_1_1CacheEntry_1a64e9ad2f8004057086080f306fc2091e" prot="public" virt="non-virtual"><scope>StmNvs::CacheEntry</scope><name>data_length</name></member>
       <member refid="structStmNvs_1_1CacheEntry_1a24ba5a410c019457f50d76091d90d3f9" prot="public" virt="non-virtual"><scope>StmNvs::CacheEntry</scope><name>dirty</name></member>
       <member refid="structStmNvs_1_1CacheEntry_1af9fc9fd75aafeeea2f5103ba9c1e59a4" prot="public" virt="non-virtual"><scope>StmNvs::CacheEntry</scope><name>erased</name></member>

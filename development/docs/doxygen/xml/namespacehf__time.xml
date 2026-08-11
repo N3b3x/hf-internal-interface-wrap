@@ -5,7 +5,7 @@
     <innernamespace refid="namespacehf__time_1_1esp32">hf_time::esp32</innernamespace>
     <sectiondef kind="func">
       <memberdef kind="function" id="namespacehf__time_1ac7fa91057bdbd80cb6bfdad0f650f21d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>std::uint64_t</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::uint64_t</ref></type>
         <definition>std::uint64_t hf_time::MonotonicMs</definition>
         <argsstring>() noexcept</argsstring>
         <name>MonotonicMs</name>
@@ -21,13 +21,13 @@
         <location file="inc/utils/HfTime.h" line="78" column="22" bodyfile="inc/utils/HfTime.h" bodystart="78" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="namespacehf__time_1aac104941aa853c491e65fae6e388b352" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>std::uint64_t</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::uint64_t</ref></type>
         <definition>std::uint64_t hf_time::ElapsedUs</definition>
         <argsstring>(std::uint64_t t0) noexcept</argsstring>
         <name>ElapsedUs</name>
         <qualifiedname>hf_time::ElapsedUs</qualifiedname>
         <param>
-          <type>std::uint64_t</type>
+          <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::uint64_t</ref></type>
           <declname>t0</declname>
         </param>
         <briefdescription>

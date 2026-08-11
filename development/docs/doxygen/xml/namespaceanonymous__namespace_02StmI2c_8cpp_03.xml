@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespaceanonymous__namespace_02StmI2c_8cpp_03" kind="namespace" language="C++">
+    <compoundname>anonymous_namespace{StmI2c.cpp}</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceanonymous__namespace_02StmI2c_8cpp_03_1ad9050bfcc89c5472b04e9d50125d5348" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
+        <definition>void anonymous_namespace{StmI2c.cpp}::FlushTxdr</definition>
+        <argsstring>(I2C_HandleTypeDef *hi2c) noexcept</argsstring>
+        <name>FlushTxdr</name>
+        <qualifiedname>anonymous_namespace{StmI2c.cpp}::FlushTxdr</qualifiedname>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">I2C_HandleTypeDef</ref> *</type>
+          <declname>hi2c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Mirror of HAL private I2C_Flush_TXDR — clear sticky TXIS before a new xfer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmI2c.cpp" line="73" column="6" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="73" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceanonymous__namespace_02StmI2c_8cpp_03_1aea72fc68c89669974e546f49db2a27a6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
+        <definition>void anonymous_namespace{StmI2c.cpp}::FlushRxdr</definition>
+        <argsstring>(I2C_HandleTypeDef *hi2c) noexcept</argsstring>
+        <name>FlushRxdr</name>
+        <qualifiedname>anonymous_namespace{StmI2c.cpp}::FlushRxdr</qualifiedname>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">I2C_HandleTypeDef</ref> *</type>
+          <declname>hi2c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Drop a stale RX byte so the next Mem_Read cannot splice a prior payload. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmI2c.cpp" line="86" column="6" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="86" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceanonymous__namespace_02StmI2c_8cpp_03_1a53de132257604159ced159540146a363" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
+        <definition>void anonymous_namespace{StmI2c.cpp}::RecoverI2cAfterError</definition>
+        <argsstring>(I2C_HandleTypeDef *hi2c) noexcept</argsstring>
+        <name>RecoverI2cAfterError</name>
+        <qualifiedname>anonymous_namespace{StmI2c.cpp}::RecoverI2cAfterError</qualifiedname>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">I2C_HandleTypeDef</ref> *</type>
+          <declname>hi2c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Soft-recover STM32H7 I2C after NACK/timeout so the next xfer can proceed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmI2c.cpp" line="96" column="6" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="96" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceanonymous__namespace_02StmI2c_8cpp_03_1ae26a414b9761b2b60db2a4f5136e69bc" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
+        <definition>void anonymous_namespace{StmI2c.cpp}::PrepareMasterXfer</definition>
+        <argsstring>(I2C_HandleTypeDef *hi2c) noexcept</argsstring>
+        <name>PrepareMasterXfer</name>
+        <qualifiedname>anonymous_namespace{StmI2c.cpp}::PrepareMasterXfer</qualifiedname>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">I2C_HandleTypeDef</ref> *</type>
+          <declname>hi2c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Prepare a READY master for a new blocking transfer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmI2c.cpp" line="127" column="6" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="127" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceanonymous__namespace_02StmI2c_8cpp_03_1ac999e2f65b53a052576810d90a3a4b8d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
+        <definition>bool anonymous_namespace{StmI2c.cpp}::HalXferOk</definition>
+        <argsstring>(I2C_HandleTypeDef *hi2c, uint32_t status) noexcept</argsstring>
+        <name>HalXferOk</name>
+        <qualifiedname>anonymous_namespace{StmI2c.cpp}::HalXferOk</qualifiedname>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">I2C_HandleTypeDef</ref> *</type>
+          <declname>hi2c</declname>
+        </param>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmI2c.cpp" line="147" column="6" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="147" bodyend="150"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/stm32/StmI2c.cpp" line="70" column="1"/>
+  </compounddef>
+</doxygen>

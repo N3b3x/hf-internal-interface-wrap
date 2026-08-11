@@ -94,7 +94,9 @@ $(function(){initNavTree('StmSpi_8cpp.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">StmSpi.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -102,28 +104,56 @@ $(function(){initNavTree('StmSpi_8cpp.html',''); initResizable(); });
 <p>STM32 SPI wrapper implementation — full STM32 HAL integration.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="StmSpi_8h_source.html">StmSpi.h</a>&quot;</code><br />
+<code>#include &lt;cstdint&gt;</code><br />
+<code>#include &lt;cstring&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for StmSpi.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="StmSpi_8cpp__incl.svg" width="574" height="356"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="StmSpi_8cpp__incl.svg" width="100%" height="567"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespaceanonymous__namespace_02StmSpi_8cpp_03" id="r_namespaceanonymous__namespace_02StmSpi_8cpp_03"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmSpi_8cpp_03.html">anonymous_namespace{StmSpi.cpp}</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4ff696578cf600faa8bdf9e8ea063b79" id="r_a4ff696578cf600faa8bdf9e8ea063b79"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ff696578cf600faa8bdf9e8ea063b79">HAL_SPI_TransmitReceive</a> (SPI_HandleTypeDef *hspi, uint8_t *pTxData, uint8_t *pRxData, uint16_t Size, uint32_t Timeout)</td></tr>
+<tr class="memitem:a9b70e6340dde68d5e013a8369652dcb9" id="r_a9b70e6340dde68d5e013a8369652dcb9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a9b70e6340dde68d5e013a8369652dcb9">anonymous_namespace{StmSpi.cpp}::CopyFromMaybeFmcToAxi</a> (<a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">dst</a>, <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">src</a>, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> <a class="el" href="classSoftChipSelectGuard.html">len</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a9b70e6340dde68d5e013a8369652dcb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy <code>len</code> bytes from <code>src</code> into internal-SRAM <code>dst</code> via aligned 32-bit loads (safe when <code>src</code> may be external RAM / task stack).  <br /></td></tr>
+<tr class="separator:a9b70e6340dde68d5e013a8369652dcb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86ca057477851ca401c3c584653a70d8" id="r_a86ca057477851ca401c3c584653a70d8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a86ca057477851ca401c3c584653a70d8">anonymous_namespace{StmSpi.cpp}::CopyFromAxiToMaybeFmc</a> (<a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">dst</a>, <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">src</a>, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> <a class="el" href="classSoftChipSelectGuard.html">len</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a86ca057477851ca401c3c584653a70d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publish internal-SRAM <code>src</code> into <code>dst</code> via aligned 32-bit RMW (safe when <code>dst</code> may be external RAM / task stack).  <br /></td></tr>
+<tr class="separator:a86ca057477851ca401c3c584653a70d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a899000c13ecd09d81b13e23780711e72" id="r_a899000c13ecd09d81b13e23780711e72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a899000c13ecd09d81b13e23780711e72">anonymous_namespace{StmSpi.cpp}::FlushSpiFifo</a> (<a class="el" href="classSoftChipSelectGuard.html">SPI_HandleTypeDef</a> *) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="separator:a899000c13ecd09d81b13e23780711e72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9395d2212b103c5c9150ec5c77ac91ee" id="r_a9395d2212b103c5c9150ec5c77ac91ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a9395d2212b103c5c9150ec5c77ac91ee">anonymous_namespace{StmSpi.cpp}::CsEdgeSettle</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="separator:a9395d2212b103c5c9150ec5c77ac91ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a001b9f9d7d6d2462b190dc5fa9f4bbff" id="r_a001b9f9d7d6d2462b190dc5fa9f4bbff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a001b9f9d7d6d2462b190dc5fa9f4bbff">anonymous_namespace{StmSpi.cpp}::InterFrameGapUs</a> (<a class="el" href="classSoftChipSelectGuard.html">uint32_t</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="separator:a001b9f9d7d6d2462b190dc5fa9f4bbff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ff696578cf600faa8bdf9e8ea063b79" id="r_a4ff696578cf600faa8bdf9e8ea063b79"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ff696578cf600faa8bdf9e8ea063b79">HAL_SPI_TransmitReceive</a> (<a class="el" href="classSoftChipSelectGuard.html">SPI_HandleTypeDef</a> *<a class="el" href="classSoftChipSelectGuard.html">hspi</a>, <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">pTxData</a>, <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">pRxData</a>, <a class="el" href="classSoftChipSelectGuard.html">uint16_t</a> <a class="el" href="classSoftChipSelectGuard.html">Size</a>, <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> <a class="el" href="classSoftChipSelectGuard.html">Timeout</a>)</td></tr>
 <tr class="separator:a4ff696578cf600faa8bdf9e8ea063b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae7ec2165cdb901dfa40c7af3cd8ad12" id="r_aae7ec2165cdb901dfa40c7af3cd8ad12"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae7ec2165cdb901dfa40c7af3cd8ad12">HAL_SPI_Transmit</a> (SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout)</td></tr>
+<tr class="memitem:aae7ec2165cdb901dfa40c7af3cd8ad12" id="r_aae7ec2165cdb901dfa40c7af3cd8ad12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae7ec2165cdb901dfa40c7af3cd8ad12">HAL_SPI_Transmit</a> (<a class="el" href="classSoftChipSelectGuard.html">SPI_HandleTypeDef</a> *<a class="el" href="classSoftChipSelectGuard.html">hspi</a>, <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">pData</a>, <a class="el" href="classSoftChipSelectGuard.html">uint16_t</a> <a class="el" href="classSoftChipSelectGuard.html">Size</a>, <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> <a class="el" href="classSoftChipSelectGuard.html">Timeout</a>)</td></tr>
 <tr class="separator:aae7ec2165cdb901dfa40c7af3cd8ad12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a522b087524611e6141543a1b226fa6d3" id="r_a522b087524611e6141543a1b226fa6d3"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a522b087524611e6141543a1b226fa6d3">HAL_SPI_Receive</a> (SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout)</td></tr>
+<tr class="memitem:a522b087524611e6141543a1b226fa6d3" id="r_a522b087524611e6141543a1b226fa6d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a522b087524611e6141543a1b226fa6d3">HAL_SPI_Receive</a> (<a class="el" href="classSoftChipSelectGuard.html">SPI_HandleTypeDef</a> *<a class="el" href="classSoftChipSelectGuard.html">hspi</a>, <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">pData</a>, <a class="el" href="classSoftChipSelectGuard.html">uint16_t</a> <a class="el" href="classSoftChipSelectGuard.html">Size</a>, <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> <a class="el" href="classSoftChipSelectGuard.html">Timeout</a>)</td></tr>
 <tr class="separator:a522b087524611e6141543a1b226fa6d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8ddee65ae45981737ec31c1424022b5" id="r_aa8ddee65ae45981737ec31c1424022b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8ddee65ae45981737ec31c1424022b5">HAL_GPIO_WritePin</a> (GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, uint32_t PinState)</td></tr>
+<tr class="memitem:aa8ddee65ae45981737ec31c1424022b5" id="r_aa8ddee65ae45981737ec31c1424022b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8ddee65ae45981737ec31c1424022b5">HAL_GPIO_WritePin</a> (<a class="el" href="classSoftChipSelectGuard.html">GPIO_TypeDef</a> *<a class="el" href="classSoftChipSelectGuard.html">GPIOx</a>, <a class="el" href="classSoftChipSelectGuard.html">uint16_t</a> <a class="el" href="classSoftChipSelectGuard.html">GPIO_Pin</a>, <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> <a class="el" href="classSoftChipSelectGuard.html">PinState</a>)</td></tr>
 <tr class="separator:aa8ddee65ae45981737ec31c1424022b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aa45f034b9ec9701cd8a73551bfbb559c" id="r_aa45f034b9ec9701cd8a73551bfbb559c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmSpi_8cpp_03.html#aa45f034b9ec9701cd8a73551bfbb559c">anonymous_namespace{StmSpi.cpp}::kSpiScratchBytes</a> = 32</td></tr>
+<tr class="separator:aa45f034b9ec9701cd8a73551bfbb559c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89c01d76c63867b951659a5210bd6898" id="r_a89c01d76c63867b951659a5210bd6898"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a89c01d76c63867b951659a5210bd6898">anonymous_namespace{StmSpi.cpp}::g_spi_axi_tx</a> [<a class="el" href="namespaceanonymous__namespace_02StmSpi_8cpp_03.html#aa45f034b9ec9701cd8a73551bfbb559c">kSpiScratchBytes</a>] {}</td></tr>
+<tr class="separator:a89c01d76c63867b951659a5210bd6898"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dd214978f8306aaaa63ffd9e3776b05" id="r_a4dd214978f8306aaaa63ffd9e3776b05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a4dd214978f8306aaaa63ffd9e3776b05">anonymous_namespace{StmSpi.cpp}::g_spi_axi_rx</a> [<a class="el" href="namespaceanonymous__namespace_02StmSpi_8cpp_03.html#aa45f034b9ec9701cd8a73551bfbb559c">kSpiScratchBytes</a>] {}</td></tr>
+<tr class="separator:a4dd214978f8306aaaa63ffd9e3776b05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>STM32 SPI wrapper implementation — full STM32 HAL integration. </p>
 <dl class="section author"><dt>Author</dt><dd>HardFOC </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC — Licensed under GPL v3.0 or later. </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>HardFOC — Licensed under GPL <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v3.0</a> or later. </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="aa8ddee65ae45981737ec31c1424022b5" name="aa8ddee65ae45981737ec31c1424022b5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa8ddee65ae45981737ec31c1424022b5">&#9670;&#160;</a></span>HAL_GPIO_WritePin()</h2>
@@ -135,19 +165,19 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void HAL_GPIO_WritePin </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> HAL_GPIO_WritePin </td>
           <td>(</td>
-          <td class="paramtype">GPIO_TypeDef *</td>          <td class="paramname"><span class="paramname"><em>GPIOx</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">GPIO_TypeDef</a> *</td>          <td class="paramname"><span class="paramname"><em>GPIOx</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>GPIO_Pin</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint16_t</a></td>          <td class="paramname"><span class="paramname"><em>GPIO_Pin</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>PinState</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a></td>          <td class="paramname"><span class="paramname"><em>PinState</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -169,24 +199,24 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t HAL_SPI_Receive </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> HAL_SPI_Receive </td>
           <td>(</td>
-          <td class="paramtype">SPI_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>hspi</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">SPI_HandleTypeDef</a> *</td>          <td class="paramname"><span class="paramname"><em>hspi</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>pData</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> *</td>          <td class="paramname"><span class="paramname"><em>pData</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>Size</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint16_t</a></td>          <td class="paramname"><span class="paramname"><em>Size</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>Timeout</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a></td>          <td class="paramname"><span class="paramname"><em>Timeout</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -208,24 +238,24 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t HAL_SPI_Transmit </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> HAL_SPI_Transmit </td>
           <td>(</td>
-          <td class="paramtype">SPI_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>hspi</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">SPI_HandleTypeDef</a> *</td>          <td class="paramname"><span class="paramname"><em>hspi</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>pData</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> *</td>          <td class="paramname"><span class="paramname"><em>pData</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>Size</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint16_t</a></td>          <td class="paramname"><span class="paramname"><em>Size</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>Timeout</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a></td>          <td class="paramname"><span class="paramname"><em>Timeout</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -247,29 +277,29 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t HAL_SPI_TransmitReceive </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> HAL_SPI_TransmitReceive </td>
           <td>(</td>
-          <td class="paramtype">SPI_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>hspi</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">SPI_HandleTypeDef</a> *</td>          <td class="paramname"><span class="paramname"><em>hspi</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>pTxData</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> *</td>          <td class="paramname"><span class="paramname"><em>pTxData</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>pRxData</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> *</td>          <td class="paramname"><span class="paramname"><em>pRxData</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>Size</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint16_t</a></td>          <td class="paramname"><span class="paramname"><em>Size</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>Timeout</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a></td>          <td class="paramname"><span class="paramname"><em>Timeout</em></span>&#160;)</td>
         </tr>
       </table>
   </td>

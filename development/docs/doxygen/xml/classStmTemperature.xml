@@ -20,7 +20,7 @@
         <location file="inc/mcu/stm32/StmTemperature.h" line="96" column="35" bodyfile="inc/mcu/stm32/StmTemperature.h" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classStmTemperature_1a4d89f1c6728aad5a458c13599254a4bc" prot="private" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float StmTemperature::calibration_offset_</definition>
         <argsstring></argsstring>
         <name>calibration_offset_</name>
@@ -43,7 +43,7 @@
         <name>StmTemperature</name>
         <qualifiedname>StmTemperature::StmTemperature</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__stm32__temp__sensor__config__t" kindref="compound">hf_stm32_temp_sensor_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__stm32__temp__sensor__config__t" kindref="compound">hf_stm32_temp_sensor_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -62,9 +62,9 @@
         <name>StmTemperature</name>
         <qualifiedname>StmTemperature::StmTemperature</qualifiedname>
         <param>
-          <type>ADC_HandleTypeDef *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">ADC_HandleTypeDef</ref> *</type>
           <declname>hadc</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <param>
           <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -72,7 +72,7 @@
           <defval>12</defval>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>vref_mv</declname>
           <defval>3300.0f</defval>
         </param>
@@ -158,11 +158,11 @@
         <qualifiedname>StmTemperature::SetRange</qualifiedname>
         <reimplements refid="classBaseTemperature_1a1bfe9f1a1069222166008b4dafe5a282">SetRange</reimplements>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>min_celsius</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>max_celsius</declname>
         </param>
         <briefdescription>
@@ -202,11 +202,11 @@
         <qualifiedname>StmTemperature::GetRange</qualifiedname>
         <reimplements refid="classBaseTemperature_1a21d2b3e6c1855f666d5dc2856e9f8cea">GetRange</reimplements>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>min_celsius</declname>
         </param>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>max_celsius</declname>
         </param>
         <briefdescription>
@@ -246,7 +246,7 @@
         <qualifiedname>StmTemperature::SetCalibrationOffset</qualifiedname>
         <reimplements refid="classBaseTemperature_1a97cd78cf3f336211747e15a1c25d61ee">SetCalibrationOffset</reimplements>
         <param>
-          <type>float</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>offset_celsius</declname>
         </param>
         <briefdescription>
@@ -278,7 +278,7 @@
         <qualifiedname>StmTemperature::GetCalibrationOffset</qualifiedname>
         <reimplements refid="classBaseTemperature_1a55f58d0cccee590dd10e55c2668e7f0b">GetCalibrationOffset</reimplements>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>offset_celsius</declname>
         </param>
         <briefdescription>
@@ -305,7 +305,7 @@
     </sectiondef>
     <sectiondef kind="protected-func">
       <memberdef kind="function" id="classStmTemperature_1ac638c0fb9b58e5736ebbd3d750d533fa" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmTemperature::Initialize</definition>
         <argsstring>() noexcept override</argsstring>
         <name>Initialize</name>
@@ -324,7 +324,7 @@
         <location file="inc/mcu/stm32/StmTemperature.h" line="91" column="10" bodyfile="src/mcu/stm32/StmTemperature.cpp" bodystart="56" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="classStmTemperature_1abac4e09afd8ae32e0f2f9196643e47b1" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool StmTemperature::Deinitialize</definition>
         <argsstring>() noexcept override</argsstring>
         <name>Deinitialize</name>
@@ -350,7 +350,7 @@
         <qualifiedname>StmTemperature::ReadTemperatureCelsiusImpl</qualifiedname>
         <reimplements refid="classBaseTemperature_1af171259d6aa00825f0b8743d2331850e">ReadTemperatureCelsiusImpl</reimplements>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>temperature_celsius</declname>
         </param>
         <briefdescription>
@@ -377,7 +377,7 @@
     </sectiondef>
     <sectiondef kind="private-static-func">
       <memberdef kind="function" id="classStmTemperature_1ab1c67e3bbe93cc7834df421a75547c0e" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float StmTemperature::DefaultInternalConvert</definition>
         <argsstring>(hf_u32_t raw, hf_u8_t resolution_bits)</argsstring>
         <name>DefaultInternalConvert</name>

@@ -5,7 +5,7 @@
     <includes refid="BaseTemperature_8h" local="no">BaseTemperature.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__temp__config__t_1a8bf079e9e70701467bd094adf28cf0d6" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float hf_temp_config_t::range_min_celsius</definition>
         <argsstring></argsstring>
         <name>range_min_celsius</name>
@@ -20,7 +20,7 @@
         <location file="inc/base/BaseTemperature.h" line="208" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="208" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__config__t_1ae83ece7934b916be170ceadc925ddc97" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float hf_temp_config_t::range_max_celsius</definition>
         <argsstring></argsstring>
         <name>range_max_celsius</name>
@@ -35,7 +35,7 @@
         <location file="inc/base/BaseTemperature.h" line="209" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="209" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__config__t_1a9a803a38493bf525ebc23cd430e2ac58" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float hf_temp_config_t::resolution</definition>
         <argsstring></argsstring>
         <name>resolution</name>
@@ -65,7 +65,7 @@
         <location file="inc/base/BaseTemperature.h" line="211" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="211" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__config__t_1a01ba57b12a4356b9afac64556badbc9b" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_temp_config_t::enable_threshold_monitoring</definition>
         <argsstring></argsstring>
         <name>enable_threshold_monitoring</name>
@@ -80,7 +80,7 @@
         <location file="inc/base/BaseTemperature.h" line="212" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="212" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__config__t_1a93e169569ad7e911356e1b917fed3e7e" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float hf_temp_config_t::high_threshold_celsius</definition>
         <argsstring></argsstring>
         <name>high_threshold_celsius</name>
@@ -95,7 +95,7 @@
         <location file="inc/base/BaseTemperature.h" line="213" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="213" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__config__t_1a10a9aa7cbb60404a5a5de94d9f09789a" prot="public" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
         <definition>float hf_temp_config_t::low_threshold_celsius</definition>
         <argsstring></argsstring>
         <name>low_threshold_celsius</name>
@@ -110,7 +110,7 @@
         <location file="inc/base/BaseTemperature.h" line="214" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="214" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__config__t_1a17591a4ee68c1ade3f6cc3172973dd95" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_temp_config_t::enable_power_management</definition>
         <argsstring></argsstring>
         <name>enable_power_management</name>
@@ -125,7 +125,7 @@
         <location file="inc/base/BaseTemperature.h" line="215" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="215" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__config__t_1a00cbdbad86ea284334de0bdc59de0d96" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_temp_config_t::enable_calibration</definition>
         <argsstring></argsstring>
         <name>enable_calibration</name>

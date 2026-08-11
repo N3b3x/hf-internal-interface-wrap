@@ -75,7 +75,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="59" column="12" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pio__channel__statistics__t_1ace0f770d2408fd564472ac249bcc99b2" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pio_channel_statistics_t::is_configured</definition>
         <argsstring></argsstring>
         <name>is_configured</name>
@@ -89,7 +89,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="60" column="8" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pio__channel__statistics__t_1a4d174d7d891273df448f059874f3727e" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pio_channel_statistics_t::is_busy</definition>
         <argsstring></argsstring>
         <name>is_busy</name>
@@ -117,7 +117,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="62" column="12" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pio__channel__statistics__t_1a6f810ce1ffeaa8e51fb018e6abcdb438" prot="public" static="no" mutable="no">
-        <type>size_t</type>
+        <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>size_t hf_pio_channel_statistics_t::memory_blocks_allocated</definition>
         <argsstring></argsstring>
         <name>memory_blocks_allocated</name>
@@ -131,7 +131,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="63" column="10" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pio__channel__statistics__t_1a53461034af45f9acc80eba7cceaec0e8" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pio_channel_statistics_t::dma_enabled</definition>
         <argsstring></argsstring>
         <name>dma_enabled</name>

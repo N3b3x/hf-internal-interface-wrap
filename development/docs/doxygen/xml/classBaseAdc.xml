@@ -6,7 +6,7 @@
     <includes refid="BaseAdc_8h" local="no">BaseAdc.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classBaseAdc_1ad8935a60ec6b85a8916e2ebdfc55ecf2" prot="protected" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseAdc::initialized_</definition>
         <argsstring></argsstring>
         <name>initialized_</name>
@@ -74,7 +74,7 @@
         <name>BaseAdc</name>
         <qualifiedname>BaseAdc::BaseAdc</qualifiedname>
         <param>
-          <type>const <ref refid="classBaseAdc" kindref="compound">BaseAdc</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBaseAdc" kindref="compound">BaseAdc</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -91,7 +91,7 @@
         <name>operator=</name>
         <qualifiedname>BaseAdc::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classBaseAdc" kindref="compound">BaseAdc</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBaseAdc" kindref="compound">BaseAdc</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -136,7 +136,7 @@
         <location file="inc/base/BaseAdc.h" line="213" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1a7a0ce14e616b94b41b7f5f3103c75b61" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseAdc::EnsureInitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureInitialized</name>
@@ -154,7 +154,7 @@
         <location file="inc/base/BaseAdc.h" line="223" column="8" bodyfile="inc/base/BaseAdc.h" bodystart="223" bodyend="228"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1ac97e5b49f3e9705bcdd0d9a500532e2f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseAdc::EnsureDeinitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureDeinitialized</name>
@@ -172,7 +172,7 @@
         <location file="inc/base/BaseAdc.h" line="234" column="8" bodyfile="inc/base/BaseAdc.h" bodystart="234" bodyend="239"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1a475764935a2e741538cfc643e0837653" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseAdc::IsInitialized</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsInitialized</name>
@@ -190,7 +190,7 @@
         <location file="inc/base/BaseAdc.h" line="245" column="9" bodyfile="inc/base/BaseAdc.h" bodystart="245" bodyend="247"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1ab783a31b8adb7af4b4d53226ffff375c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseAdc::Initialize</definition>
         <argsstring>() noexcept=0</argsstring>
         <name>Initialize</name>
@@ -209,7 +209,7 @@
         <location file="inc/base/BaseAdc.h" line="257" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1a16019ba36f14e8579be74e4849e59e72" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseAdc::Deinitialize</definition>
         <argsstring>() noexcept=0</argsstring>
         <name>Deinitialize</name>
@@ -247,7 +247,7 @@
         <location file="inc/base/BaseAdc.h" line="269" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1a33d37384396674c31531994d77991965" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseAdc::IsChannelAvailable</definition>
         <argsstring>(hf_channel_id_t channel_id) const noexcept=0</argsstring>
         <name>IsChannelAvailable</name>
@@ -290,7 +290,7 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>float &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> &amp;</type>
           <declname>channel_reading_v</declname>
         </param>
         <param>
@@ -434,7 +434,7 @@
           <declname>channel_reading_count</declname>
         </param>
         <param>
-          <type>float &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> &amp;</type>
           <declname>channel_reading_v</declname>
         </param>
         <param>
@@ -507,7 +507,7 @@
         <name>ReadMultipleChannels</name>
         <qualifiedname>BaseAdc::ReadMultipleChannels</qualifiedname>
         <param>
-          <type>const <ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref> *</type>
           <declname>channel_ids</declname>
         </param>
         <param>
@@ -519,7 +519,7 @@
           <declname>readings</declname>
         </param>
         <param>
-          <type>float *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>voltages</declname>
         </param>
         <briefdescription>

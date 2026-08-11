@@ -5,12 +5,12 @@
     <includes refid="PlatformMutex_8h" local="no">PlatformMutex.h</includes>
     <templateparamlist>
       <param>
-        <type>typename SharedMutex</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">typename</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">SharedMutex</ref></type>
       </param>
     </templateparamlist>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classPlatformSharedLock_1a196205586ec7624b45328670e47b6e4c" prot="private" static="no" mutable="no">
-        <type>SharedMutex *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">SharedMutex</ref> *</type>
         <definition>SharedMutex* PlatformSharedLock&lt; SharedMutex &gt;::mutex_</definition>
         <argsstring></argsstring>
         <name>mutex_</name>
@@ -24,7 +24,7 @@
         <location file="inc/utils/PlatformMutex.h" line="515" column="17" bodyfile="inc/utils/PlatformMutex.h" bodystart="515" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPlatformSharedLock_1aa1428c7278f03c457be11c411b17a5e8" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool PlatformSharedLock&lt; SharedMutex &gt;::locked_</definition>
         <argsstring></argsstring>
         <name>locked_</name>
@@ -46,11 +46,11 @@
         <name>PlatformSharedLock</name>
         <qualifiedname>PlatformSharedLock::PlatformSharedLock</qualifiedname>
         <param>
-          <type>SharedMutex &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">SharedMutex</ref> &amp;</type>
           <declname>mutex</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_ms</declname>
           <defval>0</defval>
         </param>
@@ -83,7 +83,7 @@
         <name>PlatformSharedLock</name>
         <qualifiedname>PlatformSharedLock::PlatformSharedLock</qualifiedname>
         <param>
-          <type>const <ref refid="classPlatformSharedLock" kindref="compound">PlatformSharedLock</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classPlatformSharedLock" kindref="compound">PlatformSharedLock</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -100,7 +100,7 @@
         <name>operator=</name>
         <qualifiedname>PlatformSharedLock::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classPlatformSharedLock" kindref="compound">PlatformSharedLock</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classPlatformSharedLock" kindref="compound">PlatformSharedLock</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -147,7 +147,7 @@
         <location file="inc/utils/PlatformMutex.h" line="494" column="24" bodyfile="inc/utils/PlatformMutex.h" bodystart="494" bodyend="503"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformSharedLock_1a1271e1fa2051eb24d536f21c637bee32" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool PlatformSharedLock&lt; SharedMutex &gt;::IsLocked</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsLocked</name>
@@ -161,7 +161,7 @@
         <location file="inc/utils/PlatformMutex.h" line="505" column="11" bodyfile="inc/utils/PlatformMutex.h" bodystart="505" bodyend="505"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformSharedLock_1a7c02b27cf0e7b31a1ccc1b7f987beb80" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void PlatformSharedLock&lt; SharedMutex &gt;::Unlock</definition>
         <argsstring>() noexcept</argsstring>
         <name>Unlock</name>

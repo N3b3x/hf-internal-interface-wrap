@@ -38,7 +38,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classStmSpiDevice.html" target="_top" xlink:title="STM32 SPI device — manages chip&#45;select and delegates transfers to parent bus.">
+<g id="a_Node000002"><a xlink:href="classStmSpiDevice.html" target="_top" xlink:title="Soft&#45;CS SPI slave on a shared StmSpiBus.">
 <polygon fill="white" stroke="#666666" points="205,-23 103,-23 103,0 205,0 205,-23"/>
 <text text-anchor="middle" x="154" y="-7.8" font-family="Arial" font-size="14.00">StmSpiDevice</text>
 </a>

@@ -6,7 +6,7 @@
     <includes refid="BasePio_8h" local="no">BasePio.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classBasePio_1a97f8f0ca82c03070321d7f85a1fb52a4" prot="protected" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BasePio::initialized_</definition>
         <argsstring></argsstring>
         <name>initialized_</name>
@@ -74,7 +74,7 @@
         <name>BasePio</name>
         <qualifiedname>BasePio::BasePio</qualifiedname>
         <param>
-          <type>const <ref refid="classBasePio" kindref="compound">BasePio</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBasePio" kindref="compound">BasePio</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -91,7 +91,7 @@
         <name>operator=</name>
         <qualifiedname>BasePio::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classBasePio" kindref="compound">BasePio</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBasePio" kindref="compound">BasePio</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -174,7 +174,7 @@
         <location file="inc/base/BasePio.h" line="321" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePio_1aa8c8aea41f16846d52410e3a0ade354e" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BasePio::IsInitialized</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsInitialized</name>
@@ -192,7 +192,7 @@
         <location file="inc/base/BasePio.h" line="327" column="9" bodyfile="inc/base/BasePio.h" bodystart="327" bodyend="329"/>
       </memberdef>
       <memberdef kind="function" id="classBasePio_1a28949d17756d23eb8fdaf1bd437b7b4b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BasePio::EnsureInitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureInitialized</name>
@@ -210,7 +210,7 @@
         <location file="inc/base/BasePio.h" line="335" column="8" bodyfile="inc/base/BasePio.h" bodystart="335" bodyend="340"/>
       </memberdef>
       <memberdef kind="function" id="classBasePio_1a53a078ae16674075bcd7ed8355227b96" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BasePio::EnsureDeinitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureDeinitialized</name>
@@ -239,7 +239,7 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>const <ref refid="structhf__pio__channel__config__t" kindref="compound">hf_pio_channel_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__pio__channel__config__t" kindref="compound">hf_pio_channel_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -283,17 +283,17 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>const <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> *</type>
           <declname>symbols</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>symbol_count</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>wait_completion</declname>
-          <defval>false</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">false</ref></defval>
         </param>
         <briefdescription>
 <para>Transmit a sequence of symbols. </para>
@@ -356,7 +356,7 @@
           <declname>buffer</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>buffer_size</declname>
         </param>
         <param>
@@ -421,7 +421,7 @@
           <declname>channel_id</declname>
         </param>
         <param>
-          <type>size_t &amp;</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref> &amp;</type>
           <declname>symbols_received</declname>
         </param>
         <briefdescription>
@@ -454,7 +454,7 @@
         <location file="inc/base/BasePio.h" line="391" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePio_1a6f55697fbe482663cd9690f6570f5e26" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BasePio::IsChannelBusy</definition>
         <argsstring>(hf_u8_t channel_id) const noexcept=0</argsstring>
         <name>IsChannelBusy</name>
@@ -562,7 +562,7 @@
         <location file="inc/base/BasePio.h" line="414" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePio_1ac0c06541482ba77801e174c3be82a0ce" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>virtual void BasePio::SetTransmitCallback</definition>
         <argsstring>(hf_u8_t channel_id, hf_pio_transmit_callback_t callback, void *user_data=nullptr) noexcept=0</argsstring>
         <name>SetTransmitCallback</name>
@@ -577,9 +577,9 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Set callback for transmission complete events. </para>
@@ -617,7 +617,7 @@
         <location file="inc/base/BasePio.h" line="422" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBasePio_1ab5ed24fe603fab13d06265849e0dcab7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>virtual void BasePio::SetReceiveCallback</definition>
         <argsstring>(hf_u8_t channel_id, hf_pio_receive_callback_t callback, void *user_data=nullptr) noexcept=0</argsstring>
         <name>SetReceiveCallback</name>
@@ -632,9 +632,9 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Set callback for reception complete events. </para>
@@ -672,7 +672,7 @@
         <location file="inc/base/BasePio.h" line="431" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBasePio_1aa01d1974a8f2a1c36648bb7aa78632de" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>virtual void BasePio::SetErrorCallback</definition>
         <argsstring>(hf_u8_t channel_id, hf_pio_error_callback_t callback, void *user_data=nullptr) noexcept=0</argsstring>
         <name>SetErrorCallback</name>
@@ -687,9 +687,9 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Set callback for error events. </para>
@@ -727,7 +727,7 @@
         <location file="inc/base/BasePio.h" line="440" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBasePio_1ad84894a15fb747be88dbfde1c11d80d8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>virtual void BasePio::ClearChannelCallbacks</definition>
         <argsstring>(hf_u8_t channel_id) noexcept=0</argsstring>
         <name>ClearChannelCallbacks</name>
@@ -757,7 +757,7 @@
         <location file="inc/base/BasePio.h" line="447" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBasePio_1a3bf2d029ab95172e27366fee39b03ca6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>virtual void BasePio::ClearCallbacks</definition>
         <argsstring>() noexcept=0</argsstring>
         <name>ClearCallbacks</name>
@@ -924,7 +924,7 @@
     <detaileddescription>
 <para>This class defines the interface for precise, buffered digital signal I/O that can handle timing-critical operations like WS2812 LED driving, IR communication, stepper motor control, and custom protocols.</para>
 <para>The abstraction is designed to work with various hardware backends:<itemizedlist>
-<listitem><para>Dedicated peripherals (e.g. RMT or PIO engines)</para>
+<listitem><para>Dedicated peripherals (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">e.g</ref>. RMT or PIO engines)</para>
 </listitem><listitem><para>Timer + DMA + GPIO combinations</para>
 </listitem><listitem><para>Fully software-based implementations</para>
 </listitem></itemizedlist>

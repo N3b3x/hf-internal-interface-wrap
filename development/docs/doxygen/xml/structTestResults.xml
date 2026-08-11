@@ -5,7 +5,7 @@
     <includes refid="TestFramework_8h" local="no">TestFramework.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structTestResults_1afe20b168a13950ffca7296c0c56d4359" prot="public" static="no" mutable="no">
-        <type>int</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
         <definition>int TestResults::total_tests</definition>
         <argsstring></argsstring>
         <name>total_tests</name>
@@ -20,7 +20,7 @@
         <location file="examples/esp32/main/TestFramework.h" line="167" column="7" bodyfile="examples/esp32/main/TestFramework.h" bodystart="167" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structTestResults_1a55b5f813fe7b5863b46e03f2c7f761ea" prot="public" static="no" mutable="no">
-        <type>int</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
         <definition>int TestResults::passed_tests</definition>
         <argsstring></argsstring>
         <name>passed_tests</name>
@@ -35,7 +35,7 @@
         <location file="examples/esp32/main/TestFramework.h" line="168" column="7" bodyfile="examples/esp32/main/TestFramework.h" bodystart="168" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structTestResults_1a0acef46f38f27f0fbb8fa822bb218b3a" prot="public" static="no" mutable="no">
-        <type>int</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
         <definition>int TestResults::failed_tests</definition>
         <argsstring></argsstring>
         <name>failed_tests</name>
@@ -50,7 +50,7 @@
         <location file="examples/esp32/main/TestFramework.h" line="169" column="7" bodyfile="examples/esp32/main/TestFramework.h" bodystart="169" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structTestResults_1a7eddc258a4288ac5f0a36a1008c9d014" prot="public" static="no" mutable="no">
-        <type>uint64_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint64_t</ref></type>
         <definition>uint64_t TestResults::total_execution_time_us</definition>
         <argsstring></argsstring>
         <name>total_execution_time_us</name>
@@ -67,17 +67,17 @@
     </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="structTestResults_1a257eba3a9005a5c19c68ae27774948f7" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void TestResults::add_result</definition>
         <argsstring>(bool passed, uint64_t execution_time) noexcept</argsstring>
         <name>add_result</name>
         <qualifiedname>TestResults::add_result</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>passed</declname>
         </param>
         <param>
-          <type>uint64_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint64_t</ref></type>
           <declname>execution_time</declname>
         </param>
         <briefdescription>
@@ -108,7 +108,7 @@
         <location file="examples/esp32/main/TestFramework.h" line="177" column="8" bodyfile="examples/esp32/main/TestFramework.h" bodystart="177" bodyend="185"/>
       </memberdef>
       <memberdef kind="function" id="structTestResults_1abd312f39dea9e43056ca161f315c7569" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>double</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">double</ref></type>
         <definition>double TestResults::get_success_percentage</definition>
         <argsstring>() const noexcept</argsstring>
         <name>get_success_percentage</name>
@@ -117,7 +117,7 @@
 <para>Calculate success percentage. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>Success percentage (0.0 to 100.0) </para>
+<para><simplesect kind="return"><para>Success percentage (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">0.0</ref> to <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">100.0</ref>) </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -126,7 +126,7 @@
         <location file="examples/esp32/main/TestFramework.h" line="191" column="10" bodyfile="examples/esp32/main/TestFramework.h" bodystart="191" bodyend="193"/>
       </memberdef>
       <memberdef kind="function" id="structTestResults_1a7466f28f6ee19443a8c8510588c7844e" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>double</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">double</ref></type>
         <definition>double TestResults::get_total_time_ms</definition>
         <argsstring>() const noexcept</argsstring>
         <name>get_total_time_ms</name>

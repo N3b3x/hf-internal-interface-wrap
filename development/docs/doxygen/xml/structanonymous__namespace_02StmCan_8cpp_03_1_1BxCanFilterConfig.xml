@@ -4,7 +4,7 @@
     <compoundname>anonymous_namespace{StmCan.cpp}::BxCanFilterConfig</compoundname>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a5ef27f38f4b34810ee5dc4e68528def3" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterIdHigh</definition>
         <argsstring></argsstring>
         <name>FilterIdHigh</name>
@@ -18,7 +18,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="83" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1aae57c2e70949ef5318aa2a000fab2c78" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterIdLow</definition>
         <argsstring></argsstring>
         <name>FilterIdLow</name>
@@ -32,7 +32,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="84" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a0a3ff18283b0cb5282105e6980b9e624" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterMaskIdHigh</definition>
         <argsstring></argsstring>
         <name>FilterMaskIdHigh</name>
@@ -46,7 +46,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="85" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a0a3f10835c734080cf2eec0126de736a" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterMaskIdLow</definition>
         <argsstring></argsstring>
         <name>FilterMaskIdLow</name>
@@ -60,7 +60,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="86" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a58961fc7676f78f2f95c2b212af1b315" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterFIFOAssignment</definition>
         <argsstring></argsstring>
         <name>FilterFIFOAssignment</name>
@@ -74,7 +74,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="87" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1ad31584ea2bf99ae6e04a7c0caf2a3ab2" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterBank</definition>
         <argsstring></argsstring>
         <name>FilterBank</name>
@@ -88,7 +88,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="88" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a7514bd5580fd64c5f0ef054fc125f8d1" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterMode</definition>
         <argsstring></argsstring>
         <name>FilterMode</name>
@@ -102,7 +102,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="89" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1ab96793d44e6b509bf353e91d243dc40c" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterScale</definition>
         <argsstring></argsstring>
         <name>FilterScale</name>
@@ -116,7 +116,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="90" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1ae8c007d46f5effe189bce6fd910f53b7" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::FilterActivation</definition>
         <argsstring></argsstring>
         <name>FilterActivation</name>
@@ -130,7 +130,7 @@
         <location file="src/mcu/stm32/StmCan.cpp" line="91" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig_1a90dc4dfc8990a249cd269dd2b207be79" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t anonymous_namespace{StmCan.cpp}::BxCanFilterConfig::SlaveStartFilterBank</definition>
         <argsstring></argsstring>
         <name>SlaveStartFilterBank</name>

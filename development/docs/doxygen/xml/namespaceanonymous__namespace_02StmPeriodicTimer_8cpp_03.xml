@@ -4,7 +4,7 @@
     <compoundname>anonymous_namespace{StmPeriodicTimer.cpp}</compoundname>
     <sectiondef kind="var">
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03_1addee097d86298b115ec84fdf83c00338" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmPeriodicTimer.cpp}::kTimPscOffset</definition>
         <argsstring></argsstring>
         <name>kTimPscOffset</name>
@@ -19,7 +19,7 @@
         <location file="src/mcu/stm32/StmPeriodicTimer.cpp" line="29" column="24" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03_1a97674b78566017e519544281700aa2cb" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmPeriodicTimer.cpp}::kTimArrOffset</definition>
         <argsstring></argsstring>
         <name>kTimArrOffset</name>
@@ -34,7 +34,7 @@
         <location file="src/mcu/stm32/StmPeriodicTimer.cpp" line="30" column="24" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03_1a6ac00d3cae493e39fd6eda8ca5452c13" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmPeriodicTimer.cpp}::kTimEgrOffset</definition>
         <argsstring></argsstring>
         <name>kTimEgrOffset</name>
@@ -49,7 +49,7 @@
         <location file="src/mcu/stm32/StmPeriodicTimer.cpp" line="31" column="24" bodyfile="src/mcu/stm32/StmPeriodicTimer.cpp" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceanonymous__namespace_02StmPeriodicTimer_8cpp_03_1ad51b447f667e659d0b329fd865ec8e89" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t anonymous_namespace{StmPeriodicTimer.cpp}::kTimEgrUgBit</definition>
         <argsstring></argsstring>
         <name>kTimEgrUgBit</name>

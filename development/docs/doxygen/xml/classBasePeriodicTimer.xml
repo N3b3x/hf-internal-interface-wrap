@@ -22,7 +22,7 @@
         <location file="inc/base/BasePeriodicTimer.h" line="392" column="23" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="392" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBasePeriodicTimer_1aee2e35d2b7143181770d86f72fa631f2" prot="protected" static="no" mutable="no">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void* BasePeriodicTimer::user_data_</definition>
         <argsstring></argsstring>
         <name>user_data_</name>
@@ -37,7 +37,7 @@
         <location file="inc/base/BasePeriodicTimer.h" line="393" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="393" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBasePeriodicTimer_1a4931919b4fc300c566777f0ad98ab908" prot="protected" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BasePeriodicTimer::initialized_</definition>
         <argsstring></argsstring>
         <name>initialized_</name>
@@ -52,7 +52,7 @@
         <location file="inc/base/BasePeriodicTimer.h" line="394" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="394" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBasePeriodicTimer_1a92fb79b47b18c0511d19823d1ae5e1cb" prot="protected" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BasePeriodicTimer::running_</definition>
         <argsstring></argsstring>
         <name>running_</name>
@@ -120,7 +120,7 @@
         <name>BasePeriodicTimer</name>
         <qualifiedname>BasePeriodicTimer::BasePeriodicTimer</qualifiedname>
         <param>
-          <type>const <ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -137,7 +137,7 @@
         <name>operator=</name>
         <qualifiedname>BasePeriodicTimer::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -384,7 +384,7 @@
         <location file="inc/base/BasePeriodicTimer.h" line="236" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a7e4b0f10c13abc297b73ba2436d26318" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BasePeriodicTimer::IsInitialized</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsInitialized</name>
@@ -402,7 +402,7 @@
         <location file="inc/base/BasePeriodicTimer.h" line="246" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="246" bodyend="248"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a4f4d9e85eb508bf12dc0dbd2cbc14d68" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BasePeriodicTimer::IsRunning</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsRunning</name>
@@ -420,7 +420,7 @@
         <location file="inc/base/BasePeriodicTimer.h" line="254" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="254" bodyend="256"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1ae9bdfcba0669d72ec6e8ebac8bcf7042" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>virtual const char * BasePeriodicTimer::GetDescription</definition>
         <argsstring>() const noexcept=0</argsstring>
         <name>GetDescription</name>
@@ -510,9 +510,9 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Set new callback function. </para>
@@ -544,7 +544,7 @@
         <location file="inc/base/BasePeriodicTimer.h" line="288" column="18" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="288" bodyend="295"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a9490ab374ff3044157d97ecb1ae40760" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void * BasePeriodicTimer::GetUserData</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetUserData</name>
@@ -680,9 +680,9 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Protected constructor with callback specification. </para>
@@ -712,13 +712,13 @@
         <location file="inc/base/BasePeriodicTimer.h" line="355" column="12" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="355" bodyend="357"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a5611256d7efd4c86a25f94dd0d46f251" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void BasePeriodicTimer::SetInitialized</definition>
         <argsstring>(bool initialized) noexcept</argsstring>
         <name>SetInitialized</name>
         <qualifiedname>BasePeriodicTimer::SetInitialized</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>initialized</declname>
         </param>
         <briefdescription>
@@ -741,13 +741,13 @@
         <location file="inc/base/BasePeriodicTimer.h" line="363" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="363" bodyend="365"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a3dc1ee8a18e2904083e743530734e16b" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void BasePeriodicTimer::SetRunning</definition>
         <argsstring>(bool running) noexcept</argsstring>
         <name>SetRunning</name>
         <qualifiedname>BasePeriodicTimer::SetRunning</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>running</declname>
         </param>
         <briefdescription>
@@ -770,7 +770,7 @@
         <location file="inc/base/BasePeriodicTimer.h" line="371" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="371" bodyend="373"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1aae4a0926e98fdb58b4930ff91c479a2b" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void BasePeriodicTimer::ExecuteCallback</definition>
         <argsstring>() noexcept</argsstring>
         <name>ExecuteCallback</name>
@@ -785,7 +785,7 @@
         <location file="inc/base/BasePeriodicTimer.h" line="378" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="378" bodyend="382"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1af116318ea0e9856c64ba1bdc0df8ae12" prot="protected" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BasePeriodicTimer::HasValidCallback</definition>
         <argsstring>() const noexcept</argsstring>
         <name>HasValidCallback</name>

@@ -65,7 +65,7 @@
         <location file="inc/base/BaseUart.h" line="144" column="12" bodyfile="inc/base/BaseUart.h" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__diagnostics__t_1a47ed89b1c6a36336692a0b514bfa1492" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_uart_diagnostics_t::is_initialized</definition>
         <argsstring></argsstring>
         <name>is_initialized</name>
@@ -80,7 +80,7 @@
         <location file="inc/base/BaseUart.h" line="145" column="8" bodyfile="inc/base/BaseUart.h" bodystart="145" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__diagnostics__t_1afddc733ba48e921c8287590c249f91b6" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_uart_diagnostics_t::is_transmitting</definition>
         <argsstring></argsstring>
         <name>is_transmitting</name>
@@ -95,7 +95,7 @@
         <location file="inc/base/BaseUart.h" line="146" column="8" bodyfile="inc/base/BaseUart.h" bodystart="146" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__diagnostics__t_1abbba424bf9907b52bcd5f322a066271d" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_uart_diagnostics_t::is_receiving</definition>
         <argsstring></argsstring>
         <name>is_receiving</name>
@@ -110,7 +110,7 @@
         <location file="inc/base/BaseUart.h" line="147" column="8" bodyfile="inc/base/BaseUart.h" bodystart="147" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__diagnostics__t_1a161d792932c793db01068abee6bcb403" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_uart_diagnostics_t::flow_control_active</definition>
         <argsstring></argsstring>
         <name>flow_control_active</name>
@@ -125,7 +125,7 @@
         <location file="inc/base/BaseUart.h" line="148" column="8" bodyfile="inc/base/BaseUart.h" bodystart="148" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__diagnostics__t_1a9656a07908f6ea6af38b6fc61d93a0ff" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_uart_diagnostics_t::pattern_detection_active</definition>
         <argsstring></argsstring>
         <name>pattern_detection_active</name>
@@ -140,7 +140,7 @@
         <location file="inc/base/BaseUart.h" line="149" column="8" bodyfile="inc/base/BaseUart.h" bodystart="149" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__diagnostics__t_1ae51153d1dd24c469bf3af1697e8392b4" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_uart_diagnostics_t::wakeup_enabled</definition>
         <argsstring></argsstring>
         <name>wakeup_enabled</name>

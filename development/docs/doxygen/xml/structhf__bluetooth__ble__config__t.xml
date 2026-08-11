@@ -5,7 +5,7 @@
     <includes refid="BaseBluetooth_8h" local="no">BaseBluetooth.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__bluetooth__ble__config__t_1a8b2e3677d9dd8b45b035570155fe17fa" prot="public" static="no" mutable="no">
-        <type>std::string</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref></type>
         <definition>std::string hf_bluetooth_ble_config_t::device_name</definition>
         <argsstring></argsstring>
         <name>device_name</name>
@@ -20,7 +20,7 @@
         <location file="inc/base/BaseBluetooth.h" line="300" column="15" bodyfile="inc/base/BaseBluetooth.h" bodystart="300" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__bluetooth__ble__config__t_1a7dbdb6d852f3148e0a7e3f628cc81e6b" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_bluetooth_ble_config_t::advertising</definition>
         <argsstring></argsstring>
         <name>advertising</name>
@@ -35,7 +35,7 @@
         <location file="inc/base/BaseBluetooth.h" line="301" column="8" bodyfile="inc/base/BaseBluetooth.h" bodystart="301" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__bluetooth__ble__config__t_1a69caf206673da36a9d3024445cb4a218" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_bluetooth_ble_config_t::scannable</definition>
         <argsstring></argsstring>
         <name>scannable</name>
@@ -50,7 +50,7 @@
         <location file="inc/base/BaseBluetooth.h" line="302" column="8" bodyfile="inc/base/BaseBluetooth.h" bodystart="302" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__bluetooth__ble__config__t_1a71d2ac471e61ad37a07b4308369d69c8" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_bluetooth_ble_config_t::connectable</definition>
         <argsstring></argsstring>
         <name>connectable</name>
@@ -65,7 +65,7 @@
         <location file="inc/base/BaseBluetooth.h" line="303" column="8" bodyfile="inc/base/BaseBluetooth.h" bodystart="303" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__bluetooth__ble__config__t_1af530377773136b461f15a89e265b5b31" prot="public" static="no" mutable="no">
-        <type>uint16_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
         <definition>uint16_t hf_bluetooth_ble_config_t::advertising_interval_ms</definition>
         <argsstring></argsstring>
         <name>advertising_interval_ms</name>
@@ -80,7 +80,7 @@
         <location file="inc/base/BaseBluetooth.h" line="304" column="12" bodyfile="inc/base/BaseBluetooth.h" bodystart="304" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__bluetooth__ble__config__t_1a6fe854fdbbdeb5bc65bb5d53be82b3c1" prot="public" static="no" mutable="no">
-        <type>uint16_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
         <definition>uint16_t hf_bluetooth_ble_config_t::scan_interval_ms</definition>
         <argsstring></argsstring>
         <name>scan_interval_ms</name>
@@ -95,7 +95,7 @@
         <location file="inc/base/BaseBluetooth.h" line="305" column="12" bodyfile="inc/base/BaseBluetooth.h" bodystart="305" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__bluetooth__ble__config__t_1a9974fc7466f342cf3db78370e4c80069" prot="public" static="no" mutable="no">
-        <type>uint16_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
         <definition>uint16_t hf_bluetooth_ble_config_t::scan_window_ms</definition>
         <argsstring></argsstring>
         <name>scan_window_ms</name>

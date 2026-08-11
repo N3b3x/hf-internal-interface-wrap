@@ -6,12 +6,12 @@
     <includes refid="EspUsbSerialJtag_8h" local="no">EspUsbSerialJtag.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classEspUsbSerialJtag_1a51f00d391dba736a6231f26f89551631" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUsbSerialJtag::owns_driver_</definition>
         <argsstring></argsstring>
         <name>owns_driver_</name>
         <qualifiedname>EspUsbSerialJtag::owns_driver_</qualifiedname>
-        <initializer>{false}</initializer>
+        <initializer>{<ref refid="classSoftChipSelectGuard" kindref="compound">false</ref>}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -45,7 +45,7 @@
         <name>EspUsbSerialJtag</name>
         <qualifiedname>EspUsbSerialJtag::EspUsbSerialJtag</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__usb__serial__jtag__config__t" kindref="compound">hf_usb_serial_jtag_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__usb__serial__jtag__config__t" kindref="compound">hf_usb_serial_jtag_config_t</ref> &amp;</type>
           <declname>cfg</declname>
         </param>
         <briefdescription>
@@ -87,7 +87,7 @@
         <location file="inc/mcu/esp32/EspUsbSerialJtag.h" line="61" column="3" bodyfile="src/mcu/esp32/EspUsbSerialJtag.cpp" bodystart="60" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classEspUsbSerialJtag_1a993d365789c7d39ddeca2da2840013cc" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUsbSerialJtag::Initialize</definition>
         <argsstring>() noexcept override</argsstring>
         <name>Initialize</name>
@@ -103,7 +103,7 @@
         <location file="inc/mcu/esp32/EspUsbSerialJtag.h" line="64" column="17" bodyfile="src/mcu/esp32/EspUsbSerialJtag.cpp" bodystart="71" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="classEspUsbSerialJtag_1a42580698847a472bc223bd8671fcc7b8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUsbSerialJtag::Deinitialize</definition>
         <argsstring>() noexcept override</argsstring>
         <name>Deinitialize</name>
@@ -126,7 +126,7 @@
         <qualifiedname>EspUsbSerialJtag::Write</qualifiedname>
         <reimplements refid="classBaseUsbSerialJtag_1a44b3bf5fe39a230149387021f542760e">Write</reimplements>
         <param>
-          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
           <declname>data</declname>
         </param>
         <param>
@@ -198,7 +198,7 @@
         <param>
           <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> *</type>
           <declname>out_read_count</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Pull up to <computeroutput>length</computeroutput> bytes from the host PC. </para>
@@ -267,7 +267,7 @@
         <location file="inc/mcu/esp32/EspUsbSerialJtag.h" line="69" column="17" bodyfile="src/mcu/esp32/EspUsbSerialJtag.cpp" bodystart="193" bodyend="202"/>
       </memberdef>
       <memberdef kind="function" id="classEspUsbSerialJtag_1aa15d83597196465ecc53b41c20d71b9b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUsbSerialJtag::IsHostConnected</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>IsHostConnected</name>
@@ -276,7 +276,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>True iff the host PC is currently enumerating / receiving SOF packets. Returns false when only powered (e.g. plugged into a power bank). </para>
+<para>True iff the host PC is currently enumerating / receiving SOF packets. Returns false when only powered (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">e.g</ref>. plugged into a power bank). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -307,7 +307,7 @@
         <name>Default</name>
         <qualifiedname>EspUsbSerialJtag::Default</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__usb__serial__jtag__config__t" kindref="compound">hf_usb_serial_jtag_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__usb__serial__jtag__config__t" kindref="compound">hf_usb_serial_jtag_config_t</ref> &amp;</type>
           <declname>cfg</declname>
           <defval>{}</defval>
         </param>

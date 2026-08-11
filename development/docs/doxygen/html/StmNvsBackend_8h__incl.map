@@ -1,0 +1,7 @@
+<map id="inc/mcu/stm32/StmNvsBackend.h" name="inc/mcu/stm32/StmNvsBackend.h">
+<area shape="rect" id="Node000001" title="Weak product hooks for StmNvs flash I/O (external / QSPI&#45;backed NVS)." alt="" coords="5,5,300,36"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="56,84,143,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,38,119,74,115,71,140,35"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="167,84,247,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,35,191,71,187,74,161,38"/>
+</map>

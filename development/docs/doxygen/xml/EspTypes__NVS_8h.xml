@@ -105,7 +105,7 @@
       <memberdef kind="define" id="EspTypes__NVS_8h_1a61909dc999b3029d637d8f2b6ab04c6c" prot="public" static="no">
         <name>HF_NVS_IS_VALID_KEY_LENGTH</name>
         <param><defname>len</defname></param>
-        <initializer>((len) &gt; 0 &amp;&amp; (len) &lt;= <ref refid="EspTypes__NVS_8h_1a9097ab0c9516e77d3c7a0f5d1ff06f4e" kindref="member">HF_NVS_MAX_KEY_LENGTH</ref>)</initializer>
+        <initializer>((<ref refid="classSoftChipSelectGuard" kindref="compound">len</ref>) &gt; 0 &amp;&amp; (<ref refid="classSoftChipSelectGuard" kindref="compound">len</ref>) &lt;= <ref refid="EspTypes__NVS_8h_1a9097ab0c9516e77d3c7a0f5d1ff06f4e" kindref="member">HF_NVS_MAX_KEY_LENGTH</ref>)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -129,7 +129,7 @@
       <memberdef kind="define" id="EspTypes__NVS_8h_1a106d19fd51da327f8fee30db28eabc7e" prot="public" static="no">
         <name>HF_NVS_IS_VALID_NAMESPACE_LENGTH</name>
         <param><defname>len</defname></param>
-        <initializer>((len) &gt; 0 &amp;&amp; (len) &lt;= <ref refid="EspTypes__NVS_8h_1a6732ac2dfabf27a7eae3f7117b55fdfc" kindref="member">HF_NVS_MAX_NAMESPACE_LENGTH</ref>)</initializer>
+        <initializer>((<ref refid="classSoftChipSelectGuard" kindref="compound">len</ref>) &gt; 0 &amp;&amp; (<ref refid="classSoftChipSelectGuard" kindref="compound">len</ref>) &lt;= <ref refid="EspTypes__NVS_8h_1a6732ac2dfabf27a7eae3f7117b55fdfc" kindref="member">HF_NVS_MAX_NAMESPACE_LENGTH</ref>)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -141,7 +141,7 @@
     </sectiondef>
     <sectiondef kind="enum">
       <memberdef kind="enum" id="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" prot="public" static="no" strong="yes">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <name>hf_nvs_type_t</name>
         <enumvalue id="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a74a956df6eb6fe85d598d42ead5081dd" prot="public">
           <name>HF_NVS_TYPE_U8</name>
@@ -243,7 +243,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="53" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="53" bodyend="64"/>
       </memberdef>
       <memberdef kind="enum" id="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3ba" prot="public" static="no" strong="yes">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <name>hf_nvs_open_mode_t</name>
         <enumvalue id="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3baa01f2861b174eeddc0abf8fabf1ae48df" prot="public">
           <name>HF_NVS_READONLY</name>
@@ -273,7 +273,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="69" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="69" bodyend="72"/>
       </memberdef>
       <memberdef kind="enum" id="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2" prot="public" static="no" strong="yes">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <name>hf_nvs_encryption_mode_t</name>
         <enumvalue id="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2ab092ccbcf732dd28498fc4d4a4958ba6" prot="public">
           <name>HF_NVS_ENCRYPTION_NONE</name>
@@ -314,7 +314,7 @@
     </sectiondef>
     <sectiondef kind="var">
       <memberdef kind="variable" id="EspTypes__NVS_8h_1a9097ab0c9516e77d3c7a0f5d1ff06f4e" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr size_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>constexpr size_t HF_NVS_MAX_KEY_LENGTH</definition>
         <argsstring></argsstring>
         <name>HF_NVS_MAX_KEY_LENGTH</name>
@@ -328,7 +328,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="33" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="EspTypes__NVS_8h_1a00dd6a75504fc5428f7dd8eb6dbf4fa8" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr size_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>constexpr size_t HF_NVS_MAX_VALUE_SIZE</definition>
         <argsstring></argsstring>
         <name>HF_NVS_MAX_VALUE_SIZE</name>
@@ -342,7 +342,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="34" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="EspTypes__NVS_8h_1a6732ac2dfabf27a7eae3f7117b55fdfc" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr size_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>constexpr size_t HF_NVS_MAX_NAMESPACE_LENGTH</definition>
         <argsstring></argsstring>
         <name>HF_NVS_MAX_NAMESPACE_LENGTH</name>
@@ -356,7 +356,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="35" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="EspTypes__NVS_8h_1adb6399f5a4a701c4fe6358054e39ff7d" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr size_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>constexpr size_t HF_NVS_MAX_NAMESPACES</definition>
         <argsstring></argsstring>
         <name>HF_NVS_MAX_NAMESPACES</name>
@@ -370,7 +370,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="36" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="EspTypes__NVS_8h_1a393e890752b8b823c8fcf61f5bad575d" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr size_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>constexpr size_t HF_NVS_FLASH_SECTOR_SIZE</definition>
         <argsstring></argsstring>
         <name>HF_NVS_FLASH_SECTOR_SIZE</name>
@@ -384,7 +384,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="37" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="EspTypes__NVS_8h_1a269ddbecae6d8587d128ade2eeb95d13" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr size_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>constexpr size_t HF_NVS_PAGE_SIZE</definition>
         <argsstring></argsstring>
         <name>HF_NVS_PAGE_SIZE</name>
@@ -398,7 +398,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="38" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="EspTypes__NVS_8h_1a1ae0d938b9b4ff3bdcbcc339e71b0975" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr size_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>constexpr size_t HF_NVS_ENTRY_SIZE</definition>
         <argsstring></argsstring>
         <name>HF_NVS_ENTRY_SIZE</name>
@@ -412,7 +412,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="39" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="EspTypes__NVS_8h_1a553b207307a6ac9af3a6cf39698fe3f3" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t HF_NVS_OPERATION_TIMEOUT_MS</definition>
         <argsstring></argsstring>
         <name>HF_NVS_OPERATION_TIMEOUT_MS</name>
@@ -427,7 +427,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="42" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="EspTypes__NVS_8h_1aac77e90f835e0df6df399c0f6c46b14b" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t HF_NVS_INIT_TIMEOUT_MS</definition>
         <argsstring></argsstring>
         <name>HF_NVS_INIT_TIMEOUT_MS</name>
@@ -442,7 +442,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="43" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="EspTypes__NVS_8h_1a1b939eec78119d90237c290f36c663e0" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>constexpr uint32_t HF_NVS_COMMIT_TIMEOUT_MS</definition>
         <argsstring></argsstring>
         <name>HF_NVS_COMMIT_TIMEOUT_MS</name>
@@ -459,12 +459,12 @@
     </sectiondef>
     <sectiondef kind="func">
       <memberdef kind="function" id="EspTypes__NVS_8h_1a8641201efc750e465b29e13fd3840af8" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>constexpr bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>constexpr bool IsValidNvsKey</definition>
         <argsstring>(const char *key) noexcept</argsstring>
         <name>IsValidNvsKey</name>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <briefdescription>
@@ -489,12 +489,12 @@
         <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="173" column="23" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="173" bodyend="178"/>
       </memberdef>
       <memberdef kind="function" id="EspTypes__NVS_8h_1a40698a7f82017e735b1cb544ceb106ff" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>constexpr bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>constexpr bool IsValidNvsNamespace</definition>
         <argsstring>(const char *namespace_name) noexcept</argsstring>
         <name>IsValidNvsNamespace</name>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>namespace_name</declname>
         </param>
         <briefdescription>
@@ -519,12 +519,12 @@
         <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="185" column="23" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="185" bodyend="190"/>
       </memberdef>
       <memberdef kind="function" id="EspTypes__NVS_8h_1a33d0acd2ef347bd0c22406fc4aeec3a1" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>constexpr bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>constexpr bool IsValidNvsValueSize</definition>
         <argsstring>(size_t size) noexcept</argsstring>
         <name>IsValidNvsValueSize</name>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>size</declname>
         </param>
         <briefdescription>
@@ -549,7 +549,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="197" column="23" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="197" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="EspTypes__NVS_8h_1aef03a4f30898c92c437762c676cadbe2" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>constexpr size_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>constexpr size_t GetMaxValueSizeForType</definition>
         <argsstring>(hf_nvs_type_t type) noexcept</argsstring>
         <name>GetMaxValueSizeForType</name>
@@ -622,15 +622,15 @@
 <codeline lineno="39" refid="EspTypes__NVS_8h_1a1ae0d938b9b4ff3bdcbcc339e71b0975" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a1ae0d938b9b4ff3bdcbcc339e71b0975" kindref="member">HF_NVS_ENTRY_SIZE</ref><sp/>=<sp/>32;</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NVS<sp/>operation<sp/>timeouts</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42" refid="EspTypes__NVS_8h_1a553b207307a6ac9af3a6cf39698fe3f3" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="EspTypes__NVS_8h_1a553b207307a6ac9af3a6cf39698fe3f3" kindref="member">HF_NVS_OPERATION_TIMEOUT_MS</ref><sp/>=<sp/>1000;<sp/></highlight></codeline>
-<codeline lineno="43" refid="EspTypes__NVS_8h_1aac77e90f835e0df6df399c0f6c46b14b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="EspTypes__NVS_8h_1aac77e90f835e0df6df399c0f6c46b14b" kindref="member">HF_NVS_INIT_TIMEOUT_MS</ref><sp/>=<sp/>5000;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="44" refid="EspTypes__NVS_8h_1a1b939eec78119d90237c290f36c663e0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="EspTypes__NVS_8h_1a1b939eec78119d90237c290f36c663e0" kindref="member">HF_NVS_COMMIT_TIMEOUT_MS</ref><sp/>=<sp/>2000;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42" refid="EspTypes__NVS_8h_1a553b207307a6ac9af3a6cf39698fe3f3" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref><sp/><ref refid="EspTypes__NVS_8h_1a553b207307a6ac9af3a6cf39698fe3f3" kindref="member">HF_NVS_OPERATION_TIMEOUT_MS</ref><sp/>=<sp/>1000;<sp/></highlight></codeline>
+<codeline lineno="43" refid="EspTypes__NVS_8h_1aac77e90f835e0df6df399c0f6c46b14b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref><sp/><ref refid="EspTypes__NVS_8h_1aac77e90f835e0df6df399c0f6c46b14b" kindref="member">HF_NVS_INIT_TIMEOUT_MS</ref><sp/>=<sp/>5000;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44" refid="EspTypes__NVS_8h_1a1b939eec78119d90237c290f36c663e0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref><sp/><ref refid="EspTypes__NVS_8h_1a1b939eec78119d90237c290f36c663e0" kindref="member">HF_NVS_COMMIT_TIMEOUT_MS</ref><sp/>=<sp/>2000;<sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>NVS<sp/>ENUMS</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53" refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" kindref="member">hf_nvs_type_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="53" refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" kindref="member">hf_nvs_type_t</ref><sp/>:<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref><sp/>{</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a74a956df6eb6fe85d598d42ead5081dd" kindref="member">HF_NVS_TYPE_U8</ref><sp/>=<sp/>0,<sp/><sp/></highlight></codeline>
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a7cb63e1d5d8fb9a08fc4b76c12ecc3a4" kindref="member">HF_NVS_TYPE_I8</ref><sp/>=<sp/>1,<sp/><sp/></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617ada555b403b18419f1d423dd3d60786f2" kindref="member">HF_NVS_TYPE_U16</ref><sp/>=<sp/>2,<sp/></highlight></codeline>
@@ -643,12 +643,12 @@
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a5387a33fa068bb23735e95eadc5cba86" kindref="member">HF_NVS_TYPE_BLOB</ref><sp/>=<sp/>9<sp/></highlight></codeline>
 <codeline lineno="64"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69" refid="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3ba" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3ba" kindref="member">hf_nvs_open_mode_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="69" refid="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3ba" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3ba" kindref="member">hf_nvs_open_mode_t</ref><sp/>:<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref><sp/>{</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3baa01f2861b174eeddc0abf8fabf1ae48df" kindref="member">HF_NVS_READONLY</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3baa9de1ba7d3f0471369c2d4d5e16d212dc" kindref="member">HF_NVS_READWRITE</ref><sp/>=<sp/>1<sp/></highlight></codeline>
 <codeline lineno="72"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="77" refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2" kindref="member">hf_nvs_encryption_mode_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="77" refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2" kindref="member">hf_nvs_encryption_mode_t</ref><sp/>:<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref><sp/>{</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2ab092ccbcf732dd28498fc4d4a4958ba6" kindref="member">HF_NVS_ENCRYPTION_NONE</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2aee877b8d0ef55769dd976a4a2e1a91d7" kindref="member">HF_NVS_ENCRYPTION_HMAC</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2ac5586db581a7725170e9010c8f7c5fc7" kindref="member">HF_NVS_ENCRYPTION_XTS</ref><sp/>=<sp/>2<sp/><sp/><sp/></highlight></codeline>
@@ -666,11 +666,11 @@
 <codeline lineno="95" refid="structhf__nvs__partition__config__t_1adc2f8249c1aa1178379baae8673c81ab" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__partition__config__t_1adc2f8249c1aa1178379baae8673c81ab" kindref="member">max_entries</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="96" refid="structhf__nvs__partition__config__t_1a8979b3d0d128254e0c919c30a59f78c2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__partition__config__t_1a8979b3d0d128254e0c919c30a59f78c2" kindref="member">auto_commit</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="98" refid="structhf__nvs__partition__config__t_1ae38ecb16cd130fb144836b3c73f42eb4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__nvs__partition__config__t_1ae38ecb16cd130fb144836b3c73f42eb4" kindref="member">hf_nvs_partition_config_t</ref>()<sp/>noexcept</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__nvs__partition__config__t_1a25d4693673db6800b111c2aa72621e5e" kindref="member">partition_label</ref>(&quot;nvs&quot;),<sp/><ref refid="structhf__nvs__partition__config__t_1a956314821f9a7b6cc388863a6ebe4c3b" kindref="member">namespace_name</ref>(&quot;default&quot;),</highlight></codeline>
+<codeline lineno="98" refid="structhf__nvs__partition__config__t_1ae38ecb16cd130fb144836b3c73f42eb4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__nvs__partition__config__t_1ae38ecb16cd130fb144836b3c73f42eb4" kindref="member">hf_nvs_partition_config_t</ref>()<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">noexcept</ref></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__nvs__partition__config__t_1a25d4693673db6800b111c2aa72621e5e" kindref="member">partition_label</ref>(&quot;nvs&quot;),<sp/><ref refid="structhf__nvs__partition__config__t_1a956314821f9a7b6cc388863a6ebe4c3b" kindref="member">namespace_name</ref>(&quot;<ref refid="classSoftChipSelectGuard" kindref="compound">default</ref>&quot;),</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__partition__config__t_1a4a094f7dc60b0dca840a96888c5730ae" kindref="member">open_mode</ref>(<ref refid="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3ba" kindref="member">hf_nvs_open_mode_t</ref>::<ref refid="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3baa9de1ba7d3f0471369c2d4d5e16d212dc" kindref="member">HF_NVS_READWRITE</ref>),</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__partition__config__t_1a4955da28c42450fa6e5f2d4747f30701" kindref="member">encryption</ref>(<ref refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2" kindref="member">hf_nvs_encryption_mode_t</ref>::<ref refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2ab092ccbcf732dd28498fc4d4a4958ba6" kindref="member">HF_NVS_ENCRYPTION_NONE</ref>),<sp/><ref refid="structhf__nvs__partition__config__t_1adc2f8249c1aa1178379baae8673c81ab" kindref="member">max_entries</ref>(256),</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__partition__config__t_1a8979b3d0d128254e0c919c30a59f78c2" kindref="member">auto_commit</ref>(true)<sp/>{}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__partition__config__t_1a8979b3d0d128254e0c919c30a59f78c2" kindref="member">auto_commit</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">true</ref>)<sp/>{}</highlight></codeline>
 <codeline lineno="103"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"></highlight></codeline>
 <codeline lineno="108" refid="structhf__nvs__capabilities__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__nvs__capabilities__t" kindref="compound">hf_nvs_capabilities_t</ref><sp/>{</highlight></codeline>
@@ -685,12 +685,12 @@
 <codeline lineno="117" refid="structhf__nvs__capabilities__t_1ab9b752d6daf7d3899375846747ebd2fe" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__capabilities__t_1ab9b752d6daf7d3899375846747ebd2fe" kindref="member">supports_atomic_operations</ref>;<sp/></highlight></codeline>
 <codeline lineno="118" refid="structhf__nvs__capabilities__t_1a9141725a7918dc37664bcb87b19b447c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__capabilities__t_1a9141725a7918dc37664bcb87b19b447c" kindref="member">supports_wear_leveling</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="119"><highlight class="normal"></highlight></codeline>
-<codeline lineno="120" refid="structhf__nvs__capabilities__t_1aade4d0e7880b1d69f0691b2188410522" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__nvs__capabilities__t_1aade4d0e7880b1d69f0691b2188410522" kindref="member">hf_nvs_capabilities_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="120" refid="structhf__nvs__capabilities__t_1aade4d0e7880b1d69f0691b2188410522" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__nvs__capabilities__t_1aade4d0e7880b1d69f0691b2188410522" kindref="member">hf_nvs_capabilities_t</ref>()<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">noexcept</ref></highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__nvs__capabilities__t_1a30251edaa0f83ca63430cf61ce4f0ba3" kindref="member">max_namespaces</ref>(<ref refid="EspTypes__NVS_8h_1adb6399f5a4a701c4fe6358054e39ff7d" kindref="member">HF_NVS_MAX_NAMESPACES</ref>),<sp/><ref refid="structhf__nvs__capabilities__t_1ae47180670acbbc7ca5c67264d8f53108" kindref="member">max_keys_per_namespace</ref>(256),</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__capabilities__t_1a35ad86193e5214b4cd0fd228ca79d508" kindref="member">max_key_length</ref>(<ref refid="EspTypes__NVS_8h_1a9097ab0c9516e77d3c7a0f5d1ff06f4e" kindref="member">HF_NVS_MAX_KEY_LENGTH</ref>),<sp/><ref refid="structhf__nvs__capabilities__t_1ac797bf5d2d0ad433ecb41332c87fb8a4" kindref="member">max_value_size</ref>(<ref refid="EspTypes__NVS_8h_1a00dd6a75504fc5428f7dd8eb6dbf4fa8" kindref="member">HF_NVS_MAX_VALUE_SIZE</ref>),</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__capabilities__t_1a96ddf04bb913e0967df0ba28c4371ad2" kindref="member">flash_sector_size</ref>(<ref refid="EspTypes__NVS_8h_1a393e890752b8b823c8fcf61f5bad575d" kindref="member">HF_NVS_FLASH_SECTOR_SIZE</ref>),<sp/><ref refid="structhf__nvs__capabilities__t_1a0db73ea48c19f9f62383d9ced6ef2e7e" kindref="member">supports_encryption</ref>(true),</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__capabilities__t_1aed25a4381da34ed61f41496eae77b8fc" kindref="member">supports_hmac_encryption</ref>(true),<sp/><ref refid="structhf__nvs__capabilities__t_1a56c576b20942aea101189f90471a1288" kindref="member">supports_xts_encryption</ref>(true),</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__capabilities__t_1ab9b752d6daf7d3899375846747ebd2fe" kindref="member">supports_atomic_operations</ref>(true),<sp/><ref refid="structhf__nvs__capabilities__t_1a9141725a7918dc37664bcb87b19b447c" kindref="member">supports_wear_leveling</ref>(true)<sp/>{}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__capabilities__t_1a96ddf04bb913e0967df0ba28c4371ad2" kindref="member">flash_sector_size</ref>(<ref refid="EspTypes__NVS_8h_1a393e890752b8b823c8fcf61f5bad575d" kindref="member">HF_NVS_FLASH_SECTOR_SIZE</ref>),<sp/><ref refid="structhf__nvs__capabilities__t_1a0db73ea48c19f9f62383d9ced6ef2e7e" kindref="member">supports_encryption</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">true</ref>),</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__capabilities__t_1aed25a4381da34ed61f41496eae77b8fc" kindref="member">supports_hmac_encryption</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">true</ref>),<sp/><ref refid="structhf__nvs__capabilities__t_1a56c576b20942aea101189f90471a1288" kindref="member">supports_xts_encryption</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">true</ref>),</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__capabilities__t_1ab9b752d6daf7d3899375846747ebd2fe" kindref="member">supports_atomic_operations</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">true</ref>),<sp/><ref refid="structhf__nvs__capabilities__t_1a9141725a7918dc37664bcb87b19b447c" kindref="member">supports_wear_leveling</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">true</ref>)<sp/>{}</highlight></codeline>
 <codeline lineno="126"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"></highlight></codeline>
 <codeline lineno="131" refid="structhf__nvs__iterator__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__nvs__iterator__config__t" kindref="compound">hf_nvs_iterator_config_t</ref><sp/>{</highlight></codeline>
@@ -699,7 +699,7 @@
 <codeline lineno="134" refid="structhf__nvs__iterator__config__t_1a8bc76d2487c20d73b26bd130e04878bc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structhf__nvs__iterator__config__t_1a8bc76d2487c20d73b26bd130e04878bc" kindref="member">key_prefix</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="135" refid="structhf__nvs__iterator__config__t_1a36a3a658981b87edd3f46194e3e68c1b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__iterator__config__t_1a36a3a658981b87edd3f46194e3e68c1b" kindref="member">max_entries</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="136"><highlight class="normal"></highlight></codeline>
-<codeline lineno="137" refid="structhf__nvs__iterator__config__t_1a92649a1339942a2530228237ecc5e72f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__nvs__iterator__config__t_1a92649a1339942a2530228237ecc5e72f" kindref="member">hf_nvs_iterator_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="137" refid="structhf__nvs__iterator__config__t_1a92649a1339942a2530228237ecc5e72f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__nvs__iterator__config__t_1a92649a1339942a2530228237ecc5e72f" kindref="member">hf_nvs_iterator_config_t</ref>()<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">noexcept</ref></highlight></codeline>
 <codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__nvs__iterator__config__t_1a65f62a32e0cce249d88cf7ae5af478f0" kindref="member">namespace_name</ref>(</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">),<sp/><ref refid="structhf__nvs__iterator__config__t_1a679b91e6c7e1b8bf721564040be56b3a" kindref="member">type</ref>(<ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" kindref="member">hf_nvs_type_t</ref>::<ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a74a956df6eb6fe85d598d42ead5081dd" kindref="member">HF_NVS_TYPE_U8</ref>),<sp/><ref refid="structhf__nvs__iterator__config__t_1a8bc76d2487c20d73b26bd130e04878bc" kindref="member">key_prefix</ref>(</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">),</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__iterator__config__t_1a36a3a658981b87edd3f46194e3e68c1b" kindref="member">max_entries</ref>(100)<sp/>{}</highlight></codeline>
 <codeline lineno="140"><highlight class="normal">};</highlight></codeline>
@@ -708,9 +708,9 @@
 <codeline lineno="146" refid="structhf__nvs__entry__info__t_1adeb6e3dd4f6818964de5d244ebdb7bf2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__entry__info__t_1adeb6e3dd4f6818964de5d244ebdb7bf2" kindref="member">key</ref>[<ref refid="EspTypes__NVS_8h_1a9097ab0c9516e77d3c7a0f5d1ff06f4e" kindref="member">HF_NVS_MAX_KEY_LENGTH</ref><sp/>+<sp/>1];<sp/></highlight></codeline>
 <codeline lineno="147" refid="structhf__nvs__entry__info__t_1a251ce88b08f259a47a3245cc728b6e21" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" kindref="member">hf_nvs_type_t</ref><sp/><ref refid="structhf__nvs__entry__info__t_1a251ce88b08f259a47a3245cc728b6e21" kindref="member">type</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="148" refid="structhf__nvs__entry__info__t_1a51ffd60006efd11887cbfdc224a8a45d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__entry__info__t_1a51ffd60006efd11887cbfdc224a8a45d" kindref="member">size</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="149" refid="structhf__nvs__entry__info__t_1ae9d023d62c4361f22f36d8b5db9a2249" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__nvs__entry__info__t_1ae9d023d62c4361f22f36d8b5db9a2249" kindref="member">crc</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="149" refid="structhf__nvs__entry__info__t_1ae9d023d62c4361f22f36d8b5db9a2249" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref><sp/><ref refid="structhf__nvs__entry__info__t_1ae9d023d62c4361f22f36d8b5db9a2249" kindref="member">crc</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="150"><highlight class="normal"></highlight></codeline>
-<codeline lineno="151" refid="structhf__nvs__entry__info__t_1aa699a5beadc9585996b7ad8f5b7ec291" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__nvs__entry__info__t_1aa699a5beadc9585996b7ad8f5b7ec291" kindref="member">hf_nvs_entry_info_t</ref>()<sp/>noexcept<sp/>:<sp/><ref refid="structhf__nvs__entry__info__t_1a251ce88b08f259a47a3245cc728b6e21" kindref="member">type</ref>(<ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" kindref="member">hf_nvs_type_t</ref>::<ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a74a956df6eb6fe85d598d42ead5081dd" kindref="member">HF_NVS_TYPE_U8</ref>),<sp/><ref refid="structhf__nvs__entry__info__t_1a51ffd60006efd11887cbfdc224a8a45d" kindref="member">size</ref>(0),<sp/><ref refid="structhf__nvs__entry__info__t_1ae9d023d62c4361f22f36d8b5db9a2249" kindref="member">crc</ref>(0)<sp/>{</highlight></codeline>
+<codeline lineno="151" refid="structhf__nvs__entry__info__t_1aa699a5beadc9585996b7ad8f5b7ec291" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__nvs__entry__info__t_1aa699a5beadc9585996b7ad8f5b7ec291" kindref="member">hf_nvs_entry_info_t</ref>()<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">noexcept</ref><sp/>:<sp/><ref refid="structhf__nvs__entry__info__t_1a251ce88b08f259a47a3245cc728b6e21" kindref="member">type</ref>(<ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" kindref="member">hf_nvs_type_t</ref>::<ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a74a956df6eb6fe85d598d42ead5081dd" kindref="member">HF_NVS_TYPE_U8</ref>),<sp/><ref refid="structhf__nvs__entry__info__t_1a51ffd60006efd11887cbfdc224a8a45d" kindref="member">size</ref>(0),<sp/><ref refid="structhf__nvs__entry__info__t_1ae9d023d62c4361f22f36d8b5db9a2249" kindref="member">crc</ref>(0)<sp/>{</highlight></codeline>
 <codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__entry__info__t_1adeb6e3dd4f6818964de5d244ebdb7bf2" kindref="member">key</ref>[0]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="154"><highlight class="normal">};</highlight></codeline>
@@ -730,15 +730,15 @@
 <codeline lineno="173" refid="EspTypes__NVS_8h_1a8641201efc750e465b29e13fd3840af8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a8641201efc750e465b29e13fd3840af8" kindref="member">IsValidNvsKey</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!key)</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len<sp/>=<sp/>strlen(key);</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a61909dc999b3029d637d8f2b6ab04c6c" kindref="member">HF_NVS_IS_VALID_KEY_LENGTH</ref>(len);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">len</ref><sp/>=<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">strlen</ref>(key);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a61909dc999b3029d637d8f2b6ab04c6c" kindref="member">HF_NVS_IS_VALID_KEY_LENGTH</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">len</ref>);</highlight></codeline>
 <codeline lineno="178"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="179"><highlight class="normal"></highlight></codeline>
 <codeline lineno="185" refid="EspTypes__NVS_8h_1a40698a7f82017e735b1cb544ceb106ff" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a40698a7f82017e735b1cb544ceb106ff" kindref="member">IsValidNvsNamespace</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>namespace_name)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="186"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!namespace_name)</highlight></codeline>
 <codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len<sp/>=<sp/>strlen(namespace_name);</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a106d19fd51da327f8fee30db28eabc7e" kindref="member">HF_NVS_IS_VALID_NAMESPACE_LENGTH</ref>(len);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">len</ref><sp/>=<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">strlen</ref>(namespace_name);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a106d19fd51da327f8fee30db28eabc7e" kindref="member">HF_NVS_IS_VALID_NAMESPACE_LENGTH</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">len</ref>);</highlight></codeline>
 <codeline lineno="190"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="191"><highlight class="normal"></highlight></codeline>
 <codeline lineno="197" refid="EspTypes__NVS_8h_1a33d0acd2ef347bd0c22406fc4aeec3a1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a33d0acd2ef347bd0c22406fc4aeec3a1" kindref="member">IsValidNvsValueSize</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>

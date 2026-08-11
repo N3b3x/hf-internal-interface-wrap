@@ -5,7 +5,7 @@
     <includes refid="PlatformMutex_8h" local="no">PlatformMutex.h</includes>
     <templateparamlist>
       <param>
-        <type>typename Backend</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">typename</ref> Backend</type>
         <defval><ref refid="PlatformMutex_8h_1a0fa5da30b653fe8b9576911f39562a7d" kindref="member">PlatformMutexActiveBackend</ref></defval>
       </param>
     </templateparamlist>
@@ -39,7 +39,7 @@
         <location file="inc/utils/PlatformMutex.h" line="394" column="35" bodyfile="inc/utils/PlatformMutex.h" bodystart="394" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPlatformSharedMutexImpl_1abac6d0e7bb98ecd214163fad80840c26" prot="private" static="no" mutable="no">
-        <type>std::atomic&lt; int &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">int</ref> &gt;</type>
         <definition>std::atomic&lt;int&gt; PlatformSharedMutexImpl&lt; Backend &gt;::readers_</definition>
         <argsstring></argsstring>
         <name>readers_</name>
@@ -53,7 +53,7 @@
         <location file="inc/utils/PlatformMutex.h" line="395" column="17" bodyfile="inc/utils/PlatformMutex.h" bodystart="395" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPlatformSharedMutexImpl_1afeb8141ca69abc4d454f7b385786b675" prot="private" static="no" mutable="no">
-        <type>std::atomic&lt; bool &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref> &gt;</type>
         <definition>std::atomic&lt;bool&gt; PlatformSharedMutexImpl&lt; Backend &gt;::writer_active_</definition>
         <argsstring></argsstring>
         <name>writer_active_</name>
@@ -103,7 +103,7 @@
         <name>PlatformSharedMutexImpl</name>
         <qualifiedname>PlatformSharedMutexImpl::PlatformSharedMutexImpl</qualifiedname>
         <param>
-          <type>const <ref refid="classPlatformSharedMutexImpl" kindref="compound">PlatformSharedMutexImpl</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classPlatformSharedMutexImpl" kindref="compound">PlatformSharedMutexImpl</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -120,7 +120,7 @@
         <name>operator=</name>
         <qualifiedname>PlatformSharedMutexImpl::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classPlatformSharedMutexImpl" kindref="compound">PlatformSharedMutexImpl</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classPlatformSharedMutexImpl" kindref="compound">PlatformSharedMutexImpl</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -167,7 +167,7 @@
         <location file="inc/utils/PlatformMutex.h" line="279" column="29" bodyfile="inc/utils/PlatformMutex.h" bodystart="279" bodyend="293"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformSharedMutexImpl_1a11c4d1d8aa24ddd257abef90668f36d3" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool PlatformSharedMutexImpl&lt; Backend &gt;::lock</definition>
         <argsstring>() noexcept</argsstring>
         <name>lock</name>
@@ -181,7 +181,7 @@
         <location file="inc/utils/PlatformMutex.h" line="297" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="297" bodyend="302"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformSharedMutexImpl_1a52d3da97b39407e463850bab1185dfac" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool PlatformSharedMutexImpl&lt; Backend &gt;::try_lock</definition>
         <argsstring>() noexcept</argsstring>
         <name>try_lock</name>
@@ -195,13 +195,13 @@
         <location file="inc/utils/PlatformMutex.h" line="304" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="304" bodyend="313"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformSharedMutexImpl_1a1adf9ca5db069eaa480f9efc5c15f118" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool PlatformSharedMutexImpl&lt; Backend &gt;::try_lock_for</definition>
         <argsstring>(uint32_t timeout_ms) noexcept</argsstring>
         <name>try_lock_for</name>
         <qualifiedname>PlatformSharedMutexImpl::try_lock_for</qualifiedname>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_ms</declname>
         </param>
         <briefdescription>
@@ -213,7 +213,7 @@
         <location file="inc/utils/PlatformMutex.h" line="315" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="315" bodyend="332"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformSharedMutexImpl_1a9a0c1a1ecd846d64b3fd84808330ecbb" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void PlatformSharedMutexImpl&lt; Backend &gt;::unlock</definition>
         <argsstring>() noexcept</argsstring>
         <name>unlock</name>
@@ -227,7 +227,7 @@
         <location file="inc/utils/PlatformMutex.h" line="334" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="334" bodyend="337"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformSharedMutexImpl_1aad0a612b3ffc69bc7cbac8f94c88dd8e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool PlatformSharedMutexImpl&lt; Backend &gt;::lock_shared</definition>
         <argsstring>() noexcept</argsstring>
         <name>lock_shared</name>
@@ -241,7 +241,7 @@
         <location file="inc/utils/PlatformMutex.h" line="341" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="341" bodyend="352"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformSharedMutexImpl_1abc5584a273f1bdadb85c6d52ad08f332" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool PlatformSharedMutexImpl&lt; Backend &gt;::try_lock_shared</definition>
         <argsstring>() noexcept</argsstring>
         <name>try_lock_shared</name>
@@ -255,13 +255,13 @@
         <location file="inc/utils/PlatformMutex.h" line="354" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="354" bodyend="363"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformSharedMutexImpl_1ae20932eb9d0a6010289eb12feba03be6" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool PlatformSharedMutexImpl&lt; Backend &gt;::try_lock_shared_for</definition>
         <argsstring>(uint32_t timeout_ms) noexcept</argsstring>
         <name>try_lock_shared_for</name>
         <qualifiedname>PlatformSharedMutexImpl::try_lock_shared_for</qualifiedname>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_ms</declname>
         </param>
         <briefdescription>
@@ -273,7 +273,7 @@
         <location file="inc/utils/PlatformMutex.h" line="365" column="10" bodyfile="inc/utils/PlatformMutex.h" bodystart="365" bodyend="383"/>
       </memberdef>
       <memberdef kind="function" id="classPlatformSharedMutexImpl_1a633c17dfb96432934ae5494c883dc357" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void PlatformSharedMutexImpl&lt; Backend &gt;::unlock_shared</definition>
         <argsstring>() noexcept</argsstring>
         <name>unlock_shared</name>

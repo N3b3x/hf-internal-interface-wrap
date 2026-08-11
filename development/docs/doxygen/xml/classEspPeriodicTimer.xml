@@ -61,12 +61,12 @@
         <param>
           <type><ref refid="BasePeriodicTimer_8h_1a40c3b2f30d4492b879e2939cd3ac713d" kindref="member">hf_timer_callback_t</ref></type>
           <declname>callback</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Constructor with callback specification. </para>
@@ -117,7 +117,7 @@
         <name>EspPeriodicTimer</name>
         <qualifiedname>EspPeriodicTimer::EspPeriodicTimer</qualifiedname>
         <param>
-          <type>const <ref refid="classEspPeriodicTimer" kindref="compound">EspPeriodicTimer</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classEspPeriodicTimer" kindref="compound">EspPeriodicTimer</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -134,7 +134,7 @@
         <name>operator=</name>
         <qualifiedname>EspPeriodicTimer::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classEspPeriodicTimer" kindref="compound">EspPeriodicTimer</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classEspPeriodicTimer" kindref="compound">EspPeriodicTimer</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -407,7 +407,7 @@
         <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="118" column="18" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="202" bodyend="208"/>
       </memberdef>
       <memberdef kind="function" id="classEspPeriodicTimer_1a1cd74060851211a103f5bfdc380a58a5" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char * EspPeriodicTimer::GetDescription</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>GetDescription</name>
@@ -555,7 +555,7 @@
         <name>ConvertError</name>
         <qualifiedname>EspPeriodicTimer::ConvertError</qualifiedname>
         <param>
-          <type>int</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
           <declname>platform_error</declname>
         </param>
         <briefdescription>
@@ -580,7 +580,7 @@
         <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="168" column="18" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="233" bodyend="246"/>
       </memberdef>
       <memberdef kind="function" id="classEspPeriodicTimer_1a0349a3781b6b48587e739dc705987b69" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspPeriodicTimer::ValidatePeriod</definition>
         <argsstring>(hf_u64_t period_us) const noexcept</argsstring>
         <name>ValidatePeriod</name>
@@ -611,7 +611,7 @@
         <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="175" column="8" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="248" bodyend="250"/>
       </memberdef>
       <memberdef kind="function" id="classEspPeriodicTimer_1a2d830235ededf0da8e79050c044bc239" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspPeriodicTimer::CreateTimerHandle</definition>
         <argsstring>() noexcept</argsstring>
         <name>CreateTimerHandle</name>
@@ -629,7 +629,7 @@
         <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="181" column="8" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="252" bodyend="272"/>
       </memberdef>
       <memberdef kind="function" id="classEspPeriodicTimer_1ae5b399e734d0f7ff3006cab30e8a2550" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspPeriodicTimer::DestroyTimerHandle</definition>
         <argsstring>() noexcept</argsstring>
         <name>DestroyTimerHandle</name>
@@ -646,13 +646,13 @@
     </sectiondef>
     <sectiondef kind="private-static-func">
       <memberdef kind="function" id="classEspPeriodicTimer_1afad8aa4de436f7593e9db91f10e388f9" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspPeriodicTimer::InternalTimerCallback</definition>
         <argsstring>(void *arg)</argsstring>
         <name>InternalTimerCallback</name>
         <qualifiedname>EspPeriodicTimer::InternalTimerCallback</qualifiedname>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>arg</declname>
         </param>
         <briefdescription>

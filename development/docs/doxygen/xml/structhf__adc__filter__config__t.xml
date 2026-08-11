@@ -5,7 +5,7 @@
     <includes refid="EspTypes__ADC_8h" local="no">EspTypes_ADC.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__adc__filter__config__t_1a6d97e8f7a6f4a8000427a6ae3b480457" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t hf_adc_filter_config_t::filter_id</definition>
         <argsstring></argsstring>
         <name>filter_id</name>

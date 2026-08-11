@@ -50,7 +50,7 @@
         <location file="inc/base/BaseCan.h" line="148" column="18" bodyfile="inc/base/BaseCan.h" bodystart="148" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__config__t_1adce4f534151270920a93193f1e7dca51" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_can_config_t::loopback_mode</definition>
         <argsstring></argsstring>
         <name>loopback_mode</name>
@@ -65,7 +65,7 @@
         <location file="inc/base/BaseCan.h" line="149" column="8" bodyfile="inc/base/BaseCan.h" bodystart="149" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__config__t_1a9b6bece2c40bb4cc7eb2e8025ee45b7a" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_can_config_t::silent_mode</definition>
         <argsstring></argsstring>
         <name>silent_mode</name>

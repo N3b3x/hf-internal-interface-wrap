@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classStmSpiBusLock" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>StmSpiBusLock</compoundname>
+    <includes refid="StmSpi_8h" local="no">StmSpi.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classStmSpiBusLock_1a2cb5dba2a195673057546d64d48d77ef" prot="private" static="no" mutable="no">
+        <type><ref refid="classStmSpiBus" kindref="compound">StmSpiBus</ref> *</type>
+        <definition>StmSpiBus* StmSpiBusLock::bus_</definition>
+        <argsstring></argsstring>
+        <name>bus_</name>
+        <qualifiedname>StmSpiBusLock::bus_</qualifiedname>
+        <initializer>{<ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref>}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="65" column="15" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmSpiBusLock_1ae5d59e028fdbf4ec0e75595055be91e5" prot="private" static="no" mutable="no">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
+        <definition>bool StmSpiBusLock::locked_</definition>
+        <argsstring></argsstring>
+        <name>locked_</name>
+        <qualifiedname>StmSpiBusLock::locked_</qualifiedname>
+        <initializer>{<ref refid="classSoftChipSelectGuard" kindref="compound">false</ref>}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="66" column="10" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="66" bodyend="66"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classStmSpiBusLock_1a767bf633388d8b7a95646f6f6feaef7c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmSpiBusLock::StmSpiBusLock</definition>
+        <argsstring>(StmSpiBus &amp;bus, hf_u32_t timeout_ms) noexcept</argsstring>
+        <name>StmSpiBusLock</name>
+        <qualifiedname>StmSpiBusLock::StmSpiBusLock</qualifiedname>
+        <param>
+          <type><ref refid="classStmSpiBus" kindref="compound">StmSpiBus</ref> &amp;</type>
+          <declname>bus</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="54" column="5" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="113" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBusLock_1aac5273d27989b6756e338c3c0f37686c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmSpiBusLock::~StmSpiBusLock</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~StmSpiBusLock</name>
+        <qualifiedname>StmSpiBusLock::~StmSpiBusLock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="55" column="5" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="116" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBusLock_1a37e2425e4f0181db6698752fd8ae43e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>StmSpiBusLock::StmSpiBusLock</definition>
+        <argsstring>(const StmSpiBusLock &amp;)=delete</argsstring>
+        <name>StmSpiBusLock</name>
+        <qualifiedname>StmSpiBusLock::StmSpiBusLock</qualifiedname>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classStmSpiBusLock" kindref="compound">StmSpiBusLock</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="57" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBusLock_1ad8e04441376f2ab174f983d33c3a47ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classStmSpiBusLock" kindref="compound">StmSpiBusLock</ref> &amp;</type>
+        <definition>StmSpiBusLock &amp; StmSpiBusLock::operator=</definition>
+        <argsstring>(const StmSpiBusLock &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>StmSpiBusLock::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classStmSpiBusLock" kindref="compound">StmSpiBusLock</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="58" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBusLock_1a1c51599ca418abe35ccb8ff5adf027d4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmSpiBusLock::StmSpiBusLock</definition>
+        <argsstring>(StmSpiBusLock &amp;&amp;other) noexcept</argsstring>
+        <name>StmSpiBusLock</name>
+        <qualifiedname>StmSpiBusLock::StmSpiBusLock</qualifiedname>
+        <param>
+          <type><ref refid="classStmSpiBusLock" kindref="compound">StmSpiBusLock</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="59" column="5" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="123" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBusLock_1afeaef24b7ab305c7322a3d837ad5ee82" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classStmSpiBusLock" kindref="compound">StmSpiBusLock</ref> &amp;</type>
+        <definition>StmSpiBusLock &amp; StmSpiBusLock::operator=</definition>
+        <argsstring>(StmSpiBusLock &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>StmSpiBusLock::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classStmSpiBusLock" kindref="compound">StmSpiBusLock</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="60" column="19" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="129" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBusLock_1a11e368f591e8536c8606c1c6864848ca" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
+        <definition>bool StmSpiBusLock::OwnsLock</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>OwnsLock</name>
+        <qualifiedname>StmSpiBusLock::OwnsLock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="62" column="11" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>RAII exclusive ownership of one <ref refid="classStmSpiBus" kindref="compound">StmSpiBus</ref> (RTOS mutex). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Higher-level threads may block here with a timeout — that is intentional. Do not disable interrupts across SPI frames; serialize with this lock. Direct HAL probes / wire-proof paths must take the same lock. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>PlatformMutexImpl&lt; PlatformMutexActiveBackend &gt;</label>
+        <link refid="classPlatformMutexImpl"/>
+      </node>
+      <node id="2">
+        <label>StmSpiBus</label>
+        <link refid="classStmSpiBus"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>config_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>bus_mutex_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>StmSpiBusLock</label>
+        <link refid="classStmSpiBusLock"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>bus_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>hf_spi_bus_config_t</label>
+        <link refid="structhf__spi__bus__config__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/stm32/StmSpi.h" line="52" column="1" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="52" bodyend="67"/>
+    <listofallmembers>
+      <member refid="classStmSpiBusLock_1a2cb5dba2a195673057546d64d48d77ef" prot="private" virt="non-virtual"><scope>StmSpiBusLock</scope><name>bus_</name></member>
+      <member refid="classStmSpiBusLock_1ae5d59e028fdbf4ec0e75595055be91e5" prot="private" virt="non-virtual"><scope>StmSpiBusLock</scope><name>locked_</name></member>
+      <member refid="classStmSpiBusLock_1ad8e04441376f2ab174f983d33c3a47ff" prot="public" virt="non-virtual"><scope>StmSpiBusLock</scope><name>operator=</name></member>
+      <member refid="classStmSpiBusLock_1afeaef24b7ab305c7322a3d837ad5ee82" prot="public" virt="non-virtual"><scope>StmSpiBusLock</scope><name>operator=</name></member>
+      <member refid="classStmSpiBusLock_1a11e368f591e8536c8606c1c6864848ca" prot="public" virt="non-virtual"><scope>StmSpiBusLock</scope><name>OwnsLock</name></member>
+      <member refid="classStmSpiBusLock_1a767bf633388d8b7a95646f6f6feaef7c" prot="public" virt="non-virtual"><scope>StmSpiBusLock</scope><name>StmSpiBusLock</name></member>
+      <member refid="classStmSpiBusLock_1a37e2425e4f0181db6698752fd8ae43e9" prot="public" virt="non-virtual"><scope>StmSpiBusLock</scope><name>StmSpiBusLock</name></member>
+      <member refid="classStmSpiBusLock_1a1c51599ca418abe35ccb8ff5adf027d4" prot="public" virt="non-virtual"><scope>StmSpiBusLock</scope><name>StmSpiBusLock</name></member>
+      <member refid="classStmSpiBusLock_1aac5273d27989b6756e338c3c0f37686c" prot="public" virt="non-virtual"><scope>StmSpiBusLock</scope><name>~StmSpiBusLock</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

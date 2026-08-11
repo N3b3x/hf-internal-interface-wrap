@@ -95,7 +95,7 @@
         <location file="inc/base/BaseLogger.h" line="160" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="160" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__logger__config__t_1a37cb39bba078b77ebda93c112f51c446" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_logger_config_t::enable_thread_safety</definition>
         <argsstring></argsstring>
         <name>enable_thread_safety</name>
@@ -110,7 +110,7 @@
         <location file="inc/base/BaseLogger.h" line="161" column="8" bodyfile="inc/base/BaseLogger.h" bodystart="161" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__logger__config__t_1a37b0e76820ae9a9800d3053cde8ecf89" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_logger_config_t::enable_performance_monitoring</definition>
         <argsstring></argsstring>
         <name>enable_performance_monitoring</name>
@@ -125,7 +125,7 @@
         <location file="inc/base/BaseLogger.h" line="162" column="8" bodyfile="inc/base/BaseLogger.h" bodystart="162" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__logger__config__t_1a52ba248a018c6aaf368bdea56a67c447" prot="public" static="no" mutable="no">
-        <type>std::function&lt; void(const char *, <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>)</type>
+        <type>std::function&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">void</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *, <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>)</type>
         <definition>std::function&lt;void(const char*, hf_u32_t) hf_logger_config_t::custom_output_callback) </definition>
         <argsstring>)</argsstring>
         <name>custom_output_callback</name>

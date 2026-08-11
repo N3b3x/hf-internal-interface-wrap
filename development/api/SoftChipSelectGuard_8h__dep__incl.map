@@ -1,0 +1,7 @@
+<map id="inc/utils/SoftChipSelectGuard.h" name="inc/utils/SoftChipSelectGuard.h">
+<area shape="rect" id="Node000001" title="RAII soft chip&#45;select (assert on construct, deassert on destroy)." alt="" coords="21,5,228,56"/>
+<area shape="rect" id="Node000002" href="$StmSpi_8h.html" title="STM32 SPI Bus+Device wrapper — wraps STM32 HAL SPI via CubeMX handle." alt="" coords="15,104,234,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,70,127,104,122,104,122,70"/>
+<area shape="rect" id="Node000003" href="$StmSpi_8cpp.html" title="STM32 SPI wrapper implementation — full STM32 HAL integration." alt="" coords="5,183,244,213"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="127,148,127,182,122,182,122,148"/>
+</map>

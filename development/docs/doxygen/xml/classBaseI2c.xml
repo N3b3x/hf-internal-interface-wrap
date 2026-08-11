@@ -7,7 +7,7 @@
     <includes refid="BaseI2c_8h" local="no">BaseI2c.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classBaseI2c_1a87bf0b1caa8c82523adc4e1816467232" prot="protected" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseI2c::initialized_</definition>
         <argsstring></argsstring>
         <name>initialized_</name>
@@ -75,7 +75,7 @@
         <name>BaseI2c</name>
         <qualifiedname>BaseI2c::BaseI2c</qualifiedname>
         <param>
-          <type>const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -92,7 +92,7 @@
         <name>operator=</name>
         <qualifiedname>BaseI2c::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -137,7 +137,7 @@
         <location file="inc/base/BaseI2c.h" line="207" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1ab2ba276139755eda4f52d7f9a523ed4e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseI2c::EnsureInitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureInitialized</name>
@@ -155,7 +155,7 @@
         <location file="inc/base/BaseI2c.h" line="213" column="8" bodyfile="inc/base/BaseI2c.h" bodystart="213" bodyend="218"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a35f3b7343c0e4ace25937060f39d44be" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseI2c::EnsureDeinitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>EnsureDeinitialized</name>
@@ -173,7 +173,7 @@
         <location file="inc/base/BaseI2c.h" line="224" column="8" bodyfile="inc/base/BaseI2c.h" bodystart="224" bodyend="230"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1aa0015d0aff3de7f30f7444935a50c094" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool BaseI2c::IsInitialized</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsInitialized</name>
@@ -191,7 +191,7 @@
         <location file="inc/base/BaseI2c.h" line="236" column="9" bodyfile="inc/base/BaseI2c.h" bodystart="236" bodyend="238"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1adcdc753cf18e47cbc651cc608759bf32" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseI2c::Initialize</definition>
         <argsstring>() noexcept=0</argsstring>
         <name>Initialize</name>
@@ -211,7 +211,7 @@
         <location file="inc/base/BaseI2c.h" line="248" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a2a96e596e8d83320c7f8d943119eef38" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseI2c::Deinitialize</definition>
         <argsstring>() noexcept=0</argsstring>
         <name>Deinitialize</name>
@@ -239,7 +239,7 @@
         <reimplementedby refid="classEspI2cDevice_1acc62adb05de7e21b96f5a61df9c4bb65">Write</reimplementedby>
         <reimplementedby refid="classStmI2cDevice_1a8a705c4068676dcca9a36054eddfe15c">Write</reimplementedby>
         <param>
-          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
           <declname>data</declname>
         </param>
         <param>
@@ -359,7 +359,7 @@
         <reimplementedby refid="classEspI2cDevice_1ab0e1da7ee817f2ddfd2c0393b7fb6c99">WriteRead</reimplementedby>
         <reimplementedby refid="classStmI2cDevice_1a785e780f32c9353a7aa5ad48784352df">WriteRead</reimplementedby>
         <param>
-          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
           <declname>tx_data</declname>
         </param>
         <param>
@@ -455,7 +455,7 @@
         <location file="inc/base/BaseI2c.h" line="294" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a9decd4d080fd5090a4f98892c2549a0a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseI2c::Open</definition>
         <argsstring>() noexcept</argsstring>
         <name>Open</name>
@@ -473,7 +473,7 @@
         <location file="inc/base/BaseI2c.h" line="304" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="304" bodyend="306"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a53ffda673e3b0774c31da385b27a7c3f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseI2c::Close</definition>
         <argsstring>() noexcept</argsstring>
         <name>Close</name>
@@ -491,7 +491,7 @@
         <location file="inc/base/BaseI2c.h" line="312" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="312" bodyend="314"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a0d8635db15272fc79947121fcec70850" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseI2c::IsDevicePresent</definition>
         <argsstring>() noexcept</argsstring>
         <name>IsDevicePresent</name>
@@ -509,7 +509,7 @@
         <location file="inc/base/BaseI2c.h" line="326" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="326" bodyend="330"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a1cf1876ffa812b77cbd56d7e714df1e5" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseI2c::ProbeDevice</definition>
         <argsstring>() noexcept</argsstring>
         <name>ProbeDevice</name>
@@ -528,7 +528,7 @@
         <location file="inc/base/BaseI2c.h" line="336" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="336" bodyend="338"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1afe9cee66898c28c58ac7a146375e3a63" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseI2c::WriteByte</definition>
         <argsstring>(hf_u8_t data) noexcept</argsstring>
         <name>WriteByte</name>
@@ -559,7 +559,7 @@
         <location file="inc/base/BaseI2c.h" line="345" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="345" bodyend="347"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1adb55bb052a4ee0d71f09623f88818fb2" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseI2c::ReadByte</definition>
         <argsstring>(hf_u8_t &amp;data) noexcept</argsstring>
         <name>ReadByte</name>
@@ -590,7 +590,7 @@
         <location file="inc/base/BaseI2c.h" line="354" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="354" bodyend="356"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a68bbbd82d13bbe905659d10648843a5e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseI2c::WriteRegister</definition>
         <argsstring>(hf_u8_t reg_addr, hf_u8_t data) noexcept</argsstring>
         <name>WriteRegister</name>
@@ -633,7 +633,7 @@
         <location file="inc/base/BaseI2c.h" line="364" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="364" bodyend="367"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1aec25744c5d3ab1ec6c326950001949a0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseI2c::ReadRegister</definition>
         <argsstring>(hf_u8_t reg_addr, hf_u8_t &amp;data) noexcept</argsstring>
         <name>ReadRegister</name>
@@ -676,7 +676,7 @@
         <location file="inc/base/BaseI2c.h" line="375" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="375" bodyend="377"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1abf2a8df2ce9d012dbfa57180228e9789" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseI2c::ReadRegisters</definition>
         <argsstring>(hf_u8_t reg_addr, hf_u8_t *data, hf_u16_t length) noexcept</argsstring>
         <name>ReadRegisters</name>

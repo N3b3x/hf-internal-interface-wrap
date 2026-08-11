@@ -20,7 +20,7 @@
         <location file="inc/base/BasePio.h" line="157" column="12" bodyfile="inc/base/BasePio.h" bodystart="157" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pio__symbol__t_1a522eddd62fb5581a8120c56c81075578" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pio_symbol_t::level</definition>
         <argsstring></argsstring>
         <name>level</name>
@@ -61,7 +61,7 @@
           <declname>dur</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>lvl</declname>
         </param>
         <briefdescription>

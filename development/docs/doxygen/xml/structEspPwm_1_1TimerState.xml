@@ -4,7 +4,7 @@
     <compoundname>EspPwm::TimerState</compoundname>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structEspPwm_1_1TimerState_1a0ea7648253a7a3f08d53ac57b58f891a" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspPwm::TimerState::in_use</definition>
         <argsstring></argsstring>
         <name>in_use</name>
@@ -79,7 +79,7 @@
         <location file="inc/mcu/esp32/EspPwm.h" line="750" column="27" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="750" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1TimerState_1affc9adf387692d7829aca3fd9f14e1bc" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspPwm::TimerState::has_hardware_conflicts</definition>
         <argsstring></argsstring>
         <name>has_hardware_conflicts</name>

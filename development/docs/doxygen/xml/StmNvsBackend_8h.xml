@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="StmNvsBackend_8h" kind="file" language="C++">
+    <compoundname>StmNvsBackend.h</compoundname>
+    <includes local="no">stddef.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includedby refid="StmNvs_8cpp" local="yes">src/mcu/stm32/StmNvs.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/mcu/stm32/StmNvsBackend.h</label>
+        <link refid="StmNvsBackend_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stddef.h</label>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/mcu/stm32/StmNvsBackend.h</label>
+        <link refid="StmNvsBackend_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/mcu/stm32/StmNvs.cpp</label>
+        <link refid="StmNvs_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="StmNvsBackend_8h_1a6d17c658207c55bc07f3f6269d7ef24d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
+        <definition>int PwStmNvsBackendRead</definition>
+        <argsstring>(uint32_t abs_addr, void *buf, size_t len)</argsstring>
+        <name>PwStmNvsBackendRead</name>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
+          <declname>abs_addr</declname>
+        </param>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>0 on success. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvsBackend.h" line="18" column="5" declfile="inc/mcu/stm32/StmNvsBackend.h" declline="18" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="StmNvsBackend_8h_1ab897a891c5786c009be9df211881efe3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
+        <definition>int PwStmNvsBackendWrite</definition>
+        <argsstring>(uint32_t abs_addr, const void *buf, size_t len)</argsstring>
+        <name>PwStmNvsBackendWrite</name>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
+          <declname>abs_addr</declname>
+        </param>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvsBackend.h" line="19" column="5" declfile="inc/mcu/stm32/StmNvsBackend.h" declline="19" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="StmNvsBackend_8h_1a62823792f15d29c277492d271febaf02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
+        <definition>int PwStmNvsBackendSync</definition>
+        <argsstring>(void)</argsstring>
+        <name>PwStmNvsBackendSync</name>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvsBackend.h" line="20" column="5" declfile="inc/mcu/stm32/StmNvsBackend.h" declline="20" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="StmNvsBackend_8h_1a855b12a416af54ec750e7d628dc48873" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
+        <definition>int PwStmNvsBackendErase</definition>
+        <argsstring>(uint32_t abs_addr, size_t len)</argsstring>
+        <name>PwStmNvsBackendErase</name>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
+          <declname>abs_addr</declname>
+        </param>
+        <param>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Erase [abs_addr, abs_addr+len) for compaction (4 KiB aligned OK). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvsBackend.h" line="22" column="5" declfile="inc/mcu/stm32/StmNvsBackend.h" declline="22" declcolumn="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Weak product hooks for <ref refid="classStmNvs" kindref="compound">StmNvs</ref> flash I/O (external / QSPI-backed NVS). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Addresses are absolute logical map addresses (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">e.g</ref>. memory-mapped QSPI slice). The product firmware provides strong definitions for these symbols. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="StmNvsBackend_8h_1a6d17c658207c55bc07f3f6269d7ef24d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="StmNvsBackend_8h_1a6d17c658207c55bc07f3f6269d7ef24d" kindref="member">PwStmNvsBackendRead</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">abs_addr</ref>,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">buf</ref>,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">len</ref>);</highlight></codeline>
+<codeline lineno="19" refid="StmNvsBackend_8h_1ab897a891c5786c009be9df211881efe3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="StmNvsBackend_8h_1ab897a891c5786c009be9df211881efe3" kindref="member">PwStmNvsBackendWrite</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">abs_addr</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">buf</ref>,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">len</ref>);</highlight></codeline>
+<codeline lineno="20" refid="StmNvsBackend_8h_1a62823792f15d29c277492d271febaf02" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="StmNvsBackend_8h_1a62823792f15d29c277492d271febaf02" kindref="member">PwStmNvsBackendSync</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="22" refid="StmNvsBackend_8h_1a855b12a416af54ec750e7d628dc48873" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="StmNvsBackend_8h_1a855b12a416af54ec750e7d628dc48873" kindref="member">PwStmNvsBackendErase</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">abs_addr</ref>,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">len</ref>);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/stm32/StmNvsBackend.h"/>
+  </compounddef>
+</doxygen>

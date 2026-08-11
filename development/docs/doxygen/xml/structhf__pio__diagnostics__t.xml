@@ -5,7 +5,7 @@
     <includes refid="BasePio_8h" local="no">BasePio.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__pio__diagnostics__t_1a3d0d22b3ed599c4464822c136f669e1c" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pio_diagnostics_t::pioHealthy</definition>
         <argsstring></argsstring>
         <name>pioHealthy</name>
@@ -65,7 +65,7 @@
         <location file="inc/base/BasePio.h" line="224" column="12" bodyfile="inc/base/BasePio.h" bodystart="224" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pio__diagnostics__t_1a0bc841274f1920504829d96c2d92c448" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pio_diagnostics_t::pioInitialized</definition>
         <argsstring></argsstring>
         <name>pioInitialized</name>
@@ -110,7 +110,7 @@
         <location file="inc/base/BasePio.h" line="227" column="12" bodyfile="inc/base/BasePio.h" bodystart="227" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pio__diagnostics__t_1a4eb0ec34fad2e4d77384194580e9ead9" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pio_diagnostics_t::bidirectionalSupported</definition>
         <argsstring></argsstring>
         <name>bidirectionalSupported</name>

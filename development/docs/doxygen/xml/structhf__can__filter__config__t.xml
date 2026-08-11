@@ -5,7 +5,7 @@
     <includes refid="EspTypes__CAN_8h" local="no">EspTypes_CAN.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__can__filter__config__t_1a2091ca1a431ea58b179919e4fb4d3021" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_can_filter_config_t::acceptance_code</definition>
         <argsstring></argsstring>
         <name>acceptance_code</name>
@@ -20,7 +20,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="69" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__filter__config__t_1a1d0a313b0c1c9b15afb3f71c9b05cdf0" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_can_filter_config_t::acceptance_mask</definition>
         <argsstring></argsstring>
         <name>acceptance_mask</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="70" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__filter__config__t_1a457d961a4cd803ba506753c910067711" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_can_filter_config_t::single_filter</definition>
         <argsstring></argsstring>
         <name>single_filter</name>

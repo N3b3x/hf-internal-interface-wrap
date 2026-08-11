@@ -36,7 +36,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="525" column="21" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="525" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1a78b0811f7be9f554d6b91f7de07b422d" prot="private" static="no" mutable="no">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void* EspGpio::interrupt_user_data_</definition>
         <argsstring></argsstring>
         <name>interrupt_user_data_</name>
@@ -51,7 +51,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="526" column="8" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="526" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1a1fe4de0ad5e20fc200115cd4bb52ecf0" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspGpio::interrupt_enabled_</definition>
         <argsstring></argsstring>
         <name>interrupt_enabled_</name>
@@ -66,7 +66,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="527" column="8" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="527" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1a72b2184392d57af209598c1b42065e5c" prot="private" static="no" mutable="no">
-        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
         <definition>std::atomic&lt;hf_u32_t&gt; EspGpio::interrupt_count_</definition>
         <argsstring></argsstring>
         <name>interrupt_count_</name>
@@ -81,7 +81,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="528" column="15" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="528" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1a4d3ee152727c2221f314c9d2b5283aaf" prot="private" static="no" mutable="no">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void* EspGpio::platform_semaphore_</definition>
         <argsstring></argsstring>
         <name>platform_semaphore_</name>
@@ -96,7 +96,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="529" column="8" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="529" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1a0aaa57aac6b572129338e1124dbd01b7" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspGpio::isr_handler_added_</definition>
         <argsstring></argsstring>
         <name>isr_handler_added_</name>
@@ -126,7 +126,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="533" column="23" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="533" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1aa2af04744c3d0e256359d33b6f9a43c7" prot="private" static="no" mutable="no">
-        <type>hf_gpio_glitch_filter_type_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">hf_gpio_glitch_filter_type_t</ref></type>
         <definition>hf_gpio_glitch_filter_type_t EspGpio::glitch_filter_type_</definition>
         <argsstring></argsstring>
         <name>glitch_filter_type_</name>
@@ -141,7 +141,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="534" column="32" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="534" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1a04b78e55bdb1d95cec78571424892b27" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspGpio::pin_glitch_filter_enabled_</definition>
         <argsstring></argsstring>
         <name>pin_glitch_filter_enabled_</name>
@@ -156,7 +156,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="535" column="8" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="535" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1af8a683fc6c6e869c4a576cb7be13eb0b" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspGpio::flex_glitch_filter_enabled_</definition>
         <argsstring></argsstring>
         <name>flex_glitch_filter_enabled_</name>
@@ -171,7 +171,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="536" column="8" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="536" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1a7734c5cb7b6df9ccbf079e1d8a45a822" prot="private" static="no" mutable="no">
-        <type>hf_gpio_flex_filter_config_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">hf_gpio_flex_filter_config_t</ref></type>
         <definition>hf_gpio_flex_filter_config_t EspGpio::flex_filter_config_</definition>
         <argsstring></argsstring>
         <name>flex_filter_config_</name>
@@ -186,7 +186,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="537" column="32" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="537" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1a1bb6b5cb2d2217cef56f1b3cf426ed49" prot="private" static="no" mutable="no">
-        <type>hf_gpio_sleep_config_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">hf_gpio_sleep_config_t</ref></type>
         <definition>hf_gpio_sleep_config_t EspGpio::sleep_config_</definition>
         <argsstring></argsstring>
         <name>sleep_config_</name>
@@ -201,7 +201,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="538" column="26" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="538" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1a06e1241c8517cb66e98d0054590b943a" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspGpio::hold_enabled_</definition>
         <argsstring></argsstring>
         <name>hold_enabled_</name>
@@ -216,7 +216,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="539" column="8" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="539" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1ae034b797966174d1ab52157b69195289" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspGpio::rtc_gpio_enabled_</definition>
         <argsstring></argsstring>
         <name>rtc_gpio_enabled_</name>
@@ -231,7 +231,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="540" column="8" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="540" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1a5ff67c40d3adaa6183167b4beeda00be" prot="private" static="no" mutable="no">
-        <type>hf_gpio_wakeup_config_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">hf_gpio_wakeup_config_t</ref></type>
         <definition>hf_gpio_wakeup_config_t EspGpio::wakeup_config_</definition>
         <argsstring></argsstring>
         <name>wakeup_config_</name>
@@ -246,7 +246,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="541" column="27" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="541" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1ac28a7882cdc9ef28da6c0a130d43b601" prot="private" static="no" mutable="no">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void* EspGpio::glitch_filter_handle_</definition>
         <argsstring></argsstring>
         <name>glitch_filter_handle_</name>
@@ -261,7 +261,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="544" column="8" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="544" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1a54d1c5cb96fcc14fa893cf12d82b410a" prot="private" static="no" mutable="no">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void* EspGpio::rtc_gpio_handle_</definition>
         <argsstring></argsstring>
         <name>rtc_gpio_handle_</name>
@@ -278,7 +278,7 @@
     </sectiondef>
     <sectiondef kind="private-static-attrib">
       <memberdef kind="variable" id="classEspGpio_1a85ed85c826744590f82101f07aacb69e" prot="private" static="yes" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspGpio::gpio_isr_handler_installed_</definition>
         <argsstring></argsstring>
         <name>gpio_isr_handler_installed_</name>
@@ -404,7 +404,7 @@ Creates an MCU GPIO instance with the specified configuration. <bold>LAZY INITIA
         <location file="inc/mcu/esp32/EspGpio.h" line="95" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a49e15d19126b54ba23a5c7e928dc0bb3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspGpio::Initialize</definition>
         <argsstring>() noexcept override</argsstring>
         <name>Initialize</name>
@@ -423,7 +423,7 @@ Configures the physical MCU pin according to the current direction, pull mode, a
         <location file="inc/mcu/esp32/EspGpio.h" line="107" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1ac27780ff0bbc266cff0a2052c8146d11" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspGpio::Deinitialize</definition>
         <argsstring>() noexcept override</argsstring>
         <name>Deinitialize</name>
@@ -442,7 +442,7 @@ Resets the pin to a safe default state and marks it as uninitialized. </para>
         <location file="inc/mcu/esp32/EspGpio.h" line="114" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a5805fe2d581a4ce5cd42edf1b64b2fb9" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspGpio::IsPinAvailable</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>IsPinAvailable</name>
@@ -480,7 +480,7 @@ Validates that the pin number is valid and not reserved for special functions li
         <location file="inc/mcu/esp32/EspGpio.h" line="128" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1aee5346c09c9d81992935c5fd37455ea8" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char * EspGpio::GetDescription</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>GetDescription</name>
@@ -531,12 +531,12 @@ Validates that the pin number is valid and not reserved for special functions li
         <param>
           <type><ref refid="group__gpio_1ga9a7aef9fbdf0b553981712baf9a4223a" kindref="member">InterruptCallback</ref></type>
           <declname>callback</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Configure GPIO interrupt settings. </para>
@@ -698,7 +698,7 @@ Validates that the pin number is valid and not reserved for special functions li
         <location file="inc/mcu/esp32/EspGpio.h" line="187" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a5f0ce0b49b277e718d60f21bcc158827" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspGpio::IsInitialized</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsInitialized</name>
@@ -829,7 +829,7 @@ Controls the output drive strength from ~5mA (Weak) to ~40mA (Strongest). Higher
         <location file="inc/mcu/esp32/EspGpio.h" line="311" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a8a8afa2c6f5cdf99fee057869e33be43" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspGpio::SupportsGlitchFilter</definition>
         <argsstring>() const noexcept</argsstring>
         <name>SupportsGlitchFilter</name>
@@ -853,7 +853,7 @@ Controls the output drive strength from ~5mA (Weak) to ~40mA (Strongest). Higher
         <name>ConfigurePinGlitchFilter</name>
         <qualifiedname>EspGpio::ConfigurePinGlitchFilter</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>enable</declname>
         </param>
         <briefdescription>
@@ -884,13 +884,13 @@ Pin glitch filter removes pulses shorter than 2 IO_MUX clock cycles. This is a s
         <name>ConfigureGlitchFilter</name>
         <qualifiedname>EspGpio::ConfigureGlitchFilter</qualifiedname>
         <param>
-          <type>hf_gpio_glitch_filter_type_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">hf_gpio_glitch_filter_type_t</ref></type>
           <declname>filter_type</declname>
         </param>
         <param>
-          <type>const hf_gpio_flex_filter_config_t *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">hf_gpio_flex_filter_config_t</ref> *</type>
           <declname>flex_config</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Configure advanced glitch filter (pin/flex) for ESP32. </para>
@@ -928,7 +928,7 @@ Pin glitch filter removes pulses shorter than 2 IO_MUX clock cycles. This is a s
         <name>ConfigureSleepMode</name>
         <qualifiedname>EspGpio::ConfigureSleepMode</qualifiedname>
         <param>
-          <type>const hf_gpio_sleep_config_t &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">hf_gpio_sleep_config_t</ref> &amp;</type>
           <declname>sleep_config</declname>
         </param>
         <briefdescription>
@@ -959,7 +959,7 @@ Pin glitch filter removes pulses shorter than 2 IO_MUX clock cycles. This is a s
         <name>ConfigureFlexGlitchFilter</name>
         <qualifiedname>EspGpio::ConfigureFlexGlitchFilter</qualifiedname>
         <param>
-          <type>const hf_gpio_flex_filter_config_t &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">hf_gpio_flex_filter_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -1020,7 +1020,7 @@ Flexible glitch filter allows precise control over filtering parameters. Pulses 
         <location file="inc/mcu/esp32/EspGpio.h" line="364" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a278d4f15f4a47c2f602e0b5bc8e92166" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspGpio::SupportsRtcGpio</definition>
         <argsstring>() const noexcept</argsstring>
         <name>SupportsRtcGpio</name>
@@ -1044,7 +1044,7 @@ Flexible glitch filter allows precise control over filtering parameters. Pulses 
         <name>ConfigureSleep</name>
         <qualifiedname>EspGpio::ConfigureSleep</qualifiedname>
         <param>
-          <type>const hf_gpio_sleep_config_t &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">hf_gpio_sleep_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -1075,7 +1075,7 @@ Configures how the GPIO behaves during sleep modes. Essential for power-optimize
         <name>ConfigureHold</name>
         <qualifiedname>EspGpio::ConfigureHold</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>enable</declname>
         </param>
         <briefdescription>
@@ -1106,7 +1106,7 @@ Hold function maintains GPIO state during sleep and reset. Useful for maintainin
         <name>ConfigureWakeUp</name>
         <qualifiedname>EspGpio::ConfigureWakeUp</qualifiedname>
         <param>
-          <type>const hf_gpio_wakeup_config_t &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">hf_gpio_wakeup_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -1131,7 +1131,7 @@ Enables GPIO to wake the system from deep sleep. Essential for battery-powered a
         <location file="inc/mcu/esp32/EspGpio.h" line="397" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a69adebea4532cfd080f9987015722fa6" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>hf_gpio_status_info_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">hf_gpio_status_info_t</ref></type>
         <definition>hf_gpio_status_info_t EspGpio::GetConfigurationDump</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetConfigurationDump</name>
@@ -1149,7 +1149,7 @@ Provides detailed information about current GPIO configuration. Useful for debug
         <location file="inc/mcu/esp32/EspGpio.h" line="405" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a47b05205db6a3d993875a9ab993ee2c6" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspGpio::IsHeld</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsHeld</name>
@@ -1173,7 +1173,7 @@ Provides detailed information about current GPIO configuration. Useful for debug
         <name>GetPinCapabilities</name>
         <qualifiedname>EspGpio::GetPinCapabilities</qualifiedname>
         <param>
-          <type>hf_gpio_pin_capabilities_t &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">hf_gpio_pin_capabilities_t</ref> &amp;</type>
           <declname>capabilities</declname>
         </param>
         <briefdescription>
@@ -1204,7 +1204,7 @@ Provides comprehensive information about pin capabilities including ADC, RTC, to
         <name>GetStatusInfo</name>
         <qualifiedname>EspGpio::GetStatusInfo</qualifiedname>
         <param>
-          <type>hf_gpio_status_info_t &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">hf_gpio_status_info_t</ref> &amp;</type>
           <declname>status</declname>
         </param>
         <briefdescription>
@@ -1512,7 +1512,7 @@ Thread-safe counter for resource monitoring. </para>
         <location file="inc/mcu/esp32/EspGpio.h" line="446" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a04ef5e4758155a4e25630cde69d74d23" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>static bool EspGpio::IsValidPin</definition>
         <argsstring>(hf_pin_num_t pin_num) noexcept</argsstring>
         <name>IsValidPin</name>
@@ -1543,7 +1543,7 @@ Platform-specific validation using centralized constants. </para>
         <location file="inc/mcu/esp32/EspGpio.h" line="454" column="15"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a9e256695e9e9bcb27e437c7d28b1b757" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>static bool EspGpio::IsRtcGpio</definition>
         <argsstring>(hf_pin_num_t pin_num) noexcept</argsstring>
         <name>IsRtcGpio</name>
@@ -1574,7 +1574,7 @@ ESP32: GPIO0-7 support RTC functionality. </para>
         <location file="inc/mcu/esp32/EspGpio.h" line="462" column="15"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a00d8ec211baf9751a875e680d8856e95" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>static bool EspGpio::IsStrappingPin</definition>
         <argsstring>(hf_pin_num_t pin_num) noexcept</argsstring>
         <name>IsStrappingPin</name>
@@ -1607,7 +1607,7 @@ ESP32 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
     </sectiondef>
     <sectiondef kind="private-func">
       <memberdef kind="function" id="classEspGpio_1a452475ffffe087b209f7613ca4ae9b35" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>gpio_int_type_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">gpio_int_type_t</ref></type>
         <definition>gpio_int_type_t EspGpio::MapInterruptTrigger</definition>
         <argsstring>(hf_gpio_interrupt_trigger_t trigger) const noexcept</argsstring>
         <name>MapInterruptTrigger</name>
@@ -1638,7 +1638,7 @@ ESP32 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         <location file="inc/mcu/esp32/EspGpio.h" line="482" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a7788e246c32127af93db206527458272" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void IRAM_ATTR</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">IRAM_ATTR</ref></type>
         <definition>void IRAM_ATTR EspGpio::HandleInterrupt</definition>
         <argsstring>()</argsstring>
         <name>HandleInterrupt</name>
@@ -1653,7 +1653,7 @@ ESP32 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         <location file="inc/mcu/esp32/EspGpio.h" line="493" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1ada64948bf1df413764e02bef340e4062" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspGpio::InitializeAdvancedFeatures</definition>
         <argsstring>() noexcept</argsstring>
         <name>InitializeAdvancedFeatures</name>
@@ -1671,7 +1671,7 @@ ESP32 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         <location file="inc/mcu/esp32/EspGpio.h" line="499" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a1bc4d9e3208d76bb8a0861c3de21d2e3" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspGpio::CleanupAdvancedFeatures</definition>
         <argsstring>() noexcept</argsstring>
         <name>CleanupAdvancedFeatures</name>
@@ -1686,7 +1686,7 @@ ESP32 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         <location file="inc/mcu/esp32/EspGpio.h" line="504" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1adfd48fa3edbbf0a146ae13b6a8622c56" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspGpio::CleanupGlitchFilters</definition>
         <argsstring>() noexcept</argsstring>
         <name>CleanupGlitchFilters</name>
@@ -1701,7 +1701,7 @@ ESP32 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         <location file="inc/mcu/esp32/EspGpio.h" line="509" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a35edac2436920f517f75c958fc265da6" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspGpio::CleanupInterruptSemaphore</definition>
         <argsstring>() noexcept</argsstring>
         <name>CleanupInterruptSemaphore</name>
@@ -1754,13 +1754,13 @@ ESP32 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
     </sectiondef>
     <sectiondef kind="private-static-func">
       <memberdef kind="function" id="classEspGpio_1ab4d46bf3ab5605b703c8a418cf900f3c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void IRAM_ATTR</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">IRAM_ATTR</ref></type>
         <definition>static void IRAM_ATTR EspGpio::StaticInterruptHandler</definition>
         <argsstring>(void *arg)</argsstring>
         <name>StaticInterruptHandler</name>
         <qualifiedname>EspGpio::StaticInterruptHandler</qualifiedname>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>arg</declname>
         </param>
         <briefdescription>
@@ -1784,7 +1784,7 @@ ESP32 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Advanced MCU-specific implementation of unified <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> with ESP32/ESP-IDF v5.5+ features. </para>
+<para>Advanced MCU-specific implementation of unified <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> with ESP32/ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+ features. </para>
     </briefdescription>
     <detaileddescription>
 <para>This class provides a comprehensive implementation of <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> for MCU-based GPIO pins with support for both basic and advanced features including:</para>
@@ -1796,7 +1796,7 @@ ESP32 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
 </listitem><listitem><para>Thread-safe state management</para>
 </listitem></itemizedlist>
 </para>
-<para><bold>Advanced Features (ESP32/ESP-IDF v5.5+):</bold><itemizedlist>
+<para><bold>Advanced Features (ESP32/ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+):</bold><itemizedlist>
 <listitem><para>Glitch filtering (pin and flexible filters)</para>
 </listitem><listitem><para>RTC GPIO support for ultra-low power operations</para>
 </listitem><listitem><para>Sleep configuration and state retention</para>
@@ -1808,7 +1808,7 @@ ESP32 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
 </para>
 <para><simplesect kind="note"><para>This class is designed to be platform-agnostic within the MCU domain. Platform-specific details are handled through conditional compilation. </para>
 </simplesect>
-<simplesect kind="note"><para>Advanced features require ESP32 with ESP-IDF v5.5+ for full functionality. </para>
+<simplesect kind="note"><para>Advanced features require ESP32 with ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+ for full functionality. </para>
 </simplesect>
 </para>
     </detaileddescription>

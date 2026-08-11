@@ -603,7 +603,7 @@
     </sectiondef>
     <sectiondef kind="typedef">
       <memberdef kind="typedef" id="group__bluetooth_1gaeb49a17c65e01fa9236e9ab0b4994f77" prot="public" static="no">
-        <type>std::function&lt; void(<ref refid="group__bluetooth_1gaf4d7f320ef7ffa2ef26966adc8facb67" kindref="member">hf_bluetooth_event_t</ref> event, void *event_data)&gt;</type>
+        <type>std::function&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">void</ref>(<ref refid="group__bluetooth_1gaf4d7f320ef7ffa2ef26966adc8facb67" kindref="member">hf_bluetooth_event_t</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">event</ref>, <ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *<ref refid="classSoftChipSelectGuard" kindref="compound">event_data</ref>)&gt;</type>
         <definition>using hf_bluetooth_event_callback_t = 
     std::function&lt;void(hf_bluetooth_event_t event, void* event_data)&gt;</definition>
         <argsstring></argsstring>
@@ -618,7 +618,7 @@
         <location file="inc/base/BaseBluetooth.h" line="336" column="1" bodyfile="inc/base/BaseBluetooth.h" bodystart="336" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__bluetooth_1ga65e5bf89736f8023fe4cf15163655f6a" prot="public" static="no">
-        <type>std::function&lt; void(const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;address, const std::vector&lt; uint8_t &gt; &amp;data)&gt;</type>
+        <type>std::function&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">void</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;address, <ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref> &gt; &amp;data)&gt;</type>
         <definition>using hf_bluetooth_data_callback_t = 
     std::function&lt;void(const hf_bluetooth_address_t&amp; address, const std::vector&lt;uint8_t&gt;&amp; data)&gt;</definition>
         <argsstring></argsstring>
@@ -635,7 +635,7 @@
     </sectiondef>
     <sectiondef kind="func">
       <memberdef kind="function" id="group__bluetooth_1ga2d49568a5fa6f7240bd5331d8b9402e9" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>constexpr std::string_view</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string_view</ref></type>
         <definition>constexpr std::string_view HfBluetoothErrToString</definition>
         <argsstring>(hf_bluetooth_err_t err) noexcept</argsstring>
         <name>HfBluetoothErrToString</name>
@@ -665,7 +665,7 @@
         <location file="inc/base/BaseBluetooth.h" line="113" column="28" bodyfile="inc/base/BaseBluetooth.h" bodystart="113" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="group__bluetooth_1gab088db30edcbbd9875e9381f9b8cbe8d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::string_view</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string_view</ref></type>
         <definition>std::string_view BaseBluetooth::GetErrorString</definition>
         <argsstring>(hf_bluetooth_err_t error)</argsstring>
         <name>GetErrorString</name>
@@ -697,7 +697,7 @@
         <location file="inc/base/BaseBluetooth.h" line="735" column="27" bodyfile="inc/base/BaseBluetooth.h" bodystart="758" bodyend="768"/>
       </memberdef>
       <memberdef kind="function" id="group__bluetooth_1ga16a952238c469abc6433c912341d7d81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::string</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref></type>
         <definition>std::string hf_bluetooth_address_t::ToString</definition>
         <argsstring>() const</argsstring>
         <name>ToString</name>
@@ -750,8 +750,8 @@
         <param><defname>NAME</defname></param>
         <param><defname>VALUE</defname></param>
         <param><defname>DESC</defname></param>
-        <initializer>  case hf_bluetooth_err_t::NAME:                                                                   \
-    return DESC;</initializer>
+        <initializer>  <ref refid="classSoftChipSelectGuard" kindref="compound">case</ref> hf_bluetooth_err_t::NAME:                                                                   \
+    <ref refid="classSoftChipSelectGuard" kindref="compound">return</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">DESC</ref>;</initializer>
         <briefdescription>
 <para>Generate Bluetooth error enumeration using X-macro pattern. </para>
         </briefdescription>
@@ -766,8 +766,8 @@
         <param><defname>name</defname></param>
         <param><defname>value</defname></param>
         <param><defname>desc</defname></param>
-        <initializer>  case hf_bluetooth_err_t::name:                                                                   \
-    return desc;</initializer>
+        <initializer>  <ref refid="classSoftChipSelectGuard" kindref="compound">case</ref> hf_bluetooth_err_t::name:                                                                   \
+    <ref refid="classSoftChipSelectGuard" kindref="compound">return</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">desc</ref>;</initializer>
         <briefdescription>
 <para>Generate Bluetooth error enumeration using X-macro pattern. </para>
         </briefdescription>

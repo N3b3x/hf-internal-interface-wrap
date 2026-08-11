@@ -72,7 +72,7 @@
         <location file="inc/base/BaseWifi.h" line="275" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseWifi_1a4964418eea67a60db032ded6def5867e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseWifi::IsInitialized</definition>
         <argsstring>() const noexcept=0</argsstring>
         <name>IsInitialized</name>
@@ -149,7 +149,7 @@
         <qualifiedname>BaseWifi::ConfigureStation</qualifiedname>
         <reimplementedby refid="classEspWifi_1a7e332cf059c274f217c66637c7670e80">ConfigureStation</reimplementedby>
         <param>
-          <type>const <ref refid="structhf__wifi__station__config__t" kindref="compound">hf_wifi_station_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__wifi__station__config__t" kindref="compound">hf_wifi_station_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -181,7 +181,7 @@
         <qualifiedname>BaseWifi::Connect</qualifiedname>
         <reimplementedby refid="classEspWifi_1a32c2b5e2a1fe51ee264e2b439dc11911">Connect</reimplementedby>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_ms</declname>
           <defval>0</defval>
         </param>
@@ -226,7 +226,7 @@
         <location file="inc/base/BaseWifi.h" line="316" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseWifi_1accff1c8c0f300e4d7c5fd9091bb8e68c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseWifi::IsConnected</definition>
         <argsstring>() const noexcept=0</argsstring>
         <name>IsConnected</name>
@@ -245,7 +245,7 @@
         <location file="inc/base/BaseWifi.h" line="322" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseWifi_1a4a03d4ae5cae9731abda44ead5b1a740" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>int8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int8_t</ref></type>
         <definition>virtual int8_t BaseWifi::GetRssi</definition>
         <argsstring>() const noexcept=0</argsstring>
         <name>GetRssi</name>
@@ -303,7 +303,7 @@
         <qualifiedname>BaseWifi::ConfigureAccessPoint</qualifiedname>
         <reimplementedby refid="classEspWifi_1a723c96c78ce26eaf2574569778b02037">ConfigureAccessPoint</reimplementedby>
         <param>
-          <type>const <ref refid="structhf__wifi__ap__config__t" kindref="compound">hf_wifi_ap_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__wifi__ap__config__t" kindref="compound">hf_wifi_ap_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -366,7 +366,7 @@
         <location file="inc/base/BaseWifi.h" line="356" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseWifi_1a55e73947f3b8b9171b6cc8f9eae32070" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseWifi::IsAccessPointActive</definition>
         <argsstring>() const noexcept=0</argsstring>
         <name>IsAccessPointActive</name>
@@ -385,7 +385,7 @@
         <location file="inc/base/BaseWifi.h" line="362" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseWifi_1ad3660009955722f75aff996acdfa6c03" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>int</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
         <definition>virtual int BaseWifi::GetConnectedStationCount</definition>
         <argsstring>() const noexcept=0</argsstring>
         <name>GetConnectedStationCount</name>
@@ -411,17 +411,17 @@
         <qualifiedname>BaseWifi::StartScan</qualifiedname>
         <reimplementedby refid="classEspWifi_1a09181f6382ed6d42797b652cacf8be5e">StartScan</reimplementedby>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>show_hidden</declname>
-          <defval>false</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">false</ref></defval>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>passive</declname>
-          <defval>false</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">false</ref></defval>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>max_scan_time_ms</declname>
           <defval>0</defval>
         </param>
@@ -470,11 +470,11 @@
         <qualifiedname>BaseWifi::GetScanResults</qualifiedname>
         <reimplementedby refid="classEspWifi_1adb271e342e2bb2a6f823b2ed79232c5a">GetScanResults</reimplementedby>
         <param>
-          <type>std::vector&lt; <ref refid="structhf__wifi__network__info__t" kindref="compound">hf_wifi_network_info_t</ref> &gt; &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="structhf__wifi__network__info__t" kindref="compound">hf_wifi_network_info_t</ref> &gt; &amp;</type>
           <declname>networks</declname>
         </param>
         <param>
-          <type>uint16_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
           <declname>max_networks</declname>
           <defval>0</defval>
         </param>
@@ -508,7 +508,7 @@
         <location file="inc/base/BaseWifi.h" line="388" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseWifi_1a99c47f0dd5b537b221d09583de9462c5" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>virtual bool BaseWifi::IsScanning</definition>
         <argsstring>() const noexcept=0</argsstring>
         <name>IsScanning</name>
@@ -546,7 +546,7 @@
         <location file="inc/base/BaseWifi.h" line="403" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseWifi_1a0e00e7224b68c1d450b3f359842f5352" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>std::string</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref></type>
         <definition>virtual std::string BaseWifi::GetConnectedSsid</definition>
         <argsstring>() const noexcept=0</argsstring>
         <name>GetConnectedSsid</name>
@@ -572,7 +572,7 @@
         <qualifiedname>BaseWifi::GetConnectedBssid</qualifiedname>
         <reimplementedby refid="classEspWifi_1aa3dbcac838731cd2cedee82c5a046bf0">GetConnectedBssid</reimplementedby>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>bssid</declname>
           <array>[6]</array>
         </param>
@@ -707,12 +707,12 @@
         <qualifiedname>BaseWifi::GetMacAddress</qualifiedname>
         <reimplementedby refid="classEspWifi_1a360cec168e895a34b8e0435dbb60097c">GetMacAddress</reimplementedby>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>mac</declname>
           <array>[6]</array>
         </param>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>interface</declname>
           <defval>0</defval>
         </param>
@@ -753,12 +753,12 @@
         <qualifiedname>BaseWifi::SetMacAddress</qualifiedname>
         <reimplementedby refid="classEspWifi_1a17b9ce5961c9e8cab2eb5057b881ac27">SetMacAddress</reimplementedby>
         <param>
-          <type>const uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>mac</declname>
           <array>[6]</array>
         </param>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>interface</declname>
           <defval>0</defval>
         </param>
@@ -792,7 +792,7 @@
         <location file="inc/base/BaseWifi.h" line="464" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseWifi_1a3a5fb31b7b32ef15240c7d88b974b334" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>virtual uint8_t BaseWifi::GetChannel</definition>
         <argsstring>() const noexcept=0</argsstring>
         <name>GetChannel</name>
@@ -818,7 +818,7 @@
         <qualifiedname>BaseWifi::SetChannel</qualifiedname>
         <reimplementedby refid="classEspWifi_1a5b8740b211b5cc982dd341a3a3cf5e5b">SetChannel</reimplementedby>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>channel</declname>
         </param>
         <briefdescription>
@@ -869,7 +869,7 @@
         <name>BaseWifi</name>
         <qualifiedname>BaseWifi::BaseWifi</qualifiedname>
         <param>
-          <type>const <ref refid="classBaseWifi" kindref="compound">BaseWifi</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBaseWifi" kindref="compound">BaseWifi</ref> &amp;</type>
         </param>
         <briefdescription>
 <para>Copy constructor - deleted to prevent copying. </para>
@@ -887,7 +887,7 @@
         <name>operator=</name>
         <qualifiedname>BaseWifi::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classBaseWifi" kindref="compound">BaseWifi</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBaseWifi" kindref="compound">BaseWifi</ref> &amp;</type>
         </param>
         <briefdescription>
 <para>Assignment operator - deleted to prevent copying. </para>

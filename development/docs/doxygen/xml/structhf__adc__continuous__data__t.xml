@@ -5,7 +5,7 @@
     <includes refid="EspTypes__ADC_8h" local="no">EspTypes_ADC.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__adc__continuous__data__t_1a905c3dc1e80356dec2a118b7d6788ecc" prot="public" static="no" mutable="no">
-        <type>uint8_t *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref> *</type>
         <definition>uint8_t* hf_adc_continuous_data_t::buffer</definition>
         <argsstring></argsstring>
         <name>buffer</name>
@@ -20,7 +20,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="186" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="186" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__adc__continuous__data__t_1a9ea7c24e238c3ed502c066385706a655" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_adc_continuous_data_t::size</definition>
         <argsstring></argsstring>
         <name>size</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="187" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="187" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__adc__continuous__data__t_1af50bdeaa56dc69692872434a78ed2c4d" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_adc_continuous_data_t::conversion_count</definition>
         <argsstring></argsstring>
         <name>conversion_count</name>
@@ -50,7 +50,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="188" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="188" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__adc__continuous__data__t_1a43cb986a8558ee76d4cbbefec9379fc2" prot="public" static="no" mutable="no">
-        <type>uint64_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint64_t</ref></type>
         <definition>uint64_t hf_adc_continuous_data_t::timestamp_us</definition>
         <argsstring></argsstring>
         <name>timestamp_us</name>

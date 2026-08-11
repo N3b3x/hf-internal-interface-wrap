@@ -103,7 +103,7 @@ $(function(){initNavTree('classEspWifi.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>Advanced ESP32 implementation of unified <a class="el" href="classBaseWifi.html" title="Abstract base class for WiFi functionality.">BaseWifi</a> with ESP-IDF v5.5+ features.  
+<p>Advanced ESP32 implementation of unified <a class="el" href="classBaseWifi.html" title="Abstract base class for WiFi functionality.">BaseWifi</a> with ESP-IDF <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v5.5</a>+ features.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="EspWifi_8h_source.html">EspWifi.h</a>&gt;</code></p>
@@ -120,124 +120,124 @@ Collaboration diagram for EspWifi:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa2ad725cf4b8c9880a6a2649f75ccbd4" id="r_aa2ad725cf4b8c9880a6a2649f75ccbd4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2ad725cf4b8c9880a6a2649f75ccbd4">EspWifi</a> (const <a class="el" href="structEspWifiAdvancedConfig.html">EspWifiAdvancedConfig</a> *advanced_config=nullptr)</td></tr>
+<tr class="memitem:aa2ad725cf4b8c9880a6a2649f75ccbd4" id="r_aa2ad725cf4b8c9880a6a2649f75ccbd4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2ad725cf4b8c9880a6a2649f75ccbd4">EspWifi</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structEspWifiAdvancedConfig.html">EspWifiAdvancedConfig</a> *<a class="el" href="classSoftChipSelectGuard.html">advanced_config</a>=<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>)</td></tr>
 <tr class="memdesc:aa2ad725cf4b8c9880a6a2649f75ccbd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with optional advanced configuration.  <br /></td></tr>
 <tr class="separator:aa2ad725cf4b8c9880a6a2649f75ccbd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad68fd60e9409c00ca010c613b97885ac" id="r_ad68fd60e9409c00ca010c613b97885ac"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad68fd60e9409c00ca010c613b97885ac">~EspWifi</a> ()</td></tr>
+<tr class="memitem:ad68fd60e9409c00ca010c613b97885ac" id="r_ad68fd60e9409c00ca010c613b97885ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad68fd60e9409c00ca010c613b97885ac">~EspWifi</a> ()</td></tr>
 <tr class="memdesc:ad68fd60e9409c00ca010c613b97885ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor - ensures proper cleanup.  <br /></td></tr>
 <tr class="separator:ad68fd60e9409c00ca010c613b97885ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4739eb071f6852d7013458c45494e6ca" id="r_a4739eb071f6852d7013458c45494e6ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4739eb071f6852d7013458c45494e6ca">Initialize</a> (<a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a> mode) noexcept override</td></tr>
+<tr class="memitem:a4739eb071f6852d7013458c45494e6ca" id="r_a4739eb071f6852d7013458c45494e6ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4739eb071f6852d7013458c45494e6ca">Initialize</a> (<a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a> mode) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a4739eb071f6852d7013458c45494e6ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the WiFi subsystem.  <br /></td></tr>
 <tr class="separator:a4739eb071f6852d7013458c45494e6ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac97375ee76c569f3c121464bcd891462" id="r_ac97375ee76c569f3c121464bcd891462"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac97375ee76c569f3c121464bcd891462">Deinitialize</a> () noexcept override</td></tr>
+<tr class="memitem:ac97375ee76c569f3c121464bcd891462" id="r_ac97375ee76c569f3c121464bcd891462"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac97375ee76c569f3c121464bcd891462">Deinitialize</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:ac97375ee76c569f3c121464bcd891462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinitialize the WiFi subsystem.  <br /></td></tr>
 <tr class="separator:ac97375ee76c569f3c121464bcd891462"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc3d8d89148cf2eb1814d1170df8769d" id="r_adc3d8d89148cf2eb1814d1170df8769d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc3d8d89148cf2eb1814d1170df8769d">IsInitialized</a> () const noexcept override</td></tr>
+<tr class="memitem:adc3d8d89148cf2eb1814d1170df8769d" id="r_adc3d8d89148cf2eb1814d1170df8769d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc3d8d89148cf2eb1814d1170df8769d">IsInitialized</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:adc3d8d89148cf2eb1814d1170df8769d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if WiFi is initialized.  <br /></td></tr>
 <tr class="separator:adc3d8d89148cf2eb1814d1170df8769d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a661961c515743640072b1e1002438610" id="r_a661961c515743640072b1e1002438610"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a661961c515743640072b1e1002438610">SetMode</a> (<a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a> mode) noexcept override</td></tr>
+<tr class="memitem:a661961c515743640072b1e1002438610" id="r_a661961c515743640072b1e1002438610"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a661961c515743640072b1e1002438610">SetMode</a> (<a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a> mode) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a661961c515743640072b1e1002438610"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set WiFi operating mode.  <br /></td></tr>
 <tr class="separator:a661961c515743640072b1e1002438610"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ed8be700f5167def252ec9c59b48f71" id="r_a4ed8be700f5167def252ec9c59b48f71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ed8be700f5167def252ec9c59b48f71">GetMode</a> () const noexcept override</td></tr>
+<tr class="memitem:a4ed8be700f5167def252ec9c59b48f71" id="r_a4ed8be700f5167def252ec9c59b48f71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ed8be700f5167def252ec9c59b48f71">GetMode</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a4ed8be700f5167def252ec9c59b48f71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current WiFi operating mode.  <br /></td></tr>
 <tr class="separator:a4ed8be700f5167def252ec9c59b48f71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e332cf059c274f217c66637c7670e80" id="r_a7e332cf059c274f217c66637c7670e80"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e332cf059c274f217c66637c7670e80">ConfigureStation</a> (const <a class="el" href="structhf__wifi__station__config__t.html">hf_wifi_station_config_t</a> &amp;config) noexcept override</td></tr>
+<tr class="memitem:a7e332cf059c274f217c66637c7670e80" id="r_a7e332cf059c274f217c66637c7670e80"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e332cf059c274f217c66637c7670e80">ConfigureStation</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__wifi__station__config__t.html">hf_wifi_station_config_t</a> &amp;config) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a7e332cf059c274f217c66637c7670e80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure station parameters.  <br /></td></tr>
 <tr class="separator:a7e332cf059c274f217c66637c7670e80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32c2b5e2a1fe51ee264e2b439dc11911" id="r_a32c2b5e2a1fe51ee264e2b439dc11911"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32c2b5e2a1fe51ee264e2b439dc11911">Connect</a> (uint32_t timeout_ms=0) noexcept override</td></tr>
+<tr class="memitem:a32c2b5e2a1fe51ee264e2b439dc11911" id="r_a32c2b5e2a1fe51ee264e2b439dc11911"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32c2b5e2a1fe51ee264e2b439dc11911">Connect</a> (<a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> timeout_ms=0) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a32c2b5e2a1fe51ee264e2b439dc11911"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to a WiFi network (station mode)  <br /></td></tr>
 <tr class="separator:a32c2b5e2a1fe51ee264e2b439dc11911"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23b7c4332258ddf8e390e28fda9f781c" id="r_a23b7c4332258ddf8e390e28fda9f781c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23b7c4332258ddf8e390e28fda9f781c">Disconnect</a> () noexcept override</td></tr>
+<tr class="memitem:a23b7c4332258ddf8e390e28fda9f781c" id="r_a23b7c4332258ddf8e390e28fda9f781c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23b7c4332258ddf8e390e28fda9f781c">Disconnect</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a23b7c4332258ddf8e390e28fda9f781c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect from WiFi network.  <br /></td></tr>
 <tr class="separator:a23b7c4332258ddf8e390e28fda9f781c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1acc04aee004b91ba8329c43d3ba8f09" id="r_a1acc04aee004b91ba8329c43d3ba8f09"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1acc04aee004b91ba8329c43d3ba8f09">IsConnected</a> () const noexcept override</td></tr>
+<tr class="memitem:a1acc04aee004b91ba8329c43d3ba8f09" id="r_a1acc04aee004b91ba8329c43d3ba8f09"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1acc04aee004b91ba8329c43d3ba8f09">IsConnected</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a1acc04aee004b91ba8329c43d3ba8f09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if connected to a network.  <br /></td></tr>
 <tr class="separator:a1acc04aee004b91ba8329c43d3ba8f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa1f6c1334ff7cdfcfe3c42b4610ef4a" id="r_aaa1f6c1334ff7cdfcfe3c42b4610ef4a"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa1f6c1334ff7cdfcfe3c42b4610ef4a">GetRssi</a> () const noexcept override</td></tr>
+<tr class="memitem:aaa1f6c1334ff7cdfcfe3c42b4610ef4a" id="r_aaa1f6c1334ff7cdfcfe3c42b4610ef4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">int8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa1f6c1334ff7cdfcfe3c42b4610ef4a">GetRssi</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:aaa1f6c1334ff7cdfcfe3c42b4610ef4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get signal strength (RSSI)  <br /></td></tr>
 <tr class="separator:aaa1f6c1334ff7cdfcfe3c42b4610ef4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afce7893e0f0b8a91cdc080d03a6394a7" id="r_afce7893e0f0b8a91cdc080d03a6394a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afce7893e0f0b8a91cdc080d03a6394a7">GetIpInfo</a> (<a class="el" href="structhf__wifi__ip__info__t.html">hf_wifi_ip_info_t</a> &amp;ip_info) const noexcept override</td></tr>
+<tr class="memitem:afce7893e0f0b8a91cdc080d03a6394a7" id="r_afce7893e0f0b8a91cdc080d03a6394a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afce7893e0f0b8a91cdc080d03a6394a7">GetIpInfo</a> (<a class="el" href="structhf__wifi__ip__info__t.html">hf_wifi_ip_info_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">ip_info</a>) <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:afce7893e0f0b8a91cdc080d03a6394a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current IP information.  <br /></td></tr>
 <tr class="separator:afce7893e0f0b8a91cdc080d03a6394a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a723c96c78ce26eaf2574569778b02037" id="r_a723c96c78ce26eaf2574569778b02037"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a723c96c78ce26eaf2574569778b02037">ConfigureAccessPoint</a> (const <a class="el" href="structhf__wifi__ap__config__t.html">hf_wifi_ap_config_t</a> &amp;config) noexcept override</td></tr>
+<tr class="memitem:a723c96c78ce26eaf2574569778b02037" id="r_a723c96c78ce26eaf2574569778b02037"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a723c96c78ce26eaf2574569778b02037">ConfigureAccessPoint</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__wifi__ap__config__t.html">hf_wifi_ap_config_t</a> &amp;config) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a723c96c78ce26eaf2574569778b02037"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure Access Point parameters.  <br /></td></tr>
 <tr class="separator:a723c96c78ce26eaf2574569778b02037"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6675c88804049307415424d9f37f8c9e" id="r_a6675c88804049307415424d9f37f8c9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6675c88804049307415424d9f37f8c9e">StartAccessPoint</a> () noexcept override</td></tr>
+<tr class="memitem:a6675c88804049307415424d9f37f8c9e" id="r_a6675c88804049307415424d9f37f8c9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6675c88804049307415424d9f37f8c9e">StartAccessPoint</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a6675c88804049307415424d9f37f8c9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start Access Point.  <br /></td></tr>
 <tr class="separator:a6675c88804049307415424d9f37f8c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada59d1e26730024d5aec32ff04c4b351" id="r_ada59d1e26730024d5aec32ff04c4b351"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada59d1e26730024d5aec32ff04c4b351">StopAccessPoint</a> () noexcept override</td></tr>
+<tr class="memitem:ada59d1e26730024d5aec32ff04c4b351" id="r_ada59d1e26730024d5aec32ff04c4b351"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada59d1e26730024d5aec32ff04c4b351">StopAccessPoint</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:ada59d1e26730024d5aec32ff04c4b351"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop Access Point.  <br /></td></tr>
 <tr class="separator:ada59d1e26730024d5aec32ff04c4b351"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d267eba2944b8e911c10897ce953e92" id="r_a1d267eba2944b8e911c10897ce953e92"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d267eba2944b8e911c10897ce953e92">IsAccessPointActive</a> () const noexcept override</td></tr>
+<tr class="memitem:a1d267eba2944b8e911c10897ce953e92" id="r_a1d267eba2944b8e911c10897ce953e92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d267eba2944b8e911c10897ce953e92">IsAccessPointActive</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a1d267eba2944b8e911c10897ce953e92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if Access Point is running.  <br /></td></tr>
 <tr class="separator:a1d267eba2944b8e911c10897ce953e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a937edac1c632616c615df47e88c62efd" id="r_a937edac1c632616c615df47e88c62efd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a937edac1c632616c615df47e88c62efd">GetConnectedStationCount</a> () const noexcept override</td></tr>
+<tr class="memitem:a937edac1c632616c615df47e88c62efd" id="r_a937edac1c632616c615df47e88c62efd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a937edac1c632616c615df47e88c62efd">GetConnectedStationCount</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a937edac1c632616c615df47e88c62efd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of connected stations.  <br /></td></tr>
 <tr class="separator:a937edac1c632616c615df47e88c62efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09181f6382ed6d42797b652cacf8be5e" id="r_a09181f6382ed6d42797b652cacf8be5e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09181f6382ed6d42797b652cacf8be5e">StartScan</a> (bool show_hidden=false, bool passive=false, uint32_t max_scan_time_ms=0) noexcept override</td></tr>
+<tr class="memitem:a09181f6382ed6d42797b652cacf8be5e" id="r_a09181f6382ed6d42797b652cacf8be5e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09181f6382ed6d42797b652cacf8be5e">StartScan</a> (<a class="el" href="classSoftChipSelectGuard.html">bool</a> <a class="el" href="classSoftChipSelectGuard.html">show_hidden</a>=<a class="el" href="classSoftChipSelectGuard.html">false</a>, <a class="el" href="classSoftChipSelectGuard.html">bool</a> <a class="el" href="classSoftChipSelectGuard.html">passive</a>=<a class="el" href="classSoftChipSelectGuard.html">false</a>, <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> <a class="el" href="classSoftChipSelectGuard.html">max_scan_time_ms</a>=0) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a09181f6382ed6d42797b652cacf8be5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start network scan.  <br /></td></tr>
 <tr class="separator:a09181f6382ed6d42797b652cacf8be5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb271e342e2bb2a6f823b2ed79232c5a" id="r_adb271e342e2bb2a6f823b2ed79232c5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb271e342e2bb2a6f823b2ed79232c5a">GetScanResults</a> (std::vector&lt; <a class="el" href="structhf__wifi__network__info__t.html">hf_wifi_network_info_t</a> &gt; &amp;networks, uint16_t max_networks=0) noexcept override</td></tr>
+<tr class="memitem:adb271e342e2bb2a6f823b2ed79232c5a" id="r_adb271e342e2bb2a6f823b2ed79232c5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb271e342e2bb2a6f823b2ed79232c5a">GetScanResults</a> (<a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::vector</a>&lt; <a class="el" href="structhf__wifi__network__info__t.html">hf_wifi_network_info_t</a> &gt; &amp;<a class="el" href="classSoftChipSelectGuard.html">networks</a>, <a class="el" href="classSoftChipSelectGuard.html">uint16_t</a> <a class="el" href="classSoftChipSelectGuard.html">max_networks</a>=0) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:adb271e342e2bb2a6f823b2ed79232c5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get scan results.  <br /></td></tr>
 <tr class="separator:adb271e342e2bb2a6f823b2ed79232c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ef0a3c1147e6de6e06ebead18de288d" id="r_a8ef0a3c1147e6de6e06ebead18de288d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ef0a3c1147e6de6e06ebead18de288d">IsScanning</a> () const noexcept override</td></tr>
+<tr class="memitem:a8ef0a3c1147e6de6e06ebead18de288d" id="r_a8ef0a3c1147e6de6e06ebead18de288d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ef0a3c1147e6de6e06ebead18de288d">IsScanning</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a8ef0a3c1147e6de6e06ebead18de288d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if scan is in progress.  <br /></td></tr>
 <tr class="separator:a8ef0a3c1147e6de6e06ebead18de288d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6dcbf4805a1091cd0d317f5b7046c25" id="r_ab6dcbf4805a1091cd0d317f5b7046c25"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__wifi.html#ga45e751432d70ba4ee36c1369914ee419">hf_wifi_state_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6dcbf4805a1091cd0d317f5b7046c25">GetState</a> () const noexcept override</td></tr>
+<tr class="memitem:ab6dcbf4805a1091cd0d317f5b7046c25" id="r_ab6dcbf4805a1091cd0d317f5b7046c25"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__wifi.html#ga45e751432d70ba4ee36c1369914ee419">hf_wifi_state_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6dcbf4805a1091cd0d317f5b7046c25">GetState</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:ab6dcbf4805a1091cd0d317f5b7046c25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current WiFi state.  <br /></td></tr>
 <tr class="separator:ab6dcbf4805a1091cd0d317f5b7046c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac55ce93c135b56d2a5ba7826c2563a1d" id="r_ac55ce93c135b56d2a5ba7826c2563a1d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac55ce93c135b56d2a5ba7826c2563a1d">GetConnectedSsid</a> () const noexcept override</td></tr>
+<tr class="memitem:ac55ce93c135b56d2a5ba7826c2563a1d" id="r_ac55ce93c135b56d2a5ba7826c2563a1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac55ce93c135b56d2a5ba7826c2563a1d">GetConnectedSsid</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:ac55ce93c135b56d2a5ba7826c2563a1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get connected network SSID.  <br /></td></tr>
 <tr class="separator:ac55ce93c135b56d2a5ba7826c2563a1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3dbcac838731cd2cedee82c5a046bf0" id="r_aa3dbcac838731cd2cedee82c5a046bf0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3dbcac838731cd2cedee82c5a046bf0">GetConnectedBssid</a> (uint8_t bssid[6]) const noexcept override</td></tr>
+<tr class="memitem:aa3dbcac838731cd2cedee82c5a046bf0" id="r_aa3dbcac838731cd2cedee82c5a046bf0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3dbcac838731cd2cedee82c5a046bf0">GetConnectedBssid</a> (<a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> bssid[6]) <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:aa3dbcac838731cd2cedee82c5a046bf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get connected network BSSID.  <br /></td></tr>
 <tr class="separator:aa3dbcac838731cd2cedee82c5a046bf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc2b87f78fb769ad1a6cbf653bbb6ff8" id="r_abc2b87f78fb769ad1a6cbf653bbb6ff8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc2b87f78fb769ad1a6cbf653bbb6ff8">SetPowerSave</a> (<a class="el" href="group__wifi.html#gafd37336bb8e3a8528795ddfdbd9d5760">hf_wifi_power_save_t</a> mode) noexcept override</td></tr>
+<tr class="memitem:abc2b87f78fb769ad1a6cbf653bbb6ff8" id="r_abc2b87f78fb769ad1a6cbf653bbb6ff8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc2b87f78fb769ad1a6cbf653bbb6ff8">SetPowerSave</a> (<a class="el" href="group__wifi.html#gafd37336bb8e3a8528795ddfdbd9d5760">hf_wifi_power_save_t</a> mode) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:abc2b87f78fb769ad1a6cbf653bbb6ff8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set power save mode.  <br /></td></tr>
 <tr class="separator:abc2b87f78fb769ad1a6cbf653bbb6ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab99c2470f6d2b38a8da263c72a112440" id="r_ab99c2470f6d2b38a8da263c72a112440"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__wifi.html#gafd37336bb8e3a8528795ddfdbd9d5760">hf_wifi_power_save_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab99c2470f6d2b38a8da263c72a112440">GetPowerSave</a> () const noexcept override</td></tr>
+<tr class="memitem:ab99c2470f6d2b38a8da263c72a112440" id="r_ab99c2470f6d2b38a8da263c72a112440"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__wifi.html#gafd37336bb8e3a8528795ddfdbd9d5760">hf_wifi_power_save_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab99c2470f6d2b38a8da263c72a112440">GetPowerSave</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:ab99c2470f6d2b38a8da263c72a112440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current power save mode.  <br /></td></tr>
 <tr class="separator:ab99c2470f6d2b38a8da263c72a112440"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14161044786f3cc1f58a7c37582a67fa" id="r_a14161044786f3cc1f58a7c37582a67fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14161044786f3cc1f58a7c37582a67fa">RegisterEventCallback</a> (<a class="el" href="group__wifi.html#gafc36eb4cdfaf0c2ea45afeaac3ad13c9">hf_wifi_event_callback_t</a> callback) noexcept override</td></tr>
+<tr class="memitem:a14161044786f3cc1f58a7c37582a67fa" id="r_a14161044786f3cc1f58a7c37582a67fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14161044786f3cc1f58a7c37582a67fa">RegisterEventCallback</a> (<a class="el" href="group__wifi.html#gafc36eb4cdfaf0c2ea45afeaac3ad13c9">hf_wifi_event_callback_t</a> <a class="el" href="classSoftChipSelectGuard.html">callback</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a14161044786f3cc1f58a7c37582a67fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register event callback.  <br /></td></tr>
 <tr class="separator:a14161044786f3cc1f58a7c37582a67fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78c4c8eb576df747e478bb663365b593" id="r_a78c4c8eb576df747e478bb663365b593"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78c4c8eb576df747e478bb663365b593">UnregisterEventCallback</a> () noexcept override</td></tr>
+<tr class="memitem:a78c4c8eb576df747e478bb663365b593" id="r_a78c4c8eb576df747e478bb663365b593"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78c4c8eb576df747e478bb663365b593">UnregisterEventCallback</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a78c4c8eb576df747e478bb663365b593"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregister event callback.  <br /></td></tr>
 <tr class="separator:a78c4c8eb576df747e478bb663365b593"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a360cec168e895a34b8e0435dbb60097c" id="r_a360cec168e895a34b8e0435dbb60097c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a360cec168e895a34b8e0435dbb60097c">GetMacAddress</a> (uint8_t mac[6], uint8_t interface=0) const noexcept override</td></tr>
+<tr class="memitem:a360cec168e895a34b8e0435dbb60097c" id="r_a360cec168e895a34b8e0435dbb60097c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a360cec168e895a34b8e0435dbb60097c">GetMacAddress</a> (<a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> <a class="el" href="classSoftChipSelectGuard.html">mac</a>[6], <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> <a class="el" href="classSoftChipSelectGuard.html">interface</a>=0) <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a360cec168e895a34b8e0435dbb60097c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get MAC address.  <br /></td></tr>
 <tr class="separator:a360cec168e895a34b8e0435dbb60097c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17b9ce5961c9e8cab2eb5057b881ac27" id="r_a17b9ce5961c9e8cab2eb5057b881ac27"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17b9ce5961c9e8cab2eb5057b881ac27">SetMacAddress</a> (const uint8_t mac[6], uint8_t interface=0) noexcept override</td></tr>
+<tr class="memitem:a17b9ce5961c9e8cab2eb5057b881ac27" id="r_a17b9ce5961c9e8cab2eb5057b881ac27"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17b9ce5961c9e8cab2eb5057b881ac27">SetMacAddress</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> <a class="el" href="classSoftChipSelectGuard.html">mac</a>[6], <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> <a class="el" href="classSoftChipSelectGuard.html">interface</a>=0) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a17b9ce5961c9e8cab2eb5057b881ac27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set MAC address.  <br /></td></tr>
 <tr class="separator:a17b9ce5961c9e8cab2eb5057b881ac27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7cf0530f49174b55d7c5f3180a24e917" id="r_a7cf0530f49174b55d7c5f3180a24e917"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7cf0530f49174b55d7c5f3180a24e917">GetChannel</a> () const noexcept override</td></tr>
+<tr class="memitem:a7cf0530f49174b55d7c5f3180a24e917" id="r_a7cf0530f49174b55d7c5f3180a24e917"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7cf0530f49174b55d7c5f3180a24e917">GetChannel</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a7cf0530f49174b55d7c5f3180a24e917"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get WiFi channel.  <br /></td></tr>
 <tr class="separator:a7cf0530f49174b55d7c5f3180a24e917"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b8740b211b5cc982dd341a3a3cf5e5b" id="r_a5b8740b211b5cc982dd341a3a3cf5e5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b8740b211b5cc982dd341a3a3cf5e5b">SetChannel</a> (uint8_t channel) noexcept override</td></tr>
+<tr class="memitem:a5b8740b211b5cc982dd341a3a3cf5e5b" id="r_a5b8740b211b5cc982dd341a3a3cf5e5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b8740b211b5cc982dd341a3a3cf5e5b">SetChannel</a> (<a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> channel) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
 <tr class="memdesc:a5b8740b211b5cc982dd341a3a3cf5e5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set WiFi channel.  <br /></td></tr>
 <tr class="separator:a5b8740b211b5cc982dd341a3a3cf5e5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14f566033c19a84722983c1d5888cf4d" id="r_a14f566033c19a84722983c1d5888cf4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14f566033c19a84722983c1d5888cf4d">SetAdvancedConfig</a> (const <a class="el" href="structEspWifiAdvancedConfig.html">EspWifiAdvancedConfig</a> &amp;config)</td></tr>
+<tr class="memitem:a14f566033c19a84722983c1d5888cf4d" id="r_a14f566033c19a84722983c1d5888cf4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14f566033c19a84722983c1d5888cf4d">SetAdvancedConfig</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structEspWifiAdvancedConfig.html">EspWifiAdvancedConfig</a> &amp;config)</td></tr>
 <tr class="memdesc:a14f566033c19a84722983c1d5888cf4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set advanced ESP32-specific configuration.  <br /></td></tr>
 <tr class="separator:a14f566033c19a84722983c1d5888cf4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74e97d6fb2a28c6af5b73a27977c5789" id="r_a74e97d6fb2a28c6af5b73a27977c5789"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74e97d6fb2a28c6af5b73a27977c5789">GetAdvancedConfig</a> (<a class="el" href="structEspWifiAdvancedConfig.html">EspWifiAdvancedConfig</a> &amp;config) const</td></tr>
+<tr class="memitem:a74e97d6fb2a28c6af5b73a27977c5789" id="r_a74e97d6fb2a28c6af5b73a27977c5789"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74e97d6fb2a28c6af5b73a27977c5789">GetAdvancedConfig</a> (<a class="el" href="structEspWifiAdvancedConfig.html">EspWifiAdvancedConfig</a> &amp;config) <a class="el" href="classSoftChipSelectGuard.html">const</a></td></tr>
 <tr class="memdesc:a74e97d6fb2a28c6af5b73a27977c5789"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current advanced configuration.  <br /></td></tr>
 <tr class="separator:a74e97d6fb2a28c6af5b73a27977c5789"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3358bcb3cae09e022d3343eff09f69b2" id="r_a3358bcb3cae09e022d3343eff09f69b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3358bcb3cae09e022d3343eff09f69b2">EnableWpa3Transition</a> (bool enable)</td></tr>
+<tr class="memitem:a3358bcb3cae09e022d3343eff09f69b2" id="r_a3358bcb3cae09e022d3343eff09f69b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3358bcb3cae09e022d3343eff09f69b2">EnableWpa3Transition</a> (<a class="el" href="classSoftChipSelectGuard.html">bool</a> <a class="el" href="classSoftChipSelectGuard.html">enable</a>)</td></tr>
 <tr class="memdesc:a3358bcb3cae09e022d3343eff09f69b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable WPA3 transition mode (WPA2/WPA3 mixed)  <br /></td></tr>
 <tr class="separator:a3358bcb3cae09e022d3343eff09f69b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a481a3cefdcae5362c5314e3ec50e1efc" id="r_a481a3cefdcae5362c5314e3ec50e1efc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a481a3cefdcae5362c5314e3ec50e1efc">ConfigureRoaming</a> (bool enable_11k, bool enable_11r, bool enable_11v)</td></tr>
-<tr class="memdesc:a481a3cefdcae5362c5314e3ec50e1efc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure 802.11k/r/v roaming features.  <br /></td></tr>
+<tr class="memitem:a481a3cefdcae5362c5314e3ec50e1efc" id="r_a481a3cefdcae5362c5314e3ec50e1efc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a481a3cefdcae5362c5314e3ec50e1efc">ConfigureRoaming</a> (<a class="el" href="classSoftChipSelectGuard.html">bool</a> enable_11k, <a class="el" href="classSoftChipSelectGuard.html">bool</a> enable_11r, <a class="el" href="classSoftChipSelectGuard.html">bool</a> enable_11v)</td></tr>
+<tr class="memdesc:a481a3cefdcae5362c5314e3ec50e1efc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">802.11k</a>/r/v roaming features.  <br /></td></tr>
 <tr class="separator:a481a3cefdcae5362c5314e3ec50e1efc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92f3b8669675d2c6735e71987f4cfb4e" id="r_a92f3b8669675d2c6735e71987f4cfb4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92f3b8669675d2c6735e71987f4cfb4e">ConfigureEnterprise</a> (const std::string &amp;username, const std::string &amp;password, const std::string &amp;ca_cert=&quot;&quot;, const std::string &amp;client_cert=&quot;&quot;, const std::string &amp;client_key=&quot;&quot;)</td></tr>
+<tr class="memitem:a92f3b8669675d2c6735e71987f4cfb4e" id="r_a92f3b8669675d2c6735e71987f4cfb4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92f3b8669675d2c6735e71987f4cfb4e">ConfigureEnterprise</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::string</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">username</a>, <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::string</a> &amp;password, <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::string</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">ca_cert</a>=&quot;&quot;, <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::string</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">client_cert</a>=&quot;&quot;, <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::string</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">client_key</a>=&quot;&quot;)</td></tr>
 <tr class="memdesc:a92f3b8669675d2c6735e71987f4cfb4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure WPA2/WPA3 Enterprise authentication.  <br /></td></tr>
 <tr class="separator:a92f3b8669675d2c6735e71987f4cfb4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a84d3d76c4d53344b418da4b53f7433" id="r_a7a84d3d76c4d53344b418da4b53f7433"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a84d3d76c4d53344b418da4b53f7433">StartSmartConfig</a> (smartconfig_type_t type=SC_TYPE_ESPTOUCH, uint32_t timeout_ms=60000)</td></tr>
+<tr class="memitem:a7a84d3d76c4d53344b418da4b53f7433" id="r_a7a84d3d76c4d53344b418da4b53f7433"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a84d3d76c4d53344b418da4b53f7433">StartSmartConfig</a> (<a class="el" href="classSoftChipSelectGuard.html">smartconfig_type_t</a> type=<a class="el" href="classSoftChipSelectGuard.html">SC_TYPE_ESPTOUCH</a>, <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> timeout_ms=60000)</td></tr>
 <tr class="memdesc:a7a84d3d76c4d53344b418da4b53f7433"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start SmartConfig provisioning.  <br /></td></tr>
 <tr class="separator:a7a84d3d76c4d53344b418da4b53f7433"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a385c3e3f99d1fb65cae8e194ccdd0dba" id="r_a385c3e3f99d1fb65cae8e194ccdd0dba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a385c3e3f99d1fb65cae8e194ccdd0dba">StopSmartConfig</a> ()</td></tr>
 <tr class="memdesc:a385c3e3f99d1fb65cae8e194ccdd0dba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop SmartConfig provisioning.  <br /></td></tr>
 <tr class="separator:a385c3e3f99d1fb65cae8e194ccdd0dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a9932ca927536ee20c8cea6074b1b8d" id="r_a1a9932ca927536ee20c8cea6074b1b8d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a9932ca927536ee20c8cea6074b1b8d">InitMesh</a> (const uint8_t mesh_id[6], uint8_t max_layer=6, uint16_t max_connection=10)</td></tr>
+<tr class="memitem:a1a9932ca927536ee20c8cea6074b1b8d" id="r_a1a9932ca927536ee20c8cea6074b1b8d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a9932ca927536ee20c8cea6074b1b8d">InitMesh</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> <a class="el" href="classSoftChipSelectGuard.html">mesh_id</a>[6], <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> <a class="el" href="classSoftChipSelectGuard.html">max_layer</a>=6, <a class="el" href="classSoftChipSelectGuard.html">uint16_t</a> max_connection=10)</td></tr>
 <tr class="memdesc:a1a9932ca927536ee20c8cea6074b1b8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize ESP-MESH networking.  <br /></td></tr>
 <tr class="separator:a1a9932ca927536ee20c8cea6074b1b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2bdcc63c1e0be76c5172d2b968738fae" id="r_a2bdcc63c1e0be76c5172d2b968738fae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2bdcc63c1e0be76c5172d2b968738fae">StartMeshRoot</a> ()</td></tr>
@@ -249,29 +249,29 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4fc6b2c0a4eca9a2160641815a573a56" id="r_a4fc6b2c0a4eca9a2160641815a573a56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fc6b2c0a4eca9a2160641815a573a56">StopMesh</a> ()</td></tr>
 <tr class="memdesc:a4fc6b2c0a4eca9a2160641815a573a56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop ESP-MESH networking.  <br /></td></tr>
 <tr class="separator:a4fc6b2c0a4eca9a2160641815a573a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9047ef32fc68f930803768a071c9198f" id="r_a9047ef32fc68f930803768a071c9198f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9047ef32fc68f930803768a071c9198f">GetStatistics</a> (wifi_pkt_rx_ctrl_t &amp;stats) const</td></tr>
+<tr class="memitem:a9047ef32fc68f930803768a071c9198f" id="r_a9047ef32fc68f930803768a071c9198f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9047ef32fc68f930803768a071c9198f">GetStatistics</a> (<a class="el" href="classSoftChipSelectGuard.html">wifi_pkt_rx_ctrl_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">stats</a>) <a class="el" href="classSoftChipSelectGuard.html">const</a></td></tr>
 <tr class="memdesc:a9047ef32fc68f930803768a071c9198f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get WiFi statistics.  <br /></td></tr>
 <tr class="separator:a9047ef32fc68f930803768a071c9198f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5633082de37e5cbec30a83797f1b07b7" id="r_a5633082de37e5cbec30a83797f1b07b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5633082de37e5cbec30a83797f1b07b7">SetTxPower</a> (uint8_t power)</td></tr>
+<tr class="memitem:a5633082de37e5cbec30a83797f1b07b7" id="r_a5633082de37e5cbec30a83797f1b07b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5633082de37e5cbec30a83797f1b07b7">SetTxPower</a> (<a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> <a class="el" href="classSoftChipSelectGuard.html">power</a>)</td></tr>
 <tr class="memdesc:a5633082de37e5cbec30a83797f1b07b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set WiFi TX power.  <br /></td></tr>
 <tr class="separator:a5633082de37e5cbec30a83797f1b07b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5e01cbadeb8020b87dff80abf89d474" id="r_ae5e01cbadeb8020b87dff80abf89d474"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5e01cbadeb8020b87dff80abf89d474">GetTxPower</a> () const</td></tr>
+<tr class="memitem:ae5e01cbadeb8020b87dff80abf89d474" id="r_ae5e01cbadeb8020b87dff80abf89d474"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">int8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5e01cbadeb8020b87dff80abf89d474">GetTxPower</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a></td></tr>
 <tr class="memdesc:ae5e01cbadeb8020b87dff80abf89d474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get WiFi TX power.  <br /></td></tr>
 <tr class="separator:ae5e01cbadeb8020b87dff80abf89d474"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a1834e3fa7ee01a5cab72d28e1ccfa6" id="r_a8a1834e3fa7ee01a5cab72d28e1ccfa6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a1834e3fa7ee01a5cab72d28e1ccfa6">SetBandwidth</a> (wifi_bandwidth_t bandwidth)</td></tr>
+<tr class="memitem:a8a1834e3fa7ee01a5cab72d28e1ccfa6" id="r_a8a1834e3fa7ee01a5cab72d28e1ccfa6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a1834e3fa7ee01a5cab72d28e1ccfa6">SetBandwidth</a> (<a class="el" href="classSoftChipSelectGuard.html">wifi_bandwidth_t</a> bandwidth)</td></tr>
 <tr class="memdesc:a8a1834e3fa7ee01a5cab72d28e1ccfa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set WiFi channel bandwidth.  <br /></td></tr>
 <tr class="separator:a8a1834e3fa7ee01a5cab72d28e1ccfa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae11fb0318c3118264269ed8c3f0f0190" id="r_ae11fb0318c3118264269ed8c3f0f0190"><td class="memItemLeft" align="right" valign="top">wifi_bandwidth_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae11fb0318c3118264269ed8c3f0f0190">GetBandwidth</a> () const</td></tr>
+<tr class="memitem:ae11fb0318c3118264269ed8c3f0f0190" id="r_ae11fb0318c3118264269ed8c3f0f0190"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">wifi_bandwidth_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae11fb0318c3118264269ed8c3f0f0190">GetBandwidth</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a></td></tr>
 <tr class="memdesc:ae11fb0318c3118264269ed8c3f0f0190"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get WiFi channel bandwidth.  <br /></td></tr>
 <tr class="separator:ae11fb0318c3118264269ed8c3f0f0190"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a695a29d07e81253c872c6e74f3ec2063" id="r_a695a29d07e81253c872c6e74f3ec2063"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a695a29d07e81253c872c6e74f3ec2063">PerformCalibration</a> ()</td></tr>
 <tr class="memdesc:a695a29d07e81253c872c6e74f3ec2063"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform WiFi calibration.  <br /></td></tr>
 <tr class="separator:a695a29d07e81253c872c6e74f3ec2063"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e18ef2bcb49785dab2233210ff78d2d" id="r_a5e18ef2bcb49785dab2233210ff78d2d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e18ef2bcb49785dab2233210ff78d2d">GetConnectionInfo</a> (wifi_ap_record_t &amp;info) const</td></tr>
+<tr class="memitem:a5e18ef2bcb49785dab2233210ff78d2d" id="r_a5e18ef2bcb49785dab2233210ff78d2d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e18ef2bcb49785dab2233210ff78d2d">GetConnectionInfo</a> (<a class="el" href="classSoftChipSelectGuard.html">wifi_ap_record_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">info</a>) <a class="el" href="classSoftChipSelectGuard.html">const</a></td></tr>
 <tr class="memdesc:a5e18ef2bcb49785dab2233210ff78d2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get detailed connection information.  <br /></td></tr>
 <tr class="separator:a5e18ef2bcb49785dab2233210ff78d2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classBaseWifi"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classBaseWifi')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classBaseWifi.html">BaseWifi</a></td></tr>
-<tr class="memitem:a3ece5610228558420ddb84fe1045619d inherit pub_methods_classBaseWifi" id="r_a3ece5610228558420ddb84fe1045619d"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseWifi.html#a3ece5610228558420ddb84fe1045619d">~BaseWifi</a> () noexcept=default</td></tr>
+<tr class="memitem:a3ece5610228558420ddb84fe1045619d inherit pub_methods_classBaseWifi" id="r_a3ece5610228558420ddb84fe1045619d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseWifi.html#a3ece5610228558420ddb84fe1045619d">~BaseWifi</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a>=<a class="el" href="classSoftChipSelectGuard.html">default</a></td></tr>
 <tr class="memdesc:a3ece5610228558420ddb84fe1045619d inherit pub_methods_classBaseWifi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup of derived classes.  <br /></td></tr>
 <tr class="separator:a3ece5610228558420ddb84fe1045619d inherit pub_methods_classBaseWifi"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -289,59 +289,59 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a219d3df4683abcdfa67b05cf28578bcf" id="r_a219d3df4683abcdfa67b05cf28578bcf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a219d3df4683abcdfa67b05cf28578bcf">UnregisterEventHandlers</a> ()</td></tr>
 <tr class="memdesc:a219d3df4683abcdfa67b05cf28578bcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregister ESP-IDF event handlers.  <br /></td></tr>
 <tr class="separator:a219d3df4683abcdfa67b05cf28578bcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02d8d51377fc2b7c74b040bd2b376a81" id="r_a02d8d51377fc2b7c74b040bd2b376a81"><td class="memItemLeft" align="right" valign="top">wifi_mode_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02d8d51377fc2b7c74b040bd2b376a81">ConvertToEspMode</a> (<a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a> mode) const</td></tr>
+<tr class="memitem:a02d8d51377fc2b7c74b040bd2b376a81" id="r_a02d8d51377fc2b7c74b040bd2b376a81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">wifi_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02d8d51377fc2b7c74b040bd2b376a81">ConvertToEspMode</a> (<a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a> mode) <a class="el" href="classSoftChipSelectGuard.html">const</a></td></tr>
 <tr class="memdesc:a02d8d51377fc2b7c74b040bd2b376a81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert HardFOC WiFi mode to ESP-IDF mode.  <br /></td></tr>
 <tr class="separator:a02d8d51377fc2b7c74b040bd2b376a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd1b5b7ed9c18fe3f6731e125c78e385" id="r_abd1b5b7ed9c18fe3f6731e125c78e385"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd1b5b7ed9c18fe3f6731e125c78e385">ConvertFromEspMode</a> (wifi_mode_t mode) const</td></tr>
+<tr class="memitem:abd1b5b7ed9c18fe3f6731e125c78e385" id="r_abd1b5b7ed9c18fe3f6731e125c78e385"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd1b5b7ed9c18fe3f6731e125c78e385">ConvertFromEspMode</a> (<a class="el" href="classSoftChipSelectGuard.html">wifi_mode_t</a> mode) <a class="el" href="classSoftChipSelectGuard.html">const</a></td></tr>
 <tr class="memdesc:abd1b5b7ed9c18fe3f6731e125c78e385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert ESP-IDF WiFi mode to HardFOC mode.  <br /></td></tr>
 <tr class="separator:abd1b5b7ed9c18fe3f6731e125c78e385"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85184affd47380dc4c18243c52695aff" id="r_a85184affd47380dc4c18243c52695aff"><td class="memItemLeft" align="right" valign="top">wifi_auth_mode_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85184affd47380dc4c18243c52695aff">ConvertToEspAuthMode</a> (<a class="el" href="group__wifi.html#gaa433fd9116606cbe69d1feeb748f41f7">hf_wifi_security_t</a> security) const</td></tr>
+<tr class="memitem:a85184affd47380dc4c18243c52695aff" id="r_a85184affd47380dc4c18243c52695aff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">wifi_auth_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85184affd47380dc4c18243c52695aff">ConvertToEspAuthMode</a> (<a class="el" href="group__wifi.html#gaa433fd9116606cbe69d1feeb748f41f7">hf_wifi_security_t</a> security) <a class="el" href="classSoftChipSelectGuard.html">const</a></td></tr>
 <tr class="memdesc:a85184affd47380dc4c18243c52695aff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert HardFOC security to ESP-IDF auth mode.  <br /></td></tr>
 <tr class="separator:a85184affd47380dc4c18243c52695aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9b25f64fc30d6f86d4cb3e701eee2c5" id="r_ab9b25f64fc30d6f86d4cb3e701eee2c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__wifi.html#gaa433fd9116606cbe69d1feeb748f41f7">hf_wifi_security_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9b25f64fc30d6f86d4cb3e701eee2c5">ConvertFromEspAuthMode</a> (wifi_auth_mode_t auth_mode) const</td></tr>
+<tr class="memitem:ab9b25f64fc30d6f86d4cb3e701eee2c5" id="r_ab9b25f64fc30d6f86d4cb3e701eee2c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__wifi.html#gaa433fd9116606cbe69d1feeb748f41f7">hf_wifi_security_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9b25f64fc30d6f86d4cb3e701eee2c5">ConvertFromEspAuthMode</a> (<a class="el" href="classSoftChipSelectGuard.html">wifi_auth_mode_t</a> <a class="el" href="classSoftChipSelectGuard.html">auth_mode</a>) <a class="el" href="classSoftChipSelectGuard.html">const</a></td></tr>
 <tr class="memdesc:ab9b25f64fc30d6f86d4cb3e701eee2c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert ESP-IDF auth mode to HardFOC security.  <br /></td></tr>
 <tr class="separator:ab9b25f64fc30d6f86d4cb3e701eee2c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51a8bcf4f7e88ff33930b878333c0453" id="r_a51a8bcf4f7e88ff33930b878333c0453"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51a8bcf4f7e88ff33930b878333c0453">ConvertEspError</a> (esp_err_t esp_err) const</td></tr>
+<tr class="memitem:a51a8bcf4f7e88ff33930b878333c0453" id="r_a51a8bcf4f7e88ff33930b878333c0453"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51a8bcf4f7e88ff33930b878333c0453">ConvertEspError</a> (<a class="el" href="classSoftChipSelectGuard.html">esp_err_t</a> <a class="el" href="classSoftChipSelectGuard.html">esp_err</a>) <a class="el" href="classSoftChipSelectGuard.html">const</a></td></tr>
 <tr class="memdesc:a51a8bcf4f7e88ff33930b878333c0453"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert ESP-IDF error to HardFOC error.  <br /></td></tr>
 <tr class="separator:a51a8bcf4f7e88ff33930b878333c0453"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53e8186fcd0b012235228f62264d616c" id="r_a53e8186fcd0b012235228f62264d616c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53e8186fcd0b012235228f62264d616c">handleWifiEvent</a> (int32_t event_id, void *event_data)</td></tr>
+<tr class="memitem:a53e8186fcd0b012235228f62264d616c" id="r_a53e8186fcd0b012235228f62264d616c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53e8186fcd0b012235228f62264d616c">handleWifiEvent</a> (<a class="el" href="classSoftChipSelectGuard.html">int32_t</a> <a class="el" href="classSoftChipSelectGuard.html">event_id</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">event_data</a>)</td></tr>
 <tr class="memdesc:a53e8186fcd0b012235228f62264d616c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle WiFi events internally.  <br /></td></tr>
 <tr class="separator:a53e8186fcd0b012235228f62264d616c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a080e6d8828cc502fe12217cb8702ceb1" id="r_a080e6d8828cc502fe12217cb8702ceb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a080e6d8828cc502fe12217cb8702ceb1">handleIpEvent</a> (int32_t event_id, void *event_data)</td></tr>
+<tr class="memitem:a080e6d8828cc502fe12217cb8702ceb1" id="r_a080e6d8828cc502fe12217cb8702ceb1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a080e6d8828cc502fe12217cb8702ceb1">handleIpEvent</a> (<a class="el" href="classSoftChipSelectGuard.html">int32_t</a> <a class="el" href="classSoftChipSelectGuard.html">event_id</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">event_data</a>)</td></tr>
 <tr class="memdesc:a080e6d8828cc502fe12217cb8702ceb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle IP events internally.  <br /></td></tr>
 <tr class="separator:a080e6d8828cc502fe12217cb8702ceb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6ab0e3f8f9ce7a8a0c2710b3069e52e" id="r_ae6ab0e3f8f9ce7a8a0c2710b3069e52e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6ab0e3f8f9ce7a8a0c2710b3069e52e">handleSmartconfigEvent</a> (int32_t event_id, void *event_data)</td></tr>
+<tr class="memitem:ae6ab0e3f8f9ce7a8a0c2710b3069e52e" id="r_ae6ab0e3f8f9ce7a8a0c2710b3069e52e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6ab0e3f8f9ce7a8a0c2710b3069e52e">handleSmartconfigEvent</a> (<a class="el" href="classSoftChipSelectGuard.html">int32_t</a> <a class="el" href="classSoftChipSelectGuard.html">event_id</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">event_data</a>)</td></tr>
 <tr class="memdesc:ae6ab0e3f8f9ce7a8a0c2710b3069e52e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle SmartConfig events internally.  <br /></td></tr>
 <tr class="separator:ae6ab0e3f8f9ce7a8a0c2710b3069e52e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77de796e68ddc5176f8d9d7ec5c16188" id="r_a77de796e68ddc5176f8d9d7ec5c16188"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77de796e68ddc5176f8d9d7ec5c16188">NotifyEventCallback</a> (<a class="el" href="group__wifi.html#ga0fc5cd83d2820476528dba010f9ccfbb">hf_wifi_event_t</a> event, void *event_data)</td></tr>
+<tr class="memitem:a77de796e68ddc5176f8d9d7ec5c16188" id="r_a77de796e68ddc5176f8d9d7ec5c16188"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77de796e68ddc5176f8d9d7ec5c16188">NotifyEventCallback</a> (<a class="el" href="group__wifi.html#ga0fc5cd83d2820476528dba010f9ccfbb">hf_wifi_event_t</a> <a class="el" href="classSoftChipSelectGuard.html">event</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">event_data</a>)</td></tr>
 <tr class="memdesc:a77de796e68ddc5176f8d9d7ec5c16188"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notify user event callback.  <br /></td></tr>
 <tr class="separator:a77de796e68ddc5176f8d9d7ec5c16188"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0a0787613efaf1d60a90904ff0c055a" id="r_ac0a0787613efaf1d60a90904ff0c055a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0a0787613efaf1d60a90904ff0c055a">UpdateState</a> (<a class="el" href="group__wifi.html#ga45e751432d70ba4ee36c1369914ee419">hf_wifi_state_t</a> new_state)</td></tr>
+<tr class="memitem:ac0a0787613efaf1d60a90904ff0c055a" id="r_ac0a0787613efaf1d60a90904ff0c055a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0a0787613efaf1d60a90904ff0c055a">UpdateState</a> (<a class="el" href="group__wifi.html#ga45e751432d70ba4ee36c1369914ee419">hf_wifi_state_t</a> <a class="el" href="classSoftChipSelectGuard.html">new_state</a>)</td></tr>
 <tr class="memdesc:ac0a0787613efaf1d60a90904ff0c055a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update internal state.  <br /></td></tr>
 <tr class="separator:ac0a0787613efaf1d60a90904ff0c055a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d784a26c3ea531c17112e0e3465b3ad" id="r_a9d784a26c3ea531c17112e0e3465b3ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d784a26c3ea531c17112e0e3465b3ad">ApplyAdvancedConfig</a> ()</td></tr>
 <tr class="memdesc:a9d784a26c3ea531c17112e0e3465b3ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply advanced configuration settings.  <br /></td></tr>
 <tr class="separator:a9d784a26c3ea531c17112e0e3465b3ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabc702294956cafe64737dee7a463d77" id="r_aabc702294956cafe64737dee7a463d77"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aabc702294956cafe64737dee7a463d77">ValidateConfig</a> (const <a class="el" href="structhf__wifi__station__config__t.html">hf_wifi_station_config_t</a> &amp;config) const</td></tr>
+<tr class="memitem:aabc702294956cafe64737dee7a463d77" id="r_aabc702294956cafe64737dee7a463d77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aabc702294956cafe64737dee7a463d77">ValidateConfig</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__wifi__station__config__t.html">hf_wifi_station_config_t</a> &amp;config) <a class="el" href="classSoftChipSelectGuard.html">const</a></td></tr>
 <tr class="memdesc:aabc702294956cafe64737dee7a463d77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate configuration parameters.  <br /></td></tr>
 <tr class="separator:aabc702294956cafe64737dee7a463d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a961be99b2a602814d89231be57006f71" id="r_a961be99b2a602814d89231be57006f71"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a961be99b2a602814d89231be57006f71">ValidateApConfig</a> (const <a class="el" href="structhf__wifi__ap__config__t.html">hf_wifi_ap_config_t</a> &amp;config) const</td></tr>
+<tr class="memitem:a961be99b2a602814d89231be57006f71" id="r_a961be99b2a602814d89231be57006f71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a961be99b2a602814d89231be57006f71">ValidateApConfig</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__wifi__ap__config__t.html">hf_wifi_ap_config_t</a> &amp;config) <a class="el" href="classSoftChipSelectGuard.html">const</a></td></tr>
 <tr class="memdesc:a961be99b2a602814d89231be57006f71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate AP configuration parameters.  <br /></td></tr>
 <tr class="separator:a961be99b2a602814d89231be57006f71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f3b9b5a7e2cc5997508835e9b997163" id="r_a2f3b9b5a7e2cc5997508835e9b997163"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f3b9b5a7e2cc5997508835e9b997163">EspWifi</a> (const <a class="el" href="classEspWifi.html">EspWifi</a> &amp;)=delete</td></tr>
+<tr class="memitem:a2f3b9b5a7e2cc5997508835e9b997163" id="r_a2f3b9b5a7e2cc5997508835e9b997163"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f3b9b5a7e2cc5997508835e9b997163">EspWifi</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classEspWifi.html">EspWifi</a> &amp;)=<a class="el" href="classSoftChipSelectGuard.html">delete</a></td></tr>
 <tr class="separator:a2f3b9b5a7e2cc5997508835e9b997163"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0118baa225037dd065107956fbef81a2" id="r_a0118baa225037dd065107956fbef81a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEspWifi.html">EspWifi</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0118baa225037dd065107956fbef81a2">operator=</a> (const <a class="el" href="classEspWifi.html">EspWifi</a> &amp;)=delete</td></tr>
+<tr class="memitem:a0118baa225037dd065107956fbef81a2" id="r_a0118baa225037dd065107956fbef81a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEspWifi.html">EspWifi</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0118baa225037dd065107956fbef81a2">operator=</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classEspWifi.html">EspWifi</a> &amp;)=<a class="el" href="classSoftChipSelectGuard.html">delete</a></td></tr>
 <tr class="separator:a0118baa225037dd065107956fbef81a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
-<tr class="memitem:a85ea58d88862a24b24e337551056b4f6" id="r_a85ea58d88862a24b24e337551056b4f6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85ea58d88862a24b24e337551056b4f6">wifiEventHandler</a> (void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data)</td></tr>
+<tr class="memitem:a85ea58d88862a24b24e337551056b4f6" id="r_a85ea58d88862a24b24e337551056b4f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85ea58d88862a24b24e337551056b4f6">wifiEventHandler</a> (<a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">arg</a>, <a class="el" href="classSoftChipSelectGuard.html">esp_event_base_t</a> <a class="el" href="classSoftChipSelectGuard.html">event_base</a>, <a class="el" href="classSoftChipSelectGuard.html">int32_t</a> <a class="el" href="classSoftChipSelectGuard.html">event_id</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">event_data</a>)</td></tr>
 <tr class="memdesc:a85ea58d88862a24b24e337551056b4f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static WiFi event handler for ESP-IDF.  <br /></td></tr>
 <tr class="separator:a85ea58d88862a24b24e337551056b4f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23bfa099193ab347fbe7022193e6ff47" id="r_a23bfa099193ab347fbe7022193e6ff47"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23bfa099193ab347fbe7022193e6ff47">ipEventHandler</a> (void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data)</td></tr>
+<tr class="memitem:a23bfa099193ab347fbe7022193e6ff47" id="r_a23bfa099193ab347fbe7022193e6ff47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23bfa099193ab347fbe7022193e6ff47">ipEventHandler</a> (<a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">arg</a>, <a class="el" href="classSoftChipSelectGuard.html">esp_event_base_t</a> <a class="el" href="classSoftChipSelectGuard.html">event_base</a>, <a class="el" href="classSoftChipSelectGuard.html">int32_t</a> <a class="el" href="classSoftChipSelectGuard.html">event_id</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">event_data</a>)</td></tr>
 <tr class="memdesc:a23bfa099193ab347fbe7022193e6ff47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static IP event handler for ESP-IDF.  <br /></td></tr>
 <tr class="separator:a23bfa099193ab347fbe7022193e6ff47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a096aada913999e7bfbd3ec2c1b8d570f" id="r_a096aada913999e7bfbd3ec2c1b8d570f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a096aada913999e7bfbd3ec2c1b8d570f">smartconfigEventHandler</a> (void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data)</td></tr>
+<tr class="memitem:a096aada913999e7bfbd3ec2c1b8d570f" id="r_a096aada913999e7bfbd3ec2c1b8d570f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a096aada913999e7bfbd3ec2c1b8d570f">smartconfigEventHandler</a> (<a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">arg</a>, <a class="el" href="classSoftChipSelectGuard.html">esp_event_base_t</a> <a class="el" href="classSoftChipSelectGuard.html">event_base</a>, <a class="el" href="classSoftChipSelectGuard.html">int32_t</a> <a class="el" href="classSoftChipSelectGuard.html">event_id</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">event_data</a>)</td></tr>
 <tr class="memdesc:a096aada913999e7bfbd3ec2c1b8d570f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static SmartConfig event handler for ESP-IDF.  <br /></td></tr>
 <tr class="separator:a096aada913999e7bfbd3ec2c1b8d570f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -349,13 +349,13 @@ Static Private Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ac51e95ec9ea5a7b9f0e435ae374a9008" id="r_ac51e95ec9ea5a7b9f0e435ae374a9008"><td class="memItemLeft" align="right" valign="top"><a class="el" href="PlatformMutex_8h.html#a3448b54e0a94193058b38d135c1254ef">PlatformMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac51e95ec9ea5a7b9f0e435ae374a9008">m_mutex</a></td></tr>
 <tr class="separator:ac51e95ec9ea5a7b9f0e435ae374a9008"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb31106309d33af5ce16e90e46906939" id="r_adb31106309d33af5ce16e90e46906939"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb31106309d33af5ce16e90e46906939">m_initialized</a></td></tr>
+<tr class="memitem:adb31106309d33af5ce16e90e46906939" id="r_adb31106309d33af5ce16e90e46906939"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt; <a class="el" href="classSoftChipSelectGuard.html">bool</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb31106309d33af5ce16e90e46906939">m_initialized</a></td></tr>
 <tr class="separator:adb31106309d33af5ce16e90e46906939"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a545838e3b8d960377c122e753db8cf47" id="r_a545838e3b8d960377c122e753db8cf47"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a545838e3b8d960377c122e753db8cf47">m_enabled</a></td></tr>
+<tr class="memitem:a545838e3b8d960377c122e753db8cf47" id="r_a545838e3b8d960377c122e753db8cf47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt; <a class="el" href="classSoftChipSelectGuard.html">bool</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a545838e3b8d960377c122e753db8cf47">m_enabled</a></td></tr>
 <tr class="separator:a545838e3b8d960377c122e753db8cf47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d89e54dd5537c34d49da6bda7c74c4c" id="r_a0d89e54dd5537c34d49da6bda7c74c4c"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; <a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d89e54dd5537c34d49da6bda7c74c4c">m_mode</a></td></tr>
+<tr class="memitem:a0d89e54dd5537c34d49da6bda7c74c4c" id="r_a0d89e54dd5537c34d49da6bda7c74c4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt; <a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d89e54dd5537c34d49da6bda7c74c4c">m_mode</a></td></tr>
 <tr class="separator:a0d89e54dd5537c34d49da6bda7c74c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf955c4a26114ca8ce1b9a436bab2ed5" id="r_aaf955c4a26114ca8ce1b9a436bab2ed5"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; <a class="el" href="group__wifi.html#ga45e751432d70ba4ee36c1369914ee419">hf_wifi_state_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf955c4a26114ca8ce1b9a436bab2ed5">m_state</a></td></tr>
+<tr class="memitem:aaf955c4a26114ca8ce1b9a436bab2ed5" id="r_aaf955c4a26114ca8ce1b9a436bab2ed5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt; <a class="el" href="group__wifi.html#ga45e751432d70ba4ee36c1369914ee419">hf_wifi_state_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf955c4a26114ca8ce1b9a436bab2ed5">m_state</a></td></tr>
 <tr class="separator:aaf955c4a26114ca8ce1b9a436bab2ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a996c672bdce9931dfdea768d84179d" id="r_a4a996c672bdce9931dfdea768d84179d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhf__wifi__station__config__t.html">hf_wifi_station_config_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a996c672bdce9931dfdea768d84179d">m_sta_config</a></td></tr>
 <tr class="separator:a4a996c672bdce9931dfdea768d84179d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -363,66 +363,66 @@ Private Attributes</h2></td></tr>
 <tr class="separator:ae403782c7db21e828d909f147cd8713b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a979f148264a16344c727a705baeb1414" id="r_a979f148264a16344c727a705baeb1414"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structEspWifiAdvancedConfig.html">EspWifiAdvancedConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a979f148264a16344c727a705baeb1414">m_advanced_config</a></td></tr>
 <tr class="separator:a979f148264a16344c727a705baeb1414"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab07e9f6a54a566842081cb9e437f8c10" id="r_ab07e9f6a54a566842081cb9e437f8c10"><td class="memItemLeft" align="right" valign="top">esp_netif_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab07e9f6a54a566842081cb9e437f8c10">m_sta_netif</a></td></tr>
+<tr class="memitem:ab07e9f6a54a566842081cb9e437f8c10" id="r_ab07e9f6a54a566842081cb9e437f8c10"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">esp_netif_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab07e9f6a54a566842081cb9e437f8c10">m_sta_netif</a></td></tr>
 <tr class="separator:ab07e9f6a54a566842081cb9e437f8c10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cc51a8850a5a1c8fdf4bcada04bde90" id="r_a1cc51a8850a5a1c8fdf4bcada04bde90"><td class="memItemLeft" align="right" valign="top">esp_netif_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1cc51a8850a5a1c8fdf4bcada04bde90">m_ap_netif</a></td></tr>
+<tr class="memitem:a1cc51a8850a5a1c8fdf4bcada04bde90" id="r_a1cc51a8850a5a1c8fdf4bcada04bde90"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">esp_netif_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1cc51a8850a5a1c8fdf4bcada04bde90">m_ap_netif</a></td></tr>
 <tr class="separator:a1cc51a8850a5a1c8fdf4bcada04bde90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbfa09b39eb14ed286bd28b04cff7d98" id="r_adbfa09b39eb14ed286bd28b04cff7d98"><td class="memItemLeft" align="right" valign="top">EventGroupHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbfa09b39eb14ed286bd28b04cff7d98">m_event_group</a></td></tr>
+<tr class="memitem:adbfa09b39eb14ed286bd28b04cff7d98" id="r_adbfa09b39eb14ed286bd28b04cff7d98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">EventGroupHandle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbfa09b39eb14ed286bd28b04cff7d98">m_event_group</a></td></tr>
 <tr class="separator:adbfa09b39eb14ed286bd28b04cff7d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f8dedfb68e0d7b6acf46ccdf231c798" id="r_a9f8dedfb68e0d7b6acf46ccdf231c798"><td class="memItemLeft" align="right" valign="top">esp_event_handler_instance_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f8dedfb68e0d7b6acf46ccdf231c798">m_wifi_event_handler</a></td></tr>
+<tr class="memitem:a9f8dedfb68e0d7b6acf46ccdf231c798" id="r_a9f8dedfb68e0d7b6acf46ccdf231c798"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">esp_event_handler_instance_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f8dedfb68e0d7b6acf46ccdf231c798">m_wifi_event_handler</a></td></tr>
 <tr class="separator:a9f8dedfb68e0d7b6acf46ccdf231c798"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae01a87adacafedea6f333196683bfe27" id="r_ae01a87adacafedea6f333196683bfe27"><td class="memItemLeft" align="right" valign="top">esp_event_handler_instance_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae01a87adacafedea6f333196683bfe27">m_ip_event_handler</a></td></tr>
+<tr class="memitem:ae01a87adacafedea6f333196683bfe27" id="r_ae01a87adacafedea6f333196683bfe27"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">esp_event_handler_instance_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae01a87adacafedea6f333196683bfe27">m_ip_event_handler</a></td></tr>
 <tr class="separator:ae01a87adacafedea6f333196683bfe27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1c6e03ad971d611da51fcdf3eed5cf8" id="r_ab1c6e03ad971d611da51fcdf3eed5cf8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__wifi.html#gafc36eb4cdfaf0c2ea45afeaac3ad13c9">hf_wifi_event_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1c6e03ad971d611da51fcdf3eed5cf8">m_event_callback</a></td></tr>
 <tr class="separator:ab1c6e03ad971d611da51fcdf3eed5cf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c6d455345af43e9d7fbac62b7ccc71c" id="r_a2c6d455345af43e9d7fbac62b7ccc71c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__wifi.html#ga427cf6c849ca99b6624e9106cefd0d60">hf_wifi_scan_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c6d455345af43e9d7fbac62b7ccc71c">m_scan_callback</a></td></tr>
 <tr class="separator:a2c6d455345af43e9d7fbac62b7ccc71c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a1a88d567809ce53ce3d5575755b453" id="r_a3a1a88d567809ce53ce3d5575755b453"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a1a88d567809ce53ce3d5575755b453">m_event_user_data</a></td></tr>
+<tr class="memitem:a3a1a88d567809ce53ce3d5575755b453" id="r_a3a1a88d567809ce53ce3d5575755b453"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a1a88d567809ce53ce3d5575755b453">m_event_user_data</a></td></tr>
 <tr class="separator:a3a1a88d567809ce53ce3d5575755b453"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8667062fa9debd9273cdd2480636259f" id="r_a8667062fa9debd9273cdd2480636259f"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8667062fa9debd9273cdd2480636259f">m_scan_user_data</a></td></tr>
+<tr class="memitem:a8667062fa9debd9273cdd2480636259f" id="r_a8667062fa9debd9273cdd2480636259f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8667062fa9debd9273cdd2480636259f">m_scan_user_data</a></td></tr>
 <tr class="separator:a8667062fa9debd9273cdd2480636259f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab362b3836b671682f5789ca2e9fad4d6" id="r_ab362b3836b671682f5789ca2e9fad4d6"><td class="memItemLeft" align="right" valign="top">std::queue&lt; std::pair&lt; <a class="el" href="group__wifi.html#ga0fc5cd83d2820476528dba010f9ccfbb">hf_wifi_event_t</a>, void * &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab362b3836b671682f5789ca2e9fad4d6">m_event_queue</a></td></tr>
+<tr class="memitem:ab362b3836b671682f5789ca2e9fad4d6" id="r_ab362b3836b671682f5789ca2e9fad4d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::queue</a>&lt; <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::pair</a>&lt; <a class="el" href="group__wifi.html#ga0fc5cd83d2820476528dba010f9ccfbb">hf_wifi_event_t</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> * &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab362b3836b671682f5789ca2e9fad4d6">m_event_queue</a></td></tr>
 <tr class="separator:ab362b3836b671682f5789ca2e9fad4d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a5f2dc519caa82f9e3c7b3f7511da04" id="r_a6a5f2dc519caa82f9e3c7b3f7511da04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="PlatformMutex_8h.html#a3448b54e0a94193058b38d135c1254ef">PlatformMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a5f2dc519caa82f9e3c7b3f7511da04">m_event_mutex</a></td></tr>
 <tr class="separator:a6a5f2dc519caa82f9e3c7b3f7511da04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d96729fa9dac2b05153578461f1e781" id="r_a5d96729fa9dac2b05153578461f1e781"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structhf__wifi__network__info__t.html">hf_wifi_network_info_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d96729fa9dac2b05153578461f1e781">m_scan_results</a></td></tr>
+<tr class="memitem:a5d96729fa9dac2b05153578461f1e781" id="r_a5d96729fa9dac2b05153578461f1e781"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::vector</a>&lt; <a class="el" href="structhf__wifi__network__info__t.html">hf_wifi_network_info_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d96729fa9dac2b05153578461f1e781">m_scan_results</a></td></tr>
 <tr class="separator:a5d96729fa9dac2b05153578461f1e781"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7035508c06cc3cd794c3c0baec151f30" id="r_a7035508c06cc3cd794c3c0baec151f30"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7035508c06cc3cd794c3c0baec151f30">m_scanning</a></td></tr>
+<tr class="memitem:a7035508c06cc3cd794c3c0baec151f30" id="r_a7035508c06cc3cd794c3c0baec151f30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt; <a class="el" href="classSoftChipSelectGuard.html">bool</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7035508c06cc3cd794c3c0baec151f30">m_scanning</a></td></tr>
 <tr class="separator:a7035508c06cc3cd794c3c0baec151f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2d94a61c6c079af5600de156baf16fa" id="r_aa2d94a61c6c079af5600de156baf16fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="PlatformMutex_8h.html#a3448b54e0a94193058b38d135c1254ef">PlatformMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2d94a61c6c079af5600de156baf16fa">m_scan_mutex</a></td></tr>
 <tr class="separator:aa2d94a61c6c079af5600de156baf16fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af91498a9a25bfbe8819054cc8235a644" id="r_af91498a9a25bfbe8819054cc8235a644"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af91498a9a25bfbe8819054cc8235a644">m_connected</a></td></tr>
+<tr class="memitem:af91498a9a25bfbe8819054cc8235a644" id="r_af91498a9a25bfbe8819054cc8235a644"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt; <a class="el" href="classSoftChipSelectGuard.html">bool</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af91498a9a25bfbe8819054cc8235a644">m_connected</a></td></tr>
 <tr class="separator:af91498a9a25bfbe8819054cc8235a644"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa803cd3263ba9a2ae68fae0ed07e2693" id="r_aa803cd3263ba9a2ae68fae0ed07e2693"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa803cd3263ba9a2ae68fae0ed07e2693">m_ap_active</a></td></tr>
+<tr class="memitem:aa803cd3263ba9a2ae68fae0ed07e2693" id="r_aa803cd3263ba9a2ae68fae0ed07e2693"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt; <a class="el" href="classSoftChipSelectGuard.html">bool</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa803cd3263ba9a2ae68fae0ed07e2693">m_ap_active</a></td></tr>
 <tr class="separator:aa803cd3263ba9a2ae68fae0ed07e2693"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf74e0cf81678090bfd6217dbfc5d0ad" id="r_acf74e0cf81678090bfd6217dbfc5d0ad"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; int8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf74e0cf81678090bfd6217dbfc5d0ad">m_rssi</a></td></tr>
+<tr class="memitem:acf74e0cf81678090bfd6217dbfc5d0ad" id="r_acf74e0cf81678090bfd6217dbfc5d0ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt; <a class="el" href="classSoftChipSelectGuard.html">int8_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf74e0cf81678090bfd6217dbfc5d0ad">m_rssi</a></td></tr>
 <tr class="separator:acf74e0cf81678090bfd6217dbfc5d0ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9bcdfee7deaa0fd3bd1c41378e359dc" id="r_ad9bcdfee7deaa0fd3bd1c41378e359dc"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9bcdfee7deaa0fd3bd1c41378e359dc">m_channel</a></td></tr>
+<tr class="memitem:ad9bcdfee7deaa0fd3bd1c41378e359dc" id="r_ad9bcdfee7deaa0fd3bd1c41378e359dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt; <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9bcdfee7deaa0fd3bd1c41378e359dc">m_channel</a></td></tr>
 <tr class="separator:ad9bcdfee7deaa0fd3bd1c41378e359dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf463caaf71fcae20d22a391a0e66250" id="r_acf463caaf71fcae20d22a391a0e66250"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf463caaf71fcae20d22a391a0e66250">m_smartconfig_active</a></td></tr>
+<tr class="memitem:acf463caaf71fcae20d22a391a0e66250" id="r_acf463caaf71fcae20d22a391a0e66250"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt; <a class="el" href="classSoftChipSelectGuard.html">bool</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf463caaf71fcae20d22a391a0e66250">m_smartconfig_active</a></td></tr>
 <tr class="separator:acf463caaf71fcae20d22a391a0e66250"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54eddd362c8341bba3715f70a68dbd86" id="r_a54eddd362c8341bba3715f70a68dbd86"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54eddd362c8341bba3715f70a68dbd86">m_mesh_active</a></td></tr>
+<tr class="memitem:a54eddd362c8341bba3715f70a68dbd86" id="r_a54eddd362c8341bba3715f70a68dbd86"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt; <a class="el" href="classSoftChipSelectGuard.html">bool</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54eddd362c8341bba3715f70a68dbd86">m_mesh_active</a></td></tr>
 <tr class="separator:a54eddd362c8341bba3715f70a68dbd86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_classBaseWifi"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_static_methods_classBaseWifi')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classBaseWifi.html">BaseWifi</a></td></tr>
-<tr class="memitem:gafde1b68efc0648ef58ccb0ee5d3d9644 inherit pub_static_methods_classBaseWifi" id="r_gafde1b68efc0648ef58ccb0ee5d3d9644"><td class="memItemLeft" align="right" valign="top">static std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wifi.html#gafde1b68efc0648ef58ccb0ee5d3d9644">GetErrorString</a> (<a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> error)</td></tr>
+<tr class="memitem:gafde1b68efc0648ef58ccb0ee5d3d9644 inherit pub_static_methods_classBaseWifi" id="r_gafde1b68efc0648ef58ccb0ee5d3d9644"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::string_view</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wifi.html#gafde1b68efc0648ef58ccb0ee5d3d9644">GetErrorString</a> (<a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> error)</td></tr>
 <tr class="memdesc:gafde1b68efc0648ef58ccb0ee5d3d9644 inherit pub_static_methods_classBaseWifi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get error description string.  <br /></td></tr>
 <tr class="separator:gafde1b68efc0648ef58ccb0ee5d3d9644 inherit pub_static_methods_classBaseWifi"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classBaseWifi"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classBaseWifi')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classBaseWifi.html">BaseWifi</a></td></tr>
-<tr class="memitem:a150dc952c7f2336aa1ba5dbf53fe2f9d inherit pro_methods_classBaseWifi" id="r_a150dc952c7f2336aa1ba5dbf53fe2f9d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseWifi.html#a150dc952c7f2336aa1ba5dbf53fe2f9d">BaseWifi</a> ()=default</td></tr>
+<tr class="memitem:a150dc952c7f2336aa1ba5dbf53fe2f9d inherit pro_methods_classBaseWifi" id="r_a150dc952c7f2336aa1ba5dbf53fe2f9d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseWifi.html#a150dc952c7f2336aa1ba5dbf53fe2f9d">BaseWifi</a> ()=<a class="el" href="classSoftChipSelectGuard.html">default</a></td></tr>
 <tr class="memdesc:a150dc952c7f2336aa1ba5dbf53fe2f9d inherit pro_methods_classBaseWifi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Protected constructor - only derived classes can instantiate.  <br /></td></tr>
 <tr class="separator:a150dc952c7f2336aa1ba5dbf53fe2f9d inherit pro_methods_classBaseWifi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a850a025d5f7ddceaf6f8f551cde22cf2 inherit pro_methods_classBaseWifi" id="r_a850a025d5f7ddceaf6f8f551cde22cf2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseWifi.html#a850a025d5f7ddceaf6f8f551cde22cf2">BaseWifi</a> (const <a class="el" href="classBaseWifi.html">BaseWifi</a> &amp;)=delete</td></tr>
+<tr class="memitem:a850a025d5f7ddceaf6f8f551cde22cf2 inherit pro_methods_classBaseWifi" id="r_a850a025d5f7ddceaf6f8f551cde22cf2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseWifi.html#a850a025d5f7ddceaf6f8f551cde22cf2">BaseWifi</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classBaseWifi.html">BaseWifi</a> &amp;)=<a class="el" href="classSoftChipSelectGuard.html">delete</a></td></tr>
 <tr class="memdesc:a850a025d5f7ddceaf6f8f551cde22cf2 inherit pro_methods_classBaseWifi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor - deleted to prevent copying.  <br /></td></tr>
 <tr class="separator:a850a025d5f7ddceaf6f8f551cde22cf2 inherit pro_methods_classBaseWifi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c3a60c174313577476f5ede80d0382b inherit pro_methods_classBaseWifi" id="r_a4c3a60c174313577476f5ede80d0382b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBaseWifi.html">BaseWifi</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseWifi.html#a4c3a60c174313577476f5ede80d0382b">operator=</a> (const <a class="el" href="classBaseWifi.html">BaseWifi</a> &amp;)=delete</td></tr>
+<tr class="memitem:a4c3a60c174313577476f5ede80d0382b inherit pro_methods_classBaseWifi" id="r_a4c3a60c174313577476f5ede80d0382b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBaseWifi.html">BaseWifi</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseWifi.html#a4c3a60c174313577476f5ede80d0382b">operator=</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classBaseWifi.html">BaseWifi</a> &amp;)=<a class="el" href="classSoftChipSelectGuard.html">delete</a></td></tr>
 <tr class="memdesc:a4c3a60c174313577476f5ede80d0382b inherit pro_methods_classBaseWifi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignment operator - deleted to prevent copying.  <br /></td></tr>
 <tr class="separator:a4c3a60c174313577476f5ede80d0382b inherit pro_methods_classBaseWifi"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Advanced ESP32 implementation of unified <a class="el" href="classBaseWifi.html" title="Abstract base class for WiFi functionality.">BaseWifi</a> with ESP-IDF v5.5+ features. </p>
+<div class="textblock"><p>Advanced ESP32 implementation of unified <a class="el" href="classBaseWifi.html" title="Abstract base class for WiFi functionality.">BaseWifi</a> with ESP-IDF <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v5.5</a>+ features. </p>
 <p>This class provides a comprehensive implementation of <a class="el" href="classBaseWifi.html" title="Abstract base class for WiFi functionality.">BaseWifi</a> for ESP32 microcontrollers with support for both basic and advanced features including:</p>
 <p><b>Basic Features:</b></p><ul>
 <li>Station and Access Point modes</li>
@@ -431,9 +431,9 @@ Additional Inherited Members</h2></td></tr>
 <li>Power management and optimization</li>
 <li>Thread-safe state management</li>
 </ul>
-<p><b>Advanced Features (ESP-IDF v5.5+):</b></p><ul>
+<p><b>Advanced Features (ESP-IDF <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v5.5</a>+):</b></p><ul>
 <li>WPA3 Personal and Enterprise security</li>
-<li>802.11k/r/v roaming standards</li>
+<li><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">802.11k</a>/r/v roaming standards</li>
 <li>Protected Management Frames (PMF)</li>
 <li>A-MPDU aggregation for performance</li>
 <li>ESP-MESH networking</li>
@@ -468,7 +468,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">EspWifi::EspWifi </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structEspWifiAdvancedConfig.html">EspWifiAdvancedConfig</a> *</td>          <td class="paramname"><span class="paramname"><em>advanced_config</em><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structEspWifiAdvancedConfig.html">EspWifiAdvancedConfig</a> *</td>          <td class="paramname"><span class="paramname"><em>advanced_config</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="classSoftChipSelectGuard.html">nullptr</a></span></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -528,7 +528,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">EspWifi::EspWifi </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classEspWifi.html">EspWifi</a> &amp;</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classEspWifi.html">EspWifi</a> &amp;</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -582,7 +582,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::ConfigureAccessPoint </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structhf__wifi__ap__config__t.html">hf_wifi_ap_config_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__wifi__ap__config__t.html">hf_wifi_ap_config_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -615,27 +615,27 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::ConfigureEnterprise </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>username</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::string</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>username</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>password</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::string</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>password</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>ca_cert</em><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::string</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>ca_cert</em><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>client_cert</em><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::string</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>client_cert</em><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>client_key</em><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::string</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>client_key</em><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -664,27 +664,27 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::ConfigureRoaming </td>
           <td>(</td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enable_11k</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">bool</a></td>          <td class="paramname"><span class="paramname"><em>enable_11k</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enable_11r</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">bool</a></td>          <td class="paramname"><span class="paramname"><em>enable_11r</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enable_11v</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">bool</a></td>          <td class="paramname"><span class="paramname"><em>enable_11v</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Configure 802.11k/r/v roaming features. </p>
+<p>Configure <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">802.11k</a>/r/v roaming features. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">enable_11k</td><td>Enable 802.11k Radio Resource Management </td></tr>
-    <tr><td class="paramname">enable_11r</td><td>Enable 802.11r Fast BSS Transition </td></tr>
-    <tr><td class="paramname">enable_11v</td><td>Enable 802.11v BSS Transition Management </td></tr>
+    <tr><td class="paramname">enable_11k</td><td>Enable <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">802.11k</a> Radio Resource Management </td></tr>
+    <tr><td class="paramname">enable_11r</td><td>Enable <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">802.11r</a> Fast BSS Transition </td></tr>
+    <tr><td class="paramname">enable_11v</td><td>Enable <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">802.11v</a> BSS Transition Management </td></tr>
   </table>
   </dd>
 </dl>
@@ -704,7 +704,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::ConfigureStation </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structhf__wifi__station__config__t.html">hf_wifi_station_config_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__wifi__station__config__t.html">hf_wifi_station_config_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -740,7 +740,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::Connect </td>
           <td>(</td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>timeout_ms</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a></td>          <td class="paramname"><span class="paramname"><em>timeout_ms</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -776,7 +776,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::ConvertEspError </td>
           <td>(</td>
-          <td class="paramtype">esp_err_t</td>          <td class="paramname"><span class="paramname"><em>esp_err</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">esp_err_t</a></td>          <td class="paramname"><span class="paramname"><em>esp_err</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -810,7 +810,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="group__wifi.html#gaa433fd9116606cbe69d1feeb748f41f7">hf_wifi_security_t</a> EspWifi::ConvertFromEspAuthMode </td>
           <td>(</td>
-          <td class="paramtype">wifi_auth_mode_t</td>          <td class="paramname"><span class="paramname"><em>auth_mode</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">wifi_auth_mode_t</a></td>          <td class="paramname"><span class="paramname"><em>auth_mode</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -844,7 +844,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a> EspWifi::ConvertFromEspMode </td>
           <td>(</td>
-          <td class="paramtype">wifi_mode_t</td>          <td class="paramname"><span class="paramname"><em>mode</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">wifi_mode_t</a></td>          <td class="paramname"><span class="paramname"><em>mode</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -876,7 +876,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">wifi_auth_mode_t EspWifi::ConvertToEspAuthMode </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">wifi_auth_mode_t</a> EspWifi::ConvertToEspAuthMode </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__wifi.html#gaa433fd9116606cbe69d1feeb748f41f7">hf_wifi_security_t</a></td>          <td class="paramname"><span class="paramname"><em>security</em></span></td><td>)</td>
           <td> const</td>
@@ -910,7 +910,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">wifi_mode_t EspWifi::ConvertToEspMode </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">wifi_mode_t</a> EspWifi::ConvertToEspMode </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a></td>          <td class="paramname"><span class="paramname"><em>mode</em></span></td><td>)</td>
           <td> const</td>
@@ -1031,7 +1031,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::EnableWpa3Transition </td>
           <td>(</td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enable</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">bool</a></td>          <td class="paramname"><span class="paramname"><em>enable</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1081,7 +1081,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">wifi_bandwidth_t EspWifi::GetBandwidth </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">wifi_bandwidth_t</a> EspWifi::GetBandwidth </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
@@ -1104,7 +1104,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t EspWifi::GetChannel </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> EspWifi::GetChannel </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
@@ -1136,7 +1136,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::GetConnectedBssid </td>
           <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>bssid</em>[6]</span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a></td>          <td class="paramname"><span class="paramname"><em>bssid</em>[6]</span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -1170,7 +1170,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string EspWifi::GetConnectedSsid </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::string</a> EspWifi::GetConnectedSsid </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
@@ -1200,7 +1200,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int EspWifi::GetConnectedStationCount </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">int</a> EspWifi::GetConnectedStationCount </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
@@ -1229,7 +1229,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::GetConnectionInfo </td>
           <td>(</td>
-          <td class="paramtype">wifi_ap_record_t &amp;</td>          <td class="paramname"><span class="paramname"><em>info</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">wifi_ap_record_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>info</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -1294,12 +1294,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::GetMacAddress </td>
           <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mac</em>[6], </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a></td>          <td class="paramname"><span class="paramname"><em>mac</em>[6], </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>interface</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span></span>&#160;) const</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a></td>          <td class="paramname"><span class="paramname"><em>interface</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span></span>&#160;) const</td>
         </tr>
       </table>
   </td>
@@ -1393,7 +1393,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int8_t EspWifi::GetRssi </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">int8_t</a> EspWifi::GetRssi </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
@@ -1425,12 +1425,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::GetScanResults </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="structhf__wifi__network__info__t.html">hf_wifi_network_info_t</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>networks</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::vector</a>&lt; <a class="el" href="structhf__wifi__network__info__t.html">hf_wifi_network_info_t</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>networks</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>max_networks</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint16_t</a></td>          <td class="paramname"><span class="paramname"><em>max_networks</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1493,7 +1493,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::GetStatistics </td>
           <td>(</td>
-          <td class="paramtype">wifi_pkt_rx_ctrl_t &amp;</td>          <td class="paramname"><span class="paramname"><em>stats</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">wifi_pkt_rx_ctrl_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>stats</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -1517,7 +1517,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int8_t EspWifi::GetTxPower </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">int8_t</a> EspWifi::GetTxPower </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
@@ -1540,14 +1540,14 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void EspWifi::handleIpEvent </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> EspWifi::handleIpEvent </td>
           <td>(</td>
-          <td class="paramtype">int32_t</td>          <td class="paramname"><span class="paramname"><em>event_id</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">int32_t</a></td>          <td class="paramname"><span class="paramname"><em>event_id</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>event_data</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">void</a> *</td>          <td class="paramname"><span class="paramname"><em>event_data</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1578,14 +1578,14 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void EspWifi::handleSmartconfigEvent </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> EspWifi::handleSmartconfigEvent </td>
           <td>(</td>
-          <td class="paramtype">int32_t</td>          <td class="paramname"><span class="paramname"><em>event_id</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">int32_t</a></td>          <td class="paramname"><span class="paramname"><em>event_id</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>event_data</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">void</a> *</td>          <td class="paramname"><span class="paramname"><em>event_data</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1616,14 +1616,14 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void EspWifi::handleWifiEvent </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> EspWifi::handleWifiEvent </td>
           <td>(</td>
-          <td class="paramtype">int32_t</td>          <td class="paramname"><span class="paramname"><em>event_id</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">int32_t</a></td>          <td class="paramname"><span class="paramname"><em>event_id</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>event_data</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">void</a> *</td>          <td class="paramname"><span class="paramname"><em>event_data</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1689,17 +1689,17 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::InitMesh </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>mesh_id</em>[6], </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a></td>          <td class="paramname"><span class="paramname"><em>mesh_id</em>[6], </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>max_layer</em><span class="paramdefsep"> = </span><span class="paramdefval">6</span>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a></td>          <td class="paramname"><span class="paramname"><em>max_layer</em><span class="paramdefsep"> = </span><span class="paramdefval">6</span>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>max_connection</em><span class="paramdefsep"> = </span><span class="paramdefval">10</span></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint16_t</a></td>          <td class="paramname"><span class="paramname"><em>max_connection</em><span class="paramdefsep"> = </span><span class="paramdefval">10</span></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1755,24 +1755,24 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void EspWifi::ipEventHandler </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> EspWifi::ipEventHandler </td>
           <td>(</td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>arg</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">void</a> *</td>          <td class="paramname"><span class="paramname"><em>arg</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">esp_event_base_t</td>          <td class="paramname"><span class="paramname"><em>event_base</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">esp_event_base_t</a></td>          <td class="paramname"><span class="paramname"><em>event_base</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int32_t</td>          <td class="paramname"><span class="paramname"><em>event_id</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">int32_t</a></td>          <td class="paramname"><span class="paramname"><em>event_id</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>event_data</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">void</a> *</td>          <td class="paramname"><span class="paramname"><em>event_data</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1805,7 +1805,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool EspWifi::IsAccessPointActive </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> EspWifi::IsAccessPointActive </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
@@ -1835,7 +1835,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool EspWifi::IsConnected </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> EspWifi::IsConnected </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
@@ -1865,7 +1865,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool EspWifi::IsInitialized </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> EspWifi::IsInitialized </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
@@ -1895,7 +1895,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool EspWifi::IsScanning </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> EspWifi::IsScanning </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
@@ -1925,14 +1925,14 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void EspWifi::NotifyEventCallback </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> EspWifi::NotifyEventCallback </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__wifi.html#ga0fc5cd83d2820476528dba010f9ccfbb">hf_wifi_event_t</a></td>          <td class="paramname"><span class="paramname"><em>event</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>event_data</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">void</a> *</td>          <td class="paramname"><span class="paramname"><em>event_data</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1965,7 +1965,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classEspWifi.html">EspWifi</a> &amp; EspWifi::operator= </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classEspWifi.html">EspWifi</a> &amp;</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classEspWifi.html">EspWifi</a> &amp;</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -2071,7 +2071,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::SetAdvancedConfig </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structEspWifiAdvancedConfig.html">EspWifiAdvancedConfig</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structEspWifiAdvancedConfig.html">EspWifiAdvancedConfig</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -2097,7 +2097,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::SetBandwidth </td>
           <td>(</td>
-          <td class="paramtype">wifi_bandwidth_t</td>          <td class="paramname"><span class="paramname"><em>bandwidth</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">wifi_bandwidth_t</a></td>          <td class="paramname"><span class="paramname"><em>bandwidth</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -2126,7 +2126,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::SetChannel </td>
           <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>channel</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a></td>          <td class="paramname"><span class="paramname"><em>channel</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -2162,12 +2162,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::SetMacAddress </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>mac</em>[6], </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a></td>          <td class="paramname"><span class="paramname"><em>mac</em>[6], </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>interface</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a></td>          <td class="paramname"><span class="paramname"><em>interface</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -2272,7 +2272,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::SetTxPower </td>
           <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>power</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a></td>          <td class="paramname"><span class="paramname"><em>power</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -2299,24 +2299,24 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void EspWifi::smartconfigEventHandler </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> EspWifi::smartconfigEventHandler </td>
           <td>(</td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>arg</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">void</a> *</td>          <td class="paramname"><span class="paramname"><em>arg</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">esp_event_base_t</td>          <td class="paramname"><span class="paramname"><em>event_base</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">esp_event_base_t</a></td>          <td class="paramname"><span class="paramname"><em>event_base</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int32_t</td>          <td class="paramname"><span class="paramname"><em>event_id</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">int32_t</a></td>          <td class="paramname"><span class="paramname"><em>event_id</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>event_data</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">void</a> *</td>          <td class="paramname"><span class="paramname"><em>event_data</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -2421,17 +2421,17 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::StartScan </td>
           <td>(</td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>show_hidden</em><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">bool</a></td>          <td class="paramname"><span class="paramname"><em>show_hidden</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="classSoftChipSelectGuard.html">false</a></span>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>passive</em><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">bool</a></td>          <td class="paramname"><span class="paramname"><em>passive</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="classSoftChipSelectGuard.html">false</a></span>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>max_scan_time_ms</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a></td>          <td class="paramname"><span class="paramname"><em>max_scan_time_ms</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -2465,12 +2465,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a> EspWifi::StartSmartConfig </td>
           <td>(</td>
-          <td class="paramtype">smartconfig_type_t</td>          <td class="paramname"><span class="paramname"><em>type</em><span class="paramdefsep"> = </span><span class="paramdefval">SC_TYPE_ESPTOUCH</span>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">smartconfig_type_t</a></td>          <td class="paramname"><span class="paramname"><em>type</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="classSoftChipSelectGuard.html">SC_TYPE_ESPTOUCH</a></span>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>timeout_ms</em><span class="paramdefsep"> = </span><span class="paramdefval">60000</span></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a></td>          <td class="paramname"><span class="paramname"><em>timeout_ms</em><span class="paramdefsep"> = </span><span class="paramdefval">60000</span></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2625,7 +2625,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void EspWifi::UpdateState </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> EspWifi::UpdateState </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__wifi.html#ga45e751432d70ba4ee36c1369914ee419">hf_wifi_state_t</a></td>          <td class="paramname"><span class="paramname"><em>new_state</em></span></td><td>)</td>
           <td></td>
@@ -2658,9 +2658,9 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool EspWifi::ValidateApConfig </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> EspWifi::ValidateApConfig </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structhf__wifi__ap__config__t.html">hf_wifi_ap_config_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__wifi__ap__config__t.html">hf_wifi_ap_config_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -2692,9 +2692,9 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool EspWifi::ValidateConfig </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> EspWifi::ValidateConfig </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structhf__wifi__station__config__t.html">hf_wifi_station_config_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__wifi__station__config__t.html">hf_wifi_station_config_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -2726,24 +2726,24 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void EspWifi::wifiEventHandler </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> EspWifi::wifiEventHandler </td>
           <td>(</td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>arg</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">void</a> *</td>          <td class="paramname"><span class="paramname"><em>arg</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">esp_event_base_t</td>          <td class="paramname"><span class="paramname"><em>event_base</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">esp_event_base_t</a></td>          <td class="paramname"><span class="paramname"><em>event_base</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int32_t</td>          <td class="paramname"><span class="paramname"><em>event_id</em>, </span></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">int32_t</a></td>          <td class="paramname"><span class="paramname"><em>event_id</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>event_data</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">void</a> *</td>          <td class="paramname"><span class="paramname"><em>event_data</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -2800,7 +2800,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;bool&gt; EspWifi::m_ap_active</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt;<a class="el" href="classSoftChipSelectGuard.html">bool</a>&gt; EspWifi::m_ap_active</td>
         </tr>
       </table>
   </td>
@@ -2846,7 +2846,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">esp_netif_t* EspWifi::m_ap_netif</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">esp_netif_t</a>* EspWifi::m_ap_netif</td>
         </tr>
       </table>
   </td>
@@ -2869,7 +2869,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;uint8_t&gt; EspWifi::m_channel</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt;<a class="el" href="classSoftChipSelectGuard.html">uint8_t</a>&gt; EspWifi::m_channel</td>
         </tr>
       </table>
   </td>
@@ -2892,7 +2892,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;bool&gt; EspWifi::m_connected</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt;<a class="el" href="classSoftChipSelectGuard.html">bool</a>&gt; EspWifi::m_connected</td>
         </tr>
       </table>
   </td>
@@ -2915,7 +2915,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;bool&gt; EspWifi::m_enabled</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt;<a class="el" href="classSoftChipSelectGuard.html">bool</a>&gt; EspWifi::m_enabled</td>
         </tr>
       </table>
   </td>
@@ -2961,7 +2961,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">EventGroupHandle_t EspWifi::m_event_group</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">EventGroupHandle_t</a> EspWifi::m_event_group</td>
         </tr>
       </table>
   </td>
@@ -3007,7 +3007,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::queue&lt;std::pair&lt;<a class="el" href="group__wifi.html#ga0fc5cd83d2820476528dba010f9ccfbb">hf_wifi_event_t</a>, void*&gt; &gt; EspWifi::m_event_queue</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::queue</a>&lt;<a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::pair</a>&lt;<a class="el" href="group__wifi.html#ga0fc5cd83d2820476528dba010f9ccfbb">hf_wifi_event_t</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a>*&gt; &gt; EspWifi::m_event_queue</td>
         </tr>
       </table>
   </td>
@@ -3030,7 +3030,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void* EspWifi::m_event_user_data</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a>* EspWifi::m_event_user_data</td>
         </tr>
       </table>
   </td>
@@ -3053,7 +3053,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;bool&gt; EspWifi::m_initialized</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt;<a class="el" href="classSoftChipSelectGuard.html">bool</a>&gt; EspWifi::m_initialized</td>
         </tr>
       </table>
   </td>
@@ -3076,7 +3076,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">esp_event_handler_instance_t EspWifi::m_ip_event_handler</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">esp_event_handler_instance_t</a> EspWifi::m_ip_event_handler</td>
         </tr>
       </table>
   </td>
@@ -3099,7 +3099,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;bool&gt; EspWifi::m_mesh_active</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt;<a class="el" href="classSoftChipSelectGuard.html">bool</a>&gt; EspWifi::m_mesh_active</td>
         </tr>
       </table>
   </td>
@@ -3122,7 +3122,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;<a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a>&gt; EspWifi::m_mode</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt;<a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a>&gt; EspWifi::m_mode</td>
         </tr>
       </table>
   </td>
@@ -3168,7 +3168,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;int8_t&gt; EspWifi::m_rssi</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt;<a class="el" href="classSoftChipSelectGuard.html">int8_t</a>&gt; EspWifi::m_rssi</td>
         </tr>
       </table>
   </td>
@@ -3237,7 +3237,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="structhf__wifi__network__info__t.html">hf_wifi_network_info_t</a>&gt; EspWifi::m_scan_results</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::vector</a>&lt;<a class="el" href="structhf__wifi__network__info__t.html">hf_wifi_network_info_t</a>&gt; EspWifi::m_scan_results</td>
         </tr>
       </table>
   </td>
@@ -3260,7 +3260,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void* EspWifi::m_scan_user_data</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a>* EspWifi::m_scan_user_data</td>
         </tr>
       </table>
   </td>
@@ -3283,7 +3283,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;bool&gt; EspWifi::m_scanning</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt;<a class="el" href="classSoftChipSelectGuard.html">bool</a>&gt; EspWifi::m_scanning</td>
         </tr>
       </table>
   </td>
@@ -3306,7 +3306,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;bool&gt; EspWifi::m_smartconfig_active</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt;<a class="el" href="classSoftChipSelectGuard.html">bool</a>&gt; EspWifi::m_smartconfig_active</td>
         </tr>
       </table>
   </td>
@@ -3352,7 +3352,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">esp_netif_t* EspWifi::m_sta_netif</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">esp_netif_t</a>* EspWifi::m_sta_netif</td>
         </tr>
       </table>
   </td>
@@ -3375,7 +3375,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;<a class="el" href="group__wifi.html#ga45e751432d70ba4ee36c1369914ee419">hf_wifi_state_t</a>&gt; EspWifi::m_state</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt;<a class="el" href="group__wifi.html#ga45e751432d70ba4ee36c1369914ee419">hf_wifi_state_t</a>&gt; EspWifi::m_state</td>
         </tr>
       </table>
   </td>
@@ -3398,7 +3398,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">esp_event_handler_instance_t EspWifi::m_wifi_event_handler</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">esp_event_handler_instance_t</a> EspWifi::m_wifi_event_handler</td>
         </tr>
       </table>
   </td>

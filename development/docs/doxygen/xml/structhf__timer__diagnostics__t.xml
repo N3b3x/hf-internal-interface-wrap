@@ -5,7 +5,7 @@
     <includes refid="BasePeriodicTimer_8h" local="no">BasePeriodicTimer.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__timer__diagnostics__t_1a5309ee8b30dd52ab54bd053909a79d23" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_timer_diagnostics_t::timerHealthy</definition>
         <argsstring></argsstring>
         <name>timerHealthy</name>
@@ -65,7 +65,7 @@
         <location file="inc/base/BasePeriodicTimer.h" line="130" column="12" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="130" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__timer__diagnostics__t_1abec955777b1c934cc318d4377e7d6723" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_timer_diagnostics_t::timerInitialized</definition>
         <argsstring></argsstring>
         <name>timerInitialized</name>
@@ -80,7 +80,7 @@
         <location file="inc/base/BasePeriodicTimer.h" line="131" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__timer__diagnostics__t_1a5e119828443d8eb7936c24f15c39c0ae" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_timer_diagnostics_t::timerRunning</definition>
         <argsstring></argsstring>
         <name>timerRunning</name>

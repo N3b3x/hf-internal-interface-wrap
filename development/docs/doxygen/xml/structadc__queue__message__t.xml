@@ -4,7 +4,7 @@
     <compoundname>adc_queue_message_t</compoundname>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structadc__queue__message__t_1a3a061e2d958466414ef03180cdc02c97" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t adc_queue_message_t::sample_count</definition>
         <argsstring></argsstring>
         <name>sample_count</name>
@@ -18,7 +18,7 @@
         <location file="examples/esp32/main/AdcComprehensiveTest.cpp" line="74" column="12" bodyfile="examples/esp32/main/AdcComprehensiveTest.cpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structadc__queue__message__t_1abce6177e500fe14214f7cb85297f2022" prot="public" static="no" mutable="no">
-        <type>uint64_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint64_t</ref></type>
         <definition>uint64_t adc_queue_message_t::timestamp</definition>
         <argsstring></argsstring>
         <name>timestamp</name>

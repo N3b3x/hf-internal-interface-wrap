@@ -5,7 +5,7 @@
     <includes refid="EspTypes__ADC_8h" local="no">EspTypes_ADC.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__adc__monitor__event__t_1a0a13dd058bd050511cb6ecf8f2722c9d" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t hf_adc_monitor_event_t::monitor_id</definition>
         <argsstring></argsstring>
         <name>monitor_id</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="199" column="19" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="199" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__adc__monitor__event__t_1a83e42ca961a338f52c83548e51991995" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_adc_monitor_event_t::raw_value</definition>
         <argsstring></argsstring>
         <name>raw_value</name>
@@ -65,7 +65,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="201" column="31" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="201" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__adc__monitor__event__t_1a64ae1858087a81ce05ba25ebdecca99f" prot="public" static="no" mutable="no">
-        <type>uint64_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint64_t</ref></type>
         <definition>uint64_t hf_adc_monitor_event_t::timestamp_us</definition>
         <argsstring></argsstring>
         <name>timestamp_us</name>

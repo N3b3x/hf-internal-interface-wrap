@@ -4,7 +4,7 @@
     <compoundname>StmPeriodicTimer::DispatchEntry</compoundname>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structStmPeriodicTimer_1_1DispatchEntry_1ab95a7578987409752bfd1d3ce218c669" prot="public" static="no" mutable="no">
-        <type>TIM_HandleTypeDef *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">TIM_HandleTypeDef</ref> *</type>
         <definition>TIM_HandleTypeDef* StmPeriodicTimer::DispatchEntry::htim</definition>
         <argsstring></argsstring>
         <name>htim</name>

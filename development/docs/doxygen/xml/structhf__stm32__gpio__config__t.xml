@@ -5,7 +5,7 @@
     <includes refid="StmTypes_8h" local="no">StmTypes.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__stm32__gpio__config__t_1aa1cbf2b0996df9560baa82011482810c" prot="public" static="no" mutable="no">
-        <type>GPIO_TypeDef *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">GPIO_TypeDef</ref> *</type>
         <definition>GPIO_TypeDef* hf_stm32_gpio_config_t::port</definition>
         <argsstring></argsstring>
         <name>port</name>
@@ -57,7 +57,7 @@
         <name>hf_stm32_gpio_config_t</name>
         <qualifiedname>hf_stm32_gpio_config_t::hf_stm32_gpio_config_t</qualifiedname>
         <param>
-          <type>GPIO_TypeDef *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">GPIO_TypeDef</ref> *</type>
           <declname>gpio_port</declname>
         </param>
         <param>

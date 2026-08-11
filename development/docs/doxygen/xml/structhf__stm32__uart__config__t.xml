@@ -35,7 +35,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="388" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="388" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__stm32__uart__config__t_1af7dc1c0fbea2fd381db7aa9a3051dd17" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_stm32_uart_config_t::use_dma_tx</definition>
         <argsstring></argsstring>
         <name>use_dma_tx</name>
@@ -50,7 +50,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="389" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="389" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__stm32__uart__config__t_1a240d699ad2145374dd66233b2c4c0baf" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_stm32_uart_config_t::use_dma_rx</definition>
         <argsstring></argsstring>
         <name>use_dma_rx</name>

@@ -21,7 +21,7 @@
         <location file="inc/mcu/esp32/EspI2c.h" line="518" column="13" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="518" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1a4b297354625e4370cbdef30ffc695ae4" prot="private" static="no" mutable="no">
-        <type>i2c_master_dev_handle_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">i2c_master_dev_handle_t</ref></type>
         <definition>i2c_master_dev_handle_t EspI2cDevice::handle_</definition>
         <argsstring></argsstring>
         <name>handle_</name>
@@ -51,7 +51,7 @@
         <location file="inc/mcu/esp32/EspI2c.h" line="520" column="26" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="520" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::initialized_</definition>
         <argsstring></argsstring>
         <name>initialized_</name>
@@ -126,7 +126,7 @@
         <location file="inc/mcu/esp32/EspI2c.h" line="525" column="17" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="525" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1a5a95a7beb1f7b4ba80419d5ac1df9d7c" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::async_operation_in_progress_</definition>
         <argsstring></argsstring>
         <name>async_operation_in_progress_</name>
@@ -141,7 +141,7 @@
         <location file="inc/mcu/esp32/EspI2c.h" line="530" column="8" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="530" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1a179d9dd56630947e64204720a1e27bd6" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::sync_operation_in_progress_</definition>
         <argsstring></argsstring>
         <name>sync_operation_in_progress_</name>
@@ -171,7 +171,7 @@
         <location file="inc/mcu/esp32/EspI2c.h" line="532" column="27" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="532" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1ab8f8ebf1900fe0e383b373bd88a46b67" prot="private" static="no" mutable="no">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void* EspI2cDevice::current_user_data_</definition>
         <argsstring></argsstring>
         <name>current_user_data_</name>
@@ -258,7 +258,7 @@
           <declname>parent</declname>
         </param>
         <param>
-          <type>const <ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -304,7 +304,7 @@
         <location file="inc/mcu/esp32/EspI2c.h" line="176" column="3" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="891" bodyend="907"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a6b441d54a4f47e124dd6e5f48a23c7f9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::Initialize</definition>
         <argsstring>() noexcept override</argsstring>
         <name>Initialize</name>
@@ -323,7 +323,7 @@
         <location file="inc/mcu/esp32/EspI2c.h" line="182" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="909" bodyend="968"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a073b10cf1253684d9c0d54bc5063aec7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::MarkAsDeinitialized</definition>
         <argsstring>() noexcept</argsstring>
         <name>MarkAsDeinitialized</name>
@@ -341,7 +341,7 @@ This method is called by the bus when it handles ESP-IDF cleanup. The device sho
         <location file="inc/mcu/esp32/EspI2c.h" line="191" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="970" bodyend="991"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1ac905c8cc4c142563e73380ffb6b679b3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::Deinitialize</definition>
         <argsstring>() noexcept override</argsstring>
         <name>Deinitialize</name>
@@ -367,7 +367,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <qualifiedname>EspI2cDevice::Write</qualifiedname>
         <reimplements refid="classBaseI2c_1abdfc7c1890423f993f1c9ca261e8a15d">Write</reimplements>
         <param>
-          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
           <declname>data</declname>
         </param>
         <param>
@@ -485,7 +485,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <qualifiedname>EspI2cDevice::WriteRead</qualifiedname>
         <reimplements refid="classBaseI2c_1a58da16ee4e2762bed7b2541491b3147b">WriteRead</reimplements>
         <param>
-          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
           <declname>tx_data</declname>
         </param>
         <param>
@@ -567,7 +567,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <name>WriteAsync</name>
         <qualifiedname>EspI2cDevice::WriteAsync</qualifiedname>
         <param>
-          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
           <declname>data</declname>
         </param>
         <param>
@@ -579,9 +579,9 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
           <declname>callback</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <param>
           <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -668,9 +668,9 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
           <declname>callback</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <param>
           <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -745,7 +745,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <name>WriteReadAsync</name>
         <qualifiedname>EspI2cDevice::WriteReadAsync</qualifiedname>
         <param>
-          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
           <declname>tx_data</declname>
         </param>
         <param>
@@ -765,9 +765,9 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
           <declname>callback</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <param>
           <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -852,7 +852,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="287" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1358" bodyend="1420"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1acb1a17d5c492b23e89b95dc0c8b65805" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::IsAsyncModeSupported</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsAsyncModeSupported</name>
@@ -870,7 +870,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="295" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1422" bodyend="1432"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a2f955ffd3265a24686a07737e21f6f10" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::IsAsyncOperationInProgress</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsAsyncOperationInProgress</name>
@@ -888,7 +888,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="301" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1434" bodyend="1445"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a076db192440e992ad956f082b291d704" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::IsSyncOperationInProgress</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsSyncOperationInProgress</name>
@@ -906,7 +906,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="307" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1447" bodyend="1458"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a0ab62985e51dd5aeca053f45d1ffafed" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::WaitAsyncOperationComplete</definition>
         <argsstring>(hf_u32_t timeout_ms=0) noexcept</argsstring>
         <name>WaitAsyncOperationComplete</name>
@@ -1021,7 +1021,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="334" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1540" bodyend="1553"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1ab97f4a636f97a71c3031f56f0614ed5b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>i2c_master_dev_handle_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">i2c_master_dev_handle_t</ref></type>
         <definition>i2c_master_dev_handle_t EspI2cDevice::GetHandle</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetHandle</name>
@@ -1039,7 +1039,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="340" column="27" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1555" bodyend="1565"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a513abd8cbc808cd83cf7eeb395a164a3" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>const <ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref> &amp;</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref> &amp;</type>
         <definition>const hf_i2c_device_config_t &amp; EspI2cDevice::GetConfig</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetConfig</name>
@@ -1107,7 +1107,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="359" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1573" bodyend="1586"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a149a2fc81cf16627fba0c01853dfc0be" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::ProbeDevice</definition>
         <argsstring>() noexcept</argsstring>
         <name>ProbeDevice</name>
@@ -1126,7 +1126,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="365" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1588" bodyend="1608"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1afae4c530b1e9aa88a5b1a4a82d34413b" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>i2c_master_dev_handle_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">i2c_master_dev_handle_t</ref></type>
         <definition>i2c_master_dev_handle_t EspI2cDevice::GetDeviceHandle</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetDeviceHandle</name>
@@ -1162,7 +1162,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="379" column="27" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="379" bodyend="381"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1aef94bae927c59091257d7c387d594936" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void * EspI2cDevice::GetCurrentUserData</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetCurrentUserData</name>
@@ -1180,7 +1180,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="387" column="8" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="387" bodyend="389"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1aae4ad5e8f1bb7e70f0b2fdc4cab2fd72" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspI2cDevice::UpdateErrorRecoveryAttempt</definition>
         <argsstring>() noexcept</argsstring>
         <name>UpdateErrorRecoveryAttempt</name>
@@ -1216,7 +1216,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="405" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1893" bodyend="1903"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a7f50af31fcd62980b9f9dfa8b71074b6" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::IsAsyncMode</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsAsyncMode</name>
@@ -1234,7 +1234,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="411" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1905" bodyend="1915"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a0bfcc2a37b5ae6fb09ec6e72b4003569" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::IsSyncMode</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsSyncMode</name>
@@ -1254,21 +1254,21 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
     </sectiondef>
     <sectiondef kind="private-static-func">
       <memberdef kind="function" id="classEspI2cDevice_1a8105d0d32799e9697a9b7db8579ad21d" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::InternalAsyncCallback</definition>
         <argsstring>(i2c_master_dev_handle_t i2c_dev, const i2c_master_event_data_t *evt_data, void *arg)</argsstring>
         <name>InternalAsyncCallback</name>
         <qualifiedname>EspI2cDevice::InternalAsyncCallback</qualifiedname>
         <param>
-          <type>i2c_master_dev_handle_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">i2c_master_dev_handle_t</ref></type>
           <declname>i2c_dev</declname>
         </param>
         <param>
-          <type>const i2c_master_event_data_t *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">i2c_master_event_data_t</ref> *</type>
           <declname>evt_data</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>arg</declname>
         </param>
         <briefdescription>
@@ -1313,7 +1313,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
     </sectiondef>
     <sectiondef kind="private-func">
       <memberdef kind="function" id="classEspI2cDevice_1a830bd3bab73ba5bd41db5ceeab2435e0" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::RegisterTemporaryCallback</definition>
         <argsstring>(hf_i2c_async_callback_t callback, void *user_data, hf_u32_t timeout_ms) noexcept</argsstring>
         <name>RegisterTemporaryCallback</name>
@@ -1323,7 +1323,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
           <declname>callback</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
         </param>
         <param>
@@ -1368,7 +1368,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="442" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1816" bodyend="1821"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a9f233650bcc027aa9f4bd43899184fce" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspI2cDevice::UnregisterTemporaryCallback</definition>
         <argsstring>() noexcept</argsstring>
         <name>UnregisterTemporaryCallback</name>
@@ -1383,7 +1383,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="448" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1823" bodyend="1826"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a5f0c9dae9c6fbbd45b41f02156240e9f" prot="private" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspI2cDevice::StartAsyncOperationTracking</definition>
         <argsstring>() noexcept</argsstring>
         <name>StartAsyncOperationTracking</name>
@@ -1398,17 +1398,17 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="453" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1932" bodyend="1936"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a7a20da56a36e479ec4103d6a07f57e53" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspI2cDevice::UpdateStatistics</definition>
         <argsstring>(bool success, size_t bytes_transferred, hf_u64_t operation_time_us) noexcept</argsstring>
         <name>UpdateStatistics</name>
         <qualifiedname>EspI2cDevice::UpdateStatistics</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>success</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>bytes_transferred</declname>
         </param>
         <param>
@@ -1451,7 +1451,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="461" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1697" bodyend="1746"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a404a5600a6155e83db2636a3c6f03e7d" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspI2cDevice::UpdateErrorStatistics</definition>
         <argsstring>(hf_i2c_err_t error_code) noexcept</argsstring>
         <name>UpdateErrorStatistics</name>
@@ -1486,7 +1486,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <name>ConvertEspError</name>
         <qualifiedname>EspI2cDevice::ConvertEspError</qualifiedname>
         <param>
-          <type>esp_err_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">esp_err_t</ref></type>
           <declname>esp_error</declname>
         </param>
         <briefdescription>
@@ -1511,13 +1511,13 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="475" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1782" bodyend="1810"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a03de619d3ed917f5ef8a62aa26ce3e36" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::ValidateOperation</definition>
         <argsstring>(const void *data, hf_u16_t length, hf_i2c_operation_t operation_type) noexcept</argsstring>
         <name>ValidateOperation</name>
         <qualifiedname>EspI2cDevice::ValidateOperation</qualifiedname>
         <param>
-          <type>const void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>data</declname>
         </param>
         <param>
@@ -1566,7 +1566,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="484" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1614" bodyend="1628"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a595ab2ac6ddd7156b30577a36f7af3c5" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::SetupSyncOperation</definition>
         <argsstring>(hf_i2c_operation_t operation_type) noexcept</argsstring>
         <name>SetupSyncOperation</name>
@@ -1597,7 +1597,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="492" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1630" bodyend="1657"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a857c105f3758b172dcec082f14638158" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspI2cDevice::CleanupSyncOperation</definition>
         <argsstring>() noexcept</argsstring>
         <name>CleanupSyncOperation</name>
@@ -1612,7 +1612,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="497" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1659" bodyend="1667"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a4b330a20eb141cb533f0f7b93fc3d4e4" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspI2cDevice::CleanupAsyncOperation</definition>
         <argsstring>() noexcept</argsstring>
         <name>CleanupAsyncOperation</name>
@@ -1627,7 +1627,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="502" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1941" bodyend="1950"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a37d7ea5eb281d4c4cfef058294e34714" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspI2cDevice::SetupAsyncOperation</definition>
         <argsstring>(hf_i2c_async_callback_t callback, void *user_data, hf_u32_t timeout_ms) noexcept</argsstring>
         <name>SetupAsyncOperation</name>
@@ -1637,7 +1637,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
           <declname>callback</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>user_data</declname>
         </param>
         <param>
@@ -1686,14 +1686,14 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
 <para>Represents a single I2C device on a bus. </para>
     </briefdescription>
     <detaileddescription>
-<para>Inherits from <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> and delegates operations to the parent bus. Provides full configuration and control for a single I2C device, including per-device clock speed, addressing mode, and ESP-IDF v5.5+ features.</para>
+<para>Inherits from <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> and delegates operations to the parent bus. Provides full configuration and control for a single I2C device, including per-device clock speed, addressing mode, and ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+ features.</para>
 <para><simplesect kind="note"><para>Thread-safe. All operations are protected by PlatformMutex. </para>
 </simplesect>
 <simplesect kind="note"><para>Each device maintains its own handle and configuration. </para>
 </simplesect>
 <simplesect kind="note"><para>Supports both synchronous and asynchronous operations. </para>
 </simplesect>
-<simplesect kind="warning"><para>ESP-IDF v5.5 constraint: Only one device per bus can use async mode </para>
+<simplesect kind="warning"><para>ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref> constraint: Only one device per bus can use async mode </para>
 </simplesect>
 </para>
     </detaileddescription>

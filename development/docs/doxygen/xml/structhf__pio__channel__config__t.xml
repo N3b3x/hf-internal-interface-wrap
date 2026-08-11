@@ -95,7 +95,7 @@
         <location file="inc/base/BasePio.h" line="144" column="12" bodyfile="inc/base/BasePio.h" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pio__channel__config__t_1a5667278996618d463a247f2eddc0643e" prot="public" static="no" mutable="no">
-        <type>size_t</type>
+        <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>size_t hf_pio_channel_config_t::buffer_size</definition>
         <argsstring></argsstring>
         <name>buffer_size</name>

@@ -6,7 +6,7 @@
       <memberdef kind="function" id="namespacehf_1_1utils_1a8cc6a65bb150aad69866ad9c665487b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename T</type>
+            <type><ref refid="classSoftChipSelectGuard" kindref="compound">typename</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">T</ref></type>
           </param>
           <param>
             <type>typename...</type>
@@ -14,20 +14,20 @@
             <defname>Args</defname>
           </param>
         </templateparamlist>
-        <type>std::unique_ptr&lt; <ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">T</ref> &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::unique_ptr</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">T</ref> &gt;</type>
         <definition>std::unique_ptr&lt; T &gt; hf::utils::make_unique_nothrow</definition>
         <argsstring>(Args &amp;&amp;... args)</argsstring>
         <name>make_unique_nothrow</name>
         <qualifiedname>hf::utils::make_unique_nothrow</qualifiedname>
         <param>
-          <type><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">Args</ref> &amp;&amp;...</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">Args</ref> &amp;&amp;...</type>
           <declname>args</declname>
         </param>
         <briefdescription>
 <para>Creates a unique_ptr using nothrow new for exception-free design. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function template provides a safe alternative to std::make_unique for environments that require no-exception guarantees. It uses nothrow new to allocate memory and returns nullptr on allocation failure instead of throwing std::bad_alloc.</para>
+<para>This function template provides a safe alternative to <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::make_unique</ref> for environments that require no-exception guarantees. It uses nothrow new to allocate memory and returns nullptr on allocation failure instead of throwing <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::bad_alloc</ref>.</para>
 <para><parameterlist kind="templateparam"><parameteritem>
 <parameternamelist>
 <parametername>T</parametername>
@@ -54,10 +54,10 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>std::unique_ptr&lt;T&gt; Valid pointer on success, nullptr on allocation failure</para>
+<simplesect kind="return"><para><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::unique_ptr&lt;T&gt;</ref> Valid pointer on success, nullptr on allocation failure</para>
 </simplesect>
-<programlisting><codeline><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">ptr</ref><sp/>=<sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">make_unique_nothrow&lt;MyClass&gt;</ref>(<ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">arg1</ref>,<sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">arg2</ref>);</highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">ptr</ref>)<sp/>{</highlight></codeline>
+<programlisting><codeline><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">ptr</ref><sp/>=<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">make_unique_nothrow&lt;MyClass&gt;</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">arg1</ref>,<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">arg2</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classSoftChipSelectGuard" kindref="compound">ptr</ref>)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>allocation<sp/>failure</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -71,16 +71,16 @@
       <memberdef kind="function" id="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename T</type>
+            <type><ref refid="classSoftChipSelectGuard" kindref="compound">typename</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">T</ref></type>
           </param>
         </templateparamlist>
-        <type>std::unique_ptr&lt; T[]&gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::unique_ptr</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">T</ref>[]&gt;</type>
         <definition>std::unique_ptr&lt; T[]&gt; hf::utils::make_unique_array_nothrow</definition>
         <argsstring>(size_t size)</argsstring>
         <name>make_unique_array_nothrow</name>
         <qualifiedname>hf::utils::make_unique_array_nothrow</qualifiedname>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>size</declname>
         </param>
         <briefdescription>
@@ -106,10 +106,10 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>std::unique_ptr&lt;T[]&gt; Valid pointer on success, nullptr on allocation failure</para>
+<simplesect kind="return"><para><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::unique_ptr&lt;T[]&gt;</ref> Valid pointer on success, nullptr on allocation failure</para>
 </simplesect>
-<simplesect kind="par"><title>Array Allocation Example:</title><para><programlisting><codeline><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">arr</ref><sp/>=<sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">make_unique_array_nothrow&lt;int&gt;</ref>(1000);</highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">arr</ref>)<sp/>{</highlight></codeline>
+<simplesect kind="par"><title>Array Allocation Example:</title><para><programlisting><codeline><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">arr</ref><sp/>=<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">make_unique_array_nothrow&lt;int&gt;</ref>(1000);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classSoftChipSelectGuard" kindref="compound">arr</ref>)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>allocation<sp/>failure</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>

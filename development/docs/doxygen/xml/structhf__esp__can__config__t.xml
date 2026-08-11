@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="67" column="16" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a095fd04a22638ba466d08a0592a27eb7" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_esp_can_config_t::baud_rate</definition>
         <argsstring></argsstring>
         <name>baud_rate</name>
@@ -50,7 +50,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="70" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a3fc23f7e02de25e15735f902fb8d9612" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_esp_can_config_t::sample_point_permill</definition>
         <argsstring></argsstring>
         <name>sample_point_permill</name>
@@ -65,7 +65,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="71" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1aaad7a0f20c8dd9c92561ebcfda6031cb" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_esp_can_config_t::secondary_sample_point</definition>
         <argsstring></argsstring>
         <name>secondary_sample_point</name>
@@ -80,7 +80,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="72" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1acf4da7f3d267dbcbd2fc1b01adaf12ec" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_esp_can_config_t::tx_queue_depth</definition>
         <argsstring></argsstring>
         <name>tx_queue_depth</name>
@@ -95,7 +95,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="75" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a1c21739fbe4c5ec52272e93fefcfeca0" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_esp_can_config_t::rx_queue_depth</definition>
         <argsstring></argsstring>
         <name>rx_queue_depth</name>
@@ -140,7 +140,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="80" column="17" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a6c1b124297def32ddba7003f587e6c4a" prot="public" static="no" mutable="no">
-        <type>int8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int8_t</ref></type>
         <definition>int8_t hf_esp_can_config_t::fail_retry_cnt</definition>
         <argsstring></argsstring>
         <name>fail_retry_cnt</name>
@@ -155,7 +155,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="81" column="10" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a77ada3296173052baad6719e4bf1c01a" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t hf_esp_can_config_t::intr_priority</definition>
         <argsstring></argsstring>
         <name>intr_priority</name>
@@ -170,7 +170,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="82" column="11" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a5779506abfcfa1e2befe143b6d80e32c" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_esp_can_config_t::enable_self_test</definition>
         <argsstring></argsstring>
         <name>enable_self_test</name>
@@ -185,7 +185,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="85" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1aa877c45912cb57a8e245ecfec1f484ef" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_esp_can_config_t::enable_loopback</definition>
         <argsstring></argsstring>
         <name>enable_loopback</name>
@@ -200,7 +200,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="86" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a1d3b817788e36549ad3b491e3a5dd81d" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_esp_can_config_t::enable_listen_only</definition>
         <argsstring></argsstring>
         <name>enable_listen_only</name>
@@ -215,7 +215,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="87" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a3f57b97d55b34368fde640a3caf67dcd" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_esp_can_config_t::no_receive_rtr</definition>
         <argsstring></argsstring>
         <name>no_receive_rtr</name>
@@ -230,7 +230,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="88" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a08fda25ef59f1a53f2ffa53c61650430" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_esp_can_config_t::enable_alerts</definition>
         <argsstring></argsstring>
         <name>enable_alerts</name>
@@ -245,7 +245,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="89" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1adb5620fb14203fa2a6f06efe1cc457e6" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_esp_can_config_t::clk_flags</definition>
         <argsstring></argsstring>
         <name>clk_flags</name>
@@ -277,10 +277,10 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>ESP32 TWAI node configuration structure for ESP-IDF v5.5. </para>
+<para>ESP32 TWAI node configuration structure for ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>. </para>
     </briefdescription>
     <detaileddescription>
-<para>Comprehensive configuration following ESP-IDF v5.5 node-based API. </para>
+<para>Comprehensive configuration following ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref> node-based API. </para>
     </detaileddescription>
     <location file="inc/mcu/esp32/EspCan.h" line="64" column="1" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="64" bodyend="101"/>
     <listofallmembers>

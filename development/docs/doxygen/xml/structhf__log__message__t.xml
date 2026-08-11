@@ -20,7 +20,7 @@
         <location file="inc/base/BaseLogger.h" line="204" column="18" bodyfile="inc/base/BaseLogger.h" bodystart="204" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__log__message__t_1a6b5fd3140e501bb1ba3439d3f0a7d910" prot="public" static="no" mutable="no">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char* hf_log_message_t::tag</definition>
         <argsstring></argsstring>
         <name>tag</name>
@@ -35,7 +35,7 @@
         <location file="inc/base/BaseLogger.h" line="205" column="14" bodyfile="inc/base/BaseLogger.h" bodystart="205" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__log__message__t_1a743d4d26ae46e07e604ac5f781bae0c4" prot="public" static="no" mutable="no">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char* hf_log_message_t::message</definition>
         <argsstring></argsstring>
         <name>message</name>
@@ -50,7 +50,7 @@
         <location file="inc/base/BaseLogger.h" line="206" column="14" bodyfile="inc/base/BaseLogger.h" bodystart="206" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__log__message__t_1a0bef771ae26113ec182a599404acf4e6" prot="public" static="no" mutable="no">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char* hf_log_message_t::file</definition>
         <argsstring></argsstring>
         <name>file</name>
@@ -80,7 +80,7 @@
         <location file="inc/base/BaseLogger.h" line="208" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="208" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__log__message__t_1a73678486868b2d22572af1703d3f8370" prot="public" static="no" mutable="no">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char* hf_log_message_t::function</definition>
         <argsstring></argsstring>
         <name>function</name>

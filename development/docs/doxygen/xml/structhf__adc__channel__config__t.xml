@@ -50,7 +50,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="104" column="21" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__adc__channel__config__t_1af58b9abc81efce5d07b589bd4c46d8e4" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_adc_channel_config_t::enabled</definition>
         <argsstring></argsstring>
         <name>enabled</name>

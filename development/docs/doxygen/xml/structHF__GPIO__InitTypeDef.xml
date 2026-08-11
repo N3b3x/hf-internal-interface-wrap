@@ -4,7 +4,7 @@
     <compoundname>HF_GPIO_InitTypeDef</compoundname>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structHF__GPIO__InitTypeDef_1ae9fa50bb73abb35aa590d1e34db949ad" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t HF_GPIO_InitTypeDef::Pin</definition>
         <argsstring></argsstring>
         <name>Pin</name>
@@ -18,7 +18,7 @@
         <location file="src/mcu/stm32/StmGpio.cpp" line="18" column="14" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHF__GPIO__InitTypeDef_1a1fe6d10c91810665619a5b1d99a1261e" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t HF_GPIO_InitTypeDef::Mode</definition>
         <argsstring></argsstring>
         <name>Mode</name>
@@ -32,7 +32,7 @@
         <location file="src/mcu/stm32/StmGpio.cpp" line="19" column="14" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="19" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHF__GPIO__InitTypeDef_1a89cfc5eeee4534f3d04ea7b3c4c69fa6" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t HF_GPIO_InitTypeDef::Pull</definition>
         <argsstring></argsstring>
         <name>Pull</name>
@@ -46,7 +46,7 @@
         <location file="src/mcu/stm32/StmGpio.cpp" line="20" column="14" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHF__GPIO__InitTypeDef_1aeb6ac2a26b2a7597ca0f944d2853c693" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t HF_GPIO_InitTypeDef::Speed</definition>
         <argsstring></argsstring>
         <name>Speed</name>
@@ -60,7 +60,7 @@
         <location file="src/mcu/stm32/StmGpio.cpp" line="21" column="14" bodyfile="src/mcu/stm32/StmGpio.cpp" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHF__GPIO__InitTypeDef_1a75ec122356125cc818b76bbcccf5d279" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t HF_GPIO_InitTypeDef::Alternate</definition>
         <argsstring></argsstring>
         <name>Alternate</name>

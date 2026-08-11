@@ -16,10 +16,19 @@ var namespaces_dup =
       [ "kGpioSpeedMedium", "namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a7ebb87bc0ef65c74b5179859e7581a82", null ],
       [ "kGpioSpeedVeryHigh", "namespaceanonymous__namespace_02StmGpio_8cpp_03.html#a79d0c8643c52418574fa734a1408ff63", null ]
     ] ],
+    [ "anonymous_namespace{StmI2c.cpp}", "namespaceanonymous__namespace_02StmI2c_8cpp_03.html", [
+      [ "FlushRxdr", "namespaceanonymous__namespace_02StmI2c_8cpp_03.html#aea72fc68c89669974e546f49db2a27a6", null ],
+      [ "FlushTxdr", "namespaceanonymous__namespace_02StmI2c_8cpp_03.html#ad9050bfcc89c5472b04e9d50125d5348", null ],
+      [ "HalXferOk", "namespaceanonymous__namespace_02StmI2c_8cpp_03.html#ac999e2f65b53a052576810d90a3a4b8d", null ],
+      [ "PrepareMasterXfer", "namespaceanonymous__namespace_02StmI2c_8cpp_03.html#ae26a414b9761b2b60db2a4f5136e69bc", null ],
+      [ "RecoverI2cAfterError", "namespaceanonymous__namespace_02StmI2c_8cpp_03.html#a53de132257604159ced159540146a363", null ]
+    ] ],
     [ "anonymous_namespace{StmLogger.cpp}", "namespaceanonymous__namespace_02StmLogger_8cpp_03.html", [
       [ "LevelToPrefix", "namespaceanonymous__namespace_02StmLogger_8cpp_03.html#a7851fb0201253a204b1fc6c2da664dd6", null ]
     ] ],
     [ "anonymous_namespace{StmNvs.cpp}", "namespaceanonymous__namespace_02StmNvs_8cpp_03.html", [
+      [ "BackendRead", "namespaceanonymous__namespace_02StmNvs_8cpp_03.html#aa7642062eebf52c63971a1232791a21c", null ],
+      [ "BackendWrite", "namespaceanonymous__namespace_02StmNvs_8cpp_03.html#a04a839c5de2f4700ff246f8d66d0686e", null ],
       [ "kFlashTypeProgramByte", "namespaceanonymous__namespace_02StmNvs_8cpp_03.html#ac7a9adc51e5ed1cdd49b551cc2217fad", null ],
       [ "kFlashTypeProgramDWord", "namespaceanonymous__namespace_02StmNvs_8cpp_03.html#a213e29d94ccd46ce58da6c3d04482735", null ],
       [ "kFlashTypeProgramHalfWord", "namespaceanonymous__namespace_02StmNvs_8cpp_03.html#ab52bb688b31f1a467cc33543577eb6c2", null ],
@@ -42,6 +51,16 @@ var namespaces_dup =
       [ "kTimEgrOffset", "namespaceanonymous__namespace_02StmPwm_8cpp_03.html#a3fc05ec82865a303d1594bf3f7a01e12", null ],
       [ "kTimEgrUgBit", "namespaceanonymous__namespace_02StmPwm_8cpp_03.html#a95f6191ea8aef44939ee4420bb6700ea", null ],
       [ "kTimPscOffset", "namespaceanonymous__namespace_02StmPwm_8cpp_03.html#a10577d1da5280b680c46bcd3eeacc184", null ]
+    ] ],
+    [ "anonymous_namespace{StmSpi.cpp}", "namespaceanonymous__namespace_02StmSpi_8cpp_03.html", [
+      [ "CopyFromAxiToMaybeFmc", "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a86ca057477851ca401c3c584653a70d8", null ],
+      [ "CopyFromMaybeFmcToAxi", "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a9b70e6340dde68d5e013a8369652dcb9", null ],
+      [ "CsEdgeSettle", "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a9395d2212b103c5c9150ec5c77ac91ee", null ],
+      [ "FlushSpiFifo", "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a899000c13ecd09d81b13e23780711e72", null ],
+      [ "InterFrameGapUs", "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a001b9f9d7d6d2462b190dc5fa9f4bbff", null ],
+      [ "g_spi_axi_rx", "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a4dd214978f8306aaaa63ffd9e3776b05", null ],
+      [ "g_spi_axi_tx", "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a89c01d76c63867b951659a5210bd6898", null ],
+      [ "kSpiScratchBytes", "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#aa45f034b9ec9701cd8a73551bfbb559c", null ]
     ] ],
     [ "anonymous_namespace{StmUart.cpp}", "namespaceanonymous__namespace_02StmUart_8cpp_03.html", [
       [ "kDefaultTimeoutMs", "namespaceanonymous__namespace_02StmUart_8cpp_03.html#ab2a4d5fbf0156cc690a4ac7ed0757a95", null ],

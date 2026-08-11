@@ -31,8 +31,8 @@
 </sect2>
 <sect2 id="index_1autotoc_md28">
 <title>🎨 <bold>Design Philosophy</bold></title><para><programlisting filename=".cpp"><codeline><highlight class="comment">//<sp/>Write<sp/>hardware-agnostic<sp/>code</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><ref refid="classBaseGpio" kindref="compound">BaseGpio</ref>*<sp/>led<sp/>=<sp/>GpioFactory::Create(GPIO_PIN_2,<sp/>GPIO_OUTPUT);</highlight></codeline>
-<codeline><highlight class="normal">led-&gt;SetHigh();</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classBaseGpio" kindref="compound">BaseGpio</ref>*<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">led</ref><sp/>=<sp/><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">GpioFactory::Create</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">GPIO_PIN_2</ref>,<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">GPIO_OUTPUT</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">led</ref>-&gt;SetHigh();</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Same<sp/>code<sp/>works<sp/>on<sp/>ESP32,<sp/>STM32,<sp/>or<sp/>any<sp/>supported<sp/>MCU</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>factory<sp/>handles<sp/>MCU-specific<sp/>implementation<sp/>selection</highlight></codeline>
@@ -103,16 +103,16 @@
 <title><bold>5. Basic Usage</bold></title><para><programlisting filename=".cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseGpio_8h" kindref="compound">base/BaseGpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspGpio_8h" kindref="compound">mcu/esp32/EspGpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">setup</ref>()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>GPIO<sp/>instance<sp/>for<sp/>built-in<sp/>LED</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBaseGpio" kindref="compound">BaseGpio</ref>*<sp/>led<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classEspGpio" kindref="compound">EspGpio</ref>(GPIO_NUM_2,<sp/>GPIO_MODE_OUTPUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBaseGpio" kindref="compound">BaseGpio</ref>*<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">led</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classEspGpio" kindref="compound">EspGpio</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">GPIO_NUM_2</ref>,<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">GPIO_MODE_OUTPUT</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Blink<sp/>LED</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led-&gt;SetHigh();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(500));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led-&gt;SetLow();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(500));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">led</ref>-&gt;SetHigh();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">vTaskDelay</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">pdMS_TO_TICKS</ref>(500));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">led</ref>-&gt;SetLow();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">vTaskDelay</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">pdMS_TO_TICKS</ref>(500));</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
@@ -138,7 +138,7 @@
 </programlisting> yaml</para>
 </sect2>
 <sect2 id="index_1autotoc_md43">
-<title><bold>Configuration</bold></title><para>Applications are configured in <computeroutput>examples/esp32/app_config.yml</computeroutput>: <programlisting filename=".yaml"><codeline><highlight class="normal">applications:</highlight></codeline>
+<title><bold>Configuration</bold></title><para>Applications are configured in <computeroutput><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">examples/esp32/app_config.yml</ref></computeroutput>: <programlisting filename=".yaml"><codeline><highlight class="normal">applications:</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>gpio_test:</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>source_file:<sp/>&quot;GpioComprehensiveTest.cpp&quot;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>description:<sp/>&quot;GPIO<sp/>interface<sp/>testing&quot;</highlight></codeline>
@@ -165,8 +165,8 @@
 </sect2>
 <sect2 id="index_1autotoc_md46">
 <title><bold>Adding New Peripherals</bold></title><para><orderedlist>
-<listitem><para><bold>Create base interface</bold> in <computeroutput>inc/base/BaseYourPeripheral.h</computeroutput></para>
-</listitem><listitem><para><bold>Implement for ESP32</bold> in <computeroutput>inc/mcu/esp32/EspYourPeripheral.h</computeroutput></para>
+<listitem><para><bold>Create base interface</bold> in <computeroutput><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">inc/base/BaseYourPeripheral.h</ref></computeroutput></para>
+</listitem><listitem><para><bold>Implement for ESP32</bold> in <computeroutput><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">inc/mcu/esp32/EspYourPeripheral.h</ref></computeroutput></para>
 </listitem><listitem><para><bold>Add comprehensive tests</bold> in <computeroutput>examples/esp32/main/</computeroutput></para>
 </listitem><listitem><para><bold>Update documentation</bold></para>
 </listitem></orderedlist>
@@ -177,7 +177,7 @@
 <listitem><para><bold>Functions</bold>: CamelCase (<computeroutput>SetDutyCycle</computeroutput>, <computeroutput>ReadValue</computeroutput>)</para>
 </listitem><listitem><para><bold>Types</bold>: snake_case with <computeroutput>*t</computeroutput> suffix (<computeroutput>hf_gpio_state_t</computeroutput>)</para>
 </listitem><listitem><para><bold>Enums</bold>: snake_case enum class (<computeroutput>hf_adc_err_t</computeroutput>)</para>
-</listitem><listitem><para><bold>Logging</bold>: Use <computeroutput>Logger::GetInstance()</computeroutput> for all output</para>
+</listitem><listitem><para><bold>Logging</bold>: Use <computeroutput><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">Logger::GetInstance()</ref></computeroutput> for all output</para>
 </listitem></itemizedlist>
 </para>
 </sect2>
@@ -199,7 +199,7 @@
 <sect2 id="index_1autotoc_md50">
 <title><bold>Development</bold></title><para><itemizedlist>
 <listitem><para>🚀 <ulink url="examples/esp32/">Examples</ulink> - Test applications and usage examples</para>
-</listitem><listitem><para>🧪 Test Documentation - Comprehensive test documentation</para>
+</listitem><listitem><para>🧪 <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">Test Documentation</ref> - Comprehensive test documentation</para>
 </listitem><listitem><para>🔧 <ulink url="examples/esp32/scripts/">Scripts</ulink> - Build, flash, and development tools</para>
 </listitem><listitem><para>📊 <ulink url="examples/esp32/app_config.yml">Configuration</ulink> - Application and build settings</para>
 </listitem></itemizedlist>

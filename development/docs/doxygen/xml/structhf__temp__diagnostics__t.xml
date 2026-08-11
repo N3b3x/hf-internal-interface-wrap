@@ -5,7 +5,7 @@
     <includes refid="BaseTemperature_8h" local="no">BaseTemperature.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__temp__diagnostics__t_1a32db512c61749abbdac3e7190dfbe8e2" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_temp_diagnostics_t::sensor_healthy</definition>
         <argsstring></argsstring>
         <name>sensor_healthy</name>
@@ -65,7 +65,7 @@
         <location file="inc/base/BaseTemperature.h" line="275" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="275" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__diagnostics__t_1a76b07c86189bda15f081ebdafbc1dadd" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_temp_diagnostics_t::sensor_available</definition>
         <argsstring></argsstring>
         <name>sensor_available</name>
@@ -80,7 +80,7 @@
         <location file="inc/base/BaseTemperature.h" line="276" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="276" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__diagnostics__t_1adbc1dbc8f83af3ce7ecb5bfc9a91dad9" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_temp_diagnostics_t::threshold_monitoring_supported</definition>
         <argsstring></argsstring>
         <name>threshold_monitoring_supported</name>
@@ -95,7 +95,7 @@
         <location file="inc/base/BaseTemperature.h" line="277" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="277" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__diagnostics__t_1a744b9f72ba155602c86667c63d9a329b" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_temp_diagnostics_t::threshold_monitoring_enabled</definition>
         <argsstring></argsstring>
         <name>threshold_monitoring_enabled</name>
@@ -110,7 +110,7 @@
         <location file="inc/base/BaseTemperature.h" line="278" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="278" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__diagnostics__t_1a7fee07809400edb66e2070c976262c44" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_temp_diagnostics_t::continuous_monitoring_active</definition>
         <argsstring></argsstring>
         <name>continuous_monitoring_active</name>
@@ -140,7 +140,7 @@
         <location file="inc/base/BaseTemperature.h" line="280" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="280" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__diagnostics__t_1accd373a9d9b312fa88be3b857ffc94ea" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_temp_diagnostics_t::calibration_valid</definition>
         <argsstring></argsstring>
         <name>calibration_valid</name>

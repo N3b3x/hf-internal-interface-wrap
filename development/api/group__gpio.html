@@ -113,7 +113,7 @@ Files</h2></td></tr>
 <tr class="memdesc:BaseGpio_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unified GPIO base class for all digital GPIO implementations. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:EspGpio_8h" id="r_EspGpio_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="EspGpio_8h.html">EspGpio.h</a></td></tr>
-<tr class="memdesc:EspGpio_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advanced MCU-specific implementation of the unified <a class="el" href="classBaseGpio.html" title="Unified GPIO base class for all digital GPIO implementations.">BaseGpio</a> class with ESP32/ESP-IDF v5.5+ features. <br /></td></tr>
+<tr class="memdesc:EspGpio_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advanced MCU-specific implementation of the unified <a class="el" href="classBaseGpio.html" title="Unified GPIO base class for all digital GPIO implementations.">BaseGpio</a> class with ESP32/ESP-IDF <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v5.5</a>+ features. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -133,13 +133,13 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:gacdef61b325fdcc83f9974bc7c3c6d800" id="r_gacdef61b325fdcc83f9974bc7c3c6d800"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gacdef61b325fdcc83f9974bc7c3c6d800">HF_GPIO_ERR_LIST</a>(<a class="el" href="BaseAdc_8h.html#a94b225babb1626cee0621f8312eb32d1">X</a>)</td></tr>
+<tr class="memitem:gacdef61b325fdcc83f9974bc7c3c6d800" id="r_gacdef61b325fdcc83f9974bc7c3c6d800"><td class="memItemLeft" align="right" valign="top">#<a class="el" href="classSoftChipSelectGuard.html">define</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gacdef61b325fdcc83f9974bc7c3c6d800">HF_GPIO_ERR_LIST</a>(<a class="el" href="BaseAdc_8h.html#a94b225babb1626cee0621f8312eb32d1">X</a>)</td></tr>
 <tr class="memdesc:gacdef61b325fdcc83f9974bc7c3c6d800"><td class="mdescLeft">&#160;</td><td class="mdescRight">HardFOC GPIO error codes macro list.  <br /></td></tr>
 <tr class="separator:gacdef61b325fdcc83f9974bc7c3c6d800"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga9a7aef9fbdf0b553981712baf9a4223a" id="r_ga9a7aef9fbdf0b553981712baf9a4223a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga9a7aef9fbdf0b553981712baf9a4223a">InterruptCallback</a></td></tr>
+<tr class="memitem:ga9a7aef9fbdf0b553981712baf9a4223a" id="r_ga9a7aef9fbdf0b553981712baf9a4223a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga9a7aef9fbdf0b553981712baf9a4223a">InterruptCallback</a></td></tr>
 <tr class="memdesc:ga9a7aef9fbdf0b553981712baf9a4223a"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO interrupt callback function type.  <br /></td></tr>
 <tr class="separator:ga9a7aef9fbdf0b553981712baf9a4223a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -248,7 +248,7 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gafc39fe16e57bc415f05e1f8bf7c4e0be" id="r_gafc39fe16e57bc415f05e1f8bf7c4e0be"><td class="memItemLeft" align="right" valign="top">constexpr std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gafc39fe16e57bc415f05e1f8bf7c4e0be">HfGpioErrToString</a> (<a class="el" href="#ga2632aac2351807c35e790ec20bda305d">hf_gpio_err_t</a> err) noexcept</td></tr>
+<tr class="memitem:gafc39fe16e57bc415f05e1f8bf7c4e0be" id="r_gafc39fe16e57bc415f05e1f8bf7c4e0be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::string_view</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gafc39fe16e57bc415f05e1f8bf7c4e0be">HfGpioErrToString</a> (<a class="el" href="#ga2632aac2351807c35e790ec20bda305d">hf_gpio_err_t</a> <a class="el" href="classSoftChipSelectGuard.html">err</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:gafc39fe16e57bc415f05e1f8bf7c4e0be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert hf_gpio_err_t to human-readable string.  <br /></td></tr>
 <tr class="separator:gafc39fe16e57bc415f05e1f8bf7c4e0be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -270,7 +270,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define HF_GPIO_ERR_LIST</td>
+          <td class="memname">#<a class="el" href="classSoftChipSelectGuard.html">define</a> HF_GPIO_ERR_LIST</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><a class="el" href="BaseAdc_8h.html#a94b225babb1626cee0621f8312eb32d1">X</a></span></td><td>)</td>
           <td></td>
@@ -291,13 +291,14 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#ga9a7aef9fbdf0b553981712baf9a4223a">InterruptCallback</a></td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">using</a> <a class="el" href="#ga9a7aef9fbdf0b553981712baf9a4223a">InterruptCallback</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">    void(*)(<a class="code hl_class" href="classBaseGpio.html">BaseGpio</a>* gpio, <a class="code hl_enumeration" href="#ga7830c017a6fb46b8478c7ca44940c3c1">hf_gpio_interrupt_trigger_t</a> trigger, <span class="keywordtype">void</span>* user_data)</div>
+<div class="line">    <a class="code hl_class" href="classSoftChipSelectGuard.html">void</a>(*)(<a class="code hl_class" href="classBaseGpio.html">BaseGpio</a>* gpio, <a class="code hl_enumeration" href="#ga7830c017a6fb46b8478c7ca44940c3c1">hf_gpio_interrupt_trigger_t</a> <a class="code hl_class" href="classSoftChipSelectGuard.html">trigger</a>, <span class="keywordtype">void</span>* <a class="code hl_class" href="classSoftChipSelectGuard.html">user_data</a>)</div>
 <div class="ttc" id="aclassBaseGpio_html"><div class="ttname"><a href="classBaseGpio.html">BaseGpio</a></div><div class="ttdoc">Unified GPIO base class for all digital GPIO implementations.</div><div class="ttdef"><b>Definition</b> BaseGpio.h:294</div></div>
+<div class="ttc" id="aclassSoftChipSelectGuard_html"><div class="ttname"><a href="classSoftChipSelectGuard.html">SoftChipSelectGuard</a></div><div class="ttdoc">RAII soft-CS: runs assert_fn on construction and deassert_fn on destruction (including early return /...</div><div class="ttdef"><b>Definition</b> SoftChipSelectGuard.h:32</div></div>
 <div class="ttc" id="agroup__gpio_html_ga7830c017a6fb46b8478c7ca44940c3c1"><div class="ttname"><a href="#ga7830c017a6fb46b8478c7ca44940c3c1">hf_gpio_interrupt_trigger_t</a></div><div class="ttdeci">hf_gpio_interrupt_trigger_t</div><div class="ttdoc">GPIO interrupt trigger types.</div><div class="ttdef"><b>Definition</b> BaseGpio.h:200</div></div>
 </div><!-- fragment -->
 <p>GPIO interrupt callback function type. </p>
@@ -323,7 +324,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="#gaf02cdaf150fa829e4a871e58ed772c6d">hf_gpio_active_state_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">enum</a> <a class="el" href="classSoftChipSelectGuard.html">class</a> <a class="el" href="#gaf02cdaf150fa829e4a871e58ed772c6d">hf_gpio_active_state_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
         </tr>
       </table>
   </td>
@@ -354,7 +355,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="#ga6b3450e1c9d6cba3355cc3567bb0cce3">hf_gpio_direction_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">enum</a> <a class="el" href="classSoftChipSelectGuard.html">class</a> <a class="el" href="#ga6b3450e1c9d6cba3355cc3567bb0cce3">hf_gpio_direction_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
         </tr>
       </table>
   </td>
@@ -385,7 +386,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="#ga2632aac2351807c35e790ec20bda305d">hf_gpio_err_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">enum</a> <a class="el" href="classSoftChipSelectGuard.html">class</a> <a class="el" href="#ga2632aac2351807c35e790ec20bda305d">hf_gpio_err_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
         </tr>
       </table>
   </td>
@@ -453,7 +454,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="#ga7830c017a6fb46b8478c7ca44940c3c1">hf_gpio_interrupt_trigger_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">enum</a> <a class="el" href="classSoftChipSelectGuard.html">class</a> <a class="el" href="#ga7830c017a6fb46b8478c7ca44940c3c1">hf_gpio_interrupt_trigger_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
         </tr>
       </table>
   </td>
@@ -492,7 +493,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="#ga04d416163750773ac08d092bd0d4038e">hf_gpio_level_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">enum</a> <a class="el" href="classSoftChipSelectGuard.html">class</a> <a class="el" href="#ga04d416163750773ac08d092bd0d4038e">hf_gpio_level_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
         </tr>
       </table>
   </td>
@@ -523,7 +524,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="#ga825412a54660defc9ecbf8ad1ea1cf7b">hf_gpio_output_mode_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">enum</a> <a class="el" href="classSoftChipSelectGuard.html">class</a> <a class="el" href="#ga825412a54660defc9ecbf8ad1ea1cf7b">hf_gpio_output_mode_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
         </tr>
       </table>
   </td>
@@ -554,7 +555,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="#ga7d27555a7050f5d9d9006c96b841e335">hf_gpio_pull_mode_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">enum</a> <a class="el" href="classSoftChipSelectGuard.html">class</a> <a class="el" href="#ga7d27555a7050f5d9d9006c96b841e335">hf_gpio_pull_mode_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
         </tr>
       </table>
   </td>
@@ -589,7 +590,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="#ga49490004a4935c1f8f727fcbfba7f887">hf_gpio_state_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">enum</a> <a class="el" href="classSoftChipSelectGuard.html">class</a> <a class="el" href="#ga49490004a4935c1f8f727fcbfba7f887">hf_gpio_state_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
         </tr>
       </table>
   </td>
@@ -621,7 +622,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr std::string_view HfGpioErrToString </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::string_view</a> HfGpioErrToString </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#ga2632aac2351807c35e790ec20bda305d">hf_gpio_err_t</a></td>          <td class="paramname"><span class="paramname"><em>err</em></span></td><td>)</td>
           <td></td>

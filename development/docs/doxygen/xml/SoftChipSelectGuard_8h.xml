@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="SoftChipSelectGuard_8h" kind="file" language="C++">
+    <compoundname>SoftChipSelectGuard.h</compoundname>
+    <includes local="no">utility</includes>
+    <includedby refid="StmSpi_8h" local="yes">inc/mcu/stm32/StmSpi.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/utils/SoftChipSelectGuard.h</label>
+        <link refid="SoftChipSelectGuard_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>inc/mcu/stm32/StmSpi.h</label>
+        <link refid="StmSpi_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/utils/SoftChipSelectGuard.h</label>
+        <link refid="SoftChipSelectGuard_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/mcu/stm32/StmSpi.cpp</label>
+        <link refid="StmSpi_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classSoftChipSelectGuard" prot="public">SoftChipSelectGuard</innerclass>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="SoftChipSelectGuard_8h_1ad06bf454909894e47def4af90f15f991" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classSoftChipSelectGuard" kindref="compound">typename</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">AssertFn</ref></type>
+          </param>
+          <param>
+            <type><ref refid="classSoftChipSelectGuard" kindref="compound">typename</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">DeassertFn</ref></type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">SoftChipSelectGuard</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">AssertFn</ref>, <ref refid="classSoftChipSelectGuard" kindref="compound">DeassertFn</ref> &gt;</type>
+        <definition>SoftChipSelectGuard&lt; AssertFn, DeassertFn &gt; MakeSoftChipSelectGuard</definition>
+        <argsstring>(AssertFn assert_fn, DeassertFn deassert_fn) noexcept</argsstring>
+        <name>MakeSoftChipSelectGuard</name>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">AssertFn</ref></type>
+          <declname>assert_fn</declname>
+        </param>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">DeassertFn</ref></type>
+          <declname>deassert_fn</declname>
+        </param>
+        <briefdescription>
+<para>Deduce guard type from assert/deassert callables. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/SoftChipSelectGuard.h" line="78" column="22" bodyfile="inc/utils/SoftChipSelectGuard.h" bodystart="78" bodyend="82"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>RAII soft chip-select (assert on construct, deassert on destroy). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Use around a single SPI frame (or an intentional multi-byte burst that must stay under one CS assertion). Pair with a bus mutex held for the whole mode + FIFO + transfer window — this guard only owns the CS pin edges.</para>
+<para><simplesect kind="note"><para>Does not replace bus locking. Callers must already own the SPI bus mutex so peers cannot change CPOL/CPHA or steal the peripheral. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>AssertFn,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DeassertFn&gt;</highlight></codeline>
+<codeline lineno="32" refid="classSoftChipSelectGuard" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">SoftChipSelectGuard</ref><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="34" refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">SoftChipSelectGuard</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">AssertFn</ref><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">assert_fn</ref>,<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">DeassertFn</ref><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">deassert_fn</ref>)<sp/><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">noexcept</ref></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classSoftChipSelectGuard_1a9dd5fd1321e16ec6f069ec8d795479c2" kindref="member">deassert_</ref>(<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::move</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">deassert_fn</ref>)),<sp/><ref refid="classSoftChipSelectGuard_1a5152814739582dad47f1be0726179105" kindref="member">armed_</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">assert_fn</ref>();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classSoftChipSelectGuard_1ad4d1c548ef737ae374054f7d2701a8c5" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classSoftChipSelectGuard_1ad4d1c548ef737ae374054f7d2701a8c5" kindref="member">~SoftChipSelectGuard</ref>()<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">noexcept</ref><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSoftChipSelectGuard_1a0b212277c5cf829949c717d62923d9d6" kindref="member">Release</ref>();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classSoftChipSelectGuard_1ae47f77fa2cf4252bac533f19c0c0e811" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classSoftChipSelectGuard_1ae47f77fa2cf4252bac533f19c0c0e811" kindref="member">SoftChipSelectGuard</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">SoftChipSelectGuard</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44" refid="classSoftChipSelectGuard_1abb758d47c67a15f2daee46bfa50c8db4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">SoftChipSelectGuard</ref>&amp;<sp/><ref refid="classSoftChipSelectGuard_1abb758d47c67a15f2daee46bfa50c8db4" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">SoftChipSelectGuard</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classSoftChipSelectGuard_1a56665795cc45e9ba7342ab5f44e112d8" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classSoftChipSelectGuard_1a56665795cc45e9ba7342ab5f44e112d8" kindref="member">SoftChipSelectGuard</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">SoftChipSelectGuard</ref>&amp;&amp;<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">other</ref>)<sp/><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">noexcept</ref></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classSoftChipSelectGuard_1a9dd5fd1321e16ec6f069ec8d795479c2" kindref="member">deassert_</ref>(<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::move</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">other</ref>.<ref refid="classSoftChipSelectGuard_1a9dd5fd1321e16ec6f069ec8d795479c2" kindref="member">deassert_</ref>)),<sp/><ref refid="classSoftChipSelectGuard_1a5152814739582dad47f1be0726179105" kindref="member">armed_</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">other</ref>.<ref refid="classSoftChipSelectGuard_1a5152814739582dad47f1be0726179105" kindref="member">armed_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">other</ref>.<ref refid="classSoftChipSelectGuard_1a5152814739582dad47f1be0726179105" kindref="member">armed_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classSoftChipSelectGuard_1af6e6d7531163781b7152d5b637181011" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">SoftChipSelectGuard</ref>&amp;<sp/><ref refid="classSoftChipSelectGuard_1af6e6d7531163781b7152d5b637181011" kindref="member">operator=</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">SoftChipSelectGuard</ref>&amp;&amp;<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">other</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>!=<sp/>&amp;<ref refid="classSoftChipSelectGuard" kindref="compound">other</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSoftChipSelectGuard_1a0b212277c5cf829949c717d62923d9d6" kindref="member">Release</ref>();</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSoftChipSelectGuard_1a9dd5fd1321e16ec6f069ec8d795479c2" kindref="member">deassert_</ref><sp/>=<sp/><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::move</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">other</ref>.<ref refid="classSoftChipSelectGuard_1a9dd5fd1321e16ec6f069ec8d795479c2" kindref="member">deassert_</ref>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSoftChipSelectGuard_1a5152814739582dad47f1be0726179105" kindref="member">armed_</ref><sp/>=<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">other</ref>.<ref refid="classSoftChipSelectGuard_1a5152814739582dad47f1be0726179105" kindref="member">armed_</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">other</ref>.<ref refid="classSoftChipSelectGuard_1a5152814739582dad47f1be0726179105" kindref="member">armed_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classSoftChipSelectGuard_1a0b212277c5cf829949c717d62923d9d6" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard_1a0b212277c5cf829949c717d62923d9d6" kindref="member">Release</ref>()<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">noexcept</ref><sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSoftChipSelectGuard_1a5152814739582dad47f1be0726179105" kindref="member">armed_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSoftChipSelectGuard_1a9dd5fd1321e16ec6f069ec8d795479c2" kindref="member">deassert_</ref>();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSoftChipSelectGuard_1a5152814739582dad47f1be0726179105" kindref="member">armed_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classSoftChipSelectGuard_1a7948dda8fc77490f105cfcf1092b5698" refkind="member"><highlight class="normal"><sp/><sp/>[[<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard_1a7948dda8fc77490f105cfcf1092b5698" kindref="member">OwnsCs</ref>()<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">noexcept</ref><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard_1a5152814739582dad47f1be0726179105" kindref="member">armed_</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="72" refid="classSoftChipSelectGuard_1a9dd5fd1321e16ec6f069ec8d795479c2" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">DeassertFn</ref><sp/><ref refid="classSoftChipSelectGuard_1a9dd5fd1321e16ec6f069ec8d795479c2" kindref="member">deassert_</ref>;</highlight></codeline>
+<codeline lineno="73" refid="classSoftChipSelectGuard_1a5152814739582dad47f1be0726179105" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard_1a5152814739582dad47f1be0726179105" kindref="member">armed_</ref>;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>AssertFn,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DeassertFn&gt;</highlight></codeline>
+<codeline lineno="78" refid="SoftChipSelectGuard_8h_1ad06bf454909894e47def4af90f15f991" refkind="member"><highlight class="normal">[[<ref refid="classSoftChipSelectGuard" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">SoftChipSelectGuard&lt;AssertFn, DeassertFn&gt;</ref><sp/><ref refid="SoftChipSelectGuard_8h_1ad06bf454909894e47def4af90f15f991" kindref="member">MakeSoftChipSelectGuard</ref>(</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">AssertFn</ref><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">assert_fn</ref>,<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">DeassertFn</ref><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">deassert_fn</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">SoftChipSelectGuard&lt;AssertFn, DeassertFn&gt;</ref>(<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::move</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">assert_fn</ref>),</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::move</ref>(<ref refid="classSoftChipSelectGuard" kindref="compound">deassert_fn</ref>));</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="inc/utils/SoftChipSelectGuard.h"/>
+  </compounddef>
+</doxygen>

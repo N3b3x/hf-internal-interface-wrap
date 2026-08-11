@@ -5,5 +5,6 @@ var dir_8f46c503ad4a32bd125d4189308369db =
     [ "HfTime.h", "HfTime_8h.html", "HfTime_8h" ],
     [ "McuSelect.h", "McuSelect_8h.html", "McuSelect_8h" ],
     [ "memory_utils.h", "memory__utils_8h.html", "memory__utils_8h" ],
-    [ "PlatformMutex.h", "PlatformMutex_8h.html", "PlatformMutex_8h" ]
+    [ "PlatformMutex.h", "PlatformMutex_8h.html", "PlatformMutex_8h" ],
+    [ "SoftChipSelectGuard.h", "SoftChipSelectGuard_8h.html", "SoftChipSelectGuard_8h" ]
 ];

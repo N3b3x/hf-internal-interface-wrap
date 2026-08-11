@@ -5,7 +5,7 @@
     <includes refid="EspTypes__WiFi_8h" local="no">EspTypes_WiFi.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structHfEspWifiPerformanceConfig_1a1d4c0185fc4a2532fdb257eb8cc1f6b2" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool HfEspWifiPerformanceConfig::enable_ampdu_rx</definition>
         <argsstring></argsstring>
         <name>enable_ampdu_rx</name>
@@ -20,7 +20,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="169" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="169" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiPerformanceConfig_1a2c97b68918d1c576df524467394df957" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool HfEspWifiPerformanceConfig::enable_ampdu_tx</definition>
         <argsstring></argsstring>
         <name>enable_ampdu_tx</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="170" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="170" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiPerformanceConfig_1a6807d776e72e4eed5059b65b1b8fcbe4" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t HfEspWifiPerformanceConfig::ampdu_rx_num</definition>
         <argsstring></argsstring>
         <name>ampdu_rx_num</name>
@@ -50,7 +50,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="171" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="171" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiPerformanceConfig_1a86e2fa842a619537f581b3eaefebe346" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t HfEspWifiPerformanceConfig::ampdu_tx_num</definition>
         <argsstring></argsstring>
         <name>ampdu_tx_num</name>
@@ -65,7 +65,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="172" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="172" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiPerformanceConfig_1af5311b777dfdef3cf601bf8d7f92151e" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool HfEspWifiPerformanceConfig::enable_amsdu</definition>
         <argsstring></argsstring>
         <name>enable_amsdu</name>
@@ -80,7 +80,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="173" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="173" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiPerformanceConfig_1a8acce75f19d3a1ee3b0793714ff5bf32" prot="public" static="no" mutable="no">
-        <type>uint16_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
         <definition>uint16_t HfEspWifiPerformanceConfig::rx_ba_win</definition>
         <argsstring></argsstring>
         <name>rx_ba_win</name>
@@ -95,7 +95,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="174" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="174" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiPerformanceConfig_1a0b5e32f9e118c7808e91dc74ab2c3224" prot="public" static="no" mutable="no">
-        <type>uint16_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
         <definition>uint16_t HfEspWifiPerformanceConfig::tx_ba_win</definition>
         <argsstring></argsstring>
         <name>tx_ba_win</name>
@@ -110,7 +110,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="175" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="175" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiPerformanceConfig_1a5b4e6e69f2f1cde36e92031e93c432e5" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool HfEspWifiPerformanceConfig::enable_csi</definition>
         <argsstring></argsstring>
         <name>enable_csi</name>
@@ -125,7 +125,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="176" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="176" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structHfEspWifiPerformanceConfig_1a90aadc37b406c533e67c9d5358f6b3a5" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool HfEspWifiPerformanceConfig::enable_ftm</definition>
         <argsstring></argsstring>
         <name>enable_ftm</name>

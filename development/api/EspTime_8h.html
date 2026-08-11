@@ -100,7 +100,7 @@ $(function(){initNavTree('EspTime_8h.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>ESP32-family implementation of the high-resolution monotonic time source consumed via <code><a class="el" href="HfTime_8h.html" title="MCU-agnostic high-resolution monotonic time source.">HfTime.h</a></code>.  
+<p>ESP32-family implementation of the high-resolution monotonic time source consumed via <code><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">HfTime.h</a></code>.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
 <code>#include &quot;esp_timer.h&quot;</code><br />
@@ -121,18 +121,18 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a228110b1dd468efe27187f462d662dff" id="r_a228110b1dd468efe27187f462d662dff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__time_1_1esp32.html#a228110b1dd468efe27187f462d662dff">hf_time::esp32::InitMonotonic</a> () noexcept</td></tr>
+<tr class="memitem:a228110b1dd468efe27187f462d662dff" id="r_a228110b1dd468efe27187f462d662dff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__time_1_1esp32.html#a228110b1dd468efe27187f462d662dff">hf_time::esp32::InitMonotonic</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a228110b1dd468efe27187f462d662dff"><td class="mdescLeft">&#160;</td><td class="mdescRight">No-op on ESP-IDF: the high-resolution timer is started by the system bootstrap before <code>app_main</code> runs.  <br /></td></tr>
 <tr class="separator:a228110b1dd468efe27187f462d662dff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f23f582ecf444b0bb6e3ef5e1305ebd" id="r_a9f23f582ecf444b0bb6e3ef5e1305ebd"><td class="memItemLeft" align="right" valign="top">std::uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__time_1_1esp32.html#a9f23f582ecf444b0bb6e3ef5e1305ebd">hf_time::esp32::MonotonicUs</a> () noexcept</td></tr>
+<tr class="memitem:a9f23f582ecf444b0bb6e3ef5e1305ebd" id="r_a9f23f582ecf444b0bb6e3ef5e1305ebd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::uint64_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__time_1_1esp32.html#a9f23f582ecf444b0bb6e3ef5e1305ebd">hf_time::esp32::MonotonicUs</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a9f23f582ecf444b0bb6e3ef5e1305ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Microseconds since boot from the hardware-backed timer.  <br /></td></tr>
 <tr class="separator:a9f23f582ecf444b0bb6e3ef5e1305ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>ESP32-family implementation of the high-resolution monotonic time source consumed via <code><a class="el" href="HfTime_8h.html" title="MCU-agnostic high-resolution monotonic time source.">HfTime.h</a></code>. </p>
+<div class="textblock"><p>ESP32-family implementation of the high-resolution monotonic time source consumed via <code><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">HfTime.h</a></code>. </p>
 <p>Backed by <code>esp_timer_get_time()</code>, a 64-bit µs counter driven by a dedicated hardware timer that ESP-IDF starts before <code>app_main</code>. The counter is monotonic for &gt;292 000 years so wrap is not a concern.</p>
 <p>Header-only inline implementation: every call lowers to a single <code>esp_timer_get_time</code> call with no extra frames so it is safe inside hot-path measurement loops (valve self-test sweeps, parallel-stress sampler, ramp settling detectors).</p>
-<p>Do not include this file directly from middleware/app code — go through <code><a class="el" href="HfTime_8h.html" title="MCU-agnostic high-resolution monotonic time source.">HfTime.h</a></code> so MCU dispatch stays in one place. </p>
+<p>Do not include this file directly from middleware/app code — go through <code><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">HfTime.h</a></code> so MCU dispatch stays in one place. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

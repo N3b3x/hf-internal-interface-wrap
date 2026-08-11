@@ -8,6 +8,7 @@
     <innerfile refid="McuSelect_8h">McuSelect.h</innerfile>
     <innerfile refid="memory__utils_8h">memory_utils.h</innerfile>
     <innerfile refid="PlatformMutex_8h">PlatformMutex.h</innerfile>
+    <innerfile refid="SoftChipSelectGuard_8h">SoftChipSelectGuard.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

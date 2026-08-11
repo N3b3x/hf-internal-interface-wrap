@@ -5,7 +5,7 @@
     <includes refid="EspTypes__UART_8h" local="no">EspTypes_UART.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__uart__irda__config__t_1a2e3ace6d1a0f3dd70638bee8aaae8b8f" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_uart_irda_config_t::enable_irda</definition>
         <argsstring></argsstring>
         <name>enable_irda</name>
@@ -20,7 +20,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="218" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="218" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__irda__config__t_1a3dcfcc6d5e0ccc88d88af22818bec340" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_uart_irda_config_t::invert_tx</definition>
         <argsstring></argsstring>
         <name>invert_tx</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="219" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="219" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__irda__config__t_1aa8cdfbead9d674f0525ba236c10848c4" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_uart_irda_config_t::invert_rx</definition>
         <argsstring></argsstring>
         <name>invert_rx</name>
@@ -50,7 +50,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="220" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="220" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__irda__config__t_1a17330d5b407ec971f1e5a0177c2927a5" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t hf_uart_irda_config_t::duty_cycle</definition>
         <argsstring></argsstring>
         <name>duty_cycle</name>

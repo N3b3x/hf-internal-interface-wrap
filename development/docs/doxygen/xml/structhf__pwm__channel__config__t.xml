@@ -5,7 +5,7 @@
     <includes refid="EspTypes__PWM_8h" local="no">EspTypes_PWM.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a79a176f4a93105a6cea52b834202573d" prot="public" static="no" mutable="no">
-        <type>hf_gpio_num_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">hf_gpio_num_t</ref></type>
         <definition>hf_gpio_num_t hf_pwm_channel_config_t::gpio_pin</definition>
         <argsstring></argsstring>
         <name>gpio_pin</name>
@@ -20,7 +20,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="307" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="307" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1ae342069b991c2d0834df2342534fb9ca" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t hf_pwm_channel_config_t::channel_id</definition>
         <argsstring></argsstring>
         <name>channel_id</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="308" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="308" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a6a2e4e26bb3b33d74a96f73768195b87" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t hf_pwm_channel_config_t::timer_id</definition>
         <argsstring></argsstring>
         <name>timer_id</name>
@@ -65,7 +65,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="310" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="310" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1ae0d6701420e415a74e1e3c2212dc9b7b" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_pwm_channel_config_t::frequency_hz</definition>
         <argsstring></argsstring>
         <name>frequency_hz</name>
@@ -80,7 +80,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="313" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="313" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1af84dfd13ad00faa211f888d3f7855de9" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t hf_pwm_channel_config_t::resolution_bits</definition>
         <argsstring></argsstring>
         <name>resolution_bits</name>
@@ -110,7 +110,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="315" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="315" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1ad2ddbd9698b451c8a02f9455686947e8" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_pwm_channel_config_t::duty_initial</definition>
         <argsstring></argsstring>
         <name>duty_initial</name>
@@ -140,7 +140,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="318" column="22" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="318" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a730bf242f726cb01055534f8de47b826" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pwm_channel_config_t::invert_output</definition>
         <argsstring></argsstring>
         <name>invert_output</name>
@@ -155,7 +155,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="319" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="319" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1aa34ec457627357c1c82ab1696ef2786e" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_pwm_channel_config_t::hpoint</definition>
         <argsstring></argsstring>
         <name>hpoint</name>
@@ -170,7 +170,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="322" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="322" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a7feb007616457c057dfa7b257aadce2e" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t hf_pwm_channel_config_t::idle_level</definition>
         <argsstring></argsstring>
         <name>idle_level</name>
@@ -185,7 +185,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="323" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="323" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1ad61ccb65c601b8310da94658089b633a" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pwm_channel_config_t::output_invert</definition>
         <argsstring></argsstring>
         <name>output_invert</name>
@@ -215,7 +215,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="327" column="29" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="327" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1aefd3b546b1a76f6c4e64c8166b4622a0" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pwm_channel_config_t::is_critical</definition>
         <argsstring></argsstring>
         <name>is_critical</name>
@@ -230,7 +230,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="328" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="328" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a527f5098ffbb707a1c337c63d0d22c42" prot="public" static="no" mutable="no">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char* hf_pwm_channel_config_t::description</definition>
         <argsstring></argsstring>
         <name>description</name>
@@ -286,26 +286,26 @@
 </sect2>
 <sect2 id="structhf__pwm__channel__config__t_1autotoc_md15">
 <title>Usage Examples:</title><para><programlisting filename=".cpp"><codeline><highlight class="comment">//<sp/>Basic<sp/>LED<sp/>dimming</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/>led_config<sp/>=<sp/>{};</highlight></codeline>
-<codeline><highlight class="normal">led_config.<ref refid="structhf__pwm__channel__config__t_1a79a176f4a93105a6cea52b834202573d" kindref="member">gpio_pin</ref><sp/>=<sp/>2;</highlight></codeline>
-<codeline><highlight class="normal">led_config.<ref refid="structhf__pwm__channel__config__t_1ae0d6701420e415a74e1e3c2212dc9b7b" kindref="member">frequency_hz</ref><sp/>=<sp/>1000;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1kHz</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">led_config.<ref refid="structhf__pwm__channel__config__t_1af84dfd13ad00faa211f888d3f7855de9" kindref="member">resolution_bits</ref><sp/>=<sp/>10;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>10-bit<sp/>(0-1023)</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">led_config.<ref refid="structhf__pwm__channel__config__t_1ad2ddbd9698b451c8a02f9455686947e8" kindref="member">duty_initial</ref><sp/>=<sp/>512;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>50%<sp/>brightness</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">led_config</ref><sp/>=<sp/>{};</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">led_config</ref>.gpio_pin<sp/>=<sp/>2;</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">led_config</ref>.frequency_hz<sp/>=<sp/>1000;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1kHz</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">led_config</ref>.resolution_bits<sp/>=<sp/>10;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>10-bit<sp/>(0-1023)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">led_config</ref>.duty_initial<sp/>=<sp/>512;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>50%<sp/>brightness</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Motor<sp/>control<sp/>with<sp/>high<sp/>resolution</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/>motor_config<sp/>=<sp/>{};</highlight></codeline>
-<codeline><highlight class="normal">motor_config.<ref refid="structhf__pwm__channel__config__t_1a79a176f4a93105a6cea52b834202573d" kindref="member">gpio_pin</ref><sp/>=<sp/>4;</highlight></codeline>
-<codeline><highlight class="normal">motor_config.<ref refid="structhf__pwm__channel__config__t_1ae0d6701420e415a74e1e3c2212dc9b7b" kindref="member">frequency_hz</ref><sp/>=<sp/>20000;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>20kHz<sp/>(above<sp/>audible<sp/>range)</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">motor_config.<ref refid="structhf__pwm__channel__config__t_1af84dfd13ad00faa211f888d3f7855de9" kindref="member">resolution_bits</ref><sp/>=<sp/>12;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>12-bit<sp/>(0-4095)<sp/>for<sp/>smooth<sp/>control</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">motor_config.<ref refid="structhf__pwm__channel__config__t_1aefd3b546b1a76f6c4e64c8166b4622a0" kindref="member">is_critical</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Protect<sp/>from<sp/>eviction</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">motor_config.<ref refid="structhf__pwm__channel__config__t_1a527f5098ffbb707a1c337c63d0d22c42" kindref="member">description</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>PWM&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">motor_config</ref><sp/>=<sp/>{};</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">motor_config</ref>.gpio_pin<sp/>=<sp/>4;</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">motor_config</ref>.frequency_hz<sp/>=<sp/>20000;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>20kHz<sp/>(above<sp/>audible<sp/>range)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">motor_config</ref>.resolution_bits<sp/>=<sp/>12;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>12-bit<sp/>(0-4095)<sp/>for<sp/>smooth<sp/>control</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">motor_config</ref>.is_critical<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Protect<sp/>from<sp/>eviction</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">motor_config</ref>.description<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>PWM&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Servo<sp/>control<sp/>with<sp/>precise<sp/>timing</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/>servo_config<sp/>=<sp/>{};</highlight></codeline>
-<codeline><highlight class="normal">servo_config.<ref refid="structhf__pwm__channel__config__t_1a79a176f4a93105a6cea52b834202573d" kindref="member">gpio_pin</ref><sp/>=<sp/>18;</highlight></codeline>
-<codeline><highlight class="normal">servo_config.<ref refid="structhf__pwm__channel__config__t_1ae0d6701420e415a74e1e3c2212dc9b7b" kindref="member">frequency_hz</ref><sp/>=<sp/>50;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>50Hz<sp/>(20ms<sp/>period)</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">servo_config.<ref refid="structhf__pwm__channel__config__t_1af84dfd13ad00faa211f888d3f7855de9" kindref="member">resolution_bits</ref><sp/>=<sp/>14;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>14-bit<sp/>for<sp/>microsecond<sp/>precision</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">servo_config.<ref refid="structhf__pwm__channel__config__t_1a2dd704d7a0507d01b0464d176e264d4b" kindref="member">clock_source</ref><sp/>=<sp/><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82a2fb4f97b7c1b78586a5f9f8365272822" kindref="member">HF_PWM_CLK_SRC_APB</ref>;<sp/></highlight><highlight class="comment">//<sp/>Stable<sp/>timing</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">servo_config</ref><sp/>=<sp/>{};</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">servo_config</ref>.gpio_pin<sp/>=<sp/>18;</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">servo_config</ref>.frequency_hz<sp/>=<sp/>50;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>50Hz<sp/>(20ms<sp/>period)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">servo_config</ref>.resolution_bits<sp/>=<sp/>14;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>14-bit<sp/>for<sp/>microsecond<sp/>precision</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">servo_config</ref>.clock_source<sp/>=<sp/><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82a2fb4f97b7c1b78586a5f9f8365272822" kindref="member">HF_PWM_CLK_SRC_APB</ref>;<sp/></highlight><highlight class="comment">//<sp/>Stable<sp/>timing</highlight></codeline>
 </programlisting> </para>
 </sect2>
     </detaileddescription>

@@ -20,7 +20,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="319" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="319" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__custom__command__t_1a6de318c10918bef3986dd18ec0cd7cdb" prot="public" static="no" mutable="no">
-        <type>uint16_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
         <definition>uint16_t hf_i2c_custom_command_t::device_addr</definition>
         <argsstring></argsstring>
         <name>device_addr</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="320" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="320" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__custom__command__t_1a86b814f00746901f060cd9af475ae77f" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; uint8_t &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref> &gt;</type>
         <definition>std::vector&lt;uint8_t&gt; hf_i2c_custom_command_t::data</definition>
         <argsstring></argsstring>
         <name>data</name>
@@ -50,7 +50,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="321" column="15" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="321" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__custom__command__t_1a67428d9b9c1eb4c41cc8d6a115983734" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_i2c_custom_command_t::delay_us</definition>
         <argsstring></argsstring>
         <name>delay_us</name>
@@ -65,7 +65,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="322" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="322" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__custom__command__t_1a0b9cd5102b234d69e51d4162b1314ee1" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_i2c_custom_command_t::timeout_ms</definition>
         <argsstring></argsstring>
         <name>timeout_ms</name>
@@ -80,7 +80,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="323" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="323" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__custom__command__t_1ae4f72d3a0a59bc3032477f339dbefc4a" prot="public" static="no" mutable="no">
-        <type>size_t</type>
+        <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>size_t hf_i2c_custom_command_t::expected_read_size</definition>
         <argsstring></argsstring>
         <name>expected_read_size</name>
@@ -95,7 +95,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="324" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="324" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__custom__command__t_1a4135df4a3ac47350a09d0a0b82961c4e" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_i2c_custom_command_t::flags</definition>
         <argsstring></argsstring>
         <name>flags</name>
@@ -122,7 +122,7 @@
           <declname>type</declname>
         </param>
         <param>
-          <type>uint16_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
           <declname>addr</declname>
           <defval>0</defval>
         </param>
@@ -142,7 +142,7 @@
         <name>hf_i2c_custom_command_t</name>
         <qualifiedname>hf_i2c_custom_command_t::hf_i2c_custom_command_t</qualifiedname>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>delay_microseconds</declname>
         </param>
         <briefdescription>

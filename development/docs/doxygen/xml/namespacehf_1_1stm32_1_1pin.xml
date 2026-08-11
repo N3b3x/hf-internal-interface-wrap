@@ -4,7 +4,7 @@
     <compoundname>hf::stm32::pin</compoundname>
     <sectiondef kind="var">
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a824d3548cd5671e4fc5e03cda08980cb" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PA0</definition>
         <argsstring></argsstring>
         <name>PA0</name>
@@ -19,7 +19,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="223" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="223" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a0546fb0b8ffb81f735a6c635f0222014" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PA1</definition>
         <argsstring></argsstring>
         <name>PA1</name>
@@ -34,7 +34,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="224" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="224" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1aa5d299c264b2ab5ded07088ec6b8df4b" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PA2</definition>
         <argsstring></argsstring>
         <name>PA2</name>
@@ -49,7 +49,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="225" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="225" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1aa67b8a5441d0054ac024ee6d7a191fa4" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PA3</definition>
         <argsstring></argsstring>
         <name>PA3</name>
@@ -64,7 +64,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="226" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="226" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a69abb830d5097258c4d05c928aee91af" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PA4</definition>
         <argsstring></argsstring>
         <name>PA4</name>
@@ -79,7 +79,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="227" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="227" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1aac45d7c935347246a3e3d06328aa7242" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PA5</definition>
         <argsstring></argsstring>
         <name>PA5</name>
@@ -94,7 +94,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="228" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="228" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a067756da433da32b52926e3b6ce6d59e" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PA6</definition>
         <argsstring></argsstring>
         <name>PA6</name>
@@ -109,7 +109,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="229" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="229" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1ad61785afa45ed58b896ef8d1b554ba0a" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PA7</definition>
         <argsstring></argsstring>
         <name>PA7</name>
@@ -124,7 +124,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="230" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="230" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a493c2a580ab10df0222606e1076d7f72" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PA8</definition>
         <argsstring></argsstring>
         <name>PA8</name>
@@ -139,7 +139,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="231" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="231" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a80cd0e0db05e52f75007f27525dbb10d" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PA9</definition>
         <argsstring></argsstring>
         <name>PA9</name>
@@ -154,7 +154,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="232" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="232" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1ac6159cce6516bc433f489fe12cba3e98" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PA10</definition>
         <argsstring></argsstring>
         <name>PA10</name>
@@ -169,7 +169,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="233" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="233" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1aa89d49ed70a3e281d5a1f360b4587228" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PA11</definition>
         <argsstring></argsstring>
         <name>PA11</name>
@@ -184,7 +184,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="234" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="234" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a9824dd8d6e84b24e9845e83b61823be0" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PA12</definition>
         <argsstring></argsstring>
         <name>PA12</name>
@@ -199,7 +199,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="235" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="235" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1af194159cc98377777aaf2ff84416714e" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PA13</definition>
         <argsstring></argsstring>
         <name>PA13</name>
@@ -214,7 +214,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="236" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="236" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a7225822198144da7a5185777074f68b0" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PA14</definition>
         <argsstring></argsstring>
         <name>PA14</name>
@@ -229,7 +229,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="237" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="237" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1af61d0086b1222e1b2edc4781896342a4" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PA15</definition>
         <argsstring></argsstring>
         <name>PA15</name>
@@ -244,7 +244,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="238" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="238" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a5d450b126574fc2800b737a72c5df930" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PB0</definition>
         <argsstring></argsstring>
         <name>PB0</name>
@@ -259,7 +259,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="240" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="240" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a1de0807c57570d161a7e36ce591bb718" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PB1</definition>
         <argsstring></argsstring>
         <name>PB1</name>
@@ -274,7 +274,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="241" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="241" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1aa03fb8d5597c573a53ad46e8eca31b41" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PB2</definition>
         <argsstring></argsstring>
         <name>PB2</name>
@@ -289,7 +289,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="242" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="242" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a030fe66d0c69b35e8a562b4286a7e3c0" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PB3</definition>
         <argsstring></argsstring>
         <name>PB3</name>
@@ -304,7 +304,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="243" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="243" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a0d10449f6b6edd3d43771b7b1b7488e6" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PB4</definition>
         <argsstring></argsstring>
         <name>PB4</name>
@@ -319,7 +319,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="244" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="244" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a3af9f362ae4ebbcc56fa36ff9f7af49e" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PB5</definition>
         <argsstring></argsstring>
         <name>PB5</name>
@@ -334,7 +334,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="245" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="245" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a25b8760d41eafb39326c2fcd45c753eb" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PB6</definition>
         <argsstring></argsstring>
         <name>PB6</name>
@@ -349,7 +349,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="246" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="246" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a5271d39d72ca2d19e9e5230326e23120" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PB7</definition>
         <argsstring></argsstring>
         <name>PB7</name>
@@ -364,7 +364,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="247" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="247" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a02cbccb3e4fc5a2e9cdb1cab42c52fa7" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PB8</definition>
         <argsstring></argsstring>
         <name>PB8</name>
@@ -379,7 +379,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="248" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="248" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a9aeaa08e489dc8927f12a434a0d4b2a9" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PB9</definition>
         <argsstring></argsstring>
         <name>PB9</name>
@@ -394,7 +394,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="249" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="249" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a9f373df4ee0f8a0d8ca5e7d3b77d4312" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PB10</definition>
         <argsstring></argsstring>
         <name>PB10</name>
@@ -409,7 +409,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="250" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="250" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a295da74cbb8683bdeac537cd89151cb4" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PB11</definition>
         <argsstring></argsstring>
         <name>PB11</name>
@@ -424,7 +424,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="251" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="251" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1acc6e27631cf247d8533b940832114bea" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PB12</definition>
         <argsstring></argsstring>
         <name>PB12</name>
@@ -439,7 +439,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="252" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="252" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a9c10d20893e4cff15a19c36d82bfcffe" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PB13</definition>
         <argsstring></argsstring>
         <name>PB13</name>
@@ -454,7 +454,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="253" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="253" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1abe1193e82c79467d0366cb38477e4b47" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PB14</definition>
         <argsstring></argsstring>
         <name>PB14</name>
@@ -469,7 +469,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="254" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="254" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a6c8d6e5aab3fa231edd6592e028bae5a" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PB15</definition>
         <argsstring></argsstring>
         <name>PB15</name>
@@ -484,7 +484,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="255" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="255" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1ade9fcb2802568e547c9a30ba2f4e7e2c" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PC0</definition>
         <argsstring></argsstring>
         <name>PC0</name>
@@ -499,7 +499,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="257" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="257" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a1ae5e1c504a77793bb8eb7ffd4c211ce" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PC1</definition>
         <argsstring></argsstring>
         <name>PC1</name>
@@ -514,7 +514,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="258" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="258" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a347f33630fa92bcabb3c030317e7a8e4" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PC2</definition>
         <argsstring></argsstring>
         <name>PC2</name>
@@ -529,7 +529,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="259" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="259" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1aed9ce64a89aad76e3516c480060575bd" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PC3</definition>
         <argsstring></argsstring>
         <name>PC3</name>
@@ -544,7 +544,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="260" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="260" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1af6eb4cfcaac359ce727642ef39375622" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PC4</definition>
         <argsstring></argsstring>
         <name>PC4</name>
@@ -559,7 +559,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="261" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="261" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a0d32fae5a79bf52d094b6e9d2e3a5e0c" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PC5</definition>
         <argsstring></argsstring>
         <name>PC5</name>
@@ -574,7 +574,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="262" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="262" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1afc9cc77e9bb81dc8d19955281a9c1a1c" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PC6</definition>
         <argsstring></argsstring>
         <name>PC6</name>
@@ -589,7 +589,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="263" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="263" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a0fabb87ecd1e86890c474f0ac0751ec6" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PC7</definition>
         <argsstring></argsstring>
         <name>PC7</name>
@@ -604,7 +604,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="264" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="264" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a314953b4ac1493ad5d5f80e1266f5024" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PC8</definition>
         <argsstring></argsstring>
         <name>PC8</name>
@@ -619,7 +619,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="265" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="265" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a0b5f8c702ab2e536869b5fa75cf28bd9" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PC9</definition>
         <argsstring></argsstring>
         <name>PC9</name>
@@ -634,7 +634,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="266" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="266" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1aa36f017dcb062a52ecb247a9bb266621" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PC10</definition>
         <argsstring></argsstring>
         <name>PC10</name>
@@ -649,7 +649,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="267" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="267" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a7e0c25621a8ca20ee944c30fe6ba9583" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PC11</definition>
         <argsstring></argsstring>
         <name>PC11</name>
@@ -664,7 +664,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="268" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="268" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a7fee21ff9258cf7f264d04776cfdcf4e" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PC12</definition>
         <argsstring></argsstring>
         <name>PC12</name>
@@ -679,7 +679,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="269" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="269" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1aa8d22ce5b38f18e48c8ab7ad4397ab28" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PC13</definition>
         <argsstring></argsstring>
         <name>PC13</name>
@@ -694,7 +694,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="270" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="270" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1ac0e7cd359460b84dad1f5478c0c9313d" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PC14</definition>
         <argsstring></argsstring>
         <name>PC14</name>
@@ -709,7 +709,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="271" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="271" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1aeb967814b9e8764eccdb832e573e289b" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PC15</definition>
         <argsstring></argsstring>
         <name>PC15</name>
@@ -724,7 +724,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="272" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="272" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a205e1056c7da84dd6c6952fd18b48095" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PD0</definition>
         <argsstring></argsstring>
         <name>PD0</name>
@@ -739,7 +739,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="274" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="274" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1af321cb9f00a9f56eb5bb024dc35eb789" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PD1</definition>
         <argsstring></argsstring>
         <name>PD1</name>
@@ -754,7 +754,7 @@
         <location file="inc/mcu/stm32/StmTypes.h" line="275" column="28" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="275" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacehf_1_1stm32_1_1pin_1a001779730c570e665f054362be9e196f" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
         <definition>constexpr hf_pin_num_t hf::stm32::pin::PD2</definition>
         <argsstring></argsstring>
         <name>PD2</name>

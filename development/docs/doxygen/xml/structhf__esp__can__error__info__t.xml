@@ -5,7 +5,7 @@
     <includes refid="EspCan_8h" local="no">EspCan.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__esp__can__error__info__t_1a337f060887be746ba3aa514fc7ec94b6" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_esp_can_error_info_t::error_type</definition>
         <argsstring></argsstring>
         <name>error_type</name>
@@ -20,7 +20,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="143" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__error__info__t_1afc980c020d46591ec4734184ca4443c3" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_esp_can_error_info_t::tx_error_count</definition>
         <argsstring></argsstring>
         <name>tx_error_count</name>
@@ -35,7 +35,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="144" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__error__info__t_1a2b29a78d9d1b7fab17e42a2718b1ac40" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_esp_can_error_info_t::rx_error_count</definition>
         <argsstring></argsstring>
         <name>rx_error_count</name>
@@ -50,7 +50,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="145" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="145" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__error__info__t_1a0ff10456e35f6bea840201b935230fa7" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_esp_can_error_info_t::bus_off_state</definition>
         <argsstring></argsstring>
         <name>bus_off_state</name>
@@ -65,7 +65,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="146" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="146" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__error__info__t_1a2ddfc6bb399ed51efe47f6d630d1fe33" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_esp_can_error_info_t::error_warning</definition>
         <argsstring></argsstring>
         <name>error_warning</name>
@@ -80,7 +80,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="147" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="147" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__error__info__t_1acd2ebe7f3854cbbcf8e5f2e57fdde882" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_esp_can_error_info_t::error_passive</definition>
         <argsstring></argsstring>
         <name>error_passive</name>
@@ -95,7 +95,7 @@
         <location file="inc/mcu/esp32/EspCan.h" line="148" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="148" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__error__info__t_1a54d9937e08e032a706473d042a8557d6" prot="public" static="no" mutable="no">
-        <type>uint64_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint64_t</ref></type>
         <definition>uint64_t hf_esp_can_error_info_t::timestamp_us</definition>
         <argsstring></argsstring>
         <name>timestamp_us</name>

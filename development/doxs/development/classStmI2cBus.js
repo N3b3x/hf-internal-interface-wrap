@@ -12,7 +12,11 @@ var classStmI2cBus =
     [ "GetHalHandle", "classStmI2cBus.html#ac9dcf8eae7f8ec7b814c05e522b2ef77", null ],
     [ "Initialize", "classStmI2cBus.html#a14cf7b7efa97c2b32c5cbf2399ef40ad", null ],
     [ "IsInitialized", "classStmI2cBus.html#a3fdc2a8da6a2fb983c534ff88bff04b5", null ],
+    [ "LockBus", "classStmI2cBus.html#aee43d2df39cac7de47bf6f9eba8ef436", null ],
     [ "RemoveDevice", "classStmI2cBus.html#a11753ef2415ff9ba31aff20da98b3af9", null ],
+    [ "UnlockBus", "classStmI2cBus.html#aec8eff6f44d82c66e1f3e6305863d4cb", null ],
+    [ "StmI2cDevice", "classStmI2cBus.html#a3744e8794aa522fd06dcd72ff2fa8a97", null ],
+    [ "bus_mutex_", "classStmI2cBus.html#aca042d3b84ca5494e0a5fe6edd96cc5c", null ],
     [ "config_", "classStmI2cBus.html#a0b1e24e2415315eab6f4aa44164e8974", null ],
     [ "devices_", "classStmI2cBus.html#a1925ed83778b2afb19499766b285a5ba", null ],
     [ "initialized_", "classStmI2cBus.html#ae6ba6015e9db63fe68a8f94d7fba0998", null ]

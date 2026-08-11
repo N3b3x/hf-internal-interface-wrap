@@ -5,7 +5,7 @@
     <includes refid="BaseWifi_8h" local="no">BaseWifi.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__wifi__ip__info__t_1afd5bebba14fc1d13e67eff14ee7253b4" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_wifi_ip_info_t::ip</definition>
         <argsstring></argsstring>
         <name>ip</name>
@@ -20,7 +20,7 @@
         <location file="inc/base/BaseWifi.h" line="225" column="12" bodyfile="inc/base/BaseWifi.h" bodystart="225" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__wifi__ip__info__t_1a5c28898562af2a8346742562bdf4583e" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_wifi_ip_info_t::netmask</definition>
         <argsstring></argsstring>
         <name>netmask</name>
@@ -35,7 +35,7 @@
         <location file="inc/base/BaseWifi.h" line="226" column="12" bodyfile="inc/base/BaseWifi.h" bodystart="226" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__wifi__ip__info__t_1a01343f7dd2712b9701efac78b323f821" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_wifi_ip_info_t::gateway</definition>
         <argsstring></argsstring>
         <name>gateway</name>

@@ -7,7 +7,7 @@
     <innerclass refid="structEspUart_1_1UartState" prot="private">EspUart::UartState</innerclass>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classEspUart_1acccf4bd506f073b15720a283fc2ba781" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
         <definition>constexpr hf_u8_t EspUart::MAX_PORTS</definition>
         <argsstring></argsstring>
         <name>MAX_PORTS</name>
@@ -23,7 +23,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="110" column="28" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="110" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a7baee03689e53568439f4a68d6662d35" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
         <definition>constexpr hf_u32_t EspUart::MAX_BAUD_RATE</definition>
         <argsstring></argsstring>
         <name>MAX_BAUD_RATE</name>
@@ -39,7 +39,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="111" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a7e8194c9094761e4ca34160410faaeeb" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
         <definition>constexpr hf_u32_t EspUart::MIN_BAUD_RATE</definition>
         <argsstring></argsstring>
         <name>MIN_BAUD_RATE</name>
@@ -55,7 +55,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="112" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a5d640d851b6a3ed29abd338d392a395d" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
         <definition>constexpr hf_u32_t EspUart::DEFAULT_BAUD_RATE</definition>
         <argsstring></argsstring>
         <name>DEFAULT_BAUD_RATE</name>
@@ -71,7 +71,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="113" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a2cc0ffbcf5d94cc1be9640a0bb394eb6" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
         <definition>constexpr hf_u16_t EspUart::MAX_BUFFER_SIZE</definition>
         <argsstring></argsstring>
         <name>MAX_BUFFER_SIZE</name>
@@ -87,7 +87,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="114" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a23b68168facceed1638156facf258ada" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
         <definition>constexpr hf_u16_t EspUart::DEFAULT_BUFFER_SIZE</definition>
         <argsstring></argsstring>
         <name>DEFAULT_BUFFER_SIZE</name>
@@ -165,7 +165,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="593" column="20" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="593" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1af13b21c3d90975c02a4f0197ffe2eaf3" prot="private" static="no" mutable="no">
-        <type>std::atomic&lt; bool &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::atomic</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref> &gt;</type>
         <definition>std::atomic&lt;bool&gt; EspUart::initialized_</definition>
         <argsstring></argsstring>
         <name>initialized_</name>
@@ -180,7 +180,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="594" column="15" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="594" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a758a727337eac39b8d8b0d7b920dffff" prot="private" static="no" mutable="no">
-        <type>uart_port_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uart_port_t</ref></type>
         <definition>uart_port_t EspUart::uart_port_</definition>
         <argsstring></argsstring>
         <name>uart_port_</name>
@@ -195,7 +195,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="595" column="15" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="595" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a6326f118fdd27a670e60ecb79d028292" prot="private" static="no" mutable="no">
-        <type>QueueHandle_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">QueueHandle_t</ref></type>
         <definition>QueueHandle_t EspUart::event_queue_</definition>
         <argsstring></argsstring>
         <name>event_queue_</name>
@@ -240,7 +240,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="602" column="18" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="602" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a8919e3c9d6a7f2f4e0dc81915b77b491" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUart::software_flow_enabled_</definition>
         <argsstring></argsstring>
         <name>software_flow_enabled_</name>
@@ -255,7 +255,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="603" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="603" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a4c04605b7e7105b001de8af91bf80880" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUart::wakeup_enabled_</definition>
         <argsstring></argsstring>
         <name>wakeup_enabled_</name>
@@ -270,7 +270,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="604" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="604" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a98492b72377d7a4ee98260071a0996ff" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUart::break_detected_</definition>
         <argsstring></argsstring>
         <name>break_detected_</name>
@@ -285,7 +285,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="605" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="605" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1aba216cdada564969d39e4799eb2765eb" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUart::tx_in_progress_</definition>
         <argsstring></argsstring>
         <name>tx_in_progress_</name>
@@ -345,7 +345,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="613" column="25" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="613" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a203c1f13b4888ba1f4ede0d5a5289a2d" prot="private" static="no" mutable="no">
-        <type>char</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">char</ref></type>
         <definition>char EspUart::printf_buffer_[256]</definition>
         <argsstring>[256]</argsstring>
         <name>printf_buffer_</name>
@@ -368,7 +368,7 @@
         <name>EspUart</name>
         <qualifiedname>EspUart::EspUart</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__uart__config__t" kindref="compound">hf_uart_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__uart__config__t" kindref="compound">hf_uart_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -414,7 +414,7 @@
         <name>EspUart</name>
         <qualifiedname>EspUart::EspUart</qualifiedname>
         <param>
-          <type>const <ref refid="classEspUart" kindref="compound">EspUart</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classEspUart" kindref="compound">EspUart</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -431,7 +431,7 @@
         <name>operator=</name>
         <qualifiedname>EspUart::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classEspUart" kindref="compound">EspUart</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classEspUart" kindref="compound">EspUart</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -483,15 +483,15 @@
         <qualifiedname>EspUart::Write</qualifiedname>
         <reimplements refid="classBaseUart_1a5de6a79ad512480a12f757ce73fa46a6">Write</reimplements>
         <param>
-          <type>const uint8_t *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref> *</type>
           <declname>data</declname>
         </param>
         <param>
-          <type>uint16_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
           <declname>length</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_ms</declname>
           <defval>0</defval>
         </param>
@@ -540,15 +540,15 @@
         <qualifiedname>EspUart::Read</qualifiedname>
         <reimplements refid="classBaseUart_1a9ddc416f533c776cf879790c8cb10b57">Read</reimplements>
         <param>
-          <type>uint8_t *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref> *</type>
           <declname>data</declname>
         </param>
         <param>
-          <type>uint16_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
           <declname>length</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_ms</declname>
           <defval>0</defval>
         </param>
@@ -590,14 +590,14 @@
         <location file="inc/mcu/esp32/EspUart.h" line="167" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="192" bodyend="227"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a6f40abc9001709ac5ee91c4383b95f2f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUart::WriteByte</definition>
         <argsstring>(uint8_t byte) noexcept override</argsstring>
         <name>WriteByte</name>
         <qualifiedname>EspUart::WriteByte</qualifiedname>
         <reimplements refid="classBaseUart_1a9c42866eb7d966a138755e5b71c725cf">WriteByte</reimplements>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>byte</declname>
         </param>
         <briefdescription>
@@ -622,13 +622,13 @@
         <location file="inc/mcu/esp32/EspUart.h" line="174" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="229" bodyend="245"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1ad0d639fbd3ff5f8ced77af29f13a081d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUart::SetBaudRate</definition>
         <argsstring>(uint32_t baud_rate) noexcept</argsstring>
         <name>SetBaudRate</name>
         <qualifiedname>EspUart::SetBaudRate</qualifiedname>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>baud_rate</declname>
         </param>
         <briefdescription>
@@ -659,7 +659,7 @@
         <name>SetFlowControl</name>
         <qualifiedname>EspUart::SetFlowControl</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>enable</declname>
         </param>
         <briefdescription>
@@ -690,7 +690,7 @@
         <name>SetRTS</name>
         <qualifiedname>EspUart::SetRTS</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>active</declname>
         </param>
         <briefdescription>
@@ -721,7 +721,7 @@
         <name>SendBreak</name>
         <qualifiedname>EspUart::SendBreak</qualifiedname>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>duration_ms</declname>
         </param>
         <briefdescription>
@@ -752,7 +752,7 @@
         <name>SetLoopback</name>
         <qualifiedname>EspUart::SetLoopback</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>enable</declname>
         </param>
         <briefdescription>
@@ -777,13 +777,13 @@
         <location file="inc/mcu/esp32/EspUart.h" line="209" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="557" bodyend="574"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1abda8a2fd4c91670cd1325d4a04c33112" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUart::WaitTransmitComplete</definition>
         <argsstring>(uint32_t timeout_ms) noexcept</argsstring>
         <name>WaitTransmitComplete</name>
         <qualifiedname>EspUart::WaitTransmitComplete</qualifiedname>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_ms</declname>
         </param>
         <briefdescription>
@@ -839,25 +839,25 @@
         <location file="inc/mcu/esp32/EspUart.h" line="227" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="402" bodyend="414"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a91d0e2bae14b427a5c1daeb75927852f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>uint16_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
         <definition>hf_u16_t EspUart::ReadUntil</definition>
         <argsstring>(uint8_t *data, uint16_t max_length, uint8_t terminator, uint32_t timeout_ms) noexcept</argsstring>
         <name>ReadUntil</name>
         <qualifiedname>EspUart::ReadUntil</qualifiedname>
         <param>
-          <type>uint8_t *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref> *</type>
           <declname>data</declname>
         </param>
         <param>
-          <type>uint16_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
           <declname>max_length</declname>
         </param>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>terminator</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_ms</declname>
         </param>
         <briefdescription>
@@ -906,21 +906,21 @@
         <location file="inc/mcu/esp32/EspUart.h" line="237" column="12" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="350" bodyend="394"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a7490b8f55321824cb14c156a32d677ec" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>uint16_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
         <definition>hf_u16_t EspUart::ReadLine</definition>
         <argsstring>(char *buffer, uint16_t max_length, uint32_t timeout_ms) noexcept</argsstring>
         <name>ReadLine</name>
         <qualifiedname>EspUart::ReadLine</qualifiedname>
         <param>
-          <type>char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>buffer</declname>
         </param>
         <param>
-          <type>uint16_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
           <declname>max_length</declname>
         </param>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_ms</declname>
         </param>
         <briefdescription>
@@ -998,7 +998,7 @@
         <name>ConfigureRS485</name>
         <qualifiedname>EspUart::ConfigureRS485</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__uart__rs485__config__t" kindref="compound">hf_uart_rs485_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__uart__rs485__config__t" kindref="compound">hf_uart_rs485_config_t</ref> &amp;</type>
           <declname>rs485_config</declname>
         </param>
         <briefdescription>
@@ -1029,7 +1029,7 @@
         <name>ConfigureIrDA</name>
         <qualifiedname>EspUart::ConfigureIrDA</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__uart__irda__config__t" kindref="compound">hf_uart_irda_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__uart__irda__config__t" kindref="compound">hf_uart_irda_config_t</ref> &amp;</type>
           <declname>irda_config</declname>
         </param>
         <briefdescription>
@@ -1060,16 +1060,16 @@
         <name>ConfigureSoftwareFlowControl</name>
         <qualifiedname>EspUart::ConfigureSoftwareFlowControl</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>enable</declname>
         </param>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>xon_threshold</declname>
           <defval>20</defval>
         </param>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>xoff_threshold</declname>
           <defval>80</defval>
         </param>
@@ -1117,7 +1117,7 @@
         <name>ConfigureWakeup</name>
         <qualifiedname>EspUart::ConfigureWakeup</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__uart__wakeup__config__t" kindref="compound">hf_uart_wakeup_config_t</ref> &amp;</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__uart__wakeup__config__t" kindref="compound">hf_uart_wakeup_config_t</ref> &amp;</type>
           <declname>wakeup_config</declname>
         </param>
         <briefdescription>
@@ -1148,7 +1148,7 @@
         <name>SetSignalInversion</name>
         <qualifiedname>EspUart::SetSignalInversion</qualifiedname>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>inverse_mask</declname>
         </param>
         <briefdescription>
@@ -1173,7 +1173,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="292" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="773" bodyend="789"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a613c2456e38881c8c70d43c65b051415" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>QueueHandle_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">QueueHandle_t</ref></type>
         <definition>QueueHandle_t EspUart::GetEventQueue</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetEventQueue</name>
@@ -1195,7 +1195,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="304" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="795" bodyend="798"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a840292dc9845514c4b0ecc7ca7c477e6" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUart::IsEventQueueAvailable</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsEventQueueAvailable</name>
@@ -1219,16 +1219,16 @@
         <name>ConfigureInterrupts</name>
         <qualifiedname>EspUart::ConfigureInterrupts</qualifiedname>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>intr_enable_mask</declname>
         </param>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>rxfifo_full_thresh</declname>
           <defval>100</defval>
         </param>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>rx_timeout_thresh</declname>
           <defval>10</defval>
         </param>
@@ -1296,26 +1296,26 @@
         <name>EnablePatternDetection</name>
         <qualifiedname>EspUart::EnablePatternDetection</qualifiedname>
         <param>
-          <type>char</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">char</ref></type>
           <declname>pattern_chr</declname>
         </param>
         <param>
-          <type>uint8_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
           <declname>chr_num</declname>
           <defval>1</defval>
         </param>
         <param>
-          <type>int</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
           <declname>chr_tout</declname>
           <defval>9</defval>
         </param>
         <param>
-          <type>int</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
           <declname>post_idle</declname>
           <defval>0</defval>
         </param>
         <param>
-          <type>int</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
           <declname>pre_idle</declname>
           <defval>0</defval>
         </param>
@@ -1328,7 +1328,7 @@
 <parametername>pattern_chr</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Byte to detect (e.g., &apos;<linebreak/>
+<para>Byte to detect (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">e.g</ref>., &apos;<linebreak/>
 &apos;, &apos;+&apos;) </para>
 </parameterdescription>
 </parameteritem>
@@ -1367,7 +1367,7 @@
 </parameterlist>
 <simplesect kind="return"><para>hf_uart_err_t result code </para>
 </simplesect>
-<simplesect kind="note"><para>Uses uart_enable_pattern_det_baud_intr from ESP-IDF v5.5 </para>
+<simplesect kind="note"><para>Uses uart_enable_pattern_det_baud_intr from ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -1400,7 +1400,7 @@
         <name>ResetPatternQueue</name>
         <qualifiedname>EspUart::ResetPatternQueue</qualifiedname>
         <param>
-          <type>int</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
           <declname>queue_length</declname>
           <defval>32</defval>
         </param>
@@ -1426,7 +1426,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="357" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="893" bodyend="910"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1aebf9c60f56ae3b5190d89a3f0c1aa7be" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>int</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
         <definition>int EspUart::PopPatternPosition</definition>
         <argsstring>() noexcept</argsstring>
         <name>PopPatternPosition</name>
@@ -1446,7 +1446,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="364" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="912" bodyend="928"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a6cf9f54490dde0cfb1fc85436e473c6e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>int</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
         <definition>int EspUart::PeekPatternPosition</definition>
         <argsstring>() noexcept</argsstring>
         <name>PeekPatternPosition</name>
@@ -1546,7 +1546,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="394" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="961" bodyend="964"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a39bdd60fac079d2e53e6cc3f7a453b98" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>const <ref refid="structhf__uart__config__t" kindref="compound">hf_uart_config_t</ref> &amp;</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__uart__config__t" kindref="compound">hf_uart_config_t</ref> &amp;</type>
         <definition>const hf_uart_config_t &amp; EspUart::GetPortConfig</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetPortConfig</name>
@@ -1600,7 +1600,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="412" column="18" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="976" bodyend="979"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a95486cae642a80ebfe3d24b9c9e75b37" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUart::IsWakeupEnabled</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsWakeupEnabled</name>
@@ -1618,7 +1618,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="418" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="981" bodyend="984"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a471a8ae57098f62044b83b80e75ef953" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUart::IsTransmitting</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsTransmitting</name>
@@ -1636,7 +1636,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="424" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="986" bodyend="989"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1acb5ffee8689974b00aa792b6f865e3d2" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUart::IsReceiving</definition>
         <argsstring>() const noexcept</argsstring>
         <name>IsReceiving</name>
@@ -1654,7 +1654,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="430" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="991" bodyend="994"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a4fa0a9981052db00829f5daa2ca67c4e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUart::IsBreakDetected</definition>
         <argsstring>() noexcept</argsstring>
         <name>IsBreakDetected</name>
@@ -1672,7 +1672,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="436" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="996" bodyend="999"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a95d705a9febfd27db46df2520f669692" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>uint16_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
         <definition>hf_u16_t EspUart::TxBytesWaiting</definition>
         <argsstring>() noexcept</argsstring>
         <name>TxBytesWaiting</name>
@@ -1690,14 +1690,14 @@
         <location file="inc/mcu/esp32/EspUart.h" line="442" column="12" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="340" bodyend="348"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1ad507db496e86a84d3a5ed5d6d2d8eb38" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>int</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
         <definition>int EspUart::Printf</definition>
         <argsstring>(const char *format,...) noexcept</argsstring>
         <name>Printf</name>
         <qualifiedname>EspUart::Printf</qualifiedname>
         <reimplements refid="classBaseUart_1a9d071b6aa4fb1fe97b33cadf47b8ad7b">Printf</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>format</declname>
         </param>
         <param>
@@ -1733,17 +1733,17 @@
         <location file="inc/mcu/esp32/EspUart.h" line="454" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1005" bodyend="1015"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a487fb3d13b6644bce75f6e657ab1d357" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>int</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
         <definition>int EspUart::VPrintf</definition>
         <argsstring>(const char *format, va_list args) noexcept</argsstring>
         <name>VPrintf</name>
         <qualifiedname>EspUart::VPrintf</qualifiedname>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>format</declname>
         </param>
         <param>
-          <type>va_list</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">va_list</ref></type>
           <declname>args</declname>
         </param>
         <briefdescription>
@@ -1776,7 +1776,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="462" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1017" bodyend="1024"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a3138eae9161daf1be1a04655798287e1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>uint16_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
         <definition>hf_u16_t EspUart::BytesAvailable</definition>
         <argsstring>() noexcept override</argsstring>
         <name>BytesAvailable</name>
@@ -1833,7 +1833,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="622" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="258" bodyend="267"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a8249177a7af1c167b4dfe867848e0fbf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUart::IsTxBusy</definition>
         <argsstring>() noexcept</argsstring>
         <name>IsTxBusy</name>
@@ -1849,7 +1849,7 @@
     </sectiondef>
     <sectiondef kind="private-func">
       <memberdef kind="function" id="classEspUart_1aa31dc8ddb07afe483e0e00abc5a9322f" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUart::Initialize</definition>
         <argsstring>() noexcept override</argsstring>
         <name>Initialize</name>
@@ -1870,7 +1870,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="474" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="73" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a8868b70653a14f3d895904086ec16db5" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspUart::Deinitialize</definition>
         <argsstring>() noexcept override</argsstring>
         <name>Deinitialize</name>
@@ -2021,7 +2021,7 @@
         <name>ConvertPlatformError</name>
         <qualifiedname>EspUart::ConvertPlatformError</qualifiedname>
         <param>
-          <type>int32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">int32_t</ref></type>
           <declname>platform_error</declname>
         </param>
         <briefdescription>
@@ -2056,7 +2056,7 @@
           <declname>result</declname>
         </param>
         <param>
-          <type>uint64_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint64_t</ref></type>
           <declname>start_time_us</declname>
         </param>
         <briefdescription>
@@ -2089,7 +2089,7 @@
         <location file="inc/mcu/esp32/EspUart.h" line="563" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1227" bodyend="1237"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a7e5c7137cc708d66db15e3a5dcffac7a" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspUart::UpdateDiagnostics</definition>
         <argsstring>(hf_uart_err_t error) noexcept</argsstring>
         <name>UpdateDiagnostics</name>
@@ -2118,13 +2118,13 @@
         <location file="inc/mcu/esp32/EspUart.h" line="569" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1239" bodyend="1249"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1adf012fed8c99c93c19dde0cbb821709c" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>hf_u32_t EspUart::GetTimeoutMs</definition>
         <argsstring>(uint32_t timeout_ms) const noexcept</argsstring>
         <name>GetTimeoutMs</name>
         <qualifiedname>EspUart::GetTimeoutMs</qualifiedname>
         <param>
-          <type>uint32_t</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
           <declname>timeout_ms</declname>
         </param>
         <briefdescription>
@@ -2149,17 +2149,17 @@
         <location file="inc/mcu/esp32/EspUart.h" line="576" column="13" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1251" bodyend="1256"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a1eacc6fc2880d22e444a29a48de2d628" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>int</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
         <definition>int EspUart::InternalPrintf</definition>
         <argsstring>(const char *format, va_list args) noexcept</argsstring>
         <name>InternalPrintf</name>
         <qualifiedname>EspUart::InternalPrintf</qualifiedname>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>format</declname>
         </param>
         <param>
-          <type>va_list</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">va_list</ref></type>
           <declname>args</declname>
         </param>
         <briefdescription>
@@ -2212,14 +2212,14 @@
 </listitem></itemizedlist>
 </para>
 <para>Usage Example (Single UART Port): <programlisting><codeline><highlight class="comment">//<sp/>For<sp/>ESP32<sp/>(3<sp/>ports)</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><ref refid="classEspUart" kindref="compound">EspUart</ref><sp/>uart0({.port_number<sp/>=<sp/>0,<sp/>.baud_rate<sp/>=<sp/>115200,<sp/>.tx_pin<sp/>=<sp/>21,<sp/>.rx_pin<sp/>=<sp/>20});</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classEspUart" kindref="compound">EspUart</ref><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">uart0</ref>({.port_number<sp/>=<sp/>0,<sp/>.baud_rate<sp/>=<sp/>115200,<sp/>.tx_pin<sp/>=<sp/>21,<sp/>.rx_pin<sp/>=<sp/>20});</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>For<sp/>ESP32-C3<sp/>(2<sp/>ports)</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><ref refid="classEspUart" kindref="compound">EspUart</ref><sp/>uart0({.port_number<sp/>=<sp/>0,<sp/>.baud_rate<sp/>=<sp/>115200,<sp/>.tx_pin<sp/>=<sp/>21,<sp/>.rx_pin<sp/>=<sp/>20});</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classEspUart" kindref="compound">EspUart</ref><sp/><ref refid="classSoftChipSelectGuard" kindref="compound">uart0</ref>({.port_number<sp/>=<sp/>0,<sp/>.baud_rate<sp/>=<sp/>115200,<sp/>.tx_pin<sp/>=<sp/>21,<sp/>.rx_pin<sp/>=<sp/>20});</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(uart0.EnsureInitialized())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSoftChipSelectGuard" kindref="compound">uart0</ref>.EnsureInitialized())<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>message<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Hello<sp/>World!&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(uart0.Write(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">uint8_t*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(message),<sp/>strlen(message))<sp/>==</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSoftChipSelectGuard" kindref="compound">uart0</ref>.Write(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(message),<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">strlen</ref>(message))<sp/>==</highlight></codeline>
 <codeline><highlight class="normal"><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6ab1d931babc3d80897766d05cd169cbe4" kindref="member">hf_uart_err_t::UART_SUCCESS</ref>)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Message<sp/>sent<sp/>successfully</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -2227,7 +2227,7 @@
 </programlisting></para>
 <para>Usage Example (Interrupt mode with callbacks): <programlisting><codeline><highlight class="normal"><ref refid="classEspUart" kindref="compound">EspUart</ref><sp/>uart({.port_number<sp/>=<sp/>0,<sp/>.operating_mode<sp/>=</highlight></codeline>
 <codeline><highlight class="normal"><ref refid="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7a6b4c350c97dc7e89a794bddce128b1ce" kindref="member">hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT</ref>});<sp/>uart.SetEventCallback([](</highlight><highlight class="keyword">const</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">hf_uart_event_native_t*<sp/>event,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/>{<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event-&gt;type<sp/>==<sp/>UART_DATA)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classSoftChipSelectGuard" kindref="compound">hf_uart_event_native_t</ref>*<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">event</ref>,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">user_data</ref>)<sp/>{<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSoftChipSelectGuard" kindref="compound">event</ref>-&gt;type<sp/>==<sp/><ref refid="classSoftChipSelectGuard" kindref="compound">UART_DATA</ref>)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>received<sp/>data</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Return<sp/>true<sp/>to<sp/>yield<sp/>to<sp/>higher<sp/>priority<sp/>task</highlight><highlight class="normal"></highlight></codeline>
@@ -2236,7 +2236,7 @@
 </programlisting></para>
 <para><simplesect kind="note"><para><ref refid="classEspUart" kindref="compound">EspUart</ref> instances cannot be copied or moved due to hardware resource management. </para>
 </simplesect>
-<simplesect kind="note"><para>If you need to transfer ownership, use std::unique_ptr&lt;EspUart&gt; or similar smart pointers. </para>
+<simplesect kind="note"><para>If you need to transfer ownership, use <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::unique_ptr&lt;EspUart&gt;</ref> or similar smart pointers. </para>
 </simplesect>
 </para>
     </detaileddescription>

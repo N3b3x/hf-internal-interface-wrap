@@ -5,7 +5,7 @@
     <includes refid="BaseBluetooth_8h" local="no">BaseBluetooth.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__bluetooth__gatt__characteristic__t_1abb8ce02be19d55f0dd8a4e0d78374a6a" prot="public" static="no" mutable="no">
-        <type>std::string</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::string</ref></type>
         <definition>std::string hf_bluetooth_gatt_characteristic_t::uuid</definition>
         <argsstring></argsstring>
         <name>uuid</name>
@@ -20,7 +20,7 @@
         <location file="inc/base/BaseBluetooth.h" line="326" column="15" bodyfile="inc/base/BaseBluetooth.h" bodystart="326" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__bluetooth__gatt__characteristic__t_1adb9eb8327064c68d57f4d480e03dffdf" prot="public" static="no" mutable="no">
-        <type>uint16_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
         <definition>uint16_t hf_bluetooth_gatt_characteristic_t::handle</definition>
         <argsstring></argsstring>
         <name>handle</name>
@@ -35,7 +35,7 @@
         <location file="inc/base/BaseBluetooth.h" line="327" column="12" bodyfile="inc/base/BaseBluetooth.h" bodystart="327" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__bluetooth__gatt__characteristic__t_1a15cc0566fe8b0cffa81d200120cc27cf" prot="public" static="no" mutable="no">
-        <type>uint8_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
         <definition>uint8_t hf_bluetooth_gatt_characteristic_t::properties</definition>
         <argsstring></argsstring>
         <name>properties</name>
@@ -50,7 +50,7 @@
         <location file="inc/base/BaseBluetooth.h" line="328" column="11" bodyfile="inc/base/BaseBluetooth.h" bodystart="328" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__bluetooth__gatt__characteristic__t_1afb0b91e4d8f5eb6a7cea22a980506c14" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; uint8_t &gt;</type>
+        <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref> &gt;</type>
         <definition>std::vector&lt;uint8_t&gt; hf_bluetooth_gatt_characteristic_t::value</definition>
         <argsstring></argsstring>
         <name>value</name>

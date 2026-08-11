@@ -5,7 +5,7 @@
     <includes refid="BasePio_8h" local="no">BasePio.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__pio__channel__status__t_1a8847fd7a4c69e2691d967f589af39bc9" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pio_channel_status_t::is_initialized</definition>
         <argsstring></argsstring>
         <name>is_initialized</name>
@@ -20,7 +20,7 @@
         <location file="inc/base/BasePio.h" line="168" column="8" bodyfile="inc/base/BasePio.h" bodystart="168" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pio__channel__status__t_1a41b5052180a3c2b03e429375b4c7418a" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pio_channel_status_t::is_busy</definition>
         <argsstring></argsstring>
         <name>is_busy</name>
@@ -35,7 +35,7 @@
         <location file="inc/base/BasePio.h" line="169" column="8" bodyfile="inc/base/BasePio.h" bodystart="169" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pio__channel__status__t_1a72cc1ef228af64062151af537d7d110c" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pio_channel_status_t::is_transmitting</definition>
         <argsstring></argsstring>
         <name>is_transmitting</name>
@@ -50,7 +50,7 @@
         <location file="inc/base/BasePio.h" line="170" column="8" bodyfile="inc/base/BasePio.h" bodystart="170" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pio__channel__status__t_1a11aa619417eaaf4a277ff070bbbdaff2" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_pio_channel_status_t::is_receiving</definition>
         <argsstring></argsstring>
         <name>is_receiving</name>
@@ -65,7 +65,7 @@
         <location file="inc/base/BasePio.h" line="171" column="8" bodyfile="inc/base/BasePio.h" bodystart="171" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pio__channel__status__t_1a52895a691261feb1ebeaeed4f6725b11" prot="public" static="no" mutable="no">
-        <type>size_t</type>
+        <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>size_t hf_pio_channel_status_t::symbols_queued</definition>
         <argsstring></argsstring>
         <name>symbols_queued</name>
@@ -80,7 +80,7 @@
         <location file="inc/base/BasePio.h" line="172" column="10" bodyfile="inc/base/BasePio.h" bodystart="172" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pio__channel__status__t_1aaa15caeaf32a5138a6f48f98d1c932db" prot="public" static="no" mutable="no">
-        <type>size_t</type>
+        <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>size_t hf_pio_channel_status_t::symbols_processed</definition>
         <argsstring></argsstring>
         <name>symbols_processed</name>

@@ -5,7 +5,7 @@
     <includes refid="EspTypes__I2C_8h" local="no">EspTypes_I2C.h</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structhf__i2c__slave__config__t_1ac060e012f3bbca8b4ba7fafd2f20c6c9" prot="public" static="no" mutable="no">
-        <type>i2c_port_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">i2c_port_t</ref></type>
         <definition>i2c_port_t hf_i2c_slave_config_t::i2c_port</definition>
         <argsstring></argsstring>
         <name>i2c_port</name>
@@ -65,7 +65,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="249" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="249" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__slave__config__t_1a6d56483b7a2e91d18ac2f30bf67942ef" prot="public" static="no" mutable="no">
-        <type>uint16_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint16_t</ref></type>
         <definition>uint16_t hf_i2c_slave_config_t::slave_addr</definition>
         <argsstring></argsstring>
         <name>slave_addr</name>
@@ -95,7 +95,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="251" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="251" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__slave__config__t_1aeb91128b4f9f010ab550a10a853f6829" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_i2c_slave_config_t::clk_speed_hz</definition>
         <argsstring></argsstring>
         <name>clk_speed_hz</name>
@@ -110,7 +110,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="252" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="252" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__slave__config__t_1a03ed86e49f8146fa143e0652861fbdf7" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_i2c_slave_config_t::send_buf_depth</definition>
         <argsstring></argsstring>
         <name>send_buf_depth</name>
@@ -125,7 +125,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="253" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="253" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__slave__config__t_1afddeeebc89c9f1b503dff7636ab6b0e5" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_i2c_slave_config_t::receive_buf_depth</definition>
         <argsstring></argsstring>
         <name>receive_buf_depth</name>
@@ -140,7 +140,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="254" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="254" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__slave__config__t_1a072ff79851984902b2bdd42156b2e41f" prot="public" static="no" mutable="no">
-        <type>uint32_t</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
         <definition>uint32_t hf_i2c_slave_config_t::intr_priority</definition>
         <argsstring></argsstring>
         <name>intr_priority</name>
@@ -155,7 +155,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="255" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="255" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__slave__config__t_1a29d5101f6ed6ad6e39a9543382170e51" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_i2c_slave_config_t::enable_internal_pullup</definition>
         <argsstring></argsstring>
         <name>enable_internal_pullup</name>
@@ -170,7 +170,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="256" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="256" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__slave__config__t_1abed3082efb6b2e9a48e86d40691d802f" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_i2c_slave_config_t::broadcast_en</definition>
         <argsstring></argsstring>
         <name>broadcast_en</name>
@@ -185,7 +185,7 @@
         <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="257" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="257" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__slave__config__t_1ab99efe4c844b1b448993597e3812136a" prot="public" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool hf_i2c_slave_config_t::allow_pd</definition>
         <argsstring></argsstring>
         <name>allow_pd</name>

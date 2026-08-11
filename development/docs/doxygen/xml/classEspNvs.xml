@@ -6,7 +6,7 @@
     <includes refid="EspNvs_8h" local="no">EspNvs.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classEspNvs_1a6835ce423097a5c27ddaefb1be4e2207" prot="private" static="no" mutable="no">
-        <type>void *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
         <definition>void* EspNvs::nvs_handle_</definition>
         <argsstring></argsstring>
         <name>nvs_handle_</name>
@@ -21,7 +21,7 @@
         <location file="inc/mcu/esp32/EspNvs.h" line="288" column="8" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="288" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspNvs_1ab85e421f5801e575ad96ad971bb6fa37" prot="private" static="no" mutable="yes">
-        <type>int</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
         <definition>int EspNvs::last_error_code_</definition>
         <argsstring></argsstring>
         <name>last_error_code_</name>
@@ -89,7 +89,7 @@
         <name>EspNvs</name>
         <qualifiedname>EspNvs::EspNvs</qualifiedname>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>namespace_name</declname>
         </param>
         <briefdescription>
@@ -172,7 +172,7 @@
         <qualifiedname>EspNvs::SetU32</qualifiedname>
         <reimplements refid="classBaseNvs_1a8f2069d78e8f913e752ba4449255a86b">SetU32</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <param>
@@ -216,7 +216,7 @@
         <qualifiedname>EspNvs::GetU32</qualifiedname>
         <reimplements refid="classBaseNvs_1aa789f6917b5be890f288ce2fe470da11">GetU32</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <param>
@@ -260,11 +260,11 @@
         <qualifiedname>EspNvs::SetString</qualifiedname>
         <reimplements refid="classBaseNvs_1ae954b55a41d477e1190fbbe3ce0cc687">SetString</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>value</declname>
         </param>
         <briefdescription>
@@ -304,21 +304,21 @@
         <qualifiedname>EspNvs::GetString</qualifiedname>
         <reimplements refid="classBaseNvs_1a8954da94247836ede0a895ddd245e634">GetString</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <param>
-          <type>char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>buffer</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>buffer_size</declname>
         </param>
         <param>
-          <type>size_t *</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref> *</type>
           <declname>actual_size</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Retrieve a string value. </para>
@@ -373,15 +373,15 @@
         <qualifiedname>EspNvs::SetBlob</qualifiedname>
         <reimplements refid="classBaseNvs_1a22431b512d09cb8c0397cf15a8a73b19">SetBlob</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <param>
-          <type>const void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>data</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>data_size</declname>
         </param>
         <briefdescription>
@@ -429,21 +429,21 @@
         <qualifiedname>EspNvs::GetBlob</qualifiedname>
         <reimplements refid="classBaseNvs_1ab699cfd03ee2f8c9d05a8d43d636011b">GetBlob</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <param>
-          <type>void *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
           <declname>buffer</declname>
         </param>
         <param>
-          <type>size_t</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
           <declname>buffer_size</declname>
         </param>
         <param>
-          <type>size_t *</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref> *</type>
           <declname>actual_size</declname>
-          <defval>nullptr</defval>
+          <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
 <para>Retrieve binary data (blob). </para>
@@ -498,7 +498,7 @@
         <qualifiedname>EspNvs::EraseKey</qualifiedname>
         <reimplements refid="classBaseNvs_1ac3a2738d1f6a3e488c08edaecf49af9d">EraseKey</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <briefdescription>
@@ -542,14 +542,14 @@
         <location file="inc/mcu/esp32/EspNvs.h" line="200" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1a709425e0f37afdeb516447e43d000974" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspNvs::KeyExists</definition>
         <argsstring>(const char *key) noexcept override</argsstring>
         <name>KeyExists</name>
         <qualifiedname>EspNvs::KeyExists</qualifiedname>
         <reimplements refid="classBaseNvs_1a911caf95d3c25047f044ca748164df39">KeyExists</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <briefdescription>
@@ -581,11 +581,11 @@
         <qualifiedname>EspNvs::GetSize</qualifiedname>
         <reimplements refid="classBaseNvs_1a79b44044be6cef3963fa8b9f18abcf30">GetSize</reimplements>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <param>
-          <type>size_t &amp;</type>
+          <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref> &amp;</type>
           <declname>size</declname>
         </param>
         <briefdescription>
@@ -618,7 +618,7 @@
         <location file="inc/mcu/esp32/EspNvs.h" line="215" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1acf2acb4e099ddff5b25dd1bde8fecff5" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>const char *</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
         <definition>const char * EspNvs::GetDescription</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>GetDescription</name>
@@ -637,7 +637,7 @@
         <location file="inc/mcu/esp32/EspNvs.h" line="221" column="14"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1ae6cb25d9c1e5e90b6701f49e9a6bd884" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>size_t</type>
+        <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>size_t EspNvs::GetMaxKeyLength</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>GetMaxKeyLength</name>
@@ -656,7 +656,7 @@
         <location file="inc/mcu/esp32/EspNvs.h" line="227" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1ab0816ed77b7f1e54f645c45a001b17be" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
-        <type>size_t</type>
+        <type><ref refid="StmNvs_8cpp_1aa07e4d229c83037af4aa76007a34b34d" kindref="member">size_t</ref></type>
         <definition>size_t EspNvs::GetMaxValueSize</definition>
         <argsstring>() const noexcept override</argsstring>
         <name>GetMaxValueSize</name>
@@ -747,7 +747,7 @@
         <name>ConvertMcuError</name>
         <qualifiedname>EspNvs::ConvertMcuError</qualifiedname>
         <param>
-          <type>int</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
           <declname>mcu_error</declname>
         </param>
         <briefdescription>
@@ -765,7 +765,7 @@
 </parameterlist>
 <simplesect kind="return"><para>Corresponding hf_nvs_err_t enumeration value </para>
 </simplesect>
-<simplesect kind="note"><para>Supports all ESP-IDF v5.5+ NVS error codes including encryption </para>
+<simplesect kind="note"><para>Supports all ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+ NVS error codes including encryption </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -774,13 +774,13 @@
         <location file="inc/mcu/esp32/EspNvs.h" line="267" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1a9247a33fe05b9a43bf4922bf99e4bdd2" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
         <definition>void EspNvs::UpdateStatistics</definition>
         <argsstring>(bool error_occurred) noexcept</argsstring>
         <name>UpdateStatistics</name>
         <qualifiedname>EspNvs::UpdateStatistics</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
           <declname>error_occurred</declname>
         </param>
         <briefdescription>
@@ -803,13 +803,13 @@
         <location file="inc/mcu/esp32/EspNvs.h" line="275" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1a48fa06f0cf583f10c9d9a430754d664e" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
         <definition>bool EspNvs::IsValidKey</definition>
         <argsstring>(const char *key) const noexcept</argsstring>
         <name>IsValidKey</name>
         <qualifiedname>EspNvs::IsValidKey</qualifiedname>
         <param>
-          <type>const char *</type>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">char</ref> *</type>
           <declname>key</declname>
         </param>
         <briefdescription>
@@ -838,7 +838,7 @@
 <para>Production-ready MCU-integrated non-volatile storage implementation. </para>
     </briefdescription>
     <detaileddescription>
-<para>This class provides comprehensive non-volatile storage using the microcontroller&apos;s built-in storage mechanisms with enterprise-grade features. On ESP32, it leverages the modern ESP-IDF v5.5+ NVS library with advanced security, performance optimizations, and comprehensive error handling. The implementation provides the unified <ref refid="classBaseNvs" kindref="compound">BaseNvs</ref> API while exposing platform-specific advanced features.</para>
+<para>This class provides comprehensive non-volatile storage using the microcontroller&apos;s built-in storage mechanisms with enterprise-grade features. On ESP32, it leverages the modern ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+ NVS library with advanced security, performance optimizations, and comprehensive error handling. The implementation provides the unified <ref refid="classBaseNvs" kindref="compound">BaseNvs</ref> API while exposing platform-specific advanced features.</para>
 <para>Core Features:<itemizedlist>
 <listitem><para>Key-value storage using MCU&apos;s integrated NVS with namespace isolation</para>
 </listitem><listitem><para>Multiple data type support (uint32_t, string, blob) with type safety</para>
@@ -851,7 +851,7 @@
 <para>ESP32 Advanced Features:<itemizedlist>
 <listitem><para>HMAC-based encryption for secure storage without flash encryption</para>
 </listitem><listitem><para>XTS encryption with eFuse-based key management</para>
-</listitem><listitem><para>Handle-based modern ESP-IDF v5.5+ API with improved performance</para>
+</listitem><listitem><para>Handle-based modern ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref>+ API with improved performance</para>
 </listitem><listitem><para>Comprehensive error mapping for all ESP32 NVS error conditions</para>
 </listitem><listitem><para>Support for encrypted and non-encrypted partitions</para>
 </listitem><listitem><para>Advanced partition management and configuration options</para>
@@ -887,9 +887,9 @@
 </simplesect>
 <simplesect kind="see"><para><ref refid="classBaseNvs" kindref="compound">BaseNvs</ref> for the abstract interface definition </para>
 </simplesect>
-<simplesect kind="see"><para>McuTypes.h for platform-specific type definitions </para>
+<simplesect kind="see"><para><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">McuTypes.h</ref> for platform-specific type definitions </para>
 </simplesect>
-<simplesect kind="see"><para><ref refid="McuSelect_8h" kindref="compound">McuSelect.h</ref> for platform selection and configuration </para>
+<simplesect kind="see"><para><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">McuSelect.h</ref> for platform selection and configuration </para>
 </simplesect>
 </para>
     </detaileddescription>

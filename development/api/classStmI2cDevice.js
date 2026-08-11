@@ -10,6 +10,7 @@ var classStmI2cDevice =
     [ "GetParentBus", "classStmI2cDevice.html#a85d54c5784ac4a070c9752112d57f2dc", null ],
     [ "Initialize", "classStmI2cDevice.html#a5d069dc6f8e90fe5aaccdd603111a07d", null ],
     [ "Read", "classStmI2cDevice.html#a8cd7f86df640e25578aaaabe4ca194ec", null ],
+    [ "SetDeviceAddress", "classStmI2cDevice.html#a27ec07cab26b31fd9d15c97b204a8dca", null ],
     [ "Write", "classStmI2cDevice.html#a8a705c4068676dcca9a36054eddfe15c", null ],
     [ "WriteRead", "classStmI2cDevice.html#a785e780f32c9353a7aa5ad48784352df", null ],
     [ "config_", "classStmI2cDevice.html#a30cf0c80323678784650324431024fc0", null ],

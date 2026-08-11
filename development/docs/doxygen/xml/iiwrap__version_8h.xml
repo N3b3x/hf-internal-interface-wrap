@@ -52,7 +52,7 @@
 <para>Version macros for the hf-internal-interface-wrap submodule. </para>
     </briefdescription>
     <detaileddescription>
-<para>Manually-curated semantic version. Bump on releases together with the matching git tag in this repo. Consumers (e.g. the parent app&apos;s version manifest) pick this up via __has_include of <computeroutput><ref refid="iiwrap__version_8h" kindref="compound">iiwrap_version.h</ref></computeroutput>. </para>
+<para>Manually-curated semantic version. Bump on releases together with the matching git tag in this repo. Consumers (<ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">e.g</ref>. the parent app&apos;s version manifest) pick this up via __has_include of <computeroutput><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">iiwrap_version.h</ref></computeroutput>. </para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
