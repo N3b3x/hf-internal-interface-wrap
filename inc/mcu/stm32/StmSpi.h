@@ -141,8 +141,12 @@ private:
     void DeassertCS() noexcept;
 
     /// @brief One CS-framed HAL transfer; caller must hold @ref StmSpiBusLock.
+    /// @param park_mode3_after If false, leave Mode3 SPE/CPOL intact after the
+    ///        frame (TMC9660 TMCL cmd+NO_OP). Single Transfer parks; TransferChain
+    ///        parks only after the last frame.
     hf_spi_err_t TransferLocked(const hf_u8_t* tx_data, hf_u8_t* rx_data,
-                                hf_u16_t length, hf_u32_t effective_timeout) noexcept;
+                                hf_u16_t length, hf_u32_t effective_timeout,
+                                bool park_mode3_after = true) noexcept;
 
     /// @brief Resolve @p requested_ms against the parent bus default.
     hf_u32_t GetEffectiveTimeout(hf_u32_t requested_ms) const noexcept;
@@ -239,6 +243,14 @@ public:
     hf_u8_t ProbeMisoLine(void* miso_port, hf_u8_t miso_pin_pos,
                           const BaseSpi* device) noexcept;
 
+    /// Per-bus internal-SRAM staging for short transfers. Must only be touched
+    /// under @ref StmSpiBusLock. A single process-wide scratch raced when two
+    /// buses transferred concurrently (SensorAcquisition ADS pump vs actuator
+    /// SPI2) and spliced peer bytes into TMC9660 TMCL frames.
+    static constexpr hf_u16_t kScratchBytes = 32;
+    uint8_t* ScratchTx() noexcept { return scratch_tx_; }
+    uint8_t* ScratchRx() noexcept { return scratch_rx_; }
+
     /**
      * @brief Exclusive bus lock for mode + FIFO + CS + HAL transfer.
      * @return false on timeout / lock failure.
@@ -258,4 +270,6 @@ private:
     bool last_io_swap_{false};
     mutable PlatformMutex bus_mutex_{};
     std::vector<std::unique_ptr<StmSpiDevice>> devices_;
+    alignas(4) uint8_t scratch_tx_[kScratchBytes]{};
+    alignas(4) uint8_t scratch_rx_[kScratchBytes]{};
 };

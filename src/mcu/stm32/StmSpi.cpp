@@ -13,12 +13,11 @@
 #include <cstring>
 
 namespace {
-/* Internal-SRAM staging for small transfers. Callers may pass buffers that
- * live in external RAM or a task stack; HAL_SPI FIFO access must always use
- * tightly-coupled / internal SRAM pointers on STM32H7-class maps. */
-constexpr hf_u16_t kSpiScratchBytes = 32;
-uint8_t g_spi_axi_tx[kSpiScratchBytes]{};
-uint8_t g_spi_axi_rx[kSpiScratchBytes]{};
+/* Small-transfer staging lives per-bus (StmSpiBus::ScratchTx/Rx) so it is
+ * covered by the bus lock. A process-wide scratch here raced whenever two SPI
+ * buses transferred concurrently (SensorAcquisition ADS pump vs actuator SPI2):
+ * peer bytes were spliced into in-flight frames — e.g. TMC9660 TMCL value
+ * bytes ORed/overwritten and TLE "sticky-zero" register reads. */
 
 /**
  * @brief Copy @p len bytes from @p src into internal-SRAM @p dst via aligned
@@ -241,8 +240,8 @@ bool StmSpiDevice::SetIoSwap(bool enable) noexcept {
 }
 
 hf_spi_err_t StmSpiDevice::TransferLocked(const hf_u8_t* tx_data, hf_u8_t* rx_data,
-                                           hf_u16_t length,
-                                           hf_u32_t effective_timeout) noexcept {
+                                           hf_u16_t length, hf_u32_t effective_timeout,
+                                           bool park_mode3_after) noexcept {
     SPI_HandleTypeDef* hspi = parent_bus_->GetHalHandle();
     if (!hspi) return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
 
@@ -275,13 +274,15 @@ hf_spi_err_t StmSpiDevice::TransferLocked(const hf_u8_t* tx_data, hf_u8_t* rx_da
 
     const hf_u8_t* tx_ptr = tx_data;
     hf_u8_t* rx_ptr = rx_data;
-    if (length <= kSpiScratchBytes) {
+    uint8_t* const scratch_tx = parent_bus_->ScratchTx();
+    uint8_t* const scratch_rx = parent_bus_->ScratchRx();
+    if (length <= StmSpiBus::kScratchBytes) {
         if (tx_data != nullptr) {
-            CopyFromMaybeFmcToAxi(g_spi_axi_tx, tx_data, length);
-            tx_ptr = g_spi_axi_tx;
+            CopyFromMaybeFmcToAxi(scratch_tx, tx_data, length);
+            tx_ptr = scratch_tx;
         }
         if (rx_data != nullptr) {
-            rx_ptr = g_spi_axi_rx;
+            rx_ptr = scratch_rx;
         }
     }
 
@@ -319,9 +320,9 @@ hf_spi_err_t StmSpiDevice::TransferLocked(const hf_u8_t* tx_data, hf_u8_t* rx_da
             FlushSpiFifo(hspi);
             statistics_.failed_transactions++;
         } else {
-            if (rx_data != nullptr && rx_ptr == g_spi_axi_rx &&
-                length <= kSpiScratchBytes) {
-                CopyFromAxiToMaybeFmc(rx_data, g_spi_axi_rx, length);
+            if (rx_data != nullptr && rx_ptr == scratch_rx &&
+                length <= StmSpiBus::kScratchBytes) {
+                CopyFromAxiToMaybeFmc(rx_data, scratch_rx, length);
             }
             statistics_.total_transactions++;
             statistics_.successful_transactions++;
@@ -330,11 +331,14 @@ hf_spi_err_t StmSpiDevice::TransferLocked(const hf_u8_t* tx_data, hf_u8_t* rx_da
         }
     }
 
-    /* After Mode2/3 (CPOL=1) park the bus at Mode0 idle-LOW so the shared
-     * SCK rest level is correct for Mode0/Mode1 peers. Leaving Mode3 SPE-on
-     * looks like random CPOL flips between bursts on a logic analyzer. */
-    if (config_.mode == hf_stm32_spi_mode_t::MODE_2 ||
-        config_.mode == hf_stm32_spi_mode_t::MODE_3) {
+    /* After Mode2/3 (CPOL=1) park at Mode0 idle-LOW for Mode0/1 peers — but NOT
+     * between frames of a Mode3 TransferChain. TMC9660 SPI TMCL is cmd + NO_OP;
+     * Mode0 SPE rewrite between those halves yielded garbage TMCL status
+     * (HIL: OPENLOOP_VOLTAGE tmcl_st=56, no PWM). Mode0/1 peers still
+     * ApplyDeviceMode on their next Transfer. */
+    if (park_mode3_after &&
+        (config_.mode == hf_stm32_spi_mode_t::MODE_2 ||
+         config_.mode == hf_stm32_spi_mode_t::MODE_3)) {
         parent_bus_->IdleAllChipSelects();
         (void)parent_bus_->ApplyDeviceMode(hf_stm32_spi_mode_t::MODE_0, false);
         InterFrameGapUs(10U);
@@ -353,7 +357,8 @@ hf_spi_err_t StmSpiDevice::Transfer(const hf_u8_t* tx_data, hf_u8_t* rx_data,
     if (!bus_lock.OwnsLock()) {
         return hf_spi_err_t::SPI_ERR_BUS_BUSY;
     }
-    return TransferLocked(tx_data, rx_data, length, effective_timeout);
+    return TransferLocked(tx_data, rx_data, length, effective_timeout,
+                          /*park_mode3_after=*/false);
 }
 
 hf_spi_err_t StmSpiDevice::TransferChain(const hf_u8_t* const* tx_frames,
@@ -381,12 +386,15 @@ hf_spi_err_t StmSpiDevice::TransferChain(const hf_u8_t* const* tx_frames,
     for (hf_u16_t i = 0; i < frame_count; ++i) {
         const hf_u8_t* tx = (tx_frames != nullptr) ? tx_frames[i] : nullptr;
         hf_u8_t* rx = (rx_frames != nullptr) ? rx_frames[i] : nullptr;
-        /* Full IdleAll → mode → AssertCS per frame (command + dummy CS windows). */
-        result = TransferLocked(tx, rx, frame_length, effective_timeout);
+        const bool last = (i + 1U) >= frame_count;
+        /* Full IdleAll → mode → AssertCS per frame. Defer Mode3→Mode0 park
+         * until the last frame so pipelined Mode3 protocols stay coherent. */
+        result = TransferLocked(tx, rx, frame_length, effective_timeout,
+                                /*park_mode3_after=*/last);
         if (result != hf_spi_err_t::SPI_SUCCESS) {
             break;
         }
-        if (inter_frame_gap_us > 0U && (i + 1U) < frame_count) {
+        if (inter_frame_gap_us > 0U && !last) {
             InterFrameGapUs(inter_frame_gap_us);
         }
     }
@@ -459,7 +467,7 @@ bool StmSpiBus::Initialize() noexcept {
         CLEAR_BIT(hspi->Instance->CR1, SPI_CR1_SPE);
         CLEAR_BIT(hspi->Instance->CFG2, SPI_CFG2_SSOM);
         hspi->Init.NSSPMode = SPI_NSS_PULSE_DISABLE;
-        SET_BIT(hspi->Instance->CR1, SPI_CR1_SPE);
+        /* SPE stays off — HAL_SPI_* enables it after writing CR2.TSIZE. */
     }
 #endif
     initialized_ = true;
@@ -644,6 +652,9 @@ bool StmSpiBus::ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap) noexcept
         const uint32_t want =
             (cpol | cpha | ioswp) & (SPI_CFG2_CPOL | SPI_CFG2_CPHA | SPI_CFG2_IOSWP);
         if ((cfg2 & (SPI_CFG2_CPOL | SPI_CFG2_CPHA | SPI_CFG2_IOSWP)) == want) {
+            /* Same invariant as the reconfigure path below: hand the peripheral
+             * to HAL disabled so its CR2.TSIZE write is legal. */
+            CLEAR_BIT(hspi->Instance->CR1, SPI_CR1_SPE);
             return true;
         }
     }
@@ -659,7 +670,17 @@ bool StmSpiBus::ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap) noexcept
     SET_BIT(hspi->Instance->CFG2, SPI_CFG2_AFCNTR); /* KeepIOState across SPE */
     MODIFY_REG(hspi->Instance->CFG2, SPI_CFG2_CPOL | SPI_CFG2_CPHA | SPI_CFG2_IOSWP,
                cpol | cpha | ioswp);
-    SET_BIT(hspi->Instance->CR1, SPI_CR1_SPE);
+    /* Leave SPE CLEARED. RM0399 requires CR2.TSIZE to be written while the SPI
+     * is disabled, and every HAL_SPI_* polling transfer does exactly that
+     * (MODIFY_REG(CR2, TSIZE) → __HAL_SPI_ENABLE → CSTART) after
+     * SPI_CloseTransfer() left SPE=0. Re-enabling SPE here made the *first*
+     * transfer after any mode change write TSIZE with SPE=1: the master never
+     * clocked and HAL returned HAL_TIMEOUT, whose close path cleared SPE so the
+     * *next* frame worked. On a single-mode bus this never triggered; once the
+     * TLE (Mode1) began periodic traffic, every TMC (Mode3) TMCL frame changed
+     * mode and frame 1 always died — the "spins only at random times" fault.
+     * AFCNTR=1 keeps the pads driven at the CPOL idle level while SPE=0, so the
+     * shared SCK net still parks correctly for Mode0/1 peers. */
 
     /* Prove CFG2 stuck before any soft-CS assert. */
     const uint32_t cfg2 = READ_REG(hspi->Instance->CFG2);
