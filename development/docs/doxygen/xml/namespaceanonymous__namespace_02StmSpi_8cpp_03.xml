@@ -2,53 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
   <compounddef id="namespaceanonymous__namespace_02StmSpi_8cpp_03" kind="namespace" language="C++">
     <compoundname>anonymous_namespace{StmSpi.cpp}</compoundname>
-    <sectiondef kind="var">
-      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmSpi_8cpp_03_1aa45f034b9ec9701cd8a73551bfbb559c" prot="public" static="no" constexpr="yes" mutable="no">
-        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
-        <definition>constexpr hf_u16_t anonymous_namespace{StmSpi.cpp}::kSpiScratchBytes</definition>
-        <argsstring></argsstring>
-        <name>kSpiScratchBytes</name>
-        <qualifiedname>anonymous_namespace{StmSpi.cpp}::kSpiScratchBytes</qualifiedname>
-        <initializer>= 32</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/mcu/stm32/StmSpi.cpp" line="19" column="20" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="19" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a89c01d76c63867b951659a5210bd6898" prot="public" static="no" mutable="no">
-        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
-        <definition>uint8_t anonymous_namespace{StmSpi.cpp}::g_spi_axi_tx[kSpiScratchBytes]</definition>
-        <argsstring>[kSpiScratchBytes]</argsstring>
-        <name>g_spi_axi_tx</name>
-        <qualifiedname>anonymous_namespace{StmSpi.cpp}::g_spi_axi_tx</qualifiedname>
-        <initializer>{}</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/mcu/stm32/StmSpi.cpp" line="20" column="9" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="20" bodyend="20"/>
-      </memberdef>
-      <memberdef kind="variable" id="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a4dd214978f8306aaaa63ffd9e3776b05" prot="public" static="no" mutable="no">
-        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
-        <definition>uint8_t anonymous_namespace{StmSpi.cpp}::g_spi_axi_rx[kSpiScratchBytes]</definition>
-        <argsstring>[kSpiScratchBytes]</argsstring>
-        <name>g_spi_axi_rx</name>
-        <qualifiedname>anonymous_namespace{StmSpi.cpp}::g_spi_axi_rx</qualifiedname>
-        <initializer>{}</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/mcu/stm32/StmSpi.cpp" line="21" column="9" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="21" bodyend="21"/>
-      </memberdef>
-    </sectiondef>
     <sectiondef kind="func">
       <memberdef kind="function" id="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a9b70e6340dde68d5e013a8369652dcb9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
@@ -75,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmSpi.cpp" line="27" column="6" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="27" bodyend="39"/>
+        <location file="src/mcu/stm32/StmSpi.cpp" line="26" column="6" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="26" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a86ca057477851ca401c3c584653a70d8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
@@ -102,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmSpi.cpp" line="45" column="6" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="45" bodyend="58"/>
+        <location file="src/mcu/stm32/StmSpi.cpp" line="44" column="6" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="44" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a899000c13ecd09d81b13e23780711e72" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
@@ -119,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmSpi.cpp" line="103" column="6" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="103" bodyend="103"/>
+        <location file="src/mcu/stm32/StmSpi.cpp" line="102" column="6" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="102" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a9395d2212b103c5c9150ec5c77ac91ee" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
@@ -133,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmSpi.cpp" line="104" column="6" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="104" bodyend="104"/>
+        <location file="src/mcu/stm32/StmSpi.cpp" line="103" column="6" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="103" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a001b9f9d7d6d2462b190dc5fa9f4bbff" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
@@ -150,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmSpi.cpp" line="105" column="6" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="105" bodyend="105"/>
+        <location file="src/mcu/stm32/StmSpi.cpp" line="104" column="6" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="104" bodyend="104"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

@@ -16,7 +16,7 @@ var classStmSpiDevice =
     [ "SetTransferMode", "classStmSpiDevice.html#acff2fb15de9bd32196e38cccd53a5c0e", null ],
     [ "Transfer", "classStmSpiDevice.html#aac96933b7c2db6fa0e675ee472e91ec5", null ],
     [ "TransferChain", "classStmSpiDevice.html#a0460008b43be1249a3268280b877c7b1", null ],
-    [ "TransferLocked", "classStmSpiDevice.html#a192cdf8b49e6bd16a1d7e4495c379cc6", null ],
+    [ "TransferLocked", "classStmSpiDevice.html#a4d206b323c2477f3deea06ef4a0cb7ef", null ],
     [ "StmSpiBus", "classStmSpiDevice.html#a44c5f9f4c069239f87fbb87ae89fe8d3", null ],
     [ "config_", "classStmSpiDevice.html#afd55e6d85cfe8e0020665c7039576ebe", null ],
     [ "io_swap_", "classStmSpiDevice.html#a2d91db0463a088a18caef8501f996757", null ],

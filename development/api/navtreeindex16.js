@@ -1,6 +1,5 @@
 var NAVTREEINDEX16 =
 {
-"structhf__adc__monitor__event__t.html#aebe2167987d46739b01e3c6d35996eae":[3,0,46,1],
 "structhf__adc__statistics__t.html":[3,0,47],
 "structhf__adc__statistics__t.html#a14707f325b1525644a047cd323c9874f":[3,0,47,8],
 "structhf__adc__statistics__t.html#a60b17c5c1d90c76874e71e6494314bdd":[3,0,47,5],
@@ -249,5 +248,6 @@ var NAVTREEINDEX16 =
 "structhf__i2c__custom__command__t.html#a4135df4a3ac47350a09d0a0b82961c4e":[3,0,73,7],
 "structhf__i2c__custom__command__t.html#a4698f6963963e23ba7805ab1f4adb6c3":[3,0,73,2],
 "structhf__i2c__custom__command__t.html#a67428d9b9c1eb4c41cc8d6a115983734":[3,0,73,4],
-"structhf__i2c__custom__command__t.html#a6de318c10918bef3986dd18ec0cd7cdb":[3,0,73,5]
+"structhf__i2c__custom__command__t.html#a6de318c10918bef3986dd18ec0cd7cdb":[3,0,73,5],
+"structhf__i2c__custom__command__t.html#a86b814f00746901f060cd9af475ae77f":[3,0,73,3]
 };

@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="54" column="5" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="113" bodyend="114"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="54" column="5" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="112" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBusLock_1aac5273d27989b6756e338c3c0f37686c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -70,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="55" column="5" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="116" bodyend="121"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="55" column="5" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="115" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBusLock_1a37e2425e4f0181db6698752fd8ae43e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="59" column="5" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="123" bodyend="127"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="59" column="5" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="122" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBusLock_1afeaef24b7ab305c7322a3d837ad5ee82" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classStmSpiBusLock" kindref="compound">StmSpiBusLock</ref> &amp;</type>
@@ -140,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="60" column="19" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="129" bodyend="140"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="60" column="19" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="128" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBusLock_1a11e368f591e8536c8606c1c6864848ca" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>

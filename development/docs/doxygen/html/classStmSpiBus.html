@@ -95,6 +95,7 @@ $(function(){initNavTree('classStmSpiBus.html',''); initResizable(); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="classStmSpiBus-members.html">List of all members</a>  </div>
@@ -152,11 +153,20 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac93b7752ef007137adbdb59b2069a96d" id="r_ac93b7752ef007137adbdb59b2069a96d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac93b7752ef007137adbdb59b2069a96d">ProbeMisoLine</a> (<a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">miso_port</a>, <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> <a class="el" href="classSoftChipSelectGuard.html">miso_pin_pos</a>, <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classBaseSpi.html">BaseSpi</a> *<a class="el" href="classSoftChipSelectGuard.html">device</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:ac93b7752ef007137adbdb59b2069a96d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bring-up probe of the shared MISO/SDO net — no scope required.  <br /></td></tr>
 <tr class="separator:ac93b7752ef007137adbdb59b2069a96d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43c26fe98d90a3edd503451b8b1e8f38" id="r_a43c26fe98d90a3edd503451b8b1e8f38"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43c26fe98d90a3edd503451b8b1e8f38">ScratchTx</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="separator:a43c26fe98d90a3edd503451b8b1e8f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b59df33f8a552ca5eb12136b116dc9b" id="r_a3b59df33f8a552ca5eb12136b116dc9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b59df33f8a552ca5eb12136b116dc9b">ScratchRx</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="separator:a3b59df33f8a552ca5eb12136b116dc9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0375345f33cb95f9d0ff7c02c5dd323f" id="r_a0375345f33cb95f9d0ff7c02c5dd323f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0375345f33cb95f9d0ff7c02c5dd323f">LockBus</a> (<a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a0375345f33cb95f9d0ff7c02c5dd323f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exclusive bus lock for mode + FIFO + CS + HAL transfer.  <br /></td></tr>
 <tr class="separator:a0375345f33cb95f9d0ff7c02c5dd323f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a9373812597b450310b1dae3311a733" id="r_a3a9373812597b450310b1dae3311a733"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a9373812597b450310b1dae3311a733">UnlockBus</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="separator:a3a9373812597b450310b1dae3311a733"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:abe758b60dda085cf6ab5421871a555a8" id="r_abe758b60dda085cf6ab5421871a555a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe758b60dda085cf6ab5421871a555a8">kScratchBytes</a> = 32</td></tr>
+<tr class="separator:abe758b60dda085cf6ab5421871a555a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -174,6 +184,10 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a044f12506bf38f5d1537ecae167a866c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5303b40e97ecdc7f59d91a865cc97d92" id="r_a5303b40e97ecdc7f59d91a865cc97d92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::vector</a>&lt; <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::unique_ptr</a>&lt; <a class="el" href="classStmSpiDevice.html">StmSpiDevice</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5303b40e97ecdc7f59d91a865cc97d92">devices_</a></td></tr>
 <tr class="separator:a5303b40e97ecdc7f59d91a865cc97d92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa24aa9496fcc1c42359c19fac629934b" id="r_aa24aa9496fcc1c42359c19fac629934b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa24aa9496fcc1c42359c19fac629934b">scratch_tx_</a> [<a class="el" href="#abe758b60dda085cf6ab5421871a555a8">kScratchBytes</a>] {}</td></tr>
+<tr class="separator:aa24aa9496fcc1c42359c19fac629934b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69ad66d0116378a41db3c95411554f41" id="r_a69ad66d0116378a41db3c95411554f41"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69ad66d0116378a41db3c95411554f41">scratch_rx_</a> [<a class="el" href="#abe758b60dda085cf6ab5421871a555a8">kScratchBytes</a>] {}</td></tr>
+<tr class="separator:a69ad66d0116378a41db3c95411554f41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
@@ -659,6 +673,56 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="a3b59df33f8a552ca5eb12136b116dc9b" name="a3b59df33f8a552ca5eb12136b116dc9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b59df33f8a552ca5eb12136b116dc9b">&#9670;&#160;</a></span>ScratchRx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> * StmSpiBus::ScratchRx </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a43c26fe98d90a3edd503451b8b1e8f38" name="a43c26fe98d90a3edd503451b8b1e8f38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43c26fe98d90a3edd503451b8b1e8f38">&#9670;&#160;</a></span>ScratchTx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> * StmSpiBus::ScratchTx </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a3a9373812597b450310b1dae3311a733" name="a3a9373812597b450310b1dae3311a733"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3a9373812597b450310b1dae3311a733">&#9670;&#160;</a></span>UnlockBus()</h2>
 
@@ -818,6 +882,29 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="abe758b60dda085cf6ab5421871a555a8" name="abe758b60dda085cf6ab5421871a555a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe758b60dda085cf6ab5421871a555a8">&#9670;&#160;</a></span>kScratchBytes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> StmSpiBus::kScratchBytes = 32</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Per-bus internal-SRAM staging for short transfers. Must only be touched under <a class="el" href="classStmSpiBusLock.html">StmSpiBusLock</a>. A single process-wide scratch raced when two buses transferred concurrently (SensorAcquisition ADS pump vs actuator SPI2) and spliced peer bytes into TMC9660 TMCL frames. </p>
+
+</div>
+</div>
 <a id="a54c64c3bd0ee8eb8d44b59ba3c06a186" name="a54c64c3bd0ee8eb8d44b59ba3c06a186"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a54c64c3bd0ee8eb8d44b59ba3c06a186">&#9670;&#160;</a></span>last_io_swap_</h2>
 
@@ -873,6 +960,50 @@ Friends</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> StmSpiBus::mode_applied_ {<a class="el" href="classSoftChipSelectGuard.html">false</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a69ad66d0116378a41db3c95411554f41" name="a69ad66d0116378a41db3c95411554f41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69ad66d0116378a41db3c95411554f41">&#9670;&#160;</a></span>scratch_rx_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> StmSpiBus::scratch_rx_[<a class="el" href="#abe758b60dda085cf6ab5421871a555a8">kScratchBytes</a>] {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa24aa9496fcc1c42359c19fac629934b" name="aa24aa9496fcc1c42359c19fac629934b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa24aa9496fcc1c42359c19fac629934b">&#9670;&#160;</a></span>scratch_tx_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> StmSpiBus::scratch_tx_[<a class="el" href="#abe758b60dda085cf6ab5421871a555a8">kScratchBytes</a>] {}</td>
         </tr>
       </table>
   </td>

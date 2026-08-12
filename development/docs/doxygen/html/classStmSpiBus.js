@@ -17,6 +17,8 @@ var classStmSpiBus =
     [ "LockBus", "classStmSpiBus.html#a0375345f33cb95f9d0ff7c02c5dd323f", null ],
     [ "ProbeMisoLine", "classStmSpiBus.html#ac93b7752ef007137adbdb59b2069a96d", null ],
     [ "RemoveDevice", "classStmSpiBus.html#ad8fc3bd4ef289384acf536b01700aa3c", null ],
+    [ "ScratchRx", "classStmSpiBus.html#a3b59df33f8a552ca5eb12136b116dc9b", null ],
+    [ "ScratchTx", "classStmSpiBus.html#a43c26fe98d90a3edd503451b8b1e8f38", null ],
     [ "UnlockBus", "classStmSpiBus.html#a3a9373812597b450310b1dae3311a733", null ],
     [ "StmSpiBusLock", "classStmSpiBus.html#a4083a55126681d7ab330b5993ce8fbae", null ],
     [ "StmSpiDevice", "classStmSpiBus.html#aa8224874d0610e683da388ec3d6d2c8f", null ],
@@ -24,7 +26,10 @@ var classStmSpiBus =
     [ "config_", "classStmSpiBus.html#ada6d7feb79b067200075f7bb9a486ea9", null ],
     [ "devices_", "classStmSpiBus.html#a5303b40e97ecdc7f59d91a865cc97d92", null ],
     [ "initialized_", "classStmSpiBus.html#a611e37f08b9d7ace431eccb29ddc90d0", null ],
+    [ "kScratchBytes", "classStmSpiBus.html#abe758b60dda085cf6ab5421871a555a8", null ],
     [ "last_io_swap_", "classStmSpiBus.html#a54c64c3bd0ee8eb8d44b59ba3c06a186", null ],
     [ "last_mode_", "classStmSpiBus.html#af81eaff03dddc44e3a62cbb981ddf6a2", null ],
-    [ "mode_applied_", "classStmSpiBus.html#ad48dbdada26c78ab437c61c2d6e059c5", null ]
+    [ "mode_applied_", "classStmSpiBus.html#ad48dbdada26c78ab437c61c2d6e059c5", null ],
+    [ "scratch_rx_", "classStmSpiBus.html#a69ad66d0116378a41db3c95411554f41", null ],
+    [ "scratch_tx_", "classStmSpiBus.html#aa24aa9496fcc1c42359c19fac629934b", null ]
 ];

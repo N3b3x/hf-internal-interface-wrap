@@ -3212,6 +3212,7 @@
     <member refid="classStmPwm_1ae865b0c672222b2537a5dc2a2d27938d" kind="function"><name>ReapplyDuties</name></member>
   </compound>
   <compound refid="classStmSpiBus" kind="class"><name>StmSpiBus</name>
+    <member refid="classStmSpiBus_1abe758b60dda085cf6ab5421871a555a8" kind="variable"><name>kScratchBytes</name></member>
     <member refid="classStmSpiBus_1aa8224874d0610e683da388ec3d6d2c8f" kind="friend"><name>StmSpiDevice</name></member>
     <member refid="classStmSpiBus_1a4083a55126681d7ab330b5993ce8fbae" kind="friend"><name>StmSpiBusLock</name></member>
     <member refid="classStmSpiBus_1ada6d7feb79b067200075f7bb9a486ea9" kind="variable"><name>config_</name></member>
@@ -3221,6 +3222,8 @@
     <member refid="classStmSpiBus_1a54c64c3bd0ee8eb8d44b59ba3c06a186" kind="variable"><name>last_io_swap_</name></member>
     <member refid="classStmSpiBus_1a044f12506bf38f5d1537ecae167a866c" kind="variable"><name>bus_mutex_</name></member>
     <member refid="classStmSpiBus_1a5303b40e97ecdc7f59d91a865cc97d92" kind="variable"><name>devices_</name></member>
+    <member refid="classStmSpiBus_1aa24aa9496fcc1c42359c19fac629934b" kind="variable"><name>scratch_tx_</name></member>
+    <member refid="classStmSpiBus_1a69ad66d0116378a41db3c95411554f41" kind="variable"><name>scratch_rx_</name></member>
     <member refid="classStmSpiBus_1a69cafaa6911c26bdd2c288fb10df37be" kind="function"><name>StmSpiBus</name></member>
     <member refid="classStmSpiBus_1ae9b391925b8b34a47d17a91cdabb87cf" kind="function"><name>StmSpiBus</name></member>
     <member refid="classStmSpiBus_1a1b4658e1504d0caa95b0d13cc4d41335" kind="function"><name>~StmSpiBus</name></member>
@@ -3237,6 +3240,8 @@
     <member refid="classStmSpiBus_1ac9d2f3f7cbc14f8d79e0ca8182a4ecb2" kind="function"><name>ApplyDeviceMode</name></member>
     <member refid="classStmSpiBus_1ad2942f7f1b57611474e8839226685471" kind="function"><name>IdleAllChipSelects</name></member>
     <member refid="classStmSpiBus_1ac93b7752ef007137adbdb59b2069a96d" kind="function"><name>ProbeMisoLine</name></member>
+    <member refid="classStmSpiBus_1a43c26fe98d90a3edd503451b8b1e8f38" kind="function"><name>ScratchTx</name></member>
+    <member refid="classStmSpiBus_1a3b59df33f8a552ca5eb12136b116dc9b" kind="function"><name>ScratchRx</name></member>
     <member refid="classStmSpiBus_1a0375345f33cb95f9d0ff7c02c5dd323f" kind="function"><name>LockBus</name></member>
     <member refid="classStmSpiBus_1a3a9373812597b450310b1dae3311a733" kind="function"><name>UnlockBus</name></member>
   </compound>
@@ -3270,7 +3275,7 @@
     <member refid="classStmSpiDevice_1a330f2558758a893af42d8efebef57f3f" kind="function"><name>GetConfig</name></member>
     <member refid="classStmSpiDevice_1a72d8ba6db14002784629df6b66f48d12" kind="function"><name>AssertCS</name></member>
     <member refid="classStmSpiDevice_1a14982c1b1dac9337631b08722265baeb" kind="function"><name>DeassertCS</name></member>
-    <member refid="classStmSpiDevice_1a192cdf8b49e6bd16a1d7e4495c379cc6" kind="function"><name>TransferLocked</name></member>
+    <member refid="classStmSpiDevice_1a4d206b323c2477f3deea06ef4a0cb7ef" kind="function"><name>TransferLocked</name></member>
     <member refid="classStmSpiDevice_1a101c3f09a77b3a50575d5c03f8223861" kind="function"><name>GetEffectiveTimeout</name></member>
     <member refid="classStmSpiDevice_1ad3874dd35a07942be355864ea4423e86" kind="function"><name>ConvertHalStatus</name></member>
   </compound>
@@ -3422,9 +3427,6 @@
     <member refid="namespaceanonymous__namespace_02StmPwm_8cpp_03_1a95f6191ea8aef44939ee4420bb6700ea" kind="variable"><name>kTimEgrUgBit</name></member>
   </compound>
   <compound refid="namespaceanonymous__namespace_02StmSpi_8cpp_03" kind="namespace"><name>anonymous_namespace{StmSpi.cpp}</name>
-    <member refid="namespaceanonymous__namespace_02StmSpi_8cpp_03_1aa45f034b9ec9701cd8a73551bfbb559c" kind="variable"><name>kSpiScratchBytes</name></member>
-    <member refid="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a89c01d76c63867b951659a5210bd6898" kind="variable"><name>g_spi_axi_tx</name></member>
-    <member refid="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a4dd214978f8306aaaa63ffd9e3776b05" kind="variable"><name>g_spi_axi_rx</name></member>
     <member refid="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a9b70e6340dde68d5e013a8369652dcb9" kind="function"><name>CopyFromMaybeFmcToAxi</name></member>
     <member refid="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a86ca057477851ca401c3c584653a70d8" kind="function"><name>CopyFromAxiToMaybeFmc</name></member>
     <member refid="namespaceanonymous__namespace_02StmSpi_8cpp_03_1a899000c13ecd09d81b13e23780711e72" kind="function"><name>FlushSpiFifo</name></member>

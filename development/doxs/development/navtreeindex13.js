@@ -1,5 +1,7 @@
 var NAVTREEINDEX13 =
 {
+"group__gpio.html#gga2632aac2351807c35e790ec20bda305dab04683ad857b2517e5793490e3568bce":[1,3,10,3],
+"group__gpio.html#gga2632aac2351807c35e790ec20bda305dab988dbee738e95b8c802b4fc6754bbd6":[1,3,10,11],
 "group__gpio.html#gga2632aac2351807c35e790ec20bda305dac830e46415a4ec395ce2b9a9f1a2fd62":[1,3,10,15],
 "group__gpio.html#gga2632aac2351807c35e790ec20bda305dad08bc7a57b45033bc186de679f17d3fa":[1,3,10,18],
 "group__gpio.html#gga2632aac2351807c35e790ec20bda305dad0dedbb315ad871e12c7da9e293a37dd":[1,3,10,34],
@@ -130,8 +132,8 @@ var NAVTREEINDEX13 =
 "iiwrap__version_8h.html#a82e2c1fc1bb70da0a40ad599cf70598a":[4,0,1,3,3],
 "iiwrap__version_8h.html#a87fef7a80d0ca0fe3fc45ace1dd551f1":[4,0,1,3,2],
 "iiwrap__version_8h_source.html":[4,0,1,3],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "index.html#autotoc_md25":[0,0],
 "index.html#autotoc_md26":[0,1],
 "index.html#autotoc_md27":[0,1,0],
@@ -222,13 +224,10 @@ var NAVTREEINDEX13 =
 "namespaceanonymous__namespace_02StmPwm_8cpp_03.html#afdf6cafd03df6e1a381d091a8400fefa":[2,0,7,6],
 "namespaceanonymous__namespace_02StmSpi_8cpp_03.html":[2,0,8],
 "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a001b9f9d7d6d2462b190dc5fa9f4bbff":[2,0,8,4],
-"namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a4dd214978f8306aaaa63ffd9e3776b05":[2,0,8,5],
 "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a86ca057477851ca401c3c584653a70d8":[2,0,8,0],
 "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a899000c13ecd09d81b13e23780711e72":[2,0,8,3],
-"namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a89c01d76c63867b951659a5210bd6898":[2,0,8,6],
 "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a9395d2212b103c5c9150ec5c77ac91ee":[2,0,8,2],
 "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a9b70e6340dde68d5e013a8369652dcb9":[2,0,8,1],
-"namespaceanonymous__namespace_02StmSpi_8cpp_03.html#aa45f034b9ec9701cd8a73551bfbb559c":[2,0,8,7],
 "namespaceanonymous__namespace_02StmUart_8cpp_03.html":[2,0,9],
 "namespaceanonymous__namespace_02StmUart_8cpp_03.html#a370188345c76a4506f6731ba8e1fbf27":[2,0,9,1],
 "namespaceanonymous__namespace_02StmUart_8cpp_03.html#ab2a4d5fbf0156cc690a4ac7ed0757a95":[2,0,9,0],
@@ -249,5 +248,6 @@ var NAVTREEINDEX13 =
 "namespacehf_1_1stm32.html#a4b5614e96ae81ced775d3861471e9660":[2,0,11,0,30],
 "namespacehf_1_1stm32.html#a588459662879d0a82c1762ac94180ca4":[2,0,11,0,20],
 "namespacehf_1_1stm32.html#a5e1bc34db84044fc0347de2e79f44000":[2,0,11,0,22],
-"namespacehf_1_1stm32.html#a61d8ada18ba35572dbf8fedc4d96501f":[2,0,11,0,7]
+"namespacehf_1_1stm32.html#a61d8ada18ba35572dbf8fedc4d96501f":[2,0,11,0,7],
+"namespacehf_1_1stm32.html#a6d5e0f8265882f9315391a8326dfda78":[2,0,11,0,5]
 };

@@ -3,6 +3,24 @@
   <compounddef id="classStmSpiBus" kind="class" language="C++" prot="public">
     <compoundname>StmSpiBus</compoundname>
     <includes refid="StmSpi_8h" local="no">StmSpi.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classStmSpiBus_1abe758b60dda085cf6ab5421871a555a8" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>constexpr hf_u16_t StmSpiBus::kScratchBytes</definition>
+        <argsstring></argsstring>
+        <name>kScratchBytes</name>
+        <qualifiedname>StmSpiBus::kScratchBytes</qualifiedname>
+        <initializer>= 32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Per-bus internal-SRAM staging for short transfers. Must only be touched under <ref refid="classStmSpiBusLock" kindref="compound">StmSpiBusLock</ref>. A single process-wide scratch raced when two buses transferred concurrently (SensorAcquisition ADS pump vs actuator SPI2) and spliced peer bytes into TMC9660 TMCL frames. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="250" column="31" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="250" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
     <sectiondef kind="friend">
       <memberdef kind="friend" id="classStmSpiBus_1aa8224874d0610e683da388ec3d6d2c8f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">class</ref></type>
@@ -19,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="251" column="18" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="251" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="263" column="18" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="263" bodyend="-1"/>
       </memberdef>
       <memberdef kind="friend" id="classStmSpiBus_1a4083a55126681d7ab330b5993ce8fbae" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">class</ref></type>
@@ -36,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="252" column="18" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="252" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="264" column="18" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="264" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -52,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="254" column="25" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="254" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="266" column="25" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="266" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classStmSpiBus_1a611e37f08b9d7ace431eccb29ddc90d0" prot="private" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -67,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="255" column="10" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="255" bodyend="255"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="267" column="10" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="267" bodyend="267"/>
       </memberdef>
       <memberdef kind="variable" id="classStmSpiBus_1ad48dbdada26c78ab437c61c2d6e059c5" prot="private" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -82,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="256" column="10" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="256" bodyend="256"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="268" column="10" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="268" bodyend="268"/>
       </memberdef>
       <memberdef kind="variable" id="classStmSpiBus_1af81eaff03dddc44e3a62cbb981ddf6a2" prot="private" static="no" mutable="no">
         <type><ref refid="StmTypes_8h_1af8e3d687e7b582925b62029f026625f9" kindref="member">hf_stm32_spi_mode_t</ref></type>
@@ -97,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="257" column="25" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="257" bodyend="257"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="269" column="25" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="269" bodyend="269"/>
       </memberdef>
       <memberdef kind="variable" id="classStmSpiBus_1a54c64c3bd0ee8eb8d44b59ba3c06a186" prot="private" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -112,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="258" column="10" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="258" bodyend="258"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="270" column="10" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="270" bodyend="270"/>
       </memberdef>
       <memberdef kind="variable" id="classStmSpiBus_1a044f12506bf38f5d1537ecae167a866c" prot="private" static="no" mutable="yes">
         <type><ref refid="PlatformMutex_8h_1a3448b54e0a94193058b38d135c1254ef" kindref="member">PlatformMutex</ref></type>
@@ -127,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="259" column="27" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="259" bodyend="259"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="271" column="27" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="271" bodyend="271"/>
       </memberdef>
       <memberdef kind="variable" id="classStmSpiBus_1a5303b40e97ecdc7f59d91a865cc97d92" prot="private" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::vector</ref>&lt; <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">std::unique_ptr</ref>&lt; <ref refid="classStmSpiDevice" kindref="compound">StmSpiDevice</ref> &gt; &gt;</type>
@@ -141,7 +159,37 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="260" column="17" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="260" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="272" column="17" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmSpiBus_1aa24aa9496fcc1c42359c19fac629934b" prot="private" static="no" mutable="no">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
+        <definition>uint8_t StmSpiBus::scratch_tx_[kScratchBytes]</definition>
+        <argsstring>[kScratchBytes]</argsstring>
+        <name>scratch_tx_</name>
+        <qualifiedname>StmSpiBus::scratch_tx_</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="273" column="21" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="273" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmSpiBus_1a69ad66d0116378a41db3c95411554f41" prot="private" static="no" mutable="no">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
+        <definition>uint8_t StmSpiBus::scratch_rx_[kScratchBytes]</definition>
+        <argsstring>[kScratchBytes]</argsstring>
+        <name>scratch_rx_</name>
+        <qualifiedname>StmSpiBus::scratch_rx_</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="274" column="21" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="274" bodyend="274"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -161,7 +209,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="178" column="14" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="441" bodyend="442"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="182" column="14" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="449" bodyend="450"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1ae9b391925b8b34a47d17a91cdabb87cf" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -185,7 +233,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="181" column="14" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="444" bodyend="445"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="185" column="14" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="452" bodyend="453"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1a1b4658e1504d0caa95b0d13cc4d41335" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -199,7 +247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="183" column="5" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="447" bodyend="449"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="187" column="5" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="455" bodyend="457"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1a949a4e26bc00b79272f4e1929aa06064" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -213,7 +261,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="185" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="451" bodyend="467"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="189" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="459" bodyend="475"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1a22d15c21b574da4cf292b4574e485293" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -227,7 +275,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="186" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="469" bodyend="469"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="190" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="477" bodyend="477"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1ad4cf41108043a7610f902cb45bcbc8e4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -241,7 +289,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="187" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="471" bodyend="478"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="191" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="479" bodyend="486"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1a781055ef0cd430c2cb5f12601882a683" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
@@ -263,7 +311,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="193" column="9" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="480" bodyend="484"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="197" column="9" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="488" bodyend="492"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1ad1d6e101a95d6af9829a2b6a41a1fc81" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classBaseSpi" kindref="compound">BaseSpi</ref> *</type>
@@ -281,7 +329,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="194" column="13" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="486" bodyend="490"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="198" column="13" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="494" bodyend="498"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1a313d95a200920d2f5abc67e94c359fca" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classBaseSpi" kindref="compound">BaseSpi</ref> *</type>
@@ -299,7 +347,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="195" column="19" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="492" bodyend="496"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="199" column="19" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="500" bodyend="504"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1a81d08ab646705ea372874ca8c663367b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>std::size_t</type>
@@ -313,7 +361,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="196" column="17" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="498" bodyend="498"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="200" column="17" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="506" bodyend="506"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1ad8fc3bd4ef289384acf536b01700aa3c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -331,7 +379,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="197" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="500" bodyend="506"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="201" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="508" bodyend="514"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1a285df3f22b4b762454e5ca47af1ad31c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__spi__bus__config__t" kindref="compound">hf_spi_bus_config_t</ref> &amp;</type>
@@ -345,7 +393,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="198" column="31" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="508" bodyend="508"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="202" column="31" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="516" bodyend="516"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1aeabf2129d32b93d68715d4a1d20e3eee" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">SPI_HandleTypeDef</ref> *</type>
@@ -360,7 +408,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="201" column="23" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="510" bodyend="510"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="205" column="23" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="518" bodyend="518"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1ac9d2f3f7cbc14f8d79e0ca8182a4ecb2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -387,7 +435,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="209" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="610" bodyend="686"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="213" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="618" bodyend="707"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1ad2942f7f1b57611474e8839226685471" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
@@ -405,7 +453,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="215" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="520" bodyend="527"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="219" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="528" bodyend="535"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1ac93b7752ef007137adbdb59b2069a96d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -439,7 +487,35 @@ Decode: <computeroutput>0x81</computeroutput> idle high-Z and driven LOW when se
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="239" column="13" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="543" bodyend="608"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="243" column="13" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="551" bodyend="616"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBus_1a43c26fe98d90a3edd503451b8b1e8f38" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref> *</type>
+        <definition>uint8_t * StmSpiBus::ScratchTx</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ScratchTx</name>
+        <qualifiedname>StmSpiBus::ScratchTx</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="251" column="13" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="251" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBus_1a3b59df33f8a552ca5eb12136b116dc9b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref> *</type>
+        <definition>uint8_t * StmSpiBus::ScratchRx</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ScratchRx</name>
+        <qualifiedname>StmSpiBus::ScratchRx</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="252" column="13" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="252" bodyend="252"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1a0375345f33cb95f9d0ff7c02c5dd323f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -463,7 +539,7 @@ Decode: <computeroutput>0x81</computeroutput> idle high-Z and driven LOW when se
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="247" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="512" bodyend="514"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="259" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="520" bodyend="522"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1a3a9373812597b450310b1dae3311a733" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
@@ -477,7 +553,7 @@ Decode: <computeroutput>0x81</computeroutput> idle high-Z and driven LOW when se
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="248" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="516" bodyend="518"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="260" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="524" bodyend="526"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -515,7 +591,7 @@ Decode: <computeroutput>0x81</computeroutput> idle high-Z and driven LOW when se
         <link refid="structhf__spi__bus__config__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/stm32/StmSpi.h" line="176" column="1" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="176" bodyend="261"/>
+    <location file="inc/mcu/stm32/StmSpi.h" line="180" column="1" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="180" bodyend="275"/>
     <listofallmembers>
       <member refid="classStmSpiBus_1ac9d2f3f7cbc14f8d79e0ca8182a4ecb2" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>ApplyDeviceMode</name></member>
       <member refid="classStmSpiBus_1a044f12506bf38f5d1537ecae167a866c" prot="private" virt="non-virtual"><scope>StmSpiBus</scope><name>bus_mutex_</name></member>
@@ -532,12 +608,17 @@ Decode: <computeroutput>0x81</computeroutput> idle high-Z and driven LOW when se
       <member refid="classStmSpiBus_1a949a4e26bc00b79272f4e1929aa06064" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>Initialize</name></member>
       <member refid="classStmSpiBus_1a611e37f08b9d7ace431eccb29ddc90d0" prot="private" virt="non-virtual"><scope>StmSpiBus</scope><name>initialized_</name></member>
       <member refid="classStmSpiBus_1a22d15c21b574da4cf292b4574e485293" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>IsInitialized</name></member>
+      <member refid="classStmSpiBus_1abe758b60dda085cf6ab5421871a555a8" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>kScratchBytes</name></member>
       <member refid="classStmSpiBus_1a54c64c3bd0ee8eb8d44b59ba3c06a186" prot="private" virt="non-virtual"><scope>StmSpiBus</scope><name>last_io_swap_</name></member>
       <member refid="classStmSpiBus_1af81eaff03dddc44e3a62cbb981ddf6a2" prot="private" virt="non-virtual"><scope>StmSpiBus</scope><name>last_mode_</name></member>
       <member refid="classStmSpiBus_1a0375345f33cb95f9d0ff7c02c5dd323f" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>LockBus</name></member>
       <member refid="classStmSpiBus_1ad48dbdada26c78ab437c61c2d6e059c5" prot="private" virt="non-virtual"><scope>StmSpiBus</scope><name>mode_applied_</name></member>
       <member refid="classStmSpiBus_1ac93b7752ef007137adbdb59b2069a96d" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>ProbeMisoLine</name></member>
       <member refid="classStmSpiBus_1ad8fc3bd4ef289384acf536b01700aa3c" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>RemoveDevice</name></member>
+      <member refid="classStmSpiBus_1a69ad66d0116378a41db3c95411554f41" prot="private" virt="non-virtual"><scope>StmSpiBus</scope><name>scratch_rx_</name></member>
+      <member refid="classStmSpiBus_1aa24aa9496fcc1c42359c19fac629934b" prot="private" virt="non-virtual"><scope>StmSpiBus</scope><name>scratch_tx_</name></member>
+      <member refid="classStmSpiBus_1a3b59df33f8a552ca5eb12136b116dc9b" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>ScratchRx</name></member>
+      <member refid="classStmSpiBus_1a43c26fe98d90a3edd503451b8b1e8f38" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>ScratchTx</name></member>
       <member refid="classStmSpiBus_1a69cafaa6911c26bdd2c288fb10df37be" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>StmSpiBus</name></member>
       <member refid="classStmSpiBus_1ae9b391925b8b34a47d17a91cdabb87cf" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>StmSpiBus</name></member>
       <member refid="classStmSpiBus_1a4083a55126681d7ab330b5993ce8fbae" prot="private" virt="non-virtual"><scope>StmSpiBus</scope><name>StmSpiBusLock</name></member>

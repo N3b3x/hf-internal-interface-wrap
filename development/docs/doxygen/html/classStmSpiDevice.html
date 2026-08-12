@@ -227,9 +227,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a14982c1b1dac9337631b08722265baeb" id="r_a14982c1b1dac9337631b08722265baeb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14982c1b1dac9337631b08722265baeb">DeassertCS</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a14982c1b1dac9337631b08722265baeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drive CS to the idle level (active-low → GPIO high).  <br /></td></tr>
 <tr class="separator:a14982c1b1dac9337631b08722265baeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a192cdf8b49e6bd16a1d7e4495c379cc6" id="r_a192cdf8b49e6bd16a1d7e4495c379cc6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a192cdf8b49e6bd16a1d7e4495c379cc6">TransferLocked</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">tx_data</a>, <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">rx_data</a>, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> <a class="el" href="classSoftChipSelectGuard.html">effective_timeout</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
-<tr class="memdesc:a192cdf8b49e6bd16a1d7e4495c379cc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">One CS-framed HAL transfer; caller must hold <a class="el" href="classStmSpiBusLock.html">StmSpiBusLock</a>.  <br /></td></tr>
-<tr class="separator:a192cdf8b49e6bd16a1d7e4495c379cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d206b323c2477f3deea06ef4a0cb7ef" id="r_a4d206b323c2477f3deea06ef4a0cb7ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseSpi_8h.html#a349a53792ac48c02b7e7f2d8761377df">hf_spi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d206b323c2477f3deea06ef4a0cb7ef">TransferLocked</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">tx_data</a>, <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *<a class="el" href="classSoftChipSelectGuard.html">rx_data</a>, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> <a class="el" href="classSoftChipSelectGuard.html">effective_timeout</a>, <a class="el" href="classSoftChipSelectGuard.html">bool</a> <a class="el" href="classSoftChipSelectGuard.html">park_mode3_after</a>=<a class="el" href="classSoftChipSelectGuard.html">true</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a4d206b323c2477f3deea06ef4a0cb7ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">One CS-framed HAL transfer; caller must hold <a class="el" href="classStmSpiBusLock.html">StmSpiBusLock</a>.  <br /></td></tr>
+<tr class="separator:a4d206b323c2477f3deea06ef4a0cb7ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a101c3f09a77b3a50575d5c03f8223861" id="r_a101c3f09a77b3a50575d5c03f8223861"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a101c3f09a77b3a50575d5c03f8223861">GetEffectiveTimeout</a> (<a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> <a class="el" href="classSoftChipSelectGuard.html">requested_ms</a>) <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a101c3f09a77b3a50575d5c03f8223861"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolve <code>requested_ms</code> against the parent bus default.  <br /></td></tr>
 <tr class="separator:a101c3f09a77b3a50575d5c03f8223861"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -791,8 +791,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a192cdf8b49e6bd16a1d7e4495c379cc6" name="a192cdf8b49e6bd16a1d7e4495c379cc6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a192cdf8b49e6bd16a1d7e4495c379cc6">&#9670;&#160;</a></span>TransferLocked()</h2>
+<a id="a4d206b323c2477f3deea06ef4a0cb7ef" name="a4d206b323c2477f3deea06ef4a0cb7ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d206b323c2477f3deea06ef4a0cb7ef">&#9670;&#160;</a></span>TransferLocked()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -818,7 +818,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a></td>          <td class="paramname"><span class="paramname"><em>effective_timeout</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a></td>          <td class="paramname"><span class="paramname"><em>effective_timeout</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">bool</a></td>          <td class="paramname"><span class="paramname"><em>park_mode3_after</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="classSoftChipSelectGuard.html">true</a></span></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -829,6 +834,12 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>One CS-framed HAL transfer; caller must hold <a class="el" href="classStmSpiBusLock.html">StmSpiBusLock</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">park_mode3_after</td><td>If false, leave Mode3 SPE/CPOL intact after the frame (TMC9660 TMCL cmd+NO_OP). Single Transfer parks; TransferChain parks only after the last frame. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

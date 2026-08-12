@@ -1,8 +1,5 @@
 var NAVTREEINDEX9 =
 {
-"classEspTemperature.html#a1b34d89cb1cc7b03100674bea303ab5a":[3,0,34,10],
-"classEspTemperature.html#a2587c0df6c5c4169bbec7d4fa5611917":[3,0,34,53],
-"classEspTemperature.html#a2665b30cb4301b8fccb577f74e4fa7fc":[3,0,34,39],
 "classEspTemperature.html#a2aa6d6cdd0f7d91c86ce759706d9f712":[3,0,34,28],
 "classEspTemperature.html#a2e11508c1cc97b8e44796d812319edeb":[3,0,34,18],
 "classEspTemperature.html#a31ccbc056a1b393a230ab8a2614bba2f":[3,0,34,24],
@@ -249,5 +246,8 @@ var NAVTREEINDEX9 =
 "classEspWifi.html#ac0a0787613efaf1d60a90904ff0c055a":[3,0,37,68],
 "classEspWifi.html#ac51e95ec9ea5a7b9f0e435ae374a9008":[3,0,37,88],
 "classEspWifi.html#ac55ce93c135b56d2a5ba7826c2563a1d":[3,0,37,22],
-"classEspWifi.html#ac97375ee76c569f3c121464bcd891462":[3,0,37,14]
+"classEspWifi.html#ac97375ee76c569f3c121464bcd891462":[3,0,37,14],
+"classEspWifi.html#acf463caaf71fcae20d22a391a0e66250":[3,0,37,95],
+"classEspWifi.html#acf74e0cf81678090bfd6217dbfc5d0ad":[3,0,37,89],
+"classEspWifi.html#ad654b6954920eef0906b3d4439e39c8c":[3,0,37,15]
 };

@@ -1,8 +1,5 @@
 var NAVTREEINDEX4 =
 {
-"UartComprehensiveTest_8cpp.html#a92fc927457f3740173fadd7c888f0792":[4,0,0,0,0,15,44],
-"UartComprehensiveTest_8cpp.html#a96732d2453431f2a10801aca28f87ef2":[4,0,0,0,0,15,17],
-"UartComprehensiveTest_8cpp.html#a987327fdfab23d745976f9d14327f810":[4,0,0,0,0,15,33],
 "UartComprehensiveTest_8cpp.html#a9dad16181f55c9fa8cfb7c5fd3e7efa3":[4,0,0,0,0,15,23],
 "UartComprehensiveTest_8cpp.html#aa1f7c585d82c1d233b4192ddc613b991":[4,0,0,0,0,15,49],
 "UartComprehensiveTest_8cpp.html#aa317317d3687febfd06a80dbec71dd12":[4,0,0,0,0,15,11],
@@ -249,5 +246,8 @@ var NAVTREEINDEX4 =
 "classBaseGpio.html#a9d5e847076559bec0fdd3724eb3a6e31":[1,3,5,45],
 "classBaseGpio.html#aa2a7854a7829455131113f059f498af0":[1,3,5,35],
 "classBaseGpio.html#aa33e02658b1a9eb41851c723b236758c":[1,3,5,40],
-"classBaseGpio.html#aa3e94ea07ff15dc719cdf5de7c2d1a46":[1,3,5,4]
+"classBaseGpio.html#aa3e94ea07ff15dc719cdf5de7c2d1a46":[1,3,5,4],
+"classBaseGpio.html#aa521b7b75306b4a53b6c726fa07406e9":[1,3,5,61],
+"classBaseGpio.html#aa5786db64ba7dc4114de02ae2b91483c":[1,3,5,22],
+"classBaseGpio.html#aa6ea99f5b6bfc64f0e94c50f9e91f2e1":[1,3,5,16]
 };
