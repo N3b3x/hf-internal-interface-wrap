@@ -1,8 +1,5 @@
 var NAVTREEINDEX10 =
 {
-"classEspWifi.html#acf463caaf71fcae20d22a391a0e66250":[3,0,37,95],
-"classEspWifi.html#acf74e0cf81678090bfd6217dbfc5d0ad":[3,0,37,89],
-"classEspWifi.html#ad654b6954920eef0906b3d4439e39c8c":[3,0,37,15],
 "classEspWifi.html#ad68fd60e9409c00ca010c613b97885ac":[3,0,37,1],
 "classEspWifi.html#ad9bcdfee7deaa0fd3bd1c41378e359dc":[3,0,37,76],
 "classEspWifi.html#ada59d1e26730024d5aec32ff04c4b351":[3,0,37,63],
@@ -249,5 +246,8 @@ var NAVTREEINDEX10 =
 "classStmLogger.html#a84d53e2a0f13748eba3e7835b58ce7f4":[3,0,162,29],
 "classStmLogger.html#a9385bc2edaebaddaf84544ae3b401ace":[3,0,162,33],
 "classStmLogger.html#a9746b9a039d212053454ecd23b6e3cee":[3,0,162,34],
-"classStmLogger.html#a9c4e3bddb5d4b2d0e36180cbcbb9da6e":[3,0,162,37]
+"classStmLogger.html#a9c4e3bddb5d4b2d0e36180cbcbb9da6e":[3,0,162,37],
+"classStmLogger.html#a9e48ff976993f72acf026b0bd40fc5fe":[3,0,162,38],
+"classStmLogger.html#aad07a8fb34502403b23fd347390a1c08":[3,0,162,22],
+"classStmLogger.html#aae2ab97cb870518bd85bf98c0e5bf4de":[3,0,162,19]
 };

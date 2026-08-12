@@ -57,10 +57,7 @@ var namespaces_dup =
       [ "CopyFromMaybeFmcToAxi", "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a9b70e6340dde68d5e013a8369652dcb9", null ],
       [ "CsEdgeSettle", "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a9395d2212b103c5c9150ec5c77ac91ee", null ],
       [ "FlushSpiFifo", "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a899000c13ecd09d81b13e23780711e72", null ],
-      [ "InterFrameGapUs", "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a001b9f9d7d6d2462b190dc5fa9f4bbff", null ],
-      [ "g_spi_axi_rx", "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a4dd214978f8306aaaa63ffd9e3776b05", null ],
-      [ "g_spi_axi_tx", "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a89c01d76c63867b951659a5210bd6898", null ],
-      [ "kSpiScratchBytes", "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#aa45f034b9ec9701cd8a73551bfbb559c", null ]
+      [ "InterFrameGapUs", "namespaceanonymous__namespace_02StmSpi_8cpp_03.html#a001b9f9d7d6d2462b190dc5fa9f4bbff", null ]
     ] ],
     [ "anonymous_namespace{StmUart.cpp}", "namespaceanonymous__namespace_02StmUart_8cpp_03.html", [
       [ "kDefaultTimeoutMs", "namespaceanonymous__namespace_02StmUart_8cpp_03.html#ab2a4d5fbf0156cc690a4ac7ed0757a95", null ],

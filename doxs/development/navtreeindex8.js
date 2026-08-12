@@ -1,8 +1,5 @@
 var NAVTREEINDEX8 =
 {
-"classEspNvs.html#a980345dc9dc0d96627b6ed26581f7cf8":[3,0,28,5],
-"classEspNvs.html#aac27c74c4373d1bc15d313ff6d8c7555":[3,0,28,12],
-"classEspNvs.html#ab0816ed77b7f1e54f645c45a001b17be":[3,0,28,10],
 "classEspNvs.html#ab85e421f5801e575ad96ad971bb6fa37":[3,0,28,23],
 "classEspNvs.html#aba531704bb6f31154c298342853b715c":[3,0,28,6],
 "classEspNvs.html#ac3813f7d3fd39f5493f1a8042fddcf1b":[3,0,28,13],
@@ -249,5 +246,8 @@ var NAVTREEINDEX8 =
 "classEspTemperature.html#a0715fa9a6cd6888fa147ee67b428f193":[3,0,34,4],
 "classEspTemperature.html#a0e3aba6824d5d671a2298f402d2b397c":[3,0,34,68],
 "classEspTemperature.html#a0f6b25191668374e3ebe3b475884e110":[3,0,34,13],
-"classEspTemperature.html#a149603f54dfa682cefceae26805a77e2":[3,0,34,42]
+"classEspTemperature.html#a149603f54dfa682cefceae26805a77e2":[3,0,34,42],
+"classEspTemperature.html#a1b34d89cb1cc7b03100674bea303ab5a":[3,0,34,10],
+"classEspTemperature.html#a2587c0df6c5c4169bbec7d4fa5611917":[3,0,34,53],
+"classEspTemperature.html#a2665b30cb4301b8fccb577f74e4fa7fc":[3,0,34,39]
 };
