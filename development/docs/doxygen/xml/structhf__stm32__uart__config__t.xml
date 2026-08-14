@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="387" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="387" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="401" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="401" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__stm32__uart__config__t_1a6e42429ce78a0126bfdf90dccb872c7a" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="388" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="388" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="402" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="402" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__stm32__uart__config__t_1af7dc1c0fbea2fd381db7aa9a3051dd17" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="389" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="389" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="403" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="403" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__stm32__uart__config__t_1a240d699ad2145374dd66233b2c4c0baf" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="390" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="390" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="404" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="404" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__stm32__uart__config__t_1a5467d3534c61b15e785ad440d146e368" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="391" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="391" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="405" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="405" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__stm32__uart__config__t_1a255e0bf42d0c7c6c7cd4dcc12d887468" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="392" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="392" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="406" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="406" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="394" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="394" bodyend="398"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="408" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="408" bodyend="412"/>
       </memberdef>
       <memberdef kind="function" id="structhf__stm32__uart__config__t_1a3d70606f21ad5b70305dd06ec647b1f4" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -131,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="400" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="400" bodyend="405"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="414" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="414" bodyend="419"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -139,7 +139,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/mcu/stm32/StmTypes.h" line="386" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="386" bodyend="406"/>
+    <location file="inc/mcu/stm32/StmTypes.h" line="400" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="400" bodyend="420"/>
     <listofallmembers>
       <member refid="structhf__stm32__uart__config__t_1a6e42429ce78a0126bfdf90dccb872c7a" prot="public" virt="non-virtual"><scope>hf_stm32_uart_config_t</scope><name>default_timeout_ms</name></member>
       <member refid="structhf__stm32__uart__config__t_1abcf1d5f93b287a31da247e588ea12d9a" prot="public" virt="non-virtual"><scope>hf_stm32_uart_config_t</scope><name>hal_handle</name></member>

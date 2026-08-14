@@ -144,9 +144,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aeabf2129d32b93d68715d4a1d20e3eee" id="r_aeabf2129d32b93d68715d4a1d20e3eee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">SPI_HandleTypeDef</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeabf2129d32b93d68715d4a1d20e3eee">GetHalHandle</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:aeabf2129d32b93d68715d4a1d20e3eee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Underlying CubeMX SPI handle (platform wiring only).  <br /></td></tr>
 <tr class="separator:aeabf2129d32b93d68715d4a1d20e3eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9d2f3f7cbc14f8d79e0ca8182a4ecb2" id="r_ac9d2f3f7cbc14f8d79e0ca8182a4ecb2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9d2f3f7cbc14f8d79e0ca8182a4ecb2">ApplyDeviceMode</a> (<a class="el" href="StmTypes_8h.html#af8e3d687e7b582925b62029f026625f9">hf_stm32_spi_mode_t</a> mode, <a class="el" href="classSoftChipSelectGuard.html">bool</a> <a class="el" href="classSoftChipSelectGuard.html">io_swap</a>=<a class="el" href="classSoftChipSelectGuard.html">false</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
-<tr class="memdesc:ac9d2f3f7cbc14f8d79e0ca8182a4ecb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply <code>mode</code> (CPOL/CPHA) to the HAL peripheral if it differs from the last applied mode. Safe to call with SPE briefly cleared.  <br /></td></tr>
-<tr class="separator:ac9d2f3f7cbc14f8d79e0ca8182a4ecb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a241b9d2caddb33849b14c0920fb48bf5" id="r_a241b9d2caddb33849b14c0920fb48bf5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a241b9d2caddb33849b14c0920fb48bf5">ApplyDeviceMode</a> (<a class="el" href="StmTypes_8h.html#af8e3d687e7b582925b62029f026625f9">hf_stm32_spi_mode_t</a> mode, <a class="el" href="classSoftChipSelectGuard.html">bool</a> <a class="el" href="classSoftChipSelectGuard.html">io_swap</a>=<a class="el" href="classSoftChipSelectGuard.html">false</a>, <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> <a class="el" href="classSoftChipSelectGuard.html">midi_cycles</a>=15) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a241b9d2caddb33849b14c0920fb48bf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply <code>mode</code> (CPOL/CPHA) and <code>midi_cycles</code> (<a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">CFG2.MIDI</a>) to the HAL peripheral if they differ from the last applied values. Safe to call with SPE briefly cleared.  <br /></td></tr>
+<tr class="separator:a241b9d2caddb33849b14c0920fb48bf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2942f7f1b57611474e8839226685471" id="r_ad2942f7f1b57611474e8839226685471"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2942f7f1b57611474e8839226685471">IdleAllChipSelects</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:ad2942f7f1b57611474e8839226685471"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drive every registered soft-CS to idle (active-low → HIGH).  <br /></td></tr>
 <tr class="separator:ad2942f7f1b57611474e8839226685471"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,6 +180,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:af81eaff03dddc44e3a62cbb981ddf6a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54c64c3bd0ee8eb8d44b59ba3c06a186" id="r_a54c64c3bd0ee8eb8d44b59ba3c06a186"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54c64c3bd0ee8eb8d44b59ba3c06a186">last_io_swap_</a> {<a class="el" href="classSoftChipSelectGuard.html">false</a>}</td></tr>
 <tr class="separator:a54c64c3bd0ee8eb8d44b59ba3c06a186"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dc2b6eaa83a547437684263ca5cf152" id="r_a9dc2b6eaa83a547437684263ca5cf152"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9dc2b6eaa83a547437684263ca5cf152">last_midi_cycles_</a> {15}</td></tr>
+<tr class="separator:a9dc2b6eaa83a547437684263ca5cf152"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a044f12506bf38f5d1537ecae167a866c" id="r_a044f12506bf38f5d1537ecae167a866c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="PlatformMutex_8h.html#a3448b54e0a94193058b38d135c1254ef">PlatformMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a044f12506bf38f5d1537ecae167a866c">bus_mutex_</a> {}</td></tr>
 <tr class="separator:a044f12506bf38f5d1537ecae167a866c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5303b40e97ecdc7f59d91a865cc97d92" id="r_a5303b40e97ecdc7f59d91a865cc97d92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::vector</a>&lt; <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::unique_ptr</a>&lt; <a class="el" href="classStmSpiDevice.html">StmSpiDevice</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5303b40e97ecdc7f59d91a865cc97d92">devices_</a></td></tr>
@@ -289,8 +291,8 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac9d2f3f7cbc14f8d79e0ca8182a4ecb2" name="ac9d2f3f7cbc14f8d79e0ca8182a4ecb2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9d2f3f7cbc14f8d79e0ca8182a4ecb2">&#9670;&#160;</a></span>ApplyDeviceMode()</h2>
+<a id="a241b9d2caddb33849b14c0920fb48bf5" name="a241b9d2caddb33849b14c0920fb48bf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a241b9d2caddb33849b14c0920fb48bf5">&#9670;&#160;</a></span>ApplyDeviceMode()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -306,7 +308,12 @@ Friends</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">bool</a></td>          <td class="paramname"><span class="paramname"><em>io_swap</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="classSoftChipSelectGuard.html">false</a></span></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">bool</a></td>          <td class="paramname"><span class="paramname"><em>io_swap</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="classSoftChipSelectGuard.html">false</a></span>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>          <td class="paramname"><span class="paramname"><em>midi_cycles</em><span class="paramdefsep"> = </span><span class="paramdefval">15</span></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -316,7 +323,13 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Apply <code>mode</code> (CPOL/CPHA) to the HAL peripheral if it differs from the last applied mode. Safe to call with SPE briefly cleared. </p>
+<p>Apply <code>mode</code> (CPOL/CPHA) and <code>midi_cycles</code> (<a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">CFG2.MIDI</a>) to the HAL peripheral if they differ from the last applied values. Safe to call with SPE briefly cleared. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">midi_cycles</td><td>SCK idle cycles between data frames (0–15). See <a class="el" href="structhf__spi__device__config__t.html#a4238394b7ed977bb267fad3ed3fefd56">hf_spi_device_config_t::inter_data_idle_cycles</a> for why this is per-device: FIFO-serviced slaves want the pause, shift-register slaves (TLE92466ED) need a continuous 32-bit stream. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section note"><dt>Note</dt><dd>Caller must hold <a class="el" href="classStmSpiBusLock.html">StmSpiBusLock</a> and have every soft-CS idle (see <a class="el" href="#ad2942f7f1b57611474e8839226685471">IdleAllChipSelects</a>) — SPE toggle must not clock a selected slave. </dd></dl>
 
 </div>
@@ -916,6 +929,28 @@ Friends</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> StmSpiBus::last_io_swap_ {<a class="el" href="classSoftChipSelectGuard.html">false</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9dc2b6eaa83a547437684263ca5cf152" name="a9dc2b6eaa83a547437684263ca5cf152"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dc2b6eaa83a547437684263ca5cf152">&#9670;&#160;</a></span>last_midi_cycles_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> StmSpiBus::last_midi_cycles_ {15}</td>
         </tr>
       </table>
   </td>

@@ -215,7 +215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="102" column="18" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="349" bodyend="362"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="102" column="18" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="353" bodyend="366"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiDevice_1a0460008b43be1249a3268280b877c7b1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref></type>
@@ -257,7 +257,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="112" column="18" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="364" bodyend="402"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="112" column="18" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="368" bodyend="406"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiDevice_1a454179a24cf34d9925fb0f72d240280e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
@@ -276,7 +276,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="117" column="16" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="404" bodyend="406"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="117" column="16" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="408" bodyend="410"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiDevice_1abfe53cdc8e2f9b6d15ec1394720c42d4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
@@ -384,7 +384,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="138" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="408" bodyend="417"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="138" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="412" bodyend="421"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiDevice_1a14982c1b1dac9337631b08722265baeb" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
@@ -399,7 +399,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="141" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="419" bodyend="427"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="141" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="423" bodyend="431"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiDevice_1a4d206b323c2477f3deea06ef4a0cb7ef" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref></type>
@@ -445,7 +445,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="147" column="18" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="242" bodyend="347"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="147" column="18" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="242" bodyend="351"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiDevice_1a101c3f09a77b3a50575d5c03f8223861" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -464,7 +464,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="152" column="14" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="429" bodyend="433"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="152" column="14" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="433" bodyend="437"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
@@ -485,7 +485,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="155" column="25" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="435" bodyend="443"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="155" column="25" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="439" bodyend="447"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

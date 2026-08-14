@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="541" column="18" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="541" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="555" column="18" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="555" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__stm32__gpio__config__t_1af233a9943a3b83a304ccbe615b4184e8" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="542" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="542" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="556" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="556" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="544" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="544" bodyend="544"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="558" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="558" bodyend="558"/>
       </memberdef>
       <memberdef kind="function" id="structhf__stm32__gpio__config__t_1abd38d682536d92553b32dc2605f63859" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -70,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="546" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="546" bodyend="547"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="560" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="560" bodyend="561"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -78,7 +78,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/mcu/stm32/StmTypes.h" line="540" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="540" bodyend="548"/>
+    <location file="inc/mcu/stm32/StmTypes.h" line="554" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="554" bodyend="562"/>
     <listofallmembers>
       <member refid="structhf__stm32__gpio__config__t_1a4ab082b616551040144e101b2f1c5c87" prot="public" virt="non-virtual"><scope>hf_stm32_gpio_config_t</scope><name>hf_stm32_gpio_config_t</name></member>
       <member refid="structhf__stm32__gpio__config__t_1abd38d682536d92553b32dc2605f63859" prot="public" virt="non-virtual"><scope>hf_stm32_gpio_config_t</scope><name>hf_stm32_gpio_config_t</name></member>

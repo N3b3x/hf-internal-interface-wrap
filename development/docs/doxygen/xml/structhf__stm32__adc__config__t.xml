@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="476" column="23" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="476" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="490" column="23" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="490" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__stm32__adc__config__t_1a2f97ce3ba37a917b7af6711362120607" prot="public" static="no" mutable="no">
         <type><ref refid="StmTypes_8h_1a827c04686b48b771092c229dad6ae4c6" kindref="member">hf_stm32_adc_resolution_t</ref></type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="477" column="31" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="477" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="491" column="31" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="491" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__stm32__adc__config__t_1aacd86ce8118085387d9f3338d114be72" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="478" column="11" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="478" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="492" column="11" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="492" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__stm32__adc__config__t_1a4a0ab19bfa783ca349951fca944d85eb" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="479" column="13" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="479" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="493" column="13" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="493" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="481" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="481" bodyend="485"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="495" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="495" bodyend="499"/>
       </memberdef>
       <memberdef kind="function" id="structhf__stm32__adc__config__t_1a8474c8aa3de9c844743e8f0414e8c726" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -106,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="487" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="487" bodyend="493"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="501" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="501" bodyend="507"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -114,7 +114,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/mcu/stm32/StmTypes.h" line="475" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="475" bodyend="494"/>
+    <location file="inc/mcu/stm32/StmTypes.h" line="489" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="489" bodyend="508"/>
     <listofallmembers>
       <member refid="structhf__stm32__adc__config__t_1a39e73c5e8ecb001d4cd33b9993569839" prot="public" virt="non-virtual"><scope>hf_stm32_adc_config_t</scope><name>hal_handle</name></member>
       <member refid="structhf__stm32__adc__config__t_1a7c1d88e5b70a0d9c62391ede24c215bc" prot="public" virt="non-virtual"><scope>hf_stm32_adc_config_t</scope><name>hf_stm32_adc_config_t</name></member>

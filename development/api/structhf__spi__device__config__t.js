@@ -16,6 +16,7 @@ var structhf__spi__device__config__t =
     [ "duty_cycle_pos", "structhf__spi__device__config__t.html#a02d8f3e893f9064d1454d3ec2f12ac7e", null ],
     [ "flags", "structhf__spi__device__config__t.html#a040077484b67765d25fa936a47c4848c", null ],
     [ "input_delay_ns", "structhf__spi__device__config__t.html#a44d47408b4e672d262e9f1f263a93f1f", null ],
+    [ "inter_data_idle_cycles", "structhf__spi__device__config__t.html#a4238394b7ed977bb267fad3ed3fefd56", null ],
     [ "mode", "structhf__spi__device__config__t.html#a7f5737b1045c78fc5ed7d8f2b6c9c0cf", null ],
     [ "mode", "structhf__spi__device__config__t.html#aa9392a6919ee46e1e39d5d3606ce8828", null ],
     [ "post_cb", "structhf__spi__device__config__t.html#aef5e3c25eff3b4ab346f894ec3c1556b", null ],

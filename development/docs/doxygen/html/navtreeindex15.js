@@ -1,5 +1,6 @@
 var NAVTREEINDEX15 =
 {
+"structHfEspWifiPerformanceConfig.html#a8acce75f19d3a1ee3b0793714ff5bf32":[3,0,146,7],
 "structHfEspWifiPerformanceConfig.html#a90aadc37b406c533e67c9d5358f6b3a5":[3,0,146,6],
 "structHfEspWifiPerformanceConfig.html#af5311b777dfdef3cf601bf8d7f92151e":[3,0,146,4],
 "structHfEspWifiStats.html":[3,0,147],
@@ -248,6 +249,5 @@ var NAVTREEINDEX15 =
 "structhf__adc__monitor__event__t.html#a64ae1858087a81ce05ba25ebdecca99f":[3,0,46,5],
 "structhf__adc__monitor__event__t.html#a83e42ca961a338f52c83548e51991995":[3,0,46,4],
 "structhf__adc__monitor__event__t.html#a97d31f767883bc5e9b8f7af01497ab76":[3,0,46,0],
-"structhf__adc__monitor__event__t.html#ae33b0564f3216e6ba36b03995a52b802":[3,0,46,2],
-"structhf__adc__monitor__event__t.html#aebe2167987d46739b01e3c6d35996eae":[3,0,46,1]
+"structhf__adc__monitor__event__t.html#ae33b0564f3216e6ba36b03995a52b802":[3,0,46,2]
 };

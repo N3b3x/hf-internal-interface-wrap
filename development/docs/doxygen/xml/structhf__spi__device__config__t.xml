@@ -336,6 +336,22 @@
         </inbodydescription>
         <location file="inc/mcu/stm32/StmTypes.h" line="354" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="354" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="variable" id="structhf__spi__device__config__t_1a4238394b7ed977bb267fad3ed3fefd56" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_spi_device_config_t::inter_data_idle_cycles</definition>
+        <argsstring></argsstring>
+        <name>inter_data_idle_cycles</name>
+        <qualifiedname>hf_spi_device_config_t::inter_data_idle_cycles</qualifiedname>
+        <briefdescription>
+<para>SCK idle cycles the master inserts between data frames (H7 SPI <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">CFG2.MIDI</ref>, 0–15), applied per-transfer with CPOL/CPHA. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>With 8-bit DataSize a multi-byte word is clocked as several data frames, so a non-zero value pauses SCK mid-word at every byte boundary. Slaves with firmware-serviced FIFOs (TMC9660 parameter mode) need the pause to refill; slaves that shift a hardware register through one CS window (TLE92466ED 32-bit frames) expect a continuous bit stream and are configured with 0. Default 15 preserves the bus-wide behavior that predates this field. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="367" column="13" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="367" bodyend="-1"/>
+      </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="structhf__spi__device__config__t_1ab71e2e6448dd897ca1bb7c26da09de4c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
@@ -364,7 +380,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="356" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="356" bodyend="358"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="369" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="369" bodyend="372"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -392,6 +408,7 @@
       <member refid="structhf__spi__device__config__t_1ab71e2e6448dd897ca1bb7c26da09de4c" prot="public" virt="non-virtual"><scope>hf_spi_device_config_t</scope><name>hf_spi_device_config_t</name></member>
       <member refid="structhf__spi__device__config__t_1ab71e2e6448dd897ca1bb7c26da09de4c" prot="public" virt="non-virtual"><scope>hf_spi_device_config_t</scope><name>hf_spi_device_config_t</name></member>
       <member refid="structhf__spi__device__config__t_1a44d47408b4e672d262e9f1f263a93f1f" prot="public" virt="non-virtual"><scope>hf_spi_device_config_t</scope><name>input_delay_ns</name></member>
+      <member refid="structhf__spi__device__config__t_1a4238394b7ed977bb267fad3ed3fefd56" prot="public" virt="non-virtual"><scope>hf_spi_device_config_t</scope><name>inter_data_idle_cycles</name></member>
       <member refid="structhf__spi__device__config__t_1a7f5737b1045c78fc5ed7d8f2b6c9c0cf" prot="public" virt="non-virtual"><scope>hf_spi_device_config_t</scope><name>mode</name></member>
       <member refid="structhf__spi__device__config__t_1aa9392a6919ee46e1e39d5d3606ce8828" prot="public" virt="non-virtual"><scope>hf_spi_device_config_t</scope><name>mode</name></member>
       <member refid="structhf__spi__device__config__t_1aef5e3c25eff3b4ab346f894ec3c1556b" prot="public" virt="non-virtual"><scope>hf_spi_device_config_t</scope><name>post_cb</name></member>

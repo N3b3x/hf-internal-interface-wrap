@@ -2454,6 +2454,7 @@
     <member refid="structhf__spi__device__config__t_1a74b7447d47d3b9dfb732739e82e05b6c" kind="variable"><name>cs_port</name></member>
     <member refid="structhf__spi__device__config__t_1a3da8a2c0078a8906e44588b02c5e7da5" kind="variable"><name>cs_pin</name></member>
     <member refid="structhf__spi__device__config__t_1a49f0df49a1753c32b1a6cf4d1bf2c3d2" kind="variable"><name>cs_active_low</name></member>
+    <member refid="structhf__spi__device__config__t_1a4238394b7ed977bb267fad3ed3fefd56" kind="variable"><name>inter_data_idle_cycles</name></member>
     <member refid="structhf__spi__device__config__t_1ab71e2e6448dd897ca1bb7c26da09de4c" kind="function"><name>hf_spi_device_config_t</name></member>
     <member refid="structhf__spi__device__config__t_1ab71e2e6448dd897ca1bb7c26da09de4c" kind="function"><name>hf_spi_device_config_t</name></member>
   </compound>
@@ -3220,6 +3221,7 @@
     <member refid="classStmSpiBus_1ad48dbdada26c78ab437c61c2d6e059c5" kind="variable"><name>mode_applied_</name></member>
     <member refid="classStmSpiBus_1af81eaff03dddc44e3a62cbb981ddf6a2" kind="variable"><name>last_mode_</name></member>
     <member refid="classStmSpiBus_1a54c64c3bd0ee8eb8d44b59ba3c06a186" kind="variable"><name>last_io_swap_</name></member>
+    <member refid="classStmSpiBus_1a9dc2b6eaa83a547437684263ca5cf152" kind="variable"><name>last_midi_cycles_</name></member>
     <member refid="classStmSpiBus_1a044f12506bf38f5d1537ecae167a866c" kind="variable"><name>bus_mutex_</name></member>
     <member refid="classStmSpiBus_1a5303b40e97ecdc7f59d91a865cc97d92" kind="variable"><name>devices_</name></member>
     <member refid="classStmSpiBus_1aa24aa9496fcc1c42359c19fac629934b" kind="variable"><name>scratch_tx_</name></member>
@@ -3237,7 +3239,7 @@
     <member refid="classStmSpiBus_1ad8fc3bd4ef289384acf536b01700aa3c" kind="function"><name>RemoveDevice</name></member>
     <member refid="classStmSpiBus_1a285df3f22b4b762454e5ca47af1ad31c" kind="function"><name>GetConfig</name></member>
     <member refid="classStmSpiBus_1aeabf2129d32b93d68715d4a1d20e3eee" kind="function"><name>GetHalHandle</name></member>
-    <member refid="classStmSpiBus_1ac9d2f3f7cbc14f8d79e0ca8182a4ecb2" kind="function"><name>ApplyDeviceMode</name></member>
+    <member refid="classStmSpiBus_1a241b9d2caddb33849b14c0920fb48bf5" kind="function"><name>ApplyDeviceMode</name></member>
     <member refid="classStmSpiBus_1ad2942f7f1b57611474e8839226685471" kind="function"><name>IdleAllChipSelects</name></member>
     <member refid="classStmSpiBus_1ac93b7752ef007137adbdb59b2069a96d" kind="function"><name>ProbeMisoLine</name></member>
     <member refid="classStmSpiBus_1a43c26fe98d90a3edd503451b8b1e8f38" kind="function"><name>ScratchTx</name></member>

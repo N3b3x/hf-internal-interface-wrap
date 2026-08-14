@@ -178,6 +178,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a49f0df49a1753c32b1a6cf4d1bf2c3d2" id="r_a49f0df49a1753c32b1a6cf4d1bf2c3d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49f0df49a1753c32b1a6cf4d1bf2c3d2">cs_active_low</a></td></tr>
 <tr class="memdesc:a49f0df49a1753c32b1a6cf4d1bf2c3d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">CS active low (default: true)  <br /></td></tr>
 <tr class="separator:a49f0df49a1753c32b1a6cf4d1bf2c3d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4238394b7ed977bb267fad3ed3fefd56" id="r_a4238394b7ed977bb267fad3ed3fefd56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4238394b7ed977bb267fad3ed3fefd56">inter_data_idle_cycles</a></td></tr>
+<tr class="memdesc:a4238394b7ed977bb267fad3ed3fefd56"><td class="mdescLeft">&#160;</td><td class="mdescRight">SCK idle cycles the master inserts between data frames (H7 SPI <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">CFG2.MIDI</a>, 0–15), applied per-transfer with CPOL/CPHA.  <br /></td></tr>
+<tr class="separator:a4238394b7ed977bb267fad3ed3fefd56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>SPI device configuration for STM32. </p>
@@ -468,6 +471,23 @@ Public Attributes</h2></td></tr>
 
 <p>Input delay (ns) </p>
 <p>Input delay in nanoseconds </p>
+
+</div>
+</div>
+<a id="a4238394b7ed977bb267fad3ed3fefd56" name="a4238394b7ed977bb267fad3ed3fefd56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4238394b7ed977bb267fad3ed3fefd56">&#9670;&#160;</a></span>inter_data_idle_cycles</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> hf_spi_device_config_t::inter_data_idle_cycles</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SCK idle cycles the master inserts between data frames (H7 SPI <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">CFG2.MIDI</a>, 0–15), applied per-transfer with CPOL/CPHA. </p>
+<p>With 8-bit DataSize a multi-byte word is clocked as several data frames, so a non-zero value pauses SCK mid-word at every byte boundary. Slaves with firmware-serviced FIFOs (TMC9660 parameter mode) need the pause to refill; slaves that shift a hardware register through one CS window (TLE92466ED 32-bit frames) expect a continuous bit stream and are configured with 0. Default 15 preserves the bus-wide behavior that predates this field. </p>
 
 </div>
 </div>

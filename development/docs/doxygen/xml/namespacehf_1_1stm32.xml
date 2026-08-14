@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="557" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="557" bodyend="562"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="571" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="571" bodyend="576"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="var">
@@ -806,7 +806,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="565" column="21" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="565" bodyend="573"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="579" column="21" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="579" bodyend="587"/>
       </memberdef>
       <memberdef kind="function" id="namespacehf_1_1stm32_1a61d8ada18ba35572dbf8fedc4d96501f" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">constexpr</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -825,7 +825,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="576" column="16" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="576" bodyend="578"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="590" column="16" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="590" bodyend="592"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
