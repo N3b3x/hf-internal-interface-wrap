@@ -352,10 +352,24 @@ struct hf_spi_device_config_t {
     GPIO_TypeDef* cs_port;             ///< CS GPIO port (e.g., GPIOA)
     hf_u16_t cs_pin;                   ///< CS GPIO pin mask (e.g., GPIO_PIN_4)
     bool cs_active_low;                ///< CS active low (default: true)
+    /**
+     * @brief SCK idle cycles the master inserts between data frames
+     *        (H7 SPI CFG2.MIDI, 0–15), applied per-transfer with CPOL/CPHA.
+     *
+     * With 8-bit DataSize a multi-byte word is clocked as several data frames,
+     * so a non-zero value pauses SCK mid-word at every byte boundary. Slaves
+     * with firmware-serviced FIFOs (TMC9660 parameter mode) need the pause to
+     * refill; slaves that shift a hardware register through one CS window
+     * (TLE92466ED 32-bit frames) expect a continuous bit stream and are
+     * configured with 0. Default 15 preserves the bus-wide behavior that
+     * predates this field.
+     */
+    hf_u8_t inter_data_idle_cycles;
 
     hf_spi_device_config_t() noexcept
         : clock_speed_hz(1000000), mode(hf_stm32_spi_mode_t::MODE_0),
-          cs_port(nullptr), cs_pin(0), cs_active_low(true) {}
+          cs_port(nullptr), cs_pin(0), cs_active_low(true),
+          inter_data_idle_cycles(15) {}
 };
 
 // ═══════════════════════════════════════════════════════════════════════════════

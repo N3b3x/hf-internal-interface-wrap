@@ -256,7 +256,8 @@ hf_spi_err_t StmSpiDevice::TransferLocked(const hf_u8_t* tx_data, hf_u8_t* rx_da
     DeassertCS();
     parent_bus_->IdleAllChipSelects();
 
-    if (!parent_bus_->ApplyDeviceMode(config_.mode, io_swap_)) {
+    if (!parent_bus_->ApplyDeviceMode(config_.mode, io_swap_,
+                                      config_.inter_data_idle_cycles)) {
         return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
     }
     /* SPE toggle can glitch SCK; wait with all CS high so Mode1 does not see a
@@ -340,7 +341,10 @@ hf_spi_err_t StmSpiDevice::TransferLocked(const hf_u8_t* tx_data, hf_u8_t* rx_da
         (config_.mode == hf_stm32_spi_mode_t::MODE_2 ||
          config_.mode == hf_stm32_spi_mode_t::MODE_3)) {
         parent_bus_->IdleAllChipSelects();
-        (void)parent_bus_->ApplyDeviceMode(hf_stm32_spi_mode_t::MODE_0, false);
+        /* Park CPOL=0 for Mode0/1 peers. MIDI=15 is the Cube/MAX/TMC default;
+         * TLE ApplyDeviceMode restores MIDI=0 on its next Transfer. */
+        (void)parent_bus_->ApplyDeviceMode(hf_stm32_spi_mode_t::MODE_0, false,
+                                           /*midi_cycles=*/15);
         InterFrameGapUs(10U);
     }
     return result;
@@ -615,9 +619,11 @@ hf_u8_t StmSpiBus::ProbeMisoLine(void* miso_port, hf_u8_t miso_pin_pos,
 #endif
 }
 
-bool StmSpiBus::ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap) noexcept {
+bool StmSpiBus::ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap,
+                                hf_u8_t midi_cycles) noexcept {
     SPI_HandleTypeDef* hspi = config_.hal_handle;
     if (!hspi) return false;
+    if (midi_cycles > 15U) midi_cycles = 15U;
 
 #if defined(USE_HAL_DRIVER)
     uint32_t cpol = SPI_POLARITY_LOW;
@@ -643,15 +649,19 @@ bool StmSpiBus::ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap) noexcept
             return false;
     }
     const uint32_t ioswp = io_swap ? SPI_IO_SWAP_ENABLE : SPI_IO_SWAP_DISABLE;
+    const uint32_t midi = (static_cast<uint32_t>(midi_cycles) << SPI_CFG2_MIDI_Pos) &
+                          SPI_CFG2_MIDI;
+    constexpr uint32_t kCfg2Fields =
+        SPI_CFG2_CPOL | SPI_CFG2_CPHA | SPI_CFG2_IOSWP | SPI_CFG2_MIDI;
 
     /* Skip SPE toggle only when HW CFG2 already matches. Do not trust
      * last_mode_ alone — PW_SPI_BENCH_WIRE_PROOF (and any peer) may poke
      * CFG2 without updating this cache. */
-    if (mode_applied_ && last_mode_ == mode && last_io_swap_ == io_swap) {
+    if (mode_applied_ && last_mode_ == mode && last_io_swap_ == io_swap &&
+        last_midi_cycles_ == midi_cycles) {
         const uint32_t cfg2 = READ_REG(hspi->Instance->CFG2);
-        const uint32_t want =
-            (cpol | cpha | ioswp) & (SPI_CFG2_CPOL | SPI_CFG2_CPHA | SPI_CFG2_IOSWP);
-        if ((cfg2 & (SPI_CFG2_CPOL | SPI_CFG2_CPHA | SPI_CFG2_IOSWP)) == want) {
+        const uint32_t want = (cpol | cpha | ioswp | midi) & kCfg2Fields;
+        if ((cfg2 & kCfg2Fields) == want) {
             /* Same invariant as the reconfigure path below: hand the peripheral
              * to HAL disabled so its CR2.TSIZE write is legal. */
             CLEAR_BIT(hspi->Instance->CR1, SPI_CR1_SPE);
@@ -666,10 +676,10 @@ bool StmSpiBus::ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap) noexcept
     hspi->Init.NSSPMode = SPI_NSS_PULSE_DISABLE;
     hspi->Init.IOSwap = ioswp;
     hspi->Init.MasterKeepIOState = SPI_MASTER_KEEP_IO_STATE_ENABLE;
+    hspi->Init.MasterInterDataIdleness = midi;
     CLEAR_BIT(hspi->Instance->CFG2, SPI_CFG2_SSOM);
     SET_BIT(hspi->Instance->CFG2, SPI_CFG2_AFCNTR); /* KeepIOState across SPE */
-    MODIFY_REG(hspi->Instance->CFG2, SPI_CFG2_CPOL | SPI_CFG2_CPHA | SPI_CFG2_IOSWP,
-               cpol | cpha | ioswp);
+    MODIFY_REG(hspi->Instance->CFG2, kCfg2Fields, cpol | cpha | ioswp | midi);
     /* Leave SPE CLEARED. RM0399 requires CR2.TSIZE to be written while the SPI
      * is disabled, and every HAL_SPI_* polling transfer does exactly that
      * (MODIFY_REG(CR2, TSIZE) → __HAL_SPI_ENABLE → CSTART) after
@@ -684,9 +694,8 @@ bool StmSpiBus::ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap) noexcept
 
     /* Prove CFG2 stuck before any soft-CS assert. */
     const uint32_t cfg2 = READ_REG(hspi->Instance->CFG2);
-    const uint32_t want =
-        (cpol | cpha | ioswp) & (SPI_CFG2_CPOL | SPI_CFG2_CPHA | SPI_CFG2_IOSWP);
-    if ((cfg2 & (SPI_CFG2_CPOL | SPI_CFG2_CPHA | SPI_CFG2_IOSWP)) != want) {
+    const uint32_t want = (cpol | cpha | ioswp | midi) & kCfg2Fields;
+    if ((cfg2 & kCfg2Fields) != want) {
         mode_applied_ = false;
         return false;
     }
@@ -698,10 +707,12 @@ bool StmSpiBus::ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap) noexcept
 #else
     (void)hspi;
     (void)io_swap;
+    (void)midi_cycles;
 #endif
 
     last_mode_ = mode;
     last_io_swap_ = io_swap;
+    last_midi_cycles_ = midi_cycles;
     mode_applied_ = true;
     return true;
 }

@@ -205,12 +205,18 @@ public:
     SPI_HandleTypeDef* GetHalHandle() const noexcept;
 
     /**
-     * @brief Apply @p mode (CPOL/CPHA) to the HAL peripheral if it differs
-     *        from the last applied mode. Safe to call with SPE briefly cleared.
+     * @brief Apply @p mode (CPOL/CPHA) and @p midi_cycles (CFG2.MIDI) to the
+     *        HAL peripheral if they differ from the last applied values.
+     *        Safe to call with SPE briefly cleared.
+     * @param midi_cycles SCK idle cycles between data frames (0–15). See
+     *        @ref hf_spi_device_config_t::inter_data_idle_cycles for why this
+     *        is per-device: FIFO-serviced slaves want the pause, shift-register
+     *        slaves (TLE92466ED) need a continuous 32-bit stream.
      * @note Caller must hold @ref StmSpiBusLock and have every soft-CS idle
      *       (see @ref IdleAllChipSelects) — SPE toggle must not clock a selected slave.
      */
-    bool ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap = false) noexcept;
+    bool ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap = false,
+                         hf_u8_t midi_cycles = 15) noexcept;
 
     /**
      * @brief Drive every registered soft-CS to idle (active-low → HIGH).
@@ -268,6 +274,7 @@ private:
     bool mode_applied_{false};
     hf_stm32_spi_mode_t last_mode_{hf_stm32_spi_mode_t::MODE_0};
     bool last_io_swap_{false};
+    hf_u8_t last_midi_cycles_{15};
     mutable PlatformMutex bus_mutex_{};
     std::vector<std::unique_ptr<StmSpiDevice>> devices_;
     alignas(4) uint8_t scratch_tx_[kScratchBytes]{};
