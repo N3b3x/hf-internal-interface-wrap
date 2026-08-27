@@ -80,24 +80,71 @@ void FlushSpiFifo(SPI_HandleTypeDef* hspi) noexcept {
     }
 }
 
-/**
- * Soft-CS setup/hold after GPIO assert / before deassert.
- * Datasheet tCSS/tCSH ≥ 50 ns; ~240 empty spins ≈ 1 µs @ 240 MHz.
- * Mode1 slaves are edge-sensitive after a peer SPE/CPOL rewrite — under-settling
- * yields empty or bit-shifted MISO on the next CS window.
- */
-void CsEdgeSettle() noexcept {
-    for (uint32_t spin = 240U; spin > 0U; --spin) {
+/* Busy-wait timebase for soft-CS setup/hold and inter-frame gaps.
+ *
+ * These delays used to be a fixed 240-iteration spin documented as "≈1 µs @
+ * 240 MHz". The loop body is three instructions, so on the 240 MHz CM4 it runs
+ * in ~3 µs, and every caller was silently paying 3× its stated budget:
+ * InterFrameGapUs(30) after a CPOL rewrite cost ~120 µs against 25.6 µs of
+ * actual wire time for a 32-bit frame. A TLE FB_DC/FB_I_AVG sweep is 23 frames,
+ * which is how a telemetry read turned into a 4.3 ms InnerControl step against
+ * a 2 ms deadline.
+ *
+ * DWT CYCCNT is already enabled by the board layer for WCET timing, so derive
+ * the delay from SystemCoreClock rather than trusting a calibrated loop. The
+ * spin loop stays as a fallback for cores/builds where CYCCNT does not count
+ * (no debug block, or TRCENA refused), because under-settling a Mode1 slave
+ * after a peer SPE/CPOL rewrite yields empty or bit-shifted MISO. */
+enum class SpiDelaySource : uint8_t { Unknown, CycleCounter, SpinLoop };
+SpiDelaySource g_delay_source = SpiDelaySource::Unknown;
+uint32_t g_cycles_per_us = 1U;
+
+void ResolveDelaySource() noexcept {
+    if (g_delay_source != SpiDelaySource::Unknown) {
+        return;
+    }
+    CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+    DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+    const uint32_t before = DWT->CYCCNT;
+    for (uint32_t i = 0; i < 8U; ++i) {
         __asm__ volatile("");
+    }
+    const uint32_t hz = SystemCoreClock;
+    if (DWT->CYCCNT != before && hz >= 1000000U) {
+        g_cycles_per_us = hz / 1000000U;
+        g_delay_source = SpiDelaySource::CycleCounter;
+    } else {
+        g_delay_source = SpiDelaySource::SpinLoop;
     }
 }
 
-/** Busy-wait approximately @p gap_us microseconds (CsEdgeSettle ≈ 1 µs). */
+/** Busy-wait @p gap_us microseconds. Accurate to one CYCCNT tick when available. */
 void InterFrameGapUs(uint32_t gap_us) noexcept {
+    if (gap_us == 0U) {
+        return;
+    }
+    ResolveDelaySource();
+    if (g_delay_source == SpiDelaySource::CycleCounter) {
+        const uint32_t target = gap_us * g_cycles_per_us;
+        const uint32_t start = DWT->CYCCNT;
+        while ((DWT->CYCCNT - start) < target) {
+            __asm__ volatile("");
+        }
+        return;
+    }
+    /* ~80 iterations ≈ 1 µs at 240 MHz on the three-instruction fallback loop. */
     for (uint32_t us = gap_us; us > 0U; --us) {
-        CsEdgeSettle();
+        for (uint32_t spin = 80U; spin > 0U; --spin) {
+            __asm__ volatile("");
+        }
     }
 }
+
+/**
+ * Soft-CS setup/hold after GPIO assert / before deassert (datasheet tCSS/tCSH
+ * ≥ 50 ns; 1 µs is ample margin on carrier lead lengths).
+ */
+void CsEdgeSettle() noexcept { InterFrameGapUs(1U); }
 #else
 void FlushSpiFifo(SPI_HandleTypeDef*) noexcept {}
 void CsEdgeSettle() noexcept {}
@@ -241,7 +288,8 @@ bool StmSpiDevice::SetIoSwap(bool enable) noexcept {
 
 hf_spi_err_t StmSpiDevice::TransferLocked(const hf_u8_t* tx_data, hf_u8_t* rx_data,
                                            hf_u16_t length, hf_u32_t effective_timeout,
-                                           bool park_mode3_after) noexcept {
+                                           bool park_mode3_after,
+                                           bool bus_already_armed) noexcept {
     SPI_HandleTypeDef* hspi = parent_bus_->GetHalHandle();
     if (!hspi) return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
 
@@ -249,28 +297,43 @@ hf_spi_err_t StmSpiDevice::TransferLocked(const hf_u8_t* tx_data, hf_u8_t* rx_da
         return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
     }
 
-    /* Shared-bus soft-CS contract (mixed Mode0/1/3 peers on one SPI):
-     * IdleAll → ApplyMode → assert ONLY this CS. Never rewrite SPE/CPOL while
-     * any peer CS is low (that slave would see phantom clocks). Every frame
-     * (including TransferChain dummies) re-asserts so each CS window is visible. */
-    DeassertCS();
-    parent_bus_->IdleAllChipSelects();
-
-    if (!parent_bus_->ApplyDeviceMode(config_.mode, io_swap_,
-                                      config_.inter_data_idle_cycles)) {
-        return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
-    }
-    /* SPE toggle can glitch SCK; wait with all CS high so Mode1 does not see a
-     * phantom edge (1-bit-early MISO). Mode0/1 need longer idle-LOW settle after
-     * a Mode3 peer left CPOL=1 on the shared SCK net. */
-    const bool cpol0 = (config_.mode == hf_stm32_spi_mode_t::MODE_0 ||
-                        config_.mode == hf_stm32_spi_mode_t::MODE_1);
-    if (cpol0) {
-        InterFrameGapUs(30U);
+    if (bus_already_armed) {
+        /* Mid-chain frame: the first frame already parked every peer CS and
+         * programmed CPOL/CPHA/MBR, and the bus lock has not been released
+         * since. Only the SPE clear is still required, because HAL's CR2.TSIZE
+         * write is illegal while the peripheral is enabled. */
+        CLEAR_BIT(hspi->Instance->CR1, SPI_CR1_SPE);
     } else {
-        CsEdgeSettle();
-        CsEdgeSettle();
-        CsEdgeSettle();
+        /* Shared-bus soft-CS contract (mixed Mode0/1/3 peers on one SPI):
+         * IdleAll → ApplyMode → assert ONLY this CS. Never rewrite SPE/CPOL
+         * while any peer CS is low (that slave would see phantom clocks). */
+        DeassertCS();
+        parent_bus_->IdleAllChipSelects();
+
+        bool mode_reconfigured = true;
+        if (!parent_bus_->ApplyDeviceMode(config_.mode, io_swap_,
+                                          config_.inter_data_idle_cycles,
+                                          config_.clock_speed_hz,
+                                          &mode_reconfigured)) {
+            return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
+        }
+        /* A CPOL/CPHA rewrite can glitch SCK; wait with all CS high so Mode1
+         * does not see a phantom edge (1-bit-early MISO). Mode0/1 need the
+         * longer idle-LOW settle after a Mode3 peer left CPOL=1 on the shared
+         * SCK net. When ApplyDeviceMode found the peripheral already
+         * configured it wrote nothing but the SPE clear, and AFCNTR holds the
+         * pads at the idle level — there is no edge to settle. */
+        const bool cpol0 = (config_.mode == hf_stm32_spi_mode_t::MODE_0 ||
+                            config_.mode == hf_stm32_spi_mode_t::MODE_1);
+        if (!mode_reconfigured) {
+            CsEdgeSettle();
+        } else if (cpol0) {
+            InterFrameGapUs(30U);
+        } else {
+            CsEdgeSettle();
+            CsEdgeSettle();
+            CsEdgeSettle();
+        }
     }
 
     const hf_u8_t* tx_ptr = tx_data;
@@ -391,10 +454,12 @@ hf_spi_err_t StmSpiDevice::TransferChain(const hf_u8_t* const* tx_frames,
         const hf_u8_t* tx = (tx_frames != nullptr) ? tx_frames[i] : nullptr;
         hf_u8_t* rx = (rx_frames != nullptr) ? rx_frames[i] : nullptr;
         const bool last = (i + 1U) >= frame_count;
-        /* Full IdleAll → mode → AssertCS per frame. Defer Mode3→Mode0 park
-         * until the last frame so pipelined Mode3 protocols stay coherent. */
+        /* Frame 0 arms the bus (IdleAll → mode); the rest reuse it under the
+         * same lock. Defer Mode3→Mode0 park until the last frame so pipelined
+         * Mode3 protocols stay coherent. */
         result = TransferLocked(tx, rx, frame_length, effective_timeout,
-                                /*park_mode3_after=*/last);
+                                /*park_mode3_after=*/last,
+                                /*bus_already_armed=*/i != 0U);
         if (result != hf_spi_err_t::SPI_SUCCESS) {
             break;
         }
@@ -619,13 +684,85 @@ hf_u8_t StmSpiBus::ProbeMisoLine(void* miso_port, hf_u8_t miso_pin_pos,
 #endif
 }
 
+hf_u8_t StmSpiBus::ResolveBaudMbr(hf_u32_t kernel_hz, hf_u32_t requested_hz) noexcept {
+    /* MBR field n divides the kernel clock by 2^(n+1): 0 → /2 … 7 → /256.
+     * Pick the fastest divisor that still lands at or below the request, so a
+     * device never sees a clock above the rate its datasheet allows. */
+    if (kernel_hz == 0U || requested_hz == 0U) {
+        return 7U;
+    }
+    for (hf_u8_t mbr = 0U; mbr < 7U; ++mbr) {
+        if ((kernel_hz >> (mbr + 1U)) <= requested_hz) {
+            return mbr;
+        }
+    }
+    return 7U;
+}
+
+hf_u32_t StmSpiBus::GetKernelClockHz() const noexcept {
+#if defined(USE_HAL_DRIVER) && defined(HAL_SPI_MODULE_ENABLED)
+    if (config_.hal_handle == nullptr || config_.hal_handle->Instance == nullptr) {
+        return 0U;
+    }
+    const SPI_TypeDef* inst = config_.hal_handle->Instance;
+    uint32_t periph = 0U;
+    if (inst == SPI1 || inst == SPI2 || inst == SPI3) {
+        periph = RCC_PERIPHCLK_SPI123;
+    } else if (inst == SPI4 || inst == SPI5) {
+        periph = RCC_PERIPHCLK_SPI45;
+    } else if (inst == SPI6) {
+        periph = RCC_PERIPHCLK_SPI6;
+    } else {
+        return 0U;
+    }
+    return static_cast<hf_u32_t>(HAL_RCCEx_GetPeriphCLKFreq(periph));
+#else
+    return 0U;
+#endif
+}
+
+hf_u32_t StmSpiBus::GetEffectiveClockHz() const noexcept {
+#if defined(USE_HAL_DRIVER) && defined(HAL_SPI_MODULE_ENABLED)
+    const hf_u32_t kernel = GetKernelClockHz();
+    if (kernel == 0U || config_.hal_handle == nullptr ||
+        config_.hal_handle->Instance == nullptr) {
+        return 0U;
+    }
+    const uint32_t mbr =
+        (READ_REG(config_.hal_handle->Instance->CFG1) & SPI_CFG1_MBR) >>
+        SPI_CFG1_MBR_Pos;
+    return kernel >> (mbr + 1U);
+#else
+    return 0U;
+#endif
+}
+
 bool StmSpiBus::ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap,
-                                hf_u8_t midi_cycles) noexcept {
+                                hf_u8_t midi_cycles,
+                                hf_u32_t clock_speed_hz,
+                                bool* reconfigured) noexcept {
+    if (reconfigured != nullptr) {
+        *reconfigured = true;
+    }
     SPI_HandleTypeDef* hspi = config_.hal_handle;
     if (!hspi) return false;
     if (midi_cycles > 15U) midi_cycles = 15U;
 
 #if defined(USE_HAL_DRIVER)
+    /* Resolve the per-device prescaler before the SPE toggle below; CFG1.MBR
+     * may only be written while SPE is clear, which is exactly the window this
+     * function already opens for CPOL/CPHA. A device that asks for 0 keeps
+     * whatever prescaler is programmed. */
+    hf_u8_t want_mbr = last_baud_mbr_;
+    bool set_baud = false;
+    if (clock_speed_hz != 0U) {
+        const hf_u32_t kernel = GetKernelClockHz();
+        if (kernel != 0U) {
+            want_mbr = ResolveBaudMbr(kernel, clock_speed_hz);
+            set_baud = true;
+        }
+    }
+
     uint32_t cpol = SPI_POLARITY_LOW;
     uint32_t cpha = SPI_PHASE_1EDGE;
     switch (mode) {
@@ -654,17 +791,28 @@ bool StmSpiBus::ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap,
     constexpr uint32_t kCfg2Fields =
         SPI_CFG2_CPOL | SPI_CFG2_CPHA | SPI_CFG2_IOSWP | SPI_CFG2_MIDI;
 
-    /* Skip SPE toggle only when HW CFG2 already matches. Do not trust
-     * last_mode_ alone — PW_SPI_BENCH_WIRE_PROOF (and any peer) may poke
-     * CFG2 without updating this cache. */
+    /* Skip SPE toggle only when HW CFG2 (and CFG1.MBR, when the device asked
+     * for a specific clock) already matches. Do not trust last_mode_ alone —
+     * PW_SPI_BENCH_WIRE_PROOF (and any peer) may poke CFG2 without updating
+     * this cache. */
     if (mode_applied_ && last_mode_ == mode && last_io_swap_ == io_swap &&
-        last_midi_cycles_ == midi_cycles) {
+        last_midi_cycles_ == midi_cycles &&
+        (!set_baud || last_baud_mbr_ == want_mbr)) {
         const uint32_t cfg2 = READ_REG(hspi->Instance->CFG2);
         const uint32_t want = (cpol | cpha | ioswp | midi) & kCfg2Fields;
-        if ((cfg2 & kCfg2Fields) == want) {
+        const bool baud_ok =
+            !set_baud || ((READ_REG(hspi->Instance->CFG1) & SPI_CFG1_MBR) ==
+                          (static_cast<uint32_t>(want_mbr) << SPI_CFG1_MBR_Pos));
+        if ((cfg2 & kCfg2Fields) == want && baud_ok) {
             /* Same invariant as the reconfigure path below: hand the peripheral
-             * to HAL disabled so its CR2.TSIZE write is legal. */
+             * to HAL disabled so its CR2.TSIZE write is legal. Clearing SPE with
+             * CFG2.AFCNTR=1 keeps the pads driven at the CPOL idle level, so
+             * nothing on the shared SCK/MOSI net moves and the caller can skip
+             * the post-mode settle. */
             CLEAR_BIT(hspi->Instance->CR1, SPI_CR1_SPE);
+            if (reconfigured != nullptr) {
+                *reconfigured = false;
+            }
             return true;
         }
     }
@@ -680,6 +828,15 @@ bool StmSpiBus::ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap,
     CLEAR_BIT(hspi->Instance->CFG2, SPI_CFG2_SSOM);
     SET_BIT(hspi->Instance->CFG2, SPI_CFG2_AFCNTR); /* KeepIOState across SPE */
     MODIFY_REG(hspi->Instance->CFG2, kCfg2Fields, cpol | cpha | ioswp | midi);
+    if (set_baud) {
+        /* SPE is clear here (RM0399 §"Baud rate control" requires it). Keep
+         * hspi->Init in sync so a later HAL_SPI_Init cannot silently revert to
+         * the CubeMX prescaler; the HAL macro value is exactly MBR << 28. */
+        MODIFY_REG(hspi->Instance->CFG1, SPI_CFG1_MBR,
+                   static_cast<uint32_t>(want_mbr) << SPI_CFG1_MBR_Pos);
+        hspi->Init.BaudRatePrescaler =
+            static_cast<uint32_t>(want_mbr) << SPI_CFG1_MBR_Pos;
+    }
     /* Leave SPE CLEARED. RM0399 requires CR2.TSIZE to be written while the SPI
      * is disabled, and every HAL_SPI_* polling transfer does exactly that
      * (MODIFY_REG(CR2, TSIZE) → __HAL_SPI_ENABLE → CSTART) after
@@ -692,10 +849,16 @@ bool StmSpiBus::ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap,
      * AFCNTR=1 keeps the pads driven at the CPOL idle level while SPE=0, so the
      * shared SCK net still parks correctly for Mode0/1 peers. */
 
-    /* Prove CFG2 stuck before any soft-CS assert. */
+    /* Prove CFG2 (and the prescaler) stuck before any soft-CS assert. */
     const uint32_t cfg2 = READ_REG(hspi->Instance->CFG2);
     const uint32_t want = (cpol | cpha | ioswp | midi) & kCfg2Fields;
     if ((cfg2 & kCfg2Fields) != want) {
+        mode_applied_ = false;
+        return false;
+    }
+    if (set_baud &&
+        (READ_REG(hspi->Instance->CFG1) & SPI_CFG1_MBR) !=
+            (static_cast<uint32_t>(want_mbr) << SPI_CFG1_MBR_Pos)) {
         mode_applied_ = false;
         return false;
     }
@@ -704,10 +867,14 @@ bool StmSpiBus::ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap,
      * gap from the SPE toggle that a logic analyzer labels as CPOL=1. */
     for (volatile uint32_t spin = 400U; spin > 0U; --spin) {
     }
+    if (set_baud) {
+        last_baud_mbr_ = want_mbr;
+    }
 #else
     (void)hspi;
     (void)io_swap;
     (void)midi_cycles;
+    (void)clock_speed_hz;
 #endif
 
     last_mode_ = mode;

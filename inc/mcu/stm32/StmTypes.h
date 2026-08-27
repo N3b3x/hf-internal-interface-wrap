@@ -347,7 +347,20 @@ struct hf_spi_bus_config_t {
 
 /// @brief SPI device configuration for STM32.
 struct hf_spi_device_config_t {
-    hf_u32_t clock_speed_hz;          ///< Preferred clock (Hz); CubeMX sets bus baud — keep ≤ that
+    /**
+     * @brief Target SCK frequency (Hz), applied per-transfer via CFG1.MBR.
+     *
+     * @ref StmSpiBus::ApplyDeviceMode picks the smallest prescaler whose
+     * resulting SCK does not exceed this value, so the effective clock is
+     * always ≤ the request. Peers on one peripheral may therefore run at
+     * different speeds: a shift-register slave (TLE92466ED, 8 MHz) does not
+     * have to inherit the prescaler a firmware-serviced slave (TMC9660) needs.
+     *
+     * Before this was honored the whole bus ran at the CubeMX prescaler, which
+     * had been slowed to /256 for the TMC9660 — the TLE paid a 68 µs wire time
+     * per 32-bit frame instead of 8 µs.
+     */
+    hf_u32_t clock_speed_hz;
     hf_stm32_spi_mode_t mode;         ///< CPOL/CPHA applied per-transfer by StmSpiBus
     GPIO_TypeDef* cs_port;             ///< CS GPIO port (e.g., GPIOA)
     hf_u16_t cs_pin;                   ///< CS GPIO pin mask (e.g., GPIO_PIN_4)

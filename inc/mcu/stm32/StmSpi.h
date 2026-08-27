@@ -144,9 +144,16 @@ private:
     /// @param park_mode3_after If false, leave Mode3 SPE/CPOL intact after the
     ///        frame (TMC9660 TMCL cmd+NO_OP). Single Transfer parks; TransferChain
     ///        parks only after the last frame.
+    /// @param bus_already_armed Set for the 2nd..Nth frame of a @ref TransferChain.
+    ///        The bus lock is held for the whole chain and every frame targets this
+    ///        same device, so no peer can have changed CPOL/CPHA/MBR or lowered a
+    ///        peer CS since the first frame armed them. Re-running IdleAllChipSelects
+    ///        + ApplyDeviceMode + the post-mode settle per frame cost more than the
+    ///        frame's own wire time on register bursts.
     hf_spi_err_t TransferLocked(const hf_u8_t* tx_data, hf_u8_t* rx_data,
                                 hf_u16_t length, hf_u32_t effective_timeout,
-                                bool park_mode3_after = true) noexcept;
+                                bool park_mode3_after = true,
+                                bool bus_already_armed = false) noexcept;
 
     /// @brief Resolve @p requested_ms against the parent bus default.
     hf_u32_t GetEffectiveTimeout(hf_u32_t requested_ms) const noexcept;
@@ -205,18 +212,51 @@ public:
     SPI_HandleTypeDef* GetHalHandle() const noexcept;
 
     /**
-     * @brief Apply @p mode (CPOL/CPHA) and @p midi_cycles (CFG2.MIDI) to the
-     *        HAL peripheral if they differ from the last applied values.
-     *        Safe to call with SPE briefly cleared.
+     * @brief Apply @p mode (CPOL/CPHA), @p midi_cycles (CFG2.MIDI) and
+     *        @p clock_speed_hz (CFG1.MBR) if they differ from the last applied
+     *        values. Safe to call with SPE briefly cleared.
      * @param midi_cycles SCK idle cycles between data frames (0–15). See
      *        @ref hf_spi_device_config_t::inter_data_idle_cycles for why this
      *        is per-device: FIFO-serviced slaves want the pause, shift-register
      *        slaves (TLE92466ED) need a continuous 32-bit stream.
+     * @param clock_speed_hz Target SCK in Hz; 0 keeps whatever prescaler is
+     *        already programmed (CubeMX default). See
+     *        @ref hf_spi_device_config_t::clock_speed_hz.
+     * @param reconfigured Optional out-flag: true when CFG1/CFG2 were actually
+     *        rewritten. Callers use this to decide whether the post-mode CPOL
+     *        settle is needed — an unchanged peripheral cannot have glitched
+     *        SCK, so the settle is pure WCET on a same-device repeat frame.
      * @note Caller must hold @ref StmSpiBusLock and have every soft-CS idle
      *       (see @ref IdleAllChipSelects) — SPE toggle must not clock a selected slave.
      */
     bool ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap = false,
-                         hf_u8_t midi_cycles = 15) noexcept;
+                         hf_u8_t midi_cycles = 15,
+                         hf_u32_t clock_speed_hz = 0,
+                         bool* reconfigured = nullptr) noexcept;
+
+    /**
+     * @brief Kernel clock feeding this SPI peripheral, in Hz (0 if unknown).
+     * @details Resolved from RCC at call time, so a clock-tree change cannot
+     *          silently invalidate a hard-coded assumption. SPI1/2/3 share
+     *          RCC_PERIPHCLK_SPI123, SPI4/5 share SPI45, SPI6 stands alone.
+     */
+    [[nodiscard]] hf_u32_t GetKernelClockHz() const noexcept;
+
+    /**
+     * @brief Effective SCK in Hz for the prescaler currently programmed.
+     * @return 0 when the kernel clock cannot be resolved.
+     */
+    [[nodiscard]] hf_u32_t GetEffectiveClockHz() const noexcept;
+
+    /**
+     * @brief Smallest CFG1.MBR whose SCK does not exceed @p requested_hz.
+     * @param kernel_hz Peripheral kernel clock.
+     * @param requested_hz Target SCK.
+     * @return MBR field value 0–7 (divisor 2^(MBR+1)); 7 when @p requested_hz
+     *         is below kernel/256, so the bus never runs faster than asked.
+     */
+    [[nodiscard]] static hf_u8_t ResolveBaudMbr(hf_u32_t kernel_hz,
+                                                hf_u32_t requested_hz) noexcept;
 
     /**
      * @brief Drive every registered soft-CS to idle (active-low → HIGH).
@@ -275,6 +315,9 @@ private:
     hf_stm32_spi_mode_t last_mode_{hf_stm32_spi_mode_t::MODE_0};
     bool last_io_swap_{false};
     hf_u8_t last_midi_cycles_{15};
+    /// Last CFG1.MBR written by ApplyDeviceMode; 0xFF = never written, so the
+    /// CubeMX prescaler stands until a device asks for a specific clock.
+    hf_u8_t last_baud_mbr_{0xFFU};
     mutable PlatformMutex bus_mutex_{};
     std::vector<std::unique_ptr<StmSpiDevice>> devices_;
     alignas(4) uint8_t scratch_tx_[kScratchBytes]{};
