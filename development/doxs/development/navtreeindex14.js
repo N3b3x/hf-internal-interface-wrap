@@ -1,5 +1,9 @@
 var NAVTREEINDEX14 =
 {
+"namespacehf_1_1stm32.html#a4b5614e96ae81ced775d3861471e9660":[2,0,11,0,30],
+"namespacehf_1_1stm32.html#a588459662879d0a82c1762ac94180ca4":[2,0,11,0,20],
+"namespacehf_1_1stm32.html#a5e1bc34db84044fc0347de2e79f44000":[2,0,11,0,22],
+"namespacehf_1_1stm32.html#a61d8ada18ba35572dbf8fedc4d96501f":[2,0,11,0,7],
 "namespacehf_1_1stm32.html#a6d5e0f8265882f9315391a8326dfda78":[2,0,11,0,5],
 "namespacehf_1_1stm32.html#a6e7e47d4e505dfae17a5d38bb723fc14":[2,0,11,0,34],
 "namespacehf_1_1stm32.html#a702ee715fcc5e3015199113a863049ef":[2,0,11,0,25],
@@ -245,9 +249,5 @@ var NAVTREEINDEX14 =
 "structHfEspWifiCalibration.html#abb24c638640ee96a9c8603264ca85821":[3,0,145,2],
 "structHfEspWifiPerformanceConfig.html":[3,0,146],
 "structHfEspWifiPerformanceConfig.html#a0b5e32f9e118c7808e91dc74ab2c3224":[3,0,146,8],
-"structHfEspWifiPerformanceConfig.html#a1d4c0185fc4a2532fdb257eb8cc1f6b2":[3,0,146,2],
-"structHfEspWifiPerformanceConfig.html#a2c97b68918d1c576df524467394df957":[3,0,146,3],
-"structHfEspWifiPerformanceConfig.html#a5b4e6e69f2f1cde36e92031e93c432e5":[3,0,146,5],
-"structHfEspWifiPerformanceConfig.html#a6807d776e72e4eed5059b65b1b8fcbe4":[3,0,146,0],
-"structHfEspWifiPerformanceConfig.html#a86e2fa842a619537f581b3eaefebe346":[3,0,146,1]
+"structHfEspWifiPerformanceConfig.html#a1d4c0185fc4a2532fdb257eb8cc1f6b2":[3,0,146,2]
 };

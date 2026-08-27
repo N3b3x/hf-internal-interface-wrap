@@ -14,7 +14,9 @@
 <para>Device clock speed (Hz) </para>
         </briefdescription>
         <detaileddescription>
-<para>Preferred clock (Hz); CubeMX sets bus baud — keep ≤ that.</para>
+<para>Target SCK frequency (Hz), applied per-transfer via <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">CFG1.MBR</ref>.</para>
+<para><ref refid="classStmSpiBus_1a2b8f2e103a1b639b0c97780ebaee7d8f" kindref="member">StmSpiBus::ApplyDeviceMode</ref> picks the smallest prescaler whose resulting SCK does not exceed this value, so the effective clock is always ≤ the request. Peers on one peripheral may therefore run at different speeds: a shift-register slave (TLE92466ED, 8 MHz) does not have to inherit the prescaler a firmware-serviced slave (TMC9660) needs.</para>
+<para>Before this was honored the whole bus ran at the CubeMX prescaler, which had been slowed to /256 for the TMC9660 — the TLE paid a 68 µs wire time per 32-bit frame instead of 8 µs.</para>
 <para>Device clock speed in Hz </para>
         </detaileddescription>
         <inbodydescription>
@@ -289,7 +291,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="351" column="25" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="351" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="364" column="25" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="364" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1a74b7447d47d3b9dfb732739e82e05b6c" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">GPIO_TypeDef</ref> *</type>
@@ -304,7 +306,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="352" column="18" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="352" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="365" column="18" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="365" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1a3da8a2c0078a8906e44588b02c5e7da5" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -319,7 +321,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="353" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="353" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="366" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="366" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1a49f0df49a1753c32b1a6cf4d1bf2c3d2" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -334,7 +336,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="354" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="354" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="367" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="367" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1a4238394b7ed977bb267fad3ed3fefd56" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -350,7 +352,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="367" column="13" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="367" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="380" column="13" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="380" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -380,7 +382,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmTypes.h" line="369" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="369" bodyend="372"/>
+        <location file="inc/mcu/stm32/StmTypes.h" line="382" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="382" bodyend="385"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

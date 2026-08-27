@@ -3222,6 +3222,7 @@
     <member refid="classStmSpiBus_1af81eaff03dddc44e3a62cbb981ddf6a2" kind="variable"><name>last_mode_</name></member>
     <member refid="classStmSpiBus_1a54c64c3bd0ee8eb8d44b59ba3c06a186" kind="variable"><name>last_io_swap_</name></member>
     <member refid="classStmSpiBus_1a9dc2b6eaa83a547437684263ca5cf152" kind="variable"><name>last_midi_cycles_</name></member>
+    <member refid="classStmSpiBus_1aa4528f8fe7eb1d49e42da9ee1d2b673e" kind="variable"><name>last_baud_mbr_</name></member>
     <member refid="classStmSpiBus_1a044f12506bf38f5d1537ecae167a866c" kind="variable"><name>bus_mutex_</name></member>
     <member refid="classStmSpiBus_1a5303b40e97ecdc7f59d91a865cc97d92" kind="variable"><name>devices_</name></member>
     <member refid="classStmSpiBus_1aa24aa9496fcc1c42359c19fac629934b" kind="variable"><name>scratch_tx_</name></member>
@@ -3239,13 +3240,16 @@
     <member refid="classStmSpiBus_1ad8fc3bd4ef289384acf536b01700aa3c" kind="function"><name>RemoveDevice</name></member>
     <member refid="classStmSpiBus_1a285df3f22b4b762454e5ca47af1ad31c" kind="function"><name>GetConfig</name></member>
     <member refid="classStmSpiBus_1aeabf2129d32b93d68715d4a1d20e3eee" kind="function"><name>GetHalHandle</name></member>
-    <member refid="classStmSpiBus_1a241b9d2caddb33849b14c0920fb48bf5" kind="function"><name>ApplyDeviceMode</name></member>
+    <member refid="classStmSpiBus_1a2b8f2e103a1b639b0c97780ebaee7d8f" kind="function"><name>ApplyDeviceMode</name></member>
+    <member refid="classStmSpiBus_1afbfa3f106f1a6616614f37aacf4a5d8a" kind="function"><name>GetKernelClockHz</name></member>
+    <member refid="classStmSpiBus_1accd28e18af2563c406de46e0a1b161d2" kind="function"><name>GetEffectiveClockHz</name></member>
     <member refid="classStmSpiBus_1ad2942f7f1b57611474e8839226685471" kind="function"><name>IdleAllChipSelects</name></member>
     <member refid="classStmSpiBus_1ac93b7752ef007137adbdb59b2069a96d" kind="function"><name>ProbeMisoLine</name></member>
     <member refid="classStmSpiBus_1a43c26fe98d90a3edd503451b8b1e8f38" kind="function"><name>ScratchTx</name></member>
     <member refid="classStmSpiBus_1a3b59df33f8a552ca5eb12136b116dc9b" kind="function"><name>ScratchRx</name></member>
     <member refid="classStmSpiBus_1a0375345f33cb95f9d0ff7c02c5dd323f" kind="function"><name>LockBus</name></member>
     <member refid="classStmSpiBus_1a3a9373812597b450310b1dae3311a733" kind="function"><name>UnlockBus</name></member>
+    <member refid="classStmSpiBus_1a42428e519f70d07be82ed1594549649c" kind="function"><name>ResolveBaudMbr</name></member>
   </compound>
   <compound refid="classStmSpiBusLock" kind="class"><name>StmSpiBusLock</name>
     <member refid="classStmSpiBusLock_1a2cb5dba2a195673057546d64d48d77ef" kind="variable"><name>bus_</name></member>
@@ -3277,7 +3281,7 @@
     <member refid="classStmSpiDevice_1a330f2558758a893af42d8efebef57f3f" kind="function"><name>GetConfig</name></member>
     <member refid="classStmSpiDevice_1a72d8ba6db14002784629df6b66f48d12" kind="function"><name>AssertCS</name></member>
     <member refid="classStmSpiDevice_1a14982c1b1dac9337631b08722265baeb" kind="function"><name>DeassertCS</name></member>
-    <member refid="classStmSpiDevice_1a4d206b323c2477f3deea06ef4a0cb7ef" kind="function"><name>TransferLocked</name></member>
+    <member refid="classStmSpiDevice_1ae654e06fb2b6fe39bdb3d3201901f5ac" kind="function"><name>TransferLocked</name></member>
     <member refid="classStmSpiDevice_1a101c3f09a77b3a50575d5c03f8223861" kind="function"><name>GetEffectiveTimeout</name></member>
     <member refid="classStmSpiDevice_1ad3874dd35a07942be355864ea4423e86" kind="function"><name>ConvertHalStatus</name></member>
   </compound>

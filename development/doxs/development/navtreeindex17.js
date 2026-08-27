@@ -1,5 +1,9 @@
 var NAVTREEINDEX17 =
 {
+"structhf__i2c__custom__command__t.html#a4135df4a3ac47350a09d0a0b82961c4e":[3,0,73,7],
+"structhf__i2c__custom__command__t.html#a4698f6963963e23ba7805ab1f4adb6c3":[3,0,73,2],
+"structhf__i2c__custom__command__t.html#a67428d9b9c1eb4c41cc8d6a115983734":[3,0,73,4],
+"structhf__i2c__custom__command__t.html#a6de318c10918bef3986dd18ec0cd7cdb":[3,0,73,5],
 "structhf__i2c__custom__command__t.html#a86b814f00746901f060cd9af475ae77f":[3,0,73,3],
 "structhf__i2c__custom__command__t.html#a93bab6bd6bd0615fad48568cda7e6bdc":[3,0,73,1],
 "structhf__i2c__custom__command__t.html#ae4f72d3a0a59bc3032477f339dbefc4a":[3,0,73,6],
@@ -245,9 +249,5 @@ var NAVTREEINDEX17 =
 "structhf__pio__statistics__t.html#ac75dd6fe92394a519fe158464e4a56f8":[3,0,96,0],
 "structhf__pio__symbol__t.html":[3,0,97],
 "structhf__pio__symbol__t.html#a021991e9177b00a59b8abff8cb0c50b7":[3,0,97,0],
-"structhf__pio__symbol__t.html#a522eddd62fb5581a8120c56c81075578":[3,0,97,3],
-"structhf__pio__symbol__t.html#a8323db153b99e97978f713bffc1037a6":[3,0,97,1],
-"structhf__pio__symbol__t.html#ab49d8ef9d5cf080825132bfefa3be9da":[3,0,97,2],
-"structhf__pwm__capabilities__t.html":[3,0,98],
-"structhf__pwm__capabilities__t.html#a18eb3aa4a859aea687a8f21726e1a6ef":[3,0,98,7]
+"structhf__pio__symbol__t.html#a522eddd62fb5581a8120c56c81075578":[3,0,97,3]
 };

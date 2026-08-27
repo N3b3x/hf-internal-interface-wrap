@@ -78,14 +78,14 @@ var NAVTREEINDEX =
 "classEspTemperature.html#a2aa6d6cdd0f7d91c86ce759706d9f712",
 "classEspWifi.html#ad68fd60e9409c00ca010c613b97885ac",
 "classStmLogger.html#ab2e828b85fc6aee9fd5f9cafc69f20c9",
-"functions_func_b.html",
-"group__gpio.html#gga2632aac2351807c35e790ec20bda305da9d05c78e2d6dbd4868a3c7ad13ed5c25",
-"namespacehf_1_1stm32.html#a6d5e0f8265882f9315391a8326dfda78",
-"structHfEspWifiPerformanceConfig.html#a8acce75f19d3a1ee3b0793714ff5bf32",
-"structhf__adc__monitor__event__t.html#aebe2167987d46739b01e3c6d35996eae",
-"structhf__i2c__custom__command__t.html#a86b814f00746901f060cd9af475ae77f",
-"structhf__pwm__capabilities__t.html#a2bedb3b1b9e5fb461dcc9467fa7e706a",
-"structhf__temp__diagnostics__t.html#a32db512c61749abbdac3e7190dfbe8e2"
+"functions_f.html",
+"group__gpio.html#gga2632aac2351807c35e790ec20bda305da8cc09234750055376887ad35240174e5",
+"namespacehf_1_1stm32.html#a4b5614e96ae81ced775d3861471e9660",
+"structHfEspWifiPerformanceConfig.html#a2c97b68918d1c576df524467394df957",
+"structhf__adc__monitor__event__t.html#a64ae1858087a81ce05ba25ebdecca99f",
+"structhf__i2c__custom__command__t.html#a4135df4a3ac47350a09d0a0b82961c4e",
+"structhf__pio__symbol__t.html#a8323db153b99e97978f713bffc1037a6",
+"structhf__temp__config__t.html#ae83ece7934b916be170ceadc925ddc97"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

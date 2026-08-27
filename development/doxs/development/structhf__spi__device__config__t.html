@@ -285,7 +285,9 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Device clock speed (Hz) </p>
-<p>Preferred clock (Hz); CubeMX sets bus baud — keep ≤ that.</p>
+<p>Target SCK frequency (Hz), applied per-transfer via <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">CFG1.MBR</a>.</p>
+<p><a class="el" href="classStmSpiBus.html#a2b8f2e103a1b639b0c97780ebaee7d8f">StmSpiBus::ApplyDeviceMode</a> picks the smallest prescaler whose resulting SCK does not exceed this value, so the effective clock is always ≤ the request. Peers on one peripheral may therefore run at different speeds: a shift-register slave (TLE92466ED, 8 MHz) does not have to inherit the prescaler a firmware-serviced slave (TMC9660) needs.</p>
+<p>Before this was honored the whole bus ran at the CubeMX prescaler, which had been slowed to /256 for the TMC9660 — the TLE paid a 68 µs wire time per 32-bit frame instead of 8 µs.</p>
 <p>Device clock speed in Hz </p>
 
 </div>
