@@ -219,8 +219,14 @@ bool StmSpiDevice::Initialize() noexcept {
     /* Soft-CS must be a push-pull GPIO output. CubeMX MX_GPIO_Init usually
      * does this, but Transfer previously only WritePin'd — if the ball was
      * still AF/input (or never claimed), CS stayed high forever while peers
-     * on other pins still transferred. Claim the pin here. */
+     * on other pins still transferred. Claim the pin here.
+     *
+     * Write the idle level *before* HAL_GPIO_Init: STM32 ODR resets to 0, so
+     * switching a pin to PP output without a prior WritePin selects every
+     * active-low slave until DeassertCS runs. Two AFE CS going low together
+     * fights SDI/SDO on the pressure board. */
     if (config_.cs_port && config_.cs_pin != 0) {
+        DeassertCS();
 #if defined(USE_HAL_DRIVER)
         GPIO_InitTypeDef gpio = {0};
         gpio.Pin = config_.cs_pin;
