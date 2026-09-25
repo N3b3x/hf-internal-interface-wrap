@@ -317,7 +317,8 @@ public:
       }
       if (inter_frame_gap_us > 0U && (i + 1U) < frame_count) {
         /* Portable busy-wait; STM32 override uses a tighter spin. */
-        for (volatile hf_u32_t spin = inter_frame_gap_us * 50U; spin > 0U; --spin) {
+        for (hf_u32_t spin = inter_frame_gap_us * 50U; spin > 0U; --spin) {
+          __asm__ volatile("" ::: "memory");
         }
       }
     }

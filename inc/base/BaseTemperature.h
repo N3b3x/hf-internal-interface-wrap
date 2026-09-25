@@ -556,7 +556,7 @@ public:
    * @param max_celsius Maximum temperature in Celsius
    * @return Error code (TEMP_SUCCESS on success, TEMP_ERR_UNSUPPORTED_OPERATION if not supported)
    */
-  virtual hf_temp_err_t SetRange(float min_celsius, float max_celsius) noexcept {
+  virtual hf_temp_err_t SetRange(float /*min_celsius*/, float /*max_celsius*/) noexcept {
     return hf_temp_err_t::TEMP_ERR_UNSUPPORTED_OPERATION;
   }
 
@@ -566,7 +566,7 @@ public:
    * @param max_celsius Pointer to store maximum temperature
    * @return Error code (TEMP_SUCCESS on success, TEMP_ERR_UNSUPPORTED_OPERATION if not supported)
    */
-  virtual hf_temp_err_t GetRange(float* min_celsius, float* max_celsius) const noexcept {
+  virtual hf_temp_err_t GetRange(float* /*min_celsius*/, float* /*max_celsius*/) const noexcept {
     return hf_temp_err_t::TEMP_ERR_UNSUPPORTED_OPERATION;
   }
 
@@ -575,7 +575,7 @@ public:
    * @param resolution_celsius Resolution in Celsius
    * @return Error code (TEMP_SUCCESS on success, TEMP_ERR_UNSUPPORTED_OPERATION if not supported)
    */
-  virtual hf_temp_err_t SetResolution(float resolution_celsius) noexcept {
+  virtual hf_temp_err_t SetResolution(float /*resolution_celsius*/) noexcept {
     return hf_temp_err_t::TEMP_ERR_UNSUPPORTED_OPERATION;
   }
 
@@ -584,7 +584,7 @@ public:
    * @param resolution_celsius Pointer to store resolution
    * @return Error code (TEMP_SUCCESS on success, TEMP_ERR_UNSUPPORTED_OPERATION if not supported)
    */
-  virtual hf_temp_err_t GetResolution(float* resolution_celsius) const noexcept {
+  virtual hf_temp_err_t GetResolution(float* /*resolution_celsius*/) const noexcept {
     return hf_temp_err_t::TEMP_ERR_UNSUPPORTED_OPERATION;
   }
 
@@ -594,8 +594,8 @@ public:
    * @param high_threshold_celsius High temperature threshold
    * @return Error code (TEMP_SUCCESS on success, TEMP_ERR_UNSUPPORTED_OPERATION if not supported)
    */
-  virtual hf_temp_err_t SetThresholds(float low_threshold_celsius,
-                                      float high_threshold_celsius) noexcept {
+  virtual hf_temp_err_t SetThresholds(float /*low_threshold_celsius*/,
+                                      float /*high_threshold_celsius*/) noexcept {
     return hf_temp_err_t::TEMP_ERR_UNSUPPORTED_OPERATION;
   }
 
@@ -605,8 +605,8 @@ public:
    * @param high_threshold_celsius Pointer to store high threshold
    * @return Error code (TEMP_SUCCESS on success, TEMP_ERR_UNSUPPORTED_OPERATION if not supported)
    */
-  virtual hf_temp_err_t GetThresholds(float* low_threshold_celsius,
-                                      float* high_threshold_celsius) const noexcept {
+  virtual hf_temp_err_t GetThresholds(float* /*low_threshold_celsius*/,
+                                      float* /*high_threshold_celsius*/) const noexcept {
     return hf_temp_err_t::TEMP_ERR_UNSUPPORTED_OPERATION;
   }
 
@@ -616,8 +616,8 @@ public:
    * @param user_data User data to pass to callback
    * @return Error code (TEMP_SUCCESS on success, TEMP_ERR_UNSUPPORTED_OPERATION if not supported)
    */
-  virtual hf_temp_err_t EnableThresholdMonitoring(hf_temp_threshold_callback_t callback,
-                                                  void* user_data) noexcept {
+  virtual hf_temp_err_t EnableThresholdMonitoring(hf_temp_threshold_callback_t /*callback*/,
+                                                  void* /*user_data*/) noexcept {
     return hf_temp_err_t::TEMP_ERR_UNSUPPORTED_OPERATION;
   }
 
@@ -636,9 +636,9 @@ public:
    * @param user_data User data to pass to callback
    * @return Error code (TEMP_SUCCESS on success, TEMP_ERR_UNSUPPORTED_OPERATION if not supported)
    */
-  virtual hf_temp_err_t StartContinuousMonitoring(hf_u32_t sample_rate_hz,
-                                                  hf_temp_reading_callback_t callback,
-                                                  void* user_data) noexcept {
+  virtual hf_temp_err_t StartContinuousMonitoring(hf_u32_t /*sample_rate_hz*/,
+                                                  hf_temp_reading_callback_t /*callback*/,
+                                                  void* /*user_data*/) noexcept {
     return hf_temp_err_t::TEMP_ERR_UNSUPPORTED_OPERATION;
   }
 
@@ -663,7 +663,7 @@ public:
    * @param reference_temperature_celsius Known reference temperature
    * @return Error code (TEMP_SUCCESS on success, TEMP_ERR_UNSUPPORTED_OPERATION if not supported)
    */
-  virtual hf_temp_err_t Calibrate(float reference_temperature_celsius) noexcept {
+  virtual hf_temp_err_t Calibrate(float /*reference_temperature_celsius*/) noexcept {
     return hf_temp_err_t::TEMP_ERR_UNSUPPORTED_OPERATION;
   }
 
@@ -672,7 +672,7 @@ public:
    * @param offset_celsius Calibration offset in Celsius
    * @return Error code (TEMP_SUCCESS on success, TEMP_ERR_UNSUPPORTED_OPERATION if not supported)
    */
-  virtual hf_temp_err_t SetCalibrationOffset(float offset_celsius) noexcept {
+  virtual hf_temp_err_t SetCalibrationOffset(float /*offset_celsius*/) noexcept {
     return hf_temp_err_t::TEMP_ERR_UNSUPPORTED_OPERATION;
   }
 
@@ -681,7 +681,7 @@ public:
    * @param offset_celsius Pointer to store calibration offset
    * @return Error code (TEMP_SUCCESS on success, TEMP_ERR_UNSUPPORTED_OPERATION if not supported)
    */
-  virtual hf_temp_err_t GetCalibrationOffset(float* offset_celsius) const noexcept {
+  virtual hf_temp_err_t GetCalibrationOffset(float* /*offset_celsius*/) const noexcept {
     return hf_temp_err_t::TEMP_ERR_UNSUPPORTED_OPERATION;
   }
 

@@ -596,9 +596,9 @@ public:
    * @param user_data User data passed to callback (optional)
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
-  virtual hf_gpio_err_t ConfigureInterrupt(hf_gpio_interrupt_trigger_t trigger,
-                                           InterruptCallback callback = nullptr,
-                                           void* user_data = nullptr) noexcept {
+  virtual hf_gpio_err_t ConfigureInterrupt(hf_gpio_interrupt_trigger_t /*trigger*/,
+                                           InterruptCallback /*callback*/ = nullptr,
+                                           void* /*user_data*/ = nullptr) noexcept {
     return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   }
 
@@ -623,7 +623,7 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = wait forever)
    * @return hf_gpio_err_t::GPIO_SUCCESS if interrupt occurred, error code otherwise
    */
-  virtual hf_gpio_err_t WaitForInterrupt(hf_u32_t timeout_ms = 0) noexcept {
+  virtual hf_gpio_err_t WaitForInterrupt(hf_u32_t /*timeout_ms*/ = 0) noexcept {
     return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   }
 
@@ -632,7 +632,7 @@ public:
    * @param status Reference to store status information
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
-  virtual hf_gpio_err_t GetInterruptStatus(InterruptStatus& status) noexcept {
+  virtual hf_gpio_err_t GetInterruptStatus(InterruptStatus& /*status*/) noexcept {
     return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   }
 

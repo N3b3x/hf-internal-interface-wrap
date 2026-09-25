@@ -228,7 +228,7 @@ bool StmSpiDevice::Initialize() noexcept {
     if (config_.cs_port && config_.cs_pin != 0) {
         DeassertCS();
 #if defined(USE_HAL_DRIVER)
-        GPIO_InitTypeDef gpio = {0};
+        GPIO_InitTypeDef gpio{};
         gpio.Pin = config_.cs_pin;
         gpio.Mode = GPIO_MODE_OUTPUT_PP;
         gpio.Pull = GPIO_PULLUP;
@@ -871,7 +871,8 @@ bool StmSpiBus::ApplyDeviceMode(hf_stm32_spi_mode_t mode, bool io_swap,
 
     /* Drive idle level (Mode0/1 = LOW) before soft-CS — avoids a float-high
      * gap from the SPE toggle that a logic analyzer labels as CPOL=1. */
-    for (volatile uint32_t spin = 400U; spin > 0U; --spin) {
+    for (uint32_t spin = 400U; spin > 0U; --spin) {
+        __asm__ volatile("" ::: "memory");
     }
     if (set_baud) {
         last_baud_mbr_ = want_mbr;

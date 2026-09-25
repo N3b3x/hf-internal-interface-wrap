@@ -115,7 +115,8 @@ void RecoverI2cAfterError(I2C_HandleTypeDef* hi2c) noexcept {
     FlushRxdr(hi2c);
     if (__HAL_I2C_GET_FLAG(hi2c, I2C_FLAG_BUSY) != RESET) {
         CLEAR_BIT(hi2c->Instance->CR1, I2C_CR1_PE);
-        for (volatile int i = 0; i < 32; ++i) {
+        for (int i = 0; i < 32; ++i) {
+            __asm__ volatile("" ::: "memory");
         }
         SET_BIT(hi2c->Instance->CR1, I2C_CR1_PE);
         FlushTxdr(hi2c);
