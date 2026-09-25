@@ -2,7 +2,7 @@ var searchData=
 [
   ['wait_5ffor_5fevent_0',['wait_for_event',['../CanComprehensiveTest_8cpp.html#a0778bcb00e384f7f31d1f2c1a5541c99',1,'CanComprehensiveTest.cpp']]],
   ['waitasyncoperationcomplete_1',['WaitAsyncOperationComplete',['../classEspI2cDevice.html#a0ab62985e51dd5aeca053f45d1ffafed',1,'EspI2cDevice']]],
-  ['waitforinterrupt_2',['WaitForInterrupt',['../classBaseGpio.html#a38643a8949be75f6944f15f140904d25',1,'BaseGpio::WaitForInterrupt()'],['../classEspGpio.html#ae518911cc7720b8ba4f7e854b3018a6f',1,'EspGpio::WaitForInterrupt()']]],
+  ['waitforinterrupt_2',['WaitForInterrupt',['../classBaseGpio.html#af89f9acd70b132054f1b6392cc08dd73',1,'BaseGpio::WaitForInterrupt()'],['../classEspGpio.html#ae518911cc7720b8ba4f7e854b3018a6f',1,'EspGpio::WaitForInterrupt()']]],
   ['waittransmitcomplete_3',['WaitTransmitComplete',['../classEspUart.html#abda8a2fd4c91670cd1325d4a04c33112',1,'EspUart']]],
   ['wakeup_5fconfig_5f_4',['wakeup_config_',['../classEspGpio.html#a5ff67c40d3adaa6183167b4beeda00be',1,'EspGpio']]],
   ['wakeup_5fcount_5',['wakeup_count',['../structhf__uart__statistics__t.html#a875aa4730e9e1d667034cfc839fd9958',1,'hf_uart_statistics_t']]],

@@ -442,7 +442,7 @@
         <argsstring>(float min_celsius, float max_celsius) noexcept override</argsstring>
         <name>SetRange</name>
         <qualifiedname>EspTemperature::SetRange</qualifiedname>
-        <reimplements refid="classBaseTemperature_1a1bfe9f1a1069222166008b4dafe5a282">SetRange</reimplements>
+        <reimplements refid="classBaseTemperature_1aca82bb6b260fd5714c336e79f780f7f9">SetRange</reimplements>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>min_celsius</declname>
@@ -486,7 +486,7 @@
         <argsstring>(float *min_celsius, float *max_celsius) const noexcept override</argsstring>
         <name>GetRange</name>
         <qualifiedname>EspTemperature::GetRange</qualifiedname>
-        <reimplements refid="classBaseTemperature_1a21d2b3e6c1855f666d5dc2856e9f8cea">GetRange</reimplements>
+        <reimplements refid="classBaseTemperature_1a034e1c87d5d0fc5ae5b3114de45db980">GetRange</reimplements>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>min_celsius</declname>
@@ -530,7 +530,7 @@
         <argsstring>(float *resolution_celsius) const noexcept override</argsstring>
         <name>GetResolution</name>
         <qualifiedname>EspTemperature::GetResolution</qualifiedname>
-        <reimplements refid="classBaseTemperature_1a5362eaf0cb2478a4e060d8dfca70f3c8">GetResolution</reimplements>
+        <reimplements refid="classBaseTemperature_1aebb100f416654165967e18582c2634f0">GetResolution</reimplements>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>resolution_celsius</declname>
@@ -562,7 +562,7 @@
         <argsstring>(float low_threshold_celsius, float high_threshold_celsius) noexcept override</argsstring>
         <name>SetThresholds</name>
         <qualifiedname>EspTemperature::SetThresholds</qualifiedname>
-        <reimplements refid="classBaseTemperature_1a483f6f9ec09ecd6e8cd32c9f61836763">SetThresholds</reimplements>
+        <reimplements refid="classBaseTemperature_1a607692aab99043b4e9873ad35a56de34">SetThresholds</reimplements>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>low_threshold_celsius</declname>
@@ -606,7 +606,7 @@
         <argsstring>(float *low_threshold_celsius, float *high_threshold_celsius) const noexcept override</argsstring>
         <name>GetThresholds</name>
         <qualifiedname>EspTemperature::GetThresholds</qualifiedname>
-        <reimplements refid="classBaseTemperature_1a692b8120d0ceb3ae699cd2bd0981b993">GetThresholds</reimplements>
+        <reimplements refid="classBaseTemperature_1a6fea20bd0cbaeb61568c739d0447b1bd">GetThresholds</reimplements>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>low_threshold_celsius</declname>
@@ -650,7 +650,7 @@
         <argsstring>(hf_temp_threshold_callback_t callback, void *user_data) noexcept override</argsstring>
         <name>EnableThresholdMonitoring</name>
         <qualifiedname>EspTemperature::EnableThresholdMonitoring</qualifiedname>
-        <reimplements refid="classBaseTemperature_1a210f2f34d7f356d8ff7f0531031f7856">EnableThresholdMonitoring</reimplements>
+        <reimplements refid="classBaseTemperature_1af7a98eb90aaf7a1a4ceacacd6909f8bd">EnableThresholdMonitoring</reimplements>
         <param>
           <type><ref refid="BaseTemperature_8h_1aeee4f575e7ed653aeea21a73e9ed893c" kindref="member">hf_temp_threshold_callback_t</ref></type>
           <declname>callback</declname>
@@ -713,7 +713,7 @@
         <argsstring>(hf_u32_t sample_rate_hz, hf_temp_reading_callback_t callback, void *user_data) noexcept override</argsstring>
         <name>StartContinuousMonitoring</name>
         <qualifiedname>EspTemperature::StartContinuousMonitoring</qualifiedname>
-        <reimplements refid="classBaseTemperature_1afd5288a4ce54793f06fab19960b38253">StartContinuousMonitoring</reimplements>
+        <reimplements refid="classBaseTemperature_1a68241947ffe1cbe57221b26348a15db6">StartContinuousMonitoring</reimplements>
         <param>
           <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
           <declname>sample_rate_hz</declname>
@@ -807,7 +807,7 @@
         <argsstring>(float offset_celsius) noexcept override</argsstring>
         <name>SetCalibrationOffset</name>
         <qualifiedname>EspTemperature::SetCalibrationOffset</qualifiedname>
-        <reimplements refid="classBaseTemperature_1a97cd78cf3f336211747e15a1c25d61ee">SetCalibrationOffset</reimplements>
+        <reimplements refid="classBaseTemperature_1a250446a1250eec95f9ca7e050d4fdc7d">SetCalibrationOffset</reimplements>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
           <declname>offset_celsius</declname>
@@ -839,7 +839,7 @@
         <argsstring>(float *offset_celsius) const noexcept override</argsstring>
         <name>GetCalibrationOffset</name>
         <qualifiedname>EspTemperature::GetCalibrationOffset</qualifiedname>
-        <reimplements refid="classBaseTemperature_1a55f58d0cccee590dd10e55c2668e7f0b">GetCalibrationOffset</reimplements>
+        <reimplements refid="classBaseTemperature_1a6f1a88266ba22d560682de392d50c0c4">GetCalibrationOffset</reimplements>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
           <declname>offset_celsius</declname>
@@ -1948,7 +1948,7 @@
       <member refid="classEspTemperature_1a2587c0df6c5c4169bbec7d4fa5611917" prot="private" virt="non-virtual"><scope>EspTemperature</scope><name>base_config_</name></member>
       <member refid="classBaseTemperature_1a115e5a44b15a1f507cb7c9163d262a5a" prot="public" virt="non-virtual"><scope>EspTemperature</scope><name>BaseTemperature</name></member>
       <member refid="classBaseTemperature_1a7570da5a5b76362a826c760c10bac847" prot="protected" virt="non-virtual"><scope>EspTemperature</scope><name>BaseTemperature</name></member>
-      <member refid="classBaseTemperature_1a4d84a21b7f330d3bc80accbd9f26b1c7" prot="public" virt="virtual"><scope>EspTemperature</scope><name>Calibrate</name></member>
+      <member refid="classBaseTemperature_1a18195e03bc84c7a341797427d1cd0d76" prot="public" virt="virtual"><scope>EspTemperature</scope><name>Calibrate</name></member>
       <member refid="classEspTemperature_1a0715fa9a6cd6888fa147ee67b428f193" prot="public" virt="virtual"><scope>EspTemperature</scope><name>CheckHealth</name></member>
       <member refid="classEspTemperature_1ac0b3dd90b074db26ee48e66748597faa" prot="private" virt="non-virtual"><scope>EspTemperature</scope><name>CheckThresholds</name></member>
       <member refid="classEspTemperature_1a66c274c7d49953c82209768c2e862dc4" prot="private" virt="non-virtual"><scope>EspTemperature</scope><name>ConfigureEspSensor</name></member>
@@ -2019,7 +2019,7 @@
       <member refid="classEspTemperature_1a149603f54dfa682cefceae26805a77e2" prot="private" virt="non-virtual"><scope>EspTemperature</scope><name>SetLastError</name></member>
       <member refid="classEspTemperature_1acd7f6f1c03014e99ddcc8816e1a666b7" prot="public" virt="non-virtual"><scope>EspTemperature</scope><name>SetMeasurementRange</name></member>
       <member refid="classEspTemperature_1a92b30bf532e07d1f1927d4fccf5322ba" prot="public" virt="virtual"><scope>EspTemperature</scope><name>SetRange</name></member>
-      <member refid="classBaseTemperature_1a93d2d276ad511dfa7c405a88c6ea0e01" prot="public" virt="virtual"><scope>EspTemperature</scope><name>SetResolution</name></member>
+      <member refid="classBaseTemperature_1af70c4fe99c4d0a4affe89dc6c74604ce" prot="public" virt="virtual"><scope>EspTemperature</scope><name>SetResolution</name></member>
       <member refid="classEspTemperature_1aaeda9f32dfc75e5ca2ab15142d0c9998" prot="public" virt="virtual"><scope>EspTemperature</scope><name>SetThresholds</name></member>
       <member refid="classEspTemperature_1a4d45a64d341f4d0342807dd134045516" prot="private" virt="non-virtual"><scope>EspTemperature</scope><name>SetupRange</name></member>
       <member refid="classEspTemperature_1acc1ea9c3a109b70bd67e4f285594e474" prot="public" virt="virtual"><scope>EspTemperature</scope><name>StartContinuousMonitoring</name></member>

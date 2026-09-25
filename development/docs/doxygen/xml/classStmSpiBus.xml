@@ -506,7 +506,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmSpi.h" line="232" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="746" bodyend="891"/>
+        <location file="inc/mcu/stm32/StmSpi.h" line="232" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="746" bodyend="892"/>
       </memberdef>
       <memberdef kind="function" id="classStmSpiBus_1afbfa3f106f1a6616614f37aacf4a5d8a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>

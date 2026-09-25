@@ -2,7 +2,7 @@ var searchData=
 [
   ['wait_5ffor_5fevent_0',['wait_for_event',['../CanComprehensiveTest_8cpp.html#a0778bcb00e384f7f31d1f2c1a5541c99',1,'CanComprehensiveTest.cpp']]],
   ['waitasyncoperationcomplete_1',['WaitAsyncOperationComplete',['../classEspI2cDevice.html#a0ab62985e51dd5aeca053f45d1ffafed',1,'EspI2cDevice']]],
-  ['waitforinterrupt_2',['WaitForInterrupt',['../classBaseGpio.html#a38643a8949be75f6944f15f140904d25',1,'BaseGpio::WaitForInterrupt()'],['../classEspGpio.html#ae518911cc7720b8ba4f7e854b3018a6f',1,'EspGpio::WaitForInterrupt()']]],
+  ['waitforinterrupt_2',['WaitForInterrupt',['../classBaseGpio.html#af89f9acd70b132054f1b6392cc08dd73',1,'BaseGpio::WaitForInterrupt()'],['../classEspGpio.html#ae518911cc7720b8ba4f7e854b3018a6f',1,'EspGpio::WaitForInterrupt()']]],
   ['waittransmitcomplete_3',['WaitTransmitComplete',['../classEspUart.html#abda8a2fd4c91670cd1325d4a04c33112',1,'EspUart']]],
   ['warn_4',['Warn',['../classBaseLogger.html#ac1492294d1cc35697eaf02d6b617cce8',1,'BaseLogger::Warn()'],['../classStmLogger.html#a335f9c0b5f3b6e5b334eac182fef091f',1,'StmLogger::Warn()']]],
   ['wifieventhandler_5',['wifiEventHandler',['../classEspWifi.html#a85ea58d88862a24b24e337551056b4f6',1,'EspWifi']]],

@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="499" column="8" bodyfile="inc/base/BaseSpi.h" bodystart="499" bodyend="-1"/>
+        <location file="inc/base/BaseSpi.h" line="500" column="8" bodyfile="inc/base/BaseSpi.h" bodystart="500" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseSpi_1a801d2346551161f1d2e1b755501cc1e1" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__spi__statistics__t" kindref="compound">hf_spi_statistics_t</ref></type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="500" column="23" bodyfile="inc/base/BaseSpi.h" bodystart="500" bodyend="-1"/>
+        <location file="inc/base/BaseSpi.h" line="501" column="23" bodyfile="inc/base/BaseSpi.h" bodystart="501" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseSpi_1aa215f89886b0839c13e94f52e9725444" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__spi__diagnostics__t" kindref="compound">hf_spi_diagnostics_t</ref></type>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="501" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="501" bodyend="-1"/>
+        <location file="inc/base/BaseSpi.h" line="502" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="502" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -426,7 +426,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="301" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="301" bodyend="325"/>
+        <location file="inc/base/BaseSpi.h" line="301" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="301" bodyend="326"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a6dd381f6a4423927bb59adb4395074ed" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
@@ -446,7 +446,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="331" column="22"/>
+        <location file="inc/base/BaseSpi.h" line="332" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a00e8995f1ccc7a5ab078e7b4c19ffa95" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -464,7 +464,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="341" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="341" bodyend="343"/>
+        <location file="inc/base/BaseSpi.h" line="342" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="342" bodyend="344"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a88b3ba81405134a3566a01ca170bf8bb" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -482,7 +482,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="349" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="349" bodyend="355"/>
+        <location file="inc/base/BaseSpi.h" line="350" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="350" bodyend="356"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a949d019c6b5d68d6f3949a63316bfcd0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -537,7 +537,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="364" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="364" bodyend="369"/>
+        <location file="inc/base/BaseSpi.h" line="365" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="365" bodyend="370"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a9f84c77a20232f43082b4a493c9baaf2" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref></type>
@@ -593,7 +593,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="378" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="378" bodyend="381"/>
+        <location file="inc/base/BaseSpi.h" line="379" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="379" bodyend="382"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a64493eb569f32c72a0ee8b1cbf90337d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref></type>
@@ -649,7 +649,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="390" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="390" bodyend="392"/>
+        <location file="inc/base/BaseSpi.h" line="391" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="391" bodyend="393"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a5c378f3322713d058a08b8b205ad821e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -692,7 +692,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="400" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="400" bodyend="405"/>
+        <location file="inc/base/BaseSpi.h" line="401" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="401" bodyend="406"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1af49a8f4a53f964975a4d4645b875e5d1" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -735,7 +735,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="413" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="413" bodyend="418"/>
+        <location file="inc/base/BaseSpi.h" line="414" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="414" bodyend="419"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a31a33d8d816ce7189982455bed742905" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -766,7 +766,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="425" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="425" bodyend="427"/>
+        <location file="inc/base/BaseSpi.h" line="426" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="426" bodyend="428"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1aef966769cc28e0e5f44e627a4a59602b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -797,7 +797,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="434" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="434" bodyend="436"/>
+        <location file="inc/base/BaseSpi.h" line="435" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="435" bodyend="437"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1ac4b29e0ea6f6dd6d4c514e8d24ca13d2" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -840,7 +840,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="444" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="444" bodyend="446"/>
+        <location file="inc/base/BaseSpi.h" line="445" column="16" bodyfile="inc/base/BaseSpi.h" bodystart="445" bodyend="447"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a7f63d12c1a0fad18ede02f8a7f2ab6d6" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref></type>
@@ -860,7 +860,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="457" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="457" bodyend="460"/>
+        <location file="inc/base/BaseSpi.h" line="458" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="458" bodyend="461"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a245c1518757648334ad2d2edd459c2f9" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref></type>
@@ -880,7 +880,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="467" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="467" bodyend="470"/>
+        <location file="inc/base/BaseSpi.h" line="468" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="468" bodyend="471"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1a034862a5015ab8d5bb10ddebfabdd7d6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref></type>
@@ -911,7 +911,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="477" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="477" bodyend="480"/>
+        <location file="inc/base/BaseSpi.h" line="478" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="478" bodyend="481"/>
       </memberdef>
       <memberdef kind="function" id="classBaseSpi_1af87f59a0d9b50a13294d72f2c123fdda" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref></type>
@@ -942,7 +942,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="487" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="487" bodyend="490"/>
+        <location file="inc/base/BaseSpi.h" line="488" column="24" bodyfile="inc/base/BaseSpi.h" bodystart="488" bodyend="491"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -962,7 +962,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseSpi.h" line="497" column="3" bodyfile="inc/base/BaseSpi.h" bodystart="497" bodyend="497"/>
+        <location file="inc/base/BaseSpi.h" line="498" column="3" bodyfile="inc/base/BaseSpi.h" bodystart="498" bodyend="498"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1033,7 +1033,7 @@
         <link refid="structhf__spi__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/base/BaseSpi.h" line="184" column="1" bodyfile="inc/base/BaseSpi.h" bodystart="184" bodyend="502"/>
+    <location file="inc/base/BaseSpi.h" line="184" column="1" bodyfile="inc/base/BaseSpi.h" bodystart="184" bodyend="503"/>
     <listofallmembers>
       <member refid="classBaseSpi_1abf33121948481f9001f6d18042da61bb" prot="public" virt="non-virtual"><scope>BaseSpi</scope><name>BaseSpi</name></member>
       <member refid="classBaseSpi_1a3e7a45c66f5c951d6f023ad361e00dd2" prot="public" virt="non-virtual"><scope>BaseSpi</scope><name>BaseSpi</name></member>

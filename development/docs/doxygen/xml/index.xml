@@ -169,11 +169,11 @@
     <member refid="classBaseGpio_1adc93269f341ba2ec1a2b35dc32f4f31a" kind="function"><name>GetMaxPins</name></member>
     <member refid="classBaseGpio_1a36d5613164945ed0d1fdd121bb47bff3" kind="function"><name>GetDescription</name></member>
     <member refid="classBaseGpio_1a90af5a4646e3d15940bf2604a705233d" kind="function"><name>SupportsInterrupts</name></member>
-    <member refid="classBaseGpio_1aa3e94ea07ff15dc719cdf5de7c2d1a46" kind="function"><name>ConfigureInterrupt</name></member>
+    <member refid="classBaseGpio_1a6a2fc7c76e6c33c9db7c3fe54cd48578" kind="function"><name>ConfigureInterrupt</name></member>
     <member refid="classBaseGpio_1a379720946db91ef301fe14d8385d8208" kind="function"><name>EnableInterrupt</name></member>
     <member refid="classBaseGpio_1ab2a4153923e1411a7abd5e7a0e406018" kind="function"><name>DisableInterrupt</name></member>
-    <member refid="classBaseGpio_1a38643a8949be75f6944f15f140904d25" kind="function"><name>WaitForInterrupt</name></member>
-    <member refid="classBaseGpio_1aa6ea99f5b6bfc64f0e94c50f9e91f2e1" kind="function"><name>GetInterruptStatus</name></member>
+    <member refid="classBaseGpio_1af89f9acd70b132054f1b6392cc08dd73" kind="function"><name>WaitForInterrupt</name></member>
+    <member refid="classBaseGpio_1afa4d09bd5c27643a68d2fa7724f2fa9b" kind="function"><name>GetInterruptStatus</name></member>
     <member refid="classBaseGpio_1a850ba260aec4cda209a53136c9c270b9" kind="function"><name>ClearInterruptStats</name></member>
     <member refid="classBaseGpio_1ab90fba65d84dd0249076b89052568bcb" kind="function"><name>ResetStatistics</name></member>
     <member refid="classBaseGpio_1a3d3400ff38b0f0531ecce0a432b25367" kind="function"><name>ResetDiagnostics</name></member>
@@ -465,20 +465,20 @@
     <member refid="classBaseTemperature_1a8250ed681311b1ae3732919df8d3962a" kind="function"><name>GetSensorInfo</name></member>
     <member refid="classBaseTemperature_1a765c86c7680b43f7d075b9f392188611" kind="function"><name>GetCapabilities</name></member>
     <member refid="classBaseTemperature_1ad97ed939d85e2686653d76967c53f790" kind="function"><name>HasCapability</name></member>
-    <member refid="classBaseTemperature_1a1bfe9f1a1069222166008b4dafe5a282" kind="function"><name>SetRange</name></member>
-    <member refid="classBaseTemperature_1a21d2b3e6c1855f666d5dc2856e9f8cea" kind="function"><name>GetRange</name></member>
-    <member refid="classBaseTemperature_1a93d2d276ad511dfa7c405a88c6ea0e01" kind="function"><name>SetResolution</name></member>
-    <member refid="classBaseTemperature_1a5362eaf0cb2478a4e060d8dfca70f3c8" kind="function"><name>GetResolution</name></member>
-    <member refid="classBaseTemperature_1a483f6f9ec09ecd6e8cd32c9f61836763" kind="function"><name>SetThresholds</name></member>
-    <member refid="classBaseTemperature_1a692b8120d0ceb3ae699cd2bd0981b993" kind="function"><name>GetThresholds</name></member>
-    <member refid="classBaseTemperature_1a210f2f34d7f356d8ff7f0531031f7856" kind="function"><name>EnableThresholdMonitoring</name></member>
+    <member refid="classBaseTemperature_1aca82bb6b260fd5714c336e79f780f7f9" kind="function"><name>SetRange</name></member>
+    <member refid="classBaseTemperature_1a034e1c87d5d0fc5ae5b3114de45db980" kind="function"><name>GetRange</name></member>
+    <member refid="classBaseTemperature_1af70c4fe99c4d0a4affe89dc6c74604ce" kind="function"><name>SetResolution</name></member>
+    <member refid="classBaseTemperature_1aebb100f416654165967e18582c2634f0" kind="function"><name>GetResolution</name></member>
+    <member refid="classBaseTemperature_1a607692aab99043b4e9873ad35a56de34" kind="function"><name>SetThresholds</name></member>
+    <member refid="classBaseTemperature_1a6fea20bd0cbaeb61568c739d0447b1bd" kind="function"><name>GetThresholds</name></member>
+    <member refid="classBaseTemperature_1af7a98eb90aaf7a1a4ceacacd6909f8bd" kind="function"><name>EnableThresholdMonitoring</name></member>
     <member refid="classBaseTemperature_1ad0326eb2b71271b06e2eccffe79561cd" kind="function"><name>DisableThresholdMonitoring</name></member>
-    <member refid="classBaseTemperature_1afd5288a4ce54793f06fab19960b38253" kind="function"><name>StartContinuousMonitoring</name></member>
+    <member refid="classBaseTemperature_1a68241947ffe1cbe57221b26348a15db6" kind="function"><name>StartContinuousMonitoring</name></member>
     <member refid="classBaseTemperature_1a30f3527c16c76f65e2deb4a89412e231" kind="function"><name>StopContinuousMonitoring</name></member>
     <member refid="classBaseTemperature_1ab965dfed096914ca4a8e733b17bc978e" kind="function"><name>IsMonitoringActive</name></member>
-    <member refid="classBaseTemperature_1a4d84a21b7f330d3bc80accbd9f26b1c7" kind="function"><name>Calibrate</name></member>
-    <member refid="classBaseTemperature_1a97cd78cf3f336211747e15a1c25d61ee" kind="function"><name>SetCalibrationOffset</name></member>
-    <member refid="classBaseTemperature_1a55f58d0cccee590dd10e55c2668e7f0b" kind="function"><name>GetCalibrationOffset</name></member>
+    <member refid="classBaseTemperature_1a18195e03bc84c7a341797427d1cd0d76" kind="function"><name>Calibrate</name></member>
+    <member refid="classBaseTemperature_1a250446a1250eec95f9ca7e050d4fdc7d" kind="function"><name>SetCalibrationOffset</name></member>
+    <member refid="classBaseTemperature_1a6f1a88266ba22d560682de392d50c0c4" kind="function"><name>GetCalibrationOffset</name></member>
     <member refid="classBaseTemperature_1a2be35c2e9f2cd233d77353591bfc3f53" kind="function"><name>ResetCalibration</name></member>
     <member refid="classBaseTemperature_1abbef25249b2e935e8954a150519b2342" kind="function"><name>EnterSleepMode</name></member>
     <member refid="classBaseTemperature_1a52a0318d160c45fdee55b15d7148856c" kind="function"><name>ExitSleepMode</name></member>

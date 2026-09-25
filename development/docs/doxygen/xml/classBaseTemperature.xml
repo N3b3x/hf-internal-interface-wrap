@@ -412,21 +412,19 @@
         </inbodydescription>
         <location file="inc/base/BaseTemperature.h" line="547" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="828" bodyend="830"/>
       </memberdef>
-      <memberdef kind="function" id="classBaseTemperature_1a1bfe9f1a1069222166008b4dafe5a282" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+      <memberdef kind="function" id="classBaseTemperature_1aca82bb6b260fd5714c336e79f780f7f9" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
         <definition>virtual hf_temp_err_t BaseTemperature::SetRange</definition>
-        <argsstring>(float min_celsius, float max_celsius) noexcept</argsstring>
+        <argsstring>(float, float) noexcept</argsstring>
         <name>SetRange</name>
         <qualifiedname>BaseTemperature::SetRange</qualifiedname>
         <reimplementedby refid="classEspTemperature_1a92b30bf532e07d1f1927d4fccf5322ba">SetRange</reimplementedby>
         <reimplementedby refid="classStmTemperature_1a608596a4778ff7dbcc6b29099d525afb">SetRange</reimplementedby>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
-          <declname>min_celsius</declname>
         </param>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
-          <declname>max_celsius</declname>
         </param>
         <briefdescription>
 <para>Set temperature measurement range (advanced feature) </para>
@@ -457,21 +455,19 @@
         </inbodydescription>
         <location file="inc/base/BaseTemperature.h" line="559" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="559" bodyend="561"/>
       </memberdef>
-      <memberdef kind="function" id="classBaseTemperature_1a21d2b3e6c1855f666d5dc2856e9f8cea" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+      <memberdef kind="function" id="classBaseTemperature_1a034e1c87d5d0fc5ae5b3114de45db980" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
         <definition>virtual hf_temp_err_t BaseTemperature::GetRange</definition>
-        <argsstring>(float *min_celsius, float *max_celsius) const noexcept</argsstring>
+        <argsstring>(float *, float *) const noexcept</argsstring>
         <name>GetRange</name>
         <qualifiedname>BaseTemperature::GetRange</qualifiedname>
         <reimplementedby refid="classEspTemperature_1a5763ab0b92fff25c5854bcfb04a8ba9f">GetRange</reimplementedby>
         <reimplementedby refid="classStmTemperature_1a42c8899bcbec1bd9ef5d6273db3f6842">GetRange</reimplementedby>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
-          <declname>min_celsius</declname>
         </param>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
-          <declname>max_celsius</declname>
         </param>
         <briefdescription>
 <para>Get temperature measurement range (advanced feature) </para>
@@ -502,15 +498,14 @@
         </inbodydescription>
         <location file="inc/base/BaseTemperature.h" line="569" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="569" bodyend="571"/>
       </memberdef>
-      <memberdef kind="function" id="classBaseTemperature_1a93d2d276ad511dfa7c405a88c6ea0e01" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+      <memberdef kind="function" id="classBaseTemperature_1af70c4fe99c4d0a4affe89dc6c74604ce" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
         <definition>virtual hf_temp_err_t BaseTemperature::SetResolution</definition>
-        <argsstring>(float resolution_celsius) noexcept</argsstring>
+        <argsstring>(float) noexcept</argsstring>
         <name>SetResolution</name>
         <qualifiedname>BaseTemperature::SetResolution</qualifiedname>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
-          <declname>resolution_celsius</declname>
         </param>
         <briefdescription>
 <para>Set measurement resolution (advanced feature) </para>
@@ -533,16 +528,15 @@
         </inbodydescription>
         <location file="inc/base/BaseTemperature.h" line="578" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="578" bodyend="580"/>
       </memberdef>
-      <memberdef kind="function" id="classBaseTemperature_1a5362eaf0cb2478a4e060d8dfca70f3c8" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+      <memberdef kind="function" id="classBaseTemperature_1aebb100f416654165967e18582c2634f0" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
         <definition>virtual hf_temp_err_t BaseTemperature::GetResolution</definition>
-        <argsstring>(float *resolution_celsius) const noexcept</argsstring>
+        <argsstring>(float *) const noexcept</argsstring>
         <name>GetResolution</name>
         <qualifiedname>BaseTemperature::GetResolution</qualifiedname>
         <reimplementedby refid="classEspTemperature_1ae1bfe0b1ceeb20ea8eb5010ef09f832d">GetResolution</reimplementedby>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
-          <declname>resolution_celsius</declname>
         </param>
         <briefdescription>
 <para>Get measurement resolution (advanced feature) </para>
@@ -565,20 +559,18 @@
         </inbodydescription>
         <location file="inc/base/BaseTemperature.h" line="587" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="587" bodyend="589"/>
       </memberdef>
-      <memberdef kind="function" id="classBaseTemperature_1a483f6f9ec09ecd6e8cd32c9f61836763" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+      <memberdef kind="function" id="classBaseTemperature_1a607692aab99043b4e9873ad35a56de34" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
         <definition>virtual hf_temp_err_t BaseTemperature::SetThresholds</definition>
-        <argsstring>(float low_threshold_celsius, float high_threshold_celsius) noexcept</argsstring>
+        <argsstring>(float, float) noexcept</argsstring>
         <name>SetThresholds</name>
         <qualifiedname>BaseTemperature::SetThresholds</qualifiedname>
         <reimplementedby refid="classEspTemperature_1aaeda9f32dfc75e5ca2ab15142d0c9998">SetThresholds</reimplementedby>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
-          <declname>low_threshold_celsius</declname>
         </param>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
-          <declname>high_threshold_celsius</declname>
         </param>
         <briefdescription>
 <para>Set temperature thresholds (advanced feature) </para>
@@ -609,20 +601,18 @@
         </inbodydescription>
         <location file="inc/base/BaseTemperature.h" line="597" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="597" bodyend="600"/>
       </memberdef>
-      <memberdef kind="function" id="classBaseTemperature_1a692b8120d0ceb3ae699cd2bd0981b993" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+      <memberdef kind="function" id="classBaseTemperature_1a6fea20bd0cbaeb61568c739d0447b1bd" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
         <definition>virtual hf_temp_err_t BaseTemperature::GetThresholds</definition>
-        <argsstring>(float *low_threshold_celsius, float *high_threshold_celsius) const noexcept</argsstring>
+        <argsstring>(float *, float *) const noexcept</argsstring>
         <name>GetThresholds</name>
         <qualifiedname>BaseTemperature::GetThresholds</qualifiedname>
         <reimplementedby refid="classEspTemperature_1ae122e823c11b55550cb91af01e26461e">GetThresholds</reimplementedby>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
-          <declname>low_threshold_celsius</declname>
         </param>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
-          <declname>high_threshold_celsius</declname>
         </param>
         <briefdescription>
 <para>Get temperature thresholds (advanced feature) </para>
@@ -653,20 +643,18 @@
         </inbodydescription>
         <location file="inc/base/BaseTemperature.h" line="608" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="608" bodyend="611"/>
       </memberdef>
-      <memberdef kind="function" id="classBaseTemperature_1a210f2f34d7f356d8ff7f0531031f7856" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+      <memberdef kind="function" id="classBaseTemperature_1af7a98eb90aaf7a1a4ceacacd6909f8bd" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
         <definition>virtual hf_temp_err_t BaseTemperature::EnableThresholdMonitoring</definition>
-        <argsstring>(hf_temp_threshold_callback_t callback, void *user_data) noexcept</argsstring>
+        <argsstring>(hf_temp_threshold_callback_t, void *) noexcept</argsstring>
         <name>EnableThresholdMonitoring</name>
         <qualifiedname>BaseTemperature::EnableThresholdMonitoring</qualifiedname>
         <reimplementedby refid="classEspTemperature_1a1b34d89cb1cc7b03100674bea303ab5a">EnableThresholdMonitoring</reimplementedby>
         <param>
           <type><ref refid="BaseTemperature_8h_1aeee4f575e7ed653aeea21a73e9ed893c" kindref="member">hf_temp_threshold_callback_t</ref></type>
-          <declname>callback</declname>
         </param>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
-          <declname>user_data</declname>
         </param>
         <briefdescription>
 <para>Enable threshold monitoring (advanced feature) </para>
@@ -716,24 +704,21 @@
         </inbodydescription>
         <location file="inc/base/BaseTemperature.h" line="628" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="628" bodyend="630"/>
       </memberdef>
-      <memberdef kind="function" id="classBaseTemperature_1afd5288a4ce54793f06fab19960b38253" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+      <memberdef kind="function" id="classBaseTemperature_1a68241947ffe1cbe57221b26348a15db6" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
         <definition>virtual hf_temp_err_t BaseTemperature::StartContinuousMonitoring</definition>
-        <argsstring>(hf_u32_t sample_rate_hz, hf_temp_reading_callback_t callback, void *user_data) noexcept</argsstring>
+        <argsstring>(hf_u32_t, hf_temp_reading_callback_t, void *) noexcept</argsstring>
         <name>StartContinuousMonitoring</name>
         <qualifiedname>BaseTemperature::StartContinuousMonitoring</qualifiedname>
         <reimplementedby refid="classEspTemperature_1acc1ea9c3a109b70bd67e4f285594e474">StartContinuousMonitoring</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
-          <declname>sample_rate_hz</declname>
         </param>
         <param>
           <type><ref refid="BaseTemperature_8h_1ad737845bbb5b213ca89ccac3902fd112" kindref="member">hf_temp_reading_callback_t</ref></type>
-          <declname>callback</declname>
         </param>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
-          <declname>user_data</declname>
         </param>
         <briefdescription>
 <para>Start continuous temperature monitoring (advanced feature) </para>
@@ -810,15 +795,14 @@
         </inbodydescription>
         <location file="inc/base/BaseTemperature.h" line="657" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="657" bodyend="659"/>
       </memberdef>
-      <memberdef kind="function" id="classBaseTemperature_1a4d84a21b7f330d3bc80accbd9f26b1c7" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+      <memberdef kind="function" id="classBaseTemperature_1a18195e03bc84c7a341797427d1cd0d76" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
         <definition>virtual hf_temp_err_t BaseTemperature::Calibrate</definition>
-        <argsstring>(float reference_temperature_celsius) noexcept</argsstring>
+        <argsstring>(float) noexcept</argsstring>
         <name>Calibrate</name>
         <qualifiedname>BaseTemperature::Calibrate</qualifiedname>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
-          <declname>reference_temperature_celsius</declname>
         </param>
         <briefdescription>
 <para>Perform sensor calibration (advanced feature) </para>
@@ -841,17 +825,16 @@
         </inbodydescription>
         <location file="inc/base/BaseTemperature.h" line="666" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="666" bodyend="668"/>
       </memberdef>
-      <memberdef kind="function" id="classBaseTemperature_1a97cd78cf3f336211747e15a1c25d61ee" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+      <memberdef kind="function" id="classBaseTemperature_1a250446a1250eec95f9ca7e050d4fdc7d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
         <definition>virtual hf_temp_err_t BaseTemperature::SetCalibrationOffset</definition>
-        <argsstring>(float offset_celsius) noexcept</argsstring>
+        <argsstring>(float) noexcept</argsstring>
         <name>SetCalibrationOffset</name>
         <qualifiedname>BaseTemperature::SetCalibrationOffset</qualifiedname>
         <reimplementedby refid="classEspTemperature_1a2665b30cb4301b8fccb577f74e4fa7fc">SetCalibrationOffset</reimplementedby>
         <reimplementedby refid="classStmTemperature_1a2fd741be7e01983487293cd79ea6694c">SetCalibrationOffset</reimplementedby>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
-          <declname>offset_celsius</declname>
         </param>
         <briefdescription>
 <para>Set calibration offset (advanced feature) </para>
@@ -874,17 +857,16 @@
         </inbodydescription>
         <location file="inc/base/BaseTemperature.h" line="675" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="675" bodyend="677"/>
       </memberdef>
-      <memberdef kind="function" id="classBaseTemperature_1a55f58d0cccee590dd10e55c2668e7f0b" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+      <memberdef kind="function" id="classBaseTemperature_1a6f1a88266ba22d560682de392d50c0c4" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
         <definition>virtual hf_temp_err_t BaseTemperature::GetCalibrationOffset</definition>
-        <argsstring>(float *offset_celsius) const noexcept</argsstring>
+        <argsstring>(float *) const noexcept</argsstring>
         <name>GetCalibrationOffset</name>
         <qualifiedname>BaseTemperature::GetCalibrationOffset</qualifiedname>
         <reimplementedby refid="classEspTemperature_1ad6ee47301f32825678e5838b453bd1f1">GetCalibrationOffset</reimplementedby>
         <reimplementedby refid="classStmTemperature_1af6ea97a7123fac478b300b7a6e6c76d1">GetCalibrationOffset</reimplementedby>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
-          <declname>offset_celsius</declname>
         </param>
         <briefdescription>
 <para>Get calibration offset (advanced feature) </para>
@@ -1279,25 +1261,25 @@
     <listofallmembers>
       <member refid="classBaseTemperature_1a115e5a44b15a1f507cb7c9163d262a5a" prot="public" virt="non-virtual"><scope>BaseTemperature</scope><name>BaseTemperature</name></member>
       <member refid="classBaseTemperature_1a7570da5a5b76362a826c760c10bac847" prot="protected" virt="non-virtual"><scope>BaseTemperature</scope><name>BaseTemperature</name></member>
-      <member refid="classBaseTemperature_1a4d84a21b7f330d3bc80accbd9f26b1c7" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>Calibrate</name></member>
+      <member refid="classBaseTemperature_1a18195e03bc84c7a341797427d1cd0d76" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>Calibrate</name></member>
       <member refid="classBaseTemperature_1a201bfff0c78242bec04cadd6363d7b5d" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>CheckHealth</name></member>
       <member refid="classBaseTemperature_1a65964a104b3cb9b9c737819810f0a20b" prot="protected" virt="non-virtual"><scope>BaseTemperature</scope><name>current_state_</name></member>
       <member refid="classBaseTemperature_1ac2af8a969cf2c755f52ba302645a4b87" prot="protected" virt="pure-virtual"><scope>BaseTemperature</scope><name>Deinitialize</name></member>
       <member refid="classBaseTemperature_1ad0326eb2b71271b06e2eccffe79561cd" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>DisableThresholdMonitoring</name></member>
-      <member refid="classBaseTemperature_1a210f2f34d7f356d8ff7f0531031f7856" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>EnableThresholdMonitoring</name></member>
+      <member refid="classBaseTemperature_1af7a98eb90aaf7a1a4ceacacd6909f8bd" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>EnableThresholdMonitoring</name></member>
       <member refid="classBaseTemperature_1a015ca3f4802b9a68140531f0175fd1bf" prot="public" virt="non-virtual"><scope>BaseTemperature</scope><name>EnsureDeinitialized</name></member>
       <member refid="classBaseTemperature_1ac3e2177be073e991acc4f03da8c2b07d" prot="public" virt="non-virtual"><scope>BaseTemperature</scope><name>EnsureInitialized</name></member>
       <member refid="classBaseTemperature_1abbef25249b2e935e8954a150519b2342" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>EnterSleepMode</name></member>
       <member refid="classBaseTemperature_1a52a0318d160c45fdee55b15d7148856c" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>ExitSleepMode</name></member>
-      <member refid="classBaseTemperature_1a55f58d0cccee590dd10e55c2668e7f0b" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>GetCalibrationOffset</name></member>
+      <member refid="classBaseTemperature_1a6f1a88266ba22d560682de392d50c0c4" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>GetCalibrationOffset</name></member>
       <member refid="classBaseTemperature_1a765c86c7680b43f7d075b9f392188611" prot="public" virt="pure-virtual"><scope>BaseTemperature</scope><name>GetCapabilities</name></member>
       <member refid="classBaseTemperature_1a2634cc03a24c168a4bd5c8f9d2bd5ef8" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>GetDiagnostics</name></member>
-      <member refid="classBaseTemperature_1a21d2b3e6c1855f666d5dc2856e9f8cea" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>GetRange</name></member>
-      <member refid="classBaseTemperature_1a5362eaf0cb2478a4e060d8dfca70f3c8" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>GetResolution</name></member>
+      <member refid="classBaseTemperature_1a034e1c87d5d0fc5ae5b3114de45db980" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>GetRange</name></member>
+      <member refid="classBaseTemperature_1aebb100f416654165967e18582c2634f0" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>GetResolution</name></member>
       <member refid="classBaseTemperature_1a8250ed681311b1ae3732919df8d3962a" prot="public" virt="pure-virtual"><scope>BaseTemperature</scope><name>GetSensorInfo</name></member>
       <member refid="classBaseTemperature_1a000ebd402761b9fd6fbb13f99070eb3a" prot="public" virt="non-virtual"><scope>BaseTemperature</scope><name>GetState</name></member>
       <member refid="classBaseTemperature_1a67fdd88218e46666fb74cc5bf561176f" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>GetStatistics</name></member>
-      <member refid="classBaseTemperature_1a692b8120d0ceb3ae699cd2bd0981b993" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>GetThresholds</name></member>
+      <member refid="classBaseTemperature_1a6fea20bd0cbaeb61568c739d0447b1bd" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>GetThresholds</name></member>
       <member refid="classBaseTemperature_1ad97ed939d85e2686653d76967c53f790" prot="public" virt="non-virtual"><scope>BaseTemperature</scope><name>HasCapability</name></member>
       <member refid="classBaseTemperature_1ad19ade5e58bb71af6ae98e8e34d477be" prot="protected" virt="pure-virtual"><scope>BaseTemperature</scope><name>Initialize</name></member>
       <member refid="classBaseTemperature_1a6657e59b1e8c59d68aabe08f276090fe" prot="protected" virt="non-virtual"><scope>BaseTemperature</scope><name>initialized_</name></member>
@@ -1315,11 +1297,11 @@
       <member refid="classBaseTemperature_1a21a976418e428078d9ec76521a6ac17b" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>ResetDiagnostics</name></member>
       <member refid="classBaseTemperature_1a149ff046e0cb000bf0172dce28bc17be" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>ResetStatistics</name></member>
       <member refid="classBaseTemperature_1a0b23a97aea3d8455e458577c7ff937e3" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>SelfTest</name></member>
-      <member refid="classBaseTemperature_1a97cd78cf3f336211747e15a1c25d61ee" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>SetCalibrationOffset</name></member>
-      <member refid="classBaseTemperature_1a1bfe9f1a1069222166008b4dafe5a282" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>SetRange</name></member>
-      <member refid="classBaseTemperature_1a93d2d276ad511dfa7c405a88c6ea0e01" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>SetResolution</name></member>
-      <member refid="classBaseTemperature_1a483f6f9ec09ecd6e8cd32c9f61836763" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>SetThresholds</name></member>
-      <member refid="classBaseTemperature_1afd5288a4ce54793f06fab19960b38253" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>StartContinuousMonitoring</name></member>
+      <member refid="classBaseTemperature_1a250446a1250eec95f9ca7e050d4fdc7d" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>SetCalibrationOffset</name></member>
+      <member refid="classBaseTemperature_1aca82bb6b260fd5714c336e79f780f7f9" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>SetRange</name></member>
+      <member refid="classBaseTemperature_1af70c4fe99c4d0a4affe89dc6c74604ce" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>SetResolution</name></member>
+      <member refid="classBaseTemperature_1a607692aab99043b4e9873ad35a56de34" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>SetThresholds</name></member>
+      <member refid="classBaseTemperature_1a68241947ffe1cbe57221b26348a15db6" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>StartContinuousMonitoring</name></member>
       <member refid="classBaseTemperature_1a30f3527c16c76f65e2deb4a89412e231" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>StopContinuousMonitoring</name></member>
       <member refid="classBaseTemperature_1ae37d98256e55529d9d78622db0c34019" prot="protected" virt="non-virtual"><scope>BaseTemperature</scope><name>ValidateBasicOperation</name></member>
       <member refid="classBaseTemperature_1a21ac791e357874874cf1a8be97ed2291" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>~BaseTemperature</name></member>

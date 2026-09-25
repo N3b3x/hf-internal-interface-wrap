@@ -156,14 +156,12 @@
         <argsstring>(float min_celsius, float max_celsius) noexcept override</argsstring>
         <name>SetRange</name>
         <qualifiedname>StmTemperature::SetRange</qualifiedname>
-        <reimplements refid="classBaseTemperature_1a1bfe9f1a1069222166008b4dafe5a282">SetRange</reimplements>
+        <reimplements refid="classBaseTemperature_1aca82bb6b260fd5714c336e79f780f7f9">SetRange</reimplements>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
-          <declname>min_celsius</declname>
         </param>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
-          <declname>max_celsius</declname>
         </param>
         <briefdescription>
 <para>Set temperature measurement range (advanced feature) </para>
@@ -200,14 +198,12 @@
         <argsstring>(float *min_celsius, float *max_celsius) const noexcept override</argsstring>
         <name>GetRange</name>
         <qualifiedname>StmTemperature::GetRange</qualifiedname>
-        <reimplements refid="classBaseTemperature_1a21d2b3e6c1855f666d5dc2856e9f8cea">GetRange</reimplements>
+        <reimplements refid="classBaseTemperature_1a034e1c87d5d0fc5ae5b3114de45db980">GetRange</reimplements>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
-          <declname>min_celsius</declname>
         </param>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
-          <declname>max_celsius</declname>
         </param>
         <briefdescription>
 <para>Get temperature measurement range (advanced feature) </para>
@@ -244,10 +240,9 @@
         <argsstring>(float offset_celsius) noexcept override</argsstring>
         <name>SetCalibrationOffset</name>
         <qualifiedname>StmTemperature::SetCalibrationOffset</qualifiedname>
-        <reimplements refid="classBaseTemperature_1a97cd78cf3f336211747e15a1c25d61ee">SetCalibrationOffset</reimplements>
+        <reimplements refid="classBaseTemperature_1a250446a1250eec95f9ca7e050d4fdc7d">SetCalibrationOffset</reimplements>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref></type>
-          <declname>offset_celsius</declname>
         </param>
         <briefdescription>
 <para>Set calibration offset (advanced feature) </para>
@@ -276,10 +271,9 @@
         <argsstring>(float *offset_celsius) const noexcept override</argsstring>
         <name>GetCalibrationOffset</name>
         <qualifiedname>StmTemperature::GetCalibrationOffset</qualifiedname>
-        <reimplements refid="classBaseTemperature_1a55f58d0cccee590dd10e55c2668e7f0b">GetCalibrationOffset</reimplements>
+        <reimplements refid="classBaseTemperature_1a6f1a88266ba22d560682de392d50c0c4">GetCalibrationOffset</reimplements>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">float</ref> *</type>
-          <declname>offset_celsius</declname>
         </param>
         <briefdescription>
 <para>Get calibration offset (advanced feature) </para>
@@ -445,7 +439,7 @@
     <listofallmembers>
       <member refid="classBaseTemperature_1a115e5a44b15a1f507cb7c9163d262a5a" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>BaseTemperature</name></member>
       <member refid="classBaseTemperature_1a7570da5a5b76362a826c760c10bac847" prot="protected" virt="non-virtual"><scope>StmTemperature</scope><name>BaseTemperature</name></member>
-      <member refid="classBaseTemperature_1a4d84a21b7f330d3bc80accbd9f26b1c7" prot="public" virt="virtual"><scope>StmTemperature</scope><name>Calibrate</name></member>
+      <member refid="classBaseTemperature_1a18195e03bc84c7a341797427d1cd0d76" prot="public" virt="virtual"><scope>StmTemperature</scope><name>Calibrate</name></member>
       <member refid="classStmTemperature_1a4d89f1c6728aad5a458c13599254a4bc" prot="private" virt="non-virtual"><scope>StmTemperature</scope><name>calibration_offset_</name></member>
       <member refid="classBaseTemperature_1a201bfff0c78242bec04cadd6363d7b5d" prot="public" virt="virtual"><scope>StmTemperature</scope><name>CheckHealth</name></member>
       <member refid="classStmTemperature_1af833b26ce90ace49f0378788e914f780" prot="private" virt="non-virtual"><scope>StmTemperature</scope><name>config_</name></member>
@@ -453,7 +447,7 @@
       <member refid="classStmTemperature_1ab1c67e3bbe93cc7834df421a75547c0e" prot="private" virt="non-virtual"><scope>StmTemperature</scope><name>DefaultInternalConvert</name></member>
       <member refid="classStmTemperature_1abac4e09afd8ae32e0f2f9196643e47b1" prot="protected" virt="virtual"><scope>StmTemperature</scope><name>Deinitialize</name></member>
       <member refid="classBaseTemperature_1ad0326eb2b71271b06e2eccffe79561cd" prot="public" virt="virtual"><scope>StmTemperature</scope><name>DisableThresholdMonitoring</name></member>
-      <member refid="classBaseTemperature_1a210f2f34d7f356d8ff7f0531031f7856" prot="public" virt="virtual"><scope>StmTemperature</scope><name>EnableThresholdMonitoring</name></member>
+      <member refid="classBaseTemperature_1af7a98eb90aaf7a1a4ceacacd6909f8bd" prot="public" virt="virtual"><scope>StmTemperature</scope><name>EnableThresholdMonitoring</name></member>
       <member refid="classBaseTemperature_1a015ca3f4802b9a68140531f0175fd1bf" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>EnsureDeinitialized</name></member>
       <member refid="classBaseTemperature_1ac3e2177be073e991acc4f03da8c2b07d" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>EnsureInitialized</name></member>
       <member refid="classBaseTemperature_1abbef25249b2e935e8954a150519b2342" prot="public" virt="virtual"><scope>StmTemperature</scope><name>EnterSleepMode</name></member>
@@ -462,11 +456,11 @@
       <member refid="classStmTemperature_1a00eac441e907fd899ac7df305bd1ead6" prot="public" virt="virtual"><scope>StmTemperature</scope><name>GetCapabilities</name></member>
       <member refid="classBaseTemperature_1a2634cc03a24c168a4bd5c8f9d2bd5ef8" prot="public" virt="virtual"><scope>StmTemperature</scope><name>GetDiagnostics</name></member>
       <member refid="classStmTemperature_1a42c8899bcbec1bd9ef5d6273db3f6842" prot="public" virt="virtual"><scope>StmTemperature</scope><name>GetRange</name></member>
-      <member refid="classBaseTemperature_1a5362eaf0cb2478a4e060d8dfca70f3c8" prot="public" virt="virtual"><scope>StmTemperature</scope><name>GetResolution</name></member>
+      <member refid="classBaseTemperature_1aebb100f416654165967e18582c2634f0" prot="public" virt="virtual"><scope>StmTemperature</scope><name>GetResolution</name></member>
       <member refid="classStmTemperature_1a6d6f95d8acc8e7ebf80314022f6f2eac" prot="public" virt="virtual"><scope>StmTemperature</scope><name>GetSensorInfo</name></member>
       <member refid="classBaseTemperature_1a000ebd402761b9fd6fbb13f99070eb3a" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>GetState</name></member>
       <member refid="classBaseTemperature_1a67fdd88218e46666fb74cc5bf561176f" prot="public" virt="virtual"><scope>StmTemperature</scope><name>GetStatistics</name></member>
-      <member refid="classBaseTemperature_1a692b8120d0ceb3ae699cd2bd0981b993" prot="public" virt="virtual"><scope>StmTemperature</scope><name>GetThresholds</name></member>
+      <member refid="classBaseTemperature_1a6fea20bd0cbaeb61568c739d0447b1bd" prot="public" virt="virtual"><scope>StmTemperature</scope><name>GetThresholds</name></member>
       <member refid="classBaseTemperature_1ad97ed939d85e2686653d76967c53f790" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>HasCapability</name></member>
       <member refid="classStmTemperature_1ac638c0fb9b58e5736ebbd3d750d533fa" prot="protected" virt="virtual"><scope>StmTemperature</scope><name>Initialize</name></member>
       <member refid="classBaseTemperature_1a6657e59b1e8c59d68aabe08f276090fe" prot="protected" virt="non-virtual"><scope>StmTemperature</scope><name>initialized_</name></member>
@@ -486,9 +480,9 @@
       <member refid="classBaseTemperature_1a0b23a97aea3d8455e458577c7ff937e3" prot="public" virt="virtual"><scope>StmTemperature</scope><name>SelfTest</name></member>
       <member refid="classStmTemperature_1a2fd741be7e01983487293cd79ea6694c" prot="public" virt="virtual"><scope>StmTemperature</scope><name>SetCalibrationOffset</name></member>
       <member refid="classStmTemperature_1a608596a4778ff7dbcc6b29099d525afb" prot="public" virt="virtual"><scope>StmTemperature</scope><name>SetRange</name></member>
-      <member refid="classBaseTemperature_1a93d2d276ad511dfa7c405a88c6ea0e01" prot="public" virt="virtual"><scope>StmTemperature</scope><name>SetResolution</name></member>
-      <member refid="classBaseTemperature_1a483f6f9ec09ecd6e8cd32c9f61836763" prot="public" virt="virtual"><scope>StmTemperature</scope><name>SetThresholds</name></member>
-      <member refid="classBaseTemperature_1afd5288a4ce54793f06fab19960b38253" prot="public" virt="virtual"><scope>StmTemperature</scope><name>StartContinuousMonitoring</name></member>
+      <member refid="classBaseTemperature_1af70c4fe99c4d0a4affe89dc6c74604ce" prot="public" virt="virtual"><scope>StmTemperature</scope><name>SetResolution</name></member>
+      <member refid="classBaseTemperature_1a607692aab99043b4e9873ad35a56de34" prot="public" virt="virtual"><scope>StmTemperature</scope><name>SetThresholds</name></member>
+      <member refid="classBaseTemperature_1a68241947ffe1cbe57221b26348a15db6" prot="public" virt="virtual"><scope>StmTemperature</scope><name>StartContinuousMonitoring</name></member>
       <member refid="classStmTemperature_1a2461c1a385e2832b121f947c3dbb4875" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>StmTemperature</name></member>
       <member refid="classStmTemperature_1a12adcb8014a458d3cce1a8db820eccfc" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>StmTemperature</name></member>
       <member refid="classBaseTemperature_1a30f3527c16c76f65e2deb4a89412e231" prot="public" virt="virtual"><scope>StmTemperature</scope><name>StopContinuousMonitoring</name></member>

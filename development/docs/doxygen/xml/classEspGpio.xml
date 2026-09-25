@@ -523,7 +523,7 @@ Validates that the pin number is valid and not reserved for special functions li
         <argsstring>(hf_gpio_interrupt_trigger_t trigger, InterruptCallback callback=nullptr, void *user_data=nullptr) noexcept override</argsstring>
         <name>ConfigureInterrupt</name>
         <qualifiedname>EspGpio::ConfigureInterrupt</qualifiedname>
-        <reimplements refid="classBaseGpio_1aa3e94ea07ff15dc719cdf5de7c2d1a46">ConfigureInterrupt</reimplements>
+        <reimplements refid="classBaseGpio_1a6a2fc7c76e6c33c9db7c3fe54cd48578">ConfigureInterrupt</reimplements>
         <param>
           <type><ref refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kindref="member">hf_gpio_interrupt_trigger_t</ref></type>
           <declname>trigger</declname>
@@ -619,7 +619,7 @@ Validates that the pin number is valid and not reserved for special functions li
         <argsstring>(hf_u32_t timeout_ms=0) noexcept override</argsstring>
         <name>WaitForInterrupt</name>
         <qualifiedname>EspGpio::WaitForInterrupt</qualifiedname>
-        <reimplements refid="classBaseGpio_1a38643a8949be75f6944f15f140904d25">WaitForInterrupt</reimplements>
+        <reimplements refid="classBaseGpio_1af89f9acd70b132054f1b6392cc08dd73">WaitForInterrupt</reimplements>
         <param>
           <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
           <declname>timeout_ms</declname>
@@ -652,7 +652,7 @@ Validates that the pin number is valid and not reserved for special functions li
         <argsstring>(InterruptStatus &amp;status) noexcept override</argsstring>
         <name>GetInterruptStatus</name>
         <qualifiedname>EspGpio::GetInterruptStatus</qualifiedname>
-        <reimplements refid="classBaseGpio_1aa6ea99f5b6bfc64f0e94c50f9e91f2e1">GetInterruptStatus</reimplements>
+        <reimplements refid="classBaseGpio_1afa4d09bd5c27643a68d2fa7724f2fa9b">GetInterruptStatus</reimplements>
         <param>
           <type><ref refid="structInterruptStatus" kindref="compound">InterruptStatus</ref> &amp;</type>
           <declname>status</declname>

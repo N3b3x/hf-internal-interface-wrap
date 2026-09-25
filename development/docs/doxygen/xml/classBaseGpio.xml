@@ -795,25 +795,22 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </inbodydescription>
         <location file="inc/base/BaseGpio.h" line="588" column="26" bodyfile="inc/base/BaseGpio.h" bodystart="588" bodyend="590"/>
       </memberdef>
-      <memberdef kind="function" id="classBaseGpio_1aa3e94ea07ff15dc719cdf5de7c2d1a46" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+      <memberdef kind="function" id="classBaseGpio_1a6a2fc7c76e6c33c9db7c3fe54cd48578" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
         <definition>virtual hf_gpio_err_t BaseGpio::ConfigureInterrupt</definition>
-        <argsstring>(hf_gpio_interrupt_trigger_t trigger, InterruptCallback callback=nullptr, void *user_data=nullptr) noexcept</argsstring>
+        <argsstring>(hf_gpio_interrupt_trigger_t, InterruptCallback=nullptr, void *=nullptr) noexcept</argsstring>
         <name>ConfigureInterrupt</name>
         <qualifiedname>BaseGpio::ConfigureInterrupt</qualifiedname>
         <reimplementedby refid="classEspGpio_1a385ff46f95432183be7cd52d4a69fde4">ConfigureInterrupt</reimplementedby>
         <param>
           <type><ref refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kindref="member">hf_gpio_interrupt_trigger_t</ref></type>
-          <declname>trigger</declname>
         </param>
         <param>
           <type><ref refid="group__gpio_1ga9a7aef9fbdf0b553981712baf9a4223a" kindref="member">InterruptCallback</ref></type>
-          <declname>callback</declname>
           <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <param>
           <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref> *</type>
-          <declname>user_data</declname>
           <defval><ref refid="classSoftChipSelectGuard" kindref="compound">nullptr</ref></defval>
         </param>
         <briefdescription>
@@ -891,16 +888,15 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </inbodydescription>
         <location file="inc/base/BaseGpio.h" line="617" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="617" bodyend="619"/>
       </memberdef>
-      <memberdef kind="function" id="classBaseGpio_1a38643a8949be75f6944f15f140904d25" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+      <memberdef kind="function" id="classBaseGpio_1af89f9acd70b132054f1b6392cc08dd73" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
         <definition>virtual hf_gpio_err_t BaseGpio::WaitForInterrupt</definition>
-        <argsstring>(hf_u32_t timeout_ms=0) noexcept</argsstring>
+        <argsstring>(hf_u32_t=0) noexcept</argsstring>
         <name>WaitForInterrupt</name>
         <qualifiedname>BaseGpio::WaitForInterrupt</qualifiedname>
         <reimplementedby refid="classEspGpio_1ae518911cc7720b8ba4f7e854b3018a6f">WaitForInterrupt</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
-          <declname>timeout_ms</declname>
           <defval>0</defval>
         </param>
         <briefdescription>
@@ -924,16 +920,15 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </inbodydescription>
         <location file="inc/base/BaseGpio.h" line="626" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="626" bodyend="628"/>
       </memberdef>
-      <memberdef kind="function" id="classBaseGpio_1aa6ea99f5b6bfc64f0e94c50f9e91f2e1" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+      <memberdef kind="function" id="classBaseGpio_1afa4d09bd5c27643a68d2fa7724f2fa9b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
         <definition>virtual hf_gpio_err_t BaseGpio::GetInterruptStatus</definition>
-        <argsstring>(InterruptStatus &amp;status) noexcept</argsstring>
+        <argsstring>(InterruptStatus &amp;) noexcept</argsstring>
         <name>GetInterruptStatus</name>
         <qualifiedname>BaseGpio::GetInterruptStatus</qualifiedname>
         <reimplementedby refid="classEspGpio_1ac9c07576f5e322fd9ca80d159f662f65">GetInterruptStatus</reimplementedby>
         <param>
           <type><ref refid="structInterruptStatus" kindref="compound">InterruptStatus</ref> &amp;</type>
-          <declname>status</declname>
         </param>
         <briefdescription>
 <para>Get interrupt status information. </para>
@@ -1732,7 +1727,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
       <member refid="classBaseGpio_1a182759a9452aa9b39f6ec0bcfdc1827f" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>BaseGpio</name></member>
       <member refid="classBaseGpio_1a1a1c7695af0b0dcb1d3f0fb745673b72" prot="protected" virt="non-virtual"><scope>BaseGpio</scope><name>BaseGpio</name></member>
       <member refid="classBaseGpio_1a850ba260aec4cda209a53136c9c270b9" prot="public" virt="virtual"><scope>BaseGpio</scope><name>ClearInterruptStats</name></member>
-      <member refid="classBaseGpio_1aa3e94ea07ff15dc719cdf5de7c2d1a46" prot="public" virt="virtual"><scope>BaseGpio</scope><name>ConfigureInterrupt</name></member>
+      <member refid="classBaseGpio_1a6a2fc7c76e6c33c9db7c3fe54cd48578" prot="public" virt="virtual"><scope>BaseGpio</scope><name>ConfigureInterrupt</name></member>
       <member refid="classBaseGpio_1a42e5fe390af4b700cbd861237fcef37e" prot="protected" virt="non-virtual"><scope>BaseGpio</scope><name>current_direction_</name></member>
       <member refid="classBaseGpio_1a69461140f1f8e9717926235118bae0b9" prot="protected" virt="non-virtual"><scope>BaseGpio</scope><name>current_state_</name></member>
       <member refid="classBaseGpio_1a10393bd9b8eeacc40bc2e643be69576d" prot="public" virt="virtual"><scope>BaseGpio</scope><name>Deinitialize</name></member>
@@ -1747,7 +1742,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
       <member refid="classBaseGpio_1a53728ff73bade39aa3ed6c34cff93023" prot="public" virt="virtual"><scope>BaseGpio</scope><name>GetDiagnostics</name></member>
       <member refid="classBaseGpio_1a962ee940c181b782f4612f913fb352a7" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>GetDirection</name></member>
       <member refid="classBaseGpio_1a29eadd1af0b5bef23fec17a47d9f1347" prot="protected" virt="pure-virtual"><scope>BaseGpio</scope><name>GetDirectionImpl</name></member>
-      <member refid="classBaseGpio_1aa6ea99f5b6bfc64f0e94c50f9e91f2e1" prot="public" virt="virtual"><scope>BaseGpio</scope><name>GetInterruptStatus</name></member>
+      <member refid="classBaseGpio_1afa4d09bd5c27643a68d2fa7724f2fa9b" prot="public" virt="virtual"><scope>BaseGpio</scope><name>GetInterruptStatus</name></member>
       <member refid="classBaseGpio_1adc93269f341ba2ec1a2b35dc32f4f31a" prot="public" virt="pure-virtual"><scope>BaseGpio</scope><name>GetMaxPins</name></member>
       <member refid="classBaseGpio_1af619dacf07dd2b15e40c0f5bfb1c5cb7" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>GetOutputMode</name></member>
       <member refid="classBaseGpio_1a49e2cbb2ec9837fc6a3130f4417961e5" prot="protected" virt="pure-virtual"><scope>BaseGpio</scope><name>GetOutputModeImpl</name></member>
@@ -1796,7 +1791,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
       <member refid="classBaseGpio_1a3448c7f18d22d58055554dc79f2babf9" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>VerifyDirection</name></member>
       <member refid="classBaseGpio_1a81ba9758d36f8d7955d5808069ff99af" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>VerifyHardwareConfiguration</name></member>
       <member refid="classBaseGpio_1a21fe3e0c3a8f2c6a78803e986b195ef6" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>VerifyOutputMode</name></member>
-      <member refid="classBaseGpio_1a38643a8949be75f6944f15f140904d25" prot="public" virt="virtual"><scope>BaseGpio</scope><name>WaitForInterrupt</name></member>
+      <member refid="classBaseGpio_1af89f9acd70b132054f1b6392cc08dd73" prot="public" virt="virtual"><scope>BaseGpio</scope><name>WaitForInterrupt</name></member>
       <member refid="classBaseGpio_1a882c3e3be74c5efb0ee4b3768d864462" prot="public" virt="virtual"><scope>BaseGpio</scope><name>~BaseGpio</name></member>
     </listofallmembers>
   </compounddef>

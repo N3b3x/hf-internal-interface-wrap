@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmI2c.cpp" line="96" column="6" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="96" bodyend="124"/>
+        <location file="src/mcu/stm32/StmI2c.cpp" line="96" column="6" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="96" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="namespaceanonymous__namespace_02StmI2c_8cpp_03_1ae26a414b9761b2b60db2a4f5136e69bc" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmI2c.cpp" line="127" column="6" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="127" bodyend="145"/>
+        <location file="src/mcu/stm32/StmI2c.cpp" line="128" column="6" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="128" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="namespaceanonymous__namespace_02StmI2c_8cpp_03_1ac999e2f65b53a052576810d90a3a4b8d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mcu/stm32/StmI2c.cpp" line="147" column="6" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="147" bodyend="150"/>
+        <location file="src/mcu/stm32/StmI2c.cpp" line="148" column="6" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="148" bodyend="151"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
