@@ -151,6 +151,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a85d54c5784ac4a070c9752112d57f2dc" id="r_a85d54c5784ac4a070c9752112d57f2dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classStmI2cBus.html">StmI2cBus</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85d54c5784ac4a070c9752112d57f2dc">GetParentBus</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a85d54c5784ac4a070c9752112d57f2dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the parent bus.  <br /></td></tr>
 <tr class="separator:a85d54c5784ac4a070c9752112d57f2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae55c1e38aaa1849047e8a7dca932c08" id="r_aae55c1e38aaa1849047e8a7dca932c08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae55c1e38aaa1849047e8a7dca932c08">LastHalError</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:aae55c1e38aaa1849047e8a7dca932c08"><td class="mdescLeft">&#160;</td><td class="mdescRight">HAL ErrorCode of the newest failed transfer (HAL_I2C_ERROR_*; 0 = none yet).  <br /></td></tr>
+<tr class="separator:aae55c1e38aaa1849047e8a7dca932c08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classBaseI2c"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classBaseI2c')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classBaseI2c.html">BaseI2c</a></td></tr>
 <tr class="memitem:a71fa2410d820fb183b835ddea09d444f inherit pub_methods_classBaseI2c" id="r_a71fa2410d820fb183b835ddea09d444f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseI2c.html#a71fa2410d820fb183b835ddea09d444f">~BaseI2c</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a>=<a class="el" href="classSoftChipSelectGuard.html">default</a></td></tr>
 <tr class="memdesc:a71fa2410d820fb183b835ddea09d444f inherit pub_methods_classBaseI2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor ensures proper cleanup in derived classes.  <br /></td></tr>
@@ -214,6 +217,9 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:a23279001df703fa4eb31fb52817c7ee2" id="r_a23279001df703fa4eb31fb52817c7ee2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23279001df703fa4eb31fb52817c7ee2">NoteHalFailure</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">I2C_HandleTypeDef</a> *<a class="el" href="classSoftChipSelectGuard.html">hi2c</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a23279001df703fa4eb31fb52817c7ee2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count a failed transfer by HAL cause before recovery clears it.  <br /></td></tr>
+<tr class="separator:a23279001df703fa4eb31fb52817c7ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad39db07781cc86805ff4646466b1235c" id="r_ad39db07781cc86805ff4646466b1235c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad39db07781cc86805ff4646466b1235c">GetEffectiveTimeout</a> (<a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> <a class="el" href="classSoftChipSelectGuard.html">requested_ms</a>) <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:ad39db07781cc86805ff4646466b1235c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get effective timeout (device override or bus default)  <br /></td></tr>
 <tr class="separator:ad39db07781cc86805ff4646466b1235c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -226,6 +232,8 @@ Static Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:a6f47c69194e764be542fa3ab955e554d" id="r_a6f47c69194e764be542fa3ab955e554d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f47c69194e764be542fa3ab955e554d">last_hal_error_</a> {0}</td></tr>
+<tr class="separator:a6f47c69194e764be542fa3ab955e554d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa427f3773fffe66a6e6313e1ed273474" id="r_aa427f3773fffe66a6e6313e1ed273474"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classStmI2cBus.html">StmI2cBus</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa427f3773fffe66a6e6313e1ed273474">parent_bus_</a></td></tr>
 <tr class="memdesc:aa427f3773fffe66a6e6313e1ed273474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parent bus reference.  <br /></td></tr>
 <tr class="separator:aa427f3773fffe66a6e6313e1ed273474"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -507,6 +515,60 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="aae55c1e38aaa1849047e8a7dca932c08" name="aae55c1e38aaa1849047e8a7dca932c08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae55c1e38aaa1849047e8a7dca932c08">&#9670;&#160;</a></span>LastHalError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> StmI2cDevice::LastHalError </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>HAL ErrorCode of the newest failed transfer (HAL_I2C_ERROR_*; 0 = none yet). </p>
+
+</div>
+</div>
+<a id="a23279001df703fa4eb31fb52817c7ee2" name="a23279001df703fa4eb31fb52817c7ee2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23279001df703fa4eb31fb52817c7ee2">&#9670;&#160;</a></span>NoteHalFailure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> StmI2cDevice::NoteHalFailure </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">I2C_HandleTypeDef</a> *</td>          <td class="paramname"><span class="paramname"><em>hi2c</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Count a failed transfer by HAL cause before recovery clears it. </p>
+
+</div>
+</div>
 <a id="a8cd7f86df640e25578aaaabe4ca194ec" name="a8cd7f86df640e25578aaaabe4ca194ec"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8cd7f86df640e25578aaaabe4ca194ec">&#9670;&#160;</a></span>Read()</h2>
 
@@ -712,6 +774,28 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Device configuration. </p>
+
+</div>
+</div>
+<a id="a6f47c69194e764be542fa3ab955e554d" name="a6f47c69194e764be542fa3ab955e554d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f47c69194e764be542fa3ab955e554d">&#9670;&#160;</a></span>last_hal_error_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> StmI2cDevice::last_hal_error_ {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

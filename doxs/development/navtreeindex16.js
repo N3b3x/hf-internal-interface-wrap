@@ -1,5 +1,8 @@
 var NAVTREEINDEX16 =
 {
+"structhf__adc__monitor__config__t.html#af07b355b259cf56162401b74d641fd29":[3,0,45,0],
+"structhf__adc__monitor__event__t.html":[3,0,46],
+"structhf__adc__monitor__event__t.html#a0a13dd058bd050511cb6ecf8f2722c9d":[3,0,46,3],
 "structhf__adc__monitor__event__t.html#a64ae1858087a81ce05ba25ebdecca99f":[3,0,46,5],
 "structhf__adc__monitor__event__t.html#a83e42ca961a338f52c83548e51991995":[3,0,46,4],
 "structhf__adc__monitor__event__t.html#a97d31f767883bc5e9b8f7af01497ab76":[3,0,46,0],
@@ -246,8 +249,5 @@ var NAVTREEINDEX16 =
 "structhf__i2c__bus__config__t.html#a3b9027cf3616de743dd8137b326b9883":[3,0,72,1],
 "structhf__i2c__bus__config__t.html#a41fe9fbb1e6f8a652b9c7ea9041f4b3c":[3,0,72,4],
 "structhf__i2c__bus__config__t.html#a628c7ed6c98f5e72c4c5244656fdb8c0":[3,0,72,3],
-"structhf__i2c__bus__config__t.html#a6422197f03a7e285716414723c532ed0":[3,0,72,2],
-"structhf__i2c__bus__config__t.html#aa0fa4fded3659a156e1ce2256aafb6be":[3,0,72,0],
-"structhf__i2c__custom__command__t.html":[3,0,73],
-"structhf__i2c__custom__command__t.html#a0b9cd5102b234d69e51d4162b1314ee1":[3,0,73,8]
+"structhf__i2c__bus__config__t.html#a6422197f03a7e285716414723c532ed0":[3,0,72,2]
 };
