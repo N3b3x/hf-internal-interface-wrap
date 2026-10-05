@@ -5,6 +5,21 @@
     <basecompoundref refid="classBaseI2c" prot="public" virt="non-virtual">BaseI2c</basecompoundref>
     <includes refid="StmI2c_8h" local="no">StmI2c.h</includes>
     <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classStmI2cDevice_1a6f47c69194e764be542fa3ab955e554d" prot="private" static="no" mutable="no">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
+        <definition>uint32_t StmI2cDevice::last_hal_error_</definition>
+        <argsstring></argsstring>
+        <name>last_hal_error_</name>
+        <qualifiedname>StmI2cDevice::last_hal_error_</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmI2c.h" line="80" column="14" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="80" bodyend="80"/>
+      </memberdef>
       <memberdef kind="variable" id="classStmI2cDevice_1aa427f3773fffe66a6e6313e1ed273474" prot="private" static="no" mutable="no">
         <type><ref refid="classStmI2cBus" kindref="compound">StmI2cBus</ref> *</type>
         <definition>StmI2cBus* StmI2cDevice::parent_bus_</definition>
@@ -18,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="81" column="25" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="81" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="87" column="25" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classStmI2cDevice_1a30cf0c80323678784650324431024fc0" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref></type>
@@ -33,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="82" column="28" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="82" bodyend="-1"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="88" column="28" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="88" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -168,7 +183,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="56" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="155" bodyend="189"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="56" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="168" bodyend="204"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1a8cd7f86df640e25578aaaabe4ca194ec" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -227,7 +242,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="58" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="191" bodyend="222"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="58" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="206" bodyend="239"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1a785e780f32c9353a7aa5ad48784352df" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -310,7 +325,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="60" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="224" bodyend="278"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="60" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="241" bodyend="327"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1aae434c3a1e5f13290326c0a862cebc37" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -329,7 +344,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="63" column="14" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="280" bodyend="282"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="63" column="14" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="329" bodyend="331"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1a27ec07cab26b31fd9d15c97b204a8dca" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
@@ -348,7 +363,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="66" column="10" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="284" bodyend="286"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="66" column="10" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="333" bodyend="335"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1a540861718a8da891acf2df06e51c8b25" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref> &amp;</type>
@@ -380,8 +395,42 @@
         </inbodydescription>
         <location file="inc/mcu/stm32/StmI2c.h" line="72" column="15" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="72" bodyend="72"/>
       </memberdef>
+      <memberdef kind="function" id="classStmI2cDevice_1aae55c1e38aaa1849047e8a7dca932c08" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
+        <definition>uint32_t StmI2cDevice::LastHalError</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>LastHalError</name>
+        <qualifiedname>StmI2cDevice::LastHalError</qualifiedname>
+        <briefdescription>
+<para>HAL ErrorCode of the newest failed transfer (HAL_I2C_ERROR_*; 0 = none yet). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmI2c.h" line="75" column="14" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="75" bodyend="75"/>
+      </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
+      <memberdef kind="function" id="classStmI2cDevice_1a23279001df703fa4eb31fb52817c7ee2" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">void</ref></type>
+        <definition>void StmI2cDevice::NoteHalFailure</definition>
+        <argsstring>(const I2C_HandleTypeDef *hi2c) noexcept</argsstring>
+        <name>NoteHalFailure</name>
+        <qualifiedname>StmI2cDevice::NoteHalFailure</qualifiedname>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">const</ref> <ref refid="classSoftChipSelectGuard" kindref="compound">I2C_HandleTypeDef</ref> *</type>
+          <declname>hi2c</declname>
+        </param>
+        <briefdescription>
+<para>Count a failed transfer by HAL cause before recovery clears it. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmI2c.h" line="79" column="10" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="155" bodyend="166"/>
+      </memberdef>
       <memberdef kind="function" id="classStmI2cDevice_1ad39db07781cc86805ff4646466b1235c" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
         <definition>hf_u32_t StmI2cDevice::GetEffectiveTimeout</definition>
@@ -399,7 +448,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="76" column="14" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="288" bodyend="292"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="82" column="14" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="337" bodyend="341"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
@@ -420,7 +469,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmI2c.h" line="79" column="25" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="294" bodyend="302"/>
+        <location file="inc/mcu/stm32/StmI2c.h" line="85" column="25" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="343" bodyend="351"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -495,7 +544,7 @@
         <link refid="structhf__i2c__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/stm32/StmI2c.h" line="48" column="1" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="48" bodyend="83"/>
+    <location file="inc/mcu/stm32/StmI2c.h" line="48" column="1" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="48" bodyend="89"/>
     <listofallmembers>
       <member refid="classBaseI2c_1a0ef4a4a50952a71b4c7be2f13660282d" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>BaseI2c</name></member>
       <member refid="classBaseI2c_1a092d769aa9bf48da2c730a6a27a4d93c" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>BaseI2c</name></member>
@@ -517,6 +566,9 @@
       <member refid="classBaseI2c_1a87bf0b1caa8c82523adc4e1816467232" prot="protected" virt="non-virtual"><scope>StmI2cDevice</scope><name>initialized_</name></member>
       <member refid="classBaseI2c_1a0d8635db15272fc79947121fcec70850" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>IsDevicePresent</name></member>
       <member refid="classBaseI2c_1aa0015d0aff3de7f30f7444935a50c094" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>IsInitialized</name></member>
+      <member refid="classStmI2cDevice_1a6f47c69194e764be542fa3ab955e554d" prot="private" virt="non-virtual"><scope>StmI2cDevice</scope><name>last_hal_error_</name></member>
+      <member refid="classStmI2cDevice_1aae55c1e38aaa1849047e8a7dca932c08" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>LastHalError</name></member>
+      <member refid="classStmI2cDevice_1a23279001df703fa4eb31fb52817c7ee2" prot="private" virt="non-virtual"><scope>StmI2cDevice</scope><name>NoteHalFailure</name></member>
       <member refid="classBaseI2c_1a9decd4d080fd5090a4f98892c2549a0a" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>Open</name></member>
       <member refid="classBaseI2c_1a9296811925c9010e889f85232dc58f58" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>operator=</name></member>
       <member refid="classBaseI2c_1a9169f7ddc26ca7a620676615364fc283" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>operator=</name></member>

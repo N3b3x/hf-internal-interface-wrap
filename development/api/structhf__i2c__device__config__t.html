@@ -143,6 +143,8 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a4ee426df38bc74be5ef7124ad76313c4" id="r_a4ee426df38bc74be5ef7124ad76313c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ee426df38bc74be5ef7124ad76313c4">scl_speed_hz</a></td></tr>
 <tr class="memdesc:a4ee426df38bc74be5ef7124ad76313c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">SCL clock speed (informational)  <br /></td></tr>
 <tr class="separator:a4ee426df38bc74be5ef7124ad76313c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ec1d68baef11a2816ae680278471006" id="r_a3ec1d68baef11a2816ae680278471006"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ec1d68baef11a2816ae680278471006">combined_read</a></td></tr>
+<tr class="separator:a3ec1d68baef11a2816ae680278471006"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>I2C device configuration structure. </p>
@@ -215,6 +217,21 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Address mode. </p>
+
+</div>
+</div>
+<a id="a3ec1d68baef11a2816ae680278471006" name="a3ec1d68baef11a2816ae680278471006"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ec1d68baef11a2816ae680278471006">&#9670;&#160;</a></span>combined_read</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> hf_i2c_device_config_t::combined_read</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Register reads (WriteRead with a 1–2 byte register address) use the I2C combined format: START, address+W, register, repeated START, address+R, data, STOP. Some targets (NXP PF1550) reject the register write when it ends in STOP and NACK the following read. Off by default: the split Transmit/STOP/Receive framing stays for parts proven on it. </p>
 
 </div>
 </div>

@@ -3,6 +3,7 @@ var structhf__i2c__device__config__t =
     [ "hf_i2c_device_config_t", "structhf__i2c__device__config__t.html#ad714da0f23e5e76c16ff462ec4488b48", null ],
     [ "hf_i2c_device_config_t", "structhf__i2c__device__config__t.html#ad714da0f23e5e76c16ff462ec4488b48", null ],
     [ "addr_mode", "structhf__i2c__device__config__t.html#a3e60bd358abcd45af6009dd312ee5960", null ],
+    [ "combined_read", "structhf__i2c__device__config__t.html#a3ec1d68baef11a2816ae680278471006", null ],
     [ "dev_addr_length", "structhf__i2c__device__config__t.html#a30e9a6a1ffbe59f64c84486fa4e4605f", null ],
     [ "device_address", "structhf__i2c__device__config__t.html#a2043147468665929ffd3b65333a27b19", null ],
     [ "device_address", "structhf__i2c__device__config__t.html#af0dd4533b154c2d15317027f93f9ddd8", null ],

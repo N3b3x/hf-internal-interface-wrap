@@ -9,10 +9,13 @@ var classStmI2cDevice =
     [ "GetEffectiveTimeout", "classStmI2cDevice.html#ad39db07781cc86805ff4646466b1235c", null ],
     [ "GetParentBus", "classStmI2cDevice.html#a85d54c5784ac4a070c9752112d57f2dc", null ],
     [ "Initialize", "classStmI2cDevice.html#a5d069dc6f8e90fe5aaccdd603111a07d", null ],
+    [ "LastHalError", "classStmI2cDevice.html#aae55c1e38aaa1849047e8a7dca932c08", null ],
+    [ "NoteHalFailure", "classStmI2cDevice.html#a23279001df703fa4eb31fb52817c7ee2", null ],
     [ "Read", "classStmI2cDevice.html#a8cd7f86df640e25578aaaabe4ca194ec", null ],
     [ "SetDeviceAddress", "classStmI2cDevice.html#a27ec07cab26b31fd9d15c97b204a8dca", null ],
     [ "Write", "classStmI2cDevice.html#a8a705c4068676dcca9a36054eddfe15c", null ],
     [ "WriteRead", "classStmI2cDevice.html#a785e780f32c9353a7aa5ad48784352df", null ],
     [ "config_", "classStmI2cDevice.html#a30cf0c80323678784650324431024fc0", null ],
+    [ "last_hal_error_", "classStmI2cDevice.html#a6f47c69194e764be542fa3ab955e554d", null ],
     [ "parent_bus_", "classStmI2cDevice.html#aa427f3773fffe66a6e6313e1ed273474", null ]
 ];

@@ -2032,6 +2032,7 @@
     <member refid="structhf__i2c__device__config__t_1af0dd4533b154c2d15317027f93f9ddd8" kind="variable"><name>device_address</name></member>
     <member refid="structhf__i2c__device__config__t_1a3e60bd358abcd45af6009dd312ee5960" kind="variable"><name>addr_mode</name></member>
     <member refid="structhf__i2c__device__config__t_1a4ee426df38bc74be5ef7124ad76313c4" kind="variable"><name>scl_speed_hz</name></member>
+    <member refid="structhf__i2c__device__config__t_1a3ec1d68baef11a2816ae680278471006" kind="variable"><name>combined_read</name></member>
     <member refid="structhf__i2c__device__config__t_1ad714da0f23e5e76c16ff462ec4488b48" kind="function"><name>hf_i2c_device_config_t</name></member>
     <member refid="structhf__i2c__device__config__t_1ad714da0f23e5e76c16ff462ec4488b48" kind="function"><name>hf_i2c_device_config_t</name></member>
   </compound>
@@ -3049,6 +3050,7 @@
     <member refid="classStmI2cBus_1aec8eff6f44d82c66e1f3e6305863d4cb" kind="function"><name>UnlockBus</name></member>
   </compound>
   <compound refid="classStmI2cDevice" kind="class"><name>StmI2cDevice</name>
+    <member refid="classStmI2cDevice_1a6f47c69194e764be542fa3ab955e554d" kind="variable"><name>last_hal_error_</name></member>
     <member refid="classStmI2cDevice_1aa427f3773fffe66a6e6313e1ed273474" kind="variable"><name>parent_bus_</name></member>
     <member refid="classStmI2cDevice_1a30cf0c80323678784650324431024fc0" kind="variable"><name>config_</name></member>
     <member refid="classStmI2cDevice_1ae1ee48b91ec267b628c39a69329799da" kind="function"><name>StmI2cDevice</name></member>
@@ -3062,6 +3064,8 @@
     <member refid="classStmI2cDevice_1a27ec07cab26b31fd9d15c97b204a8dca" kind="function"><name>SetDeviceAddress</name></member>
     <member refid="classStmI2cDevice_1a540861718a8da891acf2df06e51c8b25" kind="function"><name>GetConfig</name></member>
     <member refid="classStmI2cDevice_1a85d54c5784ac4a070c9752112d57f2dc" kind="function"><name>GetParentBus</name></member>
+    <member refid="classStmI2cDevice_1aae55c1e38aaa1849047e8a7dca932c08" kind="function"><name>LastHalError</name></member>
+    <member refid="classStmI2cDevice_1a23279001df703fa4eb31fb52817c7ee2" kind="function"><name>NoteHalFailure</name></member>
     <member refid="classStmI2cDevice_1ad39db07781cc86805ff4646466b1235c" kind="function"><name>GetEffectiveTimeout</name></member>
     <member refid="classStmI2cDevice_1af0d017a0135b577c8fb6e252eedf0c29" kind="function"><name>ConvertHalStatus</name></member>
   </compound>
