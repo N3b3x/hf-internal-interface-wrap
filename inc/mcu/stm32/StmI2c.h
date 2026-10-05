@@ -71,7 +71,13 @@ public:
     /// @brief Get the parent bus
     StmI2cBus* GetParentBus() const noexcept { return parent_bus_; }
 
+    /** @brief HAL ErrorCode of the newest failed transfer (HAL_I2C_ERROR_*; 0 = none yet). */
+    uint32_t LastHalError() const noexcept { return last_hal_error_; }
+
 private:
+    /** @brief Count a failed transfer by HAL cause before recovery clears it. */
+    void NoteHalFailure(const I2C_HandleTypeDef* hi2c) noexcept;
+    uint32_t last_hal_error_{0};
     /// @brief Get effective timeout (device override or bus default)
     hf_u32_t GetEffectiveTimeout(hf_u32_t requested_ms) const noexcept;
 

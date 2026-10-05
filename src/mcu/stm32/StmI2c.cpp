@@ -152,6 +152,19 @@ bool HalXferOk(I2C_HandleTypeDef* hi2c, uint32_t status) noexcept {
 
 }  // namespace
 
+void StmI2cDevice::NoteHalFailure(const I2C_HandleTypeDef* hi2c) noexcept {
+    /* Classify before RecoverI2cAfterError clears ErrorCode: a NACK, a bus
+     * error and an arbitration loss need different fixes, and callers that
+     * only see a bool (chip drivers) otherwise cannot tell them apart. */
+    const uint32_t e = hi2c != nullptr ? hi2c->ErrorCode : 0U;
+    if ((e & HAL_I2C_ERROR_AF) != 0U) statistics_.nack_errors++;
+    if ((e & HAL_I2C_ERROR_BERR) != 0U) statistics_.bus_errors++;
+    if ((e & HAL_I2C_ERROR_ARLO) != 0U) statistics_.arbitration_lost_count++;
+    if ((e & HAL_I2C_ERROR_TIMEOUT) != 0U) statistics_.timeout_count++;
+    last_hal_error_ = e;
+    diagnostics_.consecutive_errors++;
+}
+
 hf_i2c_err_t StmI2cDevice::Write(const hf_u8_t* data, hf_u16_t length,
                                   hf_u32_t timeout_ms) noexcept {
     if (!EnsureInitialized()) return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
@@ -179,9 +192,11 @@ hf_i2c_err_t StmI2cDevice::Write(const hf_u8_t* data, hf_u16_t length,
     if (result == hf_i2c_err_t::I2C_SUCCESS) {
         statistics_.total_transactions++;
         statistics_.successful_transactions++;
+        diagnostics_.consecutive_errors = 0U;
         statistics_.bytes_written += length;
     } else {
         statistics_.failed_transactions++;
+        NoteHalFailure(hi2c);
         RecoverI2cAfterError(hi2c);
     }
     parent_bus_->UnlockBus();
@@ -212,9 +227,11 @@ hf_i2c_err_t StmI2cDevice::Read(hf_u8_t* data, hf_u16_t length,
     if (result == hf_i2c_err_t::I2C_SUCCESS) {
         statistics_.total_transactions++;
         statistics_.successful_transactions++;
+        diagnostics_.consecutive_errors = 0U;
         statistics_.bytes_read += length;
     } else {
         statistics_.failed_transactions++;
+        NoteHalFailure(hi2c);
         RecoverI2cAfterError(hi2c);
     }
     parent_bus_->UnlockBus();
@@ -246,6 +263,35 @@ hf_i2c_err_t StmI2cDevice::WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
      * Writes already use Master_Transmit successfully; the same framing for
      * the command phase keeps multi-byte register pointer updates reliable. */
     result = hf_i2c_err_t::I2C_ERR_READ_FAILURE;
+    if (config_.combined_read && tx_length <= 2U) {
+        /* Combined format (repeated START). PrepareMasterXfer flushes TXDR /
+         * RXDR and stale CR2 programming first — the sticky-TXIS hazard that
+         * made the split framing the default does not apply after it. */
+        const uint16_t mem_addr = (tx_length == 2U)
+                                      ? static_cast<uint16_t>((tx_data[0] << 8) | tx_data[1])
+                                      : tx_data[0];
+        const uint16_t mem_size = (tx_length == 2U) ? I2C_MEMADD_SIZE_16BIT : I2C_MEMADD_SIZE_8BIT;
+        for (int attempt = 0; attempt < 2; ++attempt) {
+            PrepareMasterXfer(hi2c);
+            const uint32_t status = HAL_I2C_Mem_Read(hi2c, addr_shifted, mem_addr, mem_size, rx_data,
+                                                     rx_length, effective_timeout);
+            if (HalXferOk(hi2c, status)) {
+                statistics_.total_transactions++;
+                statistics_.successful_transactions++;
+                diagnostics_.consecutive_errors = 0U;
+                statistics_.bytes_written += tx_length;
+                statistics_.bytes_read += rx_length;
+                result = hf_i2c_err_t::I2C_SUCCESS;
+                break;
+            }
+            statistics_.failed_transactions++;
+            NoteHalFailure(hi2c);
+            RecoverI2cAfterError(hi2c);
+            result = ConvertHalStatus(status);
+        }
+        parent_bus_->UnlockBus();
+        return result;
+    }
     for (int attempt = 0; attempt < 2; ++attempt) {
         PrepareMasterXfer(hi2c);
         uint32_t status = HAL_I2C_Master_Transmit(
@@ -253,6 +299,7 @@ hf_i2c_err_t StmI2cDevice::WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
             effective_timeout);
         if (!HalXferOk(hi2c, status)) {
             statistics_.failed_transactions++;
+            NoteHalFailure(hi2c);
             RecoverI2cAfterError(hi2c);
             result = ConvertHalStatus(status);
             continue;
@@ -264,12 +311,14 @@ hf_i2c_err_t StmI2cDevice::WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
         if (HalXferOk(hi2c, status)) {
             statistics_.total_transactions++;
             statistics_.successful_transactions++;
+        diagnostics_.consecutive_errors = 0U;
             statistics_.bytes_written += tx_length;
             statistics_.bytes_read += rx_length;
             result = hf_i2c_err_t::I2C_SUCCESS;
             break;
         }
         statistics_.failed_transactions++;
+        NoteHalFailure(hi2c);
         RecoverI2cAfterError(hi2c);
         result = ConvertHalStatus(status);
     }

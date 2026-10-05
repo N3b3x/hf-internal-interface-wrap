@@ -310,12 +310,21 @@ struct hf_i2c_device_config_t {
     hf_stm32_i2c_addr_mode_t addr_mode;                  ///< Address mode
     hf_u32_t scl_speed_hz;                               ///< SCL clock speed (informational)
     bool disable_ack_check;                               ///< Disable ACK checking
+    /**
+     * Register reads (WriteRead with a 1–2 byte register address) use the I2C
+     * combined format: START, address+W, register, repeated START,
+     * address+R, data, STOP. Some targets (NXP PF1550) reject the register
+     * write when it ends in STOP and NACK the following read. Off by default:
+     * the split Transmit/STOP/Receive framing stays for parts proven on it.
+     */
+    bool combined_read;
 
     hf_i2c_device_config_t() noexcept
         : device_address(0),
           addr_mode(hf_stm32_i2c_addr_mode_t::ADDR_7BIT),
           scl_speed_hz(100000),
-          disable_ack_check(false) {}
+          disable_ack_check(false),
+          combined_read(false) {}
 };
 
 // ═══════════════════════════════════════════════════════════════════════════════
